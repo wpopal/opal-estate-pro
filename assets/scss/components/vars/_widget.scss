@@ -1,0 +1,88 @@
+/**
+ *   Blocks Layout Selectors
+ */
+$block-prefix                    : 'widget' !default;
+$block-selector                  : 'widget ' !default;
+$block-heading-selector          : 'widget-title, .widgettitle' !default;
+$block-content-selector          : 'widget-content' !default;
+$block-heading-reversed-selector : 'widget-title-reversed' !default;
+$container-prefix                : 'wpb-container' !default;
+
+
+
+// Box Modules
+// -------------------------
+$block-module-margin-bottom                     : 30px !default;
+$block-module-padding                           : 0px !default;
+$block-module-border-color                      : none !default;
+
+$block-module-heading-color						: #000000 !default;
+$block-module-heading-border                    : 0px !default;
+$block-module-heading-transform                 : uppercase !default;
+$block-module-heading-line-height               : normal !default;
+$block-module-heading-bg                        : transparent !default;
+$block-module-heading-padding                   : 0 0 15px !default;
+$block-module-heading-margin                    : 0 0 25px !default;
+$block-module-heading-font-size                 : 16px !default;
+$block-module-heading-font-weight               : 700 !default;
+$block-module-heading-show-separator            : none !default;
+$block-module-heading-image-position            : 0 0 !default;
+
+$block-module-content-bg                        : transparent !default;
+$block-module-content-color						: #bbb !default;
+$block-module-content-border                    : 1px solid $border-color !default;
+$block-module-content-padding                   : 20px !default;
+$block-module-content-margin                    : 1px !default;
+$block-module-content-radius                    : 0px !default;
+
+$block-module-highlighted-bg                    : $theme-color !default;
+$block-module-highlighted-border                : solid 2px $theme-color !default;
+
+$block-module-footer-heading-color              : $white !default;
+
+$block-product-padding                          : 0 !default;
+$block-heading-letter-spacing                   : 0 !default;
+
+// Sidebar
+// -------------------------
+$block-sidebar-module-border                    : none !default;
+$block-sidebar-box-padding                      : 0 !default; 
+$block-sidebar-box-margin                       : 0 0 30px !default;
+
+$block-sidebar-list-padding-vertical            : 13px 0px 13px 13px !default;
+$block-sidebar-list-border-color                : $border-color !default;
+
+$block-sidebar-hightlight-margin 				: 0 0 20px !default;
+$block-sidebar-heading-margin            		: 0 !default;
+$block-sidebar-heading-hightlight-bg            : $nocolor !default;
+$block-sidebar-heading-hightlight-padding       : 0 !default;
+$block-sidebar-heading-hightlight-margin    	: 0 !default;
+$block-sidebar-heading-hightlight-color         : $black !default;
+$block-sidebar-heading-hightlight-margin-bottom : 0px !default;
+$block-sidebar-heading-hightlight-font-size     : 14px !default;
+$block-sidebar-heading-hightlight-font-weight   : 900 !default;
+$block-sidebar-hightlight-content-bg			: $nocolor !default;
+$block-sidebar-hightlight-content-color			: #666666 !default; 
+$block-sidebar-hightlight-content-padding		: 0 !default;
+$block-sidebar-hightlight-border   				: 1px solid rgba(0, 0, 0, 0.1) !default;
+$block-sidebar-hightlight-font-size 			: 12px !default;	
+$block-sidebar-hightlight-transform 			: uppercase !default;
+$block-sidebar-hightlight-font-weight			: 300 !default;						
+$block-sidebar-link-hightlight-color            : $white !default;
+$block-sidebar-link-hightlight-hover-color      : $theme-color !default;
+$block-sidebar-list-hightlight-border-color     : #393939 !default;
+$block-sidebar-list-hightlight-font-size        : 10px !default;
+$block-sidebar-list-hightlight-padding          : 17px 15px !default;
+$block-sidebar-list-hightlight-image            : url('#{$image-theme-path}dot.jpg') 0 22px no-repeat !default;
+$block-sidebar-list-image                       : url('#{$image-theme-path}dot.jpg') 0 22px no-repeat !default;
+
+$block-sidebar-heading-padding                  : 0 0 30px !default;
+$block-sidebar-heading-margin                   : 0 !default;
+$block-sidebar-heading-font-size                : 14px !default;
+$block-sidebar-heading-color                    : $black !default; 
+$block-sidebar-heading-line-height              : 20px !default;
+$block-sidebar-heading-font-weight				: 900 !default;
+
+$block-sidebar-widget-border                    : 1px solid lighten($border-color, 3%) !default;
+
+/********* LAYOUT **************/

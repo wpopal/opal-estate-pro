@@ -1,0 +1,1 @@
+<?php echo opalestate_load_template_path( 'single-agent/author-box' ); ?> 

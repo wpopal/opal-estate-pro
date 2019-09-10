@@ -1,0 +1,150 @@
+.opalestate_agency{
+    margin-bottom: $grid-gutter-width;
+}
+.trusted-label{
+    font-size: 23px;
+    color: $primary;
+    text-align: center;
+    line-height: 1;
+}
+.team-header {
+    .trusted-label{
+        position: absolute;
+        right: 20px;
+        background-color: $white;
+        border-radius: 50%;
+        bottom: 0;
+        transform: translateY(50%);
+        border: 1px solid $border-color;
+        width: 48px;
+        line-height: 48px;
+    }
+}
+
+.agency-box-title{
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 1;
+}
+.agency-address{
+    margin-bottom: 0;
+}
+.agency-box-meta{
+    [class*="agency-box-"]{
+        &:not(:last-of-type){
+        }
+        i{
+            width: $font-size-base;
+            margin-right: 12px;
+            display: inline-block;
+        }
+    }
+    a{
+        color: inherit;
+        &:hover{
+            color: $link-hover-color;
+        }
+    }
+    
+}
+//Grid Layout
+.agency-grid-style{
+    
+    .agency-body-content{
+        background-color: #f8f8f8;
+    }
+    .agency-logo{
+        width: 80px;
+        height: 80px;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-right: $grid-gutter-width;
+    }
+    .agency-info{
+        padding: $grid-gutter-width;
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid $border-color;
+    }
+    .agency-content{
+        flex: 1;
+    }
+    .agency-box-meta{
+        padding: $grid-gutter-width;
+        [class*="agency-box-"]{
+            line-height: 1;
+            &:not(:last-of-type){
+                margin-bottom: 13px;
+            }
+        }
+    }
+    .agency-box-title{
+        margin-bottom: 9px;
+        margin-right: 0;
+        display: block;
+    }
+    .agency-address{
+        font-size: 13px;
+    }
+}
+
+//List Layout
+.agency-list-style{
+    .agency-inner{
+        display: flex;
+        flex-wrap: wrap;
+        padding: $grid-gutter-width 0;
+        border: 1px solid $border-color;
+    }
+    .agent-box-image{
+        height: 100%;
+        img{
+            height: 100%;
+        }
+    }
+    .agency-header{
+        
+        margin: 0 $grid-gutter-width;
+    }
+    .agency-body-content{
+        flex: 1;
+        padding: $grid-gutter-width 0 0;
+    }
+    .agency-logo{
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid $border-color;
+        overflow: hidden;
+        position: absolute;
+        bottom: 0;
+        right: $grid-gutter-width;
+        transform: translateY(50%);
+    }
+    .agency-info{
+        position: relative;
+        padding: 0 $grid-gutter-width 18px;
+        border-bottom: 1px solid $border-color;
+        margin-bottom: 17px;
+
+    }
+    .agency-box-meta{
+        @media screen and (max-width:767px){
+            padding: 0 30px;
+        }
+    }
+    .agency-box-title{
+        margin-bottom: 0px;
+    }
+    @media screen and (min-width:768px) {
+        .agency-body-content{
+            padding: 0 0 0 10px;
+        }
+        .agency-header{
+            max-width: 240px;
+        }
+        .agency-info{
+            padding: 0 0 18px;
+        }
+    }
+}

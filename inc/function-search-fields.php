@@ -1,0 +1,129 @@
+<?php
+/**
+ * Search field templates.
+ *
+ * @package    opalestate
+ * @author     Opal  Team <info@wpopal.com >
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+/**
+ * Render field template.
+ *
+ * @param string $field Field.
+ * @param string $label Label.
+ * @param string $type  Type.
+ */
+function opalestate_property_render_field_template( $field, $label, $type = 'select' ) {
+	$qvalue   = isset( $_GET['info'][ $field ] ) ? sanitize_text_field( $_GET['info'][ $field ] ) : '';
+	$template = '';
+	$template = apply_filters( 'opalestate_property_render_search_field_template', $field, $label );
+	$template = apply_filters( 'opalestate_property_' . $field . '_field_template', $template );
+
+	if ( $template == $field ) {
+		$template = '';
+	}
+
+	if ( empty( $template ) ) {
+		switch ( $type ) {
+			case 'input': ?>
+                <label class="opalestate-label opalestate-label--<?php echo sanitize_html_class( $field ); ?>"><?php echo esc_html( $label ); ?></label>
+                <div class="input-group-number">
+                    <i class="fa icon-property-<?php echo esc_attr( $field ); ?>"></i>
+                    <input class="form-control" value="1" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr( $label ); ?>"/>
+                    <div class="btn-actions">
+                        <span class="btn-minus"><i class="fa fa-minus"></i></span>
+                        <span class="btn-plus"><i class="fa fa-plus"></i></span>
+                    </div>
+                </div>
+
+				<?php break;
+
+			default:
+				$template = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
+
+				$template .= '<select class="form-control" name="info[%s]"><option value="">%s</option>';
+				for ( $i = 1; $i <= 10; $i++ ) {
+					$selected = $i == $qvalue ? 'selected="selected"' : '';
+
+					$template .= '<option ' . $selected . ' value="' . $i . '">' . $i . '</option>';
+				}
+				$template .= '</select>';
+				$template = sprintf( $template, $field, $label );
+
+				break;
+		}
+	}
+
+	echo $template; // WPCS: XSS OK.
+}
+
+/**
+ * Render area size field.
+ */
+function opalestate_property_areasize_field_template( $template = '' ) {
+	$search_min = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : opalestate_options( 'search_min_area', 0 );
+	$search_max = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : opalestate_options( 'search_max_area', 1000 );
+
+	$data = [
+		'id'         => 'area',
+		'unit'       => opalestate_options( 'measurement_unit', 'sq ft' ) . ' ',
+		'ranger_min' => opalestate_options( 'search_min_area', 0 ),
+		'ranger_max' => opalestate_options( 'search_max_area', 1000 ),
+		'input_min'  => $search_min,
+		'input_max'  => $search_max,
+	];
+
+	opalesate_property_slide_ranger_template( esc_html__( 'Area', 'opalestate-pro' ), $data );
+
+	return;
+}
+
+add_filter( "opalestate_property_areasize_field_template", 'opalestate_property_areasize_field_template' );
+
+/**
+ * Render slider ranger template.
+ *
+ * @param $label
+ * @param $data
+ */
+function opalesate_property_slide_ranger_template( $label, $data ) {
+	$default = [
+		'id'            => 'price',
+		'unit'          => '',
+		'decimals'      => 0,
+		'ranger_min'    => 0,
+		'ranger_max'    => 1000,
+		'input_min'     => 0,
+		'input_max'     => 1000,
+		'unit_position' => 'postfix',
+		'mode'          => 2,
+		'start'         => '',
+	];
+
+	$data = array_merge( $default, $data );
+
+	extract( $data );
+	?>
+    <label class="opalestate-label opalestate-label--<?php echo sanitize_title( $label ); ?>"><?php echo esc_html( $label ); ?></label>
+    <div class="opal-slide-ranger" data-unit="<?php echo $unit; ?>" data-unitpos="<?php echo $unit_position ?>" data-decimals="<?php echo $decimals; ?>">
+        <label class="slide-ranger-label">
+            <span class="slide-ranger-min-label"></span>
+			<?php echo ( $mode == 2 ) ? '<i>-</i>' : ''; ?>
+            <span class="slide-ranger-max-label"></span>
+        </label>
+
+        <div class="slide-ranger-bar" data-min="<?php echo $ranger_min; ?>" data-max="<?php echo $ranger_max; ?>" data-mode="<?php echo $mode; ?>" data-start="<?php echo $start; ?>"></div>
+
+		<?php if ( $mode == 1 ) : ?>
+            <input type="hidden" class="slide-ranger-min-input ranger-<?php echo $id; ?>" name="<?php echo $id; ?>" autocomplete="off" value="<?php echo (int) $input_min; ?>"/>
+		<?php else : ?>
+            <input type="hidden" class="slide-ranger-min-input ranger-<?php echo $id; ?>" name="min_<?php echo $id; ?>" autocomplete="off" value="<?php echo (int) $input_min; ?>"/>
+            <input type="hidden" class="slide-ranger-max-input ranger-<?php echo $id; ?>" name="max_<?php echo $id; ?>" autocomplete="off" value="<?php echo (int) $input_max; ?>"/>
+		<?php endif; ?>
+    </div>
+	<?php
+}

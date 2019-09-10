@@ -1,0 +1,88 @@
+//
+.archive{
+	.opalestate-head{
+		margin-bottom: 80px;
+	}
+}
+.opalestate-head {
+	position: relative;
+	background-color:$secondary;	
+	display: flex;
+	align-items: center;
+	min-height: 640px;
+	.opalestate-heading {
+		color:$white;
+		text-align:center;
+		p{
+			margin-bottom: 50px;
+		}
+		a{
+			color: $white;
+			&:hover{
+				color: $link-hover-color;
+			}
+		}
+	}
+	.opalestate-head-title{ 
+		color: $white;
+		margin-bottom: 19px;
+	}
+	.search-agent-title{
+		display: none;
+	}
+
+	.opalestate-head-form{
+		padding: 0 $grid-gutter-width;
+		margin-bottom: 21px;
+	}
+}
+.opalestate-single-agent{
+	min-height: 500px;
+	align-items: flex-end;
+	.opalestate-heading{
+		text-align: left;
+		& > span{
+			margin-bottom: 13px;
+			display: inline-block;
+		}
+	}
+	
+	.opalestate-head-title{
+		margin-bottom: 29px;
+	}
+}
+.opalesate-archive-top{
+	margin-bottom: $grid-gutter-width*2;
+    padding: 12px 0;
+    border-style: solid;
+	border-width: 1px 0 1px;
+	border-color: $border-color;
+	position: relative;
+	.opalestate-results{
+		line-height: 45px;
+	}
+	.opalestate-sortable{
+		display: inline-block;
+		.form-control,.select2-selection--single{
+			padding-top: 8px;
+		}
+	}
+}
+.opalesate-archive-bottom {
+	position: relative;
+}
+
+.display-mode{
+	display: inline-block;
+	.btn:not(:disabled):not(.disabled){
+        padding: 0;
+        background-color: transparent;
+        color: $body-color;
+		margin-left: 10px;
+		font-size: 18px;
+        &.active,&:hover{
+            background-color: transparent;
+            color: $secondary;
+        }
+    }
+}

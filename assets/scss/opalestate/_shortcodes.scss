@@ -1,0 +1,164 @@
+// split map search //// 
+.maps-container-fixed {
+    position: relative;
+    width: 100%;
+    @media (min-width:1024px){
+        position:fixed;
+        z-index:0;
+        width:50%;
+        top:0;
+        min-height:600px;
+    }
+}
+
+/** Shortcodes **/
+.opalestate-search-properties{
+	.search-properies-form{
+		margin-top: $grid-gutter-width;
+	}
+}
+
+// my account form /// 
+
+.opalestate-my-account-form {
+    position: relative;
+    background: $white;
+    padding: $grid-gutter-width;
+    width:auto;
+    max-width: 550px;
+    margin: 20px auto;
+    .submit{
+        a{
+            display: block;
+            margin-top: 10px;
+        }
+    }
+    .opalestate-button{
+        padding: 17px 35px 14px 35px;
+        width: 100%;
+    }
+    h3 {
+        display:none;
+    }
+}
+
+.opalesate-properties-results {
+    min-height:800px;   
+}
+
+.membership-packages{
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.pricing.pricing-v3{
+    border: 1px solid $border-color;
+    border-radius:5px;
+    padding: 0;
+    margin-bottom: $grid-gutter-width;
+    overflow: hidden;
+    .pricing-header{
+        text-align: center;
+        background: $primary;
+        color: $white;
+        position: relative;
+        padding: $grid-gutter-width/2 0px 0px;
+    }
+    .plan-price{
+        color: $white;
+        line-height: 2.3rem;
+        margin-top: $grid-gutter-width/2;
+        p{
+            display: inline-block;
+        }
+    }
+    .pricing-body {
+        padding: $grid-gutter-width/2 $grid-gutter-width;
+    }
+    .plan-figure{
+        font-size: 36px;
+        color: $white;
+        display: block;
+        font-weight: bold;
+    }
+    .plain-info{
+        & > div{
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        .item-info{
+            border-bottom: 1px solid $border-color;
+            padding-bottom: $padding-base;
+            margin-bottom: $padding-base;
+            color: $headings-color;
+            font-weight: $headings-font-weight;
+            text-transform: uppercase;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+        i{
+            margin-right: 10px;
+        }
+    }
+    .membership-form-wrapper{
+        color: $white;
+    }
+    .membership-add-to-purchase{
+        width: 100%;
+        border: 0;
+        text-align: center;
+        background-color: #999;
+        line-height: 42px;
+        text-transform: capitalize;
+        &:hover{
+            background-color: gray;
+        }
+    }
+    .pricing-footer{
+        padding: 0 $grid-gutter-width $grid-gutter-width;
+        text-align: center;
+    }
+    .plan-title{
+        color: $white;
+        font-size: 18px;
+        margin: 0;
+        border: none;
+        font-weight: $headings-font-weight;
+        letter-spacing: -0.5px;
+        position: relative;
+    }
+
+}
+.package-hightlighted{
+    .plan-subtitle{
+        background-color: $secondary;
+        color:$black;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: absolute;
+        bottom: -10px;
+        display: block !important;
+        margin: 0 auto;
+        max-width: 150px;
+        left: 0;
+        right: 0;
+        font-weight: $headings-font-weight;
+    }
+    .pricing.pricing-v3{
+        @media screen and (min-width:992px) {
+            //margin-top: -40px;
+        }
+        .membership-add-to-purchase{
+            background-color: $secondary;
+            &:hover{
+                background-color: $primary;
+            }
+        }
+        .pricing-footer{
+            //padding-bottom: $grid-gutter-width *2;
+        }
+    }   
+    
+}

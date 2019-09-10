@@ -1,0 +1,77 @@
+@import "partials/variables";
+@import "partials/mixins";
+
+
+
+
+// uploader fields //
+.cmb2-uploader-files {
+	display:flex;
+	flex-wrap:wrap;
+	> div{
+		width: 180px;
+		height: 130px;
+		overflow: hidden;
+	}
+	.preview-image{
+		height: 100%;
+		img{
+			height: 100%;
+		}
+	}
+	.button-placehold {	
+		border:dashed 1px #ebebeb;
+		cursor: pointer;
+		text-align: center;
+		i{
+			display: block;
+			font-size: 24px;
+			margin-bottom: 8px;
+		}
+		.button-placehold-content{
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+	input.select-file{
+		display: none;
+	}
+}
+.uploader-item-preview {
+	position:relative;
+	.btn-close {
+		position:absolute;
+		top:4px;
+		right:5px;
+		width:15px;
+		height:15px;
+		cursor:pointer;
+		&:hover::before{
+			color: red;
+		}
+		&::before{
+			content: '\f00d';
+			font-family: Fontawesome;
+			transition: all .3s ease-in-out;
+		}
+	}
+	.preview-icon{
+		padding-top: 4px;
+	}
+}
+
+//// 
+
+
+@import "partials/main_wrap";
+@import "partials/post_metaboxes";
+@import "partials/context_metaboxes";
+@import "partials/misc";
+@import "partials/collapsible_ui";
+@import "partials/jquery_ui";
+
+/**
+ * CMB2 Frontend
+ */
+@import "partials/front";

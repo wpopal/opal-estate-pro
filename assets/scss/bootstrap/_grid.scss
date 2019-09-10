@@ -1,0 +1,31 @@
+ .opal-row, .row {
+    // Large grid
+    //
+    // Columns, offsets, pushes, and pulls for the large desktop device range.
+    
+    
+    // Medium grid
+    //
+    // Columns, offsets, pushes, and pulls for the desktop device range.
+
+    @media (min-width: $screen-sm-min) {
+      @include make-grid(sm);
+      @include make-grid-columns(sm);
+      @include make-row;
+    }
+    @media (min-width: $screen-md-min) {
+      @include make-grid(md);
+      @include make-grid-columns(md);
+    }
+    @media (min-width: $screen-lg-min) {
+      @include make-grid(lg);
+      @include make-grid-columns(lg);
+    }
+
+}
+
+
+@mixin list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}

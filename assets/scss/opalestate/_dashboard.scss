@@ -1,0 +1,253 @@
+.opalestate-admin-box{
+	margin-bottom:$padding-base*2;
+	h3 {
+		border-bottom:1px $border-color solid;
+		padding-bottom:15px;
+		padding-top:30px;
+		font-size:150%;
+	}
+}
+
+/** CMD BOX 2 */
+.select2-search-member {
+	display:flex;
+	.member-meta {
+		margin-left:12px;
+		font-weight:500
+	}
+}
+.cmb2-wrap .field-row-2 .cmb-row  {
+	display: inline-block;
+	width: 50%;
+}
+
+.cmb2-wrap .field-row-2 .cmb-row:nth-child(even) > div {
+	@media screen and (min-width:768px){
+		padding-left: 12px;
+	}
+}
+.cmb2-wrap  .cmb-td {
+	padding: 4px 0;
+}
+
+
+.bg-info {
+	background-color:#0288d1 !important;
+}
+.bg-warning {
+	background-color:#ffca28!important;
+}
+.alert.alert-success{
+	background: #0F93FA;
+}
+
+.alert.alert-danger{
+	background: #f55753;
+}
+.alert.alert-warning{
+	background: #ffca28;
+}
+/**
+ *
+ * Dashboard Page
+ */
+
+@media( max-width: $screen-xs-max ) {
+
+	.user-dasboard-sidebar {
+		display:none;
+	}
+	body.active {
+		.user-dasboard-sidebar{
+			display:block;
+		}
+		margin-left:251px!important;
+	}
+	.page-template-user-management {
+		margin-left:0!important;
+	}
+
+	#show-user-sidebar-btn {
+		display:block!important;
+	}
+}
+
+.navbar-left {
+	display:flex;
+}
+.opalestate-user-greeting {
+	.popup-head  {
+		float:right;
+	}
+	.popup-head a { 
+		color:$white; 
+		text-align:right;
+		img {
+			width:40px;
+			border-radius:50%;
+		}
+		position:relative;
+		i { 
+			padding:12px; 
+			border-radius:50%;
+			background:rgba(0, 0, 0, .06 );
+		}
+	}
+
+	ul {
+		padding:0;
+		margin :0 ;
+		list-style:none;
+	}
+	
+}
+
+ .dashboard-navbar {
+
+ 	background-color: $white;
+ 	padding:9px $grid-gutter-width;
+ 	
+	border-bottom:1px solid $border-color;
+	ul{
+		margin-bottom: 0;
+	}
+ }
+
+.card-item {
+	background-color:$white;
+	border:solid 1px $border-color;
+	padding:$padding-base;
+	i {
+		background:rgba(0, 0, 0, .18);
+		padding:15px;
+		border-radius:50%;
+	}
+	h5 {
+		font-size:200%;
+		text-align:center;
+	}
+	span {
+		font-weight:700
+	}
+}
+
+.page-template-user-management {
+	.opalestate-box{
+		@media screen and (min-width:768px){
+			margin-right: $padding-base;
+		}
+	}
+	&.logged-in { margin-left:251px; }
+	#content {
+		padding-left:$padding-base*2;
+		padding-right:$padding-base*2;
+	}
+
+	#show-user-sidebar-btn {
+	 	display:none;
+		margin-right:$padding-base;
+	}
+	.opalestate-panel-myaccount {
+		padding-top: $padding-base*3;
+		padding-bottom: $padding-base*3;
+	}
+}
+.admin-bar{
+	.opalestate-user-management{
+		.user-dasboard-sidebar{
+			padding-top: 32px;
+		}
+	}
+}
+.opalmembership-dashboard{
+	.btn-link{
+		background-color: $secondary;
+		color: $white;
+		&:hover{
+			background-color: $primary;
+		}
+	}
+}
+.opalestate-user-management {
+	min-height: 600px;
+	.property-submission-form{
+		.opalestate-box{
+			margin-right: 0;
+		}
+	}
+	.user-dasboard-sidebar {
+		background-color:$headings-color;
+		min-height:900px;
+		position:fixed;
+		left:0;
+		width:250px;
+		height:100%;
+		z-index:100;
+		top:0px;
+	 	.user-dasboard-sidebar-inner{
+	 		padding-top:20px;
+	 	}
+	}
+	.navbar-brand {
+		padding:32px $padding-base;
+	}
+	
+
+	.account-links {
+		list-style:none;
+		padding:0;
+		margin : 0; 
+		a {
+			padding:8px 20px;
+			width:100%;
+			display:block;
+			font-weight:500	;
+			i {
+				margin-right:6px;
+				color:$body-color;
+			}
+			color:$body-color;
+			&:hover {
+				background-color:$primary;
+
+			}
+		}
+	}
+
+	.site-main {
+		padding-top:$padding-base;
+		$padding-bottom:$padding-base;
+	}
+}
+
+//my reviews
+.opalestate-my-reviews{
+	.commentlist{
+		margin: 0;
+	}
+	.meta{
+		margin-bottom: 10px;
+	}
+	.opalestate-review__ratings{
+		margin-bottom: 0;
+	}
+}
+.opalestate-my-reviews-item_property-name{
+	margin-bottom: 5px;
+}
+.opalestate-my-reviews-item_property-view{
+	font-size: 12px;
+	font-style: italic;
+}
+
+//my property
+.my-property-list{
+	.entry-content{
+		width: 100%;
+	}
+}
+
+
+.dashboard {
+	
+}

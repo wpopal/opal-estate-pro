@@ -1,0 +1,301 @@
+<?php
+/**
+ * Ajax functions
+ *
+ * @package    opalestate
+ * @author     Opal  Team <info@wpopal.com >
+ * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
+ * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @website  http://www.wpopal.com
+ * @support  http://www.wpopal.com/support/forum.html
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+function opalestate_gallery_property() {
+	$post_id = intval( $_POST['property_id'] );
+	$gallery = get_post_meta( $post_id, OPALESTATE_PROPERTY_PREFIX . 'gallery', 1 );
+
+	echo json_encode( [ 'gallery' => $gallery ] );
+	die;
+}
+
+add_action( 'wp_ajax_opalestate_gallery_property', 'opalestate_gallery_property' );
+add_action( 'wp_ajax_nopriv_opalestate_gallery_property', 'opalestate_gallery_property' );
+/**
+ * Searches for users via ajax and returns a list of results
+ *
+ * @return void
+ * @since  1.0
+ *
+ */
+function opalestate_ajax_search_property_users() {
+
+	$search_query = trim( $_GET['q'] );
+
+	$get_users_args = [
+		'number' => 9999,
+		'search' => $search_query . '*',
+	];
+
+	$get_users_args = apply_filters( 'opalestate_search_users_args', $get_users_args );
+
+	$found_users = apply_filters( 'opalestate_ajax_found_property_users', get_users( $get_users_args ), $search_query );
+
+	$users = [];
+	if ( ! empty( $found_users ) ) {
+		foreach ( $found_users as $user ) {
+			$users[] = [
+				'id'          => $user->ID,
+				'name'        => $user->display_name,
+				'avatar_url'  => OpalEstate_User::get_author_picture( $user->ID ),
+				'full_name'   => $user->display_name,
+				'description' => 'okokok',
+			];
+		}
+	}
+
+	$output = [
+		'total_count'        => count( $users ),
+		'items'              => $users,
+		'incomplete_results' => false,
+	];
+	echo json_encode( $output );
+
+	die();
+}
+
+add_action( 'wp_ajax_opalestate_search_property_users', 'opalestate_ajax_search_property_users' );
+
+
+add_action( 'wp_ajax_opalestate_ajax_get_state_by_country', "opalestate_ajax_get_state_by_country" );
+function opalestate_ajax_get_state_by_country() {
+	if ( ! isset( $_POST['country'] ) ) {
+		die;
+	}
+
+	$country = sanitize_text_field( $_POST['country'] );
+
+	$is_search = isset( $_POST['is_search'] ) && $_POST['is_search'];
+
+	$terms = get_terms( [
+		'taxonomy'   => 'opalestate_state',
+		'orderby'    => 'name',
+		'order'      => 'ASC',
+		'hide_empty' => $is_search ? true : false,
+		'meta_query' => [
+			[
+				'key'   => 'opalestate_state_location',
+				'value' => $country,
+			],
+		],
+	] );
+
+	$states   = [];
+	$states[] = [
+		'id'   => $is_search ? '-1' : '',
+		'text' => esc_html__( 'Select State', 'opalestate-pro' ),
+	];
+
+	if ( $terms ) {
+		foreach ( $terms as $term ) {
+			$states[] = [
+				'id'   => $term->slug,
+				'text' => $term->name,
+			];
+		}
+	}
+
+	echo json_encode( $states );
+	wp_die();
+}
+
+add_action( 'wp_ajax_opalestate_ajax_get_city_by_state', "opalestate_ajax_get_city_by_state" );
+function opalestate_ajax_get_city_by_state() {
+	if ( ! isset( $_POST['state'] ) ) {
+		die;
+	}
+
+	$state = sanitize_text_field( $_POST['state'] );
+
+	$is_search = isset( $_POST['is_search'] ) && $_POST['is_search'];
+
+	$terms = get_terms( [
+		'taxonomy'   => 'opalestate_city',
+		'orderby'    => 'name',
+		'order'      => 'ASC',
+		'hide_empty' => $is_search ? true : false,
+		'meta_query' => [
+			[
+				'key'   => 'opalestate_city_state',
+				'value' => $state,
+			],
+		],
+	] );
+
+	$cities   = [];
+	$cities[] = [
+		'id'   => $is_search ? '-1' : '',
+		'text' => esc_html__( 'Select City', 'opalestate-pro' ),
+	];
+
+	if ( $terms ) {
+		foreach ( $terms as $term ) {
+			$cities[] = [
+				'id'   => $term->slug,
+				'text' => $term->name,
+			];
+		}
+	}
+
+	echo json_encode( $cities );
+	wp_die();
+}
+
+/* set feature property */
+add_action( 'wp_ajax_opalestate_set_feature_property', 'opalestate_set_feature_property' );
+add_action( 'wp_ajax_nopriv_opalestate_set_feature_property', 'opalestate_set_feature_property' );
+if ( ! function_exists( 'opalestate_set_feature_property' ) ) {
+	function opalestate_set_feature_property() {
+
+		if ( ! isset( $_REQUEST['nonce'] ) && ! wp_verify_nonce( $_REQUEST['nonce'], 'nonce' ) ) {
+			return;
+		}
+		if ( ! isset( $_REQUEST['property_id'] ) ) {
+			return;
+		}
+		update_post_meta( absint( $_REQUEST['property_id'] ), OPALESTATE_PROPERTY_PREFIX . 'featured', 1 );
+
+		wp_redirect( admin_url( 'edit.php?post_type=opalestate_property' ) );
+		exit();
+	}
+}
+/* remove feature property */
+add_action( 'wp_ajax_opalestate_remove_feature_property', 'opalestate_remove_feature_property' );
+add_action( 'wp_ajax_nopriv_opalestate_remove_feature_property', 'opalestate_remove_feature_property' );
+if ( ! function_exists( 'opalestate_remove_feature_property' ) ) {
+	function opalestate_remove_feature_property() {
+		if ( ! isset( $_REQUEST['nonce'] ) && ! wp_verify_nonce( $_REQUEST['nonce'], 'nonce' ) ) {
+			return;
+		}
+
+		if ( ! isset( $_REQUEST['property_id'] ) ) {
+			return;
+		}
+
+		update_post_meta( absint( $_REQUEST['property_id'] ), OPALESTATE_PROPERTY_PREFIX . 'featured', '' );
+		wp_redirect( admin_url( 'edit.php?post_type=opalestate_property' ) );
+		exit();
+	}
+}
+
+/**
+ * Set Featured Item Following user
+ */
+add_action( 'wp_ajax_opalestate_toggle_featured_property', 'opalestate_toggle_featured_property' );
+add_action( 'wp_ajax_nopriv_opalestate_toggle_featured_property', 'opalestate_toggle_featured_property' );
+
+function opalestate_toggle_featured_property() {
+
+	global $current_user;
+	wp_get_current_user();
+	$user_id = $current_user->ID;
+
+	$property_id = intval( $_POST['property_id'] );
+	$post        = get_post( $property_id );
+
+	if ( $post->post_author == $user_id ) {
+
+		$check = apply_filters( 'opalestate_set_feature_property_checked', false );
+		if ( $check ) {
+			do_action( 'opalestate_toggle_featured_property_before', $user_id, $property_id );
+			update_post_meta( $property_id, OPALESTATE_PROPERTY_PREFIX . 'featured', 1 );
+			echo json_encode( [ 'status' => true, 'msg' => esc_html__( 'Could not set this as featured', 'opalestate-pro' ) ] );
+			wp_die();
+		}
+	}
+
+	echo json_encode( [ 'status' => false, 'msg' => esc_html__( 'Could not set this as featured', 'opalestate-pro' ) ] );
+	wp_reset_query();
+	wp_die();
+
+}
+
+
+/**
+ * load more properties by agency
+ */
+add_action( 'wp_ajax_get_agency_property', 'opalestate_load_more_agency_property' );
+add_action( 'wp_ajax_nopriv_get_agency_property', 'opalestate_load_more_agency_property' );
+
+function opalestate_load_more_agency_property() {
+
+
+	$post = [
+		'post_id' => 0,
+		'paged'   => 1,
+		'user_id' => 13,
+		'related' => '',
+		'limit'   => apply_filters( 'opalesate_agency_properties_limit', 5 ),
+	];
+
+	$post = array_merge( $post, $_POST );
+	extract( $post );
+
+	$user_id = get_post_meta( absint( $post_id ), OPALESTATE_AGENCY_PREFIX . 'user_id', true );
+	$query   = Opalestate_Query::get_agency_property( absint( $post_id ), absint( $user_id ), absint( $limit ), absint( $paged ) );
+
+	if ( $query->have_posts() ) :
+		while ( $query->have_posts() ) : $query->the_post(); ?>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+				<?php echo opalestate_load_template_path( 'content-property-list-v2' ); ?>
+            </div>
+		<?php endwhile;
+	endif;
+	wp_reset_postdata();
+	exit;
+}
+
+
+/**
+ * load more properties by agency
+ */
+add_action( 'wp_ajax_get_agent_property', 'opalestate_get_agent_property' );
+add_action( 'wp_ajax_nopriv_get_agent_property', 'opalestate_get_agent_property' );
+
+function opalestate_get_agent_property() {
+	global $paged;
+	$post = [
+
+		'paged' => 1,
+		'id'    => 13,
+		'limit' => apply_filters( 'opalesate_agent_properties_limit', 1 ),
+	];
+
+	$post = array_merge( $post, $_POST );
+	extract( $post );
+
+	set_query_var( 'paged', $post['paged'] );
+	$query = Opalestate_Query::get_agent_property( null, absint( $post['id'] ), absint( $limit ) );
+
+	$paged = absint( $post['paged'] );
+	if ( $query->have_posts() ) : ?>
+        <div class="opalestate-rows">
+            <div class="<?php echo apply_filters( 'opalestate_row_container_class', 'row opal-row' ); ?>">
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+						<?php echo opalestate_load_template_path( 'content-property-list' ); ?>
+                    </div>
+				<?php endwhile; ?>
+            </div>
+        </div>
+		<?php if ( $query->max_num_pages > 1 ): ?>
+            <div class="w-pagination"><?php opalestate_pagination( $query->max_num_pages ); ?></div>
+		<?php endif; ?>
+	<?php
+	endif;
+	wp_reset_postdata();
+	exit;
+}

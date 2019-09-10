@@ -1,0 +1,40 @@
+<wpml-config>
+	<custom-types>
+		<custom-type translate="1">opalestate_property</custom-type>
+		<custom-type translate="1">opalestate_agency</custom-type>
+		<custom-type translate="1">opalestate_agent</custom-type>
+	</custom-types>
+	<taxonomies>
+		<taxonomy translate="1">property_category</taxonomy>
+		<taxonomy translate="1">opalestate_amenities</taxonomy>
+		<taxonomy translate="1">opalestate_label</taxonomy>
+		<taxonomy translate="1">opalestate_location</taxonomy>
+		<taxonomy translate="1">opalestate_state</taxonomy>
+		<taxonomy translate="1">opalestate_city</taxonomy>
+		<taxonomy translate="1">opalestate_status</taxonomy>
+		<taxonomy translate="1">opalestate_types</taxonomy>
+		<taxonomy translate="1">opalestate_rating_ft</taxonomy>
+		<taxonomy translate="1">opalestate_agency_ft</taxonomy>
+		<taxonomy translate="1">opalestate_agent_ft</taxonomy>
+	</taxonomies>
+	<custom-fields>
+		<custom-field action="copy">opalestate_ppt_featured</custom-field>
+		<custom-field action="copy">opalestate_ppt_sku</custom-field>
+		<custom-field action="copy">opalestate_ppt_map</custom-field>
+		<custom-field action="copy">opalestate_ppt_zipcode</custom-field>
+		<custom-field action="copy">opalestate_ppt_enablemapview</custom-field>
+		<custom-field action="copy">opalestate_ppt_video</custom-field>
+		<custom-field action="copy">opalestate_ppt_builtyear</custom-field>
+		<custom-field action="copy">opalestate_ppt_parking</custom-field>
+		<custom-field action="copy">opalestate_ppt_bedrooms</custom-field>
+		<custom-field action="copy">opalestate_ppt_bathrooms</custom-field>
+		<custom-field action="copy">opalestate_ppt_plotsize</custom-field>
+		<custom-field action="copy">opalestate_ppt_areasize</custom-field>
+		<custom-field action="copy">opalestate_ppt_orientation</custom-field>
+		<custom-field action="copy">opalestate_ppt_kitchens</custom-field>
+		<custom-field action="copy">opalestate_ppt_livingrooms</custom-field>
+		<custom-field action="copy">opalestate_ppt_amountrooms</custom-field>
+		<custom-field action="copy">opalestate_ppt_gallery</custom-field>
+		<custom-field action="copy">opalestate_ppt_virtual</custom-field>
+	</custom-fields>
+</wpml-config>

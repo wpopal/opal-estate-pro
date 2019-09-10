@@ -1,0 +1,244 @@
+$opalestate-parallax-before-background : url("http://venusdemo.com/wpopal/mix/mobile/wp-content/uploads/2014/11/bg-footer-cd.jpg")!default;
+
+$element-color-primary        : $theme-color !default;
+
+ /* --- SCSS For Accordion --- */
+$opalestate-accordion-background:                        $brand-success !default; 
+$opalestate-accordion-color:                             $brand-success !default;
+
+$opalestate-accordion-border-color:                      #eee !default;
+
+ /* --- SCSS For Breadcrumb --- */
+
+ /* --- SCSS For Buttons --- */
+
+ /* --- SCSS For Call-to-action --- */$white : #FFFFFF !default;
+
+ /* --- SCSS For Content-slider --- *//*  */
+
+$opalestate-carousel-md-width:                             44px !default;
+$opalestate-carousel-md-height:                            44px !default;
+
+$opalestate-carousel-sm-width:                             34px !default;
+$opalestate-carousel-sm-height:                            34px !default;
+
+$opalestate-carousel-xs-width:                             30px !default;
+$opalestate-carousel-xs-height:                            30px !default;
+ 
+/* carousel-controls-v1 */
+$opalestate-carousel-controls-v1-color:                    #999 !default;
+$opalestate-carousel-controls-v1-hover-color:              darken($opalestate-carousel-controls-v1-color, 15%) !default;
+$opalestate-carousel-controls-v1-bg:                       rgba(0, 0, 0, 0.5) !default;
+
+/* carousel-controls-v2 */
+$opalestate-carousel-controls-v2-color:                    #999 !default;
+$opalestate-carousel-controls-v2-hover-color:              darken($opalestate-carousel-controls-v2-color, 25%) !default;
+
+/* carousel-controls-v3 */
+$opalestate-carousel-controls-v3-color:                    #fff !default;
+$opalestate-carousel-controls-v3-hover-color:              #fff !default;
+$opalestate-carousel-controls-v3-bg:                       $element-color-primary  !default;
+$opalestate-carousel-controls-v3-hover-bg:                 darken($opalestate-carousel-controls-v3-bg, 15%) !default;
+
+
+
+/* Navigation Styles */
+
+/* carousel-indicators-v1 */
+$opalestate-carousel-indicators-v1-bg:                     #ddd !default;
+$opalestate-carousel-indicators-v1-hover-bg:               $brand-success !default;
+
+/* carousel-indicators-v2 */
+$opalestate-carousel-indicators-v2-bg:                     #ddd !default;
+$opalestate-carousel-indicators-v2-hover-bg:               $brand-success !default;
+
+/* carousel-indicators-v3 */
+$opalestate-carousel-indicators-v3-bg:                     $brand-success !default;
+$opalestate-carousel-indicators-v3-hover-bg:               $brand-success !default;
+
+/* carousel-indicators-v4 */
+$opalestate-carousel-indicators-v4-bg:                     $brand-success !default;
+$opalestate-carousel-indicators-v4-hover-bg:               $brand-success !default;
+
+
+/* carousel-indicators-v5 */
+$opalestate-carousel-indicators-v5-bg:                     $brand-success !default;
+$opalestate-carousel-indicators-v5-hover-bg:               $brand-success !default;
+
+/* carousel-indicators-v6 */
+$opalestate-carousel-indicators-v6-bg:                     $brand-success !default;
+$opalestate-carousel-indicators-v6-hover-bg:               $brand-success !default;
+
+ /* --- SCSS For Counters --- */
+$opalestate-counter-color:                   $brand-primary;
+$opalestate-counter-font-weight:             700;
+$opalestate-counter-font-size:               48px;
+
+$opalestate-counter-icon-font-size:          46px;
+$opalestate-counter-heading-font-weight:     400;
+
+ /* --- SCSS For Heading --- */$opalestate-heading-color:            $brand-success;
+
+ /* --- SCSS For Icon-box --- */
+
+ /* --- SCSS For Interactive-banner --- */
+
+ /* --- SCSS For Latest-posts --- *//* latest posts */
+$opalestate-latest-posts-color:                   #696969;
+$opalestate-latest-posts-a-color:                 #000;
+$opalestate-latest-posts-a-hover-color:           red;
+$opalestate-latest-posts-font-size:               14px;
+$opalestate-latest-posts-title-font-size:         18px;
+
+$opalestate-latest-posts-profile-font-size:       13px;
+$opalestate-latest-posts-profile-color:           #696969;
+
+ /* --- SCSS For List --- *//* variables for list */
+$opalestate-list-color:                           #666 !default; 
+$opalestate-list-a-color:                         $opalestate-list-color !default; 
+$opalestate-list-a-color-hover:                   $brand-success  !default;
+
+/* variables for list light */
+
+$opalestate-list-light-color:                     #FFFFFF !default; 
+$opalestate-list-light-a-color:                   $opalestate-list-light-color !default; 
+$opalestate-list-light-a-color-hover:             $brand-success  !default;
+
+
+ /* --- SCSS For Message --- */
+
+ /* --- SCSS For Newsletter --- */$newsletter-v2-bg            : lighten($gray-light, 50%) !default;
+$newsletter-v3-bg            : $gray-dark !default;
+
+
+ /* --- SCSS For Piechart --- */
+
+ /* --- SCSS For Pricing --- */
+
+ /* --- SCSS For Process-steps --- *//* process-steps */
+$opalestate-process-steps-color:                      #000;
+$opalestate-process-steps-bg:                         #000;
+
+$opalestate-process-steps-active-color:               $brand-success;
+$opalestate-process-steps-active-bg:                  $brand-success;
+
+ /* --- SCSS For Service --- *//* variables for tab style1 using as base of tab */
+
+
+ /* --- SCSS For Style-icon --- *//* Variables icons default */
+$opalestate-style-icon-color:                              #fff!default;
+$opalestate-style-icon-hover-color:                        #fff!default;
+$opalestate-style-icon-bg:                                 $brand-success!default;
+$opalestate-style-icon-hover-bg:                           darken($opalestate-style-icon-bg, 5%)!default;
+
+/* Variables icons bodered */
+$opalestate-style-icon-bodered-color:                      $brand-success!default;
+$opalestate-style-icon-bodered-hover-color:                darken($opalestate-style-icon-bodered-color, 10%)!default;
+
+/* Variables icons darker */
+$opalestate-style-icon-darker-color:                        #fff!default;
+$opalestate-style-icon-darker-hover-color:                  #fff!default;
+$opalestate-style-icon-darker-bg:                           #000!default;
+$opalestate-style-icon-darker-hover-bg:                     lighten($opalestate-style-icon-darker-bg, 35%)!default;
+
+/* Variables icons light */
+$opalestate-style-icon-light-color:                        #000!default;
+$opalestate-style-icon-light-hover-color:                  #fff!default;
+$opalestate-style-icon-light-bg:                           #f0f0f0!default;
+$opalestate-style-icon-light-hover-bg:                     darken($opalestate-style-icon-light-bg, 10%)!default;
+
+/* Variables icons plain */
+$opalestate-style-icon-plain-color:                        $brand-success!default;
+$opalestate-style-icon-plain-hover-color:                  #000!default;
+$opalestate-style-icon-plain-bg:                           transparent!default;
+$opalestate-style-icon-plain-hover-bg:                     transparent!default;
+
+/* Variables icons for light style */
+$opalestate-light-style-icon-color:                        $brand-success!default;
+$opalestate-light-style-icon-hover-color:                  $brand-success!default;
+$opalestate-light-style-icon-bg:                           transparent!default;
+$opalestate-light-style-icon-hover-bg:                     darken(#fff, 5%)!default;
+
+$opalestate-light-style-icon-bodered-color:                #fff!default;
+$opalestate-light-style-icon-bodered-hover-color:          darken(#fff, 5%)!default;
+$opalestate-light-style-icon-bodered-bg:                   #fff!default;
+$opalestate-light-style-icon-bodered-hover-bg:             darken(#fff, 5%)!default;
+
+/* Variables icons outline */
+
+$icons-outline-color:                              #d1d646!default;
+$icons-outline-bg:                                 transparent!default;
+$icons-outline-border:                             $icons-outline-color!default;
+$icons-outline-hover-color:                        #fff!default;		
+$icons-outline-hover-bg:                           $icons-outline-color!default;
+$icons-outline-hover-border:                       darken($icons-outline-hover-bg, 5%)!default;
+
+/* Variables icons inverse */
+
+$icons-inverse-color:                              #fff!default;
+$icons-inverse-bg:                                 #d1d646!default;
+$icons-inverse-border:                             darken($icons-inverse-bg, 5%)!default;
+$icons-inverse-hover-color:                        #d1d646!default;	
+$icons-inverse-hover-bg:                            transparent!default;
+$icons-inverse-hover-border:                       $icons-inverse-bg!default;
+
+
+ /* --- SCSS For Table --- */
+
+ /* --- SCSS For Tabs --- */
+/* variables for tab style1 using as base of tab */
+$opalestate-tabs-a-color:#FFFFFF !default; 
+$opalestate-tabs-a-color-active:#000000 !default;
+
+$opalestate-tabs-padding: 10px 20px !default; 
+$opalestate-tabs-background: $brand-primary !default;
+$opalestate-tabs-background-hover: #f6f6f6 !default;
+$opalestate-tabs-content-background:#f6f6f6 !default;
+
+$opalestate-tabs-border-color : #eee !default;
+$opalestate-tabs-content-border:  1px solid $opalestate-tabs-border-color !default;
+$opalestate-tabs-content-padding: 15px 20px!default;
+
+
+/* tab style version 5 */
+$opalestate-tabs-primary-background-hover:#000000!default;
+$opalestate-tabs-primary-background:#FFFFFF !default;
+
+/* tab style version 6 */
+$opalestate-tabs-v6-heading-background: #FFFFFF !default; 
+
+$opalestate-tabs-v6-a-color : #000000 !default;
+$opalestate-tabs-v6-a-color-active:red !default;
+$opalestate-tabs-v6-heading-padding: 10px 20px;
+$opalestate-tabs-v6-heading-border-top-color:#000000 !default; 
+
+$opalestate-tabs-v6-heading-border-color:#eee !default;  
+$opalestate-tabs-v6-content-border-color:1px solid $opalestate-tabs-border-color !default;
+
+ /* --- SCSS For Testimonials --- *//* testimonials default */
+$opalestate-testimonials-color:                              #696969;
+$opalestate-testimonials-a-color:                            #696969;
+$opalestate-testimonials-heading-color:                      #696969;							
+
+
+/* testimonials-v1 */
+$opalestate-testimonials-v1-color:                              #696969;
+$opalestate-testimonials-v1-a-color:                            #696969;
+$opalestate-testimonials-v1-background:                         #f3f3f3;
+$opalestate-testimonials-v1-light-background:                   #fff;
+$opalestate-testimonials-v1-light-color:                        $gray-dark;
+
+/* testimonials light */
+$opalestate-testimonials-light-color:                              #fff;
+$opalestate-testimonials-light-a-color:                            #fff;
+$opalestate-testimonials-light-heading-color:                      #fff;
+
+
+
+ /* --- SCSS For Typography --- */
+$opalestate-blockquote-icon-background  : $brand-primary !default;
+$opalestate-blockquote-icon-color       : #FFFFFF !default;
+$opalestate-blockquote-icon-font-size   : 17px !default;
+$opalestate-blockquote-icon-line-height : 22px !default;
+
+$opalestate-blockquote-color            : #000000 !default;

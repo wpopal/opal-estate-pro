@@ -1,0 +1,32 @@
+/*
+ * Global variables
+ */
+$image-theme-path                : '../images/' !default;
+$image-theme-skin                : '../images/' !default;
+// standard colors
+$white		    : #FFF !default;
+$black			: #000 !default;
+$nocolor		: transparent !default;
+
+
+// color for default theme
+$theme-color    : #ef114c !default; /* main color which will be used for all main block styles... */
+$border-color	: #ebebeb !default;
+
+
+$theme-color-second  			 : #233354 !default;
+$theme-color-default             : $theme-color !default;
+$theme-color-hover               : #ff8106 !default;
+$theme-color-secondary           : #da8664 !default;
+$link-color                      : #000 !default;
+
+$header-bg-color : $brand-info;
+$footer-color :  #000000;
+
+
+// Theme Margin, Padding
+// -------------------------
+$theme-margin    : 30px !default;
+$theme-padding   : 30px !default;
+// fonts
+$font-family-second :  $font-family-base !default; 

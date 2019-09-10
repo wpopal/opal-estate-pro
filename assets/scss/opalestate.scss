@@ -1,0 +1,41 @@
+/*
+Theme Name: FullHouse
+Theme URI: http://demovenustheme.com/wordpress/opalestate/
+Author: Opal Team
+Author URI: https://wordpress.org/
+Description: In 2019, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
+Text Domain: opalestate
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+// Core variables and mixins
+
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import "bootstrap/grid";
+@import "opalestate/vars";
+
+
+@import "components/variables";
+@import "components/mixins";
+
+@import "opalestate/layout";
+@import "opalestate/page";
+@import "opalestate/shortcodes";
+
+// @import "opalestate/styles";
+@import "opalestate/3rd";
+@import "opalestate/form";
+@import "opalestate/properties-loop";
+@import "opalestate/agency-loop";
+@import "opalestate/elements";
+@import "opalestate/styles";
+@import "opalestate/modules";
+
+@import "opalestate/dashboard";

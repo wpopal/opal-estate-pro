@@ -1,0 +1,278 @@
+// Box Size
+// -------------------------
+@mixin box-size($background, $padding-top,$padding-bottom){
+    background: $background;
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+}
+
+// Button
+// -------------------------
+@mixin button-outline($color, $background, $border, $background-hover, $color-hover, $border-hover, $border-radius) {
+    color: $color;
+    background-color: $background;
+    border: $border;
+    @include border-radius($border-radius);
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        color: $color-hover;
+        background-color: $background-hover;
+        border: $border-hover;
+    }
+    .fa,.icon{
+        font-size: $icon-font-size-base;
+        margin: 0;
+    }
+}
+
+// Block
+// -------------------------
+@mixin block-variant($border, $heading-text-color, $heading-bg-color, $heading-border) {
+    border-color: $border;
+    background: $heading-bg-color;
+    & .#{$block-heading-selector} {
+        & span:before, & span:after{ background:$white; }
+        color: $heading-text-color;
+        background-color: $heading-bg-color;
+        border-color: $heading-border;
+        + .#{$block-prefix}-collapse .#{$block-content-selector} {
+            border-top-color: $border;
+        }
+    }
+    & > .#{$block-prefix}-footer {
+        + .#{$block-prefix}-collapse .#{$block-prefix}-body {
+            border-bottom-color: $border;
+        }
+    }
+}
+
+@mixin block-elements-styles($border, $heading-text-color, $heading-bg-color, $heading-border, $text-color, $text-color-primary){
+    border-color: $border;
+    background: $heading-bg-color;
+    & .#{$block-heading-selector} {
+        color: $heading-text-color;
+        background-color: $heading-bg-color;
+        border-color: $heading-border;
+        + .#{$block-prefix}-collapse .#{$block-content-selector} {
+            border-top-color: $border;
+        }
+    }
+    & > .#{$block-prefix}-footer {
+        + .#{$block-prefix}-collapse .#{$block-prefix}-body {
+            border-bottom-color: $border;
+        }
+    }
+}
+
+/****/
+@mixin container-layout-variant($color, $background, $linkcolor,  $topbar-link-color-hover ){
+    background: $background;
+    color: $color;
+    a{
+        color:$linkcolor;
+    }
+    a:hover{
+        color: $topbar-link-color-hover;
+    }
+}
+
+//== Inline block
+//==========================================
+@mixin inline-block ($haslayout : true){
+    display: inline-block;
+    vertical-align: middle;
+    @if $haslayout == true {
+        .lt-ie8 & {
+            display: inline;
+            zoom: 1;
+        }
+    }
+}
+
+//== vertical block
+//==========================================
+@mixin vertical-center( $width: 100px, $height: 100px) {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: $width;
+    height: $height;
+    position: absolute;
+}
+
+//== Translate X - Y - Z
+//==========================================
+@mixin translateX($x) {
+    -webkit-transform: translateX($x);
+    -ms-transform: translateX($x); // IE9 only
+    -o-transform: translateX($x);
+    transform: translateX($x);
+}
+
+@mixin translateY($y) {
+    -webkit-transform: translateY($y);
+    -ms-transform: translateY($y); // IE9 only
+    -o-transform: translateY($y);
+    transform: translateY($y);
+}
+
+@mixin translateZ($z) {
+    -webkit-transform: translateZ($z);
+    -ms-transform: translateZ($z); // IE9 only
+    -o-transform: translateZ($z);
+    transform: translateZ($z);
+}
+
+//== Transform
+//==========================================
+@mixin transform($argument){
+    -webkit-transform: ($argument);
+    -moz-transform: ($argument);
+    -ms-transform: ($argument);
+    -o-transform: ($argument);
+    transform: ($argument);
+}
+
+//== Transform
+//==========================================
+@mixin transition-delay($time1,$time2){
+    -webkit-transition-delay: ($time1,$time2);
+    -moz-transition-delay: ($time1,$time2);
+    -ms-transition-delay: ($time1,$time2);
+    -o-transition-delay: ($time1,$time2);
+    transition-delay: ($time1,$time2);
+}
+
+//== Background Size
+//==========================================
+@mixin background-size($size1,$size2) {
+    -webkit-background-size: ($size1,$size2);
+    -moz-background-size: ($size1,$size2);
+    -ms-background-size: ($size1,$size2);
+    -o-background-size: ($size1,$size2);
+    background-size: ($size1,$size2);
+}
+
+//== Background origin
+//==========================================
+@mixin background-origin($value1,$value2){
+    -webkit-background-origin: ($value1,$value2);
+    -moz-background-origin: ($value1,$value2);
+    -ms-background-origin: ($value1,$value2);
+    -o-background-origin: ($value1,$value2);
+    background-origin: ($value1,$value2);
+}
+
+//== Border radius
+//==========================================
+@mixin border-radius($radius) {
+    border-radius         : $radius;
+    -webkit-border-radius : $radius;
+    -moz-border-radius    : $radius;
+    -ms-border-radius     : $radius;
+    -o-border-radius      : $radius;
+}
+
+//== Text Shadow
+//==========================================
+@mixin text-shadow($shadow) {
+    text-shadow         : $shadow;
+    -webkit-text-shadow : $shadow;
+    -moz-text-shadow    : $shadow;
+    -ms-text-shadow     : $shadow;
+    -o-text-shadow      : $shadow;
+}
+
+//== Transform Origin
+//==========================================
+@mixin transform-origin($originX,$originY) {
+    -webkit-transform-origin : $originX $originY;
+    -moz-transform-origin    : $originX $originY;
+    -ms-transform-origin     : $originX $originY; // IE9 only
+    transform-origin         : $originX $originY;
+}
+
+//== appearance
+//==========================================
+@mixin appearance() {
+    -webkit-appearance : none;
+    -moz-appearance    : none;
+    -o-appearance      : none;
+    -ms-appearance     : none;
+    appearance         : none;
+}
+
+//== selection
+//==========================================
+$prefixes: ("-moz-", "");
+@mixin selection($color, $background) {
+    @each $prefix in $prefixes {
+        ::#{$prefix}selection {
+            color: $color;
+            background: $background;
+        }
+    }
+}
+
+//== animation fill mode
+//==========================================
+@mixin animation-fill-mode($fill) {
+    -webkit-animation-fill-mode: $fill;
+    -moz-animation-fill-mode: $fill;
+    -o-animation-fill-mode: $fill;
+    animation-fill-mode: $fill;
+}
+
+//== filter
+//==========================================
+@mixin filter($argument){
+    filter         : $argument;
+    -webkit-filter : $argument;
+    -moz-filter    : $argument;
+    -o-filter      : $argument;
+    -ms-filter     : $argument;
+}
+
+// Clear Lists
+// -------------------------
+@mixin clear-list(){
+    padding    : 0;
+    margin     : 0;
+    list-style : none;
+}
+
+// Formart lists widget
+// -------------------------
+@mixin lists-style() {
+    ul,ol{
+        @include clear-list();
+        li{
+            &:first-child{
+
+            }
+            &:last-child{
+                border-bottom: 0;
+                padding-bottom: 0;
+            }
+            .children{
+                > li{
+                    &:before{
+                        top: 24px;
+                    }
+                }
+            }
+        }
+        ul{
+            li:first-child{
+                padding-top: 14px;
+                background-position: 0 24px;
+            }
+        }
+    }
+}
+
+@import "functions";

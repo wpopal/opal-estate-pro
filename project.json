@@ -1,0 +1,54 @@
+{
+  "name"   : "latehome",
+  "version": "1.0",
+  "plugin" : "opal-estate-pro",
+  "theme"  : "wpopalbootstrap",
+  "domain" : "latehome",
+  "server" : "http://dev.wpopal.com/latehome",
+  "server_source": "http://source.wpopal.com/opal-estate-pro-source",
+  "folder_source":"sample",
+  "description":"Single Property WordPress Theme comes with the modern & luxury design is a perfect theme for any businesses, agencies & websites about properties, houses, business spaces, apartment & building complexes and more others. The theme is built with the powerful page builder Elementor, One Click Import and other great features needed for any successful property websites.",
+  "author" : "ThemeLexus",
+  "author_uri" :"http://www.themelexus.com/",
+  "themeuri" : "http://demo2.themelexus.com/latehome/",
+  "themeinfo":{
+      "document"    : "http://wpopal.com/guides/latehome",
+      "support"     : "https://themelexus.ticksy.com/",
+      "envato"      : "https://themeforest.net/user/themelexus/portfolio",
+      "facebook"    : "https://www.facebook.com/themelexus/",
+      "twitter"     : "https://twitter.com/opalwordpress",
+      "youtube"     : "https://www.youtube.com/channel/UCEVKfaT81jFq4HE1Yky99GA",
+      "email"       : "themelexus@gmail.com",
+      "sample_link" : "http://source.wpopal.com/latehome-source/samples.json"
+  },
+
+  "oldurl": "http://localhost/wordpress/latehome",
+  "newurl": "http://localhost/wordpress/latehome",
+  "subpath": "/wordpress/latehome",
+  "prefix": "n-",
+  "blogs": "244,2573,2575,2578",
+  "single":{
+      "name": "Demo latehome",
+      "active": {
+        "header": "header-1",
+        "footer": "footer-1",
+        "page": "home-1"
+      },
+      "plugins": {
+        "contact-form-7": "1600"
+      },
+      "sliders": [
+          "Slider-1.zip",
+          "slider-3.zip"
+      ],
+      "options": {},
+      "plugins":{
+          "contact-form-7": "contact-form-7",
+          "opal-widgets-for-elementor": "opal-widgets-for-elementor",
+          "wpopal-medical": "wpopal-medical",
+          "opal-service": "opal-service"
+      }
+  },
+  "niches": [
+  ]
+}

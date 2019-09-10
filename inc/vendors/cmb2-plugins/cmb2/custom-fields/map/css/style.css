@@ -1,0 +1,17 @@
+.opal-map {
+	min-height: 300px;
+	width: 100%;
+	margin: 5px 1px 1px;
+	border: solid 1px #DDD;
+	box-sizing: border-box;
+}
+.opal-map img {
+	max-width: none;
+}
+ 
+ .opalestate-map-wrap {
+ 	display: block;
+ 	width: 100%;
+ 	position: relative;
+ 	padding: 12px;
+ }

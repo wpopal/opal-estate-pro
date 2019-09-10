@@ -1,0 +1,14 @@
+.opalestate-note {
+	font-size:90%;
+	color:#888;
+}
+.list-inline {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    li{
+        &:not(:last-child){
+            margin-right: $grid-gutter-width;
+        }
+    }
+}

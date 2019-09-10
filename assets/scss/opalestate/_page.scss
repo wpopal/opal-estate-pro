@@ -1,0 +1,100 @@
+
+@import "single";
+@import "archive";
+
+// no header and footer for user management page 
+.page-template-user-management  {
+	header, footer, #colophon {
+		display:none;
+	}
+	article header {
+		display:block !important;
+	}
+}
+/// my-properties  page
+.button-actions {
+	position:absolute;
+	top: 0;
+	right: 0;
+	color:$white;
+	z-index: 1;
+	display: flex;
+	a{
+		background-color:$primary;
+		color: $white;
+		&:hover{
+			cursor: pointer;
+			background-color: $secondary;
+			color: $white;
+		}
+		
+	}
+}
+.my-properties{
+	.property-status{
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	.property-meta-list{
+		padding: 0;
+	}
+	.my-properties-bottom{
+		display: none;
+	}
+	.abs-col-item{
+		padding-top: 10px;
+	}
+	.entry-title{
+		margin: 0;
+	}
+}
+
+
+/// search agent page
+
+.search-agents-wrap {
+	.opalestate-search-agents-form {
+		padding-bottom: $grid-gutter-width;
+	}
+}
+	//Grid style
+	.agent-grid-style {
+		margin-bottom: $grid-gutter-width;
+		background-color: $white;
+		.agent-body{
+			border-style: solid;
+			border-width: 0 1px 1px 1px;
+			border-color: $border-color;
+			padding: $grid-gutter-width $grid-gutter-width $grid-gutter-width/2;
+		}
+		.agent-job{
+			line-height: 1;
+			padding-bottom: 14px;	
+			border-bottom: 1px solid #ebebeb;
+		}
+		.trusted-label{
+			position: absolute;
+			right: 20px;
+			background-color: $white;
+			border-radius: 50%;
+			bottom: 0;
+			transform: translateY(50%);
+			border: 1px solid $border-color;
+			width: 48px;
+			line-height: 48px;
+		}
+	}
+
+	//List style
+	.agent-list-style{
+		padding: $grid-gutter-width;
+		border: 1px solid $border-color;
+		margin-bottom: $grid-gutter-width;
+		.team-info{
+			margin: $padding-base 0 0;
+		}
+		.agent-box-title{
+			
+		}
+	}

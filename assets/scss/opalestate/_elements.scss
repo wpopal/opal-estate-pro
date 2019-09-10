@@ -1,0 +1,975 @@
+.floating-keep-top {
+	position: fixed;
+    top: 0;
+    width:100%;
+    background:#FFF;
+	z-index:999;
+	transition: all 1s ease-in-out;
+}
+.admin-bar{
+	.floating-keep-top{
+		top: 32px;
+	}
+}
+.hide {
+    display: none !important;
+}
+.highlight-text{
+	font-weight: $headings-font-weight;
+}
+//Property status
+ul.property-status{
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	li{
+		list-style: none;
+		display: inline-block;
+		&:not(:last-child){
+			margin-right: 5px;
+		}
+	}
+}
+//single stick bars
+.keep-top-bars{
+	top: -70px;
+	transition: all 1s ease-in-out;
+	border-bottom: 1px solid $border-color;
+	ul{
+		margin: 0;
+		align-items: center;
+		&:not(.opalestate-scroll-elements){
+			padding: 10px 0;
+		}
+		li{
+			&:not(:last-child){
+				margin-right: 50px;
+			}
+		}
+	}
+	&.floating-keep-top{
+		border-bottom: none;
+		box-shadow: $box-shadow-base;
+	}
+		
+	.single-property-buttons{
+		flex: 1;
+		text-align: right;
+		a{
+			position: relative;
+			margin-left: 20px;
+			text-transform: capitalize;
+			i{
+				margin-right: 18px;
+				padding-right: 20px;
+			}
+			&::before{
+				content: "";
+				width: 52px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				background-color: transparent;
+				box-shadow: $box-shadow-base;
+			}
+		}
+	}
+}
+.opalestate-scroll-elements{
+	a:not(.btn-primary){
+		display: block;
+		padding: 21px 0 17px;
+		border-bottom: 3px solid transparent;
+		color: inherit;
+		transition: all .5s ease-in-out;
+		&:focus, &:hover{
+			border-color: $primary;
+			color: inherit;
+		}
+	}
+}
+
+
+//Rating star
+.opalestate-rating__stars{
+	position: relative;
+    overflow: hidden;
+    height: $font-size-base;
+    font-size: $font-size-base;
+	width: calc(#{$font-size-base}*5 - 5px);
+	line-height: 1;
+	
+	&::before{
+		font-family:'FontAwesome';
+		font-size: inherit;
+		text-rendering: auto;
+		content: "\f005\f005\f005\f005\f005";
+		opacity: 0.5;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	span{
+		position: relative;
+		overflow: hidden;
+		display: block;
+		height: 100%;
+		color: transparent;
+		padding-top: 20px;
+		&::before{
+			font-family:'FontAwesome';
+			font-size: inherit;
+			text-rendering: auto;
+			content: "\f005\f005\f005\f005\f005";
+			color: #f6be15;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: calc(#{$font-size-base}*5);
+		}
+	}
+}
+p.stars {
+	a {
+		position: relative;
+		height: 1em;
+		width: 1em;
+		text-indent: -999em;
+		display: inline-block;
+		text-decoration: none;
+
+		&::before {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1em;
+			height: 1em;
+			line-height: 1;
+			font-family: "FontAwesome";
+			content: "\f006";
+			text-indent: 0;
+		}
+
+		&:hover {
+			~ a::before {
+				
+				content: "\f006";
+			}
+		}
+	}
+
+	&:hover {
+		a {
+			&::before {
+				
+				content: '\f005';
+			}
+		}
+	}
+
+	&.selected {
+		a.active {
+			&::before {
+				
+				content: '\f005';
+			}
+
+			~ a::before {
+				
+				content: '\f006';
+			}
+		}
+
+		a:not( .active ) {
+			&::before {
+				
+				content: '\f005';
+			}
+		}
+	}
+}
+
+//mortgage
+.opalestate-mortgage-chart-svg{
+	display: inline-block;
+	overflow: hidden;
+	margin-bottom: 0;
+	&::after{
+		content:"";
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		transform: translate(-50%, -50%);
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		background-color: #fff;
+	}
+}
+.opalestate-loan-amount{
+	display: none;
+}
+
+
+// Form group
+.opal-form-group{
+	margin-top: 16px;
+		label{
+			margin-bottom: 0;
+			cursor: pointer;
+			display: block;
+			padding-left: 25px;
+		}
+}
+
+/** 
+* SOCIAL ICONS 
+**/
+.opalestate-social-icons{
+	margin:15px -30px 0 -30px;
+	border-top: 1px solid $border-color;
+	padding: 0 $theme-padding;
+	[class^="opalestate-social-"]{
+		font-size: 13px;           
+		color: $body-color;               
+		display:inline-block;                
+		margin: 10px 5px 0 0;
+		overflow: hidden;
+		text-decoration: none; 
+		text-align: center;       
+		vertical-align: top;
+		line-height: 32px;                        
+		@include square(34px);
+		background: $border-color;
+		transition: all 0.2s ease-out 0s;
+		border-radius: 50%;
+		&:last-of-type{
+			margin-right: 0;
+		}
+		&:hover{
+			border-color: $link-hover-color;
+			color: $link-hover-color;
+		}
+	} 
+	.opalestate-social-white{
+		background: #FFFFFF;
+		color: $body-color;
+		border: 1px solid $border-color;
+	}   
+	.opalestate-social-outline{
+		background: transparent;
+		color: #000;
+		border: 1px solid #000;
+	}   
+	.opalestate-social-outline-light{
+		background: transparent;
+		color: #FFF;
+		border: 1px solid #FFFFFF;
+		&:hover{
+			background: #FFF;
+			color: #000;
+			border-color: #000;
+		}
+	}
+	&:first-child{
+		[class*="opalestate-social-"]{
+			margin-top: 0;
+		}
+	}
+	&:last-child{
+		[class*="opalestate-social-"]{
+			margin-bottom: 0;
+		}
+	}
+	&.opalestate-sicolor{
+		[class*="opalestate-social-"]{
+			color: #FFFFFF;
+		}
+	}
+}
+/**
+ * Tabs
+ */
+ .opalestate-tab-head{
+	background-color:$primary;
+ }
+ 	.tab-item {
+		 color: $white;
+		 border-bottom: 3px solid transparent;
+		 transition: all .5s ease-in-out;
+ 		&.active,&:hover {
+		border-color: $secondary;
+		color: $white;
+ 		}
+		padding: 14px 18px 15px;
+		font-weight: $headings-font-weight;
+ 	}
+ 	.opalestate-tab-content {
+ 		display: none;
+ 		&.active {
+ 			display: block;
+ 		}
+ 		clear:both;
+ 	}
+
+
+.opalmembership-login-form-wrapper{
+	text-align: center;
+}
+
+.list-tabs {
+	margin-bottom: $padding-base;
+	background-color: $white;
+	padding: 0;
+	ul {
+		padding: 0;
+		margin: 0;
+		li {
+			text-transform: uppercase;
+			display: inline-block;
+			position: relative;
+			 
+			a {
+				display: block;
+				padding: 5px 20px;
+			}
+			&.active,
+			&:hover {
+				
+				a {
+					color: $white;
+					background-color: $primary;
+				}
+			}
+		}
+	}
+} 
+/**
+ * end Tabs
+ */
+//Status Label
+.property-group-label, 
+.agency-label {
+	position: absolute;
+	z-index: 1;
+	top: $padding-base;
+	left: 20px;
+	line-height: 1;
+}
+
+.property-group-status {
+	position: absolute;
+	z-index: 1;
+	top: $padding-base;
+	right: 20px;
+	line-height: 1;
+}
+
+.property-group-status + .property-meta-bottom {
+	top: 45px;
+    right: 20px;
+    z-index: 9;
+} 
+
+.agency-header{
+	position: relative;
+}
+
+// label 
+.label {
+	display: inline-block;
+	padding: 3px 10px;
+	line-height: 14px;
+	font-size: 10px;
+	font-weight: 500;
+	margin-bottom: 0;
+	text-transform: uppercase;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	color: $white;
+}	
+
+.property-label, 
+.property-status-item  {
+	margin:0;
+	padding:0;
+	list-style: none;
+	line-height: 14px;
+	&.property-status-for-rent,
+	&.property-status-for-sale {
+		background-color:$primary;
+	}
+	.property-label-item:not(last-child){
+		margin-right:5px;
+	}
+}
+
+.property-label-rented {
+   background-color: #2048f6;
+   color: $white;
+}
+
+.property-label-sold {
+    background-color: #fee882;
+    color: $white;
+}
+
+.label-featured {
+	background-color:$secondary;
+	color:$white;
+	margin-bottom: 5px;
+}
+
+.single {
+	.label-featured {
+		margin-bottom: 0;
+		margin-right: 5px;
+    }
+}
+
+.label-danger {
+	background-color:$primary;
+	color:$white;
+}
+
+//// 
+.property-meta-list {
+	> li {
+		vertical-align: middle;
+	}
+	.icon-box {
+		display: inline-block;
+	}
+	.info-meta{
+		display: inline-block;
+	}
+}
+
+/// map infor view 
+.map-info-preview{
+	position: relative;
+	padding: $grid-gutter-width;
+	background-color:#FFFFFF;
+	margin-bottom: 15px;
+	max-width: 300px;
+	box-shadow: $box-shadow-base;
+	&:before {
+		@include triangle( bottom,0px, $white, 20px );
+		transform: translateX(-50%);
+		left: 50%;
+		bottom: -14px;
+		margin-left: -34px;
+	}
+	a img{
+		max-width: 240px;
+		width: 240px;
+	}
+	.media-top{
+		position: relative;
+	}
+	.property-status{
+		top: 10px;
+		left: 10px;
+		position: absolute;
+		line-height: 1;
+	}
+	.label-property{
+		visibility: hidden;
+	}
+	.info-container{
+		.prop-title {
+			text-transform: uppercase; 
+			margin: 15px 0 8px;
+		}
+		p {
+			line-height: 22px;
+		}
+		.prop-address {
+			 
+		}
+	}
+	.property-meta-list.list-inline {
+		border-top: 1px solid $border-color;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		> li {
+			flex-basis: 50%;
+			padding: 0;
+			margin: $padding-base 0 0;
+			i{
+				width: 20px;
+
+			}
+		}
+	}
+	.arrow-down{
+		border-style: solid;
+		border-width: 10px 10px 0;
+		bottom: -13px;
+		height: 0;
+		left: 112px;
+		position: absolute;
+		width: 0;
+		border-color:$primary;
+		display: none;
+	}
+}
+
+.opalestate-map-preview-wrap {
+	.gm-style img {
+		max-width: inherit !important;
+	}
+}
+
+.infoBox {
+	> img {
+		position: absolute!important;
+		z-index: 99;
+		right: -5px;
+		top: -10px;
+	}
+}
+
+.opalestate-popup{
+	position: relative;
+	.popup-head {
+		position:relative;
+		> span {
+			cursor: pointer;
+		}
+		.notify {
+			background-color:#00bcd4;
+			padding:1px 6px;
+			border-radius:50%;
+			position:absolute;
+			top:-10px;
+			right:0px;
+			font-size:8px;
+			color:$white;
+			&.active {
+				top:auto;
+				bottom:-10px;
+				padding:5px;
+				background-color:$primary
+			}
+		}
+	}
+
+	.popup-body{
+		display: none;
+		position:absolute;
+		z-index: 999;
+		min-width: 450px;
+		top: 30px;
+		margin:0 0 0 -194px;
+		padding: $grid-gutter-width;
+		background-color: $white;
+		box-shadow: $box-shadow-base;
+		h6 {
+			margin-bottom: 15px;
+		}
+		label {
+			text-transform: uppercase;
+		}
+		button {
+			margin-top: 20px;
+		}
+		
+		.account-dashboard-content{
+			padding: $grid-gutter-width;
+			background-color: $white;
+			box-shadow: $box-shadow-base;
+			position: relative;
+			&:before {
+				@include triangle( top,0px, $white, 20px );
+				transform: translateX(-50%);
+				left: 50%;
+				top: -14px;
+			}
+		}
+		
+	}
+	&.active .popup-body{
+		display: block;
+	}
+	&.hover-align-right:hover .popup-body {
+		display:block;
+		right:0;
+		padding-top:30px;
+		min-width: 250px;
+		.account-dashboard-content{
+			&:before {
+				right:-15px;
+				left:auto;
+			}
+		}
+
+	}
+	
+	.popup-close{
+		position:absolute;
+		top: 10px;
+		@include rtl-right(15px);
+		color:$primary;
+		cursor: hand;cursor:pointer;
+	}
+}
+//Pagination
+.pagination {
+	li{
+        display: block;
+        min-width: 40px;
+        text-align: center;
+        padding: 5px $padding-base;
+        font-weight: 500;
+        color: $body-color;
+        &.current, &:hover{
+			background-color: $primary;
+			a{
+				color: $white;
+			}
+        }
+	}
+	.nav-links{
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+//// opalestate-dropdown
+
+.opalestate-dropdown {
+	position:relative;
+	.dropdown-body {
+		position:absolute;
+		display:none;
+		background:red;
+		min-width:250px;
+		right:0;
+		top:50px;
+	}
+	&:hover {
+		.dropdown-body {
+			display:block;
+		}
+	}
+}
+
+//Agent
+// display in single package
+.agent-box-list {
+	.inner {
+		display:flex;
+		.agent-preview { 
+			width:80px;
+			margin-right:$padding-base;
+			img { border-radius:50%; }
+		}
+		border-bottom:solid 1px $border-color;
+		padding-bottom:$padding-base*2;
+	}
+	.opalestate-social-icons {
+		padding-top:$padding-base; 
+	}
+}
+
+.single-property-sidebar {
+	.agent-box-list{
+		.inner {
+			border-bottom:0;
+		}
+		.opalestate-social-icons {
+			border-bottom: 1px solid $border-color;
+			padding-bottom:$padding-base;
+			padding-top: 5px;
+		}
+
+	}
+}
+
+.agent-box-image{
+	overflow: hidden;
+}
+.property-agent-info{
+	.team-header{
+		text-align: center;
+		border: 1px solid $border-color;
+	}
+}
+.property-agent-contact{
+	.agent-preview{
+		margin-bottom: 0;
+	}
+	.team-header{
+		margin-bottom: $grid-gutter-width;
+	}
+}
+.team-header {
+	position: relative;
+	.agent-label {
+		position: absolute;
+		text-transform: uppercase;
+		padding: 0 10px;
+		color: $white;
+		margin: 0;
+		font-size: 10px;
+		font-weight: 500;
+		li {
+			list-style: none;
+		}
+	}
+	.agent-featured{
+		.agent-label{
+			top: 0;
+			left: 0;
+			background-color: $primary;
+		}
+	}
+	.agent-levels{
+		.agent-label{
+			bottom: 0;
+			left: 0;
+			background-color: $secondary;
+		}
+	}
+}
+.agent-box-title{
+	border-bottom: 1px solid $border-color;
+	padding-bottom: 20px;
+	//margin-bottom: 28px;
+}
+.agent-preview{
+	margin-bottom: $grid-gutter-width;
+	position: relative;
+	.agent-avatar{
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		width: 35px;
+		border-radius: 50%;
+	}
+}
+
+.agent-box-job{
+	display: none;
+}
+
+.agent-box-meta{
+	color: $body-color-light;
+	div[class*="agent-box-"]{
+		line-height: 1;
+		padding: 8px 1px;
+		&:first-of-type{
+			padding-top: 0;
+		}
+		&:last-of-type{
+			padding-bottom: 0;
+		}
+		&:not(:last-of-type){
+			//border-bottom: 1px solid $border-color;
+		}
+		i{
+			width: $font-size-base;
+			margin-right: 6px;
+		}
+	}
+	a{
+		color: inherit;
+	}
+	h4 {
+		padding-top:0;
+	}
+}
+.gallery-summery-style  {
+
+	display:flex;
+	flex-wrap:wrap;
+	a {
+		display:block;
+		width:20%;
+		height:120px;
+		background-size:cover;
+		background-repeat:no-repeat;
+ 
+	}
+}
+
+//Featured Properties
+.my-featured-section{
+	.opalestate_property{
+		margin-right: 1px;
+	}
+}
+
+
+//Floor plans
+.property-floorplans-session, .tabl-simple-style{ //tabs outline
+	.opalestate-tab-head{
+		line-height: 1;
+		border-bottom: 1px solid $border-color;
+		margin-bottom: 16px;
+		margin-top: 0;
+		background-color: transparent;
+	}
+	.tab-item{
+		background-color: transparent;
+		padding: 0;
+		color: $headings-color;
+		display: inline-block;
+		padding-bottom: 19px;
+		font-weight: $headings-font-weight;
+		border-bottom: 3px solid transparent;
+		margin-bottom: -2px;
+		&:not(:last-of-type){
+			margin-right: 28px;
+		}	
+		&.active, &:hover{
+			background-color: transparent;
+			color: $headings-color;
+			border-color: $secondary;
+		}
+	}
+}
+.plan-name,.plan-content{
+	display: none;
+}
+.plan-image{
+	padding: 24px;
+}
+
+//Property categories
+.property-category{
+	position: relative;
+	overflow: hidden;
+	.static-content{
+		padding: $grid-gutter-width;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		a{
+			color: $white;
+		}
+	}
+	.property-category-count{
+		color: $secondary;
+	}
+	.property-category-title{
+		margin-bottom: 10px;
+	}
+	.property-category-info{
+		flex-basis: 100%;
+	}
+	.category-overlay{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+		z-index: 2;
+	}
+	&:hover{
+		.property-category-bg{
+			transform: scale(1.1);
+			&::before{
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+		}
+	}
+}
+.property-category-bg{
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	display: block;
+	height: 100%;
+	min-height: 340px;
+	transform: scale(1);
+	transition: opacity 0.5s ease, transform 1s cubic-bezier(0, 0, 0.44, 1.18), -webkit-transform 1s cubic-bezier(0, 0, 0.44, 1.18);
+	background-position: center center;
+	&::before{
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.35);
+		top: 0;
+		left: 0;
+	}
+}
+
+
+
+.property-city{
+	position: relative;
+	overflow: hidden;
+	.static-content{
+		padding: $grid-gutter-width;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		a{
+			color: $white;
+		}
+	}
+	.property-city-count{
+		color: $secondary;
+	}
+	.property-city-title{
+		margin-bottom: 10px;
+	}
+	.property-city-info{
+		flex-basis: 100%;
+	}
+	.city-overlay{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+		z-index: 2;
+	}
+	&:hover{
+		.property-city-bg{
+			transform: scale(1.1);
+			&::before{
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+		}
+	}
+}
+.property-city-bg{
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	display: block;
+	height: 100%;
+	min-height: 340px;
+	transform: scale(1);
+	transition: opacity 0.5s ease, transform 1s cubic-bezier(0, 0, 0.44, 1.18), -webkit-transform 1s cubic-bezier(0, 0, 0.44, 1.18);
+	background-position: center center;
+	&::before{
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.35);
+		top: 0;
+		left: 0;
+	}
+}
+
+#opalestate-map-preview .cluster img + div {
+	line-height: 30px !important;
+}

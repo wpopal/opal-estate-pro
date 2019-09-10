@@ -1,0 +1,621 @@
+;(function ($, settings) {
+    "use strict";
+
+    if (window.Opalestate === undefined) {
+        window.Opalestate = {};
+    }
+
+    /**
+     * GooglemapSearch
+     */
+    var GooglemapSingle = Opalestate.GooglemapSingle = function ( data , id ) {
+
+            /**
+             * Create Google Map In Single Property Only
+             */
+            var initializePropertyMap = function ( data , id ){
+
+                var propertyMarkerInfo = data; 
+                var enable  = true ;
+                var url     = propertyMarkerInfo.icon;   
+                var size    = new google.maps.Size( 42, 57 );
+               
+
+                var allMarkers = []; 
+                
+                var setMapOnAll = function (markers, map) {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap( map );
+                    }
+                }
+                // retina
+                if( window.devicePixelRatio > 1.5 ) {
+                    if ( propertyMarkerInfo.retinaIcon ) {
+                        url = propertyMarkerInfo.retinaIcon;
+                        size = new google.maps.Size( 83, 113 );
+                    }
+                }
+                
+                var propertyLocation = new google.maps.LatLng( propertyMarkerInfo.latitude, propertyMarkerInfo.longitude );
+                var propertyMapOptions = {
+                    center: propertyLocation,
+                    zoom: 15,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    scrollwheel: false
+                };
+                var propertyMap = new google.maps.Map( document.getElementById( id ), propertyMapOptions );
+
+                /**
+                 *
+                 */
+
+                var  createMarker = function ( position, icon ) {
+                    
+                    var image   = {
+                        url: icon,
+                        size: size,
+                        scaledSize: new google.maps.Size( 32, 57 ),
+                        origin: new google.maps.Point( 0, 0 ),
+                        anchor: new google.maps.Point( 21, 56 )
+                    };
+
+                    var _marker = new google.maps.Marker({
+                        map: propertyMap,
+                        position: position,
+                        icon: image
+                    });
+                    return _marker; 
+                }
+
+                
+                var infowindow = new google.maps.InfoWindow();
+
+                createMarker( propertyLocation, url ); 
+
+                /**
+                 *  Places near with actived types 
+                 */
+                if( enable ){
+                    var $navs = $("#"+id).parent().find( '.property-search-places' );
+                    $(' .btn-map-search', $navs ).unbind('click').bind( 'click', function(){
+                        var service = new google.maps.places.PlacesService( propertyMap ) ;
+                        var type = $(this).data('type');
+                        var $this = $(this).parent();
+
+                        var icon   = {
+                            url:  opalesateJS.mapiconurl+$(this).data('icon'),
+                             scaledSize: new google.maps.Size( 28, 28 ),
+                             anchor: new google.maps.Point( 21, 16 ),
+                             origin: new google.maps.Point( 0, 0 )
+                        };
+
+                        if( !allMarkers[type] || allMarkers[type].length <= 0 ){
+                            var markers = [] ;
+                            var bounds    = propertyMap.getBounds();
+                            
+                            var $this =  $(this);
+
+                            service.nearbySearch({
+                                    location: propertyLocation,
+                                    radius: 2000,
+                                    bounds: bounds,
+                                    type: type
+                            },  callbackNearBy);
+
+                            function callbackNearBy(results, status) {
+                                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                    for (var i = 0; i < results.length; i++) {
+                                        createMarkerNearBy(results[i]);
+                                    }
+
+                                    $('.nearby-counter',$this).remove();
+                                    $('span',$this).append( $('<em class="nearby-counter">'+markers.length+'</em>') );
+                                    allMarkers[type] = markers;
+                                }
+                            }
+
+                            function abc(){
+                                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                    for (var i = 0; i < results.length; i++) {
+                                        var place = results[i];
+                                        var marker = new google.maps.Marker({
+                                            map: propertyMap,
+                                            position: place.geometry.location,
+                                            icon: icon,
+                                            visible: true
+                                        });
+
+                                        marker.setMap( propertyMap  );
+
+                                        google.maps.event.addListener(marker, 'click', function() {
+
+                                            infowindow.setContent( place.name );
+
+                                            infowindow.open(propertyMap, this);
+                                        });
+
+                                        markers.push( marker );
+                                    }
+                                    $('.nearby-counter',$this).remove();
+                                    $('span',$this).append( $('<em class="nearby-counter">'+markers.length+'</em>') );
+                                    allMarkers[type] = markers;
+                                    //console.log( place );
+                                }
+                            }
+
+                            function createMarkerNearBy(place) {
+                                var placeLoc = place.geometry.location;
+                                var marker = new google.maps.Marker({
+                                    map: propertyMap,
+                                    position: place.geometry.location,
+                                    icon: icon,
+                                    visible: true
+                                });
+
+                                marker.setMap( propertyMap  );
+
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    infowindow.setContent(place.name);
+                                    infowindow.open(propertyMap, this);
+                                });
+
+                                markers.push( marker );
+                            }
+                        }else {
+                           for( var i=0 ; i < allMarkers[type].length; i++ ){
+                                 allMarkers[type][i].setMap( null  ); 
+                           }
+                           allMarkers[type] = [];
+                        }
+
+                        $(this).toggleClass('active');
+                    } );
+                } 
+            }
+            initializePropertyMap( data , id );  
+    }
+
+    var GoogleMapSearch =  Opalestate.GooglemapSingle = function ( data ) { 
+        var initializePropertiesMap = function ( properties ) {
+            // Properties Array
+            var mapOptions = {
+                zoom: 12,
+                maxZoom: 16,
+                scrollwheel: false,
+                 mapTypeId: google.maps.MapTypeId.ROADMAP,
+                panControl: false,
+                zoomControl: true,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: true,
+                overviewMapControl: false,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL,
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                },
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                }
+            };
+
+            var map = new google.maps.Map( document.getElementById( "opalestate-map-preview" ), mapOptions );
+
+            var bounds = new google.maps.LatLngBounds();
+
+            // Loop to generate marker and infowindow based on properties array
+            var markers = new Array();
+
+            for ( var i=0; i < properties.length; i++ ) {
+
+                // console.log( properties[i] );
+                var url = properties[i].icon;
+                var size = new google.maps.Size( 42, 57 );
+                if( window.devicePixelRatio > 1.5 ) {
+                    if ( properties[i].retinaIcon ) {
+                        url = properties[i].retinaIcon;
+                        size = new google.maps.Size( 83, 113 );
+                    }
+                }
+
+                var image = {
+                    url: url,
+                    size: size,
+                    scaledSize: new google.maps.Size( 30, 51 ),
+                    origin: new google.maps.Point( 0, 0 ),
+                    anchor: new google.maps.Point( 21, 56 )
+                };
+
+                markers[i] = new google.maps.Marker({
+                    position: new google.maps.LatLng( properties[i].lat, properties[i].lng ),
+                    map: map,
+                    icon: image,
+                    title: properties[i].title,
+                    animation: google.maps.Animation.DROP,
+                    visible: true
+                });
+
+                bounds.extend( markers[i].getPosition() );
+
+                var boxText = document.createElement( "div" );
+                var pricelabel = '';
+
+                if( properties[i].pricelabel ){
+                     pricelabel = ' / ' + properties[i].pricelabel;
+                }
+
+                // console.log( properties[i] );
+                boxText.className = 'map-info-preview media';
+
+                var meta = '<ul class="list-inline property-meta-list">';
+                if( properties[i].metas ){
+                    for ( var x in properties[i].metas ){
+                        var m = properties[i].metas[x]; 
+                        meta += '<li><i class="icon-property-'+x+'"></i>' + m.value +'<span class="label-property">' + m.label + '</span></li>'
+                     }   
+                }
+                meta    += '</ul>';
+ 
+                boxText.innerHTML = '<div class="media-top"><a class="thumb-link" href="' + properties[i].url + '">' +
+                                        '<img class="prop-thumb" src="' + properties[i].thumb + '" alt="' + properties[i].title + '"/>' +
+                                        '</a>'+ properties[i].status +'</div>' +
+                                        '<div class="info-container media-body">' +
+                                        '<h5 class="prop-title"><a class="title-link" href="' + properties[i].url + '">' + properties[i].title +
+                                        '</a></h5><p class="prop-address"><em>' + properties[i].address + '</em></p><p><span class="price text-primary">' + properties[i].pricehtml + pricelabel +
+                                        '</span></p>'+meta+'</div>'+'<div class="arrow-down"></div>';
+
+                var myOptions = {
+                    content: boxText,
+                    disableAutoPan: true,
+                    maxWidth: 0,
+                    alignBottom: true,
+                    pixelOffset: new google.maps.Size( -122, -48 ),
+                    zIndex: null,
+                    closeBoxMargin: "0 0 -16px -16px",
+                    closeBoxURL: opalesateJS.mapiconurl+"close.png",
+                    infoBoxClearance: new google.maps.Size( 1, 1 ),
+                    isHidden: false,
+                    pane: "floatPane",
+                    enableEventPropagation: false
+                };
+
+                var ib = new InfoBox( myOptions );
+           
+                attachInfoBoxToMarker( map, markers[i], ib, i );
+            }
+
+            var last = null ;
+
+            $('body').delegate( '[data-related="map"]', 'mouseenter', function(){    
+                if( $(this).hasClass('map-active') ){
+                    return true;
+                }
+        
+                var i = $(this).data( 'id' );
+                $( '[data-related="map"]' ).removeClass( 'map-active' );
+                $(this).addClass( 'active' );
+                map.setZoom( 65536 );//  alert( scale );
+
+                if(  markers[i] ){
+                    var marker =  markers[i]; 
+                    google.maps.event.trigger( markers[i], 'click' );
+
+                    var scale = Math.pow( 2, map.getZoom() );
+                    var offsety = ( (100/scale) || 0 );
+                    var projection = map.getProjection();
+                    var markerPosition = marker.getPosition();
+                    var markerScreenPosition = projection.fromLatLngToPoint( markerPosition );
+                    var pointHalfScreenAbove = new google.maps.Point( markerScreenPosition.x, markerScreenPosition.y - offsety );
+                    var aboveMarkerLatLng = projection.fromPointToLatLng( pointHalfScreenAbove );
+                    map.setZoom( scale );
+                    map.setCenter( aboveMarkerLatLng );
+
+                }
+                return false;
+            });  
+            
+            map.fitBounds(bounds);
+
+            /* Marker Clusters */
+            var markerClustererOptions = {
+                ignoreHidden: true,
+                maxZoom: 14,
+                styles: [{
+                    textColor: '#000000',
+                    url: opalesateJS.mapiconurl+"cluster-icon.png",
+                    height: 51,
+                    width: 30
+                }]
+            };
+
+            var markerClusterer = new MarkerClusterer( map, markers, markerClustererOptions );
+
+           
+
+            function attachInfoBoxToMarker( map, marker, infoBox , i ){ 
+
+                google.maps.event.addListener( marker, 'click', function(){
+                  
+                    if( $( '[data-related="map"]' ).filter('[data-id="'+i+'"]').length > 0 ){ 
+                        var $m = $( '[data-related="map"]' ).filter('[data-id="'+i+'"]'); 
+                        $( '[data-related="map"]' ).removeClass( 'map-active' );
+                        $m.addClass('map-active');
+                    }
+
+                    if( last != null ){
+                        last.close();
+                    }    
+                    
+                    var scale = Math.pow( 2, map.getZoom() );
+                    var offsety = ( (100/scale) || 0 );
+                    var projection = map.getProjection();
+                    var markerPosition = marker.getPosition();
+                    var markerScreenPosition = projection.fromLatLngToPoint( markerPosition );
+                    var pointHalfScreenAbove = new google.maps.Point( markerScreenPosition.x, markerScreenPosition.y - offsety );
+                    var aboveMarkerLatLng = projection.fromPointToLatLng( pointHalfScreenAbove );
+                    map.setCenter( aboveMarkerLatLng );
+                    infoBox.open( map, marker );
+                    last = infoBox; 
+                });
+            }
+        }
+        initializePropertiesMap( data );  
+    }
+
+    /////
+    $(document).ready(function () {
+
+        function initialize_property_street_view( data , id ){
+
+            var propertyMarkerInfo = data;
+
+            var propertyLocation = new google.maps.LatLng( propertyMarkerInfo.latitude, propertyMarkerInfo.longitude );
+
+            /**
+             * Street View
+             */
+            var panoramaOptions = {
+                position: propertyLocation,
+                pov: {
+                    heading: 34,
+                    pitch: 10
+                }
+            };
+            var panorama = new google.maps.StreetViewPanorama( document.getElementById( id ), panoramaOptions);
+             google.maps.event.trigger(panorama, 'resize');
+        }
+
+        $( ".property-preview-map").each( function(){
+             new GooglemapSingle(   $(this).data() , $(this).attr('id') );
+        } );
+        
+        $( ".tab-google-street-view-btn") .click( function(){
+            $( ".property-preview-street-map").hide();
+            $( ".property-preview-street-map").each( function(){
+
+                var d = $(this).data() ; 
+                var i = $(this).attr('id') ;
+ 
+                initialize_property_street_view( d , i );
+            } );
+            $( ".property-preview-street-map").show( 100 );
+        } ); 
+        /// 
+        // auto set height for split google map
+        $( '.split-maps-container' ).each( function() {  
+            $( "#opalestate-map-preview ").height( $(window).height() );
+        } ); 
+    })
+
+
+    $(document).ready(function () {
+       
+        // search 
+         // show google maps 
+        // update google maps
+        var updatePreviewGoogleMap = function( url ) {
+            if( $('#opalestate-map-preview').length > 0 ) {
+                 $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: opalesateJS.ajaxurl,
+                    data:  url,
+                    success: function(data) {
+                       new GoogleMapSearch( data );
+                    }
+                });
+             }
+        };
+        if( $('#opalestate-map-preview').length > 0 ||  $( '.opalesate-properties-results').length > 0 ) {
+            var currentLocation = location.search.substr(1)+"&action=opalestate_ajx_get_properties&paged="+$('#opalestate-map-preview').data('page');
+            updatePreviewGoogleMap( currentLocation );
+        }
+        // update results
+        function updatePropertiesResults( data ){  
+            $( '.opalesate-properties-results').append( $('<div class="opalestate-loading"></div>') );
+            $.ajax({
+                type: "GET",
+                url: opalesateJS.ajaxurl,
+                data: data+"&action=opalestate_render_get_properties" ,
+                success: function( response ) {  
+                if( response ){    
+
+                        $( '.opalesate-properties-results' ).html( response );
+                    }
+                    $( '.opalesate-properties-results .opalestate-loading').remove(); 
+                    $('.opalestate-sortable select').select2( {
+                        width: '100%',
+                        minimumResultsForSearch: -1
+                    } );
+                }
+            });
+        }
+
+        function updatePropertiesByParseringHtml( newurl ){ 
+            $( '.opalesate-properties-results .opalesate-archive-bottom').append( $('<div class="opalestate-loading"></div>') );
+            $.ajax({
+                    type: "GET",
+                    url: newurl,
+                    dataType : 'html',
+                    cache: false,
+                    success: function( data ) {  
+                        if( data ){   
+                            $( '.opalesate-properties-results' ).html( $(data).find('.opalesate-properties-results').html()  );
+                            $('.opalestate-sortable select').select2( {
+                                width: '100%',
+                                minimumResultsForSearch: -1
+                            } );
+                        }
+                      //  $( '.opalesate-properties-results .opalestate-loading').remove();
+                    }
+            }); 
+        }
+        
+ 
+        $('form.opalestate-search-form').submit( function ( ){  
+             if(  $('#opalestate-map-preview').length  >  0 ) {     
+                if( $(".opalesate-properties-results") && $(".opalesate-properties-results").data('mode')  == 'html' ) {
+                    var $form = $(this);
+                    if (history.pushState) {
+                        var ps = $form.serialize(); 
+                        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+ ps;
+                        window.history.pushState({path:newurl},'',newurl);
+                        updatePropertiesByParseringHtml( newurl );
+                    }
+                    
+                } else {
+                     updatePropertiesResults( $(this).serialize() ); 
+                }
+
+                return false; 
+            }
+            return true; 
+        } );
+        
+
+        $( '.ajax-search-form form.opalestate-search-form' ).each( function(){
+            var $form = $(this);
+            $( '.ajax-change select', this ).change( function(){
+                if (history.pushState) {
+                    var ps = $form.serialize(); 
+                    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+ ps;
+                    window.history.pushState({path:newurl},'',newurl);
+                }
+                $form.submit(); 
+                return false;
+            } );
+        } );
+
+        // // Sortable Change // // 
+        $("body").delegate( '#opalestate-sortable-form select', 'change',  function(){
+             
+            var ps = '';
+            if( $('form.opalestate-search-form').length > 0 ) {
+                var $form =$('form.opalestate-search-form');
+                var ps = $form.serialize()+"&opalsortable="+$(this).val()+"&display="+$(".display-mode a.active").data('mode'); 
+            }  
+
+            if( $(".opalesate-properties-results") && ps ) {
+                if (history.pushState) {
+                    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?'+ ps;
+                    window.history.pushState({path:newurl},'',newurl);
+                    updatePropertiesByParseringHtml( newurl );
+                }
+            }  else {
+                $("#opalestate-sortable-form").submit();
+            }
+        } );
+        // display mode 
+        $( "body" ).delegate( ".display-mode a", 'click', function() { 
+            if( $(".opalesate-properties-results").length > 0 ){
+                var newurl = $(this).attr('href');
+                window.history.pushState({path:newurl},'',newurl);
+                updatePropertiesByParseringHtml( newurl );  
+                return false;
+            }
+        } );
+        // check any estate search form is enabled /////////////////
+        if(  $('#opalestate-map-preview').length  >  0 ) {
+            $( "body" ).delegate( "form.opalestate-search-form select", "change", function () {
+                var params = $( "form.opalestate-search-form" ).serialize();
+                var url =  "action=opalestate_ajx_get_properties&"+params; 
+
+                updatePreviewGoogleMap( url ); 
+                $('form.opalestate-search-form').submit();
+                return true; 
+            } );
+
+            $( "body" ).delegate( "form.opalestate-search-form input", "change", function () { 
+          
+                if( $(this).hasClass("ranger-geo_radius")  ){
+                    return false; 
+                }
+
+                var params = $( "form.opalestate-search-form" ).serialize();
+                var url =  "action=opalestate_ajx_get_properties&"+params; 
+                updatePreviewGoogleMap( url ); 
+                $('form.opalestate-search-form').submit();
+            } );
+        }    
+            /////////// ///////
+      
+
+    } ); 
+})(jQuery);
+ 
+//// //////
+(function( $ ) {
+    'use strict';
+
+
+    $(document).ready(function () { 
+       $( '.opalestate-search-opal-map' ).each( function() {
+             initializeMapAdressSearch( $(this) );
+        });
+    } );    
+
+
+    function initializeMapAdressSearch( mapInstance ) {
+        var searchInput = mapInstance.find( '.opal-map-search' );
+       
+        // Search
+        var autocomplete = new google.maps.places.Autocomplete( searchInput[0] );
+        // autocomplete.bindTo( 'bounds', map );
+        var latitude = mapInstance.find( '.opal-map-latitude' );
+        var longitude = mapInstance.find( '.opal-map-longitude' );
+
+         google.maps.event.addListener( autocomplete, 'place_changed', function() {
+            
+            var place = autocomplete.getPlace();
+            
+
+            if ( ! place.geometry ) {
+                return;
+            }
+
+            if( place.geometry.location.lat() ){
+                $(mapInstance).addClass("active");
+            } else {
+                 $(mapInstance).removeClass("active");
+            }
+
+            latitude.val( place.geometry.location.lat() );
+            longitude.val( place.geometry.location.lng() );
+        });
+
+        $( ".map-remove", mapInstance ).click( function() {
+            latitude.val(  "" );
+            longitude.val( "" );
+            searchInput.val("");
+            latitude.change();
+        } );
+
+        $( searchInput ).keypress( function( event ) {
+            if ( 13 === event.keyCode ) {
+                event.preventDefault();
+            }
+        });
+
+
+    }
+
+})( jQuery ); 
