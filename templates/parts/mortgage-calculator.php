@@ -16,12 +16,13 @@ $currency = opalestate_currency_symbol();
 wp_enqueue_script( 'opalestate-mortgage-calculator', OPALESTATE_PLUGIN_URL . 'assets/js/mortgage.js', [ 'jquery' ], OPALESTATE_VERSION, true );
 wp_enqueue_style( 'opalestate-mortgage-calculator', OPALESTATE_PLUGIN_URL . 'assets/mortgage.css', [], OPALESTATE_VERSION );
 
+$deposit_color = apply_filters( 'opalestate_deposit_color', '#2f73e9' );
+
 wp_localize_script( 'opalestate-scripts', 'opalestate_mortgage',
 	[
 		'ajax_url'          => admin_url( 'admin-ajax.php' ),
 		'currency'          => esc_attr__( $currency ),
-		'loan_amount_text'  => esc_html__( 'Loan Amount', 'opalestate-pro' ),
-		'your_payment_text' => esc_html__( 'Your payment', 'opalestate-pro' ),
+		'deposit_color'     => $deposit_color,
 	]
 );
 
@@ -46,8 +47,6 @@ $monthly                  = round( ( $loan_amount * $interest_rate_month ) / ( 1
 $total           = $deposit_start + ( $monthly * $number_of_payments_month );
 $price_percent   = $loan_amount / $total * 100;
 $deposit_percent = $deposit_start / $total * 100;
-
-$deposit_color = apply_filters( 'opalestate_deposit_color', '#2f73e9' );
 
 $data_sale_price = [
 	'id'         => 'sale_price',
@@ -112,7 +111,8 @@ if ( opalestate_options( 'currency_position', 'before' ) == 'before' ) {
                             <svg viewBox="0 0 64 64" class="pie">
                                 <circle r="25%" cx="50%" cy="50%" style="stroke-dasharray: <?php echo esc_attr( $price_percent ); ?> 100">
                                 </circle>
-                                <circle r="25%" cx="50%" cy="50%" style="stroke-dasharray: <?php echo esc_attr( $deposit_percent ); ?> 100; stroke: <?php echo esc_attr( $deposit_color ); ?>; stroke-dashoffset:
+                                <circle r="25%" cx="50%" cy="50%"
+                                        style="stroke-dasharray: <?php echo esc_attr( $deposit_percent ); ?> 100; stroke: <?php echo esc_attr( $deposit_color ); ?>; stroke-dashoffset:
                                                 -<?php echo esc_attr( $price_percent ); ?>; animation-delay: 0.25s">
                                 </circle>
                             </svg>
