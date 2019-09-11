@@ -10,6 +10,7 @@ $limit = opalestate_get_option( 'single_views_statistics_limit', 8 );
 $stats = new Opalestate_View_Stats( $property->get_id(), $limit );
 $array_label  = json_encode( $stats->get_traffic_labels() );
 $array_values = json_encode( $stats->get_traffic_data_accordion() );
+$chart_color = apply_filters( 'opalestate_chart_color', '#2f73e9' );
 
 ?>
 <div class="opalestate-box-content property-views-statistics-session">
@@ -33,11 +34,11 @@ $array_values = json_encode( $stats->get_traffic_data_accordion() );
         labels: labels,
         datasets: [{
           label: label,
-          borderColor: "#2f73e9",
-          pointBorderColor: "#2f73e9",
-          pointBackgroundColor: "#2f73e9",
-          pointHoverBackgroundColor: "#2f73e9",
-          pointHoverBorderColor: "#2f73e9",
+          borderColor: "<?php echo esc_js( $chart_color ); ?>",
+          pointBorderColor: "<?php echo esc_js( $chart_color ); ?>",
+          pointBackgroundColor: "<?php echo esc_js( $chart_color ); ?>",
+          pointHoverBackgroundColor: "<?php echo esc_js( $chart_color ); ?>",
+          pointHoverBorderColor: "<?php echo esc_js( $chart_color ); ?>",
           pointBorderWidth: 1,
           pointHoverRadius: 1,
           pointHoverBorderWidth: 1,
