@@ -4,7 +4,7 @@ Donate link: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property
 Requires at least: 4.6
 Tested up to: 5.2.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
