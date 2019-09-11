@@ -6,7 +6,8 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(){
+		public function __construct() {
+			return;
 			
 			$this->path = OPALESTATE_PLUGIN_DIR;
 
