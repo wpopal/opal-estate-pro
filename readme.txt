@@ -18,6 +18,11 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 
 [youtube https://www.youtube.com/watch?v=B7UrfNzPkFg]
 
+= More Information =
+
+* For help use [ticksy.com](https://wpopal.ticksy.com/) or create issues on [Github](https://github.com/wpopal/opal-estate-pro/)
+* Fork or contribute on [GitHub](https://github.com/wpopal/opal-estate-pro/).
+
 = Features Include: =
 
 * - Potential Real Estate Listing to the website -
@@ -94,3 +99,14 @@ This section describes how to install the plugin and get it working.
 * Images and refer links
 * Easy for user to follow up
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
+
+== Changelog ==
+
+= 1.0.2 - 2019-09-11 =
+* Fixes - Remove CLI.
+
+= 1.0.1 - 2019-09-10 =
+* Fixes - Minor bugs.
+
+= 1.0.0 - 2019-09-06 =
+* Release
