@@ -1,9 +1,9 @@
-=== Plugin Name ===
+=== Opal Estate Pro ===
 Contributors: wpopal
 Donate link: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property
 Requires at least: 4.6
-Tested up to: 5.2.2
+Tested up to: 5.2.3
 Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -16,7 +16,13 @@ Whether you want to create a website for your real estate business and you are m
 
 The plugin will not make you disappointed with ease of use, friendly & flexible with users, high advanced functions and a range of powerful feature updated insight. They are created for selling, buying or renting an apartment, villa, house, flat,  etc. Scroll down to see how awesome it is!
 
-[youtube https://www.youtube.com/watch?v=B7UrfNzPkFg]
+= Which themes use this plugin? =
+
+ 1. *[ Housey - Real Estate WordPress Theme](https://bit.ly/2kHewkG "Housey - Real Estate WordPress Theme")*
+ 2. *[ Latehome Free - Real Estate Free WordPress Theme](https://bit.ly/2kcNEsr "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bit.ly/2kxyzSH "Latehome Free
+ download").*
+
+ * Please keep contact us at help@wpopal.com to send us your website, we will publish it our showcase
 
 = More Information =
 
