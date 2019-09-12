@@ -11,6 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+do_action( 'opalestate_before_user_management_template' );
+
+if ( ! class_exists( 'OpalEstate_User' ) ) {
+	return;
+}
+
 get_header( 'no-sidebar' );
 ?>
 <?php if ( get_current_user_id() ): ?>
@@ -117,7 +123,7 @@ get_header( 'no-sidebar' );
                     <h2><?php esc_html_e( 'Login to your account', 'opalestate-pro' ); ?></h2>
                     <p><?php esc_html_e( 'Logining in allows you to edit your property or submit a property, save favorite real estate.', 'opalestate-pro' ); ?></p>
                 </div>
-				<?php echo do_shortcode( "[opalestate_myaccount]" ); ?>
+				<?php echo opalestate_load_template_path( 'user/my-account' ); ?>
             </div>
         </div>
     </div>
