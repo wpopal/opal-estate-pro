@@ -1025,6 +1025,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
     .opalesate-archive-top .opalestate-sortable .form-control, .opalesate-archive-top .opalestate-sortable .select2-selection--single {
       padding-top: 8px; }
 
+.opalestate-results .contact-share-form-container {
+  padding: 30px; }
+
 .opalesate-archive-bottom {
   position: relative; }
 
