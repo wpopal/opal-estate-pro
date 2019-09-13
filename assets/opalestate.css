@@ -1911,12 +1911,11 @@ button.opal-collapse-button {
   -ms-user-select: none;
   user-select: none;
   line-height: 1; }
-  .form-item--types .group-item .custom-checkbox-label {
-    z-index: -1; }
   .form-item--types .group-item input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-    cursor: pointer; }
+    cursor: pointer;
+    z-index: 2; }
     .form-item--types .group-item input[type="checkbox"]:checked ~ .custom-checkbox-label {
       background-color: #2f73e9; }
       .form-item--types .group-item input[type="checkbox"]:checked ~ .custom-checkbox-label::after {
@@ -1927,6 +1926,9 @@ button.opal-collapse-button {
 .opalestate-search-form--vertical .more-options-item {
   float: none;
   width: 100%; }
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #2f73e9 !important; }
 
 .more-options-label {
   display: inline-block;
@@ -1941,9 +1943,10 @@ button.opal-collapse-button {
   .more-options-label input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-    cursor: pointer; }
+    cursor: pointer;
+    z-index: 2; }
     .more-options-label input[type="checkbox"]:checked ~ .custom-checkbox-label {
-      background-color: #02ce76; }
+      background-color: #2f73e9; }
       .more-options-label input[type="checkbox"]:checked ~ .custom-checkbox-label::after {
         display: block; }
   .more-options-label:hover input ~ .custom-checkbox-label {
