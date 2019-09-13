@@ -46,7 +46,7 @@ class OpalEstate_Admin_User{
  				$link = get_edit_post_link( $agency_id );
 		?>
 	    <div  id="message" class="updated fade">
-	        <p><?php echo sprintf( esc_html__('This user has role <strong>Opal Estate Agency</strong> and click here to <a href="%s">update Agency profile</a>', 'opalestate-pro'), $link ); ?></p>
+	        <p><?php echo sprintf( __('This user has role <strong>Opal Estate Agency</strong> and click here to <a href="%s">update Agency profile</a>', 'opalestate-pro'), $link ); ?></p>
 	    </div>
 		<?php elseif( in_array( 'opalestate_agent', $roles) ) : 	
 			$agent_id  = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true ); 
@@ -56,7 +56,7 @@ class OpalEstate_Admin_User{
  				$link = get_edit_post_link( $agent_id );
 		?>
 	    <div  id="message" class="updated fade">
-	        <p><?php echo sprintf( esc_html__('This user has role <strong>Opal Estate Agent</strong> and click here to <a href="%s">update Agent profile</a>', 'opalestate-pro'), $link ); ?></p>
+	        <p><?php echo sprintf( __('This user has role <strong>Opal Estate Agent</strong> and click here to <a href="%s">update Agent profile</a>', 'opalestate-pro'), $link ); ?></p>
 	    </div>
 		<?php endif; ?>
 	<?php
