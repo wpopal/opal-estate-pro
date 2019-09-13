@@ -63,9 +63,16 @@
 	}
 	.opalestate-sortable{
 		display: inline-block;
+		min-width: 180px;
+		text-align: left;
 		.form-control,.select2-selection--single{
 			padding-top: 8px;
 		}
+	}
+}
+.opalestate-results {
+	.contact-share-form-container {
+		padding: $grid-gutter-width;
 	}
 }
 .opalesate-archive-bottom {
@@ -82,7 +89,7 @@
 		font-size: 18px;
         &.active,&:hover{
             background-color: transparent;
-            color: $secondary;
+            color: $primary;
         }
     }
 }

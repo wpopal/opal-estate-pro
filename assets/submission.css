@@ -287,13 +287,12 @@
   .opalestate-submission-tab .cmb2-checkbox-list li input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-    cursor: pointer; }
+    cursor: pointer;
+    z-index: 2; }
     .opalestate-submission-tab .cmb2-checkbox-list li input[type="checkbox"]:checked ~ span.custom-checkbox-label {
       background-color: #2f73e9; }
       .opalestate-submission-tab .cmb2-checkbox-list li input[type="checkbox"]:checked ~ span.custom-checkbox-label::after {
         display: block; }
-  .opalestate-submission-tab .cmb2-checkbox-list li .custom-checkbox-label {
-    z-index: -1; }
 
 .opalestate-submission-tab button.btn.submission-next-btn {
   position: relative;

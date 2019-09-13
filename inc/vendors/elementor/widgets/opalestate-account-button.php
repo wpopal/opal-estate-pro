@@ -471,7 +471,9 @@ class Opalestate_Account_Button_Elementor_Widget extends Opalestate_Elementor_Wi
 							<?php if ( $settings['logged_in_enable_avatar'] ) : ?>
                                 <a href="#">
 									<?php $user_id = get_current_user_id(); ?>
-                                    <img src="<?php echo OpalEstate_User::get_author_picture( $user_id ); ?>"/>
+                                    <div class="opalestate-user-image">
+                                        <img src="<?php echo OpalEstate_User::get_author_picture( $user_id ); ?>" alt="<?php esc_attr_e( 'Avatar image', 'opalestate-pro' ); ?>"/>
+                                    </div>
                                     <span class="notify active"></span>
                                 </a>
 							<?php else : ?>
@@ -479,7 +481,7 @@ class Opalestate_Account_Button_Elementor_Widget extends Opalestate_Elementor_Wi
 								echo '<a href="#">
                             	<i class="' . esc_attr( $settings['logged_in_icon'] ) . '"></i>
                             ' . ( $settings['logged_in_enable_label'] && $settings['logged_in_label_text'] ? '<span class="account-label">' . esc_html( $settings['logged_in_label_text'] ) . '</span>' : '' ) . '
-                         	 </a>';
+                         	    </a>';
 								?>
 							<?php endif; ?>
                         </div>
