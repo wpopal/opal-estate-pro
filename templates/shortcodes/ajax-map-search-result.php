@@ -35,16 +35,19 @@ $show = ( isset( $_GET['display'] ) && $_GET['display'] == 'list' ) || ( opalest
 			<?php if ( $query->have_posts() ): ?>
                 <div class="<?php echo apply_filters( 'opalestate_row_container_class', 'opal-row' ); ?>">
 					<?php if ( $show == 'list' ): ?>
+						<?php
+						$style_list = isset( $style_list ) && $style_list ? 'content-property-' . $style_list : $list_layout;
+						?>
 						<?php $cnt = 0;
 						while ( $query->have_posts() ) : $query->the_post(); ?>
                             <div class="col-lg-12 col-md-12 col-sm-12" data-related="map" data-id="<?php echo $cnt++; ?>">
-								<?php echo opalestate_load_template_path( $list_layout ); ?>
+								<?php echo opalestate_load_template_path( $style_list ); ?>
                             </div>
 						<?php endwhile; ?>
 					<?php else : ?>
 						<?php
 						$column = isset( $column ) ? $column : apply_filters( 'opalestate_properties_column_row', 3 );
-						$layout = isset( $style ) ? 'content-property-' . $style : $grid_layout;
+						$layout = isset( $style ) && $style ? 'content-property-' . $style : $grid_layout;
 						$clscol = floor( 12 / $column );
 						$cnt    = 0;
 						while ( $query->have_posts() ) : $query->the_post();

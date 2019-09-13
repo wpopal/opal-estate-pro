@@ -93,10 +93,20 @@ class Opalestate_search_property_results_Elementor_Widget extends Opalestate_Ele
 		$this->add_control(
 			'style',
 			[
-				'label'   => esc_html__( 'Style Item Layout', 'opalestate-pro' ),
+				'label'   => esc_html__( 'Style Grid Layout', 'opalestate-pro' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'options' => $this->get_template_post_type(),
 				'default' => 'grid',
+			]
+		);
+
+		$this->add_control(
+			'style_list',
+			[
+				'label'   => esc_html__( 'Style List Layout', 'opalestate-pro' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'options' => $this->get_template_post_type(),
+				'default' => 'list',
 			]
 		);
 
