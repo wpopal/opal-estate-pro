@@ -10,28 +10,28 @@
 			'icon'  => 'fa fa-list',
 			'count' => $statistics->get_count_properties(),
 			'label' => esc_html__( 'My Properties', 'opalestate-pro' ),
-			'class' => 'bg-primary text-white',
+			'class' => '',
 		];
 
 		$properties_count[] = [
 			'icon'  => 'fa fa-star',
 			'count' => $statistics->get_count_featured(),
 			'label' => esc_html__( 'Featured Properties', 'opalestate-pro' ),
-			'class' => 'bg-info text-white',
+			'class' => '',
 		];
 
 		$properties_count[] = [
 			'icon'  => 'fa fa-file',
 			'count' => $statistics->get_count_pending_properties(),
 			'label' => esc_html__( 'Pending Properties', 'opalestate-pro' ),
-			'class' => 'bg-warning text-white',
+			'class' => '',
 		];
 		?>
 
 		<?php foreach ( $properties_count as $item ): ?>
             <div class="col-lg-4 col-md-4">
                 <div class="card-item inner <?php echo esc_attr( $item['class'] ); ?>">
-                    <p><i class="<?php echo esc_attr( $item['icon'] ); ?>"></i> <span><?php echo esc_html( $item['label'] ); ?></span></p>
+                    <div class="heading"><i class="<?php echo esc_attr( $item['icon'] ); ?>"></i> <span><?php echo esc_html( $item['label'] ); ?></span></div>
                     <h5><?php echo esc_html( $item['count'] ); ?></h5>
                 </div>
             </div>
@@ -50,8 +50,8 @@
 	        ?>
 
             <div class="col-lg-8 col-md-8">
-                <div class="card-item inner bg-primary text-white">
-                    <p><i class="fa fa-comment"></i> <span><?php esc_html_e( 'Latest review' ) ?></p>
+                <div class="card-item inner">
+                    <div class="heading"><i class="fa fa-comment"></i> <span><?php esc_html_e( 'Latest review' ) ?></span></div>
 
                     <?php if ( ! isset( $comments ) || ! $comments ) : ?>
                         <p class="opalestate-my-reviews-no-reviews"><?php esc_html_e( 'You have not written any reviews yet.', 'opalestate-pro' ); ?> </p>

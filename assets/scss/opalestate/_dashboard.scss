@@ -1,5 +1,15 @@
+.dashboard-grid {
+	&.opal-row {
+		> div {
+			margin-bottom: $grid-gutter-width;
+		}
+	}
+}
 .opalestate-admin-box{
-	margin-bottom:$padding-base*2;
+	margin-bottom:$grid-gutter-width;
+	padding: $grid-gutter-width;
+	background-color: $white;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 	h3 {
 		border-bottom:1px $border-color solid;
 		padding-bottom:15px;
@@ -30,13 +40,6 @@
 	padding: 4px 0;
 }
 
-
-.bg-info {
-	background-color:#0288d1 !important;
-}
-.bg-warning {
-	background-color:#ffca28!important;
-}
 .alert.alert-success{
 	background: #0F93FA;
 }
@@ -53,7 +56,6 @@
  */
 
 @media( max-width: $screen-xs-max ) {
-
 	.user-dasboard-sidebar {
 		display:none;
 	}
@@ -75,6 +77,7 @@
 .navbar-left {
 	display:flex;
 }
+
 .opalestate-user-greeting {
 	.popup-head  {
 		float:right;
@@ -103,33 +106,14 @@
 }
 
  .dashboard-navbar {
-
- 	background-color: $white;
- 	padding:9px $grid-gutter-width;
- 	
-	border-bottom:1px solid $border-color;
+ 	 background-color: $white;
+ 	 padding:$grid-gutter-width/2 $grid-gutter-width;
+	 border-bottom:1px solid $border-color;
+	 margin-bottom: $grid-gutter-width/2;
 	ul{
 		margin-bottom: 0;
 	}
  }
-
-.card-item {
-	background-color:$white;
-	border:solid 1px $border-color;
-	padding:$padding-base;
-	i {
-		background:rgba(0, 0, 0, .18);
-		padding:15px;
-		border-radius:50%;
-	}
-	h5 {
-		font-size:200%;
-		text-align:center;
-	}
-	span {
-		font-weight:700
-	}
-}
 
 .page-template-user-management {
 	.opalestate-box{
@@ -152,13 +136,7 @@
 		padding-bottom: $padding-base*3;
 	}
 }
-.admin-bar{
-	.opalestate-user-management{
-		.user-dasboard-sidebar{
-			padding-top: 32px;
-		}
-	}
-}
+
 .opalmembership-dashboard{
 	.btn-link{
 		background-color: $secondary;
@@ -168,15 +146,105 @@
 		}
 	}
 }
+
+.admin-bar{
+	.body-inner {
+		background-color: #f1f1f1;
+	}
+	.opalestate-user-management{
+		.user-dasboard-sidebar{
+			padding-top: 30px;
+		}
+	}
+	.bg-primary {
+		background-color: $white!important;
+		//background-color:#0288d1 !important;
+	}
+	.bg-info {
+		background-color: $white!important;
+		//background-color:#0288d1 !important;
+	}
+
+	.bg-warning {
+		background-color: $white!important;
+		//background-color:#ffca28!important;
+	}
+
+	.opalestate-popup .popup-body {
+		padding:0 !important;
+		top: 59px;
+		.account-dashboard-content {
+			a {
+				font-size: 14px;
+				&:not(:hover){
+					color: #7e7e7e;
+				}
+			}
+			&::before {
+				right: -15px;
+				left: auto;
+				position: absolute;
+				width: 0px;
+				height: 0px;
+				content: "";
+				z-index: 2;
+				transform: translateX(-50%);
+				left: 50%;
+				top: -14px;
+				border-bottom: 25px solid rgb(255, 255, 255);
+				border-left: 20px solid transparent;
+				border-right: 20px solid transparent;
+			}
+		}
+	}
+	.opalestate-box {
+		background-color: $white;
+	}
+}
+
+.card-item {
+	background-color:$white;
+	//border:solid 1px $border-color;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	padding:$padding-base;
+	.heading {
+		margin-bottom: $grid-gutter-width;
+		border-bottom:1px solid #eee;
+		padding-bottom: $grid-gutter-width/2;
+		i {
+			background:rgba(0, 0, 0, .18);
+			padding:15px;
+			border-radius:50%;
+			min-width: 45px;
+			text-align: center;
+			margin-right: 10px;
+			color:$white;
+		}
+		span {
+			font-size: 14px;
+			color: #23282d;
+			font-weight: 500;
+		}
+	}
+
+	h5 {
+		font-size:200%;
+		text-align:center;
+	}
+	.opalestate-admin-box {
+		box-shadow: none;
+	}
+}
+
 .opalestate-user-management {
-	min-height: 600px;
+	min-height: 742px;
 	.property-submission-form{
 		.opalestate-box{
 			margin-right: 0;
 		}
 	}
 	.user-dasboard-sidebar {
-		background-color:$headings-color;
+		background-color:#23282d;
 		min-height:900px;
 		position:fixed;
 		left:0;
@@ -191,7 +259,6 @@
 	.navbar-brand {
 		padding:32px $padding-base;
 	}
-	
 
 	.account-links {
 		list-style:none;
@@ -202,14 +269,18 @@
 			width:100%;
 			display:block;
 			font-weight:500	;
+			color:#eee;
 			i {
 				margin-right:6px;
-				color:$body-color;
+				color:#a0a5aa;
 			}
-			color:$body-color;
-			&:hover {
-				background-color:$primary;
-
+			&:hover,
+			&:focus {
+				background-color:#0073aa;
+				color:#fff;
+				i {
+					color:#00b9eb;
+				}
 			}
 		}
 	}
@@ -247,7 +318,5 @@
 	}
 }
 
-
 .dashboard {
-	
 }
