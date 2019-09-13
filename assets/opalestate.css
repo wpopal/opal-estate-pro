@@ -1025,9 +1025,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
     .opalesate-archive-top .opalestate-sortable .form-control, .opalesate-archive-top .opalestate-sortable .select2-selection--single {
       padding-top: 8px; }
 
-.opalestate-results .contact-share-form-container {
-  padding: 30px; }
-
 .opalesate-archive-bottom {
   position: relative; }
 
@@ -3193,7 +3190,7 @@ p.stars.selected a:not(.active)::before {
     position: absolute;
     z-index: 999;
     min-width: 450px;
-    top: 30px;
+    top: 40px;
     margin: 0 0 0 -194px;
     padding: 30px;
     background-color: #FFF;
