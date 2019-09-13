@@ -3659,7 +3659,8 @@ header#masthead {
     margin-right: 15px; } }
 
 .page-template-user-management.logged-in {
-  margin-left: 251px; }
+  margin-left: 251px;
+  background: #f1f1f1; }
 
 .page-template-user-management #content {
   padding-left: 30px;
@@ -3719,6 +3720,11 @@ header#masthead {
 .admin-bar .opalestate-box {
   background-color: #FFF; }
 
+.admin-bar .opalmembership-box {
+  background-color: #FFF;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  padding: 15px; }
+
 .card-item {
   background-color: #FFF;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
@@ -3736,7 +3742,7 @@ header#masthead {
       margin-right: 10px;
       color: #FFF; }
     .card-item .heading span {
-      font-size: 14px;
+      font-size: 16px;
       color: #23282d;
       font-weight: 500; }
   .card-item h5 {

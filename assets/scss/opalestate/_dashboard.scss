@@ -121,7 +121,10 @@
 			margin-right: $padding-base;
 		}
 	}
-	&.logged-in { margin-left:251px; }
+	&.logged-in {
+		margin-left:251px;
+		background: #f1f1f1;
+	}
 	#content {
 		padding-left:$padding-base*2;
 		padding-right:$padding-base*2;
@@ -200,6 +203,13 @@
 	.opalestate-box {
 		background-color: $white;
 	}
+
+	.opalmembership-box {
+		background-color:$white;
+		//border:solid 1px $border-color;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+		padding:$padding-base;
+	}
 }
 
 .card-item {
@@ -221,7 +231,7 @@
 			color:$white;
 		}
 		span {
-			font-size: 14px;
+			font-size: 16px;
 			color: #23282d;
 			font-weight: 500;
 		}
