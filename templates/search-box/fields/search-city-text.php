@@ -25,8 +25,12 @@ $data_deposit = [
 	<input class="form-control opal-map-latitude" name="geo_lat" value="<?php echo esc_attr( $geo_lat ); ?>" type="hidden">
 	<input class="form-control opal-map-longitude" name="geo_long" type="hidden" value="<?php echo esc_attr( $geo_long ); ?>">
 	<div class="map-remove"><i class="fa fa-close"></i></div>
-	<div class="opalestate-popup">
+	<div class="opalestate-popup opalestate-popup-geo-location">
 	    <div class="popup-head">
+            <span class="radius-status">
+                <span class="radius-status__number"><?php echo absint( $max_geo_radius ); ?></span>
+                <span class="radius-status__unit"><?php echo esc_html( $unit ); ?></span>
+            </span>
 	    	<span><i class="fa fa-location-arrow"></i></span>
 	    </div>
 	    <div class="popup-body">
@@ -38,7 +42,6 @@ $data_deposit = [
                     <p><a href="#"><?php echo esc_html__( 'Of My Location', 'opalestate-pro' ); ?></a></p>
                 </div>
             </div>
-	    </div>    
-
+	    </div>
 	</div>
 </div>

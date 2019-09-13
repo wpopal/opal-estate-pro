@@ -523,7 +523,11 @@ jQuery( document ).ready( function ( $ ) {
                 $( '.slide-ranger-max-input', _this ).change();
             }
         } );
+    } );
 
+    $( 'input[name="geo_radius"]' ).on( 'change', function ( e ) {
+        var val = $( this ).val();
+        $( this ).closest( '.opalestate-popup' ).find( '.radius-status__number' ).html( val );
     } );
 
     //////***Search Search **/
