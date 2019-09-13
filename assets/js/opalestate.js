@@ -300,15 +300,14 @@ jQuery( document ).ready( function ( $ ) {
     /**
      * Click to show body popup
      */
-    $( 'body' ).delegate( '.opalestate-popup .popup-head', 'click', function () {
-        var $this = $( this ).parent( '.opalestate-popup' );
-        $( '.popup-head', $this ).click( function () {
-            $( '.opalestate-popup.active' ).removeClass( 'active' );
-            $this.toggleClass( 'active' );
-        } );
-        $( '.popup-close', $this ).click( function () {
-            $( '.opalestate-popup' ).removeClass( 'active' );
-        } );
+    $( '.popup-head' ).on( 'click', function ( e ) {
+        var $popup = $( this ).closest( '.opalestate-popup' );
+        $popup.toggleClass( 'active' );
+    } );
+
+    $( '.popup-close' ).on( 'click', function ( e ) {
+        var $popup = $( this ).closest( '.opalestate-popup' );
+        $popup.removeClass( 'active' );
     } );
 
     /**

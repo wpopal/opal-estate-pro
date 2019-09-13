@@ -36,10 +36,10 @@ $data_deposit = [
 	    <div class="popup-body">
 	        <div class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></div>
             <div class="contact-share-form-container">
-                <h6><?php echo esc_html__( 'Show with in.', 'opalestate-pro' ); ?></h6>
+                <h6><?php esc_html_e( 'Show with in', 'opalestate-pro' ); ?></h6>
                 <div class="box-content ">
                     <?php opalesate_property_slide_ranger_template( esc_html__( 'Radius', 'opalestate-pro' ), $data_deposit ); ?>
-                    <p><a href="#"><?php echo esc_html__( 'Of My Location', 'opalestate-pro' ); ?></a></p>
+                    <p><?php esc_html_e( 'Of My Location', 'opalestate-pro' ); ?></p>
                 </div>
             </div>
 	    </div>
