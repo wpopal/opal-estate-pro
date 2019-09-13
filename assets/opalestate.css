@@ -1826,10 +1826,13 @@ body .tooltipster-sidetip.tooltipster-right .tooltipster-arrow-uncropped {
 .post-type-archive-opalestate_agent .opalestate-search-form:not([class*="opalestate-search-form--vertical"]) {
   margin: 0 -30px; }
 
+.radius-status {
+  font-size: 12px; }
+
 .map-remove {
   display: none;
   position: absolute;
-  right: 50px;
+  right: 80px;
   top: 40px; }
 
 .opalestate-search-opal-map.active .map-remove {
@@ -3182,7 +3185,7 @@ p.stars.selected a:not(.active)::before {
       color: #FFF; }
       .opalestate-popup .popup-head .notify.active {
         top: auto;
-        bottom: -10px;
+        bottom: 0;
         padding: 5px;
         background-color: #2f73e9; }
   .opalestate-popup .popup-body {
@@ -3694,29 +3697,26 @@ header#masthead {
   .opalmembership-dashboard .btn-link:hover {
     background-color: #2f73e9; }
 
-.admin-bar .body-inner {
+.bg-primary {
+  background-color: #FFF !important; }
+
+.bg-info {
+  background-color: #FFF !important; }
+
+.bg-warning {
+  background-color: #FFF !important; }
+
+.page-template-user-management .body-inner {
   background-color: #f1f1f1; }
 
-.admin-bar .opalestate-user-management .user-dasboard-sidebar {
-  padding-top: 30px; }
-
-.admin-bar .bg-primary {
-  background-color: #FFF !important; }
-
-.admin-bar .bg-info {
-  background-color: #FFF !important; }
-
-.admin-bar .bg-warning {
-  background-color: #FFF !important; }
-
-.admin-bar .opalestate-popup .popup-body {
+.page-template-user-management .opalestate-popup .popup-body {
   padding: 0 !important;
   top: 59px; }
-  .admin-bar .opalestate-popup .popup-body .account-dashboard-content a {
+  .page-template-user-management .opalestate-popup .popup-body .account-dashboard-content a {
     font-size: 14px; }
-    .admin-bar .opalestate-popup .popup-body .account-dashboard-content a:not(:hover) {
+    .page-template-user-management .opalestate-popup .popup-body .account-dashboard-content a:not(:hover) {
       color: #7e7e7e; }
-  .admin-bar .opalestate-popup .popup-body .account-dashboard-content::before {
+  .page-template-user-management .opalestate-popup .popup-body .account-dashboard-content::before {
     right: -15px;
     left: auto;
     position: absolute;
@@ -3731,13 +3731,26 @@ header#masthead {
     border-left: 20px solid transparent;
     border-right: 20px solid transparent; }
 
-.admin-bar .opalestate-box {
-  background-color: #FFF; }
+.page-template-user-management .opalestate-user-management .user-dasboard-sidebar {
+  padding-top: 30px; }
 
-.admin-bar .opalmembership-box {
+.page-template-user-management .opalestate-box {
+  background-color: #FFF;
+  padding: 30px; }
+
+.page-template-user-management .opalmembership-box {
   background-color: #FFF;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
   padding: 15px; }
+
+.page-template-user-management .property-submission-form {
+  padding: 0;
+  background: transparent;
+  border-radius: 0; }
+
+@media (min-width: 991px) {
+  .page-template-user-management .cmb2-wrap input, .page-template-user-management .cmb2-wrap textarea {
+    min-width: 500px; } }
 
 .card-item {
   background-color: #FFF;

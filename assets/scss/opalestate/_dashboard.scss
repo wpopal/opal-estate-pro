@@ -155,28 +155,23 @@
 		}
 	}
 }
+.bg-primary {
+	background-color: $white!important;
+	//background-color:#0288d1 !important;
+}
+.bg-info {
+	background-color: $white!important;
+	//background-color:#0288d1 !important;
+}
 
-.admin-bar{
+.bg-warning {
+	background-color: $white!important;
+	//background-color:#ffca28!important;
+}
+
+.page-template-user-management {
 	.body-inner {
 		background-color: #f1f1f1;
-	}
-	.opalestate-user-management{
-		.user-dasboard-sidebar{
-			padding-top: 30px;
-		}
-	}
-	.bg-primary {
-		background-color: $white!important;
-		//background-color:#0288d1 !important;
-	}
-	.bg-info {
-		background-color: $white!important;
-		//background-color:#0288d1 !important;
-	}
-
-	.bg-warning {
-		background-color: $white!important;
-		//background-color:#ffca28!important;
 	}
 
 	.opalestate-popup .popup-body {
@@ -206,8 +201,15 @@
 			}
 		}
 	}
+
+	.opalestate-user-management{
+		.user-dasboard-sidebar{
+			padding-top: 30px;
+		}
+	}
 	.opalestate-box {
 		background-color: $white;
+		padding: $grid-gutter-width;
 	}
 
 	.opalmembership-box {
@@ -215,6 +217,17 @@
 		//border:solid 1px $border-color;
 		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 		padding:$padding-base;
+	}
+
+	.property-submission-form {
+		padding:0;
+		background: transparent;
+		border-radius: 0;
+	}
+	@media (min-width:991px ) {
+		.cmb2-wrap input, .cmb2-wrap textarea {
+			min-width: 500px;
+		}
 	}
 }
 
