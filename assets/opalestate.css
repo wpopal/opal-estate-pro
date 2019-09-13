@@ -3640,10 +3640,16 @@ header#masthead {
 .opalestate-user-greeting .popup-head a {
   color: #FFF;
   text-align: right;
+  float: right;
   position: relative; }
-  .opalestate-user-greeting .popup-head a img {
+  .opalestate-user-greeting .popup-head a .opalestate-user-image {
+    position: relative;
     width: 40px;
-    border-radius: 50%; }
+    height: 40px; }
+    .opalestate-user-greeting .popup-head a .opalestate-user-image img {
+      min-height: 40px;
+      object-fit: cover;
+      border-radius: 50%; }
   .opalestate-user-greeting .popup-head a i {
     padding: 12px;
     border-radius: 50%;

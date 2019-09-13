@@ -85,11 +85,17 @@
 	.popup-head a { 
 		color:$white; 
 		text-align:right;
-		img {
-			width:40px;
-			border-radius:50%;
-		}
-		position:relative;
+        float:right;
+        position:relative;
+        .opalestate-user-image {
+          position: relative;
+          @include size(40px, 40px);
+          img {
+            min-height: 40px;
+            object-fit: cover;
+            border-radius:50%;
+          }
+        }
 		i { 
 			padding:12px; 
 			border-radius:50%;

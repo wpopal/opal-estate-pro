@@ -53,8 +53,11 @@ get_header( 'no-sidebar' );
                     <li>
                         <div class="opalestate-user-greeting opalestate-popup hover-align-right">
                             <div class="popup-head"><a href="#"><?php $user_id = get_current_user_id(); ?>
-                                    <img src="<?php echo OpalEstate_User::get_author_picture( $user_id ); ?>" alt="<?php esc_attr_e( 'User Avatar', 'opalestate-pro' ); ?>"/>
+                                    <div class="opalestate-user-image">
+                                        <img src="<?php echo esc_url( OpalEstate_User::get_author_picture( $user_id ) ); ?>" alt="<?php esc_attr_e( 'Avatar image', 'opalestate-pro' ); ?>"/>
+                                    </div>
                                     <span class="notify active"></span>
+
                                 </a>
                             </div>
                             <div class="popup-body">
