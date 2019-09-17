@@ -94,23 +94,32 @@ class Opalestate_Taxonomy_Categories {
 	}
 
 	public static function dropdown_list( $selected = 0 ) {
-		$id = "opalestate_category" . rand();
+
+		$id = 'property_category' . rand();
 
 		$args = [
-			'show_option_none' => esc_html__( 'Select category', 'opalestate-pro' ),
+			'show_option_none' => esc_html__( 'Select Category', 'opalestate-pro' ),
 			'id'               => $id,
 			'class'            => 'form-control',
 			'show_count'       => 0,
 			'hierarchical'     => '',
-			'name'             => 'label',
-			'value_field'      => 'slug',
+			'name'             => 'types',
 			'selected'         => $selected,
-			'taxonomy'         => 'opalestate_category',
+			'value_field'      => 'slug',
+			'taxonomy'         => 'property_category',
+			'echo'             => 0,
 		];
 
-		return wp_dropdown_categories( $args );
+		$label = '<label class="opalestate-label opalestate-label--category" for="' . esc_attr( $id ) . '">' . esc_html__( 'Category', 'opalestate-pro' ) . '</label>';
+
+		echo $label . wp_dropdown_categories( $args );
 	}
 
+	public static function get_multi_check_list( $scategory ) {
+		$list = self::get_list();
+
+		echo opalestate_terms_multi_check( $list, $scategory );
+	}
 }
 
 Opalestate_Taxonomy_Categories::init();

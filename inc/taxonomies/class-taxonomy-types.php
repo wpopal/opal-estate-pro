@@ -105,7 +105,7 @@ class Opalestate_Taxonomy_Type {
 
 	public static function dropdown_list( $selected = 0 ) {
 
-		$id = "opalestate_types" . rand();
+		$id = 'opalestate_types' . rand();
 
 		$args = [
 			'show_option_none' => esc_html__( 'Select Type', 'opalestate-pro' ),

@@ -139,19 +139,20 @@ function is_single_agency() {
  */
 function opalestate_search_properties_form_styles() {
 	return apply_filters( 'opalestate_search_properties_form_styles', [
-		'search-form-h'    => esc_html__( 'Advanced V1 Form', 'opalestate-pro' ),
-		'advanced-v2'      => esc_html__( 'Advanced V2 Form', 'opalestate-pro' ),
-		'advanced-v3'      => esc_html__( 'Advanced V3 Form', 'opalestate-pro' ),
-		'advanced-v4'      => esc_html__( 'Advanced V4 Form', 'opalestate-pro' ),
-		'advanced-v5'      => esc_html__( 'Advanced V5 Form', 'opalestate-pro' ),
-		'advanced-v6'      => esc_html__( 'Advanced V6 Form', 'opalestate-pro' ),
-		'search-form-v'    => esc_html__( 'Vertical Advanced Form', 'opalestate-pro' ),
-		'search-form-v2'   => esc_html__( 'Vertical Advanced V2 Form', 'opalestate-pro' ),
-		'search-form-v3'   => esc_html__( 'Vertical Advanced V3 Form', 'opalestate-pro' ),
-		'simple-city'      => esc_html__( 'Simple City Form', 'opalestate-pro' ),
-		'simple-keyword'   => esc_html__( 'Simple Keyword Form', 'opalestate-pro' ),
-		'collapse-city'    => esc_html__( 'Collapse City Form', 'opalestate-pro' ),
-		'collapse-keyword' => esc_html__( 'Collapse Keyword Form', 'opalestate-pro' ),
+		'search-form-h'     => esc_html__( 'Advanced V1', 'opalestate-pro' ),
+		'advanced-v2'       => esc_html__( 'Advanced V2', 'opalestate-pro' ),
+		'advanced-v3'       => esc_html__( 'Advanced V3', 'opalestate-pro' ),
+		'advanced-v4'       => esc_html__( 'Advanced V4', 'opalestate-pro' ),
+		'advanced-v5'       => esc_html__( 'Advanced V5', 'opalestate-pro' ),
+		'advanced-v6'       => esc_html__( 'Advanced V6', 'opalestate-pro' ),
+		'search-form-v'     => esc_html__( 'Vertical Advanced', 'opalestate-pro' ),
+		'search-form-v2'    => esc_html__( 'Vertical Advanced V2', 'opalestate-pro' ),
+		'search-form-v3'    => esc_html__( 'Vertical Advanced V3', 'opalestate-pro' ),
+		'simple-city'       => esc_html__( 'Simple City', 'opalestate-pro' ),
+		'simple-keyword'    => esc_html__( 'Simple Keyword', 'opalestate-pro' ),
+		'collapse-city'     => esc_html__( 'Collapse City', 'opalestate-pro' ),
+		'collapse-keyword'  => esc_html__( 'Collapse Keyword', 'opalestate-pro' ),
+		'collapse-advanced' => esc_html__( 'Collapse Advanced', 'opalestate-pro' ),
 	] );
 }
 
@@ -513,7 +514,7 @@ function opalestate_get_image_placeholder( $size = '', $url = false ) {
 }
 
 function opalestate_get_image_placeholder_src() {
-    return OPALESTATE_PLUGIN_URL . 'assets/images/placeholder.png';
+	return OPALESTATE_PLUGIN_URL . 'assets/images/placeholder.png';
 }
 
 /**
