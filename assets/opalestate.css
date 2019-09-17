@@ -2129,7 +2129,8 @@ button.opal-collapse-button {
             display: none; }
   .opalestate-search-form--collapse-advanced .searchbox-main {
     background-color: #FFF;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    padding: 15px; }
     .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field {
       display: inline-block; }
     .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--city-text,

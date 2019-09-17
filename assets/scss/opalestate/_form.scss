@@ -514,6 +514,7 @@ button.opal-collapse-button{
 	.searchbox-main {
 		background-color: $white;
 		margin-bottom: 20px;
+		padding: $grid-gutter-width/2;
 		.searchbox-field {
 			display: inline-block;
 		}
