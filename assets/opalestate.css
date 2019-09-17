@@ -2107,6 +2107,68 @@ button.opal-collapse-button {
 .select2-container .select2-dropdown {
   border-color: #ebebeb; }
 
+.opalestate-search-form--collapse-advanced {
+  background-color: transparent !important; }
+  .opalestate-search-form--collapse-advanced .searchbox-top {
+    text-align: center;
+    border: 0; }
+    .opalestate-search-form--collapse-advanced .searchbox-top .list-inline {
+      justify-content: center; }
+      .opalestate-search-form--collapse-advanced .searchbox-top .list-inline .status-item {
+        padding: 10px 15px;
+        background-color: rgba(118, 124, 145, 0.4);
+        border: 1px solid #79869d;
+        color: #FFF;
+        font-weight: 600;
+        margin-right: 10px; }
+        .opalestate-search-form--collapse-advanced .searchbox-top .list-inline .status-item:hover, .opalestate-search-form--collapse-advanced .searchbox-top .list-inline .status-item.active {
+          background-color: #FFF;
+          border-color: #FFF;
+          color: #2f73e9; }
+          .opalestate-search-form--collapse-advanced .searchbox-top .list-inline .status-item:hover:after, .opalestate-search-form--collapse-advanced .searchbox-top .list-inline .status-item.active:after {
+            display: none; }
+  .opalestate-search-form--collapse-advanced .searchbox-main {
+    background-color: #FFF;
+    margin-bottom: 20px; }
+    .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field {
+      display: inline-block; }
+    .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--city-text,
+    .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--types,
+    .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--categories {
+      width: 24%; }
+    .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--collapse {
+      width: 6%; }
+    .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--submit {
+      padding-left: 10px;
+      width: 18%; }
+    @media (max-width: 767px) {
+      .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--types,
+      .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--categories,
+      .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--collapse,
+      .opalestate-search-form--collapse-advanced .searchbox-main .searchbox-field--submit {
+        width: 100%;
+        padding: 0 0 30px; } }
+  .opalestate-search-form--collapse-advanced > .opal-collapse-container {
+    background: #FFF;
+    padding: 30px;
+    position: absolute;
+    z-index: 9; }
+    .opalestate-search-form--collapse-advanced > .opal-collapse-container::before {
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      content: "";
+      z-index: 2;
+      transform: translateX(-50%);
+      right: 22%;
+      top: -10px;
+      border-bottom: 12px solid white;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent; }
+    @media (max-width: 767px) {
+      .opalestate-search-form--collapse-advanced > .opal-collapse-container::before {
+        display: none; } }
+
 .property-options {
   position: absolute;
   bottom: 10px;

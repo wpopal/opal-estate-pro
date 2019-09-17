@@ -485,5 +485,85 @@ button.opal-collapse-button{
 	}
 }
 
+.opalestate-search-form--collapse-advanced {
+	background-color: transparent !important;
+	.searchbox-top {
+		text-align: center;
+		border:0;
+		.list-inline {
+			justify-content: center;
+			.status-item {
+				padding: 10px 15px;
+				background-color: rgba(118,124,145,0.4);
+				border: 1px solid #79869d;
+				color:$white;
+				font-weight: 600;
+				margin-right: 10px;
+				&:hover,
+				&.active {
+					background-color: $white;
+					border-color:$white;
+					color: $primary;
+					&:after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	.searchbox-main {
+		background-color: $white;
+		margin-bottom: 20px;
+		.searchbox-field {
+			display: inline-block;
+		}
+		.searchbox-field--city-text,
+		.searchbox-field--types,
+		.searchbox-field--categories {
+			width: 24%;
+		}
+		.searchbox-field--collapse {
+			width: 6%;
+		}
+		.searchbox-field--submit {
+			padding-left:10px;
+			width: 18%;
+		}
+		@media(max-width:767px) {
+			.searchbox-field--types,
+			.searchbox-field--categories,
+			.searchbox-field--collapse,
+			.searchbox-field--submit{
+				width: 100%;
+				padding:0 0 30px;
+			}
+		}
+	}
+	> .opal-collapse-container {
+		background: $white;
+		padding: $grid-gutter-width;
+		position: absolute;
+		z-index: 9;
+		&::before {
+			position: absolute;
+			width: 0px;
+			height: 0px;
+			content: "";
+			z-index: 2;
+			transform: translateX(-50%);
+			right: 22%;
+			top: -10px;
+			border-bottom: 12px solid rgb(255, 255, 255);
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+		}
+		@media(max-width:767px) {
+			&::before {
+				display: none;
+			}
+		}
+	}
+}
+
 
 
