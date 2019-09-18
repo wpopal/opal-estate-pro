@@ -3252,7 +3252,7 @@ p.stars.selected a:not(.active)::before {
     display: none;
     position: absolute;
     z-index: 999;
-    min-width: 450px;
+    min-width: 300px;
     top: 40px;
     margin: 0 0 0 -194px;
     padding: 30px;
@@ -3296,11 +3296,7 @@ p.stars.selected a:not(.active)::before {
     top: 10px;
     right: 15px;
     color: #2f73e9;
-    cursor: hand;
     cursor: pointer; }
-    .rtl .opalestate-popup .popup-close {
-      left: 15px;
-      right: auto; }
 
 .pagination li {
   display: block;
