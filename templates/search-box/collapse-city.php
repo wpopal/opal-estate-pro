@@ -48,7 +48,7 @@ $form_classes = [
 
         <div class="col-lg-<?php echo esc_attr( $grid[2] ); ?> col-md-<?php echo esc_attr( $grid[2] ); ?> col-sm-<?php echo esc_attr( $grid[2] ); ?> col-xs-12">
             <button type="button" class="opal-collapse-button opalestate-collapse-btn btn btn-primary" data-collapse="#collapse-city-<?php echo esc_attr( $unique_id ); ?>">
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
+	            <?php echo apply_filters( 'opalestate_search_form_collapse_button', '<i class="fa fa-caret-down" aria-hidden="true"></i>' ); ?>
             </button>
         </div>
 
