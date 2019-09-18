@@ -181,7 +181,9 @@ function opalestate_management_user_menu_tabs() {
 
 	global $post;
 
-	$uri = opalestate_get_user_management_page_uri(); 
+	$uri = opalestate_get_user_management_page_uri();
+
+	$current_tab = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
 
 	foreach ( $menu as $key => $item ) {
 		if( preg_match("#http#", $item['link']) ){
@@ -189,8 +191,8 @@ function opalestate_management_user_menu_tabs() {
 		} else {
 			$link = $uri . '?tab=' . $item['link']; 
 		}
-		
-		$output .= '<li class="' . ( is_object( $post ) && $post->ID == $item['id'] ? 'active' : '' ) . '"><a href="' . $link . '"><i class="' . $item['icon'] . '"></i> ' . $item['title'] . '</a></li>';
+
+		$output .= '<li class="account-links-item' . ( $current_tab == $item['link'] ? ' active' : '' ) . '"><a href="' . $link . '"><i class="' . $item['icon'] . '"></i> ' . $item['title'] . '</a></li>';
 	}
 
 	$output .= '<li><a href="' . wp_logout_url( home_url( '/' ) ) . '"> <i class="fa fa-unlock"></i> ' . esc_html__( 'Log out', 'opalestate-pro' ) . '</a></li>';
