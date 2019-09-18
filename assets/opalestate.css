@@ -3873,6 +3873,11 @@ header#masthead {
         color: #fff; }
         .opalestate-user-management .account-links a:hover i, .opalestate-user-management .account-links a:focus i {
           color: #00b9eb; }
+    .opalestate-user-management .account-links li.active a {
+      background-color: #0073aa;
+      color: #fff; }
+      .opalestate-user-management .account-links li.active a i {
+        color: #00b9eb; }
   .opalestate-user-management .site-main {
     padding-top: 15px; }
 
