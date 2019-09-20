@@ -3,11 +3,11 @@
  * Plugin Name: Opal Estate Pro
  * Plugin URI: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
  * Description: Opal Real Estate Plugin is an ideal solution and brilliant choice for you to set up a professional estate website.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: WPOPAL
  * Author URI: http://www.wpopal.com
  * Requires at least: 4.6
- * Tested up to: 5.1.1
+ * Tested up to: 5.2.3
  * Text Domain: opalestate-pro
  * Domain Path: languages/
  *
@@ -140,22 +140,6 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 			return self::$instance;
 		}
 
-		public static function load_google_map_api( $key ) {
-			if ( opalestate_options( 'google_map_api_keys' ) ) {
-				$key = '//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;key=' . opalestate_options( 'google_map_api_keys' );
-			}
-
-			return $key;
-		}
-
-		public function init_cli() {
-			$this->includes(
-				[
-					'cli/export.php',
-				]
-			);
-		}
-
 		/**
 		 * Throw error on object clone
 		 *
@@ -167,7 +151,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'opalestate-pro' ), '1.0.1' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'opalestate-pro' ), '1.0.4' );
 		}
 
 		/**
@@ -176,7 +160,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 		public function setup_constants() {
 			// Plugin version
 			if ( ! defined( 'OPALESTATE_VERSION' ) ) {
-				define( 'OPALESTATE_VERSION', '1.0.3' );
+				define( 'OPALESTATE_VERSION', '1.0.4' );
 			}
 
 			// Plugin Folder Path
@@ -213,6 +197,21 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 			define( 'OPALESTATE_AGENCY_PREFIX', 'opalestate_ofe_' );
 		}
 
+		public static function load_google_map_api( $key ) {
+			if ( opalestate_options( 'google_map_api_keys' ) ) {
+				$key = '//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&amp;key=' . opalestate_options( 'google_map_api_keys' );
+			}
+
+			return $key;
+		}
+
+		public function init_cli() {
+			$this->includes(
+				[
+					'cli/export.php',
+				]
+			);
+		}
 
 		public function setup() {
 			global $opalestate_options;
