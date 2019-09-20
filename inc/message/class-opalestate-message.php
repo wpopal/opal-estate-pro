@@ -99,13 +99,13 @@ class OpalEstate_User_Message {
 
 
 		$post['property_link'] = (int) $post['post_id'] ? get_permalink( $post['post_id'] ) : get_home_url();
-		$post['receive_name']  = $member['name'];
+		$post['receive_name']  = isset( $member['name'] ) ? $member['name'] : '';
 		$subject               = html_entity_decode( esc_html__( 'You got a message', 'opalestate-pro' ) );
 		$post['receiver_name'] = $member['receiver_name'];
 
 		$output = [
 			'subject'        => $subject,
-			'name'           => $member['name'],
+			'name'           => isset( $member['name'] ) ? $member['name'] : '',
 			'receiver_email' => $member['receiver_email'],
 			'receiver_id'    => $member['receiver_id'],
 			'sender_id'      => get_current_user_id(),
@@ -241,20 +241,16 @@ class OpalEstate_User_Message {
 	}
 
 	/**
-	 *
+	 * Process send email.
 	 */
 	public function process_send_email() {
-
 		do_action( 'opalestate_process_send_email_before' );
-
 		if ( isset( $_POST['type'] ) && $_POST['type'] ) {
-
 			$content = [];
 
 			switch ( trim( $_POST['type'] ) ) {
 				case 'send_equiry':
 					if ( wp_verify_nonce( $_POST['message_action'], 'send-enquiry-form' ) ) {
-
 						$member  = $this->get_member_email_data( (int) $_POST['post_id'] );
 						$content = $this->send_equiry( $_POST, $member );
 					}
@@ -269,8 +265,6 @@ class OpalEstate_User_Message {
 			}
 
 			if ( $content ) {
-
-
 				// only save in db for user only
 				if ( $content['receiver_id'] > 0 && $this->is_log ) {
 					$this->insert( $content );

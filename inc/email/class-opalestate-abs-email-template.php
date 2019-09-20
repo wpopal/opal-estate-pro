@@ -22,8 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @version 1.0
  */
 class OpalEstate_Abstract_Email_Template {
- 	
- 	public $args = array();
+
+	public $args = [];
 
 	/**
 	 * Get the unique email notification key.
@@ -34,7 +34,7 @@ class OpalEstate_Abstract_Email_Template {
 		return 'opalestate-notification';
 	}
 
- 	/**
+	/**
 	 * Get the friendly name for this email notification.
 	 *
 	 * @return string
@@ -53,8 +53,8 @@ class OpalEstate_Abstract_Email_Template {
 		return esc_html__( 'Send notices to the site administrator before a job listing expires.', 'opalestate-pro' );
 	}
 
-	public function to_email () {
-		
+	public function to_email() {
+
 	}
 
 	public function get_content_template() {
@@ -62,64 +62,63 @@ class OpalEstate_Abstract_Email_Template {
 	}
 
 
-	public function set_args ( $args ) {
+	public function set_args( $args ) {
 		return $this->args = $args;
 	}
-	
-	public function replace_tags ( $template ) {
-    	
-    	$args = $this->args; 
-    	$default  = array(
-    		'receiver_name'	=> '',
-    		'name'			=> '',
-    		'receiver_email'			=> '',
-    		'property_link' => '',
-    		'message'		=> '',
-    		'site_name'		=> bloginfo(),
-    		'site_link'		=> get_home_url(),
-    		'current_time'	=> date("F j, Y, g:i a"),
-    		'phone'			=> '' 
-    	);
 
-    	$args   = array_merge( $default, $args );
+	public function replace_tags( $template ) {
+		$args    = $this->args;
+		$default = [
+			'receiver_name'  => '',
+			'name'           => '',
+			'receiver_email' => '',
+			'property_link'  => '',
+			'message'        => '',
+			'site_name'      => get_bloginfo(),
+			'site_link'      => get_home_url(),
+			'current_time'   => date( "F j, Y, g:i a" ),
+			'phone'          => '',
+		];
 
-		$tags 	= array();
-		$values = array() ;	
+		$args = array_merge( $default, $args );
+
+		$tags   = [];
+		$values = [];
 
 		foreach ( $args as $key => $value ) {
-			$tags[] = "{".$key."}";
+			$tags[]   = "{" . $key . "}";
 			$values[] = $value;
-		}	
-		
+		}
+
 		$message = str_replace( $tags, $values, $template );
-		
+
 		return $message;
-    }
-
-    public function get_subject () {
-
-    }
-
-    public function from_email() {
-    	return opalestate_get_option( 'from_email' ,  get_bloginfo( 'admin_email' ) );
-    }
-
-    public function from_name() {
-    	return opalestate_get_option('from_name',  get_bloginfo( 'name' ) );
-    }
-
-    public function get_cc() {
-
-    }
-
-
-	public function get_body(){
-
-    	$template = $this->get_content_template(); 
-		return $this->replace_tags( $template ); 
 	}
 
-	public function get_plain_text_body () {
+	public function get_subject() {
+
+	}
+
+	public function from_email() {
+		return opalestate_get_option( 'from_email', get_bloginfo( 'admin_email' ) );
+	}
+
+	public function from_name() {
+		return opalestate_get_option( 'from_name', get_bloginfo( 'name' ) );
+	}
+
+	public function get_cc() {
+
+	}
+
+
+	public function get_body() {
+		$template = $this->get_content_template();
+
+		return $this->replace_tags( $template );
+	}
+
+	public function get_plain_text_body() {
 
 	}
 }
