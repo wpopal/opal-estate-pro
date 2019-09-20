@@ -149,7 +149,7 @@ class Opalestate_Property {
 			];
 
 			foreach ( $keys as $key ) {
-				$this->property_settings[ $key ] = opalestate_get_option( 'enable_single_' . $key, 'on' );
+				$this->property_settings[ $key ] = opalestate_get_option( 'enable_single_' . $key );
 			}
 		}
 
