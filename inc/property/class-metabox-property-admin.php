@@ -293,7 +293,6 @@ class Opalestate_Property_MetaBox {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
 
 		$fields = [
-
 			[
 				'name'        => esc_html__( 'Built year', 'opalestate-pro' ),
 				'id'          => $prefix . 'builtyear',
@@ -302,9 +301,7 @@ class Opalestate_Property_MetaBox {
 
 				'before_row' => '<div class="row-group-features group-has-three group-property-info clearfix"><h3>' . ( is_admin() ? "" : esc_html__( 'Property Information', 'opalestate-pro' ) ) . '</h3>',
 				// callback
-
 			],
-
 			[
 				'name'        => esc_html__( 'Parking', 'opalestate-pro' ),
 				'id'          => $prefix . 'parking',

@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 function opalestate_submssion_list_page( $args = [] ) {
-	return opalestate_get_user_management_page_uri( array('tab' => 'submission_list') );
+	return opalestate_get_user_management_page_uri( [ 'tab' => 'submission_list' ] );
 }
 
 function opalestate_get_user_management_page_uri( $args = [] ) {
@@ -24,33 +24,34 @@ function opalestate_get_user_management_page_uri( $args = [] ) {
 
 function opalestate_get_current_url( $args = [] ) {
 	global $wp;
-	if(  isset($_GET['tab']) && $_GET['tab'] ) {
-		$args['tab'] = $_GET['tab'];  
-	} 
+	if ( isset( $_GET['tab'] ) && $_GET['tab'] ) {
+		$args['tab'] = $_GET['tab'];
+	}
 	$current_url = home_url( add_query_arg( $args, $wp->request ) );
+
 	return $current_url;
 }
 
 
 function opalestate_get_user_tab_uri( $tab ) {
-	$args['tab'] =  $tab ;
+	$args['tab'] = $tab;
+
 	return opalestate_get_current_url( $args );
 }
 
 
-
 function opalestate_management_show_content_page_tab() {
-	
-	$tab = isset($_GET['tab']) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ): 'dashboard'; 
 
-	$fnc     = 'opalestate_user_content_'.$tab.'_page';
+	$tab = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
+
+	$fnc = 'opalestate_user_content_' . $tab . '_page';
 
 	$content = apply_filters( $fnc, '' );
 
-	if( $content ) {
+	if ( $content ) {
 		echo $content;
 	} else {
-		if( function_exists( $fnc ) ) { 
+		if ( function_exists( $fnc ) ) {
 			$fnc();
 		} else {
 			opalestate_user_content_dashboard_page();
@@ -75,45 +76,47 @@ function opalestate_user_savedsearch_page( $args = [] ) {
 }
 
 
-function opalestate_my_account_page( $id = false, $args = array() ) {
-	
+function opalestate_my_account_page( $id = false, $args = [] ) {
+
 	$page = get_permalink( opalestate_get_option( 'user_myaccount_page', '/' ) );
 	if ( $id ) {
 		$edit_page_id = opalestate_get_option( 'user_myaccount_page' );
 		$page         = $edit_page_id ? get_permalink( $edit_page_id ) : $page;
 		$page         = add_query_arg( 'id', $id, $page );
 	}
-	if( $args ){
-		foreach( $args as $key => $value ) {
-			$page         = add_query_arg( $key, $value, $page );
+	if ( $args ) {
+		foreach ( $args as $key => $value ) {
+			$page = add_query_arg( $key, $value, $page );
 		}
 	}
+
 	return $page;
 }
 
-function opalestate_submssion_page( $id = false, $args = array() ) {
+function opalestate_submssion_page( $id = false, $args = [] ) {
 
-	
+
 	$page = get_permalink( opalestate_get_option( 'submission_page', '/' ) );
 	if ( $id ) {
 		$edit_page_id = opalestate_get_option( 'submission_edit_page' );
 		$page         = $edit_page_id ? get_permalink( $edit_page_id ) : $page;
 		$page         = add_query_arg( 'id', $id, $page );
 	}
-	if( $args ){
-		foreach( $args as $key => $value ) {
-			$page         = add_query_arg( $key, $value, $page );
+	if ( $args ) {
+		foreach ( $args as $key => $value ) {
+			$page = add_query_arg( $key, $value, $page );
 		}
 	}
+
 	return $page;
 }
 
-function opalestate_management_user_menu() { 
+function opalestate_management_user_menu() {
 }
 
 
 function opalestate_management_user_menu_tabs() {
-	
+
 	global $opalestate_options;
 	$menu = [];
 
@@ -133,29 +136,22 @@ function opalestate_management_user_menu_tabs() {
 
 	$menu['favorite'] = [
 		'icon'  => 'fa fa-heart',
-		'link'  =>  'favorite',
+		'link'  => 'favorite',
 		'title' => esc_html__( 'Favorite', 'opalestate-pro' ),
 		'id'    => isset( $opalestate_options['favorite_page'] ) ? $opalestate_options['favorite_page'] : 0,
 	];
 
 	$menu['reviews'] = [
 		'icon'  => 'fa fa-star',
-		'link'  =>  'reviews',
+		'link'  => 'reviews',
 		'title' => esc_html__( 'Reviews', 'opalestate-pro' ),
 		'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
 	];
 
-	$menu['reviews'] = [
-		'icon'  => 'fa fa-star',
-		'link'  =>  'reviews',
-		'title' => esc_html__( 'Reviews', 'opalestate-pro' ),
-		'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
-	];
-
-	if( opalestate_get_option('message_log') ) {
+	if ( opalestate_get_option( 'message_log' ) ) {
 		$menu['messages'] = [
 			'icon'  => 'fa fa-envelope',
-			'link'  =>  'messages',
+			'link'  => 'messages',
 			'title' => esc_html__( 'Messages', 'opalestate-pro' ),
 			'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
 		];
@@ -186,10 +182,10 @@ function opalestate_management_user_menu_tabs() {
 	$current_tab = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
 
 	foreach ( $menu as $key => $item ) {
-		if( preg_match("#http#", $item['link']) ){
-			$link = $item['link']; 
+		if ( preg_match( "#http#", $item['link'] ) ) {
+			$link = $item['link'];
 		} else {
-			$link = $uri . '?tab=' . $item['link']; 
+			$link = $uri . '?tab=' . $item['link'];
 		}
 
 		$output .= '<li class="account-links-item' . ( $current_tab == $item['link'] ? ' active' : '' ) . '"><a href="' . $link . '"><i class="' . $item['icon'] . '"></i> ' . $item['title'] . '</a></li>';
@@ -202,7 +198,7 @@ function opalestate_management_user_menu_tabs() {
 	echo $output;
 }
 
-function opalestate_user_content_dashboard_page(){
+function opalestate_user_content_dashboard_page() {
 	echo opalestate_load_template_path( 'user/dashboard' );
 }
 
@@ -259,5 +255,5 @@ if ( ! function_exists( 'opalestate_create_user' ) ) {
 		return $user_id;
 	}
 }
- 
+
 ?>

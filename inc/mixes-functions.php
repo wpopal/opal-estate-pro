@@ -1133,3 +1133,17 @@ function opalestate_add_hidden_multilingual() {
 }
 
 add_action( 'opalestate_after_search_properties_form', 'opalestate_add_hidden_multilingual' );
+
+/**
+ * Gets measurement units.
+ *
+ * @return array
+ */
+function opalestate_get_measurement_units() {
+	return apply_filters( 'opalestate_measurement_unit', [
+		'sqft' => esc_html__( 'sq ft', 'opalestate-pro' ),
+		'sqm'  => esc_html__( 'sq m', 'opalestate-pro' ),
+		'mq'   => esc_html__( 'mq', 'opalestate-pro' ),
+		'm2'   => esc_html__( 'm2', 'opalestate-pro' ),
+	] );
+}

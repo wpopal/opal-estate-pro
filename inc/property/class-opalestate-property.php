@@ -168,11 +168,9 @@ class Opalestate_Property {
 			$fields = Opalestate_Property_MetaBox::metaboxes_info_fields();
 
 			foreach ( $fields as $a => $field ) {
-
-				$id = str_replace( OPALESTATE_PROPERTY_PREFIX, "", $field['id'] );
+				$id = str_replace( OPALESTATE_PROPERTY_PREFIX, '', $field['id'] );
 
 				if ( $field['type'] == 'multicheck' || $field['type'] == 'select' ) {
-
 					$opt_values = (array) get_post_meta( $this->post_id, $field['id'] );
 					if ( ! empty( $opt_values ) && isset( $field['options'] ) ) {
 						$tmp = [];
@@ -194,7 +192,7 @@ class Opalestate_Property {
 			}
 		}
 
-		return $this->metabox_info;
+		return apply_filters( 'opalestate_property_metabox_info', $this->metabox_info );
 	}
 
 	public function get_id() {
@@ -240,6 +238,7 @@ class Opalestate_Property {
 			$prop->icon = OPALESTATE_PLUGIN_URL . '/assets/map/market_icon.png';
 		}
 
+		$prop->icon = apply_filters( 'opalestate_prop_icon', $prop->icon );
 
 		$prop->featured = $this->featured;
 
@@ -281,7 +280,6 @@ class Opalestate_Property {
 		if ( ! empty( $meta ) ) {
 			$fields = $this->get_meta_fullinfo();
 			foreach ( $meta as $key => $value ) {
-
 				if ( isset( $fields[ $value ] ) ) {
 					$output[ $value ] = $fields[ $value ];
 				}
@@ -446,7 +444,7 @@ class Opalestate_Property {
 				break;
 		}
 
-		$avatar =  $data['avatar'] ?  $data['avatar'] : opalestate_get_image_avatar_placehold();
+		$avatar = $data['avatar'] ? $data['avatar'] : opalestate_get_image_avatar_placehold();
 		$avatar = '<img class="avatar" src="' . esc_url( $avatar ) . '" alt="' . $data['name'] . '" />';
 
 		return '<a  href="' . $data['link'] . '" aria-label="' . $data['name'] . '" class="author-link"><span aria-label="' . $data['name'] . '" class="author-avatar hint--top">' . $avatar . '</span><span class="author-name">' . $data['name'] . '</span></a>';

@@ -90,7 +90,7 @@ class Opalestate_Install {
 			$options['test_mode']           = 1;
 			$options['currency']            = 'USD';
 			$options['currency_position']   = 'before';
-			$options['measurement_unit']    = 'sq ft';
+			$options['measurement_unit']    = 'sqft';
 			$options['google_map_api_keys'] = 'AIzaSyCfMVNIa7khIqYHCw6VBn8ShUWWm4tjbG8';
 			$options['admin_approve']       = 'on';
 			$options['require_input_price'] = 'on';
@@ -131,7 +131,6 @@ class Opalestate_Install {
 			$options['enable_submission_tab_facilities']  = 'on';
 			$options['enable_submission_tab_apartments']  = 'on';
 			$options['enable_submission_tab_floor_plans'] = 'on';
-
 		}
 
 		// Checks if the Success Page option exists AND that the page exists
@@ -140,7 +139,7 @@ class Opalestate_Install {
 			$profile_page = wp_insert_post(
 				[
 					'post_title'     => esc_html__( 'User Dashboard Page', 'opalestate-pro' ),
-					'post_content'   => esc_html__( '', 'opalestate-pro' ),
+					'post_content'   => '',
 					'post_status'    => 'publish',
 					'post_author'    => 1,
 					'post_type'      => 'page',

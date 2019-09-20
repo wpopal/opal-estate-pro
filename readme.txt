@@ -12,7 +12,8 @@ Opal Real Estate Plugin is an ideal solution and brilliant choice for you to set
 
 == Description ==
 
-Whether you want to create a website for your real estate business and you are meeting difficulties to pick a suitable real estate plugin to install in your property site. Opal real estate plugin Pro will be your best choice to help you control your site in a perfect way. 
+Whether you want to create a website for your real estate business and you are meeting difficulties to pick a suitable real estate plugin to install in your property site. Opal Estate Pro plugin will
+ be your best choice to help you control your site in a perfect way.
 
 The plugin will not make you disappointed with ease of use, friendly & flexible with users, high advanced functions and a range of powerful feature updated insight. They are created for selling, buying or renting an apartment, villa, house, flat,  etc. Scroll down to see how awesome it is!
 

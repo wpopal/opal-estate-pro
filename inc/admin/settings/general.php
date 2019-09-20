@@ -63,7 +63,8 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 				],
 				[
 					'name'    => esc_html__( 'Enable Message Database', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'Allow User send message Contact/Equire via email and saved into database to exchange theirs message direct in User Message Management', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Allow User send message Contact/Equire via email and saved into database to exchange theirs message direct in User Message Management',
+						'opalestate-pro' ),
 					'id'      => 'message_log',
 					'type'    => 'switch',
 					'options' => [
@@ -72,7 +73,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					],
 
 				],
-			 
+
 				[
 					'name' => esc_html__( 'Maximun Upload Image Size', 'opalestate-pro' ),
 					'desc' => esc_html__( 'Set maximun volumn size having < x MB', 'opalestate-pro' ),
@@ -95,16 +96,16 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 
 					'id'      => 'upload_other_max_size',
 					'type'    => 'text',
-					'default' => '0.8'
+					'default' => '0.8',
 				],
 				[
 					'name' => esc_html__( 'Maximun Upload Other Files', 'opalestate-pro' ),
 					'desc' => esc_html__( 'Set maximun volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
 
-					'id'      => 'upload_other_max_files',
-					'type'    => 'text',
-					'default' => '10',
-					'after_row' => '<hr>'
+					'id'        => 'upload_other_max_files',
+					'type'      => 'text',
+					'default'   => '10',
+					'after_row' => '<hr>',
 				],
 				[
 					'name' => esc_html__( 'Agent Image Size', 'opalestate-pro' ),
@@ -147,7 +148,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'type'      => 'select',
 					'default'   => 'full',
 					'options'   => opalestate_get_featured_image_sizes(),
-					'after_row' => '<em>' . esc_html__( 'To generate images with new image sizes, you can use this <a href="https://goo.gl/FuXFex" target="_blank">Force Regenerate Thumbnails</a>',
+					'after_row' => '<em>' . __( 'To generate images with new image sizes, you can use this <a href="https://goo.gl/FuXFex" target="_blank">Force Regenerate Thumbnails</a>',
 							'opalestate-pro' ) . '</em>',
 				],
 				[
@@ -232,16 +233,11 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 				],
 				[
 					'name'    => esc_html__( 'Measurement Unit', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'Measurement Unit', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Select a measurement unit.', 'opalestate-pro' ),
 					'id'      => 'measurement_unit',
 					'type'    => 'select',
-					'options' => apply_filters( 'opalestate_measurement_unit', [
-						'sq ft' => esc_html__( 'sq ft', 'opalestate-pro' ),
-						'sq m'  => esc_html__( 'sq m', 'opalestate-pro' ),
-						'mq'    => esc_html__( 'mq', 'opalestate-pro' ),
-						'm2'    => esc_html__( 'm2', 'opalestate-pro' ),
-					] ),
-					'default' => 'sq ft',
+					'options' => opalestate_get_measurement_units(),
+					'default' => 'sqft',
 				],
 				[
 					'name'    => esc_html__( 'Google Map API', 'opalestate-pro' ),
