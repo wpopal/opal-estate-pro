@@ -68,6 +68,29 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 * Revolution Sliders
 * Multilingual Support
 
+-=-=-=-=-=-=-=-=-=- Shortcodes -=-=-=-=-=-=-=-=-=-
+
+	- [opalestate_search_properties]        => Show Search Properties horizontal form
+	- [opalestate_search_properties_v]      => Show Search Properties vertical form
+	- [opalestate_search_properties_result] => Show Search Results
+	- [opalestate_search_map_properties]    => Show Search Map Properties
+	- [opalestate_ajax_map_search]          => Ajax Search Map Properties
+	- [opalestate_ajax_map_quick_search]    => Ajax Search Map Properties
+	- [opalestate_register_form]            => Register User Form
+	- [opalestate_login_form]               => Login Form
+
+= Elementor Widgets =
+
+* Search: Property Form
+* Search: Form Builder
+* Search: Property Results
+* Search: Map Preview
+* Property Collection
+* Agencies Collection
+* Agents Collection
+* Category List
+* City List
+* Account Button
 
 = WHAT IS NEW IN PRO VERSION =
 
