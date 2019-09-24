@@ -107,7 +107,6 @@ class OpalEstate_Nocaptcha_Recaptcha {
 					'off' => esc_html__( 'No', 'opalestate-pro' ),
 					'on'  => esc_html__( 'Yes', 'opalestate-pro' ),
 				],
-				'default' => 'on',
 			],
 
 			[
