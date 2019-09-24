@@ -20,7 +20,7 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 = Which themes use this plugin? =
 
  1. *[ Housey - Real Estate WordPress Theme](https://bit.ly/2kHewkG "Housey - Real Estate WordPress Theme")*
- 2. *[ Latehome Free - Real Estate Free WordPress Theme](https://bit.ly/2kcNEsr "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bit.ly/2kxyzSH "Latehome Free
+ 2. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bitlylink.com/1SM4t "Latehome Free
  download").*
 
  * Please keep contact us at help@wpopal.com to send us your website, we will publish it our showcase
