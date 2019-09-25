@@ -3855,7 +3855,8 @@ header#masthead {
   .card-item .opalestate-admin-box {
     box-shadow: none; }
   .card-item.dash-widget {
-    padding: 40px; }
+    padding: 40px;
+    position: relative; }
     .card-item.dash-widget h5 {
       text-align: left;
       color: #FFF;
@@ -3863,11 +3864,17 @@ header#masthead {
       margin: 0; }
     .card-item.dash-widget .heading {
       border: 0;
-      color: #FFF;
       margin: 0;
-      padding: 0; }
+      padding: 0;
+      color: #FFF; }
       .card-item.dash-widget .heading span {
         color: #FFF; }
+    .card-item.dash-widget .dash-widget-icon {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      color: rgba(255, 255, 255, 0.1);
+      font-size: 75px; }
     .card-item.dash-widget.dash-published-listings {
       background-color: #2f73e9; }
     .card-item.dash-widget.dash-featured-listings {
