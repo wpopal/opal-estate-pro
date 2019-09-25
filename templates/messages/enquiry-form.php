@@ -1,6 +1,10 @@
 <?php
 global $post;
 
+if ( ! opalestate_get_option( 'enable_single_enquire_form' ) ) {
+    return;
+}
+
 $message = sprintf( __( 'Hi, I am interested in %s (Property ID: %s)', 'opalestate-pro' ), get_the_title(), get_the_ID() );
 
 $property_id = get_the_ID();
@@ -24,7 +28,7 @@ $id = 'send-enquiry-form';
                 name="contact-form"><?php echo esc_html__( 'Send message', 'opalestate-pro' ); ?></button>
     </form>
 <?php else : ?>
-    <div class="opalestate-box-content property-equire-form">
+    <div class="opalestate-box-content property-enquire-form">
         <div class="opalestate-box">
             <div class="property-equire-form-container">
                 <h5 class="contact-form-title"><?php echo $heading; ?></h5>

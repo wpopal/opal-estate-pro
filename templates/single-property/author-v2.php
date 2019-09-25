@@ -2,7 +2,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 global $post, $property;
+
+if ( ! opalestate_get_option( 'enable_single_author_box' ) ) {
+	return;
+}
 
 $type = $property->get_author_type();
 $data 		 =  get_userdata( $post->post_author ); 

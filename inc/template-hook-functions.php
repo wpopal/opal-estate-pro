@@ -36,8 +36,9 @@ function opalestate_single_property_layout_default() {
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
 
 	//  add_action( 'opalestate_single_property_sidebar', 'opalestate_property_request_viewing_button', 7 );
-	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
-
+	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
+	}
 
 	add_filter( 'opalestate_thumbnail_nav_column', function () {
 		return 6;
@@ -74,8 +75,10 @@ function opalestate_single_property_layout_v2() {
 
 
 	/// /// sidebar ////////
+	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
+	}
 
-	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v3', 10 );
 	// add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form' , 12 );
 }
@@ -109,9 +112,10 @@ function opalestate_single_property_layout_v3() {
 
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
-	///
-	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage' );
 
+	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage' );
+	}
 }
 
 /**
@@ -142,8 +146,10 @@ function opalestate_single_property_layout_v4() {
 
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
-	///
-	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
+
+	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
+	}
 }
 
 /**
@@ -169,11 +175,9 @@ function opalestate_single_property_layout_v5() {
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
 
-	//    add_action( 'opalestate_after_single_property_summary', 'opalestate_property_author', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 	add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
-
 
 	add_filter( 'opalestate_thumbnail_nav_column', function () {
 		return 10;
@@ -182,9 +186,9 @@ function opalestate_single_property_layout_v5() {
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
 
-	//  add_action( 'opalestate_single_property_sidebar', 'opalestate_property_request_viewing_button', 7 );
-
-	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
+	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
+	}
 }
 
 
@@ -203,8 +207,9 @@ function opalestate_property_request_viewing_button( $islink = false ) {
     </a>';
 }
 
-///
-add_action( 'opalestate_single_property_layout', 'opalestate_single_property_layout' );
+/**
+ * @param $layout
+ */
 function opalestate_single_property_layout( $layout ) {
 	switch ( $layout ) {
 		case 'v2':
@@ -224,7 +229,7 @@ function opalestate_single_property_layout( $layout ) {
 			break;
 	}
 }
-
+add_action( 'opalestate_single_property_layout', 'opalestate_single_property_layout' );
 
 /**
  * Forms
@@ -264,12 +269,10 @@ if ( ! function_exists( "opalestate_login_register_form_popup" ) ) {
 }
 add_action( 'wp_footer', 'opalestate_login_register_form_popup', 9 );
 
-
 /**
  * Add "Custom" template to page attirbute template section.
  */
 function opalestate_add_template_to_select( $post_templates, $wp_theme, $post, $post_type ) {
-
 	// Add custom template named template-custom.php to select dropdown
 	$post_templates['user-management.php'] = esc_html__( 'User Management', 'opalestate-pro' );
 	$post_templates['fullwidth-page.php']  = esc_html__( 'Opalestate Fullwidth', 'opalestate-pro' );
@@ -298,13 +301,12 @@ function opalestate_load_plugin_template( $template ) {
 	}
 
 	if ( $template == '' ) {
-		throw new \Exception( 'No template found' );
+		throw new Exception( 'No template found' );
 	}
 
 	return $template;
 }
 
 add_filter( 'template_include', 'opalestate_load_plugin_template' );
-
 add_action( 'opalestate_before_property_loop_item', 'opalestate_property_featured_label' );
 add_action( 'opalestate_before_property_loop_item', 'opalestate_property_label' );

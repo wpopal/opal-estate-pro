@@ -120,6 +120,9 @@ class Opalestate_Install {
 			$options['enable_single_floor_plans']      = 'on';
 			$options['enable_single_views_statistics'] = 'on';
 			$options['single_views_statistics_limit']  = 8;
+			$options['enable_single_author_box']       = 'on';
+			$options['enable_single_enquire_form']     = 'on';
+			$options['enable_single_mortgage']         = 'on';
 
 			$options['enable_property_reviews'] = 'on';
 			$options['enable_agency_reviews']   = 'on';

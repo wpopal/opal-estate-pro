@@ -146,6 +146,9 @@ class Opalestate_Property {
 				'apartments',
 				'floor_plans',
 				'views_statistics',
+				'author_box',
+				'enquire_form',
+				'mortgage',
 			];
 
 			foreach ( $keys as $key ) {

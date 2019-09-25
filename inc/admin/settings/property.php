@@ -426,6 +426,39 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
+			'name'    => esc_html__( 'Show Author box', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Show Author box in the single property page.', 'opalestate-pro' ),
+			'id'      => 'enable_single_author_box',
+			'type'    => 'switch',
+			'options' => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+		];
+
+		$fields[] = [
+			'name'    => esc_html__( 'Show Enquire form', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Show Enquire form in the single property page.', 'opalestate-pro' ),
+			'id'      => 'enable_single_enquire_form',
+			'type'    => 'switch',
+			'options' => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+		];
+
+		$fields[] = [
+			'name'    => esc_html__( 'Show Mortgage Calculator', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Show Mortgage Calculator in the single property page.', 'opalestate-pro' ),
+			'id'      => 'enable_single_mortgage',
+			'type'    => 'switch',
+			'options' => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+		];
+
+		$fields[] = [
 			'name'       => esc_html__( 'Related properties layout', 'opalestate-pro' ),
 			'desc'       => esc_html__( 'Select a layout for related properties.', 'opalestate-pro' ),
 			'id'         => 'single_related_properties_layout',

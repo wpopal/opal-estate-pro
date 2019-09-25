@@ -46,14 +46,19 @@ switch ( $type ) {
     <div class="opalestate-box">
         <div class="author-content-box">
             <div class="opal-row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="property-agent-info">
-						<?php echo wp_kses_post( $author_info ); ?>
+				<?php if ( opalestate_get_option( 'enable_single_author_box' ) ) : ?>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="property-agent-info">
+							<?php echo wp_kses_post( $author_info ); ?>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-					<?php echo opalestate_load_template_path( 'messages/enquiry-form', [ 'nowrap' => true ] ); ?>
-                </div>
+				<?php endif; ?>
+
+				<?php if ( opalestate_get_option( 'enable_single_enquire_form' ) ) : ?>
+                    <div class="col-lg-6 col-md-6">
+						<?php echo opalestate_load_template_path( 'messages/enquiry-form', [ 'nowrap' => true ] ); ?>
+                    </div>
+				<?php endif; ?>
             </div>
         </div>
     </div>
