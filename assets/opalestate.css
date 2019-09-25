@@ -3254,7 +3254,8 @@ p.stars.selected a:not(.active)::before {
     z-index: 999;
     min-width: 300px;
     top: 40px;
-    margin: 0 0 0 -194px;
+    margin: 0;
+    right: 0;
     padding: 30px;
     background-color: #FFF;
     box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.12); }
@@ -3279,18 +3280,16 @@ p.stars.selected a:not(.active)::before {
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
         transform: translateX(-50%);
-        left: 50%;
+        right: 30px;
         top: -14px; }
   .opalestate-popup.active .popup-body {
-    display: block; }
+    display: block;
+    padding-top: 30px;
+    min-width: 300px; }
   .opalestate-popup.hover-align-right:hover .popup-body {
     display: block;
-    right: 0;
     padding-top: 30px;
-    min-width: 250px; }
-    .opalestate-popup.hover-align-right:hover .popup-body .account-dashboard-content:before {
-      right: -15px;
-      left: auto; }
+    min-width: 300px; }
   .opalestate-popup .popup-close {
     position: absolute;
     top: 10px;
@@ -3693,8 +3692,15 @@ header#masthead {
 .navbar-left {
   display: flex; }
 
-.opalestate-user-greeting .popup-head {
-  float: right; }
+.opalestate-user-greeting .howdy {
+  float: right;
+  padding-left: 5px;
+  padding-top: 5px;
+  font-weight: 700; }
+
+.opalestate-user-greeting .opalestate-popup
+.popup-head {
+  float: left; }
 
 .opalestate-user-greeting .popup-head a {
   color: #FFF;
@@ -3720,9 +3726,9 @@ header#masthead {
   list-style: none; }
 
 .dashboard-navbar {
-  background-color: #FFF;
-  padding: 15px 30px;
-  border-bottom: 1px solid #ebebeb;
+  background-color: #1d2329;
+  padding: 20px 30px;
+  border-left: 1px solid #282d33;
   margin-bottom: 15px; }
   .dashboard-navbar ul {
     margin-bottom: 0; }
@@ -3763,7 +3769,7 @@ header#masthead {
   background-color: #FFF !important; }
 
 .page-template-user-management .body-inner {
-  background-color: #f1f1f1; }
+  background-color: #f8f8f8; }
 
 .page-template-user-management .opalestate-popup .popup-body {
   padding: 0 !important;
@@ -3773,15 +3779,13 @@ header#masthead {
     .page-template-user-management .opalestate-popup .popup-body .account-dashboard-content a:not(:hover) {
       color: #7e7e7e; }
   .page-template-user-management .opalestate-popup .popup-body .account-dashboard-content::before {
-    right: -15px;
-    left: auto;
     position: absolute;
     width: 0px;
     height: 0px;
     content: "";
     z-index: 2;
     transform: translateX(-50%);
-    left: 50%;
+    right: 25%;
     top: -14px;
     border-bottom: 25px solid white;
     border-left: 20px solid transparent;
@@ -3810,7 +3814,12 @@ header#masthead {
 
 .card-item {
   background-color: #FFF;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
   padding: 15px; }
   .card-item .heading {
     margin-bottom: 30px;
@@ -3839,11 +3848,11 @@ header#masthead {
   .opalestate-user-management .property-submission-form .opalestate-box {
     margin-right: 0; }
   .opalestate-user-management .user-dasboard-sidebar {
-    background-color: #23282d;
+    background-color: #1d2329;
     min-height: 900px;
     position: fixed;
     left: 0;
-    width: 250px;
+    width: 251px;
     height: 100%;
     z-index: 100;
     top: 0px; }
@@ -3860,20 +3869,18 @@ header#masthead {
       width: 100%;
       display: block;
       font-weight: 500;
-      color: #eee; }
+      color: #616a75; }
       .opalestate-user-management .account-links a i {
         margin-right: 6px;
-        color: #a0a5aa; }
+        color: #616a75; }
       .opalestate-user-management .account-links a:hover, .opalestate-user-management .account-links a:focus {
-        background-color: #0073aa;
         color: #fff; }
         .opalestate-user-management .account-links a:hover i, .opalestate-user-management .account-links a:focus i {
-          color: #00b9eb; }
+          color: #fff; }
     .opalestate-user-management .account-links li.active a {
-      background-color: #0073aa;
       color: #fff; }
       .opalestate-user-management .account-links li.active a i {
-        color: #00b9eb; }
+        color: #fff; }
   .opalestate-user-management .site-main {
     padding-top: 15px; }
 
