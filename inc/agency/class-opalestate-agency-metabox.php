@@ -260,7 +260,7 @@ class Opalestate_Agency_MetaBox extends Opalestate_User_MetaBox {
 				],
 			],
 			[
-				'name' => esc_html__( 'slogan', 'opalestate-pro' ),
+				'name' => esc_html__( 'Slogan', 'opalestate-pro' ),
 				'id'   => "{$prefix}slogan",
 				'type' => 'text',
 			],

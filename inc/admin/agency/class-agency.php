@@ -76,7 +76,7 @@ class Opalestate_Admin_Agency {
 			) ,
 			 
 			array(
-				'name' => esc_html__( 'slogan', 'opalestate-pro' ),
+				'name' => esc_html__( 'Slogan', 'opalestate-pro' ),
 				'id'   => "{$prefix}slogan",
 				'type' => 'text'
 			)
