@@ -13,15 +13,22 @@ $meta     = $property->get_meta_shortinfo();
 <article itemscope itemtype="http://schema.org/Property" <?php post_class( 'my-property-list' ); ?>>
     <div class="property-list container-cols-2">
         <header>
+            <div class="property-group-label">
+		        <?php opalestate_property_label(); ?>
+            </div>
+
+            <div class="property-group-status">
+		        <?php opalestate_property_status(); ?>
+            </div>
+
 			<?php opalestate_get_loop_thumbnail( opalestate_get_option( 'loop_image_size', 'large' ) ); ?>
+
             <div class="property-meta-bottom">
 				<?php echo do_shortcode( '[opalestate_favorite_button property_id=' . get_the_ID() . ']' ); ?>
             </div>
         </header>
         <div class="abs-col-item">
             <div class="entry-content">
-				<?php opalestate_property_status(); ?>
-
 				<?php the_title( '<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' ); ?>
 
                 <div class="property-address">
