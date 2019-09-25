@@ -3812,6 +3812,9 @@ header#masthead {
   .page-template-user-management .cmb2-wrap input, .page-template-user-management .cmb2-wrap textarea {
     min-width: 500px; } }
 
+.dash-widget {
+  background-color: #2f73e9; }
+
 .card-item {
   background-color: #FFF;
   box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -3841,6 +3844,9 @@ header#masthead {
       font-size: 16px;
       color: #23282d;
       font-weight: 500; }
+    .card-item .heading .dash-view-all {
+      float: right;
+      color: #2f73e9; }
   .card-item h5 {
     font-size: 200%;
     text-align: center; }
@@ -3895,6 +3901,19 @@ header#masthead {
       .opalestate-user-management .account-links a i {
         margin-right: 6px;
         color: #616a75; }
+      .opalestate-user-management .account-links a .count {
+        color: #FFF;
+        padding: 5px 10px;
+        font-size: 11px;
+        min-width: 20px;
+        text-align: center;
+        background-color: #2f73e9;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        margin-left: 5px; }
       .opalestate-user-management .account-links a:hover, .opalestate-user-management .account-links a:focus {
         color: #fff; }
         .opalestate-user-management .account-links a:hover i, .opalestate-user-management .account-links a:focus i {
