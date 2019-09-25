@@ -3561,6 +3561,10 @@ p.stars.selected a:not(.active)::before {
 #opalestate-map-preview .cluster img + div {
   line-height: 30px !important; }
 
+.opalestate-social-login-facebook-btn i,
+.opalestate-social-login-google-btn i {
+  color: #FFF !important; }
+
 .opalestate-note {
   font-size: 90%;
   color: #888; }
@@ -3855,7 +3859,7 @@ header#masthead {
   .card-item .opalestate-admin-box {
     box-shadow: none; }
   .card-item.dash-widget {
-    padding: 40px;
+    padding: 50px 40px;
     position: relative; }
     .card-item.dash-widget h5 {
       text-align: left;
@@ -3878,9 +3882,9 @@ header#masthead {
     .card-item.dash-widget.dash-published-listings {
       background-color: #2f73e9; }
     .card-item.dash-widget.dash-featured-listings {
-      background-color: #912dfe; }
-    .card-item.dash-widget.dash-pending-listings {
       background-color: #2f73e9; }
+    .card-item.dash-widget.dash-pending-listings {
+      background-color: #5d92ee; }
 
 .opalestate-user-management {
   min-height: 742px; }
