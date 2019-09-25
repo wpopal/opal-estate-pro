@@ -4,7 +4,7 @@ Donate link: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property
 Requires at least: 4.6
 Tested up to: 5.2.3
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -131,6 +131,12 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.0.5 - 2019-09-25 =
+* Fixes - Dashboard CSS.
+
+= 1.0.4 - 2019-09-20 =
+* Fixes: Property setings.
+* Added: Search form: Collapse advanced.
 
 = 1.0.2 - 2019-09-11 =
 * Fixes - Remove CLI.

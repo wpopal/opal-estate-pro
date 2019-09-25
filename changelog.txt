@@ -1,6 +1,15 @@
+= 1.0.5 - 2019-09-25 =
+* Fixes - Dashboard CSS.
+
 = 1.0.4 - 2019-09-20 =
 * Fixes: Property setings.
 * Added: Search form: Collapse advanced.
 
-= 1.0.0 - 2019-09-03 =
-* Release.
+= 1.0.2 - 2019-09-11 =
+* Fixes - Remove CLI.
+
+= 1.0.1 - 2019-09-10 =
+* Fixes - Minor bugs.
+
+= 1.0.0 - 2019-09-06 =
+* Release
