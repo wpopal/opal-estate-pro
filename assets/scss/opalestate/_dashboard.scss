@@ -245,13 +245,13 @@
 		border-bottom:1px solid #eee;
 		padding-bottom: $grid-gutter-width/2;
 		i {
-			background:rgba(0, 0, 0, .18);
-			padding:15px;
-			border-radius:50%;
-			min-width: 45px;
+			background:$primary;
+			color: $white;
+			padding:10px;
+			min-width: 32px;
 			text-align: center;
 			margin-right: 10px;
-			color:$white;
+			@include border-radius(50%);
 		}
 		span {
 			font-size: 16px;
@@ -285,6 +285,14 @@
 		height:100%;
 		z-index:100;
 		top:0px;
+		.navbar-brand {
+			text-align: center;
+			margin: 50px 0 60px 0;
+			.custom-logo-link {
+				padding: $grid-gutter-width*2 $grid-gutter-width;
+				border-bottom:1px solid rgba(255,255,255, 0.1);
+			}
+		}
 	 	.user-dasboard-sidebar-inner{
 	 		padding-top:20px;
 	 	}
@@ -296,7 +304,23 @@
 	.account-links {
 		list-style:none;
 		padding:0;
-		margin : 0; 
+		margin : 0;
+		max-height: 520px;
+		overflow-y: scroll;
+		@media(max-width: 991px) {
+			max-height: 400px;
+		}
+		&::-webkit-scrollbar {
+			width: 8px;
+			background-color: #1d2329;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+			background-color: #555;
+		}
+
 		a {
 			padding:8px 20px;
 			width:100%;
