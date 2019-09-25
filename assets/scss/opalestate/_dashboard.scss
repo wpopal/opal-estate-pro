@@ -274,7 +274,7 @@
 	}
 
 	&.dash-widget {
-		padding: 40px;
+		padding: 50px 40px;
 		position: relative;
 		h5 {
 			text-align: left;
@@ -302,10 +302,10 @@
 			background-color: $primary;
 		}
 		&.dash-featured-listings {
-			background-color: #912dfe;
+			background-color: $primary;
 		}
 		&.dash-pending-listings {
-			background-color: $primary;
+			background-color: lighten($primary, 10%);
 		}
 	}
 }

@@ -967,3 +967,10 @@ p.stars {
 #opalestate-map-preview .cluster img + div {
 	line-height: 30px !important;
 }
+
+.opalestate-social-login-facebook-btn,
+.opalestate-social-login-google-btn {
+	i {
+		color: $white !important;
+	}
+}
