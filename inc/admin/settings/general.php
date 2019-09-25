@@ -46,13 +46,29 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'before_row' => '<hr>',
 					'after_row'  => '<hr>',
 				],
-
 				[
 					'name'    => esc_html__( 'User Management Page', 'opalestate-pro' ),
 					'desc'    => esc_html__( 'This is page use User Management Page using for show content of management page such as profile, my properties', 'opalestate-pro' ),
 					'id'      => 'user_management_page',
 					'type'    => 'select',
 					'options' => $pages,
+				],
+				[
+					'name'         => esc_html__( 'Dashboard Logo', 'opalestate-pro' ),
+					'desc'         => esc_html__( 'Upload a logo for user dashboard page.', 'opalestate-pro' ),
+					'id'           => 'dashboard_logo',
+					'type'         => 'file',
+					'preview_size' => [ 100, 100 ],
+					'options'      => [
+						'url' => false,
+					],
+					'query_args'   => [
+						'type' => [
+							'image/gif',
+							'image/jpeg',
+							'image/png',
+						],
+					],
 				],
 				[
 					'name'    => esc_html__( 'My Account Page', 'opalestate-pro' ),
