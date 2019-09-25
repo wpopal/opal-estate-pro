@@ -23,8 +23,7 @@ $fields = [
 $form   = OpalEstate()->html->render_form( $fields );
 $id     = 'agency-add-member';
 ?>
-<div class="opalestate-agency-team">
-
+<div class="opalestate-agency-team opalestate-admin-box">
     <h3><a href="<?php echo esc_url( get_the_permalink( $post_id ) ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>" target="_blank"><?php esc_html_e( 'Agency Team', 'opalestate-pro' );
     ?></a></h3>
     <div class="opal-row">
