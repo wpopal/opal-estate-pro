@@ -70,21 +70,32 @@ if ( $current_user->display_name !== $current_user->user_login ) {
             <div class="opal-row-inner">
                 <div class=" user-dasboard-sidebar">
                     <div class="navbar-brand">
-						<?php if ( ! has_custom_logo() ) { ?>
-						<?php if ( is_front_page() && is_home() ) : ?>
-                            <h1 class="navbar-brand mb-0">
-                                <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
-									<?php bloginfo( 'name' ); ?>
-                                </a>
-                            </h1>
+						<?php if ( $dashboard_logo_id = opalestate_get_option( 'dashboard_logo_id' ) ) : ?>
+							<?php
+							printf(
+								'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
+								esc_url( home_url( '/' ) ),
+								wp_get_attachment_image( $dashboard_logo_id, 'full' )
+							);
+							?>
 						<?php else : ?>
-                            <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
-								<?php bloginfo( 'name' ); ?>
-                            </a>
+							<?php if ( ! has_custom_logo() ) : ?>
+								<?php if ( is_front_page() && is_home() ) : ?>
+                                    <h1 class="navbar-brand mb-0">
+                                        <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
+											<?php bloginfo( 'name' ); ?>
+                                        </a>
+                                    </h1>
+								<?php else : ?>
+                                    <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"
+                                       itemprop="url">
+										<?php bloginfo( 'name' ); ?>
+                                    </a>
+								<?php endif; ?>
+							<?php else :
+								the_custom_logo();
+							endif; ?><!-- end custom logo -->
 						<?php endif; ?>
-						<?php } else {
-							the_custom_logo();
-						} ?><!-- end custom logo -->
                     </div>
 
                     <div class="user-dasboard-sidebar-inner">
