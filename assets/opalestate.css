@@ -3913,7 +3913,7 @@ header#masthead {
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 520px;
+    max-height: 530px;
     overflow-y: scroll; }
     @media (max-width: 991px) {
       .opalestate-user-management .account-links {
