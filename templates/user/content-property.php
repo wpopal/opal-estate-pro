@@ -6,21 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 $property = opalesetate_property( get_the_ID() );
 
 global $property, $post;
-
-$meta = $property->get_meta_shortinfo();
+$status   = get_post_status( get_the_ID() );
+$statuses = opalestate_get_property_statuses();
+$meta     = $property->get_meta_shortinfo();
 ?>
 <article itemscope itemtype="http://schema.org/Property" <?php post_class( 'my-property-list' ); ?>>
     <div class="property-list container-cols-2">
         <header>
-            <div class="property-group-label">
-				<?php do_action( 'opalestate_before_property_loop_item' ); ?>
-				<?php if ( $property->featured != 1 ): ?>
-                    <div class="property-toggle-featured hide" data-id="property-toggle-featured-<?php echo get_the_ID(); ?>">
-                        <span class="label-featured label"><?php esc_html_e( 'Featured', 'opalestate-pro' ); ?></span>
-                    </div>
-				<?php endif; ?>
-            </div>
-
 			<?php opalestate_get_loop_thumbnail( opalestate_get_option( 'loop_image_size', 'large' ) ); ?>
             <div class="property-meta-bottom">
 				<?php echo do_shortcode( '[opalestate_favorite_button property_id=' . get_the_ID() . ']' ); ?>
@@ -49,7 +41,10 @@ $meta = $property->get_meta_shortinfo();
                 </div>
 
                 <div class="my-properties-bottom">
-                    <span class="label-post-status label <?php if ( $post->post_status == 'pending' ): ?> label-danger <?php else : ?> label-info <?php endif; ?>"> <?php echo get_post_status( get_the_ID() ) ?> </span>
+                    <span class="label-post-status label <?php if ( $post->post_status == 'pending' ): ?> label-danger <?php else : ?> label-info <?php endif; ?>"> <?php echo esc_html( isset(
+		                    $statuses[ $status ] ) ? $statuses[ $status ] : $status );
+	                    ?>
+                    </span>
                 </div>
                 <div class="property-meta">
                     <ul class="property-meta-list list-inline">
@@ -91,7 +86,6 @@ $meta = $property->get_meta_shortinfo();
 						<?php
 					}
 				} ?>
-
             </div>
         </div>
 

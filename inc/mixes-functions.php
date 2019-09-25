@@ -1147,3 +1147,18 @@ function opalestate_get_measurement_units() {
 		'm2'   => esc_html__( 'm2', 'opalestate-pro' ),
 	] );
 }
+
+/**
+ * Returns property statuses.
+ *
+ * @return array
+ */
+function opalestate_get_property_statuses() {
+	return apply_filters( 'opalestate_get_property_statuses', [
+		'all'       => esc_html__( 'All', 'opalestate-pro' ),
+		'publish'   => esc_html__( 'Published', 'opalestate-pro' ),
+		'published' => esc_html__( 'Published', 'opalestate-pro' ),
+		'pending'   => esc_html__( 'Pending', 'opalestate-pro' ),
+		'expired'   => esc_html__( 'Expired', 'opalestate-pro' ),
+	] );
+}
