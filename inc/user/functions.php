@@ -121,21 +121,21 @@ function opalestate_management_user_menu_tabs() {
 	$menu = [];
 
 	$menu['dashboard'] = [
-		'icon'  => 'fa fa-user',
+		'icon'  => 'fas fa-chart-line',
 		'link'  => 'dashboard',
 		'title' => esc_html__( 'Dashboard', 'opalestate-pro' ),
 		'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
 	];
 
 	$menu['profile'] = [
-		'icon'  => 'fa fa-user',
+		'icon'  => 'far fa-user',
 		'link'  => 'profile',
 		'title' => esc_html__( 'Personal Information', 'opalestate-pro' ),
 		'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
 	];
 
 	$menu['favorite'] = [
-		'icon'  => 'fa fa-heart',
+		'icon'  => 'far fa-heart',
 		'link'  => 'favorite',
 		'title' => esc_html__( 'Favorite', 'opalestate-pro' ),
 		'id'    => isset( $opalestate_options['favorite_page'] ) ? $opalestate_options['favorite_page'] : 0,
