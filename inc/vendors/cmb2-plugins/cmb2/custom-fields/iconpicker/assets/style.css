@@ -1,0 +1,29 @@
+.adduser-team{
+	width: 80%;
+}
+.user-team{
+	padding: 12px 10px;
+	display: block;
+	border-bottom: solid 1px #f3f3f3	
+}
+.user-team > div{ 
+	display: inline-block;
+	width: 33%;
+
+}
+
+.user-team > div img{
+	width: 30px;
+	height: 30px;
+	border: solid 3px #CCC;
+	border-radius: 50%;
+	float: left;
+	margin-right: 6px;
+}
+
+.remove-user {
+	cursor: pointer;
+}
+.remove-user:hover {
+	color: red;
+}

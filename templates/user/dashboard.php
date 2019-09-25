@@ -8,31 +8,31 @@
 		$properties_count   = [];
 		$properties_count[] = [
 			'icon'  => 'fa fa-list',
-			'count' => $statistics->get_count_properties(),
-			'label' => esc_html__( 'My Properties', 'opalestate-pro' ),
-			'class' => '',
+			'count' => $statistics->get_count_published_properties(),
+			'label' => esc_html__( 'Published Listings', 'opalestate-pro' ),
+			'class' => 'dash-published-listings',
 		];
 
 		$properties_count[] = [
 			'icon'  => 'fa fa-star',
 			'count' => $statistics->get_count_featured(),
-			'label' => esc_html__( 'Featured Properties', 'opalestate-pro' ),
-			'class' => '',
+			'label' => esc_html__( 'Featured Listings', 'opalestate-pro' ),
+			'class' => 'dash-featured-listings',
 		];
 
 		$properties_count[] = [
 			'icon'  => 'fa fa-file',
 			'count' => $statistics->get_count_pending_properties(),
 			'label' => esc_html__( 'Pending Properties', 'opalestate-pro' ),
-			'class' => '',
+			'class' => 'dash-pending-listings',
 		];
 		?>
 
 		<?php foreach ( $properties_count as $item ): ?>
             <div class="col-lg-4 col-md-4">
-                <div class="card-item inner <?php echo esc_attr( $item['class'] ); ?>">
-                    <div class="heading"><i class="<?php echo esc_attr( $item['icon'] ); ?>"></i> <span><?php echo esc_html( $item['label'] ); ?></span></div>
-                    <h5><?php echo esc_html( $item['count'] ); ?></h5>
+                <div class="card-item inner dash-widget <?php echo esc_attr( $item['class'] ); ?>">
+                    <h5 class="dash-count"><?php echo esc_html( $item['count'] ); ?></h5>
+                    <div class="heading"><span><?php echo esc_html( $item['label'] ); ?></span></div>
                 </div>
             </div>
 		<?php endforeach; ?>
@@ -49,9 +49,12 @@
 	        $comments = get_comments( $args );
 	        ?>
 
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-12 col-md-12">
                 <div class="card-item inner">
-                    <div class="heading"><i class="fa fa-comment"></i> <span><?php esc_html_e( 'Latest review' ) ?></span></div>
+                    <div class="heading"><i class="fa fa-comment"></i> <span><?php esc_html_e( 'Latest review' ) ?></span>
+                        <a href="<?php echo esc_url( opalestate_get_user_management_page_uri() . '?tab=reviews' ); ?>" class="dash-view-all"><?php esc_html_e( 'View All', 'opalestate-pro' );
+                        ?></a>
+                    </div>
 
                     <?php if ( ! isset( $comments ) || ! $comments ) : ?>
                         <p class="opalestate-my-reviews-no-reviews"><?php esc_html_e( 'You have not written any reviews yet.', 'opalestate-pro' ); ?> </p>

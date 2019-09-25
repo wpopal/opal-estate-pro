@@ -1,6 +1,6 @@
 <?php
 /**
- * Opalestate_Field_Adduser
+ * Opalestate_Field_Iconpicker
  *
  * @package    opalestate
  * @author     Opal  Team <info@wpopal.com >
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-class Opalestate_Field_Adduser {
+class Opalestate_Field_Iconpicker {
 
 	/**
 	 * Current version number
@@ -21,14 +21,14 @@ class Opalestate_Field_Adduser {
 	 * Initialize the plugin by hooking into CMB2
 	 */
 	public static function init() {
-		add_filter( 'cmb2_render_adduser', [ __CLASS__, 'render_map' ], 10, 5 );
-		add_filter( 'cmb2_sanitize_adduser', [ __CLASS__, 'sanitize_map' ], 10, 4 );
+		add_filter( 'cmb2_render_opal_iconpicker', [ __CLASS__, 'render_iconpicker' ], 10, 5 );
+		add_filter( 'cmb2_sanitize_opal_iconpicker', [ __CLASS__, 'sanitize_map' ], 10, 4 );
 	}
 
 	/**
 	 * Render field
 	 */
-	public static function render_map( $field, $field_escaped_value, $field_object_id, $field_object_type, $field_type_object ) {
+	public static function render_iconpicker( $field, $field_escaped_value, $field_object_id, $field_object_type, $field_type_object ) {
 		self::setup_admin_scripts();
 
 		$users = $field->value;
@@ -92,4 +92,4 @@ class Opalestate_Field_Adduser {
 	}
 }
 
-Opalestate_Field_Adduser::init();
+Opalestate_Field_Iconpicker::init();

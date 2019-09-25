@@ -164,10 +164,12 @@ function opalestate_management_user_menu_tabs() {
 		'id'    => isset( $opalestate_options['submission_page'] ) ? $opalestate_options['submission_page'] : 0,
 	];
 
+	$statistics = new OpalEstate_User_Statistics();
+
 	$menu['myproperties'] = [
 		'icon'  => 'fa fa-building',
 		'link'  => 'submission_list',
-		'title' => esc_html__( 'My Properties', 'opalestate-pro' ),
+		'title' => esc_html__( 'My Properties', 'opalestate-pro' ) . '<span class="count">' . $statistics->get_count_properties() . '</span>',
 		'id'    => isset( $opalestate_options['submission_list_page'] ) ? $opalestate_options['submission_list_page'] : 0,
 	];
 
@@ -255,5 +257,3 @@ if ( ! function_exists( 'opalestate_create_user' ) ) {
 		return $user_id;
 	}
 }
-
-?>

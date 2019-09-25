@@ -20,6 +20,7 @@ $fields = [
 		'required' => 'required',
 	],
 ];
+
 $form   = OpalEstate()->html->render_form( $fields );
 $id     = 'agency-add-member';
 ?>
