@@ -48,22 +48,25 @@ class OpalEstate_Enqueue {
 		wp_enqueue_script( 'noUiSlider', OPALESTATE_PLUGIN_URL . 'assets/js/nouislider.min.js', [ 'jquery' ], '1.0.0', true );
 		wp_enqueue_script( 'fitvids', OPALESTATE_PLUGIN_URL . 'assets/js/jquery.fitvids.js', [ 'jquery' ], '1.0.0', true );
 
-		// load google map for searchable
-		wp_enqueue_script( 'opalestate-gmap', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/googlemaps.js', [ 'jquery' ], '1.3', false );
-		wp_enqueue_script( 'opalestate-messages', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/property.js', [ 'jquery' ], '1.3', false );
+		/**
+		 * Google map.
+		 */
+		wp_enqueue_script( 'opalestate-gmap', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/googlemaps.js', [ 'jquery' ], OPALESTATE_VERSION, false );
+		wp_enqueue_script( 'opalestate-messages', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/property.js', [ 'jquery' ], OPALESTATE_VERSION, false );
 
-
+		/**
+		 * Main plugin style.
+		 */
 		wp_enqueue_style( 'opalestate-style', OPALESTATE_PLUGIN_URL . '/assets/opalestate.css' );
 
-		wp_enqueue_style( 'font-awesome', OPALESTATE_PLUGIN_URL . 'assets/3rd/fontawesome/css/all.min.css', null, '1.3', false );
-
-		// load tooltips css3
-		wp_enqueue_style( 'hint', OPALESTATE_PLUGIN_URL . 'assets/hint.min.css', null, '1.3', false );
-		// load tooltips css3
+		/**
+		 * Enqueue 3rd.
+		 */
+		wp_enqueue_style( 'font-awesome', OPALESTATE_PLUGIN_URL . 'assets/3rd/fontawesome/css/all.min.css', null, '5.9.0', false );
+		wp_enqueue_style( 'hint', OPALESTATE_PLUGIN_URL . 'assets/3rd/hint/hint.min.css', null, '1.3', false );
 		wp_enqueue_style( 'select2', OPALESTATE_PLUGIN_URL . 'assets/3rd/select2/css/select2.min.css', null, '1.3', false );
 		wp_enqueue_script( 'select2', OPALESTATE_PLUGIN_URL . 'assets/3rd/select2/js/select2.min.js', null, '1.3', false );
-
-		wp_register_script( 'chart-js', OPALESTATE_PLUGIN_URL . 'assets/js/chart.min.js', null, '2.8.0', true );
+		wp_register_script( 'chart-js', OPALESTATE_PLUGIN_URL . 'assets/3rd/chartjs/chart.min.js', null, '2.8.0', true );
 		wp_register_style( 'tooltipster', OPALESTATE_PLUGIN_URL . 'assets/3rd/tooltipster/css/tooltipster.bundle.min.css', [], false );
 		wp_register_script( 'tooltipster', OPALESTATE_PLUGIN_URL . 'assets/3rd/tooltipster/js/tooltipster.bundle.min.js', [ 'jquery' ], false, true );
 
@@ -189,7 +192,7 @@ class OpalEstate_Enqueue {
 	 */
 	public function add_custom_property_label_color() {
 		$labels = Opalestate_Taxonomy_Label::get_list();
-		$custom   = '';
+		$custom = '';
 
 		if ( $labels ) {
 			foreach ( $labels as $label ) {
