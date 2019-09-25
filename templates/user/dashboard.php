@@ -7,24 +7,24 @@
 
 		$properties_count   = [];
 		$properties_count[] = [
-			'icon'  => 'fa fa-list',
+			'icon'  => 'fas fa-rocket',
 			'count' => $statistics->get_count_published_properties(),
 			'label' => esc_html__( 'Published Listings', 'opalestate-pro' ),
 			'class' => 'dash-published-listings',
 		];
 
 		$properties_count[] = [
-			'icon'  => 'fa fa-star',
-			'count' => $statistics->get_count_featured(),
-			'label' => esc_html__( 'Featured Listings', 'opalestate-pro' ),
-			'class' => 'dash-featured-listings',
-		];
-
-		$properties_count[] = [
-			'icon'  => 'fa fa-file',
+			'icon'  => 'far fa-hourglass',
 			'count' => $statistics->get_count_pending_properties(),
 			'label' => esc_html__( 'Pending Properties', 'opalestate-pro' ),
 			'class' => 'dash-pending-listings',
+		];
+
+		$properties_count[] = [
+			'icon'  => 'far fa-star',
+			'count' => $statistics->get_count_featured(),
+			'label' => esc_html__( 'Featured Listings', 'opalestate-pro' ),
+			'class' => 'dash-featured-listings',
 		];
 		?>
 
@@ -32,7 +32,8 @@
             <div class="col-lg-4 col-md-4">
                 <div class="card-item inner dash-widget <?php echo esc_attr( $item['class'] ); ?>">
                     <h5 class="dash-count"><?php echo esc_html( $item['count'] ); ?></h5>
-                    <div class="heading"><span><?php echo esc_html( $item['label'] ); ?></span></div>
+                    <p class="heading"><?php echo esc_html( $item['label'] ); ?></p>
+                    <span class="dash-widget-icon"><i class="<?php echo esc_attr( $item['icon'] ); ?>"></i></span>
                 </div>
             </div>
 		<?php endforeach; ?>
