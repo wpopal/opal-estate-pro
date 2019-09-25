@@ -234,6 +234,9 @@
 		}
 	}
 }
+.dash-widget {
+	background-color: $primary;
+}
 
 .card-item {
 	background-color:$white;
@@ -257,6 +260,10 @@
 			font-size: 16px;
 			color: #23282d;
 			font-weight: 500;
+		}
+		.dash-view-all {
+			float: right;
+			color: $primary;
 		}
 	}
 
@@ -330,6 +337,16 @@
 			i {
 				margin-right:6px;
 				color:#616a75;
+			}
+			.count {
+				color:$white;
+				padding:5px 10px;
+				font-size: 11px;
+				min-width: 20px;
+				text-align: center;
+				background-color: $primary;
+				@include border-radius(50%);
+				margin-left:5px;
 			}
 			&:hover,
 			&:focus {
