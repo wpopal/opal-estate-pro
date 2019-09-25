@@ -3976,3 +3976,17 @@ header#masthead {
 
 .my-property-list .entry-content {
   width: 100%; }
+
+.my-property-list .property-group-status + .property-meta-bottom {
+  top: 40px; }
+
+.my-property-list .button-actions a {
+  margin-left: 5px;
+  padding: 5px 14px; }
+
+.my-property-list .my-properties-bottom {
+  display: block; }
+  .my-property-list .my-properties-bottom span {
+    background: #2f73e9;
+    position: absolute;
+    top: 0; }

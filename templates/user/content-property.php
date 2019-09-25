@@ -21,11 +21,12 @@ $meta     = $property->get_meta_shortinfo();
 		        <?php opalestate_property_status(); ?>
             </div>
 
+            <div class="property-meta-bottom">
+                <?php echo do_shortcode( '[opalestate_favorite_button property_id=' . get_the_ID() . ']' ); ?>
+            </div>
+
 			<?php opalestate_get_loop_thumbnail( opalestate_get_option( 'loop_image_size', 'large' ) ); ?>
 
-            <div class="property-meta-bottom">
-				<?php echo do_shortcode( '[opalestate_favorite_button property_id=' . get_the_ID() . ']' ); ?>
-            </div>
         </header>
         <div class="abs-col-item">
             <div class="entry-content">

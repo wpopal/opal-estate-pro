@@ -435,5 +435,22 @@
 	}
 }
 
-.dashboard {
+.my-property-list {
+	.property-group-status + .property-meta-bottom {
+		top:40px;
+	}
+	.button-actions {
+		a {
+			margin-left: 5px;
+			padding: 5px 14px;
+		}
+	}
+	.my-properties-bottom {
+		display: block;
+		span {
+			background: $primary;
+			position: absolute;
+			top:0;
+		}
+	}
 }
