@@ -14,30 +14,32 @@ switch ( $type ) {
 	case 'agent' :
 		$agent_id = $property->get_metabox_value( 'agent' );
 
-		$author_info = opalestate_load_template_path( 'single-property/user/author-member-box',
-			[
-				'author'           => $data,
-				'id'               => $agent_id,
-				'prefix'           => OPALESTATE_AGENT_PREFIX,
-				'picture'          => '',
-				'type'             => 'agent',
-				'hide_description' => true,
-			] );
+		$author_info = opalestate_load_template_path( 'single-property/user/author-member-box', [
+			'author'           => $data,
+			'id'               => $agent_id,
+			'prefix'           => OPALESTATE_AGENT_PREFIX,
+			'picture'          => '',
+			'type'             => 'agent',
+			'hide_description' => true,
+		] );
 		break;
 	case 'agency' :
 		$agency_id   = $property->get_metabox_value( 'agency' );
-		$author_info = opalestate_load_template_path( 'single-property/user/author-member-box',
-			[
-				'author'           => $data,
-				'id'               => $agency_id,
-				'picture'          => '',
-				'type'             => 'agency',
-				'hide_description' => true,
-			] );
+		$author_info = opalestate_load_template_path( 'single-property/user/author-member-box', [
+			'author'           => $data,
+			'id'               => $agency_id,
+			'picture'          => '',
+			'type'             => 'agency',
+			'hide_description' => true,
+		] );
 		break;
 	default:
-
-		$author_info = opalestate_load_template_path( 'single-property/user/author-user-box', [ 'author' => $data, 'hide_description' => true ], $layout );
+		$author_info = opalestate_load_template_path( 'single-property/user/author-user-box', [
+			'author'           => $data,
+			'hide_description' => true,
+		],
+			$layout
+		);
 
 		break;
 }
