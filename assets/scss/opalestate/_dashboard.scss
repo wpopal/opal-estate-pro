@@ -272,8 +272,10 @@
 	.opalestate-admin-box {
 		box-shadow: none;
 	}
+
 	&.dash-widget {
 		padding: 40px;
+		position: relative;
 		h5 {
 			text-align: left;
 			color: $white;
@@ -282,11 +284,19 @@
 		}
 		.heading {
 			border:0;
+			margin: 0;
+			padding:0;
 			color: $white;
-			margin: 0; padding:0;
 			span {
 				color: $white;
 			}
+		}
+		.dash-widget-icon {
+			position: absolute;
+			top:$grid-gutter-width/2;
+			right:$grid-gutter-width;
+			color: rgba(255,255,255,0.1);
+			font-size:75px;
 		}
 		&.dash-published-listings {
 			background-color: $primary;
