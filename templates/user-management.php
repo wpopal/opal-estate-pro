@@ -18,7 +18,7 @@ if ( ! class_exists( 'OpalEstate_User' ) ) {
 }
 
 get_header( 'no-sidebar' );
-$user_id = get_current_user_id();
+$user_id      = get_current_user_id();
 $current_user = wp_get_current_user();
 
 $user_info = "<span class='display-name'>{$current_user->display_name}</span>";
@@ -34,26 +34,6 @@ if ( $current_user->display_name !== $current_user->user_login ) {
                 <button class="btn btn-link" id="show-user-sidebar-btn">
                     <i class="fa fa-bars"></i>
                 </button>
-
-                <div class="navbar-brand">
-                    <!-- Your site title as branding in the menu -->
-					<?php if ( ! has_custom_logo() ) { ?>
-					<?php if ( is_front_page() && is_home() ) : ?>
-                        <h1 class="navbar-brand mb-0">
-                            <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
-								<?php bloginfo( 'name' ); ?>
-                            </a>
-                        </h1>
-					<?php else : ?>
-                        <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
-							<?php bloginfo( 'name' ); ?>
-                        </a>
-					<?php endif; ?>
-					<?php } else {
-						the_custom_logo();
-					} ?><!-- end custom logo -->
-                </div>
-
             </div>
 
             <div class=" pull-right">
@@ -81,7 +61,6 @@ if ( $current_user->display_name !== $current_user->user_login ) {
                         </div>
                     </li>
                 </ul>
-
             </div>
         </div>
     </div>
@@ -90,6 +69,24 @@ if ( $current_user->display_name !== $current_user->user_login ) {
         <div class="container-full" id="content">
             <div class="opal-row-inner">
                 <div class=" user-dasboard-sidebar">
+                    <div class="navbar-brand">
+						<?php if ( ! has_custom_logo() ) { ?>
+						<?php if ( is_front_page() && is_home() ) : ?>
+                            <h1 class="navbar-brand mb-0">
+                                <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
+									<?php bloginfo( 'name' ); ?>
+                                </a>
+                            </h1>
+						<?php else : ?>
+                            <a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
+								<?php bloginfo( 'name' ); ?>
+                            </a>
+						<?php endif; ?>
+						<?php } else {
+							the_custom_logo();
+						} ?><!-- end custom logo -->
+                    </div>
+
                     <div class="user-dasboard-sidebar-inner">
 
 						<?php
@@ -127,7 +124,6 @@ if ( $current_user->display_name !== $current_user->user_login ) {
         </div><!-- Container end -->
     </div><!-- Wrapper end -->
 <?php else : ?>
-
     <div class="wrapper opalestate-user-management" id="opalestate-user-management">
         <div class="container">
             <div class="opalestate-panel-myaccount">
