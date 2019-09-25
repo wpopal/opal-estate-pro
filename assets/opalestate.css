@@ -3639,7 +3639,12 @@ header#masthead {
   margin-bottom: 30px;
   padding: 30px;
   background-color: #FFF;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); }
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px; }
   .opalestate-admin-box h3 {
     border-bottom: 1px #ebebeb solid;
     padding-bottom: 15px;
@@ -3812,9 +3817,6 @@ header#masthead {
   .page-template-user-management .cmb2-wrap input, .page-template-user-management .cmb2-wrap textarea {
     min-width: 500px; } }
 
-.dash-widget {
-  background-color: #2f73e9; }
-
 .card-item {
   background-color: #FFF;
   box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -3852,6 +3854,26 @@ header#masthead {
     text-align: center; }
   .card-item .opalestate-admin-box {
     box-shadow: none; }
+  .card-item.dash-widget {
+    padding: 40px; }
+    .card-item.dash-widget h5 {
+      text-align: left;
+      color: #FFF;
+      font-size: 48px;
+      margin: 0; }
+    .card-item.dash-widget .heading {
+      border: 0;
+      color: #FFF;
+      margin: 0;
+      padding: 0; }
+      .card-item.dash-widget .heading span {
+        color: #FFF; }
+    .card-item.dash-widget.dash-published-listings {
+      background-color: #2f73e9; }
+    .card-item.dash-widget.dash-featured-listings {
+      background-color: #912dfe; }
+    .card-item.dash-widget.dash-pending-listings {
+      background-color: #2f73e9; }
 
 .opalestate-user-management {
   min-height: 742px; }

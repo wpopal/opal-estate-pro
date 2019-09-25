@@ -9,7 +9,8 @@
 	margin-bottom:$grid-gutter-width;
 	padding: $grid-gutter-width;
 	background-color: $white;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.05);
+	@include border-radius(5px);
 	h3 {
 		border-bottom:1px $border-color solid;
 		padding-bottom:15px;
@@ -234,9 +235,6 @@
 		}
 	}
 }
-.dash-widget {
-	background-color: $primary;
-}
 
 .card-item {
 	background-color:$white;
@@ -273,6 +271,32 @@
 	}
 	.opalestate-admin-box {
 		box-shadow: none;
+	}
+	&.dash-widget {
+		padding: 40px;
+		h5 {
+			text-align: left;
+			color: $white;
+			font-size: 48px;
+			margin:0;
+		}
+		.heading {
+			border:0;
+			color: $white;
+			margin: 0; padding:0;
+			span {
+				color: $white;
+			}
+		}
+		&.dash-published-listings {
+			background-color: $primary;
+		}
+		&.dash-featured-listings {
+			background-color: #912dfe;
+		}
+		&.dash-pending-listings {
+			background-color: $primary;
+		}
 	}
 }
 
