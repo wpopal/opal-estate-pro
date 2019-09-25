@@ -83,7 +83,7 @@ class Opalestate_Agency_MetaBox extends Opalestate_User_MetaBox {
 			'title'        => esc_html__( 'Name and Description', 'opalestate-pro' ),
 			'object_types' => [ 'opalestate_property' ],
 			'context'      => 'normal',
-			'object_types' => [ 'user' ], // Tells CMB2 to use user_meta vs post_meta
+			'object_types' => [ 'user' ],
 			'priority'     => 'high',
 			'show_names'   => true,
 			'fields'       => $this->get_fields( $prefix ),
@@ -153,7 +153,6 @@ class Opalestate_Agency_MetaBox extends Opalestate_User_MetaBox {
 				'type'        => 'text_email',
 				'description' => esc_html__( 'Enter contact name that allow user contact you via the contact form of website.', 'opalestate-pro' ),
 			],
-
 			[
 				'id'          => "{$prefix}phone",
 				'name'        => esc_html__( 'Phone', 'opalestate-pro' ),

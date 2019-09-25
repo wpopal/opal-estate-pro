@@ -18,8 +18,16 @@ if ( ! class_exists( 'OpalEstate_User' ) ) {
 }
 
 get_header( 'no-sidebar' );
+$user_id = get_current_user_id();
+$current_user = wp_get_current_user();
+
+$user_info = "<span class='display-name'>{$current_user->display_name}</span>";
+
+if ( $current_user->display_name !== $current_user->user_login ) {
+	$user_info .= "<span class='username'>{$current_user->user_login}</span>";
+}
 ?>
-<?php if ( get_current_user_id() ): ?>
+<?php if ( $user_id ): ?>
     <div class="dashboard-navbar">
         <div class="clearfix">
             <div class="pull-left navbar-left">
@@ -52,12 +60,13 @@ get_header( 'no-sidebar' );
                 <ul class="list-inline">
                     <li>
                         <div class="opalestate-user-greeting opalestate-popup hover-align-right">
-                            <div class="popup-head"><a href="#"><?php $user_id = get_current_user_id(); ?>
+                            <span class="howdy"><?php printf( __( 'Howdy, %s', 'opalestate-pro' ), '<span class="display-name">' . $current_user->display_name . '</span>' ); ?></span>
+                            <div class="popup-head">
+                                <a href="#">
                                     <div class="opalestate-user-image">
                                         <img src="<?php echo esc_url( OpalEstate_User::get_author_picture( $user_id ) ); ?>" alt="<?php esc_attr_e( 'Avatar image', 'opalestate-pro' ); ?>"/>
                                     </div>
                                     <span class="notify active"></span>
-
                                 </a>
                             </div>
                             <div class="popup-body">

@@ -84,7 +84,7 @@ class Opalestate_Admin_Agent {
 
 			$tabs_setting['tabs'][] = [
 				'id'     => 'p-socials',
-				'icon'   => 'dashicons-admin-home',
+				'icon'   => 'dashicons-share',
 				'title'  => esc_html__( 'Socials', 'opalestate-pro' ),
 				'fields' => $metabox->get_social_fields( $prefix ),
 			];
@@ -105,11 +105,9 @@ class Opalestate_Admin_Agent {
 	}
 
 	public function save_post( $post_id, $post, $update ) {
-		///
 		$post_type = get_post_type( $post_id );
 		if ( $post_type == 'opalestate_agent' ) {
 			if ( isset( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] ) && absint( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] ) ) {
-
 				$user_id = absint( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] );
 				update_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', $post_id );
 

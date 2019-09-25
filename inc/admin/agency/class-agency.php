@@ -132,7 +132,7 @@ class Opalestate_Admin_Agency {
 
 			$tabs_setting['tabs'][] = array(
 				'id'     => 'p-socials',
-				'icon'	 => 'dashicons-admin-home',
+				'icon'	 => 'dashicons-share',
 				'title'  => esc_html__( 'Socials', 'opalestate-pro' ),
 				'fields' => $metabox->get_social_fields( $prefix )
 			);

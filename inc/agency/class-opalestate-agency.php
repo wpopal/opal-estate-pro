@@ -1,15 +1,9 @@
 <?php
 /**
- * $Desc$
+ * OpalEstate_Agency
  *
- * @version    $Id$
  * @package    opalestate
  * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -54,7 +48,6 @@ class OpalEstate_Agency {
 	 *  Constructor
 	 */
 	public function __construct( $post_id = null ) {
-
 		global $post;
 
 		$this->post        = $post;
@@ -99,9 +92,7 @@ class OpalEstate_Agency {
 	 * Get url of user avatar by agency id
 	 */
 	public static function get_avatar_url( $userID ) {
-
 		return get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . "avatar", true );
-
 	}
 
 	/**
@@ -164,15 +155,17 @@ class OpalEstate_Agency {
 		$team = [];
 		$ids  = get_post_meta( $this->post_id, OPALESTATE_AGENCY_PREFIX . 'team', true );
 
-		foreach ( $ids as $id ) {
-			$user   = get_user_by( 'id', $id ); // echo '<pre>' . print_r( $user, 1 );die;
-			$team[] = [
-				'id'          => $user->ID,
-				'name'        => $user->display_name,
-				'avatar_url'  => OpalEstate_User::get_author_picture( $user->ID ),
-				'username'    => $user->user_login,
-				'description' => 'okokok',
-			];
+		if ( $ids ) {
+			foreach ( $ids as $id ) {
+				$user   = get_user_by( 'id', $id );
+				$team[] = [
+					'id'          => $user->ID,
+					'name'        => $user->display_name,
+					'avatar_url'  => OpalEstate_User::get_author_picture( $user->ID ),
+					'username'    => $user->user_login,
+					'description' => 'okokok',
+				];
+			}
 		}
 
 		return $team;
@@ -241,10 +234,11 @@ class OpalEstate_Agency {
 	}
 
 	/**
+	 * Update user data.
 	 *
+	 * @param $user_id User ID.
 	 */
 	public static function update_user_data( $user_id ) {
-
 		$fields = self::metaboxes_fields();
 
 		$others = [
@@ -254,7 +248,7 @@ class OpalEstate_Agency {
 
 		foreach ( $fields as $key => $field ) {
 			$kpos = $field['id'];
-			$tmp  = str_replace( OPALESTATE_AGENCY_PREFIX, "", $field['id'] );
+			$tmp  = str_replace( OPALESTATE_AGENCY_PREFIX, '', $field['id'] );
 			if ( isset( $_POST[ $kpos ] ) && $tmp ) {
 				$data = is_string( $_POST[ $kpos ] ) ? sanitize_text_field( $_POST[ $kpos ] ) : $_POST[ $kpos ];
 				update_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
@@ -272,20 +266,20 @@ class OpalEstate_Agency {
 	}
 
 	/**
+	 * Update data from user.
 	 *
+	 * @param $related_id Post ID
 	 */
 	public static function update_data_from_user( $related_id ) {
-
-
 		$fields = self::metaboxes_fields();
 
 		$others = [
 			'avatar_id' => '',
 			'map'       => '',
 		];
-		foreach ( $fields as $key => $field ) {
 
-			$tmp  = str_replace( OPALESTATE_AGENCY_PREFIX, "", $field['id'] );
+		foreach ( $fields as $key => $field ) {
+			$tmp  = str_replace( OPALESTATE_AGENCY_PREFIX, '', $field['id'] );
 			$kpos = OPALESTATE_USER_PROFILE_PREFIX . $tmp;
 
 			if ( isset( $_POST[ $kpos ] ) && $tmp ) {

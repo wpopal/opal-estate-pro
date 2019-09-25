@@ -1,15 +1,9 @@
 <?php
 /**
- * $Desc$
+ * OpalEstate_Agent
  *
- * @version    $Id$
  * @package    opalestate
  * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -41,7 +35,6 @@ class OpalEstate_Agent {
 	 *  Constructor
 	 */
 	public function __construct( $post_id = null ) {
-
 		global $post;
 
 		if ( $post ) {
@@ -151,8 +144,19 @@ class OpalEstate_Agent {
 		return array_merge_recursive( $fields, $metabox->get_social_fields( OPALESTATE_AGENT_PREFIX ) );
 	}
 
-	public static function update_user_data( $user_id ) {
+	/**
+	 * @return mixed
+	 */
+	public function get_trusted() {
+		return $this->is_trusted;
+	}
 
+	/**
+	 * Update user data.
+	 *
+	 * @param $user_id User ID.
+	 */
+	public static function update_user_data( $user_id ) {
 		$fields = self::metaboxes_fields();
 
 		$others = [
@@ -160,6 +164,7 @@ class OpalEstate_Agent {
 			'opalestate_agt_map' => '',
 			'map'                => '',
 		];
+
 		foreach ( $fields as $key => $field ) {
 			$kpos = $field['id'];
 			$tmp  = str_replace( OPALESTATE_AGENT_PREFIX, '', $field['id'] );
@@ -180,27 +185,20 @@ class OpalEstate_Agent {
 	}
 
 	/**
+	 * Update data from user.
 	 *
-	 */
-	public function get_trusted() {
-		return $this->is_trusted;
-	}
-
-	/**
-	 *
+	 * @param $related_id Post ID.
 	 */
 	public static function update_data_from_user( $related_id ) {
-
-
 		$fields = self::metaboxes_fields();
 
 		$others = [
 			'avatar_id' => '',
 			'map'       => '',
 		];
-		foreach ( $fields as $key => $field ) {
 
-			$tmp  = str_replace( OPALESTATE_AGENT_PREFIX, "", $field['id'] );
+		foreach ( $fields as $key => $field ) {
+			$tmp  = str_replace( OPALESTATE_AGENT_PREFIX, '', $field['id'] );
 			$kpos = OPALESTATE_USER_PROFILE_PREFIX . $tmp;
 
 			if ( isset( $_POST[ $kpos ] ) && $tmp ) {
@@ -273,5 +271,3 @@ class OpalEstate_Agent {
 		return 4;
 	}
 }
-
-?>
