@@ -565,7 +565,8 @@ p.stars {
 		z-index: 999;
 		min-width: 300px;
 		top: 40px;
-		margin:0 0 0 -194px;
+		margin:0;
+		right: 0;
 		padding: $grid-gutter-width;
 		background-color: $white;
 		box-shadow: $box-shadow-base;
@@ -587,25 +588,20 @@ p.stars {
 			&:before {
 				@include triangle(top, 0px, $white, 20px);
 				transform: translateX(-50%);
-				left: 50%;
+				right:30px;
 				top: -14px;
 			}
 		}
 	}
 	&.active .popup-body{
 		display: block;
+		padding-top:30px;
+		min-width: 300px;
 	}
 	&.hover-align-right:hover .popup-body {
 		display:block;
-		right:0;
 		padding-top:30px;
-		min-width: 250px;
-		.account-dashboard-content{
-			&:before {
-				right:-15px;
-				left:auto;
-			}
-		}
+		min-width: 300px;
 	}
 	
 	.popup-close{

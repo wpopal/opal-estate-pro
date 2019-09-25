@@ -79,8 +79,14 @@
 }
 
 .opalestate-user-greeting {
+	.howdy {
+		float: right;
+		padding-left: 5px;
+		padding-top: 5px;
+		font-weight: 700;
+	}.opalestate-popup
 	.popup-head  {
-		float:right;
+		float:left;
 	}
 	.popup-head a { 
 		color:$white; 
@@ -111,15 +117,15 @@
 	
 }
 
- .dashboard-navbar {
- 	 background-color: $white;
- 	 padding:$grid-gutter-width/2 $grid-gutter-width;
-	 border-bottom:1px solid $border-color;
-	 margin-bottom: $grid-gutter-width/2;
+.dashboard-navbar {
+	background-color: #1d2329;
+	padding:20px $grid-gutter-width;
+	border-left: 1px solid #282d33;
+	margin-bottom: $grid-gutter-width/2;
 	ul{
 		margin-bottom: 0;
 	}
- }
+}
 
 .page-template-user-management {
 	.opalestate-box{
@@ -171,7 +177,7 @@
 
 .page-template-user-management {
 	.body-inner {
-		background-color: #f1f1f1;
+		background-color: #f8f8f8;
 	}
 
 	.opalestate-popup .popup-body {
@@ -185,15 +191,13 @@
 				}
 			}
 			&::before {
-				right: -15px;
-				left: auto;
 				position: absolute;
 				width: 0px;
 				height: 0px;
 				content: "";
 				z-index: 2;
 				transform: translateX(-50%);
-				left: 50%;
+				right:25%;
 				top: -14px;
 				border-bottom: 25px solid rgb(255, 255, 255);
 				border-left: 20px solid transparent;
@@ -233,8 +237,8 @@
 
 .card-item {
 	background-color:$white;
-	//border:solid 1px $border-color;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.05);
+	@include border-radius(5px);
 	padding:$padding-base;
 	.heading {
 		margin-bottom: $grid-gutter-width;
@@ -273,11 +277,11 @@
 		}
 	}
 	.user-dasboard-sidebar {
-		background-color:#23282d;
+		background-color:#1d2329;
 		min-height:900px;
 		position:fixed;
 		left:0;
-		width:250px;
+		width:251px;
 		height:100%;
 		z-index:100;
 		top:0px;
@@ -298,26 +302,26 @@
 			width:100%;
 			display:block;
 			font-weight:500	;
-			color:#eee;
+			color:#616a75;
 			i {
 				margin-right:6px;
-				color:#a0a5aa;
+				color:#616a75;
 			}
 			&:hover,
 			&:focus {
-				background-color:#0073aa;
+				//background-color:#0073aa;
 				color:#fff;
 				i {
-					color:#00b9eb;
+					color:#fff;
 				}
 			}
 		}
 		li.active {
 			a {
-				background-color:#0073aa;
+				//background-color:#0073aa;
 				color:#fff;
 				i {
-					color:#00b9eb;
+					color:#fff;
 				}
 			}
 		}
