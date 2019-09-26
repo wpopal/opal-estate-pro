@@ -35,6 +35,7 @@ function opalestate_load_cmb2_files() {
 	}
 
 	if ( file_exists( OPALESTATE_CMB2_DIR . 'custom-fields/iconpicker/iconpicker.php' ) ) {
+		require_once OPALESTATE_CMB2_DIR . 'custom-fields/iconpicker/providers/fontawesome.php';
 		require_once OPALESTATE_CMB2_DIR . 'custom-fields/iconpicker/iconpicker.php';
 	}
 
