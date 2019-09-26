@@ -60,14 +60,19 @@ class Opalestate_Taxonomy_Amenities {
 
 	public function taxonomy_metaboxes() {
 		$prefix = 'opalestate_amt_';
-		/**
-		 * Metabox to add fields to categories and tags
-		 */
+
 		$cmb_term = new_cmb2_box( [
 			'id'           => $prefix . 'edit',
-			'title'        => esc_html__( 'Type Metabox', 'opalestate-pro' ), // Doesn't output for term boxes
-			'object_types' => [ 'term' ], // Tells CMB2 to use term_meta vs post_meta
-			'taxonomies'   => [ 'opalestate_amenities' ], // Tells CMB2 which taxonomies should have these fields
+			'title'        => esc_html__( 'Type Metabox', 'opalestate-pro' ),
+			'object_types' => [ 'term' ],
+			'taxonomies'   => [ 'opalestate_amenities' ],
+		] );
+
+		$cmb_term->add_field( [
+			'name'         => esc_html__( 'Icon', 'opalestate-pro' ),
+			'desc'         => esc_html__( 'Select an icon.', 'opalestate-pro' ),
+			'id'           => $prefix . 'icon',
+			'type'         => 'opal_iconpicker',
 		] );
 
 		$cmb_term->add_field( [
