@@ -11,6 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Opalestate_Field_Iconpicker {
+	/**
+	 * @var array
+	 */
+	protected static $icon_data = [];
 
 	/**
 	 * Current version number
@@ -21,11 +25,11 @@ class Opalestate_Field_Iconpicker {
 	 * Initialize the plugin by hooking into CMB2
 	 */
 	public static function init() {
-		// $icons           = new Fontawesome();
-		// $this->icon_data = $icons->get_icons();
+		$icons           = new Fontawesome();
+		static::$icon_data[] = $icons->get_icons();
 
 		add_filter( 'cmb2_render_opal_iconpicker', [ __CLASS__, 'render_iconpicker' ], 10, 5 );
-		add_filter( 'cmb2_sanitize_opal_iconpicker', [ __CLASS__, 'sanitize_icon' ], 10, 4 );
+		add_filter( 'cmb2_sanitize_opal_iconpicker', [ __CLASS__, 'sanitize' ], 10, 4 );
 	}
 
 	/**
@@ -56,7 +60,7 @@ class Opalestate_Field_Iconpicker {
 	/**
 	 * Sanitize data.
 	 */
-	public static function sanitize_icon( $override_value, $value, $object_id, $field_args ) {
+	public static function sanitize( $override_value, $value, $object_id, $field_args ) {
 		return $value;
 	}
 

@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Opalestate_Iconpicker_Fontawesome {
 
-	const BRANDS_URL = OPALESTATE_PLUGIN_URL . 'assets/3rd/font-awesome/webfonts/fa-brands-400.svg';
-	const SOLID_URL = OPALESTATE_PLUGIN_URL . 'assets/3rd/font-awesome/webfonts/fa-solid-900.svg';
-	const REGULAR_URL = OPALESTATE_PLUGIN_URL . 'assets/3rd/font-awesome/webfonts/fa-regular-400.svg';
+	const BRANDS_URL = OPALESTATE_PLUGIN_URL . 'assets/3rd/fontawesome/webfonts/fa-brands-400.svg';
+	const SOLID_URL = OPALESTATE_PLUGIN_URL . 'assets/3rd/fontawesome/webfonts/fa-solid-900.svg';
+	const REGULAR_URL = OPALESTATE_PLUGIN_URL . 'assets/3rd/fontawesome/webfonts/fa-regular-400.svg';
 
 	/**
 	 * @var array
