@@ -140,6 +140,7 @@ class Opalestate_Property {
 				'attachments',
 				'facilities',
 				'video',
+				'virtual_tour',
 				'map',
 				'nearby',
 				'walkscores',

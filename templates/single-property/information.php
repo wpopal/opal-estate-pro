@@ -2,9 +2,13 @@
 global $property;
 
 $infos = $property->get_meta_fullinfo();
-$taxs = $property->get_types_tax();
+$taxs  = $property->get_types_tax();
 
+if ( ! $infos && ! $taxs ) {
+	return;
+}
 ?>
+
 <div class="property-information box-inner-summary">
     <h5><?php esc_html_e( 'Quick Information', 'opalestate-pro' ); ?></h5>
     <div class="box-content">
@@ -33,4 +37,4 @@ $taxs = $property->get_types_tax();
 			<?php endif; ?>
         </ul>
     </div>
-</div>		
+</div>

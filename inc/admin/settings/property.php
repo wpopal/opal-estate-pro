@@ -347,6 +347,17 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
+			'name'    => esc_html__( 'Show Virtual Tour tab', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Show Virtual Tour tab in the single property page.', 'opalestate-pro' ),
+			'id'      => 'enable_single_virtual_tour',
+			'type'    => 'switch',
+			'options' => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+		];
+
+		$fields[] = [
 			'name'    => esc_html__( 'Show Map tab', 'opalestate-pro' ),
 			'desc'    => esc_html__( 'Show Map tab in the single property page.', 'opalestate-pro' ),
 			'id'      => 'enable_single_map',
