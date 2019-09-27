@@ -27,7 +27,11 @@ function opalestate_single_property_layout_default() {
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
 	//  add_action( 'opalestate_after_single_property_summary', '', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
-	add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+
+	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+	}
+
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
 
 	////// sidebar ////////
@@ -70,7 +74,11 @@ function opalestate_single_property_layout_v2() {
 	//  add_action( 'opalestate_after_single_property_summary', 'opalestate_property_author', 55 );
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
-	add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+
+	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+	}
+
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
 
 
@@ -107,7 +115,11 @@ function opalestate_single_property_layout_v3() {
 
 	//    add_action( 'opalestate_after_single_property_summary', 'opalestate_property_author', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
-	add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+
+	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+	}
+
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
 
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
@@ -129,7 +141,6 @@ function opalestate_single_property_layout_v4() {
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_facilities', 17 );
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_attachments', 18 );
 
-
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_video', 20 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_virtual_tour', 25 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_map', 30 );
@@ -139,9 +150,12 @@ function opalestate_single_property_layout_v4() {
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_apartments', 45 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
-	//    add_action( 'opalestate_after_single_property_summary', 'opalestate_property_author', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
-	add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+
+	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+	}
+
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
 
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
@@ -176,7 +190,11 @@ function opalestate_single_property_layout_v5() {
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
-	add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+
+	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
+	}
+
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
 
 	add_filter( 'opalestate_thumbnail_nav_column', function () {
@@ -229,6 +247,7 @@ function opalestate_single_property_layout( $layout ) {
 			break;
 	}
 }
+
 add_action( 'opalestate_single_property_layout', 'opalestate_single_property_layout' );
 
 /**
