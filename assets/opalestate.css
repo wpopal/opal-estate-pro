@@ -1040,7 +1040,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
       background-color: transparent;
       color: #2f73e9; }
 
-.page-template-user-management header, .page-template-user-management footer, .page-template-user-management #colophon {
+.page-template-user-management.logged-in header, .page-template-user-management.logged-in footer, .page-template-user-management.logged-in #colophon {
   display: none; }
 
 .page-template-user-management article header {

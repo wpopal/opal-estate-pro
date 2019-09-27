@@ -4,13 +4,16 @@
 
 // no header and footer for user management page 
 .page-template-user-management  {
-	header, footer, #colophon {
-		display:none;
+	&.logged-in {
+		header, footer, #colophon {
+			display:none;
+		}
 	}
 	article header {
 		display:block !important;
 	}
 }
+
 /// my-properties  page
 .button-actions {
 	position:absolute;
