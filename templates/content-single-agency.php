@@ -99,7 +99,7 @@ $id      = time();
                             <div class="opalestate-tab-content" id="tab-content-team">
                                 <div class="opalestate-box-content">
                                     <h4 class="outbox-title"><?php esc_html_e( 'Team', 'opalestate-pro' ); ?></h4>
-                                    <?php echo $team; ?>
+									<?php echo $team; ?>
                                 </div>
                             </div>
 						<?php endif; ?>
@@ -109,7 +109,7 @@ $id      = time();
                                 <div class="opalestate-box-content">
                                     <h4 class="outbox-title"><?php esc_html_e( 'Properties', 'opalestate-pro' ); ?></h4>
                                     <div class="opalestate-box">
-										<?php echo $properties; ?>
+										<?php echo opalestate_load_template_path( 'single-agency/properties' ); ?>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,11 @@ $id      = time();
                 </div>
             </div>
 
-			<?php comments_template(); ?>
+			<?php
+			if ( opalestate_get_option( 'enable_agency_reviews' ) ) {
+				comments_template();
+			}
+			?>
 
             <div class="content-bottom">
 				<?php do_action( 'opalestate_single_agency_content_bottom' ); ?>

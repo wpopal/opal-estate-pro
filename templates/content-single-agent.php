@@ -14,7 +14,11 @@ $id      = time();
                 <div class="col-md-8 col-sm-12">
                     <ul class="list-inline opalestate-scroll-elements">
                         <li><a href="#block-description" class="active"><?php esc_html_e( 'Description', 'opalestate-pro' ); ?></a></li>
-                        <li><a href="#reviews"><?php esc_html_e( 'Review', 'opalestate-pro' ); ?></a></li>
+
+						<?php if ( opalestate_get_option( 'enable_agent_reviews' ) ) : ?>
+                            <li><a href="#reviews"><?php esc_html_e( 'Review', 'opalestate-pro' ); ?></a></li>
+						<?php endif; ?>
+
                         <li><a href="#block-my-properties"><?php esc_html_e( 'Properties', 'opalestate-pro' ); ?></a></li>
                     </ul>
                 </div>
@@ -101,7 +105,11 @@ $id      = time();
 					<?php endif ?>
                 </div><!-- .entry-content -->
 
-				<?php comments_template(); ?>
+				<?php
+				if ( opalestate_get_option( 'enable_agent_reviews' ) ) {
+					comments_template();
+				}
+				?>
 
                 <meta itemprop="url" content="<?php the_permalink(); ?>"/>
 
