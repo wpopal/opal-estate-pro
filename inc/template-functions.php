@@ -24,7 +24,7 @@ function opalestate_load_template_path( $tpl, $args = [], $layout = '' ) {
 }
 
 function opalestate_get_image_avatar_placehold() {
-	return OPALESTATE_PLUGIN_URL . 'assets/images/avatar-placeholder.jpg';
+	return OPALESTATE_PLUGIN_URL . 'assets/images/avatar-placeholder.png';
 }
 
 function opalestate_get_admin_view( $file ) {
