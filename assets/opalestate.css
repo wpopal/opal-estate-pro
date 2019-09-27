@@ -3702,14 +3702,12 @@ header#masthead {
   display: flex; }
 
 .opalestate-user-greeting .howdy {
-  float: right;
-  padding-left: 5px;
+  padding-right: 5px;
   padding-top: 5px;
   font-weight: 700; }
 
-.opalestate-user-greeting .opalestate-popup
-.popup-head {
-  float: left; }
+.opalestate-user-greeting .popup-head {
+  float: right; }
 
 .opalestate-user-greeting .popup-head a {
   color: #FFF;
@@ -3733,11 +3731,28 @@ header#masthead {
   padding: 0;
   margin: 0;
   list-style: none; }
+  .opalestate-user-greeting ul li:hover .count {
+    background-color: #2f73e9;
+    color: #FFF; }
+
+.opalestate-user-greeting .count {
+  color: #2f73e9;
+  padding: 3px 8px;
+  font-size: 11px;
+  min-width: 20px;
+  text-align: center;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  margin-left: 5px; }
 
 .dashboard-navbar {
   background-color: #1d2329;
   padding: 20px 30px;
-  border-left: 1px solid #282d33;
+  border-left: 1px solid #181c21;
   margin-bottom: 15px; }
   .dashboard-navbar ul {
     margin-bottom: 0; }
@@ -3794,7 +3809,7 @@ header#masthead {
     content: "";
     z-index: 2;
     transform: translateX(-50%);
-    right: 25%;
+    right: -15px;
     top: -14px;
     border-bottom: 25px solid white;
     border-left: 20px solid transparent;
@@ -3894,17 +3909,15 @@ header#masthead {
     background-color: #1d2329;
     min-height: 900px;
     position: fixed;
-    left: 0;
     width: 251px;
     height: 100%;
     z-index: 100;
-    top: 0px; }
+    top: 0px;
+    left: 0;
+    border-right: 1px solid #21272e; }
     .opalestate-user-management .user-dasboard-sidebar .navbar-brand {
       text-align: center;
-      margin: 50px 0 60px 0; }
-      .opalestate-user-management .user-dasboard-sidebar .navbar-brand .custom-logo-link {
-        padding: 60px 30px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+      margin: 30px 0; }
     .opalestate-user-management .user-dasboard-sidebar .user-dasboard-sidebar-inner {
       padding-top: 20px; }
   .opalestate-user-management .navbar-brand {
@@ -3948,15 +3961,16 @@ header#masthead {
         -o-border-radius: 50%;
         margin-left: 5px; }
       .opalestate-user-management .account-links a:hover, .opalestate-user-management .account-links a:focus {
-        color: #fff; }
+        color: #FFF; }
         .opalestate-user-management .account-links a:hover i, .opalestate-user-management .account-links a:focus i {
-          color: #fff; }
+          color: #FFF; }
     .opalestate-user-management .account-links li.active a {
-      color: #fff; }
+      color: #FFF; }
       .opalestate-user-management .account-links li.active a i {
-        color: #fff; }
+        color: #FFF; }
   .opalestate-user-management .site-main {
-    padding-top: 15px; }
+    padding-top: 60px;
+    padding-bottom: 60px; }
 
 .opalestate-my-reviews .commentlist {
   margin: 0; }

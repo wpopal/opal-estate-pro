@@ -81,13 +81,12 @@
 
 .opalestate-user-greeting {
 	.howdy {
-		float: right;
-		padding-left: 5px;
+		padding-right: 5px;
 		padding-top: 5px;
 		font-weight: 700;
-	}.opalestate-popup
+	}
 	.popup-head  {
-		float:left;
+		float:right;
 	}
 	.popup-head a { 
 		color:$white; 
@@ -114,6 +113,25 @@
 		padding:0;
 		margin :0 ;
 		list-style:none;
+		li {
+			&:hover {
+				.count {
+					background-color:$primary;
+					color:$white;
+				}
+			}
+		}
+	}
+
+	.count {
+		color:$primary;
+		padding:3px 8px;
+		font-size: 11px;
+		min-width: 20px;
+		text-align: center;
+		background-color: $border-color;
+		@include border-radius(50%);
+		margin-left:5px;
 	}
 	
 }
@@ -121,7 +139,7 @@
 .dashboard-navbar {
 	background-color: #1d2329;
 	padding:20px $grid-gutter-width;
-	border-left: 1px solid #282d33;
+	border-left: 1px solid #181c21;
 	margin-bottom: $grid-gutter-width/2;
 	ul{
 		margin-bottom: 0;
@@ -198,7 +216,7 @@
 				content: "";
 				z-index: 2;
 				transform: translateX(-50%);
-				right:25%;
+				right:-15px;
 				top: -14px;
 				border-bottom: 25px solid rgb(255, 255, 255);
 				border-left: 20px solid transparent;
@@ -321,18 +339,15 @@
 		background-color:#1d2329;
 		min-height:900px;
 		position:fixed;
-		left:0;
 		width:251px;
 		height:100%;
 		z-index:100;
 		top:0px;
+		left:0;
+		border-right:1px solid #21272e;
 		.navbar-brand {
 			text-align: center;
-			margin: 50px 0 60px 0;
-			.custom-logo-link {
-				padding: $grid-gutter-width*2 $grid-gutter-width;
-				border-bottom:1px solid rgba(255,255,255, 0.1);
-			}
+			margin: $grid-gutter-width 0;
 		}
 	 	.user-dasboard-sidebar-inner{
 	 		padding-top:20px;
@@ -385,26 +400,26 @@
 			&:hover,
 			&:focus {
 				//background-color:#0073aa;
-				color:#fff;
+				color:$white;
 				i {
-					color:#fff;
+					color:$white;
 				}
 			}
 		}
 		li.active {
 			a {
 				//background-color:#0073aa;
-				color:#fff;
+				color:$white;
 				i {
-					color:#fff;
+					color:$white;
 				}
 			}
 		}
 	}
 
 	.site-main {
-		padding-top:$padding-base;
-		$padding-bottom:$padding-base;
+		padding-top: $grid-gutter-width*2;
+		padding-bottom: $grid-gutter-width*2;
 	}
 }
 

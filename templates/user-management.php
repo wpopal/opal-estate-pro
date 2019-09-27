@@ -17,17 +17,12 @@ if ( ! class_exists( 'OpalEstate_User' ) ) {
 	return;
 }
 
-get_header( 'no-sidebar' );
 $user_id      = get_current_user_id();
 $current_user = wp_get_current_user();
 
-$user_info = "<span class='display-name'>{$current_user->display_name}</span>";
-
-if ( $current_user->display_name !== $current_user->user_login ) {
-	$user_info .= "<span class='username'>{$current_user->user_login}</span>";
-}
 ?>
 <?php if ( $user_id ): ?>
+	<?php get_header( 'no-sidebar' ); ?>
     <div class="dashboard-navbar">
         <div class="clearfix">
             <div class="pull-left navbar-left">
@@ -66,7 +61,7 @@ if ( $current_user->display_name !== $current_user->user_login ) {
     </div>
 
     <div class="wrapper opalestate-user-management" id="opalestate-user-management">
-        <div class="container-full" id="content">
+        <div class="container" id="content">
             <div class="opal-row-inner">
                 <div class=" user-dasboard-sidebar">
                     <div class="navbar-brand">
@@ -134,7 +129,9 @@ if ( $current_user->display_name !== $current_user->user_login ) {
             </div><!-- .row end -->
         </div><!-- Container end -->
     </div><!-- Wrapper end -->
+	<?php get_footer( 'header/no-sidebar' ); ?>
 <?php else : ?>
+	<?php get_header(); ?>
     <div class="wrapper opalestate-user-management" id="opalestate-user-management">
         <div class="container">
             <div class="opalestate-panel-myaccount">
@@ -146,5 +143,5 @@ if ( $current_user->display_name !== $current_user->user_login ) {
             </div>
         </div>
     </div>
+	<?php get_footer(); ?>
 <?php endif; ?>
-<?php get_footer( 'header/no-sidebar' ); ?>

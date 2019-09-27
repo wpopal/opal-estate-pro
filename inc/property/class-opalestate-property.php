@@ -140,6 +140,7 @@ class Opalestate_Property {
 				'attachments',
 				'facilities',
 				'video',
+				'virtual_tour',
 				'map',
 				'nearby',
 				'walkscores',
@@ -189,7 +190,7 @@ class Opalestate_Property {
 					$value = get_post_meta( $this->post_id, $field['id'], true );
 				}
 
-				$value = isset( $field['unit'] ) ? $value . ' ' . $field['unit'] : $value;
+				$value = isset( $field['unit'] ) && $field['unit'] ? $value . ' ' . $field['unit'] : $value;
 
 				$this->metabox_info[ $id ] = [ 'label' => $field['name'], 'value' => $value ];
 			}
