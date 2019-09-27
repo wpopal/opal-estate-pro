@@ -66,7 +66,7 @@ if ( $current_user->display_name !== $current_user->user_login ) {
     </div>
 
     <div class="wrapper opalestate-user-management" id="opalestate-user-management">
-        <div class="container-full" id="content">
+        <div class="container" id="content">
             <div class="opal-row-inner">
                 <div class=" user-dasboard-sidebar">
                     <div class="navbar-brand">

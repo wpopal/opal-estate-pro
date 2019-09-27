@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
-    <div class="opalestate-admin-box">
+    <div class="opalestate-admin-box card-item inner">
 
         <div class="box-content">
 			<?php
@@ -30,8 +30,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$user_info = "<span class='username'>({$current_user->user_login})</span>";
 			}
 			?>
-            <h3><?php esc_html_e( 'Edit User Profile', 'opalestate-pro' ); ?>&nbsp;<?php echo wp_kses_post( $user_info ); ?></h3>
 
+            <div class="heading">
+                <i class="fa fa-user"></i>
+                <span><?php esc_html_e( 'Edit User Profile', 'opalestate-pro' ); ?>&nbsp;<?php echo wp_kses_post( $user_info ); ?></span>
+
+            </div>
 			<?php
 			do_action( 'opalestate_profile_form_before' );
 
@@ -47,10 +51,13 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
     </div>
 
-    <div class="opalestate-admin-box">
+    <div class="opalestate-admin-box card-item inner">
         <div class="box-content">
-            <h3><?php esc_html_e( 'Change Password', 'opalestate-pro' ); ?></h3>
+            <div class="heading">
+                <i class="fa fa-lock-open"></i>
+                <span><?php esc_html_e( 'Change Password', 'opalestate-pro' ); ?></span>
 
+            </div>
 
 			<?php
 			do_action( 'opalestate_profile_form_before' );
