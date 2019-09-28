@@ -547,7 +547,7 @@ span.cmb2-metabox-description {
 }
 .opalestate-submission-form .btn-submit-cmb::before {
   content: "\f138";
-  font-family: Fontawesome;
+  font-family: "Font Awesome 5 Free";
   margin-right: 18px;
   padding-right: 20px;
 }
