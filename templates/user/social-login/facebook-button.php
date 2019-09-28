@@ -17,5 +17,5 @@ if ( ! $facebook_app_id || ! $facebook_secret ) {
 ?>
 
 <a href="javascript:void(0);" rel="nofollow" title="<?php esc_attr_e( 'Facebook', 'opalestate-pro' ); ?>" class="js-opal-facebook-login opalestate-social-login-facebook-btn">
-    <i class="fa fa-facebook"></i><?php esc_html_e( 'Connect with Facebook', 'opalestate-pro' ); ?>
+    <i class="fab fa-facebook"></i><?php esc_html_e( 'Connect with Facebook', 'opalestate-pro' ); ?>
 </a>

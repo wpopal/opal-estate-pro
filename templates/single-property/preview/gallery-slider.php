@@ -61,7 +61,7 @@
 							<?php if ( $property->latitude && $property->longitude ) : ?>
                                 <a href="<?php echo esc_url( $property->get_google_map_link() ); ?>" rel="nofollow" target="_blank">
                                 <span class="property-view-map">
-							    <i class="fa fa-map-marker"></i>
+							    <i class="fas fa-map-marker-alt"></i>
                                 </span>
                                 </a>
 							<?php endif; ?>

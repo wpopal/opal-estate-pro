@@ -47,7 +47,7 @@ if ( $agent_id ) {
 				<?php endif; ?>
 				<?php if ( $agent->get_trusted() ): ?>
                     <span class="trusted-label hint--top" aria-label="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>" title="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>">
-                    <i class="fa fa-star"></i>
+                    <i class="fab fa-star"></i>
                 </span>
 				<?php endif; ?>
 			<?php endif; ?>
@@ -119,27 +119,27 @@ if ( $agent_id ) {
 
                 <div class="opalestate-social-icons">
 					<?php if ( $facebook && $facebook != "#" && ! empty( $facebook ) ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-facebook" href="<?php echo esc_url( $facebook ); ?>"> <i class="fa fa-facebook"></i> </a>
+                        <a class="opalestate-social-white radius-x opalestate-social-facebook" href="<?php echo esc_url( $facebook ); ?>"> <i class="fab fa-facebook"></i> </a>
 					<?php endif; ?>
 
 					<?php if ( $twitter && $twitter != "#" && ! empty( $twitter ) ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-twitter" href="<?php echo esc_url( $twitter ); ?>"><i class="fa fa-twitter"></i> </a>
+                        <a class="opalestate-social-white radius-x opalestate-social-twitter" href="<?php echo esc_url( $twitter ); ?>"><i class="fab fa-twitter"></i> </a>
 					<?php endif; ?>
 
 					<?php if ( $pinterest && $pinterest != "#" && ! empty( $pinterest ) ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-pinterest" href="<?php echo esc_url( $pinterest ); ?>"><i class="fa fa-pinterest"></i> </a>
+                        <a class="opalestate-social-white radius-x opalestate-social-pinterest" href="<?php echo esc_url( $pinterest ); ?>"><i class="fab fa-pinterest"></i> </a>
 					<?php endif; ?>
 
 					<?php if ( $google && $google != "#" && ! empty( $google ) ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-google" href="<?php echo esc_url( $google ); ?>"> <i class="fa fa-google"></i></a>
+                        <a class="opalestate-social-white radius-x opalestate-social-google" href="<?php echo esc_url( $google ); ?>"> <i class="fab fa-google"></i></a>
 					<?php endif; ?>
 
 					<?php if ( $instagram && $instagram != "#" && ! empty( $instagram ) ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-instagram" href="<?php echo esc_url( $instagram ); ?>"> <i class="fa fa-instagram"></i></a>
+                        <a class="opalestate-social-white radius-x opalestate-social-instagram" href="<?php echo esc_url( $instagram ); ?>"> <i class="fab fa-instagram"></i></a>
 					<?php endif; ?>
 
 					<?php if ( $linkedIn && $linkedIn != "#" && ! empty( $linkedIn ) ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-linkedIn" href="<?php echo esc_url( $linkedIn ); ?>"> <i class="fa fa-linkedIn"></i></a>
+                        <a class="opalestate-social-white radius-x opalestate-social-linkedIn" href="<?php echo esc_url( $linkedIn ); ?>"> <i class="fab fa-linkedIn"></i></a>
 					<?php endif; ?>
                 </div>
             </div><!-- /.agent-box-content -->

@@ -80,7 +80,7 @@ $id      = time();
                             <div class="agent-google-map-content">
 								<?php if ( $address ): ?>
                                     <p>
-                                        <i class="fa fa-map-marker"></i> <span><?php esc_html_e( 'Address:', 'opalestate-pro' ); ?></span> <?php echo wp_kses_post( $address ); ?>.
+                                        <i class="fas fa-map-marker-alt"></i> <span><?php esc_html_e( 'Address:', 'opalestate-pro' ); ?></span> <?php echo wp_kses_post( $address ); ?>.
 										<?php
 										$terms = wp_get_post_terms( get_the_ID(), 'opalestate_agent_location' );
 										if ( $terms && ! is_wp_error( $terms ) ) {

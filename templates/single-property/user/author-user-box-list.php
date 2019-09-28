@@ -50,7 +50,7 @@
 						<?php if ( $trusted ): ?>
                             <span class="trusted-label hint--top" aria-label="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>"
                                   title="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>">
-						<i class="fa fa-star"></i>
+						<i class="fab fa-star"></i>
 					</span>
 						<?php endif; ?>
 
@@ -64,7 +64,7 @@
 					<?php $phone = get_user_meta( $user_id, $prefix . 'phone', true ); ?>
 					<?php if ( ! empty( $phone ) ) : ?>
                         <div class="agent-box-phone">
-                            <i class="fa fa-phone"></i><span><a href="tel:<?php echo sanitize_title( $phone ); ?>"><?php echo esc_attr( $phone ); ?></a></span>
+                            <i class="fab fa-phone"></i><span><a href="tel:<?php echo sanitize_title( $phone ); ?>"><?php echo esc_attr( $phone ); ?></a></span>
                         </div><!-- /.agent-box-phone -->
 					<?php endif; ?>
                 </div><!-- /.agent-box-content -->
@@ -83,24 +83,24 @@
 
             <div class="opalestate-social-icons text-center">
 				<?php if ( $facebook && $facebook != "#" && ! empty( $facebook ) ) { ?>
-                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $facebook ); ?>"> <i class="fa fa-facebook"></i> </a>
+                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $facebook ); ?>"> <i class="fab fa-facebook"></i> </a>
 				<?php } ?>
 				<?php if ( $twitter && $twitter != "#" && ! empty( $twitter ) ) { ?>
-                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $twitter ); ?>"><i class="fa fa-twitter"></i> </a>
+                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $twitter ); ?>"><i class="fab fa-twitter"></i> </a>
 				<?php } ?>
 				<?php if ( $pinterest && $pinterest != "#" && ! empty( $pinterest ) ) { ?>
-                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $pinterest ); ?>"><i class="fa fa-pinterest"></i> </a>
+                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $pinterest ); ?>"><i class="fab fa-pinterest"></i> </a>
 				<?php } ?>
 				<?php if ( $google && $google != "#" && ! empty( $google ) ) { ?>
-                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $google ); ?>"> <i class="fa fa-google-plus"></i></a>
+                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $google ); ?>"> <i class="fab fa-google-plus"></i></a>
 				<?php } ?>
 
 				<?php if ( $instagram && $instagram != "#" && ! empty( $instagram ) ) { ?>
-                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $instagram ); ?>"> <i class="fa fa-instagram"></i></a>
+                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $instagram ); ?>"> <i class="fab fa-instagram"></i></a>
 				<?php } ?>
 
 				<?php if ( $linkedIn && $linkedIn != "#" && ! empty( $linkedIn ) ) { ?>
-                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $linkedIn ); ?>"> <i class="fa fa-linkedIn"></i></a>
+                    <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $linkedIn ); ?>"> <i class="fab fa-linkedIn"></i></a>
 				<?php } ?>
             </div>
 
