@@ -52,7 +52,7 @@
 		}
 		&::before{
 			content: '\f00d';
-			font-family: Fontawesome;
+			font-family: $font-family-icon;
 			transition: all .3s ease-in-out;
 		}
 	}

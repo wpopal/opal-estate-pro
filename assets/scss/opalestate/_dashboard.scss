@@ -122,7 +122,6 @@
 			}
 		}
 	}
-
 	.count {
 		color:$primary;
 		padding:3px 8px;
@@ -360,12 +359,14 @@
 	.account-links {
 		list-style:none;
 		padding:0;
-		margin : 0;
+		margin : 0 $padding-base;
 		max-height: 530px;
 		overflow-y: scroll;
+		font-size: 14px;
 		@media(max-width: 991px) {
 			max-height: 400px;
 		}
+
 		&::-webkit-scrollbar {
 			width: 8px;
 			background-color: #1d2329;
@@ -376,7 +377,6 @@
 			-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
 			background-color: #555;
 		}
-
 		a {
 			padding:8px 20px;
 			width:100%;
@@ -399,19 +399,27 @@
 			}
 			&:hover,
 			&:focus {
-				//background-color:#0073aa;
+				background-color:$primary;
+				@include border-radius(5px);
 				color:$white;
 				i {
 					color:$white;
+				}
+				.count {
+					background-color: $secondary;
 				}
 			}
 		}
 		li.active {
 			a {
-				//background-color:#0073aa;
+				background-color:$primary;
+				@include border-radius(5px);
 				color:$white;
 				i {
 					color:$white;
+				}
+				.count {
+					background-color: $secondary;
 				}
 			}
 		}

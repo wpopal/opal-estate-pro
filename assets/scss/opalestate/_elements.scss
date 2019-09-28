@@ -101,7 +101,7 @@ ul.property-status{
 	line-height: 1;
 	
 	&::before{
-		font-family:'FontAwesome';
+		font-family:$font-family-icon;
 		font-size: inherit;
 		text-rendering: auto;
 		content: "\f005\f005\f005\f005\f005";
@@ -118,7 +118,7 @@ ul.property-status{
 		color: transparent;
 		padding-top: 20px;
 		&::before{
-			font-family:'FontAwesome';
+			font-family:$font-family-icon;
 			font-size: inherit;
 			text-rendering: auto;
 			content: "\f005\f005\f005\f005\f005";
@@ -147,7 +147,7 @@ p.stars {
 			width: 1em;
 			height: 1em;
 			line-height: 1;
-			font-family: "FontAwesome";
+			font-family: $font-family-icon;
 			content: "\f006";
 			text-indent: 0;
 		}

@@ -38,7 +38,7 @@
       color: red; }
     .uploader-item-preview .btn-close::before {
       content: '\f00d';
-      font-family: Fontawesome;
+      font-family: "Font Awesome 5 Free";
       transition: all .3s ease-in-out; }
   .uploader-item-preview .preview-icon {
     padding-top: 4px; }
@@ -494,7 +494,7 @@ span.cmb2-metabox-description {
         margin-top: 15px; } }
     .opalestate-submission-form .btn-submit-cmb::before {
       content: "\f138";
-      font-family: Fontawesome;
+      font-family: "Font Awesome 5 Free";
       margin-right: 18px;
       padding-right: 20px; }
     .opalestate-submission-form .btn-submit-cmb::after {

@@ -238,7 +238,7 @@ ul.property-meta-list{
 	}	
 }
 i[class*="icon-property-"]{
-    font-family: FontAwesome;
+    font-family: $font-family-icon;
 }
 .icon-property-areasize:before{
     content: "\f047";

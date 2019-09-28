@@ -299,7 +299,7 @@
   padding: 19px 25px 17px 20px; }
   .opalestate-submission-tab button.btn.submission-next-btn::before {
     content: "\f138";
-    font-family: Fontawesome;
+    font-family: "Font Awesome 5 Free";
     margin-right: 18px;
     padding-right: 20px; }
   .opalestate-submission-tab button.btn.submission-next-btn::after {
@@ -319,7 +319,7 @@
   padding-right: 20px; }
   .opalestate-submission-tab .submission-back-btn::after {
     content: "\f137";
-    font-family: Fontawesome;
+    font-family: "Font Awesome 5 Free";
     margin-left: 18px;
     padding-left: 20px; }
   .opalestate-submission-tab .submission-back-btn::before {

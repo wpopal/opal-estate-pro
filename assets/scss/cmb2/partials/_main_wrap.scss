@@ -616,7 +616,7 @@ span.cmb2-metabox-description {
 		}
 		&::before{
 			content: "\f138";
-			font-family: Fontawesome;
+			font-family: $font-family-icon;
 			margin-right: 18px;
 			padding-right: 20px;
 		}

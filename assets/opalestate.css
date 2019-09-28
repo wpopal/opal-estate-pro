@@ -2350,7 +2350,7 @@ ul.property-meta-list {
     font-style: unset; }
 
 i[class*="icon-property-"] {
-  font-family: FontAwesome; }
+  font-family: "Font Awesome 5 Free"; }
 
 .icon-property-areasize:before {
   content: "\f047"; }
@@ -2899,7 +2899,7 @@ ul.property-status {
   width: calc(15px*5 - 5px);
   line-height: 1; }
   .opalestate-rating__stars::before {
-    font-family: 'FontAwesome';
+    font-family: "Font Awesome 5 Free";
     font-size: inherit;
     text-rendering: auto;
     content: "\f005\f005\f005\f005\f005";
@@ -2915,7 +2915,7 @@ ul.property-status {
     color: transparent;
     padding-top: 20px; }
     .opalestate-rating__stars span::before {
-      font-family: 'FontAwesome';
+      font-family: "Font Awesome 5 Free";
       font-size: inherit;
       text-rendering: auto;
       content: "\f005\f005\f005\f005\f005";
@@ -2940,7 +2940,7 @@ p.stars a {
     width: 1em;
     height: 1em;
     line-height: 1;
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f006";
     text-indent: 0; }
   p.stars a:hover ~ a::before {
@@ -3925,9 +3925,10 @@ header#masthead {
   .opalestate-user-management .account-links {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 15px;
     max-height: 530px;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    font-size: 14px; }
     @media (max-width: 991px) {
       .opalestate-user-management .account-links {
         max-height: 400px; } }
@@ -3961,13 +3962,29 @@ header#masthead {
         -o-border-radius: 50%;
         margin-left: 5px; }
       .opalestate-user-management .account-links a:hover, .opalestate-user-management .account-links a:focus {
+        background-color: #2f73e9;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
         color: #FFF; }
         .opalestate-user-management .account-links a:hover i, .opalestate-user-management .account-links a:focus i {
           color: #FFF; }
+        .opalestate-user-management .account-links a:hover .count, .opalestate-user-management .account-links a:focus .count {
+          background-color: #02ce76; }
     .opalestate-user-management .account-links li.active a {
+      background-color: #2f73e9;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
       color: #FFF; }
       .opalestate-user-management .account-links li.active a i {
         color: #FFF; }
+      .opalestate-user-management .account-links li.active a .count {
+        background-color: #02ce76; }
   .opalestate-user-management .site-main {
     padding-top: 60px;
     padding-bottom: 60px; }
