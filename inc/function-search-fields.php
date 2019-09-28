@@ -32,7 +32,7 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 			case 'input': ?>
                 <label class="opalestate-label opalestate-label--<?php echo sanitize_html_class( $field ); ?>"><?php echo esc_html( $label ); ?></label>
                 <div class="input-group-number">
-                    <i class="fa icon-property-<?php echo esc_attr( $field ); ?>"></i>
+                    <i class="<?php echo opalestate_get_property_meta_icon( $field ); ?>"></i>
                     <input class="form-control" value="1" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr( $label ); ?>"/>
                     <div class="btn-actions">
                         <span class="btn-minus"><i class="fa fa-minus"></i></span>

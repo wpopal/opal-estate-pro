@@ -26,7 +26,7 @@ $meta = $property->get_meta_shortinfo();
 				<?php if ( $meta ) : ?>
 					<?php foreach ( $meta as $key => $info ) : ?>
                         <li class="property-label-<?php echo esc_attr( $key ); ?>">
-                            <i class="fa icon-property-<?php echo esc_attr( $key ); ?>"></i><?php echo esc_html( $info['label'] ); ?> <span>
+                            <i class="<?php echo opalestate_get_property_meta_icon( $key ); ?>"></i><?php echo esc_html( $info['label'] ); ?> <span>
 							<?php echo apply_filters( 'opalestate-pro' . $key . '_unit_format', trim( $info['value'] ) ); ?></span>
                         </li>
 					<?php endforeach; ?>

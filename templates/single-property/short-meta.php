@@ -11,7 +11,7 @@ if ( empty( $meta_content ) ) {
 				<?php if ( trim( $info['value'] ) ) : ?>
                     <li class="property-label-<?php echo esc_attr( $key ); ?>">
                         <div class="icon-box">
-                            <i class="icon-property-<?php echo esc_attr( $key ); ?>"></i>
+                            <i class="<?php echo opalestate_get_property_meta_icon( $key ); ?>"></i>
                         </div>
                         <div class="info-meta">
                                 <span class="label-content">
