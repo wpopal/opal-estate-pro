@@ -32,6 +32,13 @@ class OpalEstate_Agent {
 	protected $is_featured;
 
 	/**
+	 * @var Boolean $is_featured
+	 *
+	 * @access protected
+	 */
+	public $post_id; 
+	
+	/**
 	 *  Constructor
 	 */
 	public function __construct( $post_id = null ) {

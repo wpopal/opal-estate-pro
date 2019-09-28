@@ -75,10 +75,10 @@ $types = OpalEstate_User::get_user_types();
             </p>
 		<?php endif; ?>
 
-
+        <?php $terms_page = get_permalink( opalestate_get_option( 'user_terms_page', '/' ) ); ?>
         <p class="opalestate-form-field i-agree validate-required">
             <label><?php esc_html_e( 'I agree with', 'opalestate-pro' ); ?> <span class="required">*</span></label>
-            <a href="#"><?php esc_html_e( 'terms & conditions', 'opalestate-pro' ); ?></a>
+            <a href="<?php echo esc_url( $terms_page ? $terms_page : '#' ); ?>" title="<?php esc_attr_e( 'terms & conditions', 'opalestate-pro' ); ?>" target="_blank"><?php esc_html_e( 'terms & conditions', 'opalestate-pro' ); ?></a>
             <input type="checkbox" name="confirmed_register" id="confirmed_register" required="required" class="comfirmed-box"/>
         </p>
 

@@ -72,8 +72,15 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 				],
 				[
 					'name'    => esc_html__( 'My Account Page', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'This is page use User login and register an account, or reset password.', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'This is page used for login and register an account, or reset password.', 'opalestate-pro' ),
 					'id'      => 'user_myaccount_page',
+					'type'    => 'select',
+					'options' => $pages,
+				],
+				[
+					'name'    => esc_html__( 'Terms and Conditions Page', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'This is page used for terms and conditions.', 'opalestate-pro' ),
+					'id'      => 'user_terms_page',
 					'type'    => 'select',
 					'options' => $pages,
 				],

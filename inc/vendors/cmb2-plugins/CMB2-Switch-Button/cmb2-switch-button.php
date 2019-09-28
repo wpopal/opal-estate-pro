@@ -17,7 +17,18 @@ if( !class_exists( 'CMB2_Switch_Button' ) ) {
         public function __construct() {
             add_action( 'cmb2_render_switch', array( $this, 'callback' ), 10, 5 );
             add_action( 'admin_head', array( $this, 'admin_head' ) );
+
+        	add_filter( 'cmb2_sanitize_switch', array( $this, 'sanitize' ), 10, 4 );
         }
+
+        public function sanitize (  $override_value, $value, $object_id, $field_args ) {
+        	
+        	if( $value != "on" ) {
+        		$value = 'off';
+        	}
+        	return $value;
+        }
+
         public function callback($field, $escaped_value, $object_id, $object_type, $field_type_object) {
            $field_name = $field->_name();
            
