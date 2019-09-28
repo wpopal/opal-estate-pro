@@ -34,7 +34,7 @@ $property = opalesetate_property( get_the_ID() );
                 </div>
             </div><!-- .entry-content -->
 
-			<?php opalestate_get_single_short_meta(); ?>
+			<?php opalestate_get_loop_short_meta(); ?>
             <div class="property-meta-bottom">
 				<?php opalestate_property_loop_price(); ?>
             </div>

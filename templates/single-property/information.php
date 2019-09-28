@@ -23,6 +23,7 @@ if ( ! $infos && ! $taxs ) {
                     </div>
                 </li>
 			<?php endif; ?>
+
 			<?php if ( $infos ): ?>
 				<?php foreach ( $infos as $key => $info ) : ?>
 					<?php if ( $info['value'] ) : ?>

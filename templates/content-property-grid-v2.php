@@ -36,7 +36,7 @@ $property = opalesetate_property( get_the_ID() );
 			<?php opalestate_get_loop_thumbnail( opalestate_get_option( 'loop_image_size', 'large' ) ); ?>
         </header>
 
-		<?php opalestate_get_single_short_meta(); ?>
+		<?php opalestate_get_loop_short_meta(); ?>
 
         <div class="entry-content-bottom clearfix">
             <div class="property-meta-bottom">
