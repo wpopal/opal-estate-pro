@@ -1175,34 +1175,34 @@ function opalestate_get_property_meta_icon( $key ) {
 	$classes[] = $prefix;
 	switch ( $key ) {
 		case 'builtyear':
-			$icon = $prefix . '-' . 'bedrooms';
+			$icon = $prefix . '-' . 'calendar';
 			break;
 		case 'parking':
-			$icon = $prefix . '-' . 'bedrooms';
+			$icon = $prefix . '-' . 'car';
 			break;
 		case 'bedrooms':
-			$icon = $prefix . '-' . 'bedrooms';
+			$icon = $prefix . '-' . 'bed';
 			break;
 		case 'bathrooms':
 			$icon = $prefix . '-' . 'bath';
 			break;
 		case 'plotsize':
-			$icon = $prefix . '-' . 'bath';
+			$icon = $prefix . '-' . 'map';
 			break;
 		case 'areasize':
-			$icon = $prefix . '-' . 'bath';
+			$icon = $prefix . '-' . 'arrows-alt';
 			break;
 		case 'orientation':
-			$icon = $prefix . '-' . 'bath';
+			$icon = $prefix . '-' . 'compass';
 			break;
 		case 'livingrooms':
-			$icon = $prefix . '-' . 'bath';
+			$icon = $prefix . '-' . 'tivi';
 			break;
 		case 'kitchens':
-			$icon = $prefix . '-' . 'bath';
+			$icon = $prefix . '-' . 'utensils';
 			break;
 		case 'amountrooms':
-			$icon = $prefix . '-' . 'bath';
+			$icon = $prefix . '-' . 'building';
 			break;
 		default:
 			$icon = $key;
