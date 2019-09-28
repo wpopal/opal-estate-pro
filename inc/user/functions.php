@@ -142,7 +142,7 @@ function opalestate_management_user_menu_tabs() {
 	];
 
 	$menu['reviews'] = [
-		'icon'  => 'fa fa-star',
+		'icon'  => 'far fa-star',
 		'link'  => 'reviews',
 		'title' => esc_html__( 'Reviews', 'opalestate-pro' ),
 		'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
@@ -167,7 +167,7 @@ function opalestate_management_user_menu_tabs() {
 	$statistics = new OpalEstate_User_Statistics();
 
 	$menu['myproperties'] = [
-		'icon'  => 'fa fa-building',
+		'icon'  => 'fas fa-building',
 		'link'  => 'submission_list',
 		'title' => esc_html__( 'My Properties', 'opalestate-pro' ) . '<span class="count">' . $statistics->get_count_properties() . '</span>',
 		'id'    => isset( $opalestate_options['submission_list_page'] ) ? $opalestate_options['submission_list_page'] : 0,

@@ -105,6 +105,7 @@ ul.property-status{
 		font-size: inherit;
 		text-rendering: auto;
 		content: "\f005\f005\f005\f005\f005";
+		font-weight: 400;
 		opacity: 0.5;
 		position: absolute;
 		top: 0;
@@ -122,7 +123,7 @@ ul.property-status{
 			font-size: inherit;
 			text-rendering: auto;
 			content: "\f005\f005\f005\f005\f005";
-			font-weight: 900;
+			font-weight: 400;
 			color: #f6be15;
 			position: absolute;
 			top: 0;
@@ -173,19 +174,19 @@ p.stars {
 	&.selected {
 		a.active {
 			&::before {
-				
+				font-weight: 900;
 				content: '\f005';
 			}
 
 			~ a::before {
-				
-				content: '\f006';
+				font-weight:400;
+				content: '\f005';
 			}
 		}
 
-		a:not( .active ) {
+		a:not(.active ) {
 			&::before {
-				
+				font-weight: 900;
 				content: '\f005';
 			}
 		}
