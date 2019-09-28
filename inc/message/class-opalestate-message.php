@@ -23,14 +23,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 class OpalEstate_User_Message {
 
 	/**
+	 * ID of current user id
 	 *
+	 * @return user_id
 	 */
 	protected $user_id = 0;
 
+	/**
+	 * Gets types.
+	 *
+	 * @return boolean $is_log
+	 */
 	protected $is_log;
 
 	/**
+	 * Gets a instance of this object.
 	 *
+	 * @return OpalEstate_User_Message
 	 */
 	public static function get_instance() {
 		static $_instance;
@@ -41,6 +50,11 @@ class OpalEstate_User_Message {
 		return $_instance;
 	}
 
+	/**
+	 * Gets types.
+	 *
+	 * @return array
+	 */
 	public function get_types() {
 
 		return [

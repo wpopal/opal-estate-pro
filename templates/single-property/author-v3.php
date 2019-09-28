@@ -46,7 +46,7 @@ switch ( $type ) {
 ?>
 <div class="opalestate-box-content property-agent-section">
     <div class="opalestate-box">
-		<?php if ( opalestate_get_option( 'enable_single_author_box' ) ) : ?>
+		<?php if ( opalestate_get_option( 'enable_single_author_box' , 'on' ) == 'on' ) : ?>
             <div class="author-content-box">
                 <div class="property-agent-info">
 					<?php echo wp_kses_post( $author_info ); ?>
@@ -54,7 +54,7 @@ switch ( $type ) {
             </div>
 		<?php endif; ?>
 
-		<?php if ( opalestate_get_option( 'enable_single_enquire_form' ) ) : ?>
+		<?php if ( opalestate_get_option( 'enable_single_enquire_form', 'on' ) == 'on' ) : ?>
 			<?php echo opalestate_load_template_path( 'messages/enquiry-form', [ 'nowrap' => true ] ); ?>
 		<?php endif; ?>
     </div>

@@ -103,7 +103,7 @@ class Opalestate_Property {
 	/**
 	 * Constructor
 	 */
-	public function __construct( $post_id ) {
+	public function __construct( $post_id ) { 
 		$this->post_id = $post_id;
 
 		$this->map               = $this->get_metabox_value( 'map' );
@@ -112,7 +112,7 @@ class Opalestate_Property {
 		$this->saleprice         = $this->get_metabox_value( 'saleprice' );
 		$this->before_pricelabel = $this->get_metabox_value( 'before_pricelabel' );
 		$this->pricelabel        = $this->get_metabox_value( 'pricelabel' );
-		$this->featured          = $this->get_metabox_value( 'featured' );
+		$this->featured          = $this->get_metabox_value( 'featured' );  
 		$this->sku               = $this->get_metabox_value( 'sku' );
 
 		$this->latitude  = isset( $this->map['latitude'] ) ? $this->map['latitude'] : '';
@@ -153,7 +153,7 @@ class Opalestate_Property {
 			];
 
 			foreach ( $keys as $key ) {
-				$this->property_settings[ $key ] = opalestate_get_option( 'enable_single_' . $key );
+				$this->property_settings[ $key ] = opalestate_get_option( 'enable_single_' . $key, 'on' );
 			}
 		}
 

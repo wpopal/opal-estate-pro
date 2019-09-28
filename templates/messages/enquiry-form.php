@@ -1,7 +1,7 @@
 <?php
 global $post;
 
-if ( ! opalestate_get_option( 'enable_single_enquire_form' ) ) {
+if (  opalestate_get_option( 'enable_single_enquire_form' , 'on' )  != 'on' ) {
     return;
 }
 

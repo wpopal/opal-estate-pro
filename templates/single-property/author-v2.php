@@ -5,7 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post, $property;
 
-if ( ! opalestate_get_option( 'enable_single_author_box' ) ) {
+
+if (  opalestate_get_option( 'enable_single_author_box' , 'on') != 'on' ) {
 	return;
 }
 

@@ -576,7 +576,7 @@ function opalestate_property_author_v2() {
 	echo opalestate_load_template_path( 'single-property/author-v2' );
 }
 
-function opalestate_property_author_v3() {
+function opalestate_property_author_v3() {  
 	echo opalestate_load_template_path( 'single-property/author-v3' );
 }
 
