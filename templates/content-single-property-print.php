@@ -23,7 +23,7 @@ $property    = opalesetate_property( $property_id );
                             <div class="pull-left">
 								<?php if ( $property->latitude && $property->longitude ) : ?>
                                     <a href="<?php echo esc_url( $property->get_google_map_link() ); ?>" rel="nofollow" target="_blank">
-                                        <span class="property-address__view-map property-view-map"><i class="fa fa-map-marker"></i></span>
+                                        <span class="property-address__view-map property-view-map"><i class="fas fa-map-marker-alt"></i></span>
                                     </a>
 								<?php endif; ?>
 

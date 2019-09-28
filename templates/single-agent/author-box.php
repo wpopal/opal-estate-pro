@@ -23,7 +23,7 @@ $agent = new OpalEstate_Agent();
 					<?php if ( $agent->get_trusted() ): ?>
                         <span class="trusted-label hint--top" aria-label="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>"
                               title="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>">
-						<i class="fa fa-star"></i>
+						<i class="fas fa-star"></i>
 					</span>
 					<?php endif; ?>
                 </div><!-- /.agent-box-image -->
@@ -89,27 +89,31 @@ $agent = new OpalEstate_Agent();
 	        <?php if ( $socials ) : ?>
                 <div class="opalestate-social-icons">
 			        <?php if ( isset( $socials['facebook'] ) && $socials['facebook'] ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-facebook" href="<?php echo esc_url( $socials['facebook'] ); ?>" target="_blank"> <i class="fa fa-facebook"></i> </a>
+                        <a class="opalestate-social-white radius-x opalestate-social-facebook" href="<?php echo esc_url( $socials['facebook'] ); ?>" target="_blank"> <i class="fab fa-facebook"></i>
+                        </a>
 			        <?php endif; ?>
 
 			        <?php if ( isset( $socials['twitter'] ) && $socials['twitter'] ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-twitter" href="<?php echo esc_url( $socials['twitter'] ); ?>" target="_blank"><i class="fa fa-twitter"></i> </a>
+                        <a class="opalestate-social-white radius-x opalestate-social-twitter" href="<?php echo esc_url( $socials['twitter'] ); ?>" target="_blank"><i class="fab fa-twitter"></i> </a>
 			        <?php endif; ?>
 
 			        <?php if ( isset( $socials['pinterest'] ) && $socials['pinterest'] ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-printerest" href="<?php echo esc_url( $socials['pinterest'] ); ?>" target="_blank"><i class="fa fa-pinterest"></i> </a>
+                        <a class="opalestate-social-white radius-x opalestate-social-printerest" href="<?php echo esc_url( $socials['pinterest'] ); ?>" target="_blank"><i class="fab
+                        fa-pinterest"></i> </a>
 			        <?php endif; ?>
 
 			        <?php if ( isset( $socials['google'] ) && $socials['google'] ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-google" href="<?php echo esc_url( $socials['google'] ); ?>" target="_blank"> <i class="fa fa-google"></i></a>
+                        <a class="opalestate-social-white radius-x opalestate-social-google" href="<?php echo esc_url( $socials['google'] ); ?>" target="_blank"> <i class="fab fa-google"></i></a>
 			        <?php endif; ?>
 
 			        <?php if ( isset( $socials['instagram'] ) && $socials['instagram'] ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-instagram" href="<?php echo esc_url( $socials['instagram'] ); ?>" target="_blank"> <i class="fa fa-instagram"></i></a>
+                        <a class="opalestate-social-white radius-x opalestate-social-instagram" href="<?php echo esc_url( $socials['instagram'] ); ?>" target="_blank"> <i class="fab
+                        fa-instagram"></i></a>
 			        <?php endif; ?>
 
 			        <?php if ( isset( $socials['linkedIn'] ) && $socials['linkedIn'] ) : ?>
-                        <a class="opalestate-social-white radius-x opalestate-social-linkedIn" href="<?php echo esc_url( $socials['linkedIn'] ); ?>" target="_blank"> <i class="fa fa-linkedIn"></i></a>
+                        <a class="opalestate-social-white radius-x opalestate-social-linkedIn" href="<?php echo esc_url( $socials['linkedIn'] ); ?>" target="_blank"> <i class="fab
+                        fa-linkedIn"></i></a>
 			        <?php endif; ?>
                 </div>
 	        <?php endif; ?>

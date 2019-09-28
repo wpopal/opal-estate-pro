@@ -18,7 +18,8 @@ if ( empty( $meta_content ) ) {
 				<?php foreach ( $meta as $key => $info ) : ?>
 					<?php if ( trim( $info['value'] ) ) : ?>
                         <li class="property-label-<?php echo esc_attr( $key ); ?>" title="<?php echo esc_attr( $info['label'] ); ?>">
-                            <span class="hint--top" aria-label="<?php echo esc_attr( $info['label'] ); ?>" title="<?php echo esc_attr( $info['label'] ); ?>"><i class="icon-property-<?php echo esc_attr( $key ); ?>"></i></span>
+                            <span class="hint--top" aria-label="<?php echo esc_attr( $info['label'] ); ?>" title="<?php echo esc_attr( $info['label'] ); ?>">
+                                <i class="<?php echo opalestate_get_property_meta_icon( $key ); ?>"></i></span>
                             <span class="label-property"><?php echo esc_html( $info['label'] ); ?></span>
                             <span class="label-content"><?php echo apply_filters( 'opalestate-pro' . $key . '_unit_format', trim( $info['value'] ) ); ?></span>
                         </li>

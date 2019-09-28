@@ -1162,3 +1162,54 @@ function opalestate_get_property_statuses() {
 		'expired'   => esc_html__( 'Expired', 'opalestate-pro' ),
 	] );
 }
+
+/**
+ * Returns property meta icon classes.
+ *
+ * @param $key
+ */
+function opalestate_get_property_meta_icon( $key ) {
+	$classes   = [];
+	$classes[] = 'icon-property-' . esc_attr( $key );
+	$prefix    = 'far';
+	$classes[] = $prefix;
+	switch ( $key ) {
+		case 'builtyear':
+			$icon = $prefix . '-' . 'calendar';
+			break;
+		case 'parking':
+			$icon = $prefix . '-' . 'car';
+			break;
+		case 'bedrooms':
+			$icon = $prefix . '-' . 'bed';
+			break;
+		case 'bathrooms':
+			$icon = $prefix . '-' . 'bath';
+			break;
+		case 'plotsize':
+			$icon = $prefix . '-' . 'map';
+			break;
+		case 'areasize':
+			$icon = $prefix . '-' . 'arrows-alt';
+			break;
+		case 'orientation':
+			$icon = $prefix . '-' . 'compass';
+			break;
+		case 'livingrooms':
+			$icon = $prefix . '-' . 'tv';
+			break;
+		case 'kitchens':
+			$icon = $prefix . '-' . 'utensils';
+			break;
+		case 'amountrooms':
+			$icon = $prefix . '-' . 'building';
+			break;
+		default:
+			$icon = $key;
+			break;
+	}
+
+	$classes[] = apply_filters( 'opalestate_property_meta_icon', $icon, $key );
+
+	return esc_attr( implode( ' ', array_map( 'sanitize_html_class', $classes ) ) );
+}

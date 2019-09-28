@@ -59,7 +59,7 @@ $meta     = $property->get_meta_shortinfo();
 						<?php if ( $meta ) : ?>
 							<?php foreach ( $meta as $key => $info ) : ?>
                                 <li class="property-label-<?php echo esc_attr( $key ); ?>" data-toggle="tooltip" data-placement="top" title="<?php echo esc_attr( $info['label'] ); ?>">
-                                    <i class="icon-property-<?php echo esc_attr( $key ); ?>"></i>
+                                    <i class="<?php echo opalestate_get_property_meta_icon( $key ); ?>"></i>
                                     <span class="label-property"><?php echo esc_html( $info['label'] ); ?></span>
                                     <span class="label-content"><?php echo apply_filters( 'opalestate-pro' . $key . '_unit_format', trim( $info['value'] ) ); ?></span>
                                 </li>

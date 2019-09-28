@@ -79,7 +79,7 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		}
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Meta Information in Grid and Single Page', 'opalestate-pro' ),
+			'name'    => esc_html__( 'Show Meta Information in property collection.', 'opalestate-pro' ),
 			'id'      => 'show_property_meta',
 			'type'    => 'multicheck',
 			'options' => $checkes,

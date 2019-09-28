@@ -68,8 +68,8 @@
 				$count_galleries = $count_galleries + count( $galleries );
 				?>
 				<?php if ( $count_galleries > $columns ) : ?>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"> <i class="fas fa-angle-left"></i></div>
+                    <div class="swiper-button-next"> <i class="fas fa-angle-right"></i></div>
 				<?php endif; ?>
 
                 <div class="swiper-wrapper">

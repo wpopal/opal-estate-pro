@@ -1,8 +1,8 @@
 <?php 
 if(  $existed != false || $existed != '' ) {
-    $fav_class = 'fa fa-heart';
+    $fav_class = 'fas fa-heart';
 } else {
-    $fav_class = 'fa fa-heart-o';
+    $fav_class = 'far fa-heart';
 }
 $need_login = '';
 if( !is_user_logged_in() ){
