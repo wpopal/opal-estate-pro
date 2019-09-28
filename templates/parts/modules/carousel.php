@@ -28,8 +28,8 @@ $template_style = isset( $args['style'] ) && $args['style'] ? sanitize_text_fiel
 
 				<?php if ( absint( $query->post_count ) > absint( $item ) ) : ?>
                     <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"> <i class="fas fa-angle-left"></i></div>
+                    <div class="swiper-button-next">  <i class="fas fa-angle-right"></i></div>
 				<?php endif; ?>
             </div>
 		<?php else: ?>
