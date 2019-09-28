@@ -11,9 +11,9 @@
  	}
  	$onlyfeatured = 0; 
 	if( isset($_GET['s_agents']) ) {
-		$query = Opalestate_Query::get_agencies( array("posts_per_page"=>$limit, 'paged' => $paged), $onlyfeatured );
+		$query = Opalestate_Agency_Query::get_agencies( array("posts_per_page"=>$limit, 'paged' => $paged), $onlyfeatured );
 	} else {
-		$query = OpalEstate_Search::get_search_agencies_query(); 
+		$query = Opalestate_Agency_Query::get_search_agencies_query(); 
 	}
  
 	$rowcls = apply_filters('opalestate_row_container_class', 'opal-row'); 

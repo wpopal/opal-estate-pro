@@ -40,7 +40,7 @@ function opalestate_single_property_layout_default() {
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
 
 	//  add_action( 'opalestate_single_property_sidebar', 'opalestate_property_request_viewing_button', 7 );
-	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+	if ( opalestate_get_option( 'enable_single_mortgage', 'on' ) == 'on' ) {
 		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
 	}
 
@@ -83,7 +83,7 @@ function opalestate_single_property_layout_v2() {
 
 
 	/// /// sidebar ////////
-	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+	if ( opalestate_get_option( 'enable_single_mortgage', 'on' ) == 'on' ) {
 		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
 	}
 
@@ -125,7 +125,7 @@ function opalestate_single_property_layout_v3() {
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
 
-	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+	if ( opalestate_get_option( 'enable_single_mortgage' , 'on' ) == 'on' ) {
 		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage' );
 	}
 }
@@ -161,7 +161,7 @@ function opalestate_single_property_layout_v4() {
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
 
-	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+	if ( opalestate_get_option( 'enable_single_mortgage' , 'on' ) == 'on' ) {
 		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
 	}
 }
@@ -204,7 +204,7 @@ function opalestate_single_property_layout_v5() {
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
 
-	if ( opalestate_get_option( 'enable_single_mortgage' ) ) {
+	if ( opalestate_get_option( 'enable_single_mortgage' ,'on' ) == 'on' ) {
 		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
 	}
 }

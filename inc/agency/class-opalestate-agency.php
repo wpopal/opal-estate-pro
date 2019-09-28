@@ -25,6 +25,20 @@ class OpalEstate_Agency {
 	protected $author_name;
 
 	/**
+	 * @var String $author_name
+	 *
+	 * @access protected
+	 */
+	public $post_id;
+
+	/**
+	 * @var String $author_name
+	 *
+	 * @access protected
+	 */
+	public $author;	
+
+	/**
 	 * @var Boolean $is_featured
 	 *
 	 * @access protected
@@ -43,14 +57,17 @@ class OpalEstate_Agency {
 		return $_instance;
 	}
 
-
 	/**
 	 *  Constructor
 	 */
 	public function __construct( $post_id = null ) {
-		global $post;
+ 		global $post ; 
 
-		$this->post        = $post;
+ 		if( $post == null ) {
+			$post = WP_Post::get_instance( $post_id );
+	 	}
+	 	
+		$this->post        = $post; 
 		$this->post_id     = $post_id ? $post_id : get_the_ID();
 		$this->author      = get_userdata( $post->post_author );
 		$this->author_name = ! empty( $this->author ) ? sprintf( '%s %s', $this->author->first_name, $this->author->last_name ) : null;
@@ -58,6 +75,12 @@ class OpalEstate_Agency {
 		$this->is_trusted  = $this->get_meta( 'trusted' );
 	}
 
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public function get_id() {
 		return $this->post_id;
 	}
@@ -129,7 +152,12 @@ class OpalEstate_Agency {
 		return $this->is_featured;
 	}
 
-
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public function render_avatar() {
 
 	}
@@ -141,16 +169,32 @@ class OpalEstate_Agency {
 
 	}
 
-
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public function get_gallery() {
 		return $this->get_meta( 'gallery' );
 	}
 
-
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public function get_trusted() {
 		return $this->is_trusted;
 	}
 
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public function get_members() {
 		$team = [];
 		$ids  = get_post_meta( $this->post_id, OPALESTATE_AGENCY_PREFIX . 'team', true );
@@ -171,6 +215,12 @@ class OpalEstate_Agency {
 		return $team;
 	}
 
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public static function get_link( $agency_id ) {
 		$agency = get_post( $agency_id );
 		$url    = self::get_avatar_url( $agency_id );
@@ -182,6 +232,12 @@ class OpalEstate_Agency {
 		];
 	}
 
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public static function metaboxes_fields() {
 		$metabox = new Opalestate_Agency_MetaBox();
 		$fields  = $metabox->metaboxes_admin_fields();
@@ -219,6 +275,12 @@ class OpalEstate_Agency {
 		return $this->get_meta( 'review_count' ) ? $this->get_meta( 'review_count' ) : 0;
 	}
 
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public function get_rating_count_stats() {
 		return $this->get_meta( 'rating_count_stats' ) ? $this->get_meta( 'rating_count_stats' ) : [
 			5 => 0,
@@ -229,6 +291,22 @@ class OpalEstate_Agency {
 		];
 	}
 
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
+	public function get_category_tax (  ) {
+		return wp_get_post_terms( $this->post_id, 'opalestate_agency_cat' );
+	}
+
+	/**
+	 * Get rating count.
+	 *
+	 * @param string $context What the value is for. Valid values are view and edit.
+	 * @return int
+	 */
 	public function get_rating_average_stats() {
 		return $this->get_meta( 'rating_average_stats' );
 	}
