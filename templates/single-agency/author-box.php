@@ -28,7 +28,7 @@ $address = $agency->get_meta( 'address' ); ?>
 
 						<?php if ( $agency->get_trusted() ): ?>
                             <span class="trusted-label hint--top" aria-label="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>" title="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>">
-                                <i class="fab fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </span>
 						<?php endif; ?>
                     </header>
