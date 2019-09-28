@@ -1169,47 +1169,48 @@ function opalestate_get_property_statuses() {
  * @param $key
  */
 function opalestate_get_property_meta_icon( $key ) {
-	$classes   = [];
-	$classes[] = 'icon-property-' . esc_attr( $key );
-	$prefix    = 'far';
-	$classes[] = $prefix;
+	$classes   = '';
+	$classes .= 'icon-property-' . esc_attr( $key );
+
 	switch ( $key ) {
 		case 'builtyear':
-			$icon = $prefix . '-' . 'calendar';
+			$icon = 'fas fa-calendar';
 			break;
 		case 'parking':
-			$icon = $prefix . '-' . 'car';
+			$icon = 'fas fa-car';
 			break;
 		case 'bedrooms':
-			$icon = $prefix . '-' . 'bed';
+			$icon = 'fas fa-bed';
 			break;
 		case 'bathrooms':
-			$icon = $prefix . '-' . 'bath';
+			$icon = 'fas fa-bath';
 			break;
 		case 'plotsize':
-			$icon = $prefix . '-' . 'map';
+			$icon = 'fas fa-map';
 			break;
 		case 'areasize':
-			$icon = $prefix . '-' . 'arrows-alt';
+			$icon = 'fas fa-arrows-alt';
 			break;
 		case 'orientation':
-			$icon = $prefix . '-' . 'compass';
+			$icon = 'fas fa-compass';
 			break;
 		case 'livingrooms':
-			$icon = $prefix . '-' . 'tv';
+			$icon = 'fas fa-tv';
 			break;
 		case 'kitchens':
-			$icon = $prefix . '-' . 'utensils';
+			$icon = 'fas fa-utensils';
 			break;
 		case 'amountrooms':
-			$icon = $prefix . '-' . 'building';
+			$icon = 'fas fa-building';
 			break;
 		default:
 			$icon = $key;
 			break;
 	}
 
-	$classes[] = apply_filters( 'opalestate_property_meta_icon', $icon, $key );
+	$classes .= ' ';
 
-	return esc_attr( implode( ' ', array_map( 'sanitize_html_class', $classes ) ) );
+	$classes .= apply_filters( 'opalestate_property_meta_icon', $icon, $key );
+
+	return $classes;
 }
