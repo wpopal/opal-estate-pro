@@ -29,7 +29,7 @@ if ( ! $infos && ! $taxs ) {
 					<?php if ( $info['value'] ) : ?>
                         <li class="wp-col-md-6 ">
                             <div class="property-label-<?php echo esc_attr( $key ); ?>">
-                                <h6><i class="icon-property-<?php echo esc_attr( $key ); ?>"></i> <?php echo esc_html( $info['label'] ); ?> : </h6>
+                                <h6><i class="<?php echo opalestate_get_property_meta_icon( $key ); ?>"></i> <?php echo esc_html( $info['label'] ); ?> : </h6>
                                 <span><?php echo apply_filters( 'opalestate_' . $key . '_unit_format', trim( $info['value'] ) ); ?></span>
                             </div>
                         </li>
