@@ -50,7 +50,7 @@
 						<?php if ( $trusted ): ?>
                             <span class="trusted-label hint--top" aria-label="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>"
                                   title="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>">
-						<i class="fab fa-star"></i>
+						<i class="fas fa-star"></i>
 					</span>
 						<?php endif; ?>
 
@@ -64,7 +64,7 @@
 					<?php $phone = get_user_meta( $user_id, $prefix . 'phone', true ); ?>
 					<?php if ( ! empty( $phone ) ) : ?>
                         <div class="agent-box-phone">
-                            <i class="fab fa-phone"></i><span><a href="tel:<?php echo sanitize_title( $phone ); ?>"><?php echo esc_attr( $phone ); ?></a></span>
+                            <i class="fas fa-phone"></i><span><a href="tel:<?php echo sanitize_title( $phone ); ?>"><?php echo esc_attr( $phone ); ?></a></span>
                         </div><!-- /.agent-box-phone -->
 					<?php endif; ?>
                 </div><!-- /.agent-box-content -->
