@@ -4,7 +4,7 @@ Donate link: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property
 Requires at least: 4.6
 Tested up to: 5.2.3
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,7 +21,7 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 = Which themes use this plugin? =
 
  1. *[ Housey - Real Estate WordPress Theme](https://bit.ly/2kHewkG "Housey - Real Estate WordPress Theme")*
- 2. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bitlylink.com/1SM4t "Latehome Free
+ 2. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bit.ly/2nLTfHT "Latehome Free
  download").*
 
  * Please keep contact us at help@wpopal.com to send us your website, we will publish it our showcase
