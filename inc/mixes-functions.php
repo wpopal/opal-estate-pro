@@ -1196,7 +1196,7 @@ function opalestate_get_property_meta_icon( $key ) {
 			$icon = $prefix . '-' . 'compass';
 			break;
 		case 'livingrooms':
-			$icon = $prefix . '-' . 'tivi';
+			$icon = $prefix . '-' . 'tv';
 			break;
 		case 'kitchens':
 			$icon = $prefix . '-' . 'utensils';

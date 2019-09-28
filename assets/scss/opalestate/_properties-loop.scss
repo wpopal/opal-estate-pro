@@ -237,40 +237,6 @@ ul.property-meta-list{
         font-style: unset;
 	}	
 }
-i[class*="icon-property-"]{
-    font-family: $font-family-icon;
-}
-
-.icon-property-areasize:before{
-    content: "\f0b2";
-}
-.icon-property-bedrooms:before{
-    content: "\f236";
-}
-.icon-property-bathrooms:before{
-    content: "\f2cd";
-}
-.icon-property-parking:before{
-    content: "\f1b9";
-}
-.icon-property-builtyear:before{
-    content: "\f073";
-}
-.icon-property-plotsize:before{
-    content: "\f279";
-}
-.icon-property-orientation:before{
-    content: "\f14e";
-}
-.icon-property-livingrooms:before{
-    content: "\f26c";
-}
-.icon-property-kitchens:before{
-    content: "\f2e7";
-}
-.icon-property-amountrooms:before{
-    content: "\f1ad";
-}
 
 /** Grid **/
 .property-grid{
