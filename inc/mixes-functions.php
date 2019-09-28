@@ -1171,8 +1171,8 @@ function opalestate_get_property_statuses() {
 function opalestate_get_property_meta_icon( $key ) {
 	$classes   = [];
 	$classes[] = 'icon-property-' . esc_attr( $key );
+    $classes[] = 'far';
 	$prefix    = 'fa';
-	$classes[] = $prefix;
 	switch ( $key ) {
 		case 'builtyear':
 			$icon = $prefix . '-' . 'calendar';
