@@ -571,11 +571,15 @@ class Opalestate_Property {
 		return $this->get_metabox_value( 'gallery', true );
 	}
 
-
+	/**
+	 * Count gallery images.
+	 *
+	 * @return int
+	 */
 	public function get_gallery_count() {
 		$count = $this->get_gallery();
 
-		return count( $count );
+		return is_array( $count ) && $count ? count( $count ) : 0;
 	}
 
 	/**
