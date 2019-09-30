@@ -62,8 +62,7 @@ class OpalEstate_Send_Email_New_Submitted extends OpalEstate_Abstract_Email_Temp
 	 */
 	public function get_content_template() {
 
-		$body 	 = opalestate_get_option( 'newproperty_email_body', self::newproperty_email_body() );
- 		
+		$body 	 = opalestate_get_option( 'newproperty_email_body', self::get_default_template() );
  		return $body;  
 	}	
 
@@ -103,7 +102,6 @@ class OpalEstate_Send_Email_New_Submitted extends OpalEstate_Abstract_Email_Temp
 	 * Send Email
 	 */
 	public function get_body() {
-		
 		return parent::get_body();
 	}
 }

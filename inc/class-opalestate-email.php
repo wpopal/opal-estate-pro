@@ -5,7 +5,7 @@
  * @version    $Id$
  * @package    $package$
  * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2014 wpopal.com. All Rights Reserved.
+ * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
  * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
  *
  * @website  http://www.wpopal.com
@@ -287,6 +287,9 @@ class Opalestate_Emails {
 					],
 
 
+					//------------------------------------------
+			 
+
 					[
 						'name' => esc_html__( 'Notification For New Property Submission', 'opalestate-pro' ),
 						'desc' => '<hr>',
@@ -354,7 +357,32 @@ class Opalestate_Emails {
 						'desc'    => esc_html__( 'Enter the email a user should receive when they make an initial payment request.', 'opalestate-pro' ),
 						'default' => OpalEstate_Send_Email_Approve::get_default_template(),
 					],
+					/// enquire contact template ////
+					[
+						'name' => esc_html__( 'Email Enquiry Contact Templates (Template Tags)', 'opalestate-pro' ),
+						'desc' => $contact_list_tags . '<br><hr>',
+						'id'   => 'opalestate_title_email_settings_6_1',
+						'type' => 'title',
+					],
+					[
+						'id'         => 'enquiry_email_subject',
+						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
+						'type'       => 'text',
+						'desc'       => esc_html__( 'The email subject a user should receive when they make an initial property request.', 'opalestate-pro' ),
+						'attributes' => [
+							'placeholder' => 'Your property at I Love WordPress is pending',
+							get_bloginfo( 'name' ),
+							'rows'        => 3,
+						],
+						'default'    => esc_html__( 'You got a message', 'opalestate-pro' ),
+					],
 
+					[
+						'id'   => 'enquiry_email_body',
+						'name' => esc_html__( 'Email Body', 'opalestate-pro' ),
+						'type' => 'wysiwyg',
+						'default' =>  OpalEstate_Send_Email_Notification::get_default_template( 'enquiry' )
+					],
 					/// email contact template ////
 					[
 						'name' => esc_html__( 'Email Contact Templates (Template Tags)', 'opalestate-pro' ),
@@ -362,7 +390,6 @@ class Opalestate_Emails {
 						'id'   => 'opalestate_title_email_settings_6',
 						'type' => 'title',
 					],
-
 					[
 						'id'         => 'contact_email_subject',
 						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
@@ -380,15 +407,33 @@ class Opalestate_Emails {
 						'id'   => 'contact_email_body',
 						'name' => esc_html__( 'Email Body', 'opalestate-pro' ),
 						'type' => 'wysiwyg',
-						'desc' => trim( preg_replace( '/\t+/', '', "Hi {receive_name},<br>
-							You have got message from {name} with email {email}. Here is detail:
-						 <br>
-						<br>
-						{message}
-						<br>
-						&nbsp;<br>
-						<br>
-						<em>This message was sent by {site_link} on {current_time}.</em>" ) ),
+						'default' =>  OpalEstate_Send_Email_Notification::get_default_template()
+					],
+					/// Email Request Review /// 
+					[
+						'name' => esc_html__( 'Email Request Review Templates (Template Tags)', 'opalestate-pro' ),
+						'desc' => $contact_list_tags . '<br><hr>',
+						'id'   => 'opalestate_title_email_settings_7',
+						'type' => 'title',
+					],
+					[
+						'id'         => 'request_review_email_subject',
+						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
+						'type'       => 'text',
+						'desc'       => esc_html__( 'The email subject a user should receive when they make an initial property request.', 'opalestate-pro' ),
+						'attributes' => [
+							'placeholder' => 'Your property at I Love WordPress is pending',
+							get_bloginfo( 'name' ),
+							'rows'        => 3,
+						],
+						'default'    =>esc_html__( 'You have a message request reviewing at: %s', 'opalestate-pro' ),
+					],
+
+					[
+						'id'   => 'request_review_email_body',
+						'name' => esc_html__( 'Email Body', 'opalestate-pro' ),
+						'type' => 'wysiwyg',
+						'default' =>  OpalEstate_Send_Email_Request_Reviewing::get_default_template()
 					],
 				]
 			),

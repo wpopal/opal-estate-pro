@@ -99,6 +99,9 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 
 	- [opalestate_search_agents]			=> Dislay Search box and agents collection
 
+	- [opalestate_agent_carousel]			=> Display List of Agent in carousel style
+	- [opalestate_agency_carousel]			=> Display List of Agency in carousel style
+
 = Elementor Widgets =
 
 * Search: Property Form

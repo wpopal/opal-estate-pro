@@ -28,7 +28,11 @@ class OpalEstate_Send_Email_Approve extends OpalEstate_Abstract_Email_Template {
 	 */
 	public function get_subject () {
 		$propety_title = '' ;
-		return sprintf( esc_html__( 'New Property Listing Submitted: {property_name}', 'opalestate-pro' ),  $propety_title );
+		
+		$subject = sprintf( esc_html__( 'The Property Listing Approved: {property_name}', 'opalestate-pro' ),  $propety_title );
+		$subject = opalestate_options( 'approve_email_body' , $subject ); 
+
+		return $subject;
 	}
 
 	/**
@@ -58,7 +62,9 @@ class OpalEstate_Send_Email_Approve extends OpalEstate_Abstract_Email_Template {
 	 *  
 	 */
 	public function get_content_template() {
- 		return opalestate_load_template_path( 'emails/request-reviewing' );
+
+		$content = opalestate_options( 'approve_email_body' , self::get_default_template() ); 		
+ 		return $content;
 	}	
 
 	/**

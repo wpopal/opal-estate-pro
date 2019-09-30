@@ -36,6 +36,9 @@ switch ( $supports[ $post_type ]['post_type'] ) {
 		break;
 }
 
+if( !is_object($object) ) {
+	return; 
+}	
 $cpt_feature = $supports[ $post_type ]['features_cpt'];
 $features    = Opalestate_Rating_Helper::get_features( $cpt_feature );
 
