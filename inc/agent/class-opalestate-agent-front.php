@@ -3,7 +3,7 @@
  * Opalestate_Agent_Front
  *
  * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2014 wpopal.com. All Rights Reserved.
+ * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
  */
 
 // Exit if accessed directly
@@ -307,12 +307,32 @@ class Opalestate_Agent_Front {
 
 			'change_agent_profile' => [ 'code' => 'change_agent_profile', 'label' => esc_html__( 'Agent Profile', 'opalestate-pro' ) ],
 			'search_agents'        => [ 'code' => 'search_agents', 'label' => esc_html__( 'Search Agents', 'opalestate-pro' ) ],
+			'agent_carousel'       => [ 'code' => 'agent_carousel', 'label' => esc_html__( 'Agent Carousel', 'opalestate-pro' ) ],
 		];
 
-		foreach ( $this->shortcodes as $shortcode ) {
+		foreach ( $this->shortcodes as $shortcode ) { 
 			add_shortcode( 'opalestate_' . $shortcode['code'], [ $this, $shortcode['code'] ] );
 		}
 
+	}
+
+	public function agent_carousel ( $atts ) {
+
+		$atts 	 = is_array( $atts ) ? $atts : [];
+		$layout  = 'search-agency-form';
+
+		$default = array(
+			'current_uri' 		=> null,
+			'column'			=> 4,
+			'limit'				=> 12,
+			'paged'				=> 1,
+			'onlyfeatured'		=> 0,
+			'form'				=> $layout
+		);
+		
+		$atts = array_merge( $default, $atts );
+
+		return opalestate_load_template_path( 'shortcodes/agent-carousel' , $atts );
 	}
 
 	public function archives_query( $query ) {

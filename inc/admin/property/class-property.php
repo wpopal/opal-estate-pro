@@ -38,6 +38,7 @@ class Opalestate_Admin_Property {
 
 		// add_action( 'transition_post_status', array( __CLASS__, 'save_post' ), 10, 3  );
 	}
+	
 	/**
 	 *
 	 */

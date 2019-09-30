@@ -89,7 +89,7 @@ class OpalEstate_Membership {
 			add_action( 'opalmembership_dashboard_container_before', [ __CLASS__, 'check_membership_validation_message' ] );
 			// included logic functions
 
-			require_once( 'free-package.php' );
+			// require_once( 'free-package.php' );
 			require_once( 'functions.php' );
 
 			add_action( 'opalmembership_current_package_summary_after', [ __CLASS__, 'render_membership_summary' ], 10, 2 );

@@ -39,7 +39,7 @@
 <?php endif; ?>
 <div class="agents-collection-wrap">
 	<?php if( $query->have_posts() ): ?>
-	<div class="agents-container">
+		<div class="agents-container">
 			<div <?php echo $attrs; ?>>
 				<?php $cnt=0; while( $query->have_posts() ):  $query->the_post();  ?>
 					<div class="column-item ">

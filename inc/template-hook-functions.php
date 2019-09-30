@@ -219,7 +219,13 @@ add_action( 'opalestate_single_property_preview', 'opalestate_property_preview',
 
 function opalestate_property_request_viewing_button( $islink = false ) {
 	$class = $islink ? 'btn-link' : 'btn btn-primary';
-	echo '<a href="#opalestate-user-form-popup" class="' . $class . ' btn-request-viewing opalestate-popup-button" data-target="#property-request-view-popup" >
+	if ( ! is_user_logged_in() ) {
+		$class .= ' opalestate-need-login';
+	} else {
+		$class .= ' opalestate-popup-button';
+	}
+
+	echo '<a href="#opalestate-user-form-popup" class="' . $class . ' btn-request-viewing" data-target="#property-request-view-popup" >
     <i class="fa fa-calendar-check-o"></i>
     <span class="btn-request-viewing__text">' . esc_html__( 'Request Viewing', 'opalestate-pro' ) . '</span>
     </a>';
@@ -254,6 +260,10 @@ add_action( 'opalestate_single_property_layout', 'opalestate_single_property_lay
  * Forms
  */
 function opalestate_property_request_view_form() {
+	if ( ! is_user_logged_in() ) {
+		return;
+	}
+
 	if ( ! is_single_property() ) {
 		return;
 	}

@@ -103,6 +103,7 @@ class OpalEstate_Enqueue {
 	 * Register and enqueue javascript, css library
 	 */
 	public function register_enqueue() {
+
 		wp_register_script(
 			'jquery-modernizr',
 			OPALESTATE_PLUGIN_URL . '/assets/3rd/magnific-popup/jquery.magnific-popup.min.js',
@@ -112,6 +113,7 @@ class OpalEstate_Enqueue {
 			'4.4.3',
 			true
 		);
+		
 		wp_enqueue_script( 'jquery-magnific-popup' );
 		wp_register_script( 'jquery-sticky-kit', trailingslashit( OPALESTATE_PLUGIN_URL ) . 'assets/3rd/sticky/jquery.sticky-kit.min.js', [], null, true );
 		wp_enqueue_script( 'jquery-sticky-kit' );
@@ -124,6 +126,7 @@ class OpalEstate_Enqueue {
 
 		wp_enqueue_script( 'jquery-toast' );
 
+
 		wp_register_script(
 			'jquery-swiper',
 			OPALESTATE_PLUGIN_URL . '/assets/3rd/swiper/js/swiper.min.js',
@@ -132,8 +135,12 @@ class OpalEstate_Enqueue {
 			],
 			'4.4.3',
 			true
-		);
-
+		);  
+	 	
+	 	if( !defined("ELEMENTOR_VERSION") ) { 
+			wp_enqueue_style( 'jquery-swiper', OPALESTATE_PLUGIN_URL . '/assets/3rd/swiper/css/swiper.min.css' );
+ 		}
+		
 		wp_enqueue_script( 'jquery-swiper' );
 	}
 

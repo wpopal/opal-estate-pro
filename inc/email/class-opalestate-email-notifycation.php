@@ -31,11 +31,17 @@ class OpalEstate_Send_Email_Notification extends OpalEstate_Abstract_Email_Templ
 	public function get_subject () {
 		switch ( $this->type ) {
 			case 'enquiry':
+
 				$subject = html_entity_decode( esc_html__('You got a message enquiry', 'opalestate-pro')  );
+				$subject = opalestate_options( 'enquiry_email_subject', $subject );
+				
 				break;
 			
 			default:
+
 				$subject = html_entity_decode( esc_html__('You got a message contact', 'opalestate-pro')  );
+				$subject = opalestate_options( 'contact_email_subject', $subject );
+
 				break;
 		}
 
@@ -46,14 +52,12 @@ class OpalEstate_Send_Email_Notification extends OpalEstate_Abstract_Email_Templ
 	 * Send Email
 	 */
 	public function get_content_template() {
-
 		switch ( $this->type ) {
 			case 'enquiry':
-				return opalestate_load_template_path( 'emails/enquiry' );
+				return opalestate_options( 'enquiry_email_body', self::get_default_template( 'enquiry' ) );
 				break;
-			
 			default:
-				return opalestate_load_template_path( 'emails/contact' );
+				return opalestate_options( 'contact_email_body', self::get_default_template( ) );
 				break;
 		}
 	}	
@@ -69,6 +73,16 @@ class OpalEstate_Send_Email_Notification extends OpalEstate_Abstract_Email_Templ
 	public function get_body() {
 		$this->args['email'] = $this->args['receiver_email'];
 		return parent::get_body();
+	}
+
+	/***/
+	public static function get_default_template ( $type='contact' ) {
+		
+		if( $type == 'enquiry' ) {
+			return opalestate_load_template_path( 'emails/enquiry' );
+		}
+
+		return opalestate_load_template_path( 'emails/contact' ); 
 	}
 }
 ?>

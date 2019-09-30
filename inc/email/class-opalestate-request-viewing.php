@@ -29,14 +29,18 @@ class OpalEstate_Send_Email_Request_Reviewing extends OpalEstate_Abstract_Email_
 	public function get_subject() {
 		$propety_title = '';
 
-		return sprintf( esc_html__( 'You have a message request reviewing: %s at', 'opalestate-pro' ), $propety_title );
+		$content = sprintf( esc_html__( 'You have a message request reviewing: %s at', 'opalestate-pro' ), $propety_title );
+		$content = opalestate_options( 'request_review_email_subject', $content );
+
+		return $content;
 	}
 
 	/**
 	 * Send Email
 	 */
 	public function get_content_template() {
-		return opalestate_load_template_path( 'emails/request-reviewing' );
+		$content = opalestate_options( 'request_review_email_body', self::get_default_template() );
+		return $content;
 	}
 
 	/**
@@ -65,4 +69,9 @@ class OpalEstate_Send_Email_Request_Reviewing extends OpalEstate_Abstract_Email_
 
 		return parent::get_body();
 	}
+
+	public static function get_default_template() {
+		return opalestate_load_template_path( 'emails/request-reviewing' );
+	}
+
 }
