@@ -97,6 +97,8 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 	- [opalestate_login_form]               => Login Form
 	- [opalestate_properties]				=> Display list of property estate in grid with pagination
 
+	- [opalestate_search_agents]			=> Dislay Search box and agents collection
+
 = Elementor Widgets =
 
 * Search: Property Form
