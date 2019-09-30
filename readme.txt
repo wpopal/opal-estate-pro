@@ -11,7 +11,9 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Opal Real Estate Plugin is an ideal solution and brilliant choice for you to set up a professional estate website
 
 == Description ==
-[Live Demos](http://demo2.themelexus.com/housey/) | [Documentation](https://wpopal-2.gitbook.io/housey/) | [Free Theme](http://demo2.themelexus.com/latehome_free/) | [Extensions](https://wordpress.org/plugins/tags/opalestate_addon/)
+[Live Demos](http://demo2.themelexus.com/housey/) | [Plugin Guide](https://wpopal-2.gitbook.io/opal-estate/)  | [Theme Guide](https://wpopal-2.gitbook.io/housey/) | [Free Theme](http://demo2.themelexus.com/latehome_free/) | [Extensions](https://wordpress.org/plugins/tags/opalestate_addon/)
+
+
 
 Whether you want to create a website for your real estate business and you are meeting difficulties to pick a suitable real estate plugin to install in your property site. Opal Estate Pro plugin will
  be your best choice to help you control your site in a perfect way.
