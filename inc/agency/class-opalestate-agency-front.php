@@ -308,7 +308,31 @@ class Opalestate_Agency_Front {
 	 *
 	 */
 	public function register_shortcodes() {
+		$this->shortcodes = [
+			'search_agencies'        => [ 'code' => 'search_agencies', 'label' => esc_html__( 'Search Agencies', 'opalestate-pro' ) ],
+		];
 
+		foreach ( $this->shortcodes as $shortcode ) {
+			add_shortcode( 'opalestate_' . $shortcode['code'], [ $this, $shortcode['code'] ] );
+		}
+	}	
+
+	/**
+	 *
+	 */
+	public function search_agencies ( $atts=[] ) {
+		
+		$atts 	 = is_array( $atts ) ? $atts : [];
+		$layout  = 'search-agency-form';
+
+		$default = array(
+			'current_uri' 		=> null,
+			'form'				=> $layout
+		);
+		
+		$atts = array_merge( $default, $atts );
+
+		return opalestate_load_template_path( 'shortcodes/search-agencies' , $atts );
 	}
 
 	/**
