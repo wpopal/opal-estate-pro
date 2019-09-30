@@ -52,9 +52,9 @@ class OpalEstate_Shortcodes {
 			'search_properties'        => [ 'code' => 'search_properties', 'label' => esc_html__( 'Search Properties', 'opalestate-pro' ) ],
 			'search_split_maps'        => [ 'code' => 'search_split_maps', 'label' => esc_html__( 'Search Split Maps', 'opalestate-pro' ) ],
 
-			'search_map_properties' => [ 'code' => 'search_map_properties', 'label' => esc_html__( 'Search Map Properties', 'opalestate-pro' ) ],
-			'ajax_map_search'       => [ 'code' => 'ajax_map_search', 'label' => esc_html__( 'Ajax Search Map Properties', 'opalestate-pro' ) ],
-			'ajax_map_quick_search' => [ 'code' => 'ajax_map_quick_search', 'label' => esc_html__( 'Ajax Search Map Properties', 'opalestate-pro' ) ],
+			'search_map_properties' => [ 'code' => 'search_map_properties', 'label' => esc_html__( 'Show Map + Search Box and Properties', 'opalestate-pro' ) ],
+			'ajax_map_search'       => [ 'code' => 'ajax_map_search', 'label' => esc_html__( 'Ajax Search Map Properties And Horizontal Search', 'opalestate-pro' ) ],
+	 
 			'register_form'         => [ 'code' => 'register_form', 'label' => esc_html__( 'Register User Form', 'opalestate-pro' ) ],
 			'login_form'            => [ 'code' => 'login_form', 'label' => esc_html__( 'Login Form', 'opalestate-pro' ) ],
 		];
@@ -191,12 +191,6 @@ class OpalEstate_Shortcodes {
 		return opalestate_load_template_path( 'shortcodes/ajax-map-search', [ 'loop' => '' ] );
 	}
 
-	/**
-	 * Render search property page with vertical form and map
-	 */
-	public function ajax_map_quick_search() {
-		return opalestate_load_template_path( 'shortcodes/ajax-map-quick-search', [ 'loop' => '' ] );
-	}
 
 	/*
 	 * Register form show up

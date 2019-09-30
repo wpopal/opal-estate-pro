@@ -89,11 +89,10 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 -=-=-=-=-=-=-=-=-=- Shortcodes -=-=-=-=-=-=-=-=-=-
 
 	- [opalestate_search_properties]        => Show Search Properties horizontal form
-	- [opalestate_search_properties_v]      => Show Search Properties vertical form
-	- [opalestate_search_properties_result] => Show Search Results
-	- [opalestate_search_map_properties]    => Show Search Map Properties
-	- [opalestate_ajax_map_search]          => Ajax Search Map Properties
-	- [opalestate_ajax_map_quick_search]    => Ajax Search Map Properties
+	- [opalestate_search_properties_result] => Show Collection Results Working with 
+	- [opalestate_search_map_properties]    => Show Map + Search Box and Properties
+	- [opalestate_search_split_maps]        => Ajax Search Split Map With Collection
+	- [opalestate_ajax_map_search]          => Ajax Search Map Properties And Horizontal Search
 	- [opalestate_register_form]            => Register User Form
 	- [opalestate_login_form]               => Login Form
 	- [opalestate_properties]				=> Display list of property estate in grid with pagination
