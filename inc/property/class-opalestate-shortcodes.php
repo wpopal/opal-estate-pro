@@ -67,19 +67,48 @@ class OpalEstate_Shortcodes {
 	 */
 	public function search_properties_form ( $atts=[] ) {
 		
-		$atts = is_array( $atts ) ? $atts : [];
+		$atts 	 = is_array( $atts ) ? $atts : [];
+		$layout  = 'collapse-advanced';
+
+		$default = array(
+			'hidden_labels' 		=> true,
+			'display_more_options'	=> true,
+			'nobutton'				=> false,
+			'layout'				=> $layout
+		);
 		
-		$atts['hidden_labels'] = true;
+		$atts = array_merge( $default, $atts );
 
-		return opalestate_load_template_path( 'search-box/collapse-advanced', $atts );
+		return opalestate_load_template_path( 'search-box/'.$layout, $atts );
 	}
 
-	public function properties() {
-		return opalestate_load_template_path( 'shortcodes/properties' );
+	/**
+	 * Display all properties follow user when logined
+	 */
+	public function properties( $atts=[] ) {
+
+		$atts 	 = is_array( $atts ) ? $atts : [];
+
+		$default = array (
+			'posts_per_page'	=> 10,
+			'show_pagination'	=> true,
+			'column'			=> apply_filters( 'opalestate_properties_column_row', 3 ),
+			'layout'			=> 'content-property-grid-v2'
+		);
+		
+		$atts = array_merge( $default, $atts );
+
+		return opalestate_load_template_path( 'shortcodes/properties', $atts );
 	}
 
-	public function search_properties_result() {
-		return opalestate_load_template_path( 'shortcodes/search-properties-result' );
+	/**
+	 * [opalestate_search_properties_result] Display all properties follow user when logined
+	 */
+	public function search_properties_result( $atts=[] ) {
+		
+		$atts 	 = is_array( $atts ) ? $atts : [];
+
+		return opalestate_load_template_path( 'shortcodes/search-properties-result', $atts );
 	}
 
 	/**
