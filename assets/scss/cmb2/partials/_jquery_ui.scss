@@ -115,7 +115,9 @@ $freshdarkblue: #0073aa;
 
 	.ui-datepicker-prev:before,
 	.ui-datepicker-next:before {
-		font: normal 20px/34px 'dashicons';
+		font: normal 20px/34px;
+		font-family: "Font Awesome 5 Free";
+		font-weight:400;
 		padding-left: 7px;
 		color: #fff;
 		speak: none;
@@ -124,13 +126,12 @@ $freshdarkblue: #0073aa;
 		width: 34px;
 		height: 34px;
 	}
-
 	.ui-datepicker-prev:before {
-		content: '\f341';
+		content: '\f104';
 	}
 
 	.ui-datepicker-next:before {
-		content: '\f345';
+		content: '\f105';
 	}
 
 	.ui-datepicker-prev-hover:before,

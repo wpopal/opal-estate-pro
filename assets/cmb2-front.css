@@ -808,7 +808,9 @@ span.cmb2-metabox-description {
   .cmb2-element.ui-datepicker .ui-datepicker-prev:before,
   .cmb2-element.ui-datepicker .ui-datepicker-next:before, .cmb2-element .ui-datepicker .ui-datepicker-prev:before,
   .cmb2-element .ui-datepicker .ui-datepicker-next:before {
-    font: normal 20px/34px 'dashicons';
+    font: normal 20px/34px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
     padding-left: 7px;
     color: #fff;
     speak: none;
@@ -817,9 +819,9 @@ span.cmb2-metabox-description {
     width: 34px;
     height: 34px; }
   .cmb2-element.ui-datepicker .ui-datepicker-prev:before, .cmb2-element .ui-datepicker .ui-datepicker-prev:before {
-    content: '\f341'; }
+    content: '\f104'; }
   .cmb2-element.ui-datepicker .ui-datepicker-next:before, .cmb2-element .ui-datepicker .ui-datepicker-next:before {
-    content: '\f345'; }
+    content: '\f105'; }
   .cmb2-element.ui-datepicker .ui-datepicker-prev-hover:before,
   .cmb2-element.ui-datepicker .ui-datepicker-next-hover:before, .cmb2-element .ui-datepicker .ui-datepicker-prev-hover:before,
   .cmb2-element .ui-datepicker .ui-datepicker-next-hover:before {

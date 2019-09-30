@@ -53,7 +53,7 @@ if( !class_exists( 'CMB2_Uploader_Button' ) ) {
         private function render_image_or_icon ( $escaped_value , $show_icon ) { 
             $cls = $show_icon ? "preview-icon" : "preview-image"; 
             echo '<div class="inner '.$cls.'">';
-                    echo '      <span class="btn-close"></span> ';
+                    echo '      <span class="btn-close fa fa-close"></span> ';
             if( $show_icon ){
               echo '<i class="fas fa-paperclip"></i> '. basename ( get_attached_file( $escaped_value ) );
             } else {
