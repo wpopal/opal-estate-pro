@@ -24,6 +24,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 class OpalEstate_Shortcodes {
 
 	/**
+	 * Get instance of this object
+	 */
+	public static function get_instance(){
+		static $_instance;
+		if( !$_instance ){
+			$_instance = new OpalEstate_Shortcodes();
+		}
+		return $_instance;
+	}
+
+	/**
 	 * Static $shortcodes
 	 */
 	public $shortcodes;
@@ -39,7 +50,7 @@ class OpalEstate_Shortcodes {
 			'properties'               => [ 'code' => 'properties', 'label' => esc_html__( 'Properties', 'opalestate-pro' ) ],
 			'search_properties_result' => [ 'code' => 'search_properties_result', 'label' => esc_html__( 'Search Properties Result', 'opalestate-pro' ) ],
 			'search_properties'        => [ 'code' => 'search_properties', 'label' => esc_html__( 'Search Properties', 'opalestate-pro' ) ],
-			'search_properties_v'      => [ 'code' => 'search_properties_v', 'label' => esc_html__( 'Search Properties Vertical', 'opalestate-pro' ) ],
+			'search_split_maps'        => [ 'code' => 'search_split_maps', 'label' => esc_html__( 'Search Split Maps', 'opalestate-pro' ) ],
 
 			'search_map_properties' => [ 'code' => 'search_map_properties', 'label' => esc_html__( 'Search Map Properties', 'opalestate-pro' ) ],
 			'ajax_map_search'       => [ 'code' => 'ajax_map_search', 'label' => esc_html__( 'Ajax Search Map Properties', 'opalestate-pro' ) ],
@@ -58,6 +69,9 @@ class OpalEstate_Shortcodes {
 
 	}
 
+	/**
+	 * Display all properties follow user when logined
+	 */
 	public function shortcode_button() {
 
 	}
@@ -114,8 +128,20 @@ class OpalEstate_Shortcodes {
 	public function search_properties_result( $atts=[] ) {
 		
 		$atts 	 = is_array( $atts ) ? $atts : [];
+		
+		$default = array(
+			'style' 		=> null,
+			'style_list'	=> null,
+			'column'		=> null,
+		);
 
-		return opalestate_load_template_path( 'shortcodes/search-properties-result', $atts );
+		$atts = array_merge( $default, $atts );
+
+		$html  = '<div class="opalesate-properties-ajax opalesate-properties-results" data-mode="html">';			
+		$html .= opalestate_load_template_path( 'shortcodes/ajax-map-search-result', $atts );
+		$html .= '</div>';
+
+		return $html;
 	}
 
 	/**
@@ -135,25 +161,46 @@ class OpalEstate_Shortcodes {
 	/**
 	 * Render search property page with vertical form and map
 	 */
-	public function search_properties_v() {
-		return opalestate_load_template_path( 'shortcodes/search-properties-v', [ 'loop' => '' ] );
+	public function search_split_maps( $atts=[] ) {
+
+		$atts 	 = is_array( $atts ) ? $atts : [];
+		
+		$default = array(
+			'search_form' 		=> 'simple-city',
+			'paged'				=> 1
+		);
+
+		$atts = array_merge( $default, $atts );
+
+		return opalestate_load_template_path( 'shortcodes/search-split-maps', $atts );
 	}
 
+	/**
+	 * Render search property page with vertical form and map
+	 */
 	public function search_map_properties() {
 		return opalestate_load_template_path( 'shortcodes/search-map-properties', [ 'loop' => '' ] );
 	}
 
+	/**
+	 * Render search property page with vertical form and map
+	 */
 	public function ajax_map_search() {
 		wp_enqueue_script( 'sticky-kit', OPALESTATE_PLUGIN_URL . 'assets/js/jquery.sticky-kit.min.js' );
 
 		return opalestate_load_template_path( 'shortcodes/ajax-map-search', [ 'loop' => '' ] );
 	}
 
+	/**
+	 * Render search property page with vertical form and map
+	 */
 	public function ajax_map_quick_search() {
 		return opalestate_load_template_path( 'shortcodes/ajax-map-quick-search', [ 'loop' => '' ] );
 	}
 
-	/* register form show up */
+	/*
+	 * Register form show up
+	 */ 
 	public function register_form( $atts = [] ) {
 		$atts = shortcode_atts( [
 			'message'    => '',
@@ -164,7 +211,9 @@ class OpalEstate_Shortcodes {
 		return opalestate_load_template_path( 'user/register-form', $atts );
 	}
 
-	/* sign in show up */
+	/* 
+	 * sign in show up 
+	 */
 	public function login_form( $atts = [] ) {
 		$atts = shortcode_atts( [
 			'message'    => '',
@@ -177,4 +226,4 @@ class OpalEstate_Shortcodes {
 
 }
 
-new OpalEstate_Shortcodes();
+OpalEstate_Shortcodes::get_instance();
