@@ -96,6 +96,7 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 	- [opalestate_ajax_map_quick_search]    => Ajax Search Map Properties
 	- [opalestate_register_form]            => Register User Form
 	- [opalestate_login_form]               => Login Form
+	- [opalestate_properties]				=> Display list of property estate in grid with pagination
 
 = Elementor Widgets =
 

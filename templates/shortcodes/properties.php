@@ -1,7 +1,13 @@
 <?php
 
 $args = [
-	'posts_per_page' => $posts_per_page,
+	'posts_per_page'	=> $posts_per_page,
+	'showmode'		 	=> $showmode,
+	'categories'		=> $categories,
+	'types'				=> $types, 
+	'labels'			=> $labels,
+	'cities'			=> $cities,
+	'statuses'			=> $statuses,
 ];
 
 $query = Opalestate_Query::get_property_query( $args );

@@ -90,10 +90,17 @@ class OpalEstate_Shortcodes {
 		$atts 	 = is_array( $atts ) ? $atts : [];
 
 		$default = array (
-			'posts_per_page'	=> 10,
+			'posts_per_page'	=> 9,
 			'show_pagination'	=> true,
 			'column'			=> apply_filters( 'opalestate_properties_column_row', 3 ),
-			'layout'			=> 'content-property-grid-v2'
+			'layout'			=> 'content-property-grid-v2',
+			'showmode'			=> '',
+			'categories'		=> null,
+			'types'				=> null, 
+			'labels'			=> null,
+			'cities'			=> null,
+			'statuses'			=> null,
+
 		);
 		
 		$atts = array_merge( $default, $atts );
