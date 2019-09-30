@@ -62,8 +62,16 @@ class OpalEstate_Shortcodes {
 
 	}
 
-	public function search_properties_form() {
-		return opalestate_load_template_path( 'search-box/collapse-advanced' );
+	/**
+	 * Display all properties follow user when logined
+	 */
+	public function search_properties_form ( $atts=[] ) {
+		
+		$atts = is_array( $atts ) ? $atts : [];
+		
+		$atts['hidden_labels'] = true;
+
+		return opalestate_load_template_path( 'search-box/collapse-advanced', $atts );
 	}
 
 	public function properties() {

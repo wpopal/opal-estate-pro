@@ -1,14 +1,14 @@
 === Opal Estate Pro ===
 Contributors: wpopal
 Donate link: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
-Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property
+Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.6
 Tested up to: 5.2.3
 Stable tag: 1.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Opal Real Estate Plugin is an ideal solution and brilliant choice for you to set up a professional estate website
+This is an ideal solution and brilliant choice for you to set up a professional estate website, Marketplace, Portal Property Website.
 
 == Description ==
 [Live Demos](http://demo2.themelexus.com/housey/) | [Plugin Guide](https://wpopal-2.gitbook.io/opal-estate/)  | [Theme Guide](https://wpopal-2.gitbook.io/housey/) | [Free Theme](http://demo2.themelexus.com/latehome_free/) | [Extensions](https://wordpress.org/plugins/tags/opalestate_addon/)
@@ -19,6 +19,7 @@ Whether you want to create a website for your real estate business and you are m
  be your best choice to help you control your site in a perfect way.
 
 The plugin will not make you disappointed with ease of use, friendly & flexible with users, high advanced functions and a range of powerful feature updated insight. They are created for selling, buying or renting an apartment, villa, house, flat,  etc. Scroll down to see how awesome it is!
+
 
 = Which themes use this plugin? =
 
@@ -32,6 +33,14 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 * Please visit and download [all add-ons](https://wordpress.org/plugins/tags/opalestate_addon/ "Opal Estate Pro add-ons") for Opal Estate Pro, they are free 100%*
  1. *[ Opal Membership](https://wordpress.org/plugins/opal-membership/ "Opal Membership")*
  2. *[ Opal Estate Packages](https://wordpress.org/plugins/opal-estate-packages/ "Opal Estate Packages")*
+
+
+= Features =
+[youtube https://www.youtube.com/watch?v=TG6hsm33AD4]
+
+= Quick Install and Active Plugin and Theme for Free =
+[youtube https://www.youtube.com/watch?v=m7euxF1bYO0]
+
 
 = More Information =
 
@@ -102,7 +111,7 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 * Account Button
 
 = WHAT IS NEW IN PRO VERSION =
-
+* Suport API use to develop great web app and mobile app .  
 * Agency Agency and allow edit profile with user having Opal Estate Agency Role. Display Properties and members of agency
 * Implement Google Capcha for all Email Form
 * Implement Saved Search Form allowing user save theirs result as loved collection. They are managed with Saved Search Menu of user dashboard
@@ -132,7 +141,7 @@ This section describes how to install the plugin and get it working.
 
 == Frequently Asked Questions == 
 
-* Detailed guide to install and customize: [documentation](http://www.wpopal.com/guides/plugin/opalestate-pro/ "Visit the Plugin docs")
+* Detailed guide to install and customize: [documentation](https://wpopal-2.gitbook.io/opal-estate/ "Visit the Plugin docs")
 * Video guide and tutorials how to set up
 * Images and refer links
 * Easy for user to follow up
