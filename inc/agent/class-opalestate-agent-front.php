@@ -103,7 +103,7 @@ class Opalestate_Agent_Front {
 
 		if ( isset( $post->ID ) && ( $post->post_status != 'publish' || $post->ID == get_the_ID() ) ) {
 			opalestate_add_notice( 'warning', esc_html__( 'You account is under reviewing! It take some time to process.', 'opalestate-pro' ) );
-			add_action( 'opalestate_profile_agency_form_before', 'opalestate_print_notices' );
+			add_action( 'opalestate_profile_agent_form_before', 'opalestate_print_notices' );
 		}
 
 		$metaboxes = $this->render_front_form( [], $post_id );

@@ -61,9 +61,9 @@ class Opalestate_Agency_Front {
 
 		add_filter( 'opalestate_management_user_menu', [ $this, 'render_extra_profile_link' ] );
 
-		add_action( "opalestate_user_content_agency_profile_page", [ $this, 'render_profile' ] );
-		add_action( "opalestate_user_content_agency_team_page", [ $this, 'render_team' ] );
-		add_action( "opalestate_user_init", [ $this, 'process_action_member' ] );
+		add_action( 'opalestate_user_content_agency_profile_page', [ $this, 'render_profile' ] );
+		add_action( 'opalestate_user_content_agency_team_page', [ $this, 'render_team' ] );
+		add_action( 'opalestate_user_init', [ $this, 'process_action_member' ] );
 
 		$this->register_shortcodes();
 	}
@@ -152,7 +152,6 @@ class Opalestate_Agency_Front {
 
 			unset( $_POST[ $prefix . 'title' ] );
 			unset( $_POST[ $prefix . 'text' ] );
-
 
 			if ( $data['ID'] > 0 ) {
 				$post_id = wp_update_post( $data, true );
@@ -309,8 +308,8 @@ class Opalestate_Agency_Front {
 	 */
 	public function register_shortcodes() {
 		$this->shortcodes = [
-			'search_agencies'        => [ 'code' => 'search_agencies', 'label' => esc_html__( 'Search Agencies', 'opalestate-pro' ) ],
-			'agency_carousel'       => [ 'code' => 'agency_carousel', 'label' => esc_html__( 'Agency Carousel', 'opalestate-pro' ) ],
+			'search_agencies' => [ 'code' => 'search_agencies', 'label' => esc_html__( 'Search Agencies', 'opalestate-pro' ) ],
+			'agency_carousel' => [ 'code' => 'agency_carousel', 'label' => esc_html__( 'Agency Carousel', 'opalestate-pro' ) ],
 		];
 
 		foreach ( $this->shortcodes as $shortcode ) {
@@ -318,51 +317,59 @@ class Opalestate_Agency_Front {
 		}
 	}
 
-	public function agency_carousel ( $atts ) {
+	public function agency_carousel( $atts ) {
 
-		$atts 	 = is_array( $atts ) ? $atts : [];
-		 
-		$default = array(
-			'current_uri' 		=> null,
-			'column'			=> 3,
-			'limit'				=> 12,
-			'paged'				=> 1,
-			'onlyfeatured'		=> 0,
-		);
-		
+		$atts = is_array( $atts ) ? $atts : [];
+
+		$default = [
+			'current_uri'  => null,
+			'column'       => 3,
+			'limit'        => 12,
+			'paged'        => 1,
+			'onlyfeatured' => 0,
+		];
+
 		$atts = array_merge( $default, $atts );
 
-		return opalestate_load_template_path( 'shortcodes/agency-carousel' , $atts );
-	}	
+		return opalestate_load_template_path( 'shortcodes/agency-carousel', $atts );
+	}
 
 	/**
 	 *
 	 */
-	public function search_agencies ( $atts=[] ) {
-		
-		$atts 	 = is_array( $atts ) ? $atts : [];
-		$layout  = 'search-agency-form';
+	public function search_agencies( $atts = [] ) {
 
-		$default = array(
-			'current_uri' 		=> null,
-			'form'				=> $layout
-		);
-		
+		$atts   = is_array( $atts ) ? $atts : [];
+		$layout = 'search-agency-form';
+
+		$default = [
+			'current_uri' => null,
+			'form'        => $layout,
+		];
+
 		$atts = array_merge( $default, $atts );
 
-		return opalestate_load_template_path( 'shortcodes/search-agencies' , $atts );
+		return opalestate_load_template_path( 'shortcodes/search-agencies', $atts );
 	}
 
 	/**
 	 *
 	 */
 	public function render_profile() {
-
+		$user_id = get_current_user_id();
 		$post_id = OpalEstate_User::get_member_id();
 
-		if ( isset( $post->ID ) && $post->post_status != 'publish' ) {
-			opalestate_add_notice( "warning", esc_html__( 'You account is under reviewing! it take some time to process' ) );
-			add_action( "opalestate_profile_agency_form_before", "opalestate_print_notices" );
+		// Check if have not any relationship, create a new then update this meta value.
+		if ( ! $post_id || $post_id < 0 ) {
+			static::on_set_role( $user_id );
+		}
+
+		$post_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+		$post    = get_post( $post_id );
+
+		if ( isset( $post->ID ) && ( $post->post_status != 'publish' || $post->ID == get_the_ID() ) ) {
+			opalestate_add_notice( 'warning', esc_html__( 'You account is under reviewing! It take some time to process.', 'opalestate-pro' ) );
+			add_action( 'opalestate_profile_agency_form_before', 'opalestate_print_notices' );
 		}
 
 		$metaboxes = $this->render_front_form( [], $post_id );
@@ -446,14 +453,11 @@ class Opalestate_Agency_Front {
 	}
 
 	public static function on_set_role( $user_id ) {
-
 		if ( $user_id ) {
-
 			$args = [
 				'post_type'      => 'opalestate_agency',
 				'posts_per_page' => 10,
 			];
-
 
 			$args['meta_key']     = OPALESTATE_AGENCY_PREFIX . 'user_id';
 			$args['meta_value']   = $user_id;
