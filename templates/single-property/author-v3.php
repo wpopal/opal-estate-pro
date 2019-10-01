@@ -44,7 +44,7 @@ switch ( $type ) {
 		break;
 }
 ?>
-<div class="opalestate-box-content property-agent-section">
+<div class="opalestate-box-content property-agent-section property-author-v3">
     <div class="opalestate-box">
 		<?php if ( opalestate_get_option( 'enable_single_author_box' , 'on' ) == 'on' ) : ?>
             <div class="author-content-box">

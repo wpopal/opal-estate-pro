@@ -185,20 +185,24 @@ class OpalEstate_User {
 	}
 
 	/**
+	 * On Register user.
 	 *
+	 * @param int $user_id User ID
 	 */
 	public function on_regiser_user( $user_id ) {
 		if ( isset( $_POST['role'] ) ) {
-			$roles = opalestate_user_roles_by_user_id( $user_id );
-
 			// Fetch the WP_User object of our user.
 			$u = new WP_User( $user_id );
 			$u->remove_role( 'subscriber' );
+
 			// Replace the current role with 'editor' role
 			$u->set_role( sanitize_text_field( $_POST['role'] ) );
 
+			$roles = opalestate_user_roles_by_user_id( $user_id );
+
 			if ( $roles && in_array( $_POST['role'], $roles ) ) {
 				$role = str_replace( 'opalestate_', '', sanitize_text_field( $_POST['role'] ) );
+
 				do_action( 'opalestate_on_set_role_' . $role, $user_id );
 			}
 		}

@@ -6,10 +6,8 @@
 			$prefix = OPALESTATE_USER_PROFILE_PREFIX;
 		}
 
-		$user_id   = $author->ID;
-		$is_sticky = get_user_meta( $user_id, $prefix . 'sticky', true );
-
-
+		$user_id    = $author->ID;
+		$is_sticky  = get_user_meta( $user_id, $prefix . 'sticky', true );
 		$desciption = get_user_meta( $user_id, 'description', true );
 
 		$roles = opalestate_user_roles_by_user_id( $user_id );
@@ -74,7 +72,6 @@
                     </a>
                 </div>
             </div><!-- /.agent-preview -->
-
 
             <div class="agent-box-meta">
                 <h4 class="agent-box-title">
@@ -143,11 +140,8 @@
 					<?php if ( $linkedIn && $linkedIn != "#" && ! empty( $linkedIn ) ) { ?>
                         <a class="opalestate-social-white radius-x" href="<?php echo esc_url( $linkedIn ); ?>"> <i class="fab fa-linkedIn"></i></a>
 					<?php } ?>
-
                 </div>
-
             </div><!-- /.agent-box-content -->
-
         </div><!-- /.agent-box-->
     </div>
 <?php endif; ?>

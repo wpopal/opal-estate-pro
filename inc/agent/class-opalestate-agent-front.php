@@ -90,15 +90,20 @@ class Opalestate_Agent_Front {
 	 * render_profile
 	 */
 	public function render_profile() {
-
 		$user_id = get_current_user_id();
 		$post_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
 
-		$post = get_post( $post_id );
+		// Check if have not any relationship, create a new then update this meta value.
+		if ( ! $post_id || $post_id < 0 ) {
+			$this->on_set_role( $user_id );
+		}
 
-		if ( isset( $post->ID ) && $post->post_status != 'publish' ) {
-			opalestate_add_notice( "warning", esc_html__( 'You account is under reviewing! it take some time to process' ) );
-			add_action( "opalestate_profile_agency_form_before", "opalestate_print_notices" );
+		$post_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+		$post    = get_post( $post_id );
+
+		if ( isset( $post->ID ) && ( $post->post_status != 'publish' || $post->ID == get_the_ID() ) ) {
+			opalestate_add_notice( 'warning', esc_html__( 'You account is under reviewing! It take some time to process.', 'opalestate-pro' ) );
+			add_action( 'opalestate_profile_agent_form_before', 'opalestate_print_notices' );
 		}
 
 		$metaboxes = $this->render_front_form( [], $post_id );
@@ -310,29 +315,29 @@ class Opalestate_Agent_Front {
 			'agent_carousel'       => [ 'code' => 'agent_carousel', 'label' => esc_html__( 'Agent Carousel', 'opalestate-pro' ) ],
 		];
 
-		foreach ( $this->shortcodes as $shortcode ) { 
+		foreach ( $this->shortcodes as $shortcode ) {
 			add_shortcode( 'opalestate_' . $shortcode['code'], [ $this, $shortcode['code'] ] );
 		}
 
 	}
 
-	public function agent_carousel ( $atts ) {
+	public function agent_carousel( $atts ) {
 
-		$atts 	 = is_array( $atts ) ? $atts : [];
-		$layout  = 'search-agency-form';
+		$atts   = is_array( $atts ) ? $atts : [];
+		$layout = 'search-agency-form';
 
-		$default = array(
-			'current_uri' 		=> null,
-			'column'			=> 4,
-			'limit'				=> 12,
-			'paged'				=> 1,
-			'onlyfeatured'		=> 0,
-			'form'				=> $layout
-		);
-		
+		$default = [
+			'current_uri'  => null,
+			'column'       => 4,
+			'limit'        => 12,
+			'paged'        => 1,
+			'onlyfeatured' => 0,
+			'form'         => $layout,
+		];
+
 		$atts = array_merge( $default, $atts );
 
-		return opalestate_load_template_path( 'shortcodes/agent-carousel' , $atts );
+		return opalestate_load_template_path( 'shortcodes/agent-carousel', $atts );
 	}
 
 	public function archives_query( $query ) {
@@ -461,7 +466,6 @@ class Opalestate_Agent_Front {
 				'posts_per_page' => 10,
 			];
 
-
 			$args['meta_key']     = OPALESTATE_AGENT_PREFIX . 'user_id';
 			$args['meta_value']   = $user_id;
 			$args['meta_compare'] = '=';
@@ -478,8 +482,9 @@ class Opalestate_Agent_Front {
 	}
 
 	public function create_agent( $args = [], $user_id ) {
-
 		$data = get_user_by( 'id', $user_id );
+
+		$post_title = sprintf( esc_html__( 'User ID: %s', 'opalestate-pro' ), $user_id );
 
 		$args = wp_parse_args( $args, [
 			'first_name'  => $data->first_name,
@@ -500,15 +505,20 @@ class Opalestate_Agent_Front {
 			'instagram'   => '',
 		] );
 
+		if ( $args['first_name'] && $args['last_name'] ) {
+			$post_title = $args['first_name'] . ' ' . $args['last_name'];
+		} elseif ( isset( $data->display_name ) && $data->display_name ) {
+			$post_title = esc_html( $data->display_name );
+		}
+
 		$agent_id = wp_insert_post( [
-			'post_title'   => $args['first_name'] && $args['last_name'] ? $args['first_name'] . ' ' . $args['last_name'] : esc_html__( 'User ID', 'opalestate-pro' ) . ': ' . $user_id,
+			'post_title'   => $post_title,
 			'post_content' => '',
 			'post_excerpt' => '',
 			'post_type'    => 'opalestate_agent',
 			'post_status'  => 'pending',
 			'post_author'  => $user_id,
 		], true );
-
 
 		do_action( 'opalesate_insert_user_agent', $agent_id );
 
