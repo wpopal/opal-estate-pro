@@ -29,7 +29,7 @@ $property = opalesetate_property( get_the_ID() );
 	                    <?php endif; ?>
                     </div>
                     <p class="property-description">
-						<?php echo opalestate_fnc_excerpt( 14, '...' ); ?>
+						<?php echo opalestate_fnc_excerpt( 38, '...' ); ?>
                     </p>
                 </div>
             </div><!-- .entry-content -->
