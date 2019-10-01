@@ -134,6 +134,15 @@ class OpalEstate_Agent {
 
 	public static function get_link( $agent_id ) {
 		$agent = get_post( $agent_id );
+
+		if ( ! $agent ) {
+			return [
+				'name'   => '',
+				'avatar' => '',
+				'link'   => '',
+			];
+		}
+
 		$url   = self::get_avatar_url( $agent_id );
 
 		return [
@@ -141,7 +150,6 @@ class OpalEstate_Agent {
 			'avatar' => $url,
 			'link'   => get_permalink( $agent->ID ),
 		];
-
 	}
 
 	public static function metaboxes_fields() {

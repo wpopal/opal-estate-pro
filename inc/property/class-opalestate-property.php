@@ -427,11 +427,22 @@ class Opalestate_Property {
 	 *
 	 */
 	public function render_author_link() {
+		$data = $this->get_author_link_data();
+		if ( ! $data ) {
+			return;
+		}
+
+		$avatar = $data['avatar'] ? $data['avatar'] : opalestate_get_image_avatar_placehold();
+		$avatar = '<img class="avatar" src="' . esc_url( $avatar ) . '" alt="' . $data['name'] . '" />';
+
+		return '<a  href="' . $data['link'] . '" aria-label="' . $data['name'] . '" class="author-link"><span aria-label="' . $data['name'] . '" class="author-avatar hint--top">' . $avatar . '</span><span class="author-name">' . $data['name'] . '</span></a>';
+	}
+
+	public function get_author_link_data() {
+		$data = [];
 		switch ( $this->get_author_type() ) {
-
 			case 'hide':
-
-				return;
+				$data = [];
 				break;
 
 			case 'agent':
@@ -448,28 +459,25 @@ class Opalestate_Property {
 				break;
 		}
 
-		$avatar = $data['avatar'] ? $data['avatar'] : opalestate_get_image_avatar_placehold();
-		$avatar = '<img class="avatar" src="' . esc_url( $avatar ) . '" alt="' . $data['name'] . '" />';
-
-		return '<a  href="' . $data['link'] . '" aria-label="' . $data['name'] . '" class="author-link"><span aria-label="' . $data['name'] . '" class="author-avatar hint--top">' . $avatar . '</span><span class="author-name">' . $data['name'] . '</span></a>';
+		return $data;
 	}
 
 	public function get_author_link() {
-
-		$image_id   = get_user_meta( get_the_author_meta( 'ID' ), OPALESTATE_USER_PROFILE_PREFIX . 'avatar_id', true );
-		$related_id = get_user_meta( get_the_author_meta( 'ID' ), OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+		$user_id = get_post_field( 'post_author', $this->get_id() );
+		$image_id   = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'avatar_id', true );
+		$related_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
 
 		if ( $image_id ) {
 			$url = wp_get_attachment_url( $image_id );
 		} else {
-			$url = get_avatar_url( get_the_author_meta( 'email' ) );
+			$url = get_avatar_url( get_the_author_meta( 'email', $user_id ) );
 		}
 
 		if ( $related_id ) {
 			$authorlink = get_permalink( $related_id );
 			$author     = get_the_title( $related_id );
 		} else {
-			$authorlink = get_author_posts_url( get_the_author_meta( 'ID' ) );
+			$authorlink = get_author_posts_url( $user_id );
 			$author     = get_the_author();
 		}
 

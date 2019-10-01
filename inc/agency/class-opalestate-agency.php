@@ -115,7 +115,7 @@ class OpalEstate_Agency {
 	 * Get url of user avatar by agency id
 	 */
 	public static function get_avatar_url( $userID ) {
-		return get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . "avatar", true );
+		return get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . 'avatar', true );
 	}
 
 	/**
@@ -223,11 +223,19 @@ class OpalEstate_Agency {
 	 */
 	public static function get_link( $agency_id ) {
 		$agency = get_post( $agency_id );
+		if ( ! $agency ) {
+			return [
+				'name'   => '',
+				'avatar' => '',
+				'link'   => '',
+			];
+		}
+
 		$url    = self::get_avatar_url( $agency_id );
 
 		return [
 			'name'   => $agency->post_title,
-			'avatar' => $url,
+			'avatar' => $url ? $url : '',
 			'link'   => get_permalink( $agency->ID ),
 		];
 	}
