@@ -481,6 +481,8 @@ class Opalestate_Agency_Front {
 	public static function create_agency( $args = [], $user_id ) {
 		$data = get_user_by( 'id', $user_id );
 
+		$post_title = sprintf( esc_html__( 'User ID: %s', 'opalestate-pro' ), $user_id );
+
 		$args = wp_parse_args( $args, [
 			'first_name' => $data->first_name,
 			'last_name'  => $data->last_name,
@@ -499,9 +501,14 @@ class Opalestate_Agency_Front {
 			'instagram'  => '',
 		] );
 
+		if ( $args['first_name'] && $args['last_name'] ) {
+			$post_title = $args['first_name'] . ' ' . $args['last_name'];
+		} elseif ( isset( $data->display_name ) && $data->display_name ) {
+			$post_title = esc_html( $data->display_name );
+		}
 
 		$agency_id = wp_insert_post( [
-			'post_title'   => $args['first_name'] && $args['last_name'] ? $args['first_name'] . ' ' . $args['last_name'] : esc_html__( 'User ID', 'opalestate-pro' ) . ': ' . $user_id,
+			'post_title'   => $post_title,
 			'post_content' => 'empty description',
 			'post_excerpt' => 'empty excerpt',
 			'post_type'    => 'opalestate_agency',

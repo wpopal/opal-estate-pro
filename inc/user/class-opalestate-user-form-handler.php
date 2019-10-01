@@ -186,8 +186,8 @@ class Opalestate_User_Form_Handler {
 			if ( $password !== $password1 ) {
 				throw new Exception( '<strong>' . esc_html__( 'ERROR', 'opalestate-pro' ) . ':</strong> ' . esc_html__( 'Re-Password is not match.', 'opalestate-pro' ) );
 			}
-			$credentials['user_pass'] = $password;
 
+			$credentials['user_pass'] = $password;
 
 			/* create new user */
 			$user_id = opalestate_create_user( $credentials );
@@ -195,8 +195,7 @@ class Opalestate_User_Form_Handler {
 			if ( is_wp_error( $user_id ) ) {
 				throw new Exception( '<strong>' . esc_html__( 'ERROR', 'opalestate-pro' ) . ':</strong> ' . $user_id->get_error_message() );
 			} else {
-
-				/* after register successfully */
+				/* After register successfully */
 				do_action( 'opalestate_after_register_successfully', $user_id );
 
 				$redirect = home_url();
@@ -213,7 +212,7 @@ class Opalestate_User_Form_Handler {
 
 				$redirect = apply_filters( 'opalestate_register_redirect_url', $redirect );
 
-				/* is ajax request */
+				/* Is ajax request */
 				if ( opalestate_is_ajax_request() ) {
 					wp_send_json( [ 'status' => true, 'redirect' => $redirect ] );
 				} else {
