@@ -15,7 +15,7 @@ $attrs = $this->get_render_attribute_string( 'wrapper-style' );
 
 ?>
 <div class="city-list-collection ">
-    <div <?php echo $attrs; ?>>
+    <div <?php echo wp_kses_post( $attrs ); ?>>
 		<?php foreach ( $terms as $city ): ?>
 			<?php
 			$tax_link = get_term_link( $city->term_id );
@@ -32,7 +32,7 @@ $attrs = $this->get_render_attribute_string( 'wrapper-style' );
                 }
 				?>
 
-                <div class="property-city-bg" <?php echo $style; ?>>
+                <div class="property-city-bg" <?php echo wp_kses_post( $style ); ?>>
                 </div>
                 <div class="static-content">
                     <div class="property-city-info text-center">
@@ -51,6 +51,7 @@ $attrs = $this->get_render_attribute_string( 'wrapper-style' );
 										'%1$s Property',
 										'%1$s Properties',
 										$city->count,
+										'count properties',
 										'opalestate-pro'
 									),
 									number_format_i18n( $city->count )

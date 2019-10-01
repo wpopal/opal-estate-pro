@@ -15,7 +15,7 @@ $attrs = $this->get_render_attribute_string( 'wrapper-style' );
 
 ?>
 <div class="category-list-collection ">
-    <div <?php echo $attrs; ?>>
+    <div <?php echo wp_kses_post( $attrs ); ?>>
 		<?php foreach ( $terms as $category ): ?>
 			<?php
 			$tax_link = get_term_link( $category->term_id );
@@ -32,7 +32,7 @@ $attrs = $this->get_render_attribute_string( 'wrapper-style' );
                 }
 				?>
 
-                <div class="property-category-bg" <?php echo $style; ?>>
+                <div class="property-category-bg" <?php echo wp_kses_post( $style ); ?>>
                 </div>
                 <div class="static-content">
                     <div class="property-category-info text-center">
@@ -51,6 +51,7 @@ $attrs = $this->get_render_attribute_string( 'wrapper-style' );
 										'%1$s Property',
 										'%1$s Properties',
 										$category->count,
+										'count properties',
 										'opalestate-pro'
 									),
 									number_format_i18n( $category->count )
