@@ -227,6 +227,7 @@ class Property_Api  extends  Base_Api {
 		$property['info']['address'] = $data->get_address();
 		$property['meta'] 			= $data->get_meta_shortinfo();
 
+
 		$property['is_featured']    = $data->is_featured();
 		$property['status'] 		= $data->get_status();
 		$property['labels'] 		= $data->get_labels();
