@@ -50,7 +50,7 @@ switch ( $type ) {
 		break;
 }
 ?>
-<div class="opalestate-box-content property-agent-section">
+<div class="opalestate-box-content property-agent-section property-author-v2">
     <div class="opalestate-box">
         <div class="author-content-box">
             <div class="property-agent-info">

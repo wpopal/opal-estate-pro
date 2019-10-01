@@ -454,7 +454,7 @@ class Opalestate_Property {
 		return '<a  href="' . $data['link'] . '" aria-label="' . $data['name'] . '" class="author-link"><span aria-label="' . $data['name'] . '" class="author-avatar hint--top">' . $avatar . '</span><span class="author-name">' . $data['name'] . '</span></a>';
 	}
 
-	private function get_author_link() {
+	public function get_author_link() {
 
 		$image_id   = get_user_meta( get_the_author_meta( 'ID' ), OPALESTATE_USER_PROFILE_PREFIX . 'avatar_id', true );
 		$related_id = get_user_meta( get_the_author_meta( 'ID' ), OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );

@@ -233,7 +233,9 @@ class Property_Api  extends  Base_Api {
 		$property['locations'] 		= $data->get_locations();
 		$property['amenities'] 		= $data->get_amenities();
 		$property['types'] 			= $data->get_types_tax();
-		
+		$property['author_type'] 	= $data->get_author_type();
+		$property['author_data'] 	= $data->get_author_link();
+
 		return apply_filters( 'opalestate_api_properties_property', $property );
 
 	}
