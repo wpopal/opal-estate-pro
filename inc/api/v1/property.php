@@ -282,19 +282,37 @@ class Property_Api extends Base_Api {
 			}
 		}
 
-		$property['info']['gallery'] = $gallery_data;
-		$property['info']['price']   = opalestate_price_format( $data->get_price() );
-		$property['info']['map']     = $data->get_map();
-		$property['info']['address'] = $data->get_address();
-		$property['meta']            = $data->get_meta_shortinfo();
-		$property['is_featured']     = $data->is_featured();
-		$property['status']          = $data->get_status();
-		$property['labels']          = $data->get_labels();
-		$property['locations']       = $data->get_locations();
-		$property['amenities']       = $data->get_amenities();
-		$property['types']           = $data->get_types_tax();
-		$property['author_type']     = $data->get_author_type();
-		$property['author_data']     = $data->get_author_link_data();
+		$property['info']['gallery']            = $gallery_data;
+		$property['info']['price']              = opalestate_price_format( $data->get_price() );
+		$property['info']['saleprice']          = opalestate_price_format( $data->get_sale_price() );
+		$property['info']['before_price_label'] = $data->get_before_price_label();
+		$property['info']['price_label']        = $data->get_price_label();
+		$property['info']['map']                = $data->get_map();
+		$property['info']['address']            = $data->get_address();
+		$property['meta']                       = $data->get_meta_shortinfo();
+		$property['fullinfo']                   = $data->get_meta_fullinfo();
+		$property['video']                      = $data->get_video_url();
+		$property['virtual_tour']               = $data->get_virtual_tour();
+		$property['attachments']                = $data->get_attachments();
+		$property['floor_plans']                = $data->get_floor_plans();
+		$property['is_featured']                = $data->is_featured();
+		$property['status']                     = $data->get_status();
+		$property['labels']                     = $data->get_labels();
+		$property['locations']                  = $data->get_locations();
+		$property['facilities']                 = $data->get_facilities();
+		$property['amenities']                  = $data->get_amenities();
+		$property['types']                      = $data->get_types_tax();
+		$property['author_type']                = $data->get_author_type();
+		$property['author_data']                = $data->get_author_link_data();
+
+		$limit                  = opalestate_get_option( 'single_views_statistics_limit', 8 );
+		$stats                  = new Opalestate_View_Stats( $data->get_id(), $limit );
+		$array_label            = json_encode( $stats->get_traffic_labels() );
+		$array_values           = json_encode( $stats->get_traffic_data_accordion() );
+		$property['view_stats'] = [
+			'labels' => $array_label,
+			'values' => $array_values,
+		];
 
 		return apply_filters( 'opalestate_api_properties_property', $property );
 	}
