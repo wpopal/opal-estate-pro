@@ -41,45 +41,55 @@ class Agency_Api extends Base_Api {
 	 *
 	 */
 	public function register_routes() {
-		/// call http://domain.com/wp-json/estate-api/v1/job/list  ////
+		/**
+		 * Get agency list.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/agency/list
+		 */
 		register_rest_route( $this->namespace, $this->base . '/list', [
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => [ $this, 'get_list' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/estate-api/v1/job/1  ////
+		/**
+		 * Get agency detail.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/agency/1
+		 */
 		register_rest_route( $this->namespace, $this->base . '/(?P<id>\d+)', [
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => [ $this, 'get_detail' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/estate-api/v1/job/create  ////
+		/**
+		 * Create a agency.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/agency/create
+		 */
 		register_rest_route( $this->namespace, $this->base . '/create', [
 			'methods'             => 'GET',
 			'callback'            => [ $this, 'create' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/estate-api/v1/job/edit  ////
+		/**
+		 * Edit a agency.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/agency/edit
+		 */
 		register_rest_route( $this->namespace, $this->base . '/edit', [
 			'methods'  => 'GET',
 			'callback' => [ $this, 'edit' ],
 		] );
 
-		/// call http://domain.com/wp-json/estate-api/v1/job/delete  ////
-		register_rest_route( $this->namespace, $this->base . '/delete', [
-			'methods'             => 'GET',
-			'callback'            => [ $this, 'delete' ],
-			'permission_callback' => [ $this, 'validate_request' ],
-		] );
-
 		/**
-		 *  List job by tags and taxonmies
+		 * Delete a agency.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/agency/delete
 		 */
-		/// call http://domain.com/wp-json/estate-api/v1/jobs  ////
-		register_rest_route( $this->namespace, $this->base . '/tags', [
+		register_rest_route( $this->namespace, $this->base . '/delete', [
 			'methods'             => 'GET',
 			'callback'            => [ $this, 'delete' ],
 			'permission_callback' => [ $this, 'validate_request' ],
