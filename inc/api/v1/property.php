@@ -268,10 +268,21 @@ class Property_Api extends Base_Api {
 		$property['info']['content']       = $property_info->post_content;
 		$property['info']['thumbnail']     = wp_get_attachment_url( get_post_thumbnail_id( $property_info->ID ) );
 
-		$data                        = opalesetate_property( $property_info->ID );
-		$gallery                     = $data->get_gallery();
-		$gallery_count               = $data->get_gallery_count();
-		$property['info']['gallery'] = $gallery_count ? $gallery : [];
+		$data          = opalesetate_property( $property_info->ID );
+		$gallery       = $data->get_gallery();
+		$gallery_count = $data->get_gallery_count();
+
+		$gallery_data = [];
+		if ( $gallery_count ) {
+			foreach ( $gallery as $id => $url ) {
+				$gallery_data[] = [
+					'id'  => $id,
+					'url' => $url,
+				];
+			}
+		}
+
+		$property['info']['gallery'] = $gallery_data;
 		$property['info']['price']   = opalestate_price_format( $data->get_price() );
 		$property['info']['map']     = $data->get_map();
 		$property['info']['address'] = $data->get_address();
