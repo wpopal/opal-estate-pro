@@ -62,8 +62,8 @@ class OpalEstate_Enqueue {
 		/**
 		 * Enqueue 3rd.
 		 */
-		wp_register_style( 'fontawesome', OPALESTATE_PLUGIN_URL . 'assets/3rd/fontawesome/css/all.min.css', null, '5.11.2', false );
-		wp_enqueue_style( 'fontawesome' );
+		wp_register_style( 'font-awesome', OPALESTATE_PLUGIN_URL . 'assets/3rd/fontawesome/css/all.min.css', null, '5.11.2', false );
+		wp_enqueue_style( 'font-awesome' );
 		wp_enqueue_style( 'hint', OPALESTATE_PLUGIN_URL . 'assets/3rd/hint/hint.min.css', null, '1.3', false );
 		wp_enqueue_style( 'select2', OPALESTATE_PLUGIN_URL . 'assets/3rd/select2/css/select2.min.css', null, '1.3', false );
 		wp_enqueue_script( 'select2', OPALESTATE_PLUGIN_URL . 'assets/3rd/select2/js/select2.min.js', null, '1.3', false );
