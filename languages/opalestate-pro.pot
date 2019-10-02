@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Opal Estate Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-28 10:03+0000\n"
+"POT-Creation-Date: 2019-10-02 02:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -38,8 +38,8 @@ msgstr ""
 
 #: inc/class-opalestate-email.php:135
 #: inc/message/class-opalestate-request-reviewing.php:98
-#: inc/message/class-opalestate-message.php:234
-#: inc/message/class-opalestate-message.php:278
+#: inc/message/class-opalestate-message.php:248
+#: inc/message/class-opalestate-message.php:292
 msgid "Unable to send a message."
 msgstr ""
 
@@ -51,10 +51,10 @@ msgstr ""
 #: inc/classes/class-opalestate-metabox-user.php:154
 #: inc/classes/class-opalestate-metabox-user.php:219
 #: inc/agency/class-opalestate-agency-metabox.php:337
-#: inc/message/class-opalestate-message.php:524
-#: inc/message/class-opalestate-message.php:626
+#: inc/message/class-opalestate-message.php:538
+#: inc/message/class-opalestate-message.php:640
 #: inc/agent/class-opalestate-agent-metabox.php:177
-#: templates/rating/opalestate-ratings.php:239
+#: templates/rating/opalestate-ratings.php:242
 msgid "Email"
 msgstr ""
 
@@ -87,49 +87,51 @@ msgstr ""
 msgid "Email Submission Templates (Template Tags)"
 msgstr ""
 
-#: inc/class-opalestate-email.php:291
+#: inc/class-opalestate-email.php:294
 msgid "Notification For New Property Submission"
 msgstr ""
 
-#: inc/class-opalestate-email.php:300 inc/class-opalestate-email.php:339
-#: inc/class-opalestate-email.php:368
+#: inc/class-opalestate-email.php:303 inc/class-opalestate-email.php:342
+#: inc/class-opalestate-email.php:369 inc/class-opalestate-email.php:395
+#: inc/class-opalestate-email.php:421
 msgid "Email Subject"
 msgstr ""
 
-#: inc/class-opalestate-email.php:302
+#: inc/class-opalestate-email.php:305
 msgid "The email subject for admin notifications."
 msgstr ""
 
-#: inc/class-opalestate-email.php:307 inc/class-opalestate-email.php:347
-#: inc/email/class-opalesate-approve.php:31
+#: inc/class-opalestate-email.php:310 inc/class-opalestate-email.php:350
+#: inc/email/class-opalestate-admin-new-submitted.php:25
 #: inc/email/class-opalestate-new-submitted.php:31
 msgid "New Property Listing Submitted: {property_name}"
 msgstr ""
 
-#: inc/class-opalestate-email.php:312 inc/class-opalestate-email.php:352
-#: inc/class-opalestate-email.php:381
+#: inc/class-opalestate-email.php:315 inc/class-opalestate-email.php:355
+#: inc/class-opalestate-email.php:382 inc/class-opalestate-email.php:408
+#: inc/class-opalestate-email.php:434
 msgid "Email Body"
 msgstr ""
 
-#: inc/class-opalestate-email.php:314
+#: inc/class-opalestate-email.php:317
 msgid ""
 "Enter the email an admin should receive when an initial payment request is "
 "made."
 msgstr ""
 
-#: inc/class-opalestate-email.php:319
+#: inc/class-opalestate-email.php:322
 msgid "Approve property for publish"
 msgstr ""
 
-#: inc/class-opalestate-email.php:326
+#: inc/class-opalestate-email.php:329
 msgid "Enable approve property email"
 msgstr ""
 
-#: inc/class-opalestate-email.php:327
+#: inc/class-opalestate-email.php:330
 msgid "Enable approve property email."
 msgstr ""
 
-#: inc/class-opalestate-email.php:331
+#: inc/class-opalestate-email.php:334
 #: inc/submission/class-opalestate-submission.php:179
 #: inc/submission/class-opalestate-submission.php:189
 #: inc/submission/class-opalestate-submission.php:199
@@ -157,7 +159,7 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: inc/class-opalestate-email.php:332
+#: inc/class-opalestate-email.php:335
 #: inc/submission/class-opalestate-submission.php:180
 #: inc/submission/class-opalestate-submission.php:190
 #: inc/submission/class-opalestate-submission.php:200
@@ -183,25 +185,39 @@ msgstr ""
 msgid "Disable"
 msgstr ""
 
-#: inc/class-opalestate-email.php:341 inc/class-opalestate-email.php:370
+#: inc/class-opalestate-email.php:344 inc/class-opalestate-email.php:371
+#: inc/class-opalestate-email.php:397 inc/class-opalestate-email.php:423
 msgid ""
 "The email subject a user should receive when they make an initial property "
 "request."
 msgstr ""
 
-#: inc/class-opalestate-email.php:354
+#: inc/class-opalestate-email.php:357
 msgid ""
 "Enter the email a user should receive when they make an initial payment "
 "request."
 msgstr ""
 
-#: inc/class-opalestate-email.php:360
+#: inc/class-opalestate-email.php:362
+msgid "Email Enquiry Contact Templates (Template Tags)"
+msgstr ""
+
+#: inc/class-opalestate-email.php:377 inc/class-opalestate-email.php:403
+#: inc/message/class-opalestate-message.php:117
+msgid "You got a message"
+msgstr ""
+
+#: inc/class-opalestate-email.php:388
 msgid "Email Contact Templates (Template Tags)"
 msgstr ""
 
-#: inc/class-opalestate-email.php:376
-#: inc/message/class-opalestate-message.php:103
-msgid "You got a message"
+#: inc/class-opalestate-email.php:414
+msgid "Email Request Review Templates (Template Tags)"
+msgstr ""
+
+#: inc/class-opalestate-email.php:429
+#, php-format
+msgid "You have a message request reviewing at: %s"
 msgstr ""
 
 #: inc/class-opalestate-roles.php:49
@@ -338,21 +354,21 @@ msgstr ""
 msgid "Google Captcha"
 msgstr ""
 
-#: inc/template-hook-functions.php:224 inc/template-hook-functions.php:269
+#: inc/template-hook-functions.php:230 inc/template-hook-functions.php:279
 msgid "Request Viewing"
 msgstr ""
 
-#: inc/template-hook-functions.php:266
+#: inc/template-hook-functions.php:276
 msgid ""
 "Physical Arrange viewings is always been attractive to property clients. "
 "Fill out the form to arrange visualizations around our properties."
 msgstr ""
 
-#: inc/template-hook-functions.php:296
+#: inc/template-hook-functions.php:306
 msgid "User Management"
 msgstr ""
 
-#: inc/template-hook-functions.php:297
+#: inc/template-hook-functions.php:307
 msgid "Opalestate Fullwidth"
 msgstr ""
 
@@ -1289,7 +1305,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. %s number of reviews
-#: inc/template-functions.php:982 templates/rating/opalestate-ratings.php:173
+#: inc/template-functions.php:982 templates/rating/opalestate-ratings.php:176
 #, php-format
 msgctxt "review numbers"
 msgid "%s review"
@@ -1394,7 +1410,7 @@ msgstr ""
 #: templates/single-agent/author-box.php:18
 #: templates/single-agency/author-box.php:24
 #: templates/parts/featured-label.php:9
-#: inc/admin/property/class-property.php:99
+#: inc/admin/property/class-property.php:100
 msgid "Featured"
 msgstr ""
 
@@ -1411,8 +1427,8 @@ msgstr ""
 #: templates/single-agency/author-box.php:30
 #: templates/single-property/user/author-member-box.php:28
 #: templates/single-property/user/author-member-box.php:28
-#: templates/single-property/user/author-user-box.php:66
-#: templates/single-property/user/author-user-box.php:67
+#: templates/single-property/user/author-user-box.php:64
+#: templates/single-property/user/author-user-box.php:65
 #: templates/single-property/user/author-user-box-list.php:51
 #: templates/single-property/user/author-user-box-list.php:52
 msgid "Trusted Member"
@@ -1462,7 +1478,7 @@ msgid ""
 msgstr ""
 
 #: templates/archive-opalestate_agency.php:38
-#: templates/elementor-templates/opalestate-agency-collection.php:26
+#: templates/elementor-templates/opalestate-agency-collection.php:27
 #, php-format
 msgid "Found %s Agency"
 msgstr ""
@@ -1488,7 +1504,7 @@ msgid ""
 msgstr ""
 
 #: templates/archive-opalestate_agent.php:37
-#: templates/elementor-templates/opalestate-agent-collection.php:29
+#: templates/elementor-templates/opalestate-agent-collection.php:30
 #: templates/shortcodes/search-agents.php:15
 #, php-format
 msgid "Found %s Agents"
@@ -1525,7 +1541,7 @@ msgstr ""
 #: inc/classes/class-opalestate-metabox-user.php:110
 #: inc/property/class-metabox-property-admin.php:217
 #: inc/submission/class-metabox-property-submission.php:382
-#: inc/admin/property/class-property.php:101
+#: inc/admin/property/class-property.php:102
 msgid "Address"
 msgstr ""
 
@@ -1555,7 +1571,7 @@ msgstr ""
 
 #: templates/content-single-agency.php:110
 #: templates/content-single-agent.php:22
-#: inc/property/class-opalestate-shortcodes.php:39
+#: inc/property/class-opalestate-shortcodes.php:50
 #: inc/property/class-opalestate-posttype.php:41
 #: inc/property/class-opalestate-posttype.php:53
 #: templates/single-agency/tabs.php:6
@@ -1924,9 +1940,9 @@ msgstr ""
 #: inc/classes/class-opalestate-metabox-user.php:230
 #: inc/agency/class-opalestate-agency-metabox.php:158
 #: inc/agency/class-opalestate-agency-metabox.php:348
-#: inc/message/class-opalestate-message.php:533
-#: inc/message/class-opalestate-message.php:635
-#: inc/message/class-opalestate-message.php:710
+#: inc/message/class-opalestate-message.php:547
+#: inc/message/class-opalestate-message.php:649
+#: inc/message/class-opalestate-message.php:724
 #: inc/agent/class-opalestate-agent-metabox.php:188
 msgid "Phone"
 msgstr ""
@@ -1991,37 +2007,36 @@ msgstr ""
 msgid "Instagram"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:38
+#: inc/property/class-opalestate-shortcodes.php:49
 msgid "Search Properties Form"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:40
+#: inc/property/class-opalestate-shortcodes.php:51
 msgid "Search Properties Result"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:41
+#: inc/property/class-opalestate-shortcodes.php:52
 #: inc/widgets/search-properties.php:57
 msgid "Search Properties"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:42
-msgid "Search Properties Vertical"
+#: inc/property/class-opalestate-shortcodes.php:53
+msgid "Search Split Maps"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:44
-msgid "Search Map Properties"
+#: inc/property/class-opalestate-shortcodes.php:55
+msgid "Show Map + Search Box and Properties"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:45
-#: inc/property/class-opalestate-shortcodes.php:46
-msgid "Ajax Search Map Properties"
+#: inc/property/class-opalestate-shortcodes.php:56
+msgid "Ajax Search Map Properties And Horizontal Search"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:47
+#: inc/property/class-opalestate-shortcodes.php:58
 msgid "Register User Form"
 msgstr ""
 
-#: inc/property/class-opalestate-shortcodes.php:48
+#: inc/property/class-opalestate-shortcodes.php:59
 msgid "Login Form"
 msgstr ""
 
@@ -2367,12 +2382,12 @@ msgid "Author Information"
 msgstr ""
 
 #: inc/property/class-metabox-property-admin.php:473
-#: inc/user/class-opalestate-user.php:283
+#: inc/user/class-opalestate-user.php:287
 msgid "Agent"
 msgstr ""
 
 #: inc/property/class-metabox-property-admin.php:479
-#: inc/user/class-opalestate-user.php:284
+#: inc/user/class-opalestate-user.php:288
 #: templates/parts/search-agency-form.php:20
 msgid "Agency"
 msgstr ""
@@ -2404,10 +2419,10 @@ msgid "Preview Display"
 msgstr ""
 
 #: inc/property/class-metabox-property-admin.php:561
-#: inc/message/class-opalestate-message.php:515
-#: inc/message/class-opalestate-message.php:618
+#: inc/message/class-opalestate-message.php:529
+#: inc/message/class-opalestate-message.php:632
 #: inc/submission/class-metabox-property-submission.php:561
-#: templates/rating/opalestate-ratings.php:237
+#: templates/rating/opalestate-ratings.php:240
 #: templates/user/share-search-form.php:35
 #: templates/user-search/content-savedsearch.php:12
 #: templates/user-search/render-form.php:29
@@ -2650,28 +2665,42 @@ msgstr ""
 msgid "Agency Team"
 msgstr ""
 
-#: inc/agency/class-opalestate-agency-front.php:293
-#: inc/user/class-opalestate-user.php:337
-#: inc/agent/class-opalestate-agent-front.php:199
+#: inc/agency/class-opalestate-agency-front.php:289
+#: inc/user/class-opalestate-user.php:341
+#: inc/agent/class-opalestate-agent-front.php:202
 msgid "The data updated successful, please wait for redirecting"
 msgstr ""
 
-#: inc/agency/class-opalestate-agency-front.php:295
-#: inc/agency/class-opalestate-agency-front.php:302
-#: inc/user/class-opalestate-user.php:339
-#: inc/agent/class-opalestate-agent-front.php:201
-#: inc/agent/class-opalestate-agent-front.php:209
+#: inc/agency/class-opalestate-agency-front.php:291
+#: inc/agency/class-opalestate-agency-front.php:298
+#: inc/user/class-opalestate-user.php:343
+#: inc/agent/class-opalestate-agent-front.php:204
+#: inc/agent/class-opalestate-agent-front.php:212
 msgid "Update Information"
 msgstr ""
 
-#: inc/agency/class-opalestate-agency-front.php:301
-#: inc/agent/class-opalestate-agent-front.php:208
+#: inc/agency/class-opalestate-agency-front.php:297
+#: inc/agent/class-opalestate-agent-front.php:211
 msgid "Currently, The data could not save!"
 msgstr ""
 
-#: inc/agency/class-opalestate-agency-front.php:458
-#: inc/agent/class-opalestate-agent-front.php:484
-msgid "User ID"
+#: inc/agency/class-opalestate-agency-front.php:308
+msgid "Search Agencies"
+msgstr ""
+
+#: inc/agency/class-opalestate-agency-front.php:309
+msgid "Agency Carousel"
+msgstr ""
+
+#: inc/agency/class-opalestate-agency-front.php:368
+#: inc/agent/class-opalestate-agent-front.php:105
+msgid "You need to enter some required information to publish your account."
+msgstr ""
+
+#: inc/agency/class-opalestate-agency-front.php:481
+#: inc/agent/class-opalestate-agent-front.php:476
+#, php-format
+msgid "User ID: %s"
 msgstr ""
 
 #: inc/agency/class-opalestate-agency-metabox.php:30
@@ -2693,8 +2722,8 @@ msgid "Set this agent as featured"
 msgstr ""
 
 #: inc/agency/class-opalestate-agency-metabox.php:83
-#: inc/user/class-opalestate-user.php:561
-#: inc/user/class-opalestate-user.php:574
+#: inc/user/class-opalestate-user.php:565
+#: inc/user/class-opalestate-user.php:578
 #: inc/submission/class-metabox-property-submission.php:45
 msgid "Name and Description"
 msgstr ""
@@ -2974,56 +3003,56 @@ msgstr ""
 msgid "Generate New API Keys"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:162
-#: inc/email/class-opalestate-email-notifycation.php:38
+#: inc/message/class-opalestate-message.php:176
+#: inc/email/class-opalestate-email-notifycation.php:42
 msgid "You got a message contact"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:229
+#: inc/message/class-opalestate-message.php:243
 msgid "Email Sent successful"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:230
-#: inc/message/class-opalestate-message.php:234
+#: inc/message/class-opalestate-message.php:244
+#: inc/message/class-opalestate-message.php:248
 msgid "Sending Message"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:492
-#: inc/message/class-opalestate-message.php:558
-#: inc/message/class-opalestate-message.php:597
-#: inc/message/class-opalestate-message.php:674
+#: inc/message/class-opalestate-message.php:506
+#: inc/message/class-opalestate-message.php:572
+#: inc/message/class-opalestate-message.php:611
+#: inc/message/class-opalestate-message.php:688
 #: inc/taxonomies/class-taxonomy-types.php:123
 #: templates/user/register-form.php:69
 #: templates/single-property/features.php:28
 msgid "Type"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:499
-#: inc/message/class-opalestate-message.php:604
-#: inc/message/class-opalestate-message.php:681
+#: inc/message/class-opalestate-message.php:513
+#: inc/message/class-opalestate-message.php:618
+#: inc/message/class-opalestate-message.php:695
 msgid "Property ID"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:507
-#: inc/message/class-opalestate-message.php:611
-#: inc/message/class-opalestate-message.php:688
+#: inc/message/class-opalestate-message.php:521
+#: inc/message/class-opalestate-message.php:625
+#: inc/message/class-opalestate-message.php:702
 #: templates/user/agency/agency-team.php:12
 msgid "Sender ID"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:541
-#: inc/message/class-opalestate-message.php:565
-#: inc/message/class-opalestate-message.php:643
-#: inc/message/class-opalestate-message.php:718
+#: inc/message/class-opalestate-message.php:555
+#: inc/message/class-opalestate-message.php:579
+#: inc/message/class-opalestate-message.php:657
+#: inc/message/class-opalestate-message.php:732
 #: templates/user/share-search-form.php:45
 msgid "Message"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:695
+#: inc/message/class-opalestate-message.php:709
 msgid "Schedule"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:703
+#: inc/message/class-opalestate-message.php:717
 msgid "Time"
 msgstr ""
 
@@ -3092,61 +3121,61 @@ msgid ""
 "target=\"_blank\" href=\"%s\">update Agent profile</a>"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:257
+#: inc/user/class-opalestate-user.php:261
 msgid ""
 "Your account was blocked to use the submission form, so you could not submit "
 "any property."
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:269
+#: inc/user/class-opalestate-user.php:273
 msgid "Your account is blocked, you could not complete this action"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:282
+#: inc/user/class-opalestate-user.php:286
 msgid "Subscriber"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:489
+#: inc/user/class-opalestate-user.php:493
 msgid "Found a problem while updating"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:500
+#: inc/user/class-opalestate-user.php:504
 msgid "Passwords fields are not empty"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:506
+#: inc/user/class-opalestate-user.php:510
 msgid "New password is not same confirm password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:516
+#: inc/user/class-opalestate-user.php:520
 msgid "Password Updated"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:518
+#: inc/user/class-opalestate-user.php:522
 msgid "Old password is not correct"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:583
+#: inc/user/class-opalestate-user.php:587
 msgid "Old Password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:588
+#: inc/user/class-opalestate-user.php:592
 msgid "Please enter your old password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:592
+#: inc/user/class-opalestate-user.php:596
 msgid "New Password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:597
+#: inc/user/class-opalestate-user.php:601
 msgid "Please enter your new password."
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:601
+#: inc/user/class-opalestate-user.php:605
 msgid "Confirm Password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:606
+#: inc/user/class-opalestate-user.php:610
 msgid "Please enter your confirm password."
 msgstr ""
 
@@ -3166,42 +3195,42 @@ msgstr ""
 msgid "Saved Search"
 msgstr ""
 
-#: inc/user/class-opalestate-user-form-handler.php:48
-#: inc/user/class-opalestate-user-form-handler.php:53
-#: inc/user/class-opalestate-user-form-handler.php:62
-#: inc/user/class-opalestate-user-form-handler.php:73
-#: inc/user/class-opalestate-user-form-handler.php:165
-#: inc/user/class-opalestate-user-form-handler.php:170
-#: inc/user/class-opalestate-user-form-handler.php:177
-#: inc/user/class-opalestate-user-form-handler.php:184
-#: inc/user/class-opalestate-user-form-handler.php:187
-#: inc/user/class-opalestate-user-form-handler.php:196
+#: inc/user/class-opalestate-user-form-handler.php:49
+#: inc/user/class-opalestate-user-form-handler.php:54
+#: inc/user/class-opalestate-user-form-handler.php:63
+#: inc/user/class-opalestate-user-form-handler.php:74
+#: inc/user/class-opalestate-user-form-handler.php:166
+#: inc/user/class-opalestate-user-form-handler.php:171
+#: inc/user/class-opalestate-user-form-handler.php:178
+#: inc/user/class-opalestate-user-form-handler.php:185
+#: inc/user/class-opalestate-user-form-handler.php:188
+#: inc/user/class-opalestate-user-form-handler.php:197
 msgid "ERROR"
 msgstr ""
 
-#: inc/user/class-opalestate-user-form-handler.php:53
-#: inc/user/class-opalestate-user-form-handler.php:170
+#: inc/user/class-opalestate-user-form-handler.php:54
+#: inc/user/class-opalestate-user-form-handler.php:171
 msgid "Username is required."
 msgstr ""
 
-#: inc/user/class-opalestate-user-form-handler.php:62
+#: inc/user/class-opalestate-user-form-handler.php:63
 msgid "A user could not be found with this email address."
 msgstr ""
 
-#: inc/user/class-opalestate-user-form-handler.php:73
-#: inc/user/class-opalestate-user-form-handler.php:184
+#: inc/user/class-opalestate-user-form-handler.php:74
+#: inc/user/class-opalestate-user-form-handler.php:185
 msgid "Password is required."
 msgstr ""
 
-#: inc/user/class-opalestate-user-form-handler.php:99
+#: inc/user/class-opalestate-user-form-handler.php:100
 msgid "Logged successfully, welcome back!"
 msgstr ""
 
-#: inc/user/class-opalestate-user-form-handler.php:177
+#: inc/user/class-opalestate-user-form-handler.php:178
 msgid "Email is required."
 msgstr ""
 
-#: inc/user/class-opalestate-user-form-handler.php:187
+#: inc/user/class-opalestate-user-form-handler.php:188
 msgid "Re-Password is not match."
 msgstr ""
 
@@ -3284,6 +3313,10 @@ msgstr ""
 
 #: inc/agent/class-opalestate-agent-front.php:309
 msgid "Search Agents"
+msgstr ""
+
+#: inc/agent/class-opalestate-agent-front.php:310
+msgid "Agent Carousel"
 msgstr ""
 
 #: inc/agent/class-opalestate-agent-posttype.php:36
@@ -3375,72 +3408,77 @@ msgctxt "agent level slug"
 msgid "agent-level"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:423
+#: inc/api/class-opalestate-api-remove.php:423
 msgid "You must specify both a token and API key!"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:440
+#: inc/api/class-opalestate-api-remove.php:440
 msgid "Your request could not be authenticated!"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:457
+#: inc/api/class-opalestate-api-remove.php:457
 msgid "Invalid API key!"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:473
+#: inc/api/class-opalestate-api-remove.php:473
 msgid "Invalid API version!"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:601
+#: inc/api/class-opalestate-api-remove.php:601
 msgid "Invalid query!"
 msgstr ""
 
 #. %s: property
-#: inc/api/class-opalestate-api.php:678 inc/api/class-opalestate-api.php:769
-#: inc/api/class-opalestate-api.php:821
+#: inc/api/class-opalestate-api-remove.php:678
+#: inc/api/class-opalestate-api-remove.php:769
+#: inc/api/class-opalestate-api-remove.php:821 inc/api/v1/agent.php:127
+#: inc/api/v1/property.php:120 inc/api/v1/property.php:177
 #, php-format
 msgid "Form %s not found!"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1053
+#: inc/api/class-opalestate-api-remove.php:1053
 msgid "Opalestate API Keys"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1062
+#: inc/api/class-opalestate-api-remove.php:1062
 msgid "Generate API Key"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1064
+#: inc/api/class-opalestate-api-remove.php:1064
 msgid "Public key:"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1067
+#: inc/api/class-opalestate-api-remove.php:1067
 msgid "Secret key:"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1070
+#: inc/api/class-opalestate-api-remove.php:1070
 msgid "Token:"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1074
+#: inc/api/class-opalestate-api-remove.php:1074
 msgid "Revoke API Keys"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1097
+#: inc/api/class-opalestate-api-remove.php:1097
 msgid "Nonce verification failed."
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1097 inc/api/class-opalestate-api.php:1102
-#: inc/api/class-opalestate-api.php:1120 inc/api/class-opalestate-api.php:1130
+#: inc/api/class-opalestate-api-remove.php:1097
+#: inc/api/class-opalestate-api-remove.php:1102
+#: inc/api/class-opalestate-api-remove.php:1120
+#: inc/api/class-opalestate-api-remove.php:1130
 msgid "Error"
 msgstr ""
 
-#: inc/api/class-opalestate-api.php:1102
+#: inc/api/class-opalestate-api-remove.php:1102
 msgid "User ID Required."
 msgstr ""
 
 #. %s: process
-#: inc/api/class-opalestate-api.php:1117 inc/api/class-opalestate-api.php:1127
+#: inc/api/class-opalestate-api-remove.php:1117
+#: inc/api/class-opalestate-api-remove.php:1127
 #, php-format
 msgid "You do not have permission to %s API keys for this user."
 msgstr ""
@@ -3979,7 +4017,11 @@ msgstr ""
 msgid "Select Status"
 msgstr ""
 
-#: inc/email/class-opalestate-email-notifycation.php:34
+#: inc/email/class-opalestate-approve.php:32
+msgid "The Property Listing Approved: {property_name}"
+msgstr ""
+
+#: inc/email/class-opalestate-email-notifycation.php:35
 msgid "You got a message enquiry"
 msgstr ""
 
@@ -4357,20 +4399,20 @@ msgstr ""
 msgid "Contact Me"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:64
+#: templates/rating/opalestate-ratings.php:67
 msgid "Ratings & Reviews"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:79
+#: templates/rating/opalestate-ratings.php:82
 msgid "star"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:106
+#: templates/rating/opalestate-ratings.php:109
 msgid "Overall rating"
 msgstr ""
 
 #. %s number of ratings
-#: templates/rating/opalestate-ratings.php:118
+#: templates/rating/opalestate-ratings.php:121
 #, php-format
 msgctxt "rating numbers"
 msgid "%s rating"
@@ -4378,85 +4420,85 @@ msgid_plural "%s ratings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/rating/opalestate-ratings.php:132
+#: templates/rating/opalestate-ratings.php:135
 msgid "based on all ratings"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:207
+#: templates/rating/opalestate-ratings.php:210
 msgid "There are no reviews yet."
 msgstr ""
 
 #. %s is property title
-#: templates/rating/opalestate-ratings.php:230
+#: templates/rating/opalestate-ratings.php:233
 msgid "Add a review"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:230
+#: templates/rating/opalestate-ratings.php:233
 #, php-format
 msgid "Be the first to review &ldquo;%s&rdquo;"
 msgstr ""
 
 #. %s is property title
-#: templates/rating/opalestate-ratings.php:232
+#: templates/rating/opalestate-ratings.php:235
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:242
+#: templates/rating/opalestate-ratings.php:245
 msgid "Submit"
-msgstr ""
-
-#: templates/rating/opalestate-ratings.php:251
-#: templates/rating/opalestate-ratings.php:263
-msgid "Rate&hellip;"
-msgstr ""
-
-#: templates/rating/opalestate-ratings.php:252
-#: templates/rating/opalestate-ratings.php:264
-msgid "Perfect"
-msgstr ""
-
-#: templates/rating/opalestate-ratings.php:253
-#: templates/rating/opalestate-ratings.php:265
-msgid "Good"
 msgstr ""
 
 #: templates/rating/opalestate-ratings.php:254
 #: templates/rating/opalestate-ratings.php:266
-msgid "Average"
+msgid "Rate&hellip;"
 msgstr ""
 
 #: templates/rating/opalestate-ratings.php:255
 #: templates/rating/opalestate-ratings.php:267
-msgid "Not that bad"
+msgid "Perfect"
 msgstr ""
 
 #: templates/rating/opalestate-ratings.php:256
 #: templates/rating/opalestate-ratings.php:268
+msgid "Good"
+msgstr ""
+
+#: templates/rating/opalestate-ratings.php:257
+#: templates/rating/opalestate-ratings.php:269
+msgid "Average"
+msgstr ""
+
+#: templates/rating/opalestate-ratings.php:258
+#: templates/rating/opalestate-ratings.php:270
+msgid "Not that bad"
+msgstr ""
+
+#: templates/rating/opalestate-ratings.php:259
+#: templates/rating/opalestate-ratings.php:271
 msgid "Very poor"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:262
+#: templates/rating/opalestate-ratings.php:265
 msgid "Your rating"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:272
+#: templates/rating/opalestate-ratings.php:275
 msgid "Your review"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:280
+#: templates/rating/opalestate-ratings.php:283
 msgid "Your review already exists!"
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:283
+#: templates/rating/opalestate-ratings.php:286
 msgid "You cannot write review on your own post."
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:287
+#: templates/rating/opalestate-ratings.php:290
 msgid "You must be logged in to review."
 msgstr ""
 
-#: templates/rating/opalestate-ratings.php:288
+#: templates/rating/opalestate-ratings.php:291
 msgid "Click here to login"
 msgstr ""
 
@@ -4476,9 +4518,15 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: templates/elementor-templates/opalestate-split-maps-search.php:12
-msgid "Loading map..."
-msgstr ""
+#. 1: number of properties
+#: templates/elementor-templates/opalestate-category-list.php:50
+#: templates/elementor-templates/opalestate-city-list.php:50
+#, php-format
+msgctxt "count properties"
+msgid "%1$s Property"
+msgid_plural "%1$s Properties"
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/elementor-templates/opalestate-office-agent-search.php:14
 msgid "Find An Agent"
@@ -4605,8 +4653,8 @@ msgid "Edit User Profile"
 msgstr ""
 
 #: templates/user/profile.php:45 templates/user/profile.php:68
-#: templates/user/agency/profile-agency.php:32
-#: templates/user/agent/profile-agent.php:16
+#: templates/user/agency/profile-agency.php:31
+#: templates/user/agent/profile-agent.php:13
 msgid "Save Change"
 msgstr ""
 
@@ -4655,6 +4703,10 @@ msgstr ""
 #: templates/parts/archive-simple-bars.php:6
 #, php-format
 msgid "Found %s Properties"
+msgstr ""
+
+#: templates/shortcodes/search-split-maps.php:7
+msgid "Loading map..."
 msgstr ""
 
 #: templates/shortcodes/ajax-map-search.php:35
@@ -5864,15 +5916,15 @@ msgstr ""
 msgid "Enable agent reviews"
 msgstr ""
 
-#: inc/admin/property/class-property.php:100
+#: inc/admin/property/class-property.php:101
 msgid "Sku"
 msgstr ""
 
-#: inc/admin/property/class-property.php:103
+#: inc/admin/property/class-property.php:104
 msgid "Author"
 msgstr ""
 
-#: inc/admin/property/class-property.php:104
+#: inc/admin/property/class-property.php:105
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:213
 #: inc/vendors/elementor/widgets/opalestate-search-property-results.php:191
 #: inc/vendors/elementor/widgets/opalestate-property-collection.php:202
@@ -5923,11 +5975,11 @@ msgstr ""
 msgid "Edit Agency Profile"
 msgstr ""
 
-#: templates/user/agent/profile-agent.php:7
+#: templates/user/agent/profile-agent.php:4
 msgid "Edit Agent Profile"
 msgstr ""
 
-#: templates/user/agent/profile-agent.php:23
+#: templates/user/agent/profile-agent.php:20
 msgid "Agent edit profile form is not avariable"
 msgstr ""
 
