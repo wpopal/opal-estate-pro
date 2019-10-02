@@ -467,8 +467,8 @@ class Opalestate_Property {
 		$image_id   = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'avatar_id', true );
 		$related_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
 
-		if ( $image_id ) {
-			$url = wp_get_attachment_url( $image_id );
+		if ( $image_id ) {  
+			$url = wp_get_attachment_image_url( $image_id, 'thumbnail' );
 		} else {
 			$url = get_avatar_url( get_the_author_meta( 'email', $user_id ) );
 		}
