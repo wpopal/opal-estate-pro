@@ -31,41 +31,65 @@ class Property_Api extends Base_Api {
 	 *
 	 */
 	public function register_routes() {
-		/// call http://domain.com/wp-json/estate-api/v1/estate/list  ////
+		/**
+		 * Get list of properties.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/property/list
+		 */
 		register_rest_route( $this->namespace, $this->base . '/list', [
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => [ $this, 'get_list' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/estate-api/v1/estate/featured  ////
+		/**
+		 * Get list of featured properties.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/property/featured
+		 */
 		register_rest_route( $this->namespace, $this->base . '/featured', [
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => [ $this, 'get_featured_list' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/job-api/v1/estate/1  ////
+		/**
+		 * Get property detail.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/property/1
+		 */
 		register_rest_route( $this->namespace, $this->base . '/(?P<id>\d+)', [
 			'methods'             => WP_REST_Server::READABLE,
-			'callback'            => [ $this, 'get_property' ],
+			'callback'            => [ $this, 'get_detail' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/job-api/v1/job/create  ////
+		/**
+		 * Create a property.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/property/create
+		 */
 		register_rest_route( $this->namespace, $this->base . '/create', [
 			'methods'             => 'GET',
 			'callback'            => [ $this, 'create' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/job-api/v1/job/edit  ////
+		/**
+		 * Edit a property.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/property/edit
+		 */
 		register_rest_route( $this->namespace, $this->base . '/edit', [
 			'methods'  => 'GET',
 			'callback' => [ $this, 'edit' ],
 		] );
 
-		/// call http://domain.com/wp-json/job-api/v1/job/delete  ////
+		/**
+		 * Delete a property.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/property/delete
+		 */
 		register_rest_route( $this->namespace, $this->base . '/delete', [
 			'methods'             => 'GET',
 			'callback'            => [ $this, 'delete' ],
@@ -73,9 +97,10 @@ class Property_Api extends Base_Api {
 		] );
 
 		/**
-		 *  List job by tags and taxonmies
+		 * List property tags.
+		 *
+		 * Call http://domain.com/wp-json/estate-api/v1/property/tags
 		 */
-		/// call http://domain.com/wp-json/job-api/v1/jobs  ////
 		register_rest_route( $this->namespace, $this->base . '/tags', [
 			'methods'             => 'GET',
 			'callback'            => [ $this, 'delete' ],
@@ -83,6 +108,11 @@ class Property_Api extends Base_Api {
 		] );
 	}
 
+	/**
+	 * Get list of featured properties.
+	 *
+	 * @return array|\WP_REST_Response
+	 */
 	public function get_featured_list() {
 		$properties = [];
 		$error      = [];
@@ -133,7 +163,7 @@ class Property_Api extends Base_Api {
 	}
 
 	/**
-	 * Get List Of Job
+	 * Get List Of Properties
 	 *
 	 * Based on request to get collection
 	 *
@@ -142,11 +172,9 @@ class Property_Api extends Base_Api {
 	 *
 	 */
 	public function get_list( $request ) {
-
 		$properties = [];
 		$error      = [];
-
-		$property = null;
+		$property   = null;
 
 		if ( $property == null ) {
 			$properties = [];
@@ -178,7 +206,7 @@ class Property_Api extends Base_Api {
 					$property
 				);
 
-				return $error;
+				return $this->get_response( 404, $error );
 			}
 		}
 
@@ -192,39 +220,42 @@ class Property_Api extends Base_Api {
 	/**
 	 * Get Property
 	 *
-	 * Based on request to get collection
+	 * Based on request to get a property.
 	 *
 	 * @return WP_REST_Response is json data
 	 * @since 1.0
 	 *
 	 */
-	public function get_property( $request ) {
+	public function get_detail( $request ) {
 		$response = [];
 		if ( $request['id'] > 0 ) {
 			$post = get_post( $request['id'] );
-
 			if ( $post && 'opalestate_property' == get_post_type( $request['id'] ) ) {
-				$this->get_response( 200, $response );
+				$property             = $this->get_property_data( $post );
+				$response['property'] = $property ? $property : [];
+				$code                 = 200;
+			} else {
+				$code              = 404;
+				$response['error'] = sprintf( esc_html__( 'Property ID: %s does not exist!', 'opalestate-pro' ), $request['id'] );
 			}
-
-			$property             = $this->get_property_data( $post );
-			$response['property'] = $property ? $property : [];
+		} else {
+			$code              = 404;
+			$response['error'] = sprintf( esc_html__( 'Invalid ID.', 'opalestate-pro' ), $request['id'] );
 		}
 
-		return $this->get_response( 200, $response );
+		return $this->get_response( $code, $response );
 	}
 
 	/**
-	 * Opalestaten a opalestate_property post object, generate the data for the API output
+	 * The opalestate_property post object, generate the data for the API output
 	 *
 	 * @param object $property_info The Download Post Object
 	 *
 	 * @return array                Array of post data to return back in the API
-	 * @since  1.1
+	 * @since  1.0
 	 *
 	 */
 	private function get_property_data( $property_info ) {
-
 		$property = [];
 
 		$property['info']['id']            = $property_info->ID;
