@@ -59,7 +59,6 @@ class OpalEstate_Enqueue {
 		 */
 		wp_enqueue_style( 'opalestate-style', OPALESTATE_PLUGIN_URL . '/assets/opalestate.css' );
 
-
 		/**
 		 * Enqueue 3rd.
 		 */
