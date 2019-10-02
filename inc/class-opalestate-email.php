@@ -63,7 +63,7 @@ class Opalestate_Emails {
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-email-notifycation.php';
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-request-viewing.php';
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-new-submitted.php';
-		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalesate-approve.php';
+		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-approve.php';
 	}
 
 	/**
