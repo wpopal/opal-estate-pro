@@ -270,7 +270,8 @@ class Property_Api extends Base_Api {
 
 		$data                        = opalesetate_property( $property_info->ID );
 		$gallery                     = $data->get_gallery();
-		$property['info']['gallery'] = isset( $gallery[0] ) && ! empty( $gallery[0] ) ? $gallery[0] : [];
+		$gallery_count               = $data->get_gallery_count();
+		$property['info']['gallery'] = $gallery_count ? $gallery : [];
 		$property['info']['price']   = opalestate_price_format( $data->get_price() );
 		$property['info']['map']     = $data->get_map();
 		$property['info']['address'] = $data->get_address();
