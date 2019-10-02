@@ -45,10 +45,10 @@ class Property_Api extends Base_Api {
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
-		/// call http://domain.com/wp-json/job-api/v1/job/1  ////
+		/// call http://domain.com/wp-json/job-api/v1/estate/1  ////
 		register_rest_route( $this->namespace, $this->base . '/(?P<id>\d+)', [
 			'methods'             => WP_REST_Server::READABLE,
-			'callback'            => [ $this, 'get_job' ],
+			'callback'            => [ $this, 'get_property' ],
 			'permission_callback' => [ $this, 'validate_request' ],
 		] );
 
@@ -189,6 +189,30 @@ class Property_Api extends Base_Api {
 		return $this->get_response( 200, $response );
 	}
 
+	/**
+	 * Get Property
+	 *
+	 * Based on request to get collection
+	 *
+	 * @return WP_REST_Response is json data
+	 * @since 1.0
+	 *
+	 */
+	public function get_property( $request ) {
+		$response = [];
+		if ( $request['id'] > 0 ) {
+			$post = get_post( $request['id'] );
+
+			if ( $post && 'opalestate_property' == get_post_type( $request['id'] ) ) {
+				$this->get_response( 200, $response );
+			}
+
+			$property             = $this->get_property_data( $post );
+			$response['property'] = $property ? $property : [];
+		}
+
+		return $this->get_response( 200, $response );
+	}
 
 	/**
 	 * Opalestaten a opalestate_property post object, generate the data for the API output
