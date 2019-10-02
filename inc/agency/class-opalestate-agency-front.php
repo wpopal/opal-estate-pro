@@ -124,7 +124,6 @@ class Opalestate_Agency_Front {
 	 *
 	 */
 	private function update_data_agent_or_agency( $prefix ) {
-
 		global $current_user;
 
 		$post_id   = isset( $_POST['object_id'] ) && absint( $_POST['object_id'] ) ? $_POST['object_id'] : 0;
@@ -154,7 +153,8 @@ class Opalestate_Agency_Front {
 			unset( $_POST[ $prefix . 'text' ] );
 
 			if ( $data['ID'] > 0 ) {
-				$post_id = wp_update_post( $data, true );
+				$data['post_status'] = 'publish';
+				$post_id             = wp_update_post( $data, true );
 			} else {
 				$data['post_status'] = 'pending';
 				$post_id             = wp_insert_post( $data, true );
@@ -275,12 +275,9 @@ class Opalestate_Agency_Front {
 	}
 
 	public function on_save_front_data() {
-
 		if ( isset( $_POST[ 'nonce_CMB2php' . OPALESTATE_AGENCY_PREFIX . 'front' ] ) ) {
-
 			$post_id = isset( $_POST['object_id'] ) && $_POST['object_id'] ? absint( $_POST['object_id'] ) : 0;
-
-			$post = get_post( $post_id );
+			$post    = get_post( $post_id );
 
 			$post_id = $this->update_data_agent_or_agency( OPALESTATE_AGENCY_PREFIX );
 
@@ -368,7 +365,7 @@ class Opalestate_Agency_Front {
 		$post    = get_post( $post_id );
 
 		if ( isset( $post->ID ) && ( $post->post_status != 'publish' || $post->ID == get_the_ID() ) ) {
-			opalestate_add_notice( 'warning', esc_html__( 'You account is under reviewing! It take some time to process.', 'opalestate-pro' ) );
+			opalestate_add_notice( 'warning', esc_html__( 'You need to enter some required information to publish your account.', 'opalestate-pro' ) );
 			add_action( 'opalestate_profile_agency_form_before', 'opalestate_print_notices' );
 		}
 
@@ -515,7 +512,6 @@ class Opalestate_Agency_Front {
 			'post_status'  => 'pending',
 			'post_author'  => $user_id,
 		], true );
-
 
 		do_action( 'opalesate_insert_user_agency', $agency_id );
 

@@ -102,7 +102,7 @@ class Opalestate_Agent_Front {
 		$post    = get_post( $post_id );
 
 		if ( isset( $post->ID ) && ( $post->post_status != 'publish' || $post->ID == get_the_ID() ) ) {
-			opalestate_add_notice( 'warning', esc_html__( 'You account is under reviewing! It take some time to process.', 'opalestate-pro' ) );
+			opalestate_add_notice( 'warning', esc_html__( 'You need to enter some required information to publish your account.', 'opalestate-pro' ) );
 			add_action( 'opalestate_profile_agent_form_before', 'opalestate_print_notices' );
 		}
 
@@ -191,9 +191,7 @@ class Opalestate_Agent_Front {
 	}
 
 	public function on_save_front_data() {
-
 		if ( isset( $_POST[ 'nonce_CMB2php' . OPALESTATE_AGENT_PREFIX . 'front' ] ) ) {
-
 			$post_id = $this->update_data_agent_or_agency( OPALESTATE_AGENT_PREFIX );
 
 			if ( $post_id ) {
@@ -254,13 +252,12 @@ class Opalestate_Agent_Front {
 				'post_content' => wp_kses( $_POST[ $prefix . 'text' ], '<b><strong><i><em><h1><h2><h3><h4><h5><h6><pre><code><span><p>' ),
 			];
 
-
 			unset( $_POST[ $prefix . 'title' ] );
 			unset( $_POST[ $prefix . 'text' ] );
 
-
 			if ( $data['ID'] > 0 ) {
-				$post_id = wp_update_post( $data, true );
+				$data['post_status'] = 'publish';
+				$post_id             = wp_update_post( $data, true );
 			} else {
 				$data['post_status'] = 'pending';
 				$post_id             = wp_insert_post( $data, true );
@@ -307,9 +304,7 @@ class Opalestate_Agent_Front {
 	}
 
 	public function register_shortcodes() {
-
 		$this->shortcodes = [
-
 			'change_agent_profile' => [ 'code' => 'change_agent_profile', 'label' => esc_html__( 'Agent Profile', 'opalestate-pro' ) ],
 			'search_agents'        => [ 'code' => 'search_agents', 'label' => esc_html__( 'Search Agents', 'opalestate-pro' ) ],
 			'agent_carousel'       => [ 'code' => 'agent_carousel', 'label' => esc_html__( 'Agent Carousel', 'opalestate-pro' ) ],
@@ -318,11 +313,9 @@ class Opalestate_Agent_Front {
 		foreach ( $this->shortcodes as $shortcode ) {
 			add_shortcode( 'opalestate_' . $shortcode['code'], [ $this, $shortcode['code'] ] );
 		}
-
 	}
 
 	public function agent_carousel( $atts ) {
-
 		$atts   = is_array( $atts ) ? $atts : [];
 		$layout = 'search-agency-form';
 
@@ -341,9 +334,7 @@ class Opalestate_Agent_Front {
 	}
 
 	public function archives_query( $query ) {
-
 		if ( $query->is_main_query() && is_post_type_archive( 'opalestate_agent' ) ) {
-
 			$args = [];
 
 			$min = opalestate_options( 'search_agent_min_price', 0 );
@@ -367,7 +358,6 @@ class Opalestate_Agent_Front {
 			$args    = array_merge( $default, $args );
 
 			$tax_query = [];
-
 
 			if ( isset( $_GET['location'] ) && $_GET['location'] != -1 ) {
 				$tax_query[] =
@@ -410,7 +400,6 @@ class Opalestate_Agent_Front {
 					'type'    => 'NUMERIC',
 				] );
 			}
-
 
 			///// search by address and geo location ///
 			if ( isset( $_GET['geo_long'] ) && isset( $_GET['geo_lat'] ) ) {
