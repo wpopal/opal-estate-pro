@@ -525,7 +525,7 @@ class Opalestate_Account_Button_Elementor_Widget extends Opalestate_Elementor_Wi
                 <input class="opalestate-input checkbox" name="rememberme" type="checkbox" value="forever"/> <?php esc_html_e( 'Remember me', 'opalestate-pro' ); ?>
             </p>
 
-			<?php wp_nonce_field( 'opalestate-login', 'opalestate-login-nonce' ); ?>
+			<?php wp_nonce_field( 'opalestate-login', 'opalestate-login-popup-nonce' ); ?>
 
 			<?php if ( isset( $redirect ) && $redirect ) : ?>
                 <input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>">

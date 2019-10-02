@@ -25,8 +25,9 @@ class Opalestate_User_Form_Handler {
 	 */
 	public static function process_login() {
 
-		$nonce_value = isset( $_POST['_wpnonce'] ) ? sanitize_text_field( $_POST['_wpnonce'] ) : '';
+		$nonce_value = isset( $_POST['opalestate-login-popup-nonce'] ) ? sanitize_text_field( $_POST['opalestate-login-popup-nonce'] ) : '';
 		$nonce_value = isset( $_POST['opalestate-login-nonce'] ) ? sanitize_text_field( $_POST['opalestate-login-nonce'] ) : $nonce_value;
+
 
 
 		/* verify wp nonce */
