@@ -5,7 +5,7 @@ $facilities = $property->get_facilities();
 
 ?>
 
-<?php if ( $property->get_block_setting( 'facilities' ) && $facilities && isset( $facilities[0] ) && ! empty( $facilities[0] ) ): ?>
+<?php if ( 'on' === $property->get_block_setting( 'facilities' ) && $facilities && isset( $facilities[0] ) && ! empty( $facilities[0] ) ): ?>
     <div class="property-facilities box-inner-summary">
         <h5 class="list-group-item-heading"><?php esc_html_e( "Facilities", "opalestate" ); ?></h5>
         <div class="list-group-item-text">

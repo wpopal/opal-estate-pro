@@ -119,7 +119,7 @@ $id      = time();
             </div>
 
 			<?php
-			if ( opalestate_get_option( 'enable_agency_reviews' ) ) {
+			if ( opalestate_agency_reviews_enabled() ) {
 				comments_template();
 			}
 			?>

@@ -1,7 +1,7 @@
 <?php
 global $property;
 
-if ( ! $property->get_block_setting( 'nearby' ) ) {
+if ( 'on' !== $property->get_block_setting( 'nearby' ) ) {
 	return;
 }
 

@@ -106,7 +106,7 @@ $id      = time();
                 </div><!-- .entry-content -->
 
 				<?php
-				if ( opalestate_get_option( 'enable_agent_reviews' ) ) {
+				if ( opalestate_agent_reviews_enabled() ) {
 					comments_template();
 				}
 				?>
