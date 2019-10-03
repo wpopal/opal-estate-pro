@@ -116,8 +116,8 @@ class OpalEstate_Agency {
 	 */
 	public static function get_avatar_url( $userID, $size='thumbnail' ) { 
 		
-		$id =  get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . 'avatar_id', true );; 
-		$url = wp_get_attachment_image_url( $id, $size );
+		$id =  get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . 'avatar_id', true );
+		$url = wp_get_attachment_image_url( $id, $size ); 
 
 		if( $url ) {
 			return $url;
