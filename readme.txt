@@ -1,4 +1,4 @@
-=== Opal Estate Pro - Portal for posting property ===
+=== Opal Estate Pro - Property Management and Submission ===
 Contributors: wpopal
 Donate link: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
