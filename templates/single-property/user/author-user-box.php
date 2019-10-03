@@ -25,10 +25,10 @@
 
 			if ( $post->post_type == 'opalestate_agency' ) {
 				$prefixs = OPALESTATE_AGENCY_PREFIX;
-				$picture = OpalEstate_Agency::get_avatar_url( $post->ID );
+				$picture = OpalEstate_Agency::get_avatar_url( $post->ID ,  'full'  );
 			} else {
 				$prefixs = OPALESTATE_AGENT_PREFIX;
-				$picture = OpalEstate_Agent::get_avatar_url( $post->ID );
+				$picture = OpalEstate_Agent::get_avatar_url( $post->ID , 'full' );
 			}
 
 			$trusted = get_post_meta( $related, $prefixs . 'trusted', true );
@@ -39,10 +39,10 @@
 
 			if ( $post->post_type == 'opalestate_agency' ) {
 				$prefixs = OPALESTATE_AGENCY_PREFIX;
-				$picture = OpalEstate_Agency::get_avatar_url( $post->ID );
+				$picture = OpalEstate_Agency::get_avatar_url( $post->ID ,  'full'  );
 			} else {
 				$prefixs = OPALESTATE_AGENT_PREFIX;
-				$picture = OpalEstate_Agent::get_avatar_url( $post->ID );
+				$picture = OpalEstate_Agent::get_avatar_url( $post->ID,  'full'  );
 			}
 
 			$trusted = get_post_meta( $related, $prefixs . 'trusted', true );
