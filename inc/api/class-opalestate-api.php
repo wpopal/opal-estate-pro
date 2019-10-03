@@ -54,7 +54,8 @@ class Opalestate_API {
 			'v1/property.php',
 			'v1/agent.php',
 			'v1/agency.php',
-			'class-api-auth.php'
+			'class-api-auth.php',
+			'functions.php'
 		] );			
 
 		add_action( 'rest_api_init', [$this,'register_resources'] ); 

@@ -98,39 +98,22 @@ class Agent_Api extends Base_Api {
 	 */
 	public function get_list( $request ) {
 		$agents = [];
-		$error  = [];
-		$agent  = null;
-		if ( $agent == null ) {
-			$agents['agents'] = [];
 
-			$agent_list = get_posts( [
-				'post_type'        => 'opalestate_agent',
-				'posts_per_page'   => $this->per_page(),
-				'suppress_filters' => true,
-				'paged'            => $this->get_paged(),
-			] );
+		$agents['agents'] = [];
 
-			if ( $agent_list ) {
-				$i = 0;
-				foreach ( $agent_list as $agent_info ) {
-					$agents['agents'][ $i ] = $this->get_agent_data( $agent_info );
-					$i++;
-				}
-			}
-		} else {
-			if ( get_post_type( $agent ) == 'opalestate_agent' ) {
-				$agent_info = get_post( $agent );
 
-				$agents['agents'][0] = $this->get_agent_data( $agent_info );
+		$agent_list = get_posts( [
+			'post_type'        => 'opalestate_agent',
+			'posts_per_page'   => $this->per_page(),
+			'suppress_filters' => true,
+			'paged'            => $this->get_paged(),
+		] );
 
-			} else {
-				$error['error'] = sprintf(
-				/* translators: %s: agent */
-					esc_html__( 'Form %s not found!', 'opalestate-pro' ),
-					$agent
-				);
-
-				return $this->get_response( 404, $error );
+		if ( $agent_list ) {
+			$i = 0;
+			foreach ( $agent_list as $agent_info ) {
+				$agents['agents'][ $i ] = $this->get_agent_data( $agent_info );
+				$i++;
 			}
 		}
 
@@ -157,7 +140,7 @@ class Agent_Api extends Base_Api {
 			if ( $post && 'opalestate_agent' == get_post_type( $request['id'] ) ) {
 				$agent             = $this->get_agent_data( $post );
 				$response['agent'] = $agent ? $agent : [];
-				$code                 = 200;
+				$code              = 200;
 			} else {
 				$code              = 404;
 				$response['error'] = sprintf( esc_html__( 'Agent ID: %s does not exist!', 'opalestate-pro' ), $request['id'] );
@@ -193,9 +176,12 @@ class Agent_Api extends Base_Api {
 
 		$agent = new OpalEstate_Agent( $agent_info->ID );
 
+		$ouput['info']['avatar']   = $agent->get_meta( 'avatar' );
 		$ouput['info']['featured'] = (int) $agent->is_featured();
-		$ouput['info']['email']    = get_post_meta( $agent_info->ID, OPALESTATE_AGENT_PREFIX . 'email', true );
-		$ouput['info']['address']  = get_post_meta( $agent_info->ID, OPALESTATE_AGENT_PREFIX . 'address', true );
+		$ouput['info']['trusted']  = $agent->get_trusted();
+		$ouput['info']['email']    = $agent->get_meta( 'email' );
+		$ouput['info']['address']  = $agent->get_meta( 'address' );
+		$ouput['info']['map']      = $agent->get_meta( 'map' );
 
 		$terms                     = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_location' );
 		$ouput['info']['location'] = $terms && ! is_wp_error( $terms ) ? $terms : [];

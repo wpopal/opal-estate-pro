@@ -103,16 +103,15 @@ class Opalestate_Property {
 	/**
 	 * Constructor
 	 */
-	public function __construct( $post_id ) { 
-		$this->post_id = $post_id;
-
+	public function __construct( $post_id = null ) {
+		$this->post_id           = $post_id;
 		$this->map               = $this->get_metabox_value( 'map' );
 		$this->address           = $this->get_metabox_value( 'address' );
 		$this->price             = $this->get_metabox_value( 'price' );
 		$this->saleprice         = $this->get_metabox_value( 'saleprice' );
 		$this->before_pricelabel = $this->get_metabox_value( 'before_pricelabel' );
 		$this->pricelabel        = $this->get_metabox_value( 'pricelabel' );
-		$this->featured          = $this->get_metabox_value( 'featured' );  
+		$this->featured          = $this->get_metabox_value( 'featured' );
 		$this->sku               = $this->get_metabox_value( 'sku' );
 
 		$this->latitude  = isset( $this->map['latitude'] ) ? $this->map['latitude'] : '';
@@ -207,7 +206,7 @@ class Opalestate_Property {
 	 *
 	 */
 	public function is_featured() {
-		return $this->featured;
+		return 'on' === $this->featured;
 	}
 
 	/**
@@ -463,11 +462,11 @@ class Opalestate_Property {
 	}
 
 	public function get_author_link() {
-		$user_id = get_post_field( 'post_author', $this->get_id() );
+		$user_id    = get_post_field( 'post_author', $this->get_id() );
 		$image_id   = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'avatar_id', true );
 		$related_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
 
-		if ( $image_id ) {  
+		if ( $image_id ) {
 			$url = wp_get_attachment_image_url( $image_id, 'thumbnail' );
 		} else {
 			$url = get_avatar_url( get_the_author_meta( 'email', $user_id ) );

@@ -36,8 +36,8 @@ class OpalEstate_Agent {
 	 *
 	 * @access protected
 	 */
-	public $post_id; 
-	
+	public $post_id;
+
 	/**
 	 *  Constructor
 	 */
@@ -45,13 +45,19 @@ class OpalEstate_Agent {
 		global $post;
 
 		if ( $post ) {
-			$this->post        = $post;
 			$this->post_id     = $post_id ? $post_id : get_the_ID();
+			$this->post        = $post;
 			$this->author      = get_userdata( $post->post_author );
 			$this->author_name = ! empty( $this->author ) ? sprintf( '%s %s', $this->author->first_name, $this->author->last_name ) : null;
-			$this->is_featured = $this->get_meta( 'featured' );
-			$this->is_trusted  = $this->get_meta( 'trusted' );
+		} else {
+			$this->post_id     = $post_id;
+			$this->post        = get_post( $post_id );
+			$this->author      = get_userdata( $this->post->post_author );
+			$this->author_name = ! empty( $this->author ) ? sprintf( '%s %s', $this->author->first_name, $this->author->last_name ) : null;
 		}
+
+		$this->is_featured = $this->get_meta( 'featured' );
+		$this->is_trusted  = $this->get_meta( 'trusted' );
 	}
 
 	public function get_id() {
@@ -74,7 +80,6 @@ class OpalEstate_Agent {
 		$output = [];
 
 		foreach ( $socials as $social => $k ) {
-
 			$data = $this->get_meta( $social );
 			if ( $data && $data != "#" && ! empty( $data ) ) {
 				$output[ $social ] = $data;
@@ -87,13 +92,13 @@ class OpalEstate_Agent {
 	/**
 	 * Get url of user avatar by agent id
 	 */
-	public static function get_avatar_url( $userID, $size='thumbnail' ) {
-		$id =  get_post_meta( $userID, OPALESTATE_AGENT_PREFIX . 'avatar_id', true );; 
+	public static function get_avatar_url( $userID, $size = 'thumbnail' ) {
+		$id = get_post_meta( $userID, OPALESTATE_AGENT_PREFIX . 'avatar_id', true );;
 		$url = wp_get_attachment_image_url( $id, $size );
 
-		if( $url ) {
+		if ( $url ) {
 			return $url;
-		} 
+		}
 	}
 
 	/**
@@ -127,7 +132,7 @@ class OpalEstate_Agent {
 	 *  return true if this agent is featured
 	 */
 	public function is_featured() {
-		return $this->is_featured;
+		return 'on' === $this->is_featured;
 	}
 
 	/**
@@ -148,7 +153,7 @@ class OpalEstate_Agent {
 			];
 		}
 
-		$url   = self::get_avatar_url( $agent_id );
+		$url = self::get_avatar_url( $agent_id );
 
 		return [
 			'name'   => $agent->post_title,
@@ -168,7 +173,7 @@ class OpalEstate_Agent {
 	 * @return mixed
 	 */
 	public function get_trusted() {
-		return $this->is_trusted;
+		return 'on' === $this->is_trusted;
 	}
 
 	/**

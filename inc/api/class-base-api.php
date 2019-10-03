@@ -25,7 +25,14 @@ abstract class Base_API {
 	 * @access   protected
 	 * @var      string $plugin_base_name The string used to uniquely identify this plugin.
 	 */
-	public $base ; 
+	public $base ;
+
+	/**
+	 * Post type.
+	 *
+	 * @var string
+	 */
+	protected $post_type = '';
 
 	/**
 	 * The unique identifier of this plugin.
@@ -190,5 +197,33 @@ abstract class Base_API {
 	 */
 	private function invalid_key() {
 		return new WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key!' ), array( 'status' => rest_authorization_required_code()  ) );
+	}
+
+	/**
+	 * Check if a given request has access to read items.
+	 *
+	 * @param  WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|boolean
+	 */
+	public function get_items_permissions_check( $request ) {
+		if ( ! opalestate_rest_check_post_permissions( $this->post_type, 'read' ) ) {
+			return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if a given request has access to create an item.
+	 *
+	 * @param  WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|boolean
+	 */
+	public function create_item_permissions_check( $request ) {
+		if ( ! opalestate_rest_check_post_permissions( $this->post_type, 'create' ) ) {
+			return new WP_Error( 'opalestate_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+		}
+
+		return true;
 	}
 }

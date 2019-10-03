@@ -70,7 +70,7 @@ class Opalestate_User_MetaBox {
 	public function get_avatar_fields( $prefix ) {
 		return [
 			[
-				'name'   => esc_html__( 'Avatar Pictures', 'opalestate-pro' ),
+				'name'   => esc_html__( 'Avatar Picture', 'opalestate-pro' ),
 				'desc'   => esc_html__( 'This image will display in user detail and profile box information', 'opalestate-pro' ),
 				'id'     => $prefix . 'avatar',
 				'type'   => is_admin() ? 'file' : 'opal_upload',
@@ -207,7 +207,7 @@ class Opalestate_User_MetaBox {
 			],
 
 			[
-				'name'   => esc_html__( 'Avatar Pictures', 'opalestate-pro' ),
+				'name'   => esc_html__( 'Avatar Picture', 'opalestate-pro' ),
 				'desc'   => esc_html__( 'This image will display in user detail and profile box information', 'opalestate-pro' ),
 				'id'     => $prefix . 'avatar',
 				'type'   => is_admin() ? 'file' : 'uploader',
