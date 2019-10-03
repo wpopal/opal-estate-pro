@@ -1,7 +1,7 @@
 <?php
 global $property;
 
-if ( ! $property->get_block_setting( 'attachments' ) ) {
+if ( 'on' !== $property->get_block_setting( 'attachments' ) ) {
 	return;
 }
 

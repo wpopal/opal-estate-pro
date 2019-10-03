@@ -4,7 +4,7 @@ global $property, $post;
 $amenities = $property->get_amenities();
 
 ?>
-<?php if ( $property->get_block_setting( 'amenities' ) && $amenities ): ?>
+<?php if ( 'on' === $property->get_block_setting( 'amenities' ) && $amenities ): ?>
     <div class="property-amenities box-inner-summary">
         <h5 class="list-group-item-heading"><?php esc_html_e( 'Amenities', 'opalestate-pro' ); ?></h5>
         <div class="list-group-item-text">

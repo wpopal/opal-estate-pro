@@ -28,7 +28,7 @@ function opalestate_single_property_layout_default() {
 	//  add_action( 'opalestate_after_single_property_summary', '', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
-	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+	if ( opalestate_property_reviews_enabled() ) {
 		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
 	}
 
@@ -75,7 +75,7 @@ function opalestate_single_property_layout_v2() {
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
-	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+	if ( opalestate_property_reviews_enabled() ) {
 		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
 	}
 
@@ -116,7 +116,7 @@ function opalestate_single_property_layout_v3() {
 	//    add_action( 'opalestate_after_single_property_summary', 'opalestate_property_author', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
-	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+	if ( opalestate_property_reviews_enabled() ) {
 		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
 	}
 
@@ -152,7 +152,7 @@ function opalestate_single_property_layout_v4() {
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
-	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+	if ( opalestate_property_reviews_enabled() ) {
 		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
 	}
 
@@ -191,7 +191,7 @@ function opalestate_single_property_layout_v5() {
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
-	if ( opalestate_get_option( 'enable_property_reviews' ) ) {
+	if ( opalestate_property_reviews_enabled() ) {
 		add_action( 'opalestate_after_single_property_summary', 'comments_template', 65 );
 	}
 

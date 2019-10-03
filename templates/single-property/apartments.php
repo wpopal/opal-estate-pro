@@ -1,6 +1,6 @@
 <?php
 global $property;
-if ( ! $property->get_block_setting( 'apartments' ) ) {
+if ( 'on' !== $property->get_block_setting( 'apartments' ) ) {
 	return;
 }
 
