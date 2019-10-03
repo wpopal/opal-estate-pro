@@ -87,8 +87,13 @@ class OpalEstate_Agent {
 	/**
 	 * Get url of user avatar by agent id
 	 */
-	public static function get_avatar_url( $userID ) {
-		return get_post_meta( $userID, OPALESTATE_AGENT_PREFIX . "avatar", true );
+	public static function get_avatar_url( $userID, $size='thumbnail' ) {
+		$id =  get_post_meta( $userID, OPALESTATE_AGENT_PREFIX . 'avatar_id', true );; 
+		$url = wp_get_attachment_image_url( $id, $size );
+
+		if( $url ) {
+			return $url;
+		} 
 	}
 
 	/**
