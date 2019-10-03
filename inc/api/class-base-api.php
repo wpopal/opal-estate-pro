@@ -226,4 +226,31 @@ abstract class Base_API {
 
 		return true;
 	}
+
+	/**
+	 * Get the query params for collections of attachments.
+	 *
+	 * @return array
+	 */
+	public function get_collection_params() {
+		$params['page']     = [
+			'description'       => __( 'Current page of the collection.', 'opalestate-pro' ),
+			'type'              => 'integer',
+			'default'           => 1,
+			'sanitize_callback' => 'absint',
+			'validate_callback' => 'rest_validate_request_arg',
+			'minimum'           => 1,
+		];
+		$params['per_page'] = [
+			'description'       => __( 'Maximum number of items to be returned in result set.', 'opalestate-pro' ),
+			'type'              => 'integer',
+			'default'           => 10,
+			'minimum'           => 1,
+			'maximum'           => 100,
+			'sanitize_callback' => 'absint',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		return $params;
+	}
 }

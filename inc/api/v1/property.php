@@ -80,18 +80,18 @@ class Property_Api extends Base_Api {
 					'callback' => [ $this, 'update_item' ],
 					// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
 				],
-				[
-					'methods'  => WP_REST_Server::DELETABLE,
-					'callback' => [ $this, 'delete_item' ],
-					// 'permission_callback' => [ $this, 'delete_item_permissions_check' ],
-					'args'     => [
-						'force' => [
-							'default'     => false,
-							'description' => __( 'Whether to bypass trash and force deletion.', 'opalestate-pro' ),
-							'type'        => 'boolean',
-						],
-					],
-				],
+				// [
+				// 	'methods'  => WP_REST_Server::DELETABLE,
+				// 	'callback' => [ $this, 'delete_item' ],
+				// 	// 'permission_callback' => [ $this, 'delete_item_permissions_check' ],
+				// 	'args'     => [
+				// 		'force' => [
+				// 			'default'     => false,
+				// 			'description' => __( 'Whether to bypass trash and force deletion.', 'opalestate-pro' ),
+				// 			'type'        => 'boolean',
+				// 		],
+				// 	],
+				// ],
 			]
 		);
 	}
@@ -127,8 +127,6 @@ class Property_Api extends Base_Api {
 		}
 
 		$response['collection'] = $properties;
-		$response['pages']      = 4;
-		$response['current']    = 1;
 
 		return $this->get_response( 200, $response );
 	}
@@ -160,6 +158,21 @@ class Property_Api extends Base_Api {
 		}
 
 		return $this->get_response( $code, $response );
+	}
+
+	public function delete_item( $request ) {
+		$id     = (int) $request['id'];
+		$force  = (bool) $request['force'];
+
+		$property = get_post( absint( $request['id'] ) );
+		if ( ! $property || $this->post_type != $property->post_type ) {
+			$response['test'] = 0;
+		} else {
+			wp_delete_post( absint( $request['id'] ) );
+			$response['test'] = 1;
+		}
+
+		return $response;
 	}
 
 	/**
@@ -268,23 +281,7 @@ class Property_Api extends Base_Api {
 	 * @return array
 	 */
 	public function get_collection_params() {
-		$params['page']     = [
-			'description'       => __( 'Current page of the collection.', 'opalestate-pro' ),
-			'type'              => 'integer',
-			'default'           => 1,
-			'sanitize_callback' => 'absint',
-			'validate_callback' => 'rest_validate_request_arg',
-			'minimum'           => 1,
-		];
-		$params['per_page'] = [
-			'description'       => __( 'Maximum number of items to be returned in result set.', 'opalestate-pro' ),
-			'type'              => 'integer',
-			'default'           => 10,
-			'minimum'           => 1,
-			'maximum'           => 100,
-			'sanitize_callback' => 'absint',
-			'validate_callback' => 'rest_validate_request_arg',
-		];
+		$params = parent::get_collection_params();
 
 		return $params;
 	}

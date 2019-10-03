@@ -20,14 +20,20 @@ class Agent_Api extends Base_Api {
 	 * @access   public
 	 * @var      string $base .
 	 */
-	public $base = '/agent';
+	public $base = '/agents';
+
+	/**
+	 * Post type.
+	 *
+	 * @var string
+	 */
+	protected $post_type = 'opalestate_agent';
 
 	/**
 	 * Register Routes
 	 *
 	 * Register all CURD actions with POST/GET/PUT and calling function for each
 	 *
-	 * @return avoid
 	 * @since 1.0
 	 *
 	 */
@@ -35,56 +41,43 @@ class Agent_Api extends Base_Api {
 		/**
 		 * Get list of agents.
 		 *
-		 * Call http://domain.com/wp-json/estate-api/v1/agent/list
+		 * Call http://domain.com/wp-json/estate-api/v1/agents
 		 */
-		register_rest_route( $this->namespace, $this->base . '/list', [
-			'methods'             => WP_REST_Server::READABLE,
-			'callback'            => [ $this, 'get_list' ],
-			'permission_callback' => [ $this, 'validate_request' ],
-		] );
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->base,
+			[
+				[
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => [ $this, 'get_items' ],
+					// 'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'args'     => $this->get_collection_params(),
+				],
+			]
+		);
 
-		/**
-		 * Get agent detail.
-		 *
-		 * Call http://domain.com/wp-json/estate-api/v1/agent/1
-		 */
-		register_rest_route( $this->namespace, $this->base . '/(?P<id>\d+)', [
-			'methods'             => WP_REST_Server::READABLE,
-			'callback'            => [ $this, 'get_detail' ],
-			'permission_callback' => [ $this, 'validate_request' ],
-		] );
-
-		/**
-		 * Create a agent.
-		 *
-		 * Call http://domain.com/wp-json/estate-api/v1/agent/create
-		 */
-		register_rest_route( $this->namespace, $this->base . '/create', [
-			'methods'             => 'GET',
-			'callback'            => [ $this, 'create' ],
-			'permission_callback' => [ $this, 'validate_request' ],
-		] );
-
-		/**
-		 * Edit a agent.
-		 *
-		 * Call http://domain.com/wp-json/estate-api/v1/agent/edit
-		 */
-		register_rest_route( $this->namespace, $this->base . '/edit', [
-			'methods'  => 'GET',
-			'callback' => [ $this, 'edit' ],
-		] );
-
-		/**
-		 * Delete a agent.
-		 *
-		 * Call http://domain.com/wp-json/estate-api/v1/agent/delete
-		 */
-		register_rest_route( $this->namespace, $this->base . '/delete', [
-			'methods'             => 'GET',
-			'callback'            => [ $this, 'delete' ],
-			'permission_callback' => [ $this, 'validate_request' ],
-		] );
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->base . '/(?P<id>[\d]+)',
+			[
+				'args' => [
+					'id' => [
+						'description' => __( 'Unique identifier for the resource.', 'opalestate-pro' ),
+						'type'        => 'integer',
+					],
+				],
+				[
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => [ $this, 'get_item' ],
+					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+				],
+				[
+					'methods'  => WP_REST_Server::EDITABLE,
+					'callback' => [ $this, 'update_item' ],
+					// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
+				],
+			]
+		);
 	}
 
 	/**
@@ -96,17 +89,17 @@ class Agent_Api extends Base_Api {
 	 * @since 1.0
 	 *
 	 */
-	public function get_list( $request ) {
-		$agents = [];
-
+	public function get_items( $request ) {
 		$agents['agents'] = [];
 
+		$per_page = isset( $request['per_page'] ) && $request['per_page'] ? $request['per_page'] : 5;
+		$paged    = isset( $request['page'] ) && $request['page'] ? $request['page'] : 1;
 
 		$agent_list = get_posts( [
-			'post_type'        => 'opalestate_agent',
-			'posts_per_page'   => $this->per_page(),
+			'post_type'        => $this->post_type,
+			'posts_per_page'   => $per_page,
+			'paged'            => $paged,
 			'suppress_filters' => true,
-			'paged'            => $this->get_paged(),
 		] );
 
 		if ( $agent_list ) {
@@ -118,8 +111,6 @@ class Agent_Api extends Base_Api {
 		}
 
 		$response['collection'] = $agents['agents'];
-		$response['pages']      = 4;
-		$response['current']    = 1;
 
 		return $this->get_response( 200, $response );
 	}
@@ -133,11 +124,11 @@ class Agent_Api extends Base_Api {
 	 * @since 1.0
 	 *
 	 */
-	public function get_detail( $request ) {
+	public function get_item( $request ) {
 		$response = [];
 		if ( $request['id'] > 0 ) {
 			$post = get_post( $request['id'] );
-			if ( $post && 'opalestate_agent' == get_post_type( $request['id'] ) ) {
+			if ( $post && $this->post_type == get_post_type( $request['id'] ) ) {
 				$agent             = $this->get_agent_data( $post );
 				$response['agent'] = $agent ? $agent : [];
 				$code              = 200;
@@ -177,7 +168,7 @@ class Agent_Api extends Base_Api {
 		$agent = new OpalEstate_Agent( $agent_info->ID );
 
 		$ouput['info']['avatar']   = $agent->get_meta( 'avatar' );
-		$ouput['info']['featured'] = (int) $agent->is_featured();
+		$ouput['info']['featured'] = $agent->is_featured();
 		$ouput['info']['trusted']  = $agent->get_trusted();
 		$ouput['info']['email']    = $agent->get_meta( 'email' );
 		$ouput['info']['address']  = $agent->get_meta( 'address' );
@@ -189,30 +180,5 @@ class Agent_Api extends Base_Api {
 		$ouput['levels']           = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_level' );
 
 		return apply_filters( 'opalestate_api_agents', $ouput );
-	}
-
-	/**
-	 * Delete job
-	 *
-	 * Based on request to get collection
-	 *
-	 * @return WP_REST_Response is json data
-	 * @since 1.0
-	 *
-	 */
-	public function delete() {
-
-	}
-
-	public function reviews() {
-
-	}
-
-	public function categories() {
-
-	}
-
-	public function tags() {
-
 	}
 }
