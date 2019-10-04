@@ -36,6 +36,7 @@ class Opalestate_HTML_Elements {
 	public function ajax_user_search( $args = [] ) {
 
 		$defaults = [
+			'id'           => 'user_id',
 			'name'         => 'user_id',
 			'value'        => isset( $args['default'] ) ? $args['default'] : null,
 			'placeholder'  => esc_html__( 'Enter username', 'opalestate-pro' ),
@@ -73,8 +74,6 @@ class Opalestate_HTML_Elements {
 	 *
 	 */
 	public function text_field( $field_args, $args = [] ) {
-
-
 		$defaults = [
 			'id'           => '',
 			'value'        => isset( $field_args['default'] ) ? $field_args['default'] : null,

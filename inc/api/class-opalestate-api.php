@@ -22,7 +22,11 @@ class Opalestate_API {
 	public $base = 'estate-api';
 
 	public function __construct() {
-		return $this->init();
+		$this->init();
+
+		if ( is_admin() ) {
+			new Opalestate_API_Admin();
+		}
 	}
 
 	/**
@@ -35,8 +39,8 @@ class Opalestate_API {
 	 * @since  1.1
 	 */
 	public function init() {
-
 		$this->includes( [
+			'class-opalestate-api-admin.php',
 			'class-opalestate-base-api.php',
 			'v1/property.php',
 			'v1/agent.php',

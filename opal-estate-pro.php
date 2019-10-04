@@ -125,10 +125,11 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 				register_activation_hook( OPALESTATE_PLUGIN_FILE, [ 'Opalestate_Install', 'install' ] );
 				add_action( 'plugins_loaded', [ self::$instance, 'load_textdomain' ] );
 				self::$instance->setup();
-				self::$instance->roles   = new Opalestate_Roles();
-				self::$instance->html    = new Opalestate_HTML_Elements();
-				self::$instance->api     = new Opalestate_API();
-				self::$instance->session = new Opalestate_Session();
+				self::$instance->roles     = new Opalestate_Roles();
+				self::$instance->html      = new Opalestate_HTML_Elements();
+				self::$instance->api       = new Opalestate_API();
+				self::$instance->api_admin = new Opalestate_API_Admin();
+				self::$instance->session   = new Opalestate_Session();
 
 				/**
 				 *
