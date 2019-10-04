@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package    Opal_Job
  * @subpackage Opal_Job/controllers
  */
-class Agent_Api extends Base_Api {
+class Opalestate_Agent_Api extends Opalestate_Base_API {
 
 	/**
 	 * The unique identifier of the route resource.
@@ -75,6 +75,24 @@ class Agent_Api extends Base_Api {
 					'methods'  => WP_REST_Server::EDITABLE,
 					'callback' => [ $this, 'update_item' ],
 					// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
+				],
+			]
+		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->base . '/listings/(?P<id>[\d]+)',
+			[
+				'args' => [
+					'id' => [
+						'description' => __( 'Unique identifier for the resource.', 'opalestate-pro' ),
+						'type'        => 'integer',
+					],
+				],
+				[
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => [ $this, 'get_listings' ],
+					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
 			]
 		);
@@ -145,6 +163,64 @@ class Agent_Api extends Base_Api {
 	}
 
 	/**
+	 * Get agent listings.
+	 *
+	 * @param $request
+	 * @return \WP_REST_Response
+	 */
+	public function get_listings( $request ) {
+		if ( $request['id'] > 0 ) {
+			$post = get_post( $request['id'] );
+			if ( $post && $this->post_type == get_post_type( $request['id'] ) ) {
+				$per_page = isset( $request['per_page'] ) && $request['per_page'] ? $request['per_page'] : 5;
+				$paged    = isset( $request['page'] ) && $request['page'] ? $request['page'] : 1;
+
+				$user_id = get_post_meta( $request['id'], OPALESTATE_AGENT_PREFIX . 'user_id', true );
+
+				$args = [
+					'post_type'      => 'opalestate_property',
+					'posts_per_page' => $per_page,
+					'post__not_in'   => [ $request['id'] ],
+					'paged'          => $paged,
+				];
+
+				$args['meta_query'] = [ 'relation' => 'AND' ];
+
+				if ( $user_id ) {
+					$args['author'] = $user_id;
+				} else {
+					array_push( $args['meta_query'], [
+						'key'     => OPALESTATE_PROPERTY_PREFIX . 'agent',
+						'value'   => $request['id'],
+						'compare' => '=',
+					] );
+				}
+
+				$property_list = get_posts( $args );
+
+				if ( $property_list ) {
+					$i = 0;
+					foreach ( $property_list as $property_info ) {
+						$properties[ $i ] = opalestate_api_get_property_data( $property_info );
+						$i++;
+					}
+				}
+
+				$response['listings'] = $properties ? $properties : [];
+				$code                 = 200;
+			} else {
+				$code              = 404;
+				$response['error'] = sprintf( esc_html__( 'Agent ID: %s does not exist!', 'opalestate-pro' ), $request['id'] );
+			}
+		} else {
+			$code              = 404;
+			$response['error'] = sprintf( esc_html__( 'Invalid ID.', 'opalestate-pro' ), $request['id'] );
+		}
+
+		return $this->get_response( $code, $response );
+	}
+
+	/**
 	 * The opalestate_agent post object, generate the data for the API output
 	 *
 	 * @param object $agent_info The Download Post Object
@@ -154,31 +230,39 @@ class Agent_Api extends Base_Api {
 	 *
 	 */
 	public function get_agent_data( $agent_info ) {
-		$ouput                          = [];
-		$ouput['info']['id']            = $agent_info->ID;
-		$ouput['info']['slug']          = $agent_info->post_name;
-		$ouput['info']['title']         = $agent_info->post_title;
-		$ouput['info']['create_date']   = $agent_info->post_date;
-		$ouput['info']['modified_date'] = $agent_info->post_modified;
-		$ouput['info']['status']        = $agent_info->post_status;
-		$ouput['info']['link']          = html_entity_decode( $agent_info->guid );
-		$ouput['info']['content']       = $agent_info->post_content;
-		$ouput['info']['thumbnail']     = wp_get_attachment_url( get_post_thumbnail_id( $agent_info->ID ) );
+		$agent                  = new OpalEstate_Agent( $agent_info->ID );
+		$ouput['id']            = $agent_info->ID;
+		$ouput['name']          = $agent_info->post_title;
+		$ouput['slug']          = $agent_info->post_name;
+		$ouput['created_date']  = $agent_info->post_date;
+		$ouput['modified_date'] = $agent_info->post_modified;
+		$ouput['status']        = $agent_info->post_status;
+		$ouput['permalink']     = html_entity_decode( $agent_info->guid );
+		$ouput['content']       = $agent_info->post_content;
+		$ouput['avatar']        = $agent->get_meta( 'avatar' );
+		$ouput['thumbnail']     = wp_get_attachment_url( get_post_thumbnail_id( $agent_info->ID ) );
+		$ouput['featured']      = $agent->is_featured();
+		$ouput['trusted']       = $agent->get_trusted();
+		$ouput['email']         = $agent->get_meta( 'email' );
+		$ouput['address']       = $agent->get_meta( 'address' );
+		$ouput['map']           = $agent->get_meta( 'map' );
 
-		$agent = new OpalEstate_Agent( $agent_info->ID );
-
-		$ouput['info']['avatar']   = $agent->get_meta( 'avatar' );
-		$ouput['info']['featured'] = $agent->is_featured();
-		$ouput['info']['trusted']  = $agent->get_trusted();
-		$ouput['info']['email']    = $agent->get_meta( 'email' );
-		$ouput['info']['address']  = $agent->get_meta( 'address' );
-		$ouput['info']['map']      = $agent->get_meta( 'map' );
-
-		$terms                     = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_location' );
-		$ouput['info']['location'] = $terms && ! is_wp_error( $terms ) ? $terms : [];
-		$ouput['socials']          = $agent->get_socials();
-		$ouput['levels']           = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_level' );
+		$terms             = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_location' );
+		$ouput['location'] = $terms && ! is_wp_error( $terms ) ? $terms : [];
+		$ouput['socials']  = $agent->get_socials();
+		$ouput['levels']   = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_level' );
 
 		return apply_filters( 'opalestate_api_agents', $ouput );
+	}
+
+	/**
+	 * Get the query params for collections of attachments.
+	 *
+	 * @return array
+	 */
+	public function get_collection_params() {
+		$params = parent::get_collection_params();
+
+		return $params;
 	}
 }

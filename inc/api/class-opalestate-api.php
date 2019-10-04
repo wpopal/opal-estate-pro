@@ -1,40 +1,27 @@
 <?php
-/**
- * Define 
- * Note: only use for internal purpose.
- *
- * @package     OpalJob
- * @copyright   Copyright (c) 2019, WpOpal <https://www.wpopal.com>
- * @license     https://opensource.org/licenses/gpl-license GNU Public License
- * @since       1.0
- */
-// namespace Opal_Job\API;
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-use Opal_Job\API\Api_Auth;
-use Opal_Job\API\API_Admin;
 
 /**
- * Abstract class to define/implement base methods for all controller classes
+ * Opalestate_API
  *
  * @since      1.0.0
- * @package    Opal_Job
- * @subpackage Opal_Job/controllers
+ * @package    Opalestate
  */
 class Opalestate_API {
-	
+
 	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string $plugin_base_name The string used to uniquely identify this plugin.
-	 */	
-	public $base = 'job-api';
+	 */
+	public $base = 'estate-api';
 
-	public function __construct () {
+	public function __construct() {
 		return $this->init();
 	}
 
@@ -48,17 +35,17 @@ class Opalestate_API {
 	 * @since  1.1
 	 */
 	public function init() {
-		
+
 		$this->includes( [
-			'class-base-api.php',
+			'class-opalestate-base-api.php',
 			'v1/property.php',
 			'v1/agent.php',
 			'v1/agency.php',
-			'class-api-auth.php',
-			'functions.php'
-		] );			
+			'class-opalestate-api-auth.php',
+			'functions.php',
+		] );
 
-		add_action( 'rest_api_init', [$this,'register_resources'] ); 
+		add_action( 'rest_api_init', [ $this, 'register_resources' ] );
 	}
 
 	/**
@@ -70,7 +57,7 @@ class Opalestate_API {
 	 *
 	 * @since  1.1
 	 */
-	public function add_endpoint( $rewrite_rules ) { 
+	public function add_endpoint( $rewrite_rules ) {
 		add_rewrite_endpoint( $this->base, EP_ALL );
 	}
 
@@ -95,21 +82,18 @@ class Opalestate_API {
 	 *
 	 * @since  1.1
 	 */
-	public function register_resources (  ) {   
- 
-		$api_classes = apply_filters( 'opaljob_api_classes',
-			array(
-				'Property_Api',
-				'Agent_Api',
-				'Agency_Api'
-			)
+	public function register_resources() {
+		$api_classes = apply_filters( 'opalestate_api_classes',
+			[
+				'Opalestate_Property_Api',
+				'Opalestate_Agent_Api',
+				'Opalestate_Agency_Api',
+			]
 		);
 
-	 
-		foreach ( $api_classes as $api_class ) { 
-			$api_class = new $api_class( );
+		foreach ( $api_classes as $api_class ) {
+			$api_class = new $api_class();
 			$api_class->register_routes();
 		}
 	}
-
 }

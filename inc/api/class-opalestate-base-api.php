@@ -1,22 +1,12 @@
 <?php
 /**
- * Define 
- * Note: only use for internal purpose.
- *
- * @package     OpalJob
- * @copyright   Copyright (c) 2019, WpOpal <https://www.wpopal.com>
- * @license     https://opensource.org/licenses/gpl-license GNU Public License
- * @since       1.0
- */
-//// call http://domain.com/wp-json/job-api/v1/jobs
-/**
  * Abstract class to define/implement base methods for all controller classes
  *
  * @since      1.0.0
  * @package    Opal_Job
  * @subpackage Opal_Job/controllers
  */
-abstract class Base_API {
+abstract class Opalestate_Base_API {
   
 	/**
 	 * The unique identifier of this plugin.
@@ -50,7 +40,6 @@ abstract class Base_API {
 	 *
 	 * @since 1.0
 	 *
-	 * @return avoid
 	 */
 	public function __construct () {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -63,7 +52,6 @@ abstract class Base_API {
 	 *
 	 * @since 1.0
 	 *
-	 * @return avoid
 	 */
 	public function register_routes() {
 		
@@ -85,18 +73,12 @@ abstract class Base_API {
 		$this->data['status'] = $code; 
 		return new WP_REST_Response( $this->data );
 	}
+
 	/**
-	 * Validate the API request
+	 * Validate the API request.
 	 *
-	 * Checks for the user's public key and token against the secret key
-	 *
-	 * @access private
-	 * @global object $wp_query WordPress Query
-	 * @uses   Opaljob_API::get_user()
-	 * @uses   Opaljob_API::invalid_key()
-	 * @uses   Opaljob_API::invalid_auth()
-	 * @since  1.1
-	 * @return void
+	 * @param \WP_REST_Request $request
+	 * @return bool|\WP_Error
 	 */
 	public function validate_request( WP_REST_Request $request ) {
 
@@ -104,7 +86,7 @@ abstract class Base_API {
 		$response = array();
 
 		// Make sure we have both user and api key
-	 	$api_admin = API_Admin::get_instance();
+	 	$api_admin = Opalestate_API_Admin::get_instance();
 
 		if ( empty( $request['token'] ) || empty( $request['key'] ) ) {
 			return $this->missing_auth();

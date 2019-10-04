@@ -69,7 +69,7 @@ class Opalestate_Query {
 		// if this has not any relationship with any user
 		if ( $user_id ) {
 
-			$author = [ $user_id ]; //echo '<pre>'.print_r( $post_id, 1 );die;
+			$author = [ $user_id ];
 			$team   = get_post_meta( $agency_id, OPALESTATE_AGENCY_PREFIX . 'team', true );
 
 			if ( is_array( $team ) ) {

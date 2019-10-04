@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since      1.0.0
  * @package    Property_Api
  */
-class Property_Api extends Base_Api {
+class Opalestate_Property_Api extends Opalestate_Base_API {
 
 	/**
 	 * The unique identifier of the route resource.
@@ -185,65 +185,7 @@ class Property_Api extends Base_Api {
 	 *
 	 */
 	private function get_property_data( $property_info ) {
-		$property = [];
-
-		$property['info']['id']            = $property_info->ID;
-		$property['info']['slug']          = $property_info->post_name;
-		$property['info']['title']         = $property_info->post_title;
-		$property['info']['create_date']   = $property_info->post_date;
-		$property['info']['modified_date'] = $property_info->post_modified;
-		$property['info']['status']        = $property_info->post_status;
-		$property['info']['link']          = html_entity_decode( $property_info->guid );
-		$property['info']['content']       = $property_info->post_content;
-		$property['info']['thumbnail']     = wp_get_attachment_url( get_post_thumbnail_id( $property_info->ID ) );
-
-		$data          = opalesetate_property( $property_info->ID );
-		$gallery       = $data->get_gallery();
-		$gallery_count = $data->get_gallery_count();
-
-		$gallery_data = [];
-		if ( $gallery_count ) {
-			foreach ( $gallery as $id => $url ) {
-				$gallery_data[] = [
-					'id'  => $id,
-					'url' => $url,
-				];
-			}
-		}
-
-		$property['info']['gallery']            = $gallery_data;
-		$property['info']['price']              = opalestate_price_format( $data->get_price() );
-		$property['info']['saleprice']          = opalestate_price_format( $data->get_sale_price() );
-		$property['info']['before_price_label'] = $data->get_before_price_label();
-		$property['info']['price_label']        = $data->get_price_label();
-		$property['info']['map']                = $data->get_map();
-		$property['info']['address']            = $data->get_address();
-		$property['meta']                       = $data->get_meta_shortinfo();
-		$property['fullinfo']                   = $data->get_meta_fullinfo();
-		$property['video']                      = $data->get_video_url();
-		$property['virtual_tour']               = $data->get_virtual_tour();
-		$property['attachments']                = $data->get_attachments();
-		$property['floor_plans']                = $data->get_floor_plans();
-		$property['is_featured']                = $data->is_featured();
-		$property['status']                     = $data->get_status();
-		$property['labels']                     = $data->get_labels();
-		$property['locations']                  = $data->get_locations();
-		$property['facilities']                 = $data->get_facilities();
-		$property['amenities']                  = $data->get_amenities();
-		$property['types']                      = $data->get_types_tax();
-		$property['author_type']                = $data->get_author_type();
-		$property['author_data']                = $data->get_author_link_data();
-
-		$limit                  = opalestate_get_option( 'single_views_statistics_limit', 8 );
-		$stats                  = new Opalestate_View_Stats( $data->get_id(), $limit );
-		$array_label            = json_encode( $stats->get_traffic_labels() );
-		$array_values           = json_encode( $stats->get_traffic_data_accordion() );
-		$property['view_stats'] = [
-			'labels' => $array_label,
-			'values' => $array_values,
-		];
-
-		return apply_filters( 'opalestate_api_properties_property', $property );
+		return opalestate_api_get_property_data( $property_info );
 	}
 
 	/**

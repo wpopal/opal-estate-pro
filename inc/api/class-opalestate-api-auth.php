@@ -15,7 +15,7 @@
  * @package    Opal_Job
  * @subpackage Opal_Job/API
  */
-class Api_Auth extends Base_API {
+class Opalestate_Api_Auth extends Opalestate_Base_API {
 
 	/**
 	 * Register user endpoints.
