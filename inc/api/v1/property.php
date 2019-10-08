@@ -94,6 +94,24 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 				// ],
 			]
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->base . '/search/',
+			[
+				'args' => [
+					'id' => [
+						'description' => __( 'Unique identifier for the resource.', 'opalestate-pro' ),
+						'type'        => 'integer',
+					],
+				],
+				[
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => [ $this, 'get_results' ],
+					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+				],
+			]
+		);
 	}
 
 	/**
