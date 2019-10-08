@@ -235,7 +235,7 @@ class Opalestate_API_Admin {
 	 * @since  1.1
 	 *
 	 */
-	function user_key_field( $user ) {
+	public function user_key_field( $user ) {
 		if ( ( opalestate_get_option( 'api_allow_user_keys', false ) || current_user_can( 'manage_opalestate_settings' ) ) && current_user_can( 'edit_user', $user->ID ) ) {
 			$user = get_userdata( $user->ID );
 			?>
