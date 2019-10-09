@@ -45,6 +45,7 @@ class Opalestate_API {
 			'v1/property.php',
 			'v1/agent.php',
 			'v1/agency.php',
+			'v1/search-form.php',
 			'class-opalestate-api-auth.php',
 			'functions.php',
 		] );
@@ -92,6 +93,7 @@ class Opalestate_API {
 				'Opalestate_Property_Api',
 				'Opalestate_Agent_Api',
 				'Opalestate_Agency_Api',
+				'Opalestate_Search_Form_Api',
 			]
 		);
 

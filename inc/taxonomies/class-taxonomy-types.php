@@ -17,9 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Opalestate_Taxonomy_Type {
+	/**
+	 * Constant.
+	 */
+	const OPALESTATE_TYPES = 'opalestate_types';
 
 	/**
-	 *
+	 * Opalestate_Taxonomy_Type constructor.
 	 */
 	public function __construct() {
 		add_action( 'init', [ $this, 'definition' ] );
@@ -30,17 +34,16 @@ class Opalestate_Taxonomy_Type {
 	 * Hook in and add a metabox to add fields to taxonomy terms
 	 */
 	public function taxonomy_metaboxes() {
-
 		$prefix = 'opalestate_type_';
+
 		/**
 		 * Metabox to add fields to categories and tags
 		 */
 		$cmb_term = new_cmb2_box( [
 			'id'           => $prefix . 'edit',
-			'title'        => esc_html__( 'Type Metabox', 'opalestate-pro' ), // Doesn't output for term boxes
-			'object_types' => [ 'term' ], // Tells CMB2 to use term_meta vs post_meta
-			'taxonomies'   => [ 'opalestate_types' ], // Tells CMB2 which taxonomies should have these fields
-			// 'new_term_section' => true, // Will display in the "Add New Category" section
+			'title'        => esc_html__( 'Type Metabox', 'opalestate-pro' ),
+			'object_types' => [ 'term' ],
+			'taxonomies'   => [ static::OPALESTATE_TYPES ],
 		] );
 
 		$cmb_term->add_field( [
@@ -67,10 +70,9 @@ class Opalestate_Taxonomy_Type {
 	}
 
 	/**
-	 *
+	 * Definition.
 	 */
 	public function definition() {
-
 		$labels = [
 			'name'              => esc_html__( 'Types', 'opalestate-pro' ),
 			'singular_name'     => esc_html__( 'Properties By Type', 'opalestate-pro' ),
@@ -85,7 +87,7 @@ class Opalestate_Taxonomy_Type {
 			'menu_name'         => esc_html__( 'Types', 'opalestate-pro' ),
 		];
 
-		register_taxonomy( 'opalestate_types', [ 'opalestate_property' ], [
+		register_taxonomy( static::OPALESTATE_TYPES, [ 'opalestate_property' ], [
 			'labels'       => apply_filters( 'opalestate_taxomony_types_labels', $labels ),
 			'hierarchical' => true,
 			'query_var'    => 'type',
@@ -99,13 +101,27 @@ class Opalestate_Taxonomy_Type {
 
 	}
 
-	public static function get_list() {
-		return get_terms( 'opalestate_types', [ 'hide_empty' => false ] );
+	/**
+	 * Gets list.
+	 *
+	 * @param array $args
+	 * @return array|int|\WP_Error
+	 */
+	public static function get_list( $args = [] ) {
+		$default = apply_filters( 'opalestate_types_args', [
+			'taxonomy'   => static::OPALESTATE_TYPES,
+			'hide_empty' => false,
+		] );
+
+		if ( $args ) {
+			$default = array_merge( $default, $args );
+		}
+
+		return get_terms( $default );
 	}
 
 	public static function dropdown_list( $selected = 0 ) {
-
-		$id = 'opalestate_types' . rand();
+		$id = static::OPALESTATE_TYPES . rand();
 
 		$args = [
 			'show_option_none' => esc_html__( 'Select Type', 'opalestate-pro' ),
@@ -116,7 +132,7 @@ class Opalestate_Taxonomy_Type {
 			'name'             => 'types',
 			'selected'         => $selected,
 			'value_field'      => 'slug',
-			'taxonomy'         => 'opalestate_types',
+			'taxonomy'         => static::OPALESTATE_TYPES,
 			'echo'             => 0,
 		];
 
@@ -129,7 +145,6 @@ class Opalestate_Taxonomy_Type {
 		$list = self::get_list();
 
 		echo opalestate_terms_multi_check( $list, $stypes );
-
 	}
 }
 
