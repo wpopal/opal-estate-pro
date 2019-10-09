@@ -97,18 +97,13 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 
 		register_rest_route(
 			$this->namespace,
-			'/' . $this->base . '/search/',
+			'/' . $this->base . '/search',
 			[
-				'args' => [
-					'id' => [
-						'description' => __( 'Unique identifier for the resource.', 'opalestate-pro' ),
-						'type'        => 'integer',
-					],
-				],
 				[
 					'methods'  => WP_REST_Server::READABLE,
 					'callback' => [ $this, 'get_results' ],
-					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+					// 'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'args'     => $this->get_search_params(),
 				],
 			]
 		);
@@ -142,6 +137,8 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 				$properties[ $i ] = $this->get_property_data( $property_info );
 				$i++;
 			}
+		} else {
+			return $this->get_response( 404, [ 'collection' => esc_html__( 'Not found', 'opalestate-pro' ) ] );
 		}
 
 		$response['collection'] = $properties;
@@ -179,8 +176,8 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	}
 
 	public function delete_item( $request ) {
-		$id     = (int) $request['id'];
-		$force  = (bool) $request['force'];
+		$id    = (int) $request['id'];
+		$force = (bool) $request['force'];
 
 		$property = get_post( absint( $request['id'] ) );
 		if ( ! $property || $this->post_type != $property->post_type ) {
@@ -191,6 +188,25 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 		}
 
 		return $response;
+	}
+
+	public function get_results( $request ) {
+		$properties = [];
+		$property_list = $this->get_search_results_query( $request );
+
+		if ( $property_list ) {
+			$i = 0;
+			foreach ( $property_list as $property_info ) {
+				$properties[ $i ] = $this->get_property_data( $property_info );
+				$i++;
+			}
+		} else {
+			return $this->get_response( 404, [ 'collection' => esc_html__( 'Not found', 'opalestate-pro' ) ] );
+		}
+
+		$response['collection'] = $properties;
+
+		return $this->get_response( 200, $response );
 	}
 
 	/**
@@ -228,11 +244,231 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 		$post_id             = wp_insert_post( $data, true );
 
 		$response['id'] = $post_id;
-		$response = rest_ensure_response( $response );
+		$response       = rest_ensure_response( $response );
 		$response->set_status( 201 );
 		$response->header( 'Location', rest_url( sprintf( '/%s/%s/%d', $this->namespace, $this->base, $post_id ) ) );
 
 		return $response;
+	}
+
+	/**
+	 * Get Query Object to display collection of property with user request which submited via search form.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return
+	 */
+	public function get_search_results_query( $request ) {
+		$search_min_price = isset( $request['min_price'] ) ? sanitize_text_field( $request['min_price'] ) : '';
+		$search_max_price = isset( $request['max_price'] ) ? sanitize_text_field( $request['max_price'] ) : '';
+		$search_min_area  = isset( $request['min_area'] ) ? sanitize_text_field( $request['min_area'] ) : '';
+		$search_max_area  = isset( $request['max_area'] ) ? sanitize_text_field( $request['max_area'] ) : '';
+		$s                = isset( $request['search_text'] ) ? sanitize_text_field( $request['search_text'] ) : null;
+		$per_page         = isset( $request['per_page'] ) && $request['per_page'] ? $request['per_page'] : 5;
+		$paged            = isset( $request['page'] ) && $request['page'] ? $request['page'] : 1;
+
+		if ( isset( $request['paged'] ) && intval( $request['paged'] ) > 0 ) {
+			$paged = intval( $request['paged'] );
+		}
+
+		$args = [
+			'posts_per_page' => $per_page,
+			'paged'          => $paged,
+			'post_type'      => $this->post_type,
+			'post_status'    => 'publish',
+			's'              => $s,
+		];
+
+		$tax_query = [];
+
+		if ( isset( $request['location'] ) && $request['location'] != -1 ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'opalestate_location',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $request['location'] ),
+				];
+		}
+
+		if ( isset( $request['state'] ) && $request['state'] != -1 ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'opalestate_state',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $request['state'] ),
+				];
+		}
+
+		if ( isset( $request['city'] ) && $request['city'] != -1 ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'opalestate_city',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $request['city'] ),
+				];
+		}
+
+		if ( isset( $request['types'] ) && $request['types'] != -1 ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'opalestate_types',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $request['types'] ),
+				];
+		}
+
+		if ( isset( $request['cat'] ) && $request['cat'] != -1 ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'property_category',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $request['cat'] ),
+				];
+		}
+
+		if ( isset( $request['status'] ) && $request['status'] != -1 ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'opalestate_status',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $request['status'] ),
+				];
+		}
+
+		if ( isset( $request['amenities'] ) && is_array( $request['amenities'] ) ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'opalestate_amenities',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $request['amenities'] ),
+				];
+		}
+
+		if ( $tax_query ) {
+			$args['tax_query'] = [ 'relation' => 'AND' ];
+			$args['tax_query'] = array_merge( $args['tax_query'], $tax_query );
+		}
+
+		$args['meta_query'] = [ 'relation' => 'AND' ];
+		if ( isset( $request['info'] ) && is_array( $request['info'] ) ) {
+			$metaquery = [];
+			foreach ( $request['info'] as $key => $value ) {
+				if ( trim( $value ) ) {
+					if ( is_numeric( trim( $value ) ) ) {
+						$fieldquery = [
+							'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
+							'value'   => sanitize_text_field( trim( $value ) ),
+							'compare' => '>=',
+							'type'    => 'NUMERIC',
+						];
+					} else {
+						$fieldquery = [
+							'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
+							'value'   => sanitize_text_field( trim( $value ) ),
+							'compare' => 'LIKE',
+						];
+					}
+					$sarg        = apply_filters( 'opalestate_search_field_query_' . $key, $fieldquery );
+					$metaquery[] = $sarg;
+				}
+			}
+			$args['meta_query'] = array_merge( $args['meta_query'], $metaquery );
+		}
+
+		if ( $search_min_price != '' && $search_min_price != '' && is_numeric( $search_min_price ) && is_numeric( $search_max_price ) ) {
+			if ( $search_min_price ) {
+				array_push( $args['meta_query'], [
+					'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
+					'value'   => [ $search_min_price, $search_max_price ],
+					'compare' => 'BETWEEN',
+					'type'    => 'NUMERIC',
+				] );
+			} else {
+				array_push( $args['meta_query'], [
+					[
+						[
+							'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
+							'compare' => 'NOT EXISTS',
+						],
+						'relation' => 'OR',
+						[
+							'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
+							'value'   => $search_max_price,
+							'compare' => '<=',
+							'type'    => 'NUMERIC',
+						],
+					],
+				] );
+			}
+
+		} elseif ( $search_min_price != '' && is_numeric( $search_min_price ) ) {
+			array_push( $args['meta_query'], [
+				'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
+				'value'   => $search_min_price,
+				'compare' => '>=',
+				'type'    => 'NUMERIC',
+			] );
+		} elseif ( $search_max_price != '' && is_numeric( $search_max_price ) ) {
+			array_push( $args['meta_query'], [
+				'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
+				'value'   => $search_max_price,
+				'compare' => '<=',
+				'type'    => 'NUMERIC',
+			] );
+		}
+
+		if ( $search_min_area != '' && $search_min_area != '' && is_numeric( $search_min_area ) && is_numeric( $search_max_area ) ) {
+			array_push( $args['meta_query'], [
+				'key'     => OPALESTATE_PROPERTY_PREFIX . 'areasize',
+				'value'   => [ $search_min_area, $search_max_area ],
+				'compare' => 'BETWEEN',
+				'type'    => 'NUMERIC',
+			] );
+		} elseif ( $search_min_area != '' && is_numeric( $search_min_area ) ) {
+			array_push( $args['meta_query'], [
+				'key'     => OPALESTATE_PROPERTY_PREFIX . 'areasize',
+				'value'   => $search_min_area,
+				'compare' => '>=',
+				'type'    => 'NUMERIC',
+			] );
+		} elseif ( $search_max_area != '' && is_numeric( $search_max_area ) ) {
+			array_push( $args['meta_query'], [
+				'key'     => OPALESTATE_PROPERTY_PREFIX . 'areasize',
+				'value'   => $search_max_area,
+				'compare' => '<=',
+				'type'    => 'NUMERIC',
+			] );
+		}
+
+		if ( isset( $request['geo_long'] ) && isset( $request['geo_lat'] ) ) {
+			if ( $request['location_text'] && ( empty( $request['geo_long'] ) || empty( $request['geo_lat'] ) ) ) {
+				array_push( $args['meta_query'], [
+					'key'      => OPALESTATE_PROPERTY_PREFIX . 'map_address',
+					'value'    => sanitize_text_field( trim( $request['location_text'] ) ),
+					'compare'  => 'LIKE',
+					'operator' => 'OR',
+				] );
+			} elseif ( $request['geo_lat'] && $request['geo_long'] ) {
+				$radius           = isset( $request['geo_radius'] ) ? $request['geo_radius'] : 5;
+				$post_ids         = Opalestate_Query::filter_by_location( $request['geo_lat'], $request['geo_long'], $radius );
+				$args['post__in'] = $post_ids;
+			}
+		}
+
+		$ksearchs = [];
+
+		if ( isset( $request['opalsortable'] ) && ! empty( $request['opalsortable'] ) ) {
+			$ksearchs = explode( '_', $request['opalsortable'] );
+		}
+
+		if ( ! empty( $ksearchs ) && count( $ksearchs ) == 2 ) {
+			$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . $ksearchs[0];
+			$args['orderby']  = 'meta_value_num';
+			$args['order']    = $ksearchs[1];
+		}
+
+		$args = apply_filters( 'opalestate_api_get_search_results_query_args', $args );
+
+		return get_posts( $args );
 	}
 
 	/**
@@ -242,6 +478,145 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	 */
 	public function get_collection_params() {
 		$params = parent::get_collection_params();
+
+		return $params;
+	}
+
+	/**
+	 * Get the query params for collections of attachments.
+	 *
+	 * @return array
+	 */
+	public function get_search_params() {
+		$params = parent::get_collection_params();
+
+		$params['min_price'] = [
+			'description'       => __( 'Min price', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['max_price'] = [
+			'description'       => __( 'Min price', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['min_area'] = [
+			'description'       => __( 'Min area', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['max_area'] = [
+			'description'       => __( 'Max area', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['search_text'] = [
+			'description'       => __( 'Search text', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['location_text'] = [
+			'description'       => __( 'Location text', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['geo_long'] = [
+			'description'       => __( 'Geo long', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['geo_lat'] = [
+			'description'       => __( 'Geo lat', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['location'] = [
+			'description'       => __( 'Location', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['state'] = [
+			'description'       => __( 'State', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['city'] = [
+			'description'       => __( 'City', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['types'] = [
+			'description'       => __( 'Types', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['status'] = [
+			'description'       => __( 'Status', 'opalestate-pro' ),
+			'type'              => 'string',
+			// 'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['amenities'] = [
+			'description'       => __( 'Amenities', 'opalestate-pro' ),
+			'type'              => 'array',
+			// 'default'           => '',
+			// 'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['amenities'] = [
+			'description'       => __( 'Amenities', 'opalestate-pro' ),
+			'type'              => 'array',
+			// 'default'           => '',
+			// 'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
+		$params['info'] = [
+			'description'       => __( 'Info', 'opalestate-pro' ),
+			'type'              => 'array',
+			// 'default'           => '',
+			// 'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
 
 		return $params;
 	}

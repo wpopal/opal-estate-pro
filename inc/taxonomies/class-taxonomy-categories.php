@@ -17,9 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Opalestate_Taxonomy_Categories {
+	/**
+	 * Constant.
+	 */
+	const OPALESTATE_CATEGORY = 'property_category ';
 
 	/**
-	 *
+	 * Init
 	 */
 	public static function init() {
 
@@ -40,7 +44,7 @@ class Opalestate_Taxonomy_Categories {
 	 */
 	public static function definition() {
 
-		register_taxonomy( 'property_category', 'opalestate_property', apply_filters( 'opalestate_taxonomy_args_property_category', [
+		register_taxonomy( static::OPALESTATE_CATEGORY, 'opalestate_property', apply_filters( 'opalestate_taxonomy_args_property_category', [
 			'labels'       => [
 				'name'          => esc_html__( 'Categories', 'opalestate-pro' ),
 				'add_new_item'  => esc_html__( 'Add New Category', 'opalestate-pro' ),
@@ -61,15 +65,15 @@ class Opalestate_Taxonomy_Categories {
 	public static function taxonomy_metaboxes() {
 
 		$prefix = 'opalestate_category_';
+
 		/**
 		 * Metabox to add fields to categories and tags
 		 */
 		$cmb_term = new_cmb2_box( [
 			'id'           => $prefix . 'edit',
-			'title'        => esc_html__( 'Category Metabox', 'opalestate-pro' ), // Doesn't output for term boxes
-			'object_types' => [ 'term' ], // Tells CMB2 to use term_meta vs post_meta
-			'taxonomies'   => [ 'property_category' ], // Tells CMB2 which taxonomies should have these fields
-			// 'new_term_section' => true, // Will display in the "Add New Category" section
+			'title'        => esc_html__( 'Category Metabox', 'opalestate-pro' ),
+			'object_types' => [ 'term' ],
+			'taxonomies'   => [ static::OPALESTATE_CATEGORY ],
 		] );
 
 		$cmb_term->add_field( [
@@ -80,9 +84,15 @@ class Opalestate_Taxonomy_Categories {
 		] );
 	}
 
+	/**
+	 * Gets list.
+	 *
+	 * @param array $args
+	 * @return array|int|\WP_Error
+	 */
 	public static function get_list( $args = [] ) {
 		$default = [
-			'taxonomy'   => 'property_category',
+			'taxonomy'   => static::OPALESTATE_CATEGORY,
 			'hide_empty' => true,
 		];
 
@@ -95,7 +105,7 @@ class Opalestate_Taxonomy_Categories {
 
 	public static function dropdown_list( $selected = 0 ) {
 
-		$id = 'property_category' . rand();
+		$id = static::OPALESTATE_CATEGORY . rand();
 
 		$args = [
 			'show_option_none' => esc_html__( 'Select Category', 'opalestate-pro' ),
@@ -103,10 +113,10 @@ class Opalestate_Taxonomy_Categories {
 			'class'            => 'form-control',
 			'show_count'       => 0,
 			'hierarchical'     => '',
-			'name'             => 'types',
+			'name'             => 'cat',
 			'selected'         => $selected,
 			'value_field'      => 'slug',
-			'taxonomy'         => 'property_category',
+			'taxonomy'         => static::OPALESTATE_CATEGORY,
 			'echo'             => 0,
 		];
 
@@ -115,10 +125,10 @@ class Opalestate_Taxonomy_Categories {
 		echo $label . wp_dropdown_categories( $args );
 	}
 
-	public static function get_multi_check_list( $scategory ) {
+	public static function get_multi_check_list( $scategory = '' ) {
 		$list = self::get_list();
 
-		echo opalestate_terms_multi_check( $list, $scategory );
+		echo opalestate_categories_multi_check( $list );
 	}
 }
 

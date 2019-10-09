@@ -104,6 +104,15 @@ class OpalEstate_Search {
 				];
 		}
 
+		if ( isset( $_GET['cat'] ) && $_GET['cat'] != -1 ) {
+			$tax_query[] =
+				[
+					'taxonomy' => 'property_category',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $_GET['cat'] ),
+				];
+		}
+
 		if ( isset( $_GET['status'] ) && $_GET['status'] != -1 ) {
 			$tax_query[] =
 				[

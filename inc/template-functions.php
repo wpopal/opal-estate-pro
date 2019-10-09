@@ -100,13 +100,27 @@ function opalestate_terms_multi_check( $terms ) {
 	$html = '<div class="opal-form-group">';
 
 	foreach ( $terms as $term ) {
-
 		$id   = time() . '-' . $term->slug;
 		$html .= '<div class="group-item">';
 		$html .= '<input  type="checkbox" class="form-control-checkbox" id="' . $id . '" name="types[' . $term->slug . ']" id="' . $id . '" value="' . $term->slug . '">';
 		$html .= ' <label for="' . $id . '">' . $term->name . '</label>';
 		$html .= '</div>';
+	}
 
+	$html .= '</div>';
+
+	return $html;
+}
+
+function opalestate_categories_multi_check( $terms ) {
+	$html = '<div class="opal-form-group">';
+
+	foreach ( $terms as $term ) {
+		$id   = time() . '-' . $term->slug;
+		$html .= '<div class="group-item">';
+		$html .= '<input  type="checkbox" class="form-control-checkbox" id="' . $id . '" name="cat[' . $term->slug . ']" id="' . $id . '" value="' . $term->slug . '">';
+		$html .= ' <label for="' . $id . '">' . $term->name . '</label>';
+		$html .= '</div>';
 	}
 
 	$html .= '</div>';

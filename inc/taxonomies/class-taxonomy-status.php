@@ -19,6 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Opalestate_Taxonomy_Status {
 
 	/**
+	 * Constant.
+	 */
+	const OPALESTATE_STATUS = 'opalestate_status';
+
+	/**
 	 * Opalestate_Taxonomy_Status constructor.
 	 */
 	public function __construct() {
@@ -28,7 +33,7 @@ class Opalestate_Taxonomy_Status {
 	}
 
 	/**
-	 *
+	 * Definition.
 	 */
 	public function definition() {
 		$labels = [
@@ -44,7 +49,7 @@ class Opalestate_Taxonomy_Status {
 			'new_item_name'     => esc_html__( 'New Status', 'opalestate-pro' ),
 			'menu_name'         => esc_html__( 'Status', 'opalestate-pro' ),
 		];
-		register_taxonomy( 'opalestate_status', 'opalestate_property', [
+		register_taxonomy( static::OPALESTATE_STATUS , 'opalestate_property', [
 			'labels'       => apply_filters( 'opalestate_status_labels', $labels ),
 			'hierarchical' => true,
 			'query_var'    => 'status',
@@ -66,23 +71,25 @@ class Opalestate_Taxonomy_Status {
 		 */
 		$cmb_term = new_cmb2_box( [
 			'id'           => $prefix . 'edit',
-			'title'        => esc_html__( 'Category Metabox', 'opalestate-pro' ), // Doesn't output for term boxes
-			'object_types' => [ 'term' ], // Tells CMB2 to use term_meta vs post_meta
-			'taxonomies'   => [ 'opalestate_status' ], // Tells CMB2 which taxonomies should have these fields
-			// 'new_term_section' => true, // Will display in the "Add New Category" section
+			'title'        => esc_html__( 'Category Metabox', 'opalestate-pro' ),
+			'object_types' => [ 'term' ],
+			'taxonomies'   => [ static::OPALESTATE_STATUS ],
 		] );
+
 		$cmb_term->add_field( [
 			'name' => esc_html__( 'Background', 'opalestate-pro' ),
 			'desc' => esc_html__( 'Set background of label', 'opalestate-pro' ),
 			'id'   => $prefix . 'lb_bg',
 			'type' => 'colorpicker',
 		] );
+
 		$cmb_term->add_field( [
 			'name' => esc_html__( 'Color', 'opalestate-pro' ),
 			'desc' => esc_html__( 'Set background of text', 'opalestate-pro' ),
 			'id'   => $prefix . 'lb_color',
 			'type' => 'colorpicker',
 		] );
+
 		$cmb_term->add_field( [
 			'name'       => esc_html__( 'Order', 'opalestate-pro' ),
 			'desc'       => esc_html__( 'Set a priority to display', 'opalestate-pro' ),
@@ -107,7 +114,7 @@ class Opalestate_Taxonomy_Status {
 	 */
 	public static function get_list( $args = [] ) {
 		$default = apply_filters( 'opalestate_status_args', [
-			'taxonomy'     => 'opalestate_status',
+			'taxonomy'     => static::OPALESTATE_STATUS ,
 			'hide_empty'   => false,
 			'hierarchical' => false,
 			'parent'       => 0,
@@ -135,7 +142,7 @@ class Opalestate_Taxonomy_Status {
 	 * @return string
 	 */
 	public static function dropdown_list( $selected = 0 ) {
-		$id = 'palestate_status' . rand();
+		$id = static::OPALESTATE_STATUS . rand();
 
 		$args = [
 			'show_option_none' => esc_html__( 'Select Status', 'opalestate-pro' ),
@@ -146,7 +153,7 @@ class Opalestate_Taxonomy_Status {
 			'name'             => 'status',
 			'value_field'      => 'slug',
 			'selected'         => $selected,
-			'taxonomy'         => 'opalestate_status',
+			'taxonomy'         => static::OPALESTATE_STATUS ,
 			'echo'             => 0,
 		];
 

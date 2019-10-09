@@ -18,6 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Opalestate_Taxonomy_Amenities {
 
 	/**
+	 * Constant.
+	 */
+	const OPALESTATE_AMENITY = 'opalestate_amenities';
+
+	/**
 	 * Opalestate_Taxonomy_Amenities constructor.
 	 */
 	public function __construct() {
@@ -26,7 +31,7 @@ class Opalestate_Taxonomy_Amenities {
 	}
 
 	/**
-	 *
+	 * Definition.
 	 */
 	public function definition() {
 
@@ -44,7 +49,7 @@ class Opalestate_Taxonomy_Amenities {
 			'menu_name'         => esc_html__( 'Amenities', 'opalestate-pro' ),
 		];
 
-		register_taxonomy( 'opalestate_amenities', 'opalestate_property', [
+		register_taxonomy( static::OPALESTATE_AMENITY, 'opalestate_property', [
 			'labels'       => apply_filters( 'opalestate_taxomony_amenities_labels', $labels ),
 			'hierarchical' => true,
 			'query_var'    => 'amenity',
@@ -54,8 +59,23 @@ class Opalestate_Taxonomy_Amenities {
 		] );
 	}
 
-	public static function get_list() {
-		return get_terms( 'opalestate_amenities', [ 'hide_empty' => false ] );
+	/**
+	 * Gets list.
+	 *
+	 * @param array $args
+	 * @return array|int|\WP_Error
+	 */
+	public static function get_list( $args = [] ) {
+		$default = apply_filters( 'opalestate_amenity_args', [
+			'taxonomy'   => static::OPALESTATE_AMENITY,
+			'hide_empty' => false,
+		] );
+
+		if ( $args ) {
+			$default = array_merge( $default, $args );
+		}
+
+		return get_terms( $default );
 	}
 
 	public function taxonomy_metaboxes() {
@@ -65,7 +85,7 @@ class Opalestate_Taxonomy_Amenities {
 			'id'           => $prefix . 'edit',
 			'title'        => esc_html__( 'Type Metabox', 'opalestate-pro' ),
 			'object_types' => [ 'term' ],
-			'taxonomies'   => [ 'opalestate_amenities' ],
+			'taxonomies'   => [ static::OPALESTATE_AMENITY ],
 		] );
 
 		$cmb_term->add_field( [
