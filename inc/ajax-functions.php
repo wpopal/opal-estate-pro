@@ -156,7 +156,7 @@ function opalestate_ajax_get_city_by_state() {
 
 /* set feature property */
 add_action( 'wp_ajax_opalestate_set_feature_property', 'opalestate_set_feature_property' );
-add_action( 'wp_ajax_nopriv_opalestate_set_feature_property', 'opalestate_set_feature_property' );
+// add_action( 'wp_ajax_nopriv_opalestate_set_feature_property', 'opalestate_set_feature_property' );
 if ( ! function_exists( 'opalestate_set_feature_property' ) ) {
 	function opalestate_set_feature_property() {
 
@@ -174,7 +174,7 @@ if ( ! function_exists( 'opalestate_set_feature_property' ) ) {
 }
 /* remove feature property */
 add_action( 'wp_ajax_opalestate_remove_feature_property', 'opalestate_remove_feature_property' );
-add_action( 'wp_ajax_nopriv_opalestate_remove_feature_property', 'opalestate_remove_feature_property' );
+// add_action( 'wp_ajax_nopriv_opalestate_remove_feature_property', 'opalestate_remove_feature_property' );
 if ( ! function_exists( 'opalestate_remove_feature_property' ) ) {
 	function opalestate_remove_feature_property() {
 		if ( ! isset( $_REQUEST['nonce'] ) && ! wp_verify_nonce( $_REQUEST['nonce'], 'nonce' ) ) {

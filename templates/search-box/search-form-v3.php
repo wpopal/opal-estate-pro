@@ -52,21 +52,25 @@ $form_classes = [
 			<?php echo opalestate_load_template_path( 'search-box/fields/group-info', [ 'type' => 'input' ] ); ?>
         </div>
 
-        <div class="form-item form-item--price">
-            <h6> <?php esc_html_e( 'Price', 'opalestate-pro' ); ?></h6>
-			<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
-        </div>
+		<?php if ( opalestate_is_enable_price_field() ) : ?>
+            <div class="form-item form-item--price">
+                <h6> <?php esc_html_e( 'Price', 'opalestate-pro' ); ?></h6>
+				<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
+            </div>
+		<?php endif; ?>
 
-        <div class="form-item form-item--area">
-            <h6> <?php esc_html_e( 'Area', 'opalestate-pro' ); ?></h6>
-			<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
-        </div>
+		<?php if ( opalestate_is_enable_areasize_field() ) : ?>
+            <div class="form-item form-item--area">
+                <h6> <?php esc_html_e( 'Area', 'opalestate-pro' ); ?></h6>
+				<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
+            </div>
+		<?php endif; ?>
 
-	    <?php
-	    if ( $display_more_options ) {
-		    echo opalestate_load_template_path( 'search-box/fields/more-options' );
-	    }
-	    ?>
+		<?php
+		if ( $display_more_options ) {
+			echo opalestate_load_template_path( 'search-box/fields/more-options' );
+		}
+		?>
 
 		<?php if ( ! isset( $nobutton ) || ! $nobutton ) : ?>
             <div class="form-item form-item--submit">

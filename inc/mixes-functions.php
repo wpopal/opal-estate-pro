@@ -1169,7 +1169,7 @@ function opalestate_get_property_statuses() {
  * @param $key
  */
 function opalestate_get_property_meta_icon( $key ) {
-	$classes   = '';
+	$classes = '';
 	$classes .= 'icon-property-' . esc_attr( $key );
 
 	switch ( $key ) {
@@ -1213,4 +1213,22 @@ function opalestate_get_property_meta_icon( $key ) {
 	$classes .= apply_filters( 'opalestate_property_meta_icon', $icon, $key );
 
 	return $classes;
+}
+
+/**
+ * Is enable price field in the search forms?
+ *
+ * @return bool
+ */
+function opalestate_is_enable_price_field() {
+	return 'on' == opalestate_get_option( 'opalestate_ppt_price_opt', 'on' );
+}
+
+/**
+ * Is enable areasize field in the search forms?
+ *
+ * @return bool
+ */
+function opalestate_is_enable_areasize_field() {
+	return 'on' == opalestate_get_option( 'opalestate_ppt_areasize_opt', 'on' );
 }

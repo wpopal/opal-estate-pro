@@ -75,11 +75,11 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 					'callback' => [ $this, 'get_item' ],
 					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
-				[
-					'methods'  => WP_REST_Server::EDITABLE,
-					'callback' => [ $this, 'update_item' ],
-					// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
-				],
+				// [
+				// 	'methods'  => WP_REST_Server::EDITABLE,
+				// 	'callback' => [ $this, 'update_item' ],
+				// 	// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
+				// ],
 				// [
 				// 	'methods'  => WP_REST_Server::DELETABLE,
 				// 	'callback' => [ $this, 'delete_item' ],
@@ -263,7 +263,7 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 		$search_min_area  = isset( $request['min_area'] ) ? sanitize_text_field( $request['min_area'] ) : '';
 		$search_max_area  = isset( $request['max_area'] ) ? sanitize_text_field( $request['max_area'] ) : '';
 		$s                = isset( $request['search_text'] ) ? sanitize_text_field( $request['search_text'] ) : null;
-		$per_page         = isset( $request['per_page'] ) && $request['per_page'] ? $request['per_page'] : 5;
+		$per_page         = isset( $request['per_page'] ) && $request['per_page'] ? $request['per_page'] : opalestate_options( 'search_property_per_page', 5 );
 		$paged            = isset( $request['page'] ) && $request['page'] ? $request['page'] : 1;
 
 		if ( isset( $request['paged'] ) && intval( $request['paged'] ) > 0 ) {
@@ -578,6 +578,14 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			'validate_callback' => 'rest_validate_request_arg',
 		];
 
+		$params['cat'] = [
+			'description'       => __( 'Categories', 'opalestate-pro' ),
+			'type'              => 'array',
+			// 'default'           => '',
+			// 'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
 		$params['types'] = [
 			'description'       => __( 'Types', 'opalestate-pro' ),
 			'type'              => 'string',
@@ -591,14 +599,6 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			'type'              => 'string',
 			// 'default'           => '',
 			'sanitize_callback' => 'sanitize_text_field',
-			'validate_callback' => 'rest_validate_request_arg',
-		];
-
-		$params['amenities'] = [
-			'description'       => __( 'Amenities', 'opalestate-pro' ),
-			'type'              => 'array',
-			// 'default'           => '',
-			// 'sanitize_callback' => 'sanitize_text_field',
 			'validate_callback' => 'rest_validate_request_arg',
 		];
 

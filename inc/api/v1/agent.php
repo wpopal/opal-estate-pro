@@ -71,11 +71,11 @@ class Opalestate_Agent_Api extends Opalestate_Base_API {
 					'callback' => [ $this, 'get_item' ],
 					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
-				[
-					'methods'  => WP_REST_Server::EDITABLE,
-					'callback' => [ $this, 'update_item' ],
-					// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
-				],
+				// [
+				// 	'methods'  => WP_REST_Server::EDITABLE,
+				// 	'callback' => [ $this, 'update_item' ],
+				// 	// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
+				// ],
 			]
 		);
 

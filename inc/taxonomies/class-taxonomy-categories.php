@@ -20,42 +20,39 @@ class Opalestate_Taxonomy_Categories {
 	/**
 	 * Constant.
 	 */
-	const OPALESTATE_CATEGORY = 'property_category ';
+	const OPALESTATE_CATEGORY = 'property_category';
 
 	/**
 	 * Init
 	 */
 	public static function init() {
-
 		add_action( 'init', [ __CLASS__, 'definition' ] );
 		add_filter( 'opalestate_taxomony_category_metaboxes', [ __CLASS__, 'metaboxes' ] );
-
 		add_action( 'cmb2_admin_init', [ __CLASS__, 'taxonomy_metaboxes' ], 999 );
-
 	}
 
 	public static function metaboxes() {
 
 	}
 
-
 	/**
-	 *
+	 * Definition.
 	 */
 	public static function definition() {
+		$labels = [
+			'name'          => esc_html__( 'Categories', 'opalestate-pro' ),
+			'add_new_item'  => esc_html__( 'Add New Category', 'opalestate-pro' ),
+			'new_item_name' => esc_html__( 'New Category', 'opalestate-pro' ),
+		];
 
-		register_taxonomy( static::OPALESTATE_CATEGORY, 'opalestate_property', apply_filters( 'opalestate_taxonomy_args_property_category', [
-			'labels'       => [
-				'name'          => esc_html__( 'Categories', 'opalestate-pro' ),
-				'add_new_item'  => esc_html__( 'Add New Category', 'opalestate-pro' ),
-				'new_item_name' => esc_html__( 'New Category', 'opalestate-pro' ),
-			],
+		register_taxonomy( static::OPALESTATE_CATEGORY, 'opalestate_property', [
+			'labels'       => apply_filters( 'opalestate_category_labels', $labels ),
 			'public'       => true,
 			'hierarchical' => true,
 			'show_ui'      => true,
 			'query_var'    => true,
 			'rewrite'      => [ 'slug' => _x( 'property-category', 'slug', 'opalestate-pro' ), 'with_front' => false, 'hierarchical' => true ],
-		] ) );
+		] );
 	}
 
 
@@ -104,7 +101,6 @@ class Opalestate_Taxonomy_Categories {
 	}
 
 	public static function dropdown_list( $selected = 0 ) {
-
 		$id = static::OPALESTATE_CATEGORY . rand();
 
 		$args = [

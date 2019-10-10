@@ -261,36 +261,36 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				];
 			}
 
-			$fields[] = [
-				'name'       => esc_html__( 'Vertical Search Fields', 'opalestate-pro' ),
-				'type'       => 'opalestate_title',
-				'id'         => 'opalestate_title_general_settings_2',
-				'before_row' => '<hr>',
-				'after_row'  => '<hr>',
-			];
-
-			$fields[] = [
-				'name'    => esc_html__( 'Show Price', 'opalestate-pro' ),
-				'id'      => OPALESTATE_PROPERTY_PREFIX . 'price_opt_v',
-				'type'    => 'switch',
-				'options' => [
-					0 => esc_html__( 'Disable', 'opalestate-pro' ),
-					1 => esc_html__( 'Enable', 'opalestate-pro' ),
-				],
-			];
-
-			foreach ( $metas as $key => $meta ) {
-				$fields[] = [
-					'name'    => $meta['name'],
-					'id'      => $meta['id'] . '_opt_v',
-					'type'    => 'switch',
-					'options' => [
-						0 => esc_html__( 'Disable', 'opalestate-pro' ),
-						1 => esc_html__( 'Enable', 'opalestate-pro' ),
-					],
-
-				];
-			}
+			// $fields[] = [
+			// 	'name'       => esc_html__( 'Vertical Search Fields', 'opalestate-pro' ),
+			// 	'type'       => 'opalestate_title',
+			// 	'id'         => 'opalestate_title_general_settings_2',
+			// 	'before_row' => '<hr>',
+			// 	'after_row'  => '<hr>',
+			// ];
+			//
+			// $fields[] = [
+			// 	'name'    => esc_html__( 'Show Price', 'opalestate-pro' ),
+			// 	'id'      => OPALESTATE_PROPERTY_PREFIX . 'price_opt_v',
+			// 	'type'    => 'switch',
+			// 	'options' => [
+			// 		0 => esc_html__( 'Disable', 'opalestate-pro' ),
+			// 		1 => esc_html__( 'Enable', 'opalestate-pro' ),
+			// 	],
+			// ];
+			//
+			// foreach ( $metas as $key => $meta ) {
+			// 	$fields[] = [
+			// 		'name'    => $meta['name'],
+			// 		'id'      => $meta['id'] . '_opt_v',
+			// 		'type'    => 'switch',
+			// 		'options' => [
+			// 			0 => esc_html__( 'Disable', 'opalestate-pro' ),
+			// 			1 => esc_html__( 'Enable', 'opalestate-pro' ),
+			// 		],
+			//
+			// 	];
+			// }
 		}
 
 		return $fields;

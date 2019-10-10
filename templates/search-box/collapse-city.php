@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$unique_id                         = esc_attr( wp_unique_id() );
+$unique_id                    = esc_attr( wp_unique_id() );
 $GLOBALS['group-info-column'] = 4;
 
 if ( isset( $nobutton ) && $nobutton ) {
@@ -48,7 +48,7 @@ $form_classes = [
 
         <div class="col-lg-<?php echo esc_attr( $grid[2] ); ?> col-md-<?php echo esc_attr( $grid[2] ); ?> col-sm-<?php echo esc_attr( $grid[2] ); ?> col-xs-12">
             <button type="button" class="opal-collapse-button opalestate-collapse-btn btn btn-primary" data-collapse="#collapse-city-<?php echo esc_attr( $unique_id ); ?>">
-	            <?php echo apply_filters( 'opalestate_search_form_collapse_button', '<i class="fa fa-caret-down" aria-hidden="true"></i>' ); ?>
+				<?php echo apply_filters( 'opalestate_search_form_collapse_button', '<i class="fa fa-caret-down" aria-hidden="true"></i>' ); ?>
             </button>
         </div>
 
@@ -67,20 +67,24 @@ $form_classes = [
 
 			<?php echo opalestate_load_template_path( 'search-box/fields/group-info' ); ?>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
-            </div>
+			<?php if ( opalestate_is_enable_price_field() ) : ?>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
+                </div>
+			<?php endif; ?>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
-            </div>
+			<?php if ( opalestate_is_enable_areasize_field() ) : ?>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
+                </div>
+			<?php endif; ?>
         </div>
 
-	    <?php
-	    if ( $display_more_options ) {
-		    echo opalestate_load_template_path( 'search-box/fields/more-options' );
-	    }
-	    ?>
+		<?php
+		if ( $display_more_options ) {
+			echo opalestate_load_template_path( 'search-box/fields/more-options' );
+		}
+		?>
     </div>
 
 	<?php do_action( 'opalestate_after_search_properties_form' ); ?>

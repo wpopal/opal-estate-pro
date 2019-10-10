@@ -41,7 +41,9 @@ $form_classes = [
 
 	<?php echo opalestate_load_template_path( 'search-box/fields/group-info', [ 'type' => 'input' ] ); ?>
 
-	<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
+	<?php if ( opalestate_is_enable_price_field() ) : ?>
+		<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
+	<?php endif; ?>
 
 	<?php
 	if ( $display_more_options ) {

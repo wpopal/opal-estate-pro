@@ -17,14 +17,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Opalestate_Taxonomy_Label {
+	/**
+	 * Constant.
+	 */
+	const OPALESTATE_LABEL = 'opalestate_label';
 
 	/**
-	 *
+	 * Opalestate_Taxonomy_Label constructor.
 	 */
 	public function __construct() {
-
 		add_action( 'init', [ $this, 'definition' ] );
-
 		add_filter( 'opalestate_taxomony_label_metaboxes', [ $this, 'metaboxes' ] );
 		add_action( 'cmb2_admin_init', [ $this, 'taxonomy_metaboxes' ], 999 );
 	}
@@ -33,7 +35,6 @@ class Opalestate_Taxonomy_Label {
 	 *
 	 */
 	public function definition() {
-
 		$labels = [
 			'name'              => esc_html__( 'Label', 'opalestate-pro' ),
 			'singular_name'     => esc_html__( 'Properties By Label', 'opalestate-pro' ),
@@ -48,7 +49,7 @@ class Opalestate_Taxonomy_Label {
 			'menu_name'         => esc_html__( 'Label', 'opalestate-pro' ),
 		];
 
-		register_taxonomy( 'opalestate_label', 'opalestate_property', [
+		register_taxonomy( static::OPALESTATE_LABEL, 'opalestate_property', [
 			'labels'       => apply_filters( 'opalestate_label_labels', $labels ),
 			'hierarchical' => true,
 			'query_var'    => 'property-label',
@@ -73,10 +74,9 @@ class Opalestate_Taxonomy_Label {
 		 */
 		$cmb_term = new_cmb2_box( [
 			'id'           => $prefix . 'edit',
-			'title'        => esc_html__( 'Category Metabox', 'opalestate-pro' ), // Doesn't output for term boxes
-			'object_types' => [ 'term' ], // Tells CMB2 to use term_meta vs post_meta
-			'taxonomies'   => [ 'opalestate_label' ], // Tells CMB2 which taxonomies should have these fields
-			// 'new_term_section' => true, // Will display in the "Add New Category" section
+			'title'        => esc_html__( 'Category Metabox', 'opalestate-pro' ),
+			'object_types' => [ 'term' ],
+			'taxonomies'   => [ static::OPALESTATE_LABEL ],
 		] );
 		$cmb_term->add_field( [
 			'name' => esc_html__( 'Background', 'opalestate-pro' ),
@@ -111,7 +111,7 @@ class Opalestate_Taxonomy_Label {
 	 */
 	public static function get_list( $args = [] ) {
 		$default = [
-			'taxonomy'   => 'opalestate_label',
+			'taxonomy'   => static::OPALESTATE_LABEL,
 			'hide_empty' => false,
 		];
 
@@ -129,7 +129,7 @@ class Opalestate_Taxonomy_Label {
 	 * @return string
 	 */
 	public static function dropdown_list( $selected = 0 ) {
-		$id = 'opalestate_label' . rand();
+		$id = static::OPALESTATE_LABEL . rand();
 
 		$args = [
 			'show_option_none' => esc_html__( 'Select Label', 'opalestate-pro' ),
@@ -140,7 +140,7 @@ class Opalestate_Taxonomy_Label {
 			'name'             => 'label',
 			'value_field'      => 'slug',
 			'selected'         => $selected,
-			'taxonomy'         => 'opalestate_label',
+			'taxonomy'         => static::OPALESTATE_LABEL,
 		];
 
 		return wp_dropdown_categories( $args );

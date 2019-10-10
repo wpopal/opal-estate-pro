@@ -18,6 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Opalestate_Taxonomy_State {
 	/**
+	 * Constant.
+	 */
+	const OPALESTATE_STATE = 'opalestate_state';
+
+	/**
 	 * Opalestate_Taxonomy_State constructor.
 	 */
 	public function __construct() {
@@ -27,7 +32,7 @@ class Opalestate_Taxonomy_State {
 	}
 
 	/**
-	 *
+	 * Definition.
 	 */
 	public function definition() {
 		$labels = [
@@ -44,7 +49,7 @@ class Opalestate_Taxonomy_State {
 			'menu_name'         => esc_html__( 'States / Provinces', 'opalestate-pro' ),
 		];
 
-		register_taxonomy( 'opalestate_state', 'opalestate_property', [
+		register_taxonomy( static::OPALESTATE_STATE, 'opalestate_property', [
 			'labels'       => apply_filters( 'opalestate_taxomony_state_labels', $labels ),
 			'hierarchical' => true,
 			'query_var'    => 'state',
@@ -69,10 +74,9 @@ class Opalestate_Taxonomy_State {
 		 */
 		$cmb_term = new_cmb2_box( [
 			'id'           => $prefix . 'edit',
-			'title'        => esc_html__( 'State Metabox', 'opalestate-pro' ), // Doesn't output for term boxes
-			'object_types' => [ 'term' ], // Tells CMB2 to use term_meta vs post_meta
-			'taxonomies'   => [ 'opalestate_state' ], // Tells CMB2 which taxonomies should have these fields
-			// 'new_term_section' => true, // Will display in the "Add New Category" section
+			'title'        => esc_html__( 'State Metabox', 'opalestate-pro' ),
+			'object_types' => [ 'term' ],
+			'taxonomies'   => [ static::OPALESTATE_STATE ],
 		] );
 
 		$cmb_term->add_field( [
@@ -86,7 +90,6 @@ class Opalestate_Taxonomy_State {
 			],
 		] );
 
-		////
 		$cmb_term->add_field( [
 			'name'     => esc_html__( 'Country', 'opalestate-pro' ),
 			'desc'     => esc_html__( 'Select one, to add new you create in countries of estate panel', 'opalestate-pro' ),
@@ -94,16 +97,29 @@ class Opalestate_Taxonomy_State {
 			'taxonomy' => 'opalestate_location', //Enter Taxonomy Slug
 			'type'     => 'taxonomy_select',
 		] );
-
-		///
 	}
 
-	public static function get_list() {
-		return get_terms( 'opalestate_state', [ 'hide_empty' => false ] );
+	/**
+	 * Gets list.
+	 *
+	 * @param array $args
+	 * @return array|int|\WP_Error
+	 */
+	public static function get_list( $args = [] ) {
+		$default = [
+			'taxonomy'   => static::OPALESTATE_STATE,
+			'hide_empty' => true,
+		];
+
+		if ( $args ) {
+			$default = array_merge( $default, $args );
+		}
+
+		return get_terms( $default );
 	}
 
 	public static function dropdown_agents_list( $selected = 0 ) {
-		$id   = "opalestate_state" . rand();
+		$id   = static::OPALESTATE_STATE . rand();
 		$args = [
 			'show_option_none' => esc_html__( 'Select State', 'opalestate-pro' ),
 			'id'               => $id,
@@ -120,7 +136,7 @@ class Opalestate_Taxonomy_State {
 	}
 
 	public static function dropdown_list( $selected = 0 ) {
-		$id   = "opalestate_state" . rand();
+		$id   = static::OPALESTATE_STATE . rand();
 		$args = [
 			'show_option_none' => esc_html__( 'Select State', 'opalestate-pro' ),
 			'id'               => $id,
@@ -130,7 +146,7 @@ class Opalestate_Taxonomy_State {
 			'hierarchical'     => '',
 			'selected'         => $selected,
 			'value_field'      => 'slug',
-			'taxonomy'         => 'opalestate_state',
+			'taxonomy'         => static::OPALESTATE_STATE,
 			'orderby'          => 'name',
 			'order'            => 'ASC',
 			'echo'             => 0,
