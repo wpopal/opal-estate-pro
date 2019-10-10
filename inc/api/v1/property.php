@@ -578,6 +578,14 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			'validate_callback' => 'rest_validate_request_arg',
 		];
 
+		$params['cat'] = [
+			'description'       => __( 'Categories', 'opalestate-pro' ),
+			'type'              => 'array',
+			// 'default'           => '',
+			// 'sanitize_callback' => 'sanitize_text_field',
+			'validate_callback' => 'rest_validate_request_arg',
+		];
+
 		$params['types'] = [
 			'description'       => __( 'Types', 'opalestate-pro' ),
 			'type'              => 'string',
@@ -591,14 +599,6 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			'type'              => 'string',
 			// 'default'           => '',
 			'sanitize_callback' => 'sanitize_text_field',
-			'validate_callback' => 'rest_validate_request_arg',
-		];
-
-		$params['amenities'] = [
-			'description'       => __( 'Amenities', 'opalestate-pro' ),
-			'type'              => 'array',
-			// 'default'           => '',
-			// 'sanitize_callback' => 'sanitize_text_field',
 			'validate_callback' => 'rest_validate_request_arg',
 		];
 

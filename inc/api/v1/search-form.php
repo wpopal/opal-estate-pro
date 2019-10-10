@@ -56,16 +56,87 @@ class Opalestate_Search_Form_Api extends Opalestate_Base_API {
 	public function get_fields( $request ) {
 		$response = [];
 
-		$fields = [];
+		$fields              = [];
+		$fields['min_price'] = [
+			'enable'  => opalestate_is_enable_price_field(),
+			'default' => opalestate_options( 'search_min_price', 0 ),
+		];
 
-		$fields['types']     = Opalestate_Taxonomy_Type::get_list();
-		$fields['status']    = Opalestate_Taxonomy_Status::get_list();
-		$fields['cat']       = Opalestate_Taxonomy_Categories::get_list();
-		$fields['amenities'] = Opalestate_Taxonomy_Amenities::get_list();
-		$fields['location']  = Opalestate_Taxonomy_Location::get_list();
-		$fields['city']      = Opalestate_Taxonomy_City::get_list();
-		$fields['state']     = Opalestate_Taxonomy_State::get_list();
-		$response['fields']  = $fields;
+		$fields['max_price'] = [
+			'enable'  => opalestate_is_enable_price_field(),
+			'default' => opalestate_options( 'search_max_price', 10000000 ),
+		];
+
+		$fields['min_area'] = [
+			'enable'  => opalestate_is_enable_areasize_field(),
+			'default' => opalestate_options( 'search_min_area', 0 ),
+		];
+
+		$fields['max_area'] = [
+			'enable'  => opalestate_is_enable_areasize_field(),
+			'default' => opalestate_options( 'search_max_area', 1000 ),
+		];
+
+		$fields['search_text'] = [
+			'default' => '',
+		];
+
+		$fields['location_text'] = [
+			'default' => '',
+		];
+
+		$fields['geo_long'] = [
+			'default' => '',
+		];
+
+		$fields['geo_lat'] = [
+			'default' => '',
+		];
+
+		$fields['types'] = [
+			'enable'  => true,
+			'default' => -1,
+			'data'    => Opalestate_Taxonomy_Type::get_list(),
+		];
+
+		$fields['status'] = [
+			'enable'  => true,
+			'default' => -1,
+			'data'    => Opalestate_Taxonomy_Status::get_list(),
+		];
+
+		$fields['cat'] = [
+			'enable'  => true,
+			'default' => -1,
+			'data'    => Opalestate_Taxonomy_Categories::get_list(),
+		];
+
+		$fields['location'] = [
+			'enable'  => true,
+			'default' => -1,
+			'data'    => Opalestate_Taxonomy_Location::get_list(),
+		];
+
+		$fields['city'] = [
+			'enable'  => true,
+			'default' => -1,
+			'data'    => Opalestate_Taxonomy_City::get_list(),
+		];
+
+		$fields['state'] = [
+			'enable'  => true,
+			'default' => -1,
+			'data'    => Opalestate_Taxonomy_State::get_list(),
+		];
+
+		$fields['amenities'] = [
+			'enable'  => true,
+			'default' => [],
+			'data'    => Opalestate_Taxonomy_Amenities::get_list(),
+		];
+
+		$fields['info']     = OpalEstate_Search::get_setting_search_fields();
+		$response['fields'] = $fields;
 
 		return $this->get_response( 200, $response );
 	}
