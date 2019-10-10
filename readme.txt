@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 This is an ideal solution and brilliant choice for you to set up a professional estate website, Marketplace, Portal Property Website.
 
 == Description ==
-[Live Demos](http://demo2.themelexus.com/housey/) | [Plugin Guide](https://wpopal-2.gitbook.io/opal-estate/)  | [Theme Guide](https://wpopal-2.gitbook.io/housey/) | [Free Theme](http://demo2.themelexus.com/latehome_free/) | [Extensions](https://wordpress.org/plugins/tags/opalestate_addon/)
+[Live Demos](http://demo2.themelexus.com/housey/) | [Plugin Guide](https://wpopal-2.gitbook.io/opal-estate/)  | [Theme Guide](https://pavotheme.gitbook.io/housey/) | [Free Theme](http://demo2.themelexus.com/latehome_free/) | [Extensions](https://wordpress.org/plugins/tags/opalestate_addon/)
 
 
 
@@ -24,7 +24,9 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 = Which themes use this plugin? =
 
  1. *[ Housey - Real Estate WordPress Theme](https://bit.ly/2kHewkG "Housey - Real Estate WordPress Theme")*
- 2. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bit.ly/2nLTfHT "Latehome Free
+ 2. *[ Latehome - Real Estate WordPress Theme](https://bit.ly/2M0rmp0 "Latehome - Real Estate WordPress Theme")*
+ 3. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bit
+ .ly/2nLTfHT "Latehome Free
  download").*
 
  * Please keep contact us at help@wpopal.com to send us your website, we will publish it our showcase
