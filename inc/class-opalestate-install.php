@@ -98,16 +98,16 @@ class Opalestate_Install {
 			$options['from_email']          = get_bloginfo( 'admin_email' );
 			$options['message_log']         = 1;
 
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'bedrooms_opt' ]    = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'parking_opt' ]     = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'bathrooms_opt' ]   = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'areasize_opt' ]    = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'price_opt' ]       = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'bedrooms_opt_v' ]  = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'parking_opt_v' ]   = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'bathrooms_opt_v' ] = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'areasize_opt_v' ]  = 1;
-			$options[ OPALESTATE_PROPERTY_PREFIX . 'price_opt_v' ]     = 1;
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'bedrooms_opt' ]    = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'parking_opt' ]     = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'bathrooms_opt' ]   = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'areasize_opt' ]    = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'price_opt' ]       = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'bedrooms_opt_v' ]  = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'parking_opt_v' ]   = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'bathrooms_opt_v' ] = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'areasize_opt_v' ]  = 'on';
+			$options[ OPALESTATE_PROPERTY_PREFIX . 'price_opt_v' ]     = 'on';
 
 			$options['enable_single_amenities']        = 'on';
 			$options['enable_single_facilities']       = 'on';
