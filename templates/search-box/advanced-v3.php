@@ -48,13 +48,17 @@ $form_classes = [
 
 		<?php echo opalestate_load_template_path( 'search-box/fields/group-info' ); ?>
 
-        <div class="col-lg-3 col-md-3 col-sm-3">
-			<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
-        </div>
+		<?php if ( opalestate_is_enable_price_field() ) : ?>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+				<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
+            </div>
+		<?php endif; ?>
 
-        <div class="col-lg-3 col-md-3 col-sm-3">
-			<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
-        </div>
+		<?php if ( opalestate_is_enable_areasize_field() ) : ?>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+				<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
+            </div>
+		<?php endif; ?>
 
 		<?php if ( ! isset( $nobutton ) || ! $nobutton ) : ?>
             <div class="col-lg-3 col-md-3 col-sm-3">

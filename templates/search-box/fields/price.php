@@ -1,4 +1,8 @@
 <?php
+if ( ! opalestate_is_enable_price_field() ) {
+	return;
+}
+
 $search_min_price = isset( $_GET['min_price'] ) ? sanitize_text_field( $_GET['min_price'] ): opalestate_options( 'search_min_price', 0 );
 $search_max_price = isset( $_GET['max_price'] ) ? sanitize_text_field( $_GET['max_price'] ): opalestate_options( 'search_max_price', 10000000 );
 

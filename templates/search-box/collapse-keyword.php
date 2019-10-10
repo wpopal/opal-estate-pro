@@ -56,7 +56,7 @@ $form_classes = [
 
         <div class="col-lg-<?php echo absint( $grid[3] ); ?> col-md-<?php echo absint( $grid[3] ); ?> col-sm-<?php echo absint( $grid[3] ); ?> col-xs-12">
             <button type="button" class="opal-collapse-button opalestate-collapse-btn btn btn-primary" data-collapse="#collapse-keyword-<?php echo esc_attr( $unique_id ); ?>">
-                <?php echo apply_filters( 'opalestate_search_form_collapse_button', '<i class="fa fa-caret-down" aria-hidden="true"></i>' ); ?>
+				<?php echo apply_filters( 'opalestate_search_form_collapse_button', '<i class="fa fa-caret-down" aria-hidden="true"></i>' ); ?>
             </button>
         </div>
 
@@ -89,13 +89,17 @@ $form_classes = [
 
 			<?php echo opalestate_load_template_path( 'search-box/fields/group-info' ); ?>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
-            </div>
+			<?php if ( opalestate_is_enable_price_field() ) : ?>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
+                </div>
+			<?php endif; ?>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
-            </div>
+			<?php if ( opalestate_is_enable_areasize_field() ) : ?>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<?php echo opalestate_load_template_path( 'search-box/fields/areasize' ); ?>
+                </div>
+			<?php endif; ?>
         </div>
 
 		<?php
