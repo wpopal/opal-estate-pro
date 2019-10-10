@@ -19,7 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Opalestate_Taxonomy_City {
 
 	/**
-	 *
+	 * Constant.
+	 */
+	const OPALESTATE_CITY = 'opalestate_city';
+
+	/**
+	 * Init
 	 */
 	public static function init() {
 		add_action( 'init', [ __CLASS__, 'definition' ] );
@@ -27,7 +32,7 @@ class Opalestate_Taxonomy_City {
 	}
 
 	/**
-	 *
+	 * Definition.
 	 */
 	public static function definition() {
 
@@ -45,7 +50,7 @@ class Opalestate_Taxonomy_City {
 			'menu_name'         => esc_html__( 'Cities / Towns', 'opalestate-pro' ),
 		];
 
-		register_taxonomy( 'opalestate_city', 'opalestate_property', [
+		register_taxonomy( static::OPALESTATE_CITY, 'opalestate_property', [
 			'labels'       => apply_filters( 'opalestate_taxomony_city_labels', $labels ),
 			'hierarchical' => true,
 			'query_var'    => 'city',
@@ -66,9 +71,9 @@ class Opalestate_Taxonomy_City {
 		 */
 		$cmb_term = new_cmb2_box( [
 			'id'           => $prefix . 'edit',
-			'title'        => esc_html__( 'City Metabox', 'opalestate-pro' ), // Doesn't output for term boxes
-			'object_types' => [ 'term' ], // Tells CMB2 to use term_meta vs post_meta
-			'taxonomies'   => [ 'opalestate_city' ], // Tells CMB2 which taxonomies should have these fields
+			'title'        => esc_html__( 'City Metabox', 'opalestate-pro' ),
+			'object_types' => [ 'term' ],
+			'taxonomies'   => [ static::OPALESTATE_CITY ],
 		] );
 
 		$cmb_term->add_field( [
@@ -82,7 +87,6 @@ class Opalestate_Taxonomy_City {
 			],
 		] );
 
-		////
 		$cmb_term->add_field( [
 			'name'     => esc_html__( 'Country', 'opalestate-pro' ),
 			'desc'     => esc_html__( 'Select one, to add new you create in countries of estate panel', 'opalestate-pro' ),
@@ -91,7 +95,6 @@ class Opalestate_Taxonomy_City {
 			'type'     => 'taxonomy_select',
 		] );
 
-		///
 		$cmb_term->add_field( [
 			'name'     => esc_html__( 'State / Province', 'opalestate-pro' ),
 			'desc'     => esc_html__( 'Select one, to add new you create in City/Town of estate panel', 'opalestate-pro' ),
@@ -109,7 +112,7 @@ class Opalestate_Taxonomy_City {
 	 */
 	public static function get_list( $args = [] ) {
 		$default = [
-			'taxonomy'   => 'opalestate_city',
+			'taxonomy'   => static::OPALESTATE_CITY,
 			'hide_empty' => true,
 		];
 
@@ -127,7 +130,7 @@ class Opalestate_Taxonomy_City {
 	 * @return string
 	 */
 	public static function dropdown_list( $selected = 0 ) {
-		$id   = 'opalestate_city' . rand();
+		$id   = static::OPALESTATE_CITY . rand();
 		$args = [
 			'show_option_none' => esc_html__( 'Select City', 'opalestate-pro' ),
 			'id'               => $id,
@@ -137,7 +140,7 @@ class Opalestate_Taxonomy_City {
 			'hierarchical'     => '',
 			'selected'         => $selected,
 			'value_field'      => 'slug',
-			'taxonomy'         => 'opalestate_city',
+			'taxonomy'         => static::OPALESTATE_CITY,
 			'orderby'          => 'name',
 			'order'            => 'ASC',
 			'echo'             => 0,

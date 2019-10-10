@@ -62,6 +62,9 @@ class Opalestate_Search_Form_Api extends Opalestate_Base_API {
 		$fields['status']    = Opalestate_Taxonomy_Status::get_list();
 		$fields['cat']       = Opalestate_Taxonomy_Categories::get_list();
 		$fields['amenities'] = Opalestate_Taxonomy_Amenities::get_list();
+		$fields['location']  = Opalestate_Taxonomy_Location::get_list();
+		$fields['city']      = Opalestate_Taxonomy_City::get_list();
+		$fields['state']     = Opalestate_Taxonomy_State::get_list();
 		$response['fields']  = $fields;
 
 		return $this->get_response( 200, $response );
