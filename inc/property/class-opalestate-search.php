@@ -394,18 +394,17 @@ class OpalEstate_Search {
 	}
 
 	/**
-	 *
+	 * Get_setting_search_fields.
 	 */
 	public static function get_setting_search_fields( $option = '' ) {
-		$options = [
+		$default = apply_filters( 'opalestate_default_fields_setting', [
 			OPALESTATE_PROPERTY_PREFIX . 'bedrooms'  => esc_html__( 'Bed Rooms', 'opalestate-pro' ),
 			OPALESTATE_PROPERTY_PREFIX . 'parking'   => esc_html__( 'Parking', 'opalestate-pro' ),
 			OPALESTATE_PROPERTY_PREFIX . 'bathrooms' => esc_html__( 'Bath Rooms', 'opalestate-pro' ),
-		];
+		] );
 
-		$default = apply_filters( 'opalestate_default_fields_setting', $options );
+		$metas = Opalestate_Property_MetaBox::metaboxes_info_fields();
 
-		$metas     = Opalestate_Property_MetaBox::metaboxes_info_fields();
 		$esettings = [];
 		$found     = false;
 		foreach ( $metas as $key => $meta ) {
@@ -415,10 +414,11 @@ class OpalEstate_Search {
 				continue;
 			}
 
-			if ( $value ) {
-				$id               = str_replace( OPALESTATE_PROPERTY_PREFIX, "", $meta['id'] );
+			if ( 'on' == $value ) {
+				$id               = str_replace( OPALESTATE_PROPERTY_PREFIX, '', $meta['id'] );
 				$esettings[ $id ] = $meta['name'];
 			}
+
 			if ( $value == 0 ) {
 				$found = true;
 			}
