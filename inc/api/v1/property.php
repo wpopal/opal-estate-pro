@@ -357,7 +357,7 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 						$fieldquery = [
 							'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
 							'value'   => sanitize_text_field( trim( $value ) ),
-							'compare' => '>=',
+							'compare' => apply_filters( 'opalestate_info_numeric_compare', '>=' ),
 							'type'    => 'NUMERIC',
 						];
 					} else {
