@@ -65,6 +65,13 @@ class Opalestate_Admin_API_Keys {
 		} else {
 			static::table_list_output();
 		}
+		?>
+        <style>
+            input[name="submit-cmb"] {
+                display: none !important;
+            }
+        </style>
+        <?php
 	}
 
 	/**
@@ -84,13 +91,6 @@ class Opalestate_Admin_API_Keys {
 				]
 			);
 		}
-		?>
-        <style>
-            input[name="submit-cmb"] {
-                display: none !important;
-            }
-        </style>
-		<?php
 	}
 
 	/**
@@ -201,7 +201,7 @@ class Opalestate_Admin_API_Keys {
 			$revoked = absint( $_GET['revoked'] ); // WPCS: input var okay, CSRF ok.
 
 			/* translators: %d: count */
-			Opalestate_Admin_Settings::add_message( sprintf( _n( '%d API key permanently revoked.', '%d API keys permanently revoked.', $revoked, 'opalestate-pro' ), $revoked ) );
+			// Opalestate_Admin_Settings::add_message( sprintf( _n( '%d API key permanently revoked.', '%d API keys permanently revoked.', $revoked, 'opalestate-pro' ), $revoked ) );
 		}
 	}
 

@@ -56,7 +56,7 @@ defined( 'ABSPATH' ) || exit;
 					</label>
 				</th>
 				<td class="forminp">
-					<select id="key_permissions" class="wc-enhanced-select">
+					<select id="key_permissions" class="opalestate-enhanced-select">
 						<?php
 						$permissions = array(
 							'read'       => __( 'Read', 'opalestate-pro' ),
@@ -90,7 +90,7 @@ defined( 'ABSPATH' ) || exit;
 						<?php
 						if ( ! empty( $key_data['last_access'] ) ) {
 							/* translators: 1: last access date 2: last access time */
-							$date = sprintf( __( '%1$s at %2$s', 'opalestate-pro' ), date_i18n( wc_date_format(), strtotime( $key_data['last_access'] ) ), date_i18n( wc_time_format(), strtotime(
+							$date = sprintf( __( '%1$s at %2$s', 'opalestate-pro' ), date_i18n( get_option( 'date_format' ), strtotime( $key_data['last_access'] ) ), date_i18n( get_option( 'time_format' ), strtotime(
 							        $key_data['last_access'] ) ) );
 
 							echo esc_html( apply_filters( 'opalestate_api_key_last_access_datetime', $date, $key_data['last_access'] ) );
