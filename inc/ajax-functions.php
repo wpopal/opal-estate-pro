@@ -360,14 +360,14 @@ function opalestate_update_api_key() {
 			$response['consumer_secret'] = '';
 			$response['message']         = __( 'API Key updated successfully.', 'opalestate-pro' );
 		} else {
-			$consumer_key    = 'ck_' . wc_rand_hash();
-			$consumer_secret = 'cs_' . wc_rand_hash();
+			$consumer_key    = 'ck_' . opalestate_rand_hash();
+			$consumer_secret = 'cs_' . opalestate_rand_hash();
 
 			$data = [
 				'user_id'         => $user_id,
 				'description'     => $description,
 				'permissions'     => $permissions,
-				'consumer_key'    => wc_api_hash( $consumer_key ),
+				'consumer_key'    => opalestate_api_hash( $consumer_key ),
 				'consumer_secret' => $consumer_secret,
 				'truncated_key'   => substr( $consumer_key, -7 ),
 			];

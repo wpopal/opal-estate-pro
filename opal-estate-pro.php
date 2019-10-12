@@ -128,7 +128,6 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 				self::$instance->roles     = new Opalestate_Roles();
 				self::$instance->html      = new Opalestate_HTML_Elements();
 				self::$instance->api       = new Opalestate_API();
-				self::$instance->api_admin = new Opalestate_API_Admin();
 				self::$instance->session   = new Opalestate_Session();
 
 				/**
