@@ -40,6 +40,8 @@ class Opalestate_API {
 	 */
 	public function init() {
 		$this->includes( [
+			'class-opalestate-admin-api-keys.php',
+			'class-opalestate-admin-api-keys-table-list.php',
 			'class-opalestate-api-admin.php',
 			'class-opalestate-base-api.php',
 			'v1/property.php',
@@ -100,6 +102,37 @@ class Opalestate_API {
 		foreach ( $api_classes as $api_class ) {
 			$api_class = new $api_class();
 			$api_class->register_routes();
+		}
+	}
+
+	public static function install() {
+		try {
+			if ( ! function_exists( 'dbDelta' ) ) {
+				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+			}
+
+			global $wpdb;
+
+			$charset_collate = $wpdb->get_charset_collate();
+
+			$sql = 'CREATE TABLE IF NOT EXISTS ' . $wpdb->prefix . 'opalestate_api_keys' . ' (
+						key_id BIGINT UNSIGNED NOT NULL auto_increment,
+						user_id BIGINT UNSIGNED NOT NULL,
+						description varchar(200) NULL,
+						permissions varchar(10) NOT NULL,
+						consumer_key char(64) NOT NULL,
+						consumer_secret char(43) NOT NULL,
+						nonces longtext NULL,
+						truncated_key char(7) NOT NULL,
+						last_access datetime NULL default null,
+						PRIMARY KEY  (key_id),
+						KEY consumer_key (consumer_key),
+						KEY consumer_secret (consumer_secret)
+					) ' . $charset_collate;
+			dbDelta( $sql );
+
+		} catch ( Exception $e ) {
+
 		}
 	}
 }

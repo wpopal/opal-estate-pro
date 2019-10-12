@@ -338,56 +338,6 @@ if ( ! function_exists( 'opalestate_license_key_callback' ) ) {
 	}
 }
 
-
-/**
- * Display the API Keys
- *
- * @return      void
- * @since       2.0
- */
-function opalestate_api_keys_callback() {
-	if ( ! current_user_can( 'manage_opalestate_settings' ) ) {
-		return;
-	}
-
-	do_action( 'opalestate_tools_api_keys_keys_before' );
-
-	require_once OPALESTATE_PLUGIN_DIR . 'inc/admin/class-api-keys-table.php';
-
-	$keys_table_list = new Opalestate_API_Keys_Table();
-	$keys_table_list->prepare_items();
-
-	echo '<input type="hidden" name="page" value="wc-settings" />';
-	echo '<input type="hidden" name="tab" value="api" />';
-	echo '<input type="hidden" name="section" value="keys" />';
-
-	$keys_table_list->views();
-	$keys_table_list->search_box( esc_html__( 'Search Key', 'opalestate-pro' ), 'key' );
-	$keys_table_list->display();
-	?>
-
-
-    <p>
-		<?php printf(
-			__( 'API keys allow users to use the <a href="%s">Opalestate REST API</a> to retrieve donation data in JSON or XML for external applications or devices, such as <a href="%s">Zapi_keyser</a>.',
-				'opalestate-pro' ),
-			'https://wpopal.com/opalestate/documentation/opalestate-api_keys-reference/',
-			'https://wpopal.com/addons/opalestate/'
-		); ?>
-    </p>
-
-    <style>
-        .opalestate_properties_page_opalestate-settings .opalestate-submit-wrap {
-            display: none; /* Hide Save settings button on System Info Tab (not needed) */
-        }
-    </style>
-	<?php
-
-	do_action( 'opalestate_tools_api_keys_keys_after' );
-}
-
-add_action( 'opalestate_settings_tab_api_keys_keys', 'opalestate_api_keys_callback' );
-
 /**
  * Hook Callback
  *
