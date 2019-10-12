@@ -474,10 +474,11 @@ jQuery( document ).ready( function ( $ ) {
         var imax = $( '.slide-ranger-max-input', this ).val();
         var slider = $( '.slide-ranger-bar', this ).get( 0 );
         var unit_pos = $( this ).data( 'unitpos' );
+        var unit_thousand = $( this ).data( 'thousand' );
 
         var config_format = {
             decimals: decimals,
-            thousand: ',',
+            thousand: unit_thousand,
         };
 
         if ( unit_pos == 'prefix' ) {

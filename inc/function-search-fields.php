@@ -69,12 +69,13 @@ function opalestate_property_areasize_field_template( $template = '' ) {
 	$search_max = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : opalestate_options( 'search_max_area', 1000 );
 
 	$data = [
-		'id'         => 'area',
-		'unit'       => opalestate_options( 'measurement_unit', 'sq ft' ) . ' ',
-		'ranger_min' => opalestate_options( 'search_min_area', 0 ),
-		'ranger_max' => opalestate_options( 'search_max_area', 1000 ),
-		'input_min'  => $search_min,
-		'input_max'  => $search_max,
+		'id'            => 'area',
+		'unit'          => opalestate_options( 'measurement_unit', 'sq ft' ) . ' ',
+		'ranger_min'    => opalestate_options( 'search_min_area', 0 ),
+		'ranger_max'    => opalestate_options( 'search_max_area', 1000 ),
+		'input_min'     => $search_min,
+		'input_max'     => $search_max,
+		'unit_thousand' => apply_filters( 'opalestate_areasize_unit_thousand', ',' ),
 	];
 
 	opalesate_property_slide_ranger_template( esc_html__( 'Area', 'opalestate-pro' ), $data );
@@ -82,7 +83,7 @@ function opalestate_property_areasize_field_template( $template = '' ) {
 	return;
 }
 
-add_filter( "opalestate_property_areasize_field_template", 'opalestate_property_areasize_field_template' );
+add_filter( 'opalestate_property_areasize_field_template', 'opalestate_property_areasize_field_template' );
 
 /**
  * Render slider ranger template.
@@ -100,6 +101,7 @@ function opalesate_property_slide_ranger_template( $label, $data ) {
 		'input_min'     => 0,
 		'input_max'     => 1000,
 		'unit_position' => 'postfix',
+		'unit_thousand' => ',',
 		'mode'          => 2,
 		'start'         => '',
 	];
@@ -109,7 +111,8 @@ function opalesate_property_slide_ranger_template( $label, $data ) {
 	extract( $data );
 	?>
     <label class="opalestate-label opalestate-label--<?php echo sanitize_title( $label ); ?>"><?php echo esc_html( $label ); ?></label>
-    <div class="opal-slide-ranger" data-unit="<?php echo $unit; ?>" data-unitpos="<?php echo $unit_position ?>" data-decimals="<?php echo $decimals; ?>">
+    <div class="opal-slide-ranger" data-unit="<?php echo $unit; ?>" data-unitpos="<?php echo $unit_position ?>" data-decimals="<?php echo $decimals; ?>" data-thousand="<?php echo esc_attr(
+		$unit_thousand ); ?>">
         <label class="slide-ranger-label">
             <span class="slide-ranger-min-label"></span>
 			<?php echo ( $mode == 2 ) ? '<i>-</i>' : ''; ?>
