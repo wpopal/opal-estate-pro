@@ -57,10 +57,10 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 			'/' . $this->base,
 			[
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_items' ],
-					// 'permission_callback' => [ $this, 'get_items_permissions_check' ],
-					'args'     => $this->get_collection_params(),
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_items' ],
+					'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'args'                => $this->get_collection_params(),
 				],
 			]
 		);
@@ -76,9 +76,9 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 					],
 				],
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_item' ],
-					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_item' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
 				// [
 				// 	'methods'  => WP_REST_Server::EDITABLE,
@@ -99,9 +99,9 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 					],
 				],
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_listings' ],
-					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_listings' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
 			]
 		);

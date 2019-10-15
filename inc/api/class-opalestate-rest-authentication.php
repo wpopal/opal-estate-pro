@@ -2,7 +2,7 @@
 /**
  * REST API Authentication
  *
- * @package  WooCommerce/API
+ * @package  Opalestate/API
  * @since    2.6.0
  */
 
@@ -578,7 +578,7 @@ class Opalestate_REST_Authentication {
 	 */
 	public function send_unauthorized_headers( $response ) {
 		if ( is_wp_error( $this->get_error() ) && 'basic_auth' === $this->auth_method ) {
-			$auth_message = __( 'WooCommerce API. Use a consumer key in the username field and a consumer secret in the password field.', 'opalestate-pro' );
+			$auth_message = __( 'Opalestate API. Use a consumer key in the username field and a consumer secret in the password field.', 'opalestate-pro' );
 			$response->header( 'WWW-Authenticate', 'Basic realm="' . $auth_message . '"', true );
 		}
 
