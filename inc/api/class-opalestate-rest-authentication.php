@@ -3,7 +3,6 @@
  * REST API Authentication
  *
  * @package  Opalestate/API
- * @since    2.6.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -38,10 +37,10 @@ class Opalestate_REST_Authentication {
 	 * Initialize authentication actions.
 	 */
 	public function __construct() {
-		add_filter( 'determine_current_user', array( $this, 'authenticate' ), 15 );
-		add_filter( 'rest_authentication_errors', array( $this, 'check_authentication_error' ), 15 );
-		add_filter( 'rest_post_dispatch', array( $this, 'send_unauthorized_headers' ), 50 );
-		add_filter( 'rest_pre_dispatch', array( $this, 'check_user_permissions' ), 10, 3 );
+		add_filter( 'determine_current_user', [ $this, 'authenticate' ], 15 );
+		add_filter( 'rest_authentication_errors', [ $this, 'check_authentication_error' ], 15 );
+		add_filter( 'rest_post_dispatch', [ $this, 'send_unauthorized_headers' ], 50 );
+		add_filter( 'rest_pre_dispatch', [ $this, 'check_user_permissions' ], 10, 3 );
 	}
 
 	/**
@@ -165,7 +164,7 @@ class Opalestate_REST_Authentication {
 
 		// Validate user secret.
 		if ( ! hash_equals( $this->user->consumer_secret, $consumer_secret ) ) { // @codingStandardsIgnoreLine
-			$this->set_error( new WP_Error( 'opalestate_rest_authentication_error', __( 'Consumer secret is invalid.', 'opalestate-pro' ), array( 'status' => 401 ) ) );
+			$this->set_error( new WP_Error( 'opalestate_rest_authentication_error', __( 'Consumer secret is invalid.', 'opalestate-pro' ), [ 'status' => 401 ] ) );
 
 			return false;
 		}
@@ -176,19 +175,17 @@ class Opalestate_REST_Authentication {
 	/**
 	 * Parse the Authorization header into parameters.
 	 *
-	 * @since 3.0.0
-	 *
 	 * @param string $header Authorization header value (not including "Authorization: " prefix).
 	 *
 	 * @return array Map of parameter values.
 	 */
 	public function parse_header( $header ) {
 		if ( 'OAuth ' !== substr( $header, 0, 6 ) ) {
-			return array();
+			return [];
 		}
 
 		// From OAuth PHP library, used under MIT license.
-		$params = array();
+		$params = [];
 		if ( preg_match_all( '/(oauth_[a-z_-]*)=(:?"([^"]*)"|([^,]*))/', $header, $matches ) ) {
 			foreach ( $matches[1] as $i => $h ) {
 				$params[ $h ] = urldecode( empty( $matches[3][ $i ] ) ? $matches[4][ $i ] : $matches[3][ $i ] );
@@ -209,9 +206,8 @@ class Opalestate_REST_Authentication {
 	 * generate `PHP_AUTH_USER`/`PHP_AUTH_PASS` but not passed on. We use
 	 * `getallheaders` here to try and grab it out instead.
 	 *
-	 * @since 3.0.0
-	 *
 	 * @return string Authorization header if set.
+	 *
 	 */
 	public function get_authorization_header() {
 		if ( ! empty( $_SERVER['HTTP_AUTHORIZATION'] ) ) {
@@ -234,8 +230,6 @@ class Opalestate_REST_Authentication {
 	/**
 	 * Get oAuth parameters from $_GET, $_POST or request header.
 	 *
-	 * @since 3.0.0
-	 *
 	 * @return array|WP_Error
 	 */
 	public function get_oauth_parameters() {
@@ -253,15 +247,15 @@ class Opalestate_REST_Authentication {
 			}
 		}
 
-		$param_names = array(
+		$param_names = [
 			'oauth_consumer_key',
 			'oauth_timestamp',
 			'oauth_nonce',
 			'oauth_signature',
 			'oauth_signature_method',
-		);
+		];
 
-		$errors   = array();
+		$errors   = [];
 		$have_one = false;
 
 		// Check for required OAuth parameters.
@@ -275,21 +269,21 @@ class Opalestate_REST_Authentication {
 
 		// All keys are missing, so we're probably not even trying to use OAuth.
 		if ( ! $have_one ) {
-			return array();
+			return [];
 		}
 
 		// If we have at least one supplied piece of data, and we have an error,
 		// then it's a failed authentication.
 		if ( ! empty( $errors ) ) {
 			$message = sprintf(
-				/* translators: %s: amount of errors */
+			/* translators: %s: amount of errors */
 				_n( 'Missing OAuth parameter %s', 'Missing OAuth parameters %s', count( $errors ), 'opalestate-pro' ),
 				implode( ', ', $errors )
 			);
 
-			$this->set_error( new WP_Error( 'opalestate_rest_authentication_missing_parameter', $message, array( 'status' => 401 ) ) );
+			$this->set_error( new WP_Error( 'opalestate_rest_authentication_missing_parameter', $message, [ 'status' => 401 ] ) );
 
-			return array();
+			return [];
 		}
 
 		return $params;
@@ -323,7 +317,7 @@ class Opalestate_REST_Authentication {
 		$this->user = $this->get_user_data_by_consumer_key( $params['oauth_consumer_key'] );
 
 		if ( empty( $this->user ) ) {
-			$this->set_error( new WP_Error( 'opalestate_rest_authentication_error', __( 'Consumer key is invalid.', 'opalestate-pro' ), array( 'status' => 401 ) ) );
+			$this->set_error( new WP_Error( 'opalestate_rest_authentication_error', __( 'Consumer key is invalid.', 'opalestate-pro' ), [ 'status' => 401 ] ) );
 
 			return false;
 		}
@@ -332,12 +326,14 @@ class Opalestate_REST_Authentication {
 		$signature = $this->check_oauth_signature( $this->user, $params );
 		if ( is_wp_error( $signature ) ) {
 			$this->set_error( $signature );
+
 			return false;
 		}
 
 		$timestamp_and_nonce = $this->check_oauth_timestamp_and_nonce( $this->user, $params['oauth_timestamp'], $params['oauth_nonce'] );
 		if ( is_wp_error( $timestamp_and_nonce ) ) {
 			$this->set_error( $timestamp_and_nonce );
+
 			return false;
 		}
 
@@ -367,7 +363,7 @@ class Opalestate_REST_Authentication {
 
 		// Sort parameters.
 		if ( ! uksort( $params, 'strcmp' ) ) {
-			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid signature - failed to sort parameters.', 'opalestate-pro' ), array( 'status' => 401 ) );
+			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid signature - failed to sort parameters.', 'opalestate-pro' ), [ 'status' => 401 ] );
 		}
 
 		// Normalize parameter key/values.
@@ -376,7 +372,7 @@ class Opalestate_REST_Authentication {
 		$string_to_sign = $http_method . '&' . $base_request_uri . '&' . $query_string;
 
 		if ( 'HMAC-SHA1' !== $params['oauth_signature_method'] && 'HMAC-SHA256' !== $params['oauth_signature_method'] ) {
-			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid signature - signature method is invalid.', 'opalestate-pro' ), array( 'status' => 401 ) );
+			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid signature - signature method is invalid.', 'opalestate-pro' ), [ 'status' => 401 ] );
 		}
 
 		$hash_algorithm = strtolower( str_replace( 'HMAC-', '', $params['oauth_signature_method'] ) );
@@ -384,7 +380,7 @@ class Opalestate_REST_Authentication {
 		$signature      = base64_encode( hash_hmac( $hash_algorithm, $string_to_sign, $secret, true ) );
 
 		if ( ! hash_equals( $signature, $consumer_signature ) ) { // @codingStandardsIgnoreLine
-			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid signature - provided signature does not match.', 'opalestate-pro' ), array( 'status' => 401 ) );
+			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid signature - provided signature does not match.', 'opalestate-pro' ), [ 'status' => 401 ] );
 		}
 
 		return true;
@@ -393,12 +389,12 @@ class Opalestate_REST_Authentication {
 	/**
 	 * Creates an array of urlencoded strings out of each array key/value pairs.
 	 *
-	 * @param  array  $params       Array of parameters to convert.
-	 * @param  array  $query_params Array to extend.
-	 * @param  string $key          Optional Array key to append.
+	 * @param array  $params       Array of parameters to convert.
+	 * @param array  $query_params Array to extend.
+	 * @param string $key          Optional Array key to append.
 	 * @return string               Array of urlencoded strings.
 	 */
-	private function join_with_equals_sign( $params, $query_params = array(), $key = '' ) {
+	private function join_with_equals_sign( $params, $query_params = [], $key = '' ) {
 		foreach ( $params as $param_key => $param_value ) {
 			if ( $key ) {
 				$param_key = $key . '%5B' . $param_key . '%5D'; // Handle multi-dimensional array.
@@ -430,9 +426,9 @@ class Opalestate_REST_Authentication {
 	 * This conforms to the OAuth 1.0a spec which indicates the entire query string
 	 * should be URL encoded.
 	 *
-	 * @see rawurlencode()
 	 * @param array $parameters Un-normalized parameters.
 	 * @return array Normalized parameters.
+	 * @see rawurlencode()
 	 */
 	private function normalize_parameters( $parameters ) {
 		$keys       = opalestate_rest_urlencode_rfc3986( array_keys( $parameters ) );
@@ -460,17 +456,17 @@ class Opalestate_REST_Authentication {
 		$valid_window = 15 * 60; // 15 minute window.
 
 		if ( ( $timestamp < time() - $valid_window ) || ( $timestamp > time() + $valid_window ) ) {
-			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid timestamp.', 'opalestate-pro' ), array( 'status' => 401 ) );
+			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid timestamp.', 'opalestate-pro' ), [ 'status' => 401 ] );
 		}
 
 		$used_nonces = maybe_unserialize( $user->nonces );
 
 		if ( empty( $used_nonces ) ) {
-			$used_nonces = array();
+			$used_nonces = [];
 		}
 
 		if ( in_array( $nonce, $used_nonces, true ) ) {
-			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid nonce - nonce has already been used.', 'opalestate-pro' ), array( 'status' => 401 ) );
+			return new WP_Error( 'opalestate_rest_authentication_error', __( 'Invalid nonce - nonce has already been used.', 'opalestate-pro' ), [ 'status' => 401 ] );
 		}
 
 		$used_nonces[ $timestamp ] = $nonce;
@@ -486,10 +482,10 @@ class Opalestate_REST_Authentication {
 
 		$wpdb->update(
 			$wpdb->prefix . 'opalestate_api_keys',
-			array( 'nonces' => $used_nonces ),
-			array( 'key_id' => $user->key_id ),
-			array( '%s' ),
-			array( '%d' )
+			[ 'nonces' => $used_nonces ],
+			[ 'key_id' => $user->key_id ],
+			[ '%s' ],
+			[ '%d' ]
 		);
 
 		return true;
@@ -532,7 +528,7 @@ class Opalestate_REST_Authentication {
 			case 'HEAD':
 			case 'GET':
 				if ( 'read' !== $permissions && 'read_write' !== $permissions ) {
-					return new WP_Error( 'opalestate_rest_authentication_error', __( 'The API key provided does not have read permissions.', 'opalestate-pro' ), array( 'status' => 401 ) );
+					return new WP_Error( 'opalestate_rest_authentication_error', __( 'The API key provided does not have read permissions.', 'opalestate-pro' ), [ 'status' => 401 ] );
 				}
 				break;
 			case 'POST':
@@ -540,14 +536,14 @@ class Opalestate_REST_Authentication {
 			case 'PATCH':
 			case 'DELETE':
 				if ( 'write' !== $permissions && 'read_write' !== $permissions ) {
-					return new WP_Error( 'opalestate_rest_authentication_error', __( 'The API key provided does not have write permissions.', 'opalestate-pro' ), array( 'status' => 401 ) );
+					return new WP_Error( 'opalestate_rest_authentication_error', __( 'The API key provided does not have write permissions.', 'opalestate-pro' ), [ 'status' => 401 ] );
 				}
 				break;
 			case 'OPTIONS':
 				return true;
 
 			default:
-				return new WP_Error( 'opalestate_rest_authentication_error', __( 'Unknown request method.', 'opalestate-pro' ), array( 'status' => 401 ) );
+				return new WP_Error( 'opalestate_rest_authentication_error', __( 'Unknown request method.', 'opalestate-pro' ), [ 'status' => 401 ] );
 		}
 
 		return true;
@@ -561,10 +557,10 @@ class Opalestate_REST_Authentication {
 
 		$wpdb->update(
 			$wpdb->prefix . 'opalestate_api_keys',
-			array( 'last_access' => current_time( 'mysql' ) ),
-			array( 'key_id' => $this->user->key_id ),
-			array( '%s' ),
-			array( '%d' )
+			[ 'last_access' => current_time( 'mysql' ) ],
+			[ 'key_id' => $this->user->key_id ],
+			[ '%s' ],
+			[ '%d' ]
 		);
 	}
 
