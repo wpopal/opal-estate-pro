@@ -33,14 +33,35 @@ class Opalestate_Admin {
 	 * enqueue editor.js for edit mode
 	 */
 	public function enqueue_scripts() {
+		$screen       = get_current_screen();
+		$screen_id    = $screen ? $screen->id : '';
+
 		wp_enqueue_style( 'opalestate-admin', OPALESTATE_PLUGIN_URL . 'assets/admin.css', [], '3.0.3' );
 
 		$suffix = '';
 		wp_enqueue_style( 'select2', OPALESTATE_PLUGIN_URL . 'assets/3rd/select2/css/select2.min.css', null, '1.3' );
 		wp_enqueue_script( 'select2', OPALESTATE_PLUGIN_URL . 'assets/3rd/select2/js/select2.min.js', null, '1.3', true );
 
-		wp_enqueue_script( 'opalestate-country-select', OPALESTATE_PLUGIN_URL . 'assets/js/country-select.js', [ 'jquery' ], null, true );
-		wp_enqueue_script( 'opalestate-admin', OPALESTATE_PLUGIN_URL . 'assets/js/admin' . $suffix . '.js', [ 'jquery' ], null, true );
+		wp_enqueue_script( 'opalestate-country-select', OPALESTATE_PLUGIN_URL . 'assets/js/country-select.js', [ 'jquery' ], OPALESTATE_VERSION, true );
+		wp_enqueue_script( 'opalestate-admin', OPALESTATE_PLUGIN_URL . 'assets/js/admin' . $suffix . '.js', [ 'jquery' ], OPALESTATE_VERSION, true );
+		wp_register_script( 'jquery-blockui', OPALESTATE_PLUGIN_URL . 'assets/3rd/jquery-blockui/jquery.blockUI' . $suffix . '.js', array( 'jquery' ), '2.70', true );
+		wp_register_script( 'opal-clipboard', OPALESTATE_PLUGIN_URL . 'assets/3rd/opal-clipboard.js', array( 'jquery' ), OPALESTATE_VERSION, true );
+
+		// API settings.
+		if ( 'opalestate_property_page_opalestate-settings' === $screen_id && isset( $_GET['tab'] ) && 'api_keys' == $_GET['tab'] ) {
+			wp_register_script( 'opalestate-api-keys', OPALESTATE_PLUGIN_URL . 'assets/js/api-keys' . $suffix . '.js', array( 'jquery', 'opalestate-admin', 'underscore', 'backbone', 'wp-util', 'jquery-blockui', 'opal-clipboard' ),
+				OPALESTATE_VERSION, true );
+			wp_enqueue_script( 'opalestate-api-keys' );
+			wp_localize_script(
+				'opalestate-api-keys',
+				'opalestate_admin_api_keys',
+				array(
+					'ajax_url'         => admin_url( 'admin-ajax.php' ),
+					'update_api_nonce' => wp_create_nonce( 'update-api-key' ),
+					'clipboard_failed' => esc_html__( 'Copying to clipboard failed. Please press Ctrl/Cmd+C to copy.', 'opalestate-pro' ),
+				)
+			);
+		}
 	}
 
 	/**
@@ -67,11 +88,8 @@ class Opalestate_Admin {
 			'settings/property.php',
 		] );
 
-		// 
-
 		// Get it started
 		$Opalestate_Settings = new Opalestate_Plugin_Settings();
-
 	}
 
 	/**

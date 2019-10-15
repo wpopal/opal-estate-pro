@@ -92,9 +92,8 @@ class Opalestate_Emails {
 		$mail->set_pros( $post_id, $user_id );
 		$return = self::send_mail_now( $mail );
 
-		echo json_encode( $return );
-		die();
-
+		// echo json_encode( $return );
+		// die();
 	}
 
 	/**

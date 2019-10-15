@@ -95,3 +95,26 @@ function opalestate_api_get_property_data( $property_info ) {
 
 	return apply_filters( 'opalestate_api_properties_property', $property );
 }
+
+/**
+ * Generate a rand hash.
+ *
+ * @return string
+ */
+function opalestate_rand_hash() {
+	if ( ! function_exists( 'openssl_random_pseudo_bytes' ) ) {
+		return sha1( wp_rand() );
+	}
+
+	return bin2hex( openssl_random_pseudo_bytes( 20 ) ); // @codingStandardsIgnoreLine
+}
+
+/**
+ * Opalestate API - Hash.
+ *
+ * @param  string $data Message to be hashed.
+ * @return string
+ */
+function opalestate_api_hash( $data ) {
+	return hash_hmac( 'sha256', $data, 'opalestate-api' );
+}

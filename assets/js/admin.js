@@ -40,6 +40,7 @@ jQuery(document).ready(function($){
         load_select2_member( '#opalestate_ppt_agent', 'opalestate_search_agents'  );
         load_select2_member( '#opalestate_ppt_agency', 'opalestate_search_agencies'  );
         load_select2_member( '#p-assignment #post_author_override', 'opalestate_search_property_users' );
+        load_select2_member( '.opalestate-customer-search', 'opalestate_search_property_users' );
 
         function formatRepo (repo) {
             if ( repo.loading ) {

@@ -46,9 +46,10 @@ class Opalestate_Plugin_Settings {
 	 */
 	protected $options_page = '';
 
-	protected $subtabs = array();
+	protected $subtabs = [];
 
-	protected $setting_object = array();
+	protected $setting_object = [];
+
 	/**
 	 * Constructor
 	 *
@@ -67,23 +68,32 @@ class Opalestate_Plugin_Settings {
 		// add_action( 'cmb2_render_license_key', 'opalestate_license_key_callback', 10, 5 );
 		add_action( "cmb2_save_options-page_fields", [ $this, 'settings_notices' ], 10, 3 );
 
-
-		add_action( 'cmb2_render_api_keys', 'opalestate_api_keys_callback', 10, 5 );
-
 		// Include CMB CSS in the head to avoid FOUC
 		add_action( "admin_print_styles-opalestate_properties_page_opalestate-settings", [ 'CMB2_hookup', 'enqueue_cmb_css' ] );
 	}
 
 	public function admin_menu() {
-		//Settings
-		$opalestate_settings_page = add_submenu_page( 'edit.php?post_type=opalestate_property', esc_html__( 'Settings', 'opalestate-pro' ), esc_html__( 'Settings', 'opalestate-pro' ), 'manage_opalestate_settings',
+		// Settings
+		$opalestate_settings_page = add_submenu_page(
+			'edit.php?post_type=opalestate_property',
+			esc_html__( 'Opalestate Settings', 'opalestate-pro' ),
+			esc_html__( 'Settings', 'opalestate-pro' ),
+			'manage_opalestate_settings',
 			'opalestate-settings',
 			[ $this, 'admin_page_display' ] );
 
-		// addons setting
-		$opalestate_settings_page = add_submenu_page( 'edit.php?post_type=opalestate_property', esc_html__( 'Addons', 'opalestate-pro' ), esc_html__( 'Addons', 'opalestate-pro' ), 'manage_options', 'opalestate-addons',
+		do_action( 'load-' . $opalestate_settings_page, $this );
+
+		// Addons
+		$opalestate_addons_page = add_submenu_page(
+			'edit.php?post_type=opalestate_property',
+			esc_html__( 'Opalestate Addons', 'opalestate-pro' ),
+			esc_html__( 'Addons', 'opalestate-pro' ),
+			'manage_options',
+			'opalestate-addons',
 			[ $this, 'admin_addons_page_display' ] );
 
+		do_action( 'load-' . $opalestate_addons_page, $this );
 	}
 
 	/**
@@ -93,7 +103,6 @@ class Opalestate_Plugin_Settings {
 	 */
 	public function init() {
 		register_setting( $this->key, $this->key );
-
 	}
 
 	/**
@@ -119,7 +128,7 @@ class Opalestate_Plugin_Settings {
 			$tabs['licenses'] = esc_html__( 'Licenses', 'opalestate-pro' );
 		}
 
-		$tabs['api_keys'] = esc_html__( 'API', 'opalestate-pro' );
+		$tabs['api_keys']  = esc_html__( 'API', 'opalestate-pro' );
 		$tabs['3rd_party'] = esc_html__( '3rd Party', 'opalestate-pro' );
 
 		return apply_filters( 'opalestate_settings_tabs', $tabs );
@@ -129,15 +138,16 @@ class Opalestate_Plugin_Settings {
 		require_once opalestate_get_admin_view( 'addons/list.php' );
 	}
 
-	public function get_subtabs_link ( $tab_id , $stab_id ) {
+	public function get_subtabs_link( $tab_id, $stab_id ) {
 		$tab_url = esc_url( add_query_arg( [
 			'settings-updated' => false,
 			'tab'              => $tab_id,
-			'subtab'			=> $stab_id
+			'subtab'           => $stab_id,
 		] ) );
 
 		return $tab_url;
 	}
+
 	/**
 	 * Admin page markup. Mostly handled by CMB2
 	 *
@@ -147,31 +157,30 @@ class Opalestate_Plugin_Settings {
 
 		$active_tab = isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $this->opalestate_get_settings_tabs() ) ? $_GET['tab'] : 'general';
 
-		$sub_active_tab = isset( $_GET['subtab'] ) ? sanitize_text_field( $_GET['subtab'] ): '';
+		$sub_active_tab = isset( $_GET['subtab'] ) ? sanitize_text_field( $_GET['subtab'] ) : '';
 
-		$tabs_fields = $this->opalestate_settings( $active_tab );
-		$sub_tabs_fields = array(); 
+		$tabs_fields     = $this->opalestate_settings( $active_tab );
+		$sub_tabs_fields = [];
 
-		if( empty($sub_active_tab) && $this->subtabs ){
-			$first = array_flip( $this->subtabs ); 
-			$sub_active_tab = reset( $first ); 
+		if ( empty( $sub_active_tab ) && $this->subtabs ) {
+			$first          = array_flip( $this->subtabs );
+			$sub_active_tab = reset( $first );
 		}
 
-		if(  $this->subtabs ){
+		if ( $this->subtabs ) {
 			$sub_tabs_fields = $this->setting_object->get_subtabs_content( $sub_active_tab );
 		}
-	?>
+		?>
 
         <div class="wrap opalestate_settings_page cmb2_options_page <?php echo $this->key; ?>">
             <h2 class="nav-tab-wrapper">
 				<?php
 				foreach ( $this->opalestate_get_settings_tabs() as $tab_id => $tab_name ) {
-
 					$tab_url = esc_url( add_query_arg( [
 						'settings-updated' => false,
 						'tab'              => $tab_id,
-						'subtab'	=> false
-					] ) );
+						'subtab'           => false,
+					], admin_url( 'edit.php?post_type=opalestate_property&page=opalestate-settings' ) ) );
 
 					$active = $active_tab == $tab_id ? ' nav-tab-active' : '';
 
@@ -183,31 +192,31 @@ class Opalestate_Plugin_Settings {
 				?>
             </h2>
             <div class="form-settings-wrap">
-            	<?php if( $this->subtabs ): ?>
-            	<div class="subtab-settings-navs">
-            		<ul>
-            			
-            			<?php foreach( $this->subtabs as $key => $value ): ?>
-            			<li>
-            				<a <?php if( $key == $sub_active_tab ): ?>class="active"<?php endif; ?> href="<?php echo esc_url( $this->get_subtabs_link( $active_tab, $key ) ); ?>">
-            					<?php echo $value; ?>
-            				</a>
-            			</li>
-            			<?php endforeach; ?>
+				<?php if ( $this->subtabs ): ?>
+                    <div class="subtab-settings-navs">
+                        <ul>
 
-            		</ul>
-            	</div>
-            	<?php endif ; ?>
+							<?php foreach ( $this->subtabs as $key => $value ): ?>
+                                <li>
+                                    <a <?php if ( $key == $sub_active_tab ): ?>class="active"<?php endif; ?> href="<?php echo esc_url( $this->get_subtabs_link( $active_tab, $key ) ); ?>">
+										<?php echo $value; ?>
+                                    </a>
+                                </li>
+							<?php endforeach; ?>
 
-            	<div class="form-settings-form">
-	            	<?php if( $sub_active_tab ): ?>
-		            	<?php cmb2_metabox_form( $sub_tabs_fields , $this->key ); ?>
-		            <?php else :   ?>	
-						<?php cmb2_metabox_form( $tabs_fields , $this->key ); ?>
+                        </ul>
+                    </div>
+				<?php endif; ?>
+
+                <div class="form-settings-form">
+					<?php if ( $sub_active_tab ): ?>
+						<?php cmb2_metabox_form( $sub_tabs_fields, $this->key ); ?>
+					<?php else : ?>
+						<?php cmb2_metabox_form( $tabs_fields, $this->key ); ?>
 					<?php endif; ?>
-				</div>	
+                </div>
             </div>
-            
+
 
         </div><!-- .wrap -->
 
@@ -230,29 +239,31 @@ class Opalestate_Plugin_Settings {
 			'numberposts' => -1,
 		] );
 
-		$general 			 = array();
-		$opalestate_settings = array();
-	
+		$general             = [];
+		$opalestate_settings = [];
+
 		//Return all settings array if necessary
 
 		if ( $active_tab === null ) {
 			return apply_filters( 'opalestate_registered_settings', $opalestate_settings );
 		}
-		
-		$output = apply_filters( 'opalestate_registered_' . $active_tab . '_settings', isset( $opalestate_settings[ $active_tab ] ) ? $opalestate_settings[ $active_tab ] : [] ); 
 
-		if( empty($output) ){
-			$class = "Opalestate_Settings_".ucfirst( $active_tab )."_Tab";
+		$output = apply_filters( 'opalestate_registered_' . $active_tab . '_settings', isset( $opalestate_settings[ $active_tab ] ) ? $opalestate_settings[ $active_tab ] : [] );
 
-			if( class_exists($class) ){
-				$tab 				  = new $class(  $this->key );
-				$this->setting_object = $tab; 
-				$this->subtabs 	 	  = $tab->get_subtabs();
+		if ( empty( $output ) ) {
+			$class = "Opalestate_Settings_" . ucfirst( $active_tab ) . "_Tab";
 
-				return $tab->get_tab_content( $this->key );	
+			if ( class_exists( $class ) ) {
+				$tab                  = new $class( $this->key );
+				$this->setting_object = $tab;
+				$this->subtabs        = $tab->get_subtabs();
+
+				return $tab->get_tab_content( $this->key );
 			}
-			return array( $active_tab => array() );
+
+			return [ $active_tab => [] ];
 		}
+
 		// Add other tabs and settings fields as needed
 		return $output;
 

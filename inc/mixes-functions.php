@@ -1232,3 +1232,18 @@ function opalestate_is_enable_price_field() {
 function opalestate_is_enable_areasize_field() {
 	return 'on' == opalestate_get_option( 'opalestate_ppt_areasize_opt', 'on' );
 }
+
+/**
+ * Clean variables using sanitize_text_field. Arrays are cleaned recursively.
+ * Non-scalar values are ignored.
+ *
+ * @param string|array $var Data to sanitize.
+ * @return string|array
+ */
+function opalestate_clean( $var ) {
+	if ( is_array( $var ) ) {
+		return array_map( 'opalestate_clean', $var );
+	} else {
+		return is_scalar( $var ) ? sanitize_text_field( $var ) : $var;
+	}
+}

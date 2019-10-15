@@ -57,6 +57,7 @@ class Opalestate_Install {
 		OpalEstate_User_Search::install();
 		OpalEstate_User_Message::install();
 		OpalEstate_User_Request_Viewing::install();
+		Opalestate_API::install();
 	}
 
 	/**

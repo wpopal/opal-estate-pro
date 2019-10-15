@@ -1,17 +1,15 @@
 jQuery( document ).ready( function ( $ ) {
     'use strict';
 
-
-    var toggleSubmit = function ( _this ){
-        if( $( _this ).attr('disabled') == "disabled" ){
-             $( _this ).removeAttr( 'disabled' );
-             $(_this).find('i').remove( );  
+    var toggleSubmit = function ( _this ) {
+        if ( $( _this ).attr( 'disabled' ) == 'disabled' ) {
+            $( _this ).removeAttr( 'disabled' );
+            $( _this ).find( 'i' ).remove();
         } else {
-             $( _this ).attr('disabled','disabled');
-             $(_this).append( '<i class="fa fa-spinner fa-spin"></i>' );   
+            $( _this ).attr( 'disabled', 'disabled' );
+            $( _this ).append( '<i class="fa fa-spinner fa-spin"></i>' );
         }
-       
-    }; 
+    };
 
     $( '.opalestate-submission-tab' ).each( function () {
         var $submission_tab = $( this );
@@ -35,93 +33,87 @@ jQuery( document ).ready( function ( $ ) {
                 $submit_btn.parents( 'form' ).submit();
             }
         } );
-       
-       /* 
-       $next_btn.click( function(){ 
-        //    $submit_btn.click();
-       
-            return false;
-        });
-        */
+
+        /*
+         $next_btn.click( function(){
+         //    $submit_btn.click();
+
+         return false;
+         });
+         */
         var submitFormFiles = function ( name, files ) {
-            
             var formData = new FormData();
+            formData.append( 'section', 'general' );
+            //            formData.append('action', 'opalestate_submitted_property');
 
-            formData.append('section', 'general');
-//            formData.append('action', 'opalestate_submitted_property');
-            
+            $( '.cmb2-uploader-files' ).each( function () {
+                var file_btn = $( 'input.select-file', this );
 
-            $(".cmb2-uploader-files").each( function(){
-                var file_btn      = $( 'input.select-file', this ); 
-                
-                var files =  $(".uploader-item-preview", this );
+                var files = $( '.uploader-item-preview', this );
 
-                var name = $(this).data( 'name' );
-                var issingle = $( this ).data('single'); 
-                $(files).each( function( i , element ){ 
-                    var file = $(this).prop( 'file');
-                    if( file ) {
-                        if( issingle ){
-                            formData.append( name, file ); 
+                var name = $( this ).data( 'name' );
+                var issingle = $( this ).data( 'single' );
+                $( files ).each( function ( i, element ) {
+                    var file = $( this ).prop( 'file' );
+                    if ( file ) {
+                        if ( issingle ) {
+                            formData.append( name, file );
                         } else {
-                            formData.append( name+"["+i+"]", file ); 
+                            formData.append( name + '[' + i + ']', file );
                         }
                     }
                 } );
-            });
+            } );
 
-            // console.log( formData );
-
-            var dataSubmit =  $submit_btn.parents( 'form' ).serializeArray();
+            var dataSubmit = $submit_btn.parents( 'form' ).serializeArray();
 
             $.each( dataSubmit, function ( key, input ) {
-                formData.append( input.name, input.value ); 
-            });
+                formData.append( input.name, input.value );
+            } );
 
-            formData.append('action', 'opalestate_save_agency_data');
+            formData.append( 'action', 'opalestate_save_agency_data' );
             toggleSubmit( $submit_btn );
-            $.ajax({
-                url : opalesateJS.ajaxurl,
-                data : formData,
-                type : 'POST',
+            $.ajax( {
+                url: opalesateJS.ajaxurl,
+                data: formData,
+                type: 'POST',
                 processData: false,
                 contentType: false,
-                dataType: "json",
-                success : function( response ){
-                    if( response.status == true ){
-                        if( response.redirect ){
+                dataType: 'json',
+                success: function ( response ) {
+                    if ( response.status == true ) {
+                        if ( response.redirect ) {
                             window.location.href = response.redirect;
                         }
 
-                        var myToast = $.toast({
+                        var myToast = $.toast( {
                             heading: response.heading,
                             text: response.message,
                             icon: 'success',
-                            position:  'bottom-right', 
-                            hideAfter: 5000, 
+                            position: 'bottom-right',
+                            hideAfter: 5000,
                             showHideTransition: 'fade',
-                        });
+                        } );
                     } else {
                         toggleSubmit( $submit_btn );
-                        var myToast = $.toast({
+                        var myToast = $.toast( {
                             heading: response.heading,
                             text: response.message,
                             icon: 'error',
-                            position:  'bottom-right', 
-                             hideAfter: 5000, 
-                             showHideTransition: 'fade'
-                        });
+                            position: 'bottom-right',
+                            hideAfter: 5000,
+                            showHideTransition: 'fade'
+                        } );
                     }
                 }
-            });   
-        }
+            } );
+        };
 
-        $submit_btn.parents( 'form' ).on('submit', function() { 
-                submitFormFiles();
-                return false; 
-          } );
+        $submit_btn.parents( 'form' ).on( 'submit', function () {
+            submitFormFiles();
+            return false;
+        } );
 
-          
         // Clicking Next button
         $next_btn.on( 'click', function ( e ) {
             e.preventDefault();
@@ -184,8 +176,9 @@ jQuery( document ).ready( function ( $ ) {
             e.preventDefault();
             var $el = $( this );
             var $prev_tab_item = $el.prev();
-            if ( $el.hasClass( 'validated' ) || ($prev_tab_item.length != 0 && $prev_tab_item.hasClass( 'validated' ) &&
-                $prev_tab_item.hasClass( 'passed' )) ) {
+            if ( $el.hasClass( 'validated' ) ||
+                ( $prev_tab_item.length != 0 && $prev_tab_item.hasClass( 'validated' ) &&
+                    $prev_tab_item.hasClass( 'passed' ) ) ) {
                 $submission_tab.find( '.opalestate-tab-content' ).removeClass( 'active' );
                 $submission_tab.find( '.tab-item.active' ).removeClass( 'active' );
                 var $tab_id = $el.attr( 'href' );

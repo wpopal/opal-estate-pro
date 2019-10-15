@@ -1,15 +1,8 @@
 <?php
 /**
- * $Desc$
+ * OpalEstate_Search
  *
- * @version    $Id$
  * @package    opalestate
- * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,27 +16,24 @@ class OpalEstate_Search {
 	public static function init() {
 		add_action( 'wp_ajax_opalestate_ajx_get_properties', [ __CLASS__, 'get_search_json' ] );
 		add_action( 'wp_ajax_nopriv_opalestate_ajx_get_properties', [ __CLASS__, 'get_search_json' ] );
-
 		add_action( 'wp_ajax_opalestate_render_get_properties', [ __CLASS__, 'render_get_properties' ] );
 		add_action( 'wp_ajax_nopriv_opalestate_render_get_properties', [ __CLASS__, 'render_get_properties' ] );
-		//	add_filter( "pre_get_posts",   array( __CLASS__, 'change_archive_query' )   );
 	}
 
 	/**
-	 * Get Query Object to display collection of property with user request which submited via search form
+	 * Get Query Object to display collection of property with user request which submited via search form.
+	 *
+	 * @param int $limit Limit.
 	 */
 	public static function get_search_results_query( $limit = 9 ) {
-		// global $paged;
 		global $wp_query;
 
-		$show_featured_first = opalestate_options( 'show_featured_first', 1 );
-		$search_min_price    = isset( $_GET['min_price'] ) ? sanitize_text_field( $_GET['min_price'] ) : '';
-		$search_max_price    = isset( $_GET['max_price'] ) ? sanitize_text_field( $_GET['max_price'] ) : '';
+		$search_min_price = isset( $_GET['min_price'] ) ? sanitize_text_field( $_GET['min_price'] ) : '';
+		$search_max_price = isset( $_GET['max_price'] ) ? sanitize_text_field( $_GET['max_price'] ) : '';
 
 		$search_min_area = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : '';
 		$search_max_area = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : '';
 		$s               = isset( $_GET['search_text'] ) ? sanitize_text_field( $_GET['search_text'] ) : null;
-		$location_text   = isset( $_GET['location_text'] ) ? sanitize_text_field( $_GET['location_text'] ) : null;
 
 		$posts_per_page = apply_filters( 'opalestate_search_property_per_page', opalestate_options( 'search_property_per_page', $limit ) );
 
@@ -55,8 +45,6 @@ class OpalEstate_Search {
 			$paged = intval( $_GET['paged'] );
 		}
 
-		$infos = [];
-
 		$args = [
 			'posts_per_page' => $posts_per_page,
 			'paged'          => $paged,
@@ -64,7 +52,6 @@ class OpalEstate_Search {
 			'post_status'    => 'publish',
 			's'              => $s,
 		];
-
 
 		$tax_query = [];
 
@@ -139,13 +126,14 @@ class OpalEstate_Search {
 		$args['meta_query'] = [ 'relation' => 'AND' ];
 		if ( isset( $_GET['info'] ) && is_array( $_GET['info'] ) ) {
 			$metaquery = [];
+
 			foreach ( $_GET['info'] as $key => $value ) {
 				if ( trim( $value ) ) {
 					if ( is_numeric( trim( $value ) ) ) {
 						$fieldquery = [
 							'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
 							'value'   => sanitize_text_field( trim( $value ) ),
-							'compare' => '>=',
+							'compare' => apply_filters( 'opalestate_info_numeric_compare', '>=' ),
 							'type'    => 'NUMERIC',
 						];
 					} else {
@@ -160,6 +148,7 @@ class OpalEstate_Search {
 
 				}
 			}
+
 			$args['meta_query'] = array_merge( $args['meta_query'], $metaquery );
 		}
 
@@ -229,9 +218,7 @@ class OpalEstate_Search {
 			] );
 		}
 
-		///// search by address and geo location ///
 		if ( isset( $_GET['geo_long'] ) && isset( $_GET['geo_lat'] ) ) {
-
 			if ( $_GET['location_text'] && ( empty( $_GET['geo_long'] ) || empty( $_GET['geo_lat'] ) ) ) {
 				array_push( $args['meta_query'], [
 					'key'      => OPALESTATE_PROPERTY_PREFIX . 'map_address',
@@ -247,7 +234,6 @@ class OpalEstate_Search {
 			}
 		}
 
-		/// ///
 		$ksearchs = [];
 
 		if ( isset( $_REQUEST['opalsortable'] ) && ! empty( $_REQUEST['opalsortable'] ) ) {

@@ -299,3 +299,105 @@ function opalestate_get_agent_property() {
 	wp_reset_postdata();
 	exit;
 }
+
+function opalestate_update_api_key() {
+	ob_start();
+
+	global $wpdb;
+
+	check_ajax_referer( 'update-api-key', 'security' );
+
+	if ( ! current_user_can( 'manage_opalestate_settings' ) ) {
+		wp_die( -1 );
+	}
+
+	$response = [];
+
+	try {
+		if ( empty( $_POST['description'] ) ) {
+			throw new Exception( __( 'Description is missing.', 'opalestate-pro' ) );
+		}
+		if ( empty( $_POST['user'] ) ) {
+			throw new Exception( __( 'User is missing.', 'opalestate-pro' ) );
+		}
+		if ( empty( $_POST['permissions'] ) ) {
+			throw new Exception( __( 'Permissions is missing.', 'opalestate-pro' ) );
+		}
+
+		$key_id      = isset( $_POST['key_id'] ) ? absint( $_POST['key_id'] ) : 0;
+		$description = sanitize_text_field( wp_unslash( $_POST['description'] ) );
+		$permissions = ( in_array( wp_unslash( $_POST['permissions'] ), [ 'read', 'write', 'read_write' ], true ) ) ? sanitize_text_field( wp_unslash( $_POST['permissions'] ) ) : 'read';
+		$user_id     = absint( $_POST['user'] );
+
+		// Check if current user can edit other users.
+		if ( $user_id && ! current_user_can( 'edit_user', $user_id ) ) {
+			if ( get_current_user_id() !== $user_id ) {
+				throw new Exception( __( 'You do not have permission to assign API Keys to the selected user.', 'opalestate-pro' ) );
+			}
+		}
+
+		if ( 0 < $key_id ) {
+			$data = [
+				'user_id'     => $user_id,
+				'description' => $description,
+				'permissions' => $permissions,
+			];
+
+			$wpdb->update(
+				$wpdb->prefix . 'opalestate_api_keys',
+				$data,
+				[ 'key_id' => $key_id ],
+				[
+					'%d',
+					'%s',
+					'%s',
+				],
+				[ '%d' ]
+			);
+
+			$response                    = $data;
+			$response['consumer_key']    = '';
+			$response['consumer_secret'] = '';
+			$response['message']         = __( 'API Key updated successfully.', 'opalestate-pro' );
+		} else {
+			$consumer_key    = 'ck_' . opalestate_rand_hash();
+			$consumer_secret = 'cs_' . opalestate_rand_hash();
+
+			$data = [
+				'user_id'         => $user_id,
+				'description'     => $description,
+				'permissions'     => $permissions,
+				'consumer_key'    => opalestate_api_hash( $consumer_key ),
+				'consumer_secret' => $consumer_secret,
+				'truncated_key'   => substr( $consumer_key, -7 ),
+			];
+
+			$wpdb->insert(
+				$wpdb->prefix . 'opalestate_api_keys',
+				$data,
+				[
+					'%d',
+					'%s',
+					'%s',
+					'%s',
+					'%s',
+					'%s',
+				]
+			);
+
+			$key_id                      = $wpdb->insert_id;
+			$response                    = $data;
+			$response['consumer_key']    = $consumer_key;
+			$response['consumer_secret'] = $consumer_secret;
+			$response['message']         = __( 'API Key generated successfully. Make sure to copy your new keys now as the secret key will be hidden once you leave this page.', 'opalestate-pro' );
+			$response['revoke_url']      = '<a style="color: #a00; text-decoration: none;" href="' . esc_url( wp_nonce_url( add_query_arg( [ 'revoke-key' => $key_id ],
+					admin_url( 'edit.php?post_type=opalestate_property&page=opalestate-settings&tab=api_keys' ) ), 'revoke' ) ) . '">' . __( 'Revoke key', 'opalestate-pro' ) . '</a>';
+		}
+	} catch ( Exception $e ) {
+		wp_send_json_error( [ 'message' => $e->getMessage() ] );
+	}
+
+	// wp_send_json_success must be outside the try block not to break phpunit tests.
+	wp_send_json_success( $response );
+}
+add_action( 'wp_ajax_opalestate_update_api_key', 'opalestate_update_api_key' );
