@@ -38,12 +38,12 @@ class Opalestate_API {
 		$this->includes( [
 			'class-opalestate-admin-api-keys.php',
 			'class-opalestate-admin-api-keys-table-list.php',
+			'class-opalestate-rest-authentication.php',
 			'class-opalestate-base-api.php',
 			'v1/property.php',
 			'v1/agent.php',
 			'v1/agency.php',
 			'v1/search-form.php',
-			'class-opalestate-api-auth.php',
 			'functions.php',
 		] );
 

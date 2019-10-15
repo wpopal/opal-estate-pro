@@ -116,5 +116,20 @@ function opalestate_rand_hash() {
  * @return string
  */
 function opalestate_api_hash( $data ) {
-	return hash_hmac( 'sha256', $data, 'opalestate-api' );
+	return hash_hmac( 'sha256', $data, 'estate-api' );
+}
+
+/**
+ * Encodes a value according to RFC 3986.
+ * Supports multidimensional arrays.
+ *
+ * @param string|array $value The value to encode.
+ * @return string|array       Encoded values.
+ */
+function opalestate_rest_urlencode_rfc3986( $value ) {
+	if ( is_array( $value ) ) {
+		return array_map( 'opalestate_rest_urlencode_rfc3986', $value );
+	}
+
+	return str_replace( array( '+', '%7E' ), array( ' ', '~' ), rawurlencode( $value ) );
 }
