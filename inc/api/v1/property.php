@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Property_Api
  *
- * @since      1.0.0
  * @package    Property_Api
  */
 class Opalestate_Property_Api extends Opalestate_Base_API {
@@ -15,7 +14,6 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	/**
 	 * The unique identifier of the route resource.
 	 *
-	 * @since    1.0.0
 	 * @access   public
 	 * @var      string $base .
 	 */
@@ -32,9 +30,6 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	 * Register Routes
 	 *
 	 * Register all CURD actions with POST/GET/PUT and calling function for each
-	 *
-	 * @since 1.0
-	 *
 	 */
 	public function register_routes() {
 		/**
@@ -47,16 +42,16 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			'/' . $this->base,
 			[
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_items' ],
-					// 'permission_callback' => [ $this, 'get_items_permissions_check' ],
-					'args'     => $this->get_collection_params(),
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_items' ],
+					'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'args'                => $this->get_collection_params(),
 				],
-				// [
-				// 	'methods'  => WP_REST_Server::CREATABLE,
-				// 	'callback' => [ $this, 'create_item' ],
-				// 	// 'permission_callback' => [ $this, 'create_item_permissions_check' ],
-				// ],
+				[
+					'methods'  => WP_REST_Server::CREATABLE,
+					'callback' => [ $this, 'create_item' ],
+					'permission_callback' => [ $this, 'create_item_permissions_check' ],
+				],
 			]
 		);
 
@@ -71,9 +66,9 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 					],
 				],
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_item' ],
-					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_item' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
 				// [
 				// 	'methods'  => WP_REST_Server::EDITABLE,
@@ -100,13 +95,24 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			'/' . $this->base . '/search',
 			[
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_results' ],
-					// 'permission_callback' => [ $this, 'get_items_permissions_check' ],
-					'args'     => $this->get_search_params(),
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_results' ],
+					'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'args'                => $this->get_search_params(),
 				],
 			]
 		);
+	}
+
+	/**
+	 * Get object.
+	 *
+	 * @param int $id Object ID.
+	 *
+	 * @return Opalestate_Property
+	 */
+	protected function get_object( $id ) {
+		return opalesetate_property( $id );
 	}
 
 	/**
@@ -152,8 +158,6 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	 * Based on request to get a property.
 	 *
 	 * @return WP_REST_Response is json data
-	 * @since 1.0
-	 *
 	 */
 	public function get_item( $request ) {
 		$response = [];
@@ -191,7 +195,7 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	}
 
 	public function get_results( $request ) {
-		$properties = [];
+		$properties    = [];
 		$property_list = $this->get_search_results_query( $request );
 
 		if ( $property_list ) {
@@ -214,9 +218,7 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	 *
 	 * @param object $property_info The Download Post Object
 	 *
-	 * @return array                Array of post data to return back in the API
-	 * @since  1.0
-	 *
+	 * @return array Array of post data to return back in the API
 	 */
 	private function get_property_data( $property_info ) {
 		return opalestate_api_get_property_data( $property_info );

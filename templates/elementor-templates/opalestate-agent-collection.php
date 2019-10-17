@@ -1,5 +1,6 @@
 <?php
 $settings = $this->get_settings_for_display();
+extract( $settings );
 $layout   = $settings['item_layout'];
 $attrs    = $this->get_render_attribute_string( 'wrapper-style' );
 if ( isset( $_GET['display'] ) && $_GET['display'] == 'grid' ) {
@@ -10,13 +11,19 @@ if ( isset( $_GET['display'] ) && $_GET['display'] == 'grid' ) {
 	$attrs  = 'class="column-list"';
 }
 
+if ( is_front_page() ) {
+	$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
+} else {
+	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+}
+
 $onlyfeatured = 0;
 
-if ( isset( $_GET['s_agents'] ) ) {
-	$query = Opalestate_Query::get_agents( [ "posts_per_page" => $limit, 'paged' => $paged ], $onlyfeatured );
-} else {
-	$query = OpalEstate_Search::get_search_agents_query();
-}
+// if ( isset( $_GET['s_agents'] ) ) {
+	$query = Opalestate_Query::get_agents( [ "posts_per_page" => $posts_per_page, 'paged' => $paged ], $onlyfeatured );
+// } else {
+// 	$query = OpalEstate_Search::get_search_agents_query();
+// }
 
 $form   = $settings['search_form'] ? "search-agents-form-" . $settings['search_form'] : "search-agents-form";
 $rowcls = apply_filters( 'opalestate_row_container_class', 'opal-row' );
@@ -51,10 +58,8 @@ $rowcls = apply_filters( 'opalestate_row_container_class', 'opal-row' );
 				<?php endwhile; ?>
             </div>
         </div>
-		<?php if ( $query->max_num_pages ): ?>
-            <div class="w-pagination">
-				<?php opalestate_pagination( $query->max_num_pages ); ?>
-            </div>
+		<?php if ( isset( $pagination ) && $pagination && ( ! isset( $enable_carousel ) || ! $enable_carousel ) ): ?>
+            <div class="w-pagination"><?php opalestate_pagination( $pagination_page_limit ); ?></div>
 		<?php endif; ?>
 	<?php else: ?>
         <div class="agents-results">

@@ -1,13 +1,4 @@
 <?php
-/**
- * Define
- * Note: only use for internal purpose.
- *
- * @package     OpalJob
- * @copyright   Copyright (c) 2019, WpOpal <https://www.wpopal.com>
- * @license     https://opensource.org/licenses/gpl-license GNU Public License
- * @since       1.0
- */
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -16,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * @class      Job_Api
  *
- * @since      1.0.0
  * @package    Opal_Job
  * @subpackage Opal_Job/controllers
  */
@@ -25,7 +15,6 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 	/**
 	 * The unique identifier of the route resource.
 	 *
-	 * @since    1.0.0
 	 * @access   public
 	 * @var      string $base .
 	 */
@@ -42,9 +31,6 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 	 * Register Routes
 	 *
 	 * Register all CURD actions with POST/GET/PUT and calling function for each
-	 *
-	 * @since 1.0
-	 *
 	 */
 	public function register_routes() {
 		/**
@@ -57,10 +43,10 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 			'/' . $this->base,
 			[
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_items' ],
-					// 'permission_callback' => [ $this, 'get_items_permissions_check' ],
-					'args'     => $this->get_collection_params(),
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_items' ],
+					'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'args'                => $this->get_collection_params(),
 				],
 			]
 		);
@@ -76,9 +62,9 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 					],
 				],
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_item' ],
-					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_item' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
 				// [
 				// 	'methods'  => WP_REST_Server::EDITABLE,
@@ -99,14 +85,24 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 					],
 				],
 				[
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => [ $this, 'get_listings' ],
-					// 'permission_callback' => [ $this, 'get_item_permissions_check' ],
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_listings' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
 			]
 		);
 	}
 
+	/**
+	 * Get object.
+	 *
+	 * @param int $id Object ID.
+	 *
+	 * @return Opalestate_Agency
+	 */
+	protected function get_object( $id ) {
+		return opalesetate_agency( $id );
+	}
 
 	/**
 	 * Get List Of agencies.
@@ -114,8 +110,6 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 	 * Based on request to get collection
 	 *
 	 * @return WP_REST_Response is json data
-	 * @since 1.0
-	 *
 	 */
 	public function get_items( $request ) {
 		$agencies['agencies'] = [];
@@ -149,8 +143,6 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 	 * Based on request to get a agency.
 	 *
 	 * @return WP_REST_Response is json data
-	 * @since 1.0
-	 *
 	 */
 	public function get_item( $request ) {
 		$response = [];
@@ -177,9 +169,7 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 	 *
 	 * @param object $agency_info The Download Post Object
 	 *
-	 * @return array                Array of post data to return back in the API
-	 * @since  1.0
-	 *
+	 * @return array Array of post data to return back in the API
 	 */
 	public function get_agency_data( $agency_info ) {
 		$agency                 = new OpalEstate_Agency( $agency_info->ID );

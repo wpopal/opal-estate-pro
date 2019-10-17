@@ -145,6 +145,17 @@ abstract class Opalestate_Base_API {
 	}
 
 	/**
+	 * Get object.
+	 *
+	 * @param  int $id Object ID.
+	 * @return object WC_Data object or WP_Error object.
+	 */
+	protected function get_object( $id ) {
+		// translators: %s: Class method name.
+		return new WP_Error( 'invalid-method', sprintf( __( "Method '%s' not implemented. Must be overridden in subclass.", 'opalestate-pro' ), __METHOD__ ), array( 'status' => 405 ) );
+	}
+
+	/**
 	 * Displays a missing authentication error if all the parameters aren't
 	 * provided
 	 *
@@ -161,8 +172,6 @@ abstract class Opalestate_Base_API {
 	 * credentials
 	 *
 	 * @access private
-	 * @since  1.1
-	 * @uses   Opaljob_API::output()
 	 * @return WP_Error with message key rest_forbidden
 	 */
 	private function invalid_auth() {
@@ -196,6 +205,22 @@ abstract class Opalestate_Base_API {
 	}
 
 	/**
+	 * Check if a given request has access to read an item.
+	 *
+	 * @param  WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|boolean
+	 */
+	public function get_item_permissions_check( $request ) {
+		$object = $this->get_object( (int) $request['id'] );
+
+		if ( $object && 0 !== $object->get_id() && ! opalestate_rest_check_post_permissions( $this->post_type, 'read', $object->get_id() ) ) {
+			return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+		}
+
+		return true;
+	}
+
+	/**
 	 * Check if a given request has access to create an item.
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
@@ -204,6 +229,22 @@ abstract class Opalestate_Base_API {
 	public function create_item_permissions_check( $request ) {
 		if ( ! opalestate_rest_check_post_permissions( $this->post_type, 'create' ) ) {
 			return new WP_Error( 'opalestate_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if a given request has access to update an item.
+	 *
+	 * @param  WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|boolean
+	 */
+	public function update_item_permissions_check( $request ) {
+		$object = $this->get_object( (int) $request['id'] );
+
+		if ( $object && 0 !== $object->get_id() && ! opalestate_rest_check_post_permissions( $this->post_type, 'edit', $object->get_id() ) ) {
+			return new WP_Error( 'opalestate_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
