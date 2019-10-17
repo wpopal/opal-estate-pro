@@ -153,6 +153,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.1.4 - 2019-10-17 =
+* Fixes - Properties collection Pagination.
+
 = 1.1.3 - 2019-10-15 =
 * Fixes - Submission.
 
