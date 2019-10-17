@@ -316,9 +316,10 @@ class Opalestate_Property_collection_Elementor_Widget extends Opalestate_Element
 			'pagination_page_limit',
 			[
 				'label'     => esc_html__( 'Page Limit', 'opalestate-pro' ),
-				'default'   => '5',
+				'type'      => Controls_Manager::NUMBER,
+				'default'   => '3',
 				'condition' => [
-					'pagination_type!' => '',
+					'pagination' => 'show',
 				],
 			]
 		);
