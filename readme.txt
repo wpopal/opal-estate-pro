@@ -4,7 +4,7 @@ Donate link: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.6
 Tested up to: 5.2.3
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -154,7 +154,9 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 = 1.1.4 - 2019-10-17 =
-* Fixes - Properties collection Pagination.
+* Fixes - Properties collection pagination.
+* Fixes - Agents collection pagination.
+* Fixes - Agencies collection pagination.
 
 = 1.1.3 - 2019-10-15 =
 * Fixes - Submission.
