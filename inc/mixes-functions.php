@@ -513,8 +513,13 @@ function opalestate_get_image_placeholder( $size = '', $url = false ) {
 	return '<img src="' . esc_url( $src ) . '" alt="' . sprintf( esc_html__( 'Placeholder %s', 'opalestate-pro' ), $size ) . '" />';
 }
 
+/**
+ * Get image placeholder src.
+ *
+ * @return string
+ */
 function opalestate_get_image_placeholder_src() {
-	return OPALESTATE_PLUGIN_URL . 'assets/images/placeholder.png';
+	return apply_filters( 'opalestate_get_image_placeholder_src', OPALESTATE_PLUGIN_URL . 'assets/images/placeholder.png' );
 }
 
 /**

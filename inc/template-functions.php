@@ -20,11 +20,15 @@ function opalestate_property_mortgage() {
 
 function opalestate_load_template_path( $tpl, $args = [], $layout = '' ) {
 	return Opalestate_Template_Loader::get_template_part( $tpl, $args, $layout );
-
 }
 
+/**
+ * Get image avatar placeholder src.
+ *
+ * @return string
+ */
 function opalestate_get_image_avatar_placehold() {
-	return OPALESTATE_PLUGIN_URL . 'assets/images/avatar-placeholder.png';
+	return apply_filters( 'opalestate_get_image_avatar_placeholder', OPALESTATE_PLUGIN_URL . 'assets/images/avatar-placeholder.png' );
 }
 
 function opalestate_get_admin_view( $file ) {
@@ -246,8 +250,8 @@ function opalestate_show_display_modes( $default = 'list' ) {
 
 if ( ! function_exists( 'opalestate_pagination' ) ) {
 	/**
-     * Opalestate pagination.
-     *
+	 * Opalestate pagination.
+	 *
 	 * @param string $pages
 	 * @param int    $range
 	 */
@@ -590,7 +594,7 @@ function opalestate_property_author_v2() {
 	echo opalestate_load_template_path( 'single-property/author-v2' );
 }
 
-function opalestate_property_author_v3() {  
+function opalestate_property_author_v3() {
 	echo opalestate_load_template_path( 'single-property/author-v3' );
 }
 
