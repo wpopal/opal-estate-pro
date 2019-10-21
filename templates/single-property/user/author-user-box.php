@@ -68,7 +68,7 @@
 				?>
                 <p class="agent-box-job"><?php echo esc_html( $job ); ?></p>
 
-				<?php $email = get_user_meta( $user_id, $prefix . 'email', true ); ?>
+				<?php $email = get_userdata( $user_id )->user_email; ?>
 				<?php if ( ! empty( $email ) ) : ?>
                     <div class="agent-box-email">
                         <i class="fa fa-envelope"></i>

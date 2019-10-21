@@ -69,15 +69,16 @@ class OpalEstate_Abstract_Email_Template {
 	public function replace_tags( $template ) {
 		$args    = $this->args;
 		$default = [
-			'receiver_name'  => '',
-			'name'           => '',
-			'receiver_email' => '',
-			'property_link'  => '',
-			'message'        => '',
-			'site_name'      => get_bloginfo(),
-			'site_link'      => get_home_url(),
-			'current_time'   => date( "F j, Y, g:i a" ),
-			'phone'          => '',
+			'receiver_name'      => '',
+			'name'               => '',
+			'receiver_email'     => '',
+			'property_link'      => '',
+			'property_edit_link' => '',
+			'message'            => '',
+			'site_name'          => get_bloginfo(),
+			'site_link'          => get_home_url(),
+			'current_time'       => date( "F j, Y, g:i a" ),
+			'phone'              => '',
 		];
 
 		$args = array_merge( $default, $args );

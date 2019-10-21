@@ -23,16 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @version 1.0
  */
 class Opalestate_Emails {
-
-
 	/**
 	 * init action to automatic send email when user edit or submit a new submission and init setting form in plugin setting of admin
 	 */
 	public static function init() {
-
 		self::load();
 
 		add_action( 'opalestate_processed_new_submission', [ __CLASS__, 'new_submission_email' ], 10, 2 );
+		add_action( 'opalestate_processed_new_submission', [ __CLASS__, 'admin_new_submission_email' ], 15, 2 );
 		//add_action(  'opalestate_processed_edit_submission' , array( __CLASS__ , 'new_submission_email'), 10, 2 );
 		if ( is_admin() ) {
 			add_filter( 'opalestate_settings_tabs', [ __CLASS__, 'setting_email_tab' ], 1 );
@@ -51,18 +49,19 @@ class Opalestate_Emails {
 		 */
 		add_action( 'opalestate_send_email_notifycation', [ __CLASS__, 'send_notifycation' ] );
 		add_action( 'opalestate_send_email_submitted', [ __CLASS__, 'new_submission_email' ] );
+		add_action( 'opalestate_send_email_submitted', [ __CLASS__, 'admin_new_submission_email' ] );
 		add_action( 'opalestate_send_email_request_reviewing', [ __CLASS__, 'send_email_request_reviewing' ] );
 	}
 
 	/**
-	 *
+	 * Load.
 	 */
 	public static function load() {
-
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-abs-email-template.php';
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-email-notifycation.php';
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-request-viewing.php';
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-new-submitted.php';
+		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-admin-new-submitted.php';
 		require_once OPALESTATE_PLUGIN_DIR . 'inc/email/class-opalestate-approve.php';
 	}
 
@@ -91,9 +90,15 @@ class Opalestate_Emails {
 		$mail = new OpalEstate_Send_Email_New_Submitted();
 		$mail->set_pros( $post_id, $user_id );
 		$return = self::send_mail_now( $mail );
+	}
 
-		// echo json_encode( $return );
-		// die();
+	/**
+	 * send email if agent submit a new property
+	 */
+	public static function admin_new_submission_email( $user_id, $post_id ) {
+		$mail = new OpalEstate_Send_Email_Admin_New_Submitted();
+		$mail->set_pros( $post_id, $user_id );
+		$return = self::send_mail_now( $mail );
 	}
 
 	/**
@@ -190,7 +195,7 @@ class Opalestate_Emails {
 				</div>
 
 				<div class="opalestate-template-tags-box">
-					<strong>{property_link}</strong> Property of the user who made the property
+					<strong>{property_link}</strong> Link of the property
 				</div>
 	
 				<div class="opalestate-template-tags-box">
@@ -200,13 +205,58 @@ class Opalestate_Emails {
 				<div class="opalestate-template-tags-box">
 					<strong>{email}</strong> Email of the user who contact via email form
 				</div>
+			
+				<div class="opalestate-template-tags-box">
+					<strong>{message}</strong> * Message content of who sent via form
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{site_link}</strong> A link to this website
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{current_time}</strong> Current date and time
+				</div>
+
+				</div> ';
+
+		$review_list_tags = '<div>
+				<p class="tags-description">Use the following tags to automatically add property information to the emails. Tags labeled with an asterisk (*) can be used in the email subject as well.</p>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{receive_name}</strong> Name of the agent who made the property
+				</div>
 
 				<div class="opalestate-template-tags-box">
-					<strong>{property_link}</strong> * Link of the property
+					<strong>{property_link}</strong> Link of the property
+				</div>
+	
+				<div class="opalestate-template-tags-box">
+					<strong>{name}</strong> Name of the user who contact via email form
+				</div>
+
+				<div class="opalestate-template-tags-box">
+					<strong>{email}</strong> Email of the user who contact via email form
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{schedule_time}</strong> Schedule time
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{schedule_date}</strong> Schedule date
 				</div>
 			
 				<div class="opalestate-template-tags-box">
 					<strong>{message}</strong> * Message content of who sent via form
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{site_link}</strong> A link to this website
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{current_time}</strong> Current date and time
 				</div>
 
 				</div> ';
@@ -219,7 +269,11 @@ class Opalestate_Emails {
 				</div>
 
 				<div class="opalestate-template-tags-box">
-					<strong>{property_link}</strong> Email of the user who made the property
+					<strong>{property_link}</strong> Link of the property
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{property_edit_link}</strong> Link for editing of the property (admin)
 				</div>
 	
 				<div class="opalestate-template-tags-box">
@@ -287,24 +341,19 @@ class Opalestate_Emails {
 
 
 					//------------------------------------------
-			 
-
 					[
-						'name' => esc_html__( 'Notification For New Property Submission', 'opalestate-pro' ),
+						'name' => esc_html__( 'Notification For New Property Submission (Customer)', 'opalestate-pro' ),
 						'desc' => '<hr>',
 						'id'   => 'opalestate_title_email_settings_3',
 						'type' => 'title',
 					],
-
-
 					[
 						'id'         => 'newproperty_email_subject',
 						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
 						'type'       => 'text',
 						'desc'       => esc_html__( 'The email subject for admin notifications.', 'opalestate-pro' ),
 						'attributes' => [
-							'placeholder' => 'Your package is expired',
-							'rows'        => 3,
+							'rows' => 3,
 						],
 						'default'    => esc_html__( 'New Property Listing Submitted: {property_name}', 'opalestate-pro' ),
 
@@ -317,6 +366,33 @@ class Opalestate_Emails {
 						'default' => OpalEstate_Send_Email_New_Submitted::get_default_template(),
 					],
 					//------------------------------------------
+
+					[
+						'name' => esc_html__( 'Notification For New Property Submission (Admin)', 'opalestate-pro' ),
+						'desc' => '<hr>',
+						'id'   => 'opalestate_title_email_settings_admin',
+						'type' => 'title',
+					],
+					[
+						'id'         => 'admin_newproperty_email_subject',
+						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
+						'type'       => 'text',
+						'desc'       => esc_html__( 'The email subject for admin notifications.', 'opalestate-pro' ),
+						'attributes' => [
+							'rows' => 3,
+						],
+						'default'    => esc_html__( 'You received a new submission: {property_name} from {user_mail}', 'opalestate-pro' ),
+
+					],
+					[
+						'id'      => 'admin_newproperty_email_body',
+						'name'    => esc_html__( 'Email Body', 'opalestate-pro' ),
+						'type'    => 'wysiwyg',
+						'desc'    => esc_html__( 'Enter the email an admin should receive when an initial payment request is made.', 'opalestate-pro' ),
+						'default' => OpalEstate_Send_Email_Admin_New_Submitted::get_default_template(),
+					],
+					//------------------------------------------
+
 					[
 						'name' => esc_html__( 'Approve property for publish', 'opalestate-pro' ),
 						'desc' => '<hr>',
@@ -377,10 +453,10 @@ class Opalestate_Emails {
 					],
 
 					[
-						'id'   => 'enquiry_email_body',
-						'name' => esc_html__( 'Email Body', 'opalestate-pro' ),
-						'type' => 'wysiwyg',
-						'default' =>  OpalEstate_Send_Email_Notification::get_default_template( 'enquiry' )
+						'id'      => 'enquiry_email_body',
+						'name'    => esc_html__( 'Email Body', 'opalestate-pro' ),
+						'type'    => 'wysiwyg',
+						'default' => OpalEstate_Send_Email_Notification::get_default_template( 'enquiry' ),
 					],
 					/// email contact template ////
 					[
@@ -403,15 +479,15 @@ class Opalestate_Emails {
 					],
 
 					[
-						'id'   => 'contact_email_body',
-						'name' => esc_html__( 'Email Body', 'opalestate-pro' ),
-						'type' => 'wysiwyg',
-						'default' =>  OpalEstate_Send_Email_Notification::get_default_template()
+						'id'      => 'contact_email_body',
+						'name'    => esc_html__( 'Email Body', 'opalestate-pro' ),
+						'type'    => 'wysiwyg',
+						'default' => OpalEstate_Send_Email_Notification::get_default_template(),
 					],
 					/// Email Request Review /// 
 					[
 						'name' => esc_html__( 'Email Request Review Templates (Template Tags)', 'opalestate-pro' ),
-						'desc' => $contact_list_tags . '<br><hr>',
+						'desc' => $review_list_tags . '<br><hr>',
 						'id'   => 'opalestate_title_email_settings_7',
 						'type' => 'title',
 					],
@@ -425,14 +501,14 @@ class Opalestate_Emails {
 							get_bloginfo( 'name' ),
 							'rows'        => 3,
 						],
-						'default'    =>esc_html__( 'You have a message request reviewing at: %s', 'opalestate-pro' ),
+						'default'    => esc_html__( 'You have a message request reviewing', 'opalestate-pro' ),
 					],
 
 					[
-						'id'   => 'request_review_email_body',
-						'name' => esc_html__( 'Email Body', 'opalestate-pro' ),
-						'type' => 'wysiwyg',
-						'default' =>  OpalEstate_Send_Email_Request_Reviewing::get_default_template()
+						'id'      => 'request_review_email_body',
+						'name'    => esc_html__( 'Email Body', 'opalestate-pro' ),
+						'type'    => 'wysiwyg',
+						'default' => OpalEstate_Send_Email_Request_Reviewing::get_default_template(),
 					],
 				]
 			),

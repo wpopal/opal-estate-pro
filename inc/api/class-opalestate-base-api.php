@@ -1,21 +1,20 @@
 <?php
+
 /**
  * Abstract class to define/implement base methods for all controller classes
  *
- * @since      1.0.0
  * @package    Opal_Job
  * @subpackage Opal_Job/controllers
  */
 abstract class Opalestate_Base_API {
-  
+
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string $plugin_base_name The string used to uniquely identify this plugin.
 	 */
-	public $base ;
+	public $base;
 
 	/**
 	 * Post type.
@@ -27,50 +26,44 @@ abstract class Opalestate_Base_API {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string $plugin_base_name The string used to uniquely identify this plugin.
 	 */
-	public $namespace = 'estate-api/v1'; 
-	
+	public $namespace = 'estate-api/v1';
+
 	/**
 	 * Definition
 	 *
-	 *	Register all Taxonomy related to Job post type as location, category, Specialism, Types
-	 *
-	 * @since 1.0
-	 *
+	 * Register all Taxonomy related to Job post type as location, category, Specialism, Types
 	 */
-	public function __construct () {
-		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+	public function __construct() {
+		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
 	}
 
 	/**
 	 * Definition
 	 *
-	 *	Register all Taxonomy related to Job post type as location, category, Specialism, Types
-	 *
-	 * @since 1.0
-	 *
+	 * Register all Taxonomy related to Job post type as location, category, Specialism, Types
 	 */
 	public function register_routes() {
-		
-		
+
+
 	}
 
-	public function get_response ( $code, $output ) {
-		
-		$response = array();
- 	
+	public function get_response( $code, $output ) {
+
+		$response = [];
+
 		$response['status'] = $code;
-		$response = array_merge( $response, $output );
+		$response           = array_merge( $response, $output );
 
 		return new WP_REST_Response( $response );
 	}
 
-	public function output ( $code ) {
+	public function output( $code ) {
 
-		$this->data['status'] = $code; 
+		$this->data['status'] = $code;
+
 		return new WP_REST_Response( $this->data );
 	}
 
@@ -83,10 +76,10 @@ abstract class Opalestate_Base_API {
 	public function validate_request( WP_REST_Request $request ) {
 
 		return true;
-		$response = array();
+		$response = [];
 
 		// Make sure we have both user and api key
-	 	$api_admin = Opalestate_API_Admin::get_instance();
+		$api_admin = Opalestate_API_Admin::get_instance();
 
 		if ( empty( $request['token'] ) || empty( $request['key'] ) ) {
 			return $this->missing_auth();
@@ -110,16 +103,15 @@ abstract class Opalestate_Base_API {
 			}
 		}
 
-	  	return false;
+		return false;
 	}
 
 	/**
 	 * Get page number
 	 *
 	 * @access public
-	 * @since  1.1
-	 * @global $wp_query
 	 * @return int $wp_query->query_vars['page'] if page number returned (default: 1)
+	 * @global $wp_query
 	 */
 	public function get_paged() {
 		global $wp_query;
@@ -132,27 +124,26 @@ abstract class Opalestate_Base_API {
 	 * Number of results to display per page
 	 *
 	 * @access public
-	 * @since  1.1
-	 * @global $wp_query
 	 * @return int $per_page Results to display per page (default: 10)
+	 * @global $wp_query
 	 */
 	public function per_page() {
 		global $wp_query;
 
 		$per_page = isset( $wp_query->query_vars['number'] ) ? $wp_query->query_vars['number'] : 10;
-		
+
 		return apply_filters( 'opalestate_api_results_per_page', $per_page );
 	}
 
 	/**
 	 * Get object.
 	 *
-	 * @param  int $id Object ID.
+	 * @param int $id Object ID.
 	 * @return object WC_Data object or WP_Error object.
 	 */
 	protected function get_object( $id ) {
 		// translators: %s: Class method name.
-		return new WP_Error( 'invalid-method', sprintf( __( "Method '%s' not implemented. Must be overridden in subclass.", 'opalestate-pro' ), __METHOD__ ), array( 'status' => 405 ) );
+		return new WP_Error( 'invalid-method', sprintf( __( "Method '%s' not implemented. Must be overridden in subclass.", 'opalestate-pro' ), __METHOD__ ), [ 'status' => 405 ] );
 	}
 
 	/**
@@ -161,10 +152,9 @@ abstract class Opalestate_Base_API {
 	 *
 	 * @access private
 	 * @return WP_Error with message key rest_forbidden
-	 * @since  1.1
 	 */
-	private function missing_auth() { 
-		return new WP_Error( 'rest_forbidden', esc_html__( 'You must specify both a token and API key!' ), array( 'status' => rest_authorization_required_code()  ) );
+	private function missing_auth() {
+		return new WP_Error( 'rest_forbidden', esc_html__( 'You must specify both a token and API key!' ), [ 'status' => rest_authorization_required_code() ] );
 	}
 
 	/**
@@ -175,7 +165,7 @@ abstract class Opalestate_Base_API {
 	 * @return WP_Error with message key rest_forbidden
 	 */
 	private function invalid_auth() {
-		return new WP_Error( 'rest_forbidden', esc_html__( 'Your request could not be authenticated!', 'opaljob' ), array( 'status' => 403  ) );
+		return new WP_Error( 'rest_forbidden', esc_html__( 'Your request could not be authenticated!', 'opaljob' ), [ 'status' => 403 ] );
 	}
 
 	/**
@@ -183,38 +173,93 @@ abstract class Opalestate_Base_API {
 	 * validated
 	 *
 	 * @access private
-	 * @since  1.1
 	 * @return WP_Error with message key rest_forbidden
 	 */
 	private function invalid_key() {
-		return new WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key!' ), array( 'status' => rest_authorization_required_code()  ) );
+		return new WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key!' ), [ 'status' => rest_authorization_required_code() ] );
 	}
 
 	/**
 	 * Check if a given request has access to read items.
 	 *
-	 * @param  WP_REST_Request $request Full details about the request.
+	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|boolean
 	 */
 	public function get_items_permissions_check( $request ) {
+		$is_valid = $this->is_valid_api_key( $request );
+		if ( is_wp_error( $is_valid ) ) {
+			return $is_valid;
+		}
+
 		if ( ! opalestate_rest_check_post_permissions( $this->post_type, 'read' ) ) {
-			return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
 	}
 
 	/**
+	 * Check if a given request has access.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|boolean
+	 */
+	public function is_valid_api_key( $request ) {
+		// if ( ! $this->is_request_to_rest_api() ) {
+		// 	return false;
+		// }
+
+		if ( isset( $request['consumer_key'] ) && $request['consumer_secret'] ) {
+			$user = opalestate_get_user_data_by_consumer_key( $request['consumer_key'] );
+
+			if ( $user ) {
+				if ( $request['consumer_secret'] === $user->consumer_secret ) {
+					$route    = $request->get_route();
+					$endpoint = explode( '/', $route );
+					$endpoint = end( $endpoint );
+					if ( in_array( $endpoint, [ 'properties' ] ) ) {
+						return true;
+					}
+				}
+			}
+		}
+
+		return new WP_Error( 'opalestate_rest_cannot_access', __( 'Sorry, you cannot list resources.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
+	}
+
+	/**
+	 * Check if is request to our REST API.
+	 *
+	 * @return bool
+	 */
+	protected function is_request_to_rest_api() {
+		if ( empty( $_SERVER['REQUEST_URI'] ) ) {
+			return false;
+		}
+
+		$rest_prefix = trailingslashit( rest_get_url_prefix() );
+		$request_uri = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+
+		// Check if the request is to the Opalestate API endpoints.
+		$opalestate = ( false !== strpos( $request_uri, $rest_prefix . 'estate-api/' ) );
+
+		// Allow third party plugins use our authentication methods.
+		$third_party = ( false !== strpos( $request_uri, $rest_prefix . 'estate-api-' ) );
+
+		return apply_filters( 'opalestate_rest_is_request_to_rest_api', $opalestate || $third_party );
+	}
+
+	/**
 	 * Check if a given request has access to read an item.
 	 *
-	 * @param  WP_REST_Request $request Full details about the request.
+	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|boolean
 	 */
 	public function get_item_permissions_check( $request ) {
 		$object = $this->get_object( (int) $request['id'] );
 
 		if ( $object && 0 !== $object->get_id() && ! opalestate_rest_check_post_permissions( $this->post_type, 'read', $object->get_id() ) ) {
-			return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -223,12 +268,12 @@ abstract class Opalestate_Base_API {
 	/**
 	 * Check if a given request has access to create an item.
 	 *
-	 * @param  WP_REST_Request $request Full details about the request.
+	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|boolean
 	 */
 	public function create_item_permissions_check( $request ) {
 		if ( ! opalestate_rest_check_post_permissions( $this->post_type, 'create' ) ) {
-			return new WP_Error( 'opalestate_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'opalestate_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;
@@ -237,14 +282,14 @@ abstract class Opalestate_Base_API {
 	/**
 	 * Check if a given request has access to update an item.
 	 *
-	 * @param  WP_REST_Request $request Full details about the request.
+	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|boolean
 	 */
 	public function update_item_permissions_check( $request ) {
 		$object = $this->get_object( (int) $request['id'] );
 
 		if ( $object && 0 !== $object->get_id() && ! opalestate_rest_check_post_permissions( $this->post_type, 'edit', $object->get_id() ) ) {
-			return new WP_Error( 'opalestate_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'opalestate-pro' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'opalestate_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 
 		return true;

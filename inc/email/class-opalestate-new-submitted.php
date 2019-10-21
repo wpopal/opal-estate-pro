@@ -11,7 +11,7 @@
  * @website  http://www.wpopal.com
  * @support  http://www.wpopal.com/support/forum.html
  */
- 
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -19,41 +19,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * @class   OpalEstate_Send_Email_Notification
  *
- * @version 1.0
  */
 class OpalEstate_Send_Email_New_Submitted extends OpalEstate_Abstract_Email_Template {
- 
+
 	/**
 	 * Send Email
 	 */
-	public function get_subject () {
-		$propety_title = '' ;
-		$d = esc_html__( 'New Property Listing Submitted: {property_name}', 'opalestate-pro' ); 
-		$s = opalestate_get_option( 'newproperty_email_subject' , $d ); 
-		return $s;
+	public function get_subject() {
+		$d = esc_html__( 'New Property Listing Submitted: {property_name}', 'opalestate-pro' );
+		$s = opalestate_get_option( 'newproperty_email_subject', $d );
+
+		return $this->replace_tags( $s );
 	}
 
 	/**
 	 * get collection of key and value base on tags which using to replace custom tags
 	 */
-	public  function set_pros(  $property_id, $user_id ){
-	 	
-	 	$property 	   = get_post( $property_id );
-		$user    	   = get_userdata( $property->post_author ); 
-		$email 		   = get_user_meta( $property->post_author, OPALESTATE_USER_PROFILE_PREFIX . 'email', true ); 
- 		$email  	   = $email ? $email : $user->data->user_email;
+	public function set_pros( $property_id, $user_id ) {
+		$property = get_post( $property_id );
+		$user     = get_userdata( $property->post_author );
+		$email    = get_user_meta( $property->post_author, OPALESTATE_USER_PROFILE_PREFIX . 'email', true );
+		$email    = $email ? $email : $user->data->user_email;
 
-		$this->args = array(
-			'receiver_email'	 => $email,
-			'user_mail' 		 => $email,
-			'user_name'			 => $user->display_name,
-			'submitted_date'	 => $property->post_date,
-			'property_name'	 	 => $property->post_title,
-			'property_link'		 => get_permalink( $property_id ),
-    		'current_time'		=>  date("F j, Y, g:i a"),
-		); 
+		$this->args = [
+			'receiver_email' => $email,
+			'user_mail'      => $email,
+			'user_name'      => $user->display_name,
+			'submitted_date' => $property->post_date,
+			'property_name'  => $property->post_title,
+			'property_link'  => get_permalink( $property_id ),
+			'current_time'   => date( "F j, Y, g:i a" ),
+		];
 
-		return $this->args ;
+		return $this->args;
 	}
 
 
@@ -62,16 +60,17 @@ class OpalEstate_Send_Email_New_Submitted extends OpalEstate_Abstract_Email_Temp
 	 */
 	public function get_content_template() {
 
-		$body 	 = opalestate_get_option( 'newproperty_email_body', self::get_default_template() );
- 		return $body;  
-	}	
+		$body = opalestate_get_option( 'newproperty_email_body', self::get_default_template() );
+
+		return $body;
+	}
 
 	/**
 	 * Send Email
 	 */
 	public static function get_default_template() {
-		
-		return trim(preg_replace('/\t+/', '','
+
+		return trim( preg_replace( '/\t+/', '', '
 						Hi {user_name},
 						<br>
 						Thanks you so much for submitting {property_name}  at  {site_name}:<br>
@@ -87,14 +86,14 @@ class OpalEstate_Send_Email_New_Submitted extends OpalEstate_Abstract_Email_Temp
 	/**
 	 * Send Email
 	 */
-	public function to_email () {
+	public function to_email() {
 		return $this->args ['receiver_email'];
 	}
 
 	/**
 	 * Send Email
 	 */
-	public function cc_email () {
+	public function cc_email() {
 		return $this->args ['sender_email'];
 	}
 
@@ -105,4 +104,3 @@ class OpalEstate_Send_Email_New_Submitted extends OpalEstate_Abstract_Email_Temp
 		return parent::get_body();
 	}
 }
-?>

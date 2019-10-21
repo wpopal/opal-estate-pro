@@ -74,10 +74,10 @@ class OpalEstate_User_Request_Viewing {
 		if ( wp_verify_nonce( $_POST['message_action'], 'property-request-view' ) ) {
 			$post   = $_POST;
 			$member = $this->get_member_email_data( absint( $post['post_id'] ) );
-
+			$user   = get_userdata( $this->user_id );
 			$output = [
 				'subject'        => isset( $subject ) && $subject ? esc_html( $subject ) : '',
-				'name'           => esc_html( $member['receiver_name'] ),
+				'name'           => $user->display_name ? esc_html( $user->display_name ) : esc_html( $user->user_nicename ),
 				'receiver_email' => sanitize_email( $member['receiver_email'] ),
 				'receiver_id'    => sanitize_text_field( $member['receiver_id'] ),
 				'sender_id'      => get_current_user_id(),
@@ -87,6 +87,7 @@ class OpalEstate_User_Request_Viewing {
 				'schedule_time'  => sanitize_text_field( $post['time'] ),
 				'schedule_date'  => sanitize_text_field( $post['date'] ),
 				'post_id'        => absint( $post['post_id'] ),
+				'email'          => $user->user_email,
 			];
 
 			$this->insert( $output );
