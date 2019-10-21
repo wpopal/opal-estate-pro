@@ -27,9 +27,7 @@ class OpalEstate_Send_Email_Request_Reviewing extends OpalEstate_Abstract_Email_
 	 * Send Email
 	 */
 	public function get_subject() {
-		$propety_title = '';
-
-		$content = sprintf( esc_html__( 'You have a message request reviewing: %s at', 'opalestate-pro' ), $propety_title );
+		$content = esc_html__( 'You have a message request reviewing', 'opalestate-pro' );
 		$content = opalestate_options( 'request_review_email_subject', $content );
 
 		return $content;
@@ -40,6 +38,7 @@ class OpalEstate_Send_Email_Request_Reviewing extends OpalEstate_Abstract_Email_
 	 */
 	public function get_content_template() {
 		$content = opalestate_options( 'request_review_email_body', self::get_default_template() );
+
 		return $content;
 	}
 
@@ -63,7 +62,7 @@ class OpalEstate_Send_Email_Request_Reviewing extends OpalEstate_Abstract_Email_
 	public function get_body() {
 		$post = get_post( $this->args['post_id'] );
 
-		$this->args['email']         = $this->args['receiver_email'];
+		// $this->args['email']         = $this->args['receiver_email'];
 		$this->args['property_link'] = get_permalink( $post->ID );
 		$this->args['property_name'] = $post->post_title;
 
@@ -73,5 +72,4 @@ class OpalEstate_Send_Email_Request_Reviewing extends OpalEstate_Abstract_Email_
 	public static function get_default_template() {
 		return opalestate_load_template_path( 'emails/request-reviewing' );
 	}
-
 }

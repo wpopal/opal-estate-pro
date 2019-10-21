@@ -21,11 +21,10 @@ class OpalEstate_Send_Email_Admin_New_Submitted extends OpalEstate_Abstract_Emai
 	 * Send Email
 	 */
 	public function get_subject() {
-		$propety_title = '';
-		$d             = esc_html__( 'New Property Listing Submitted: {property_name}', 'opalestate-pro' );
-		$s             = opalestate_get_option( 'admin_newproperty_email_subject', $d );
+		$d = esc_html__( 'You received a new submission: {property_name} from {user_mail}', 'opalestate-pro' );
+		$s = opalestate_get_option( 'admin_newproperty_email_subject', $d );
 
-		return $s;
+		return $this->replace_tags( $s );
 	}
 
 	/**
@@ -38,18 +37,18 @@ class OpalEstate_Send_Email_Admin_New_Submitted extends OpalEstate_Abstract_Emai
 		$email    = $email ? $email : $user->data->user_email;
 
 		$this->args = [
-			'receiver_email' => $email,
-			'user_mail'      => $email,
-			'user_name'      => $user->display_name,
-			'submitted_date' => $property->post_date,
-			'property_name'  => $property->post_title,
-			'property_link'  => get_permalink( $property_id ),
-			'current_time'   => date( "F j, Y, g:i a" ),
+			'receiver_email'     => $email,
+			'user_mail'          => $email,
+			'user_name'          => $user->display_name,
+			'submitted_date'     => $property->post_date,
+			'property_name'      => $property->post_title,
+			'property_link'      => get_permalink( $property_id ),
+			'property_edit_link' => get_edit_post_link( $property_id ),
+			'current_time'       => date( "F j, Y, g:i a" ),
 		];
 
 		return $this->args;
 	}
-
 
 	/**
 	 * Send Email
@@ -65,7 +64,7 @@ class OpalEstate_Send_Email_Admin_New_Submitted extends OpalEstate_Abstract_Emai
 	 */
 	public static function get_default_template() {
 		return trim( preg_replace( '/\t+/', '', '
-						You’ve received a submission from %s: {user_name},
+						You’ve received a submission from: {user_name},
 						<br>
 						You can review it by follow this link: {property_edit_link}
 						<em>This message was sent by {site_link} on {current_time}.</em>'
@@ -76,7 +75,7 @@ class OpalEstate_Send_Email_Admin_New_Submitted extends OpalEstate_Abstract_Emai
 	 * Send Email
 	 */
 	public function to_email() {
-		return $this->args ['receiver_email'];
+		return $this->from_email();
 	}
 
 	/**

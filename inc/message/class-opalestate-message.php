@@ -98,7 +98,6 @@ class OpalEstate_User_Message {
 	 * Set values when user logined in system
 	 */
 	public function send_equiry( $post, $member ) {
-
 		$default = [
 			'send_equiry_name' => '',
 			'action'           => '',
@@ -109,9 +108,8 @@ class OpalEstate_User_Message {
 			'message'          => '',
 			'message_action'   => '',
 		];
-		$post    = array_merge( $default, $post );
 
-
+		$post                  = array_merge( $default, $post );
 		$post['property_link'] = (int) $post['post_id'] ? get_permalink( $post['post_id'] ) : get_home_url();
 		$post['receive_name']  = isset( $member['name'] ) ? $member['name'] : '';
 		$subject               = html_entity_decode( esc_html__( 'You got a message', 'opalestate-pro' ) );
@@ -119,11 +117,12 @@ class OpalEstate_User_Message {
 
 		$output = [
 			'subject'        => $subject,
-			'name'           => isset( $member['name'] ) ? $member['name'] : '',
+			'name'           => isset( $post['name'] ) ? $post['name'] : '',
 			'receiver_email' => $member['receiver_email'],
 			'receiver_id'    => $member['receiver_id'],
 			'sender_id'      => get_current_user_id(),
 			'sender_email'   => $post['email'],
+			'email'          => $post['email'],
 			'phone'          => $post['phone'],
 			'message'        => $post['message'],
 			'post_id'        => $post['post_id'],
@@ -203,7 +202,6 @@ class OpalEstate_User_Message {
 	 * Set values when user logined in system
 	 */
 	public function get_member_email_data( $post_id ) {
-
 		return opalestate_get_member_email_data( $post_id );
 	}
 
@@ -251,7 +249,6 @@ class OpalEstate_User_Message {
 
 		echo json_encode( $return );
 		die();
-
 	}
 
 	/**
@@ -284,7 +281,7 @@ class OpalEstate_User_Message {
 					$this->insert( $content );
 				}
 
-				// send email for user to inbox email.
+				// Send email for user to inbox email.
 				do_action( 'opalestate_send_email_notifycation', $content );
 			}
 		}
@@ -299,7 +296,6 @@ class OpalEstate_User_Message {
 	 *
 	 */
 	public function insert( $data ) {
-
 		global $wpdb;
 
 		$args = [
@@ -326,7 +322,6 @@ class OpalEstate_User_Message {
 	}
 
 	public function insert_reply( $data ) {
-
 		global $wpdb;
 
 		$args = [
@@ -667,11 +662,12 @@ class OpalEstate_User_Message {
 	}
 
 	public function get_request_review_form_fields( $msg = '' ) {
+		global $wp_query;
 
 		$prefix       = '';
 		$id           = '';
 		$sender_id    = '';
-		$post_id      = get_the_ID();
+		$post_id      = $wp_query->post->ID;
 		$email        = '';
 		$current_user = wp_get_current_user();
 		$name         = '';
@@ -684,25 +680,22 @@ class OpalEstate_User_Message {
 
 		$fields = [
 			[
-				'id'          => "type",
+				'id'          => 'type',
 				'name'        => esc_html__( 'Type', 'opalestate-pro' ),
 				'type'        => 'hidden',
 				'default'     => 'send_request_review',
-				'description' => "",
 			],
 			[
-				'id'          => "post_id",
+				'id'          => 'post_id',
 				'name'        => esc_html__( 'Property ID', 'opalestate-pro' ),
 				'type'        => 'hidden',
 				'default'     => $post_id,
-				'description' => "",
 			],
 			[
-				'id'          => "sender_id",
+				'id'          => 'sender_id',
 				'name'        => esc_html__( 'Sender ID', 'opalestate-pro' ),
 				'type'        => 'hidden',
 				'default'     => $sender_id,
-				'description' => "",
 			],
 			[
 				'id'          => "{$prefix}date",
@@ -710,32 +703,26 @@ class OpalEstate_User_Message {
 				'type'        => 'date',
 				'before_row'  => '',
 				'required'    => 'required',
-				'description' => "",
 			],
 			[
 				'id'          => "{$prefix}time",
 				'name'        => esc_html__( 'Time', 'opalestate-pro' ),
 				'type'        => 'select',
 				'options'     => opalestate_get_time_lapses(),
-				'description' => "",
 			],
 			[
 				'id'          => "{$prefix}phone",
 				'name'        => esc_html__( 'Phone', 'opalestate-pro' ),
 				'type'        => 'text',
-				'description' => "",
 				'required'    => 'required',
 			],
-
 			[
 				'id'          => "{$prefix}message",
 				'name'        => esc_html__( 'Message', 'opalestate-pro' ),
 				'type'        => 'textarea',
-				'description' => "",
 				'default'     => $msg,
 				'required'    => 'required',
 			],
-
 		];
 
 		return $fields;

@@ -28,6 +28,30 @@ function opalestate_rest_check_post_permissions( $post_type, $context = 'read', 
 }
 
 /**
+ * Return the user data for the given consumer_key.
+ *
+ * @param string $consumer_key Consumer key.
+ * @return array
+ */
+function opalestate_get_user_data_by_consumer_key( $consumer_key ) {
+	global $wpdb;
+
+	$consumer_key = opalestate_api_hash( sanitize_text_field( $consumer_key ) );
+	$user         = $wpdb->get_row(
+		$wpdb->prepare(
+			"
+			SELECT key_id, user_id, permissions, consumer_key, consumer_secret, nonces
+			FROM {$wpdb->prefix}opalestate_api_keys
+			WHERE consumer_key = %s
+		",
+			$consumer_key
+		)
+	);
+
+	return $user;
+}
+
+/**
  * The opalestate_property post object, generate the data for the API output
  *
  * @param object $property_info The Download Post Object

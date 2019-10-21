@@ -37,10 +37,10 @@ class Opalestate_REST_Authentication {
 	 * Initialize authentication actions.
 	 */
 	public function __construct() {
-		add_filter( 'determine_current_user', [ $this, 'authenticate' ], 15 );
-		add_filter( 'rest_authentication_errors', [ $this, 'check_authentication_error' ], 15 );
-		add_filter( 'rest_post_dispatch', [ $this, 'send_unauthorized_headers' ], 50 );
-		add_filter( 'rest_pre_dispatch', [ $this, 'check_user_permissions' ], 10, 3 );
+		// add_filter( 'determine_current_user', [ $this, 'authenticate' ], 15 );
+		// add_filter( 'rest_authentication_errors', [ $this, 'check_authentication_error' ], 15 );
+		// add_filter( 'rest_post_dispatch', [ $this, 'send_unauthorized_headers' ], 50 );
+		// add_filter( 'rest_pre_dispatch', [ $this, 'check_user_permissions' ], 10, 3 );
 	}
 
 	/**

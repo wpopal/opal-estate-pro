@@ -13,6 +13,7 @@ if (  opalestate_get_option( 'enable_single_author_box' , 'on') != 'on' ) {
 $type   = $property->get_author_type();
 $data   = get_userdata( $post->post_author );
 $layout = '';
+
 switch ( $type ) {
 	case 'hide':
 		return;
