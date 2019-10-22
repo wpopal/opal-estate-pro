@@ -1,4 +1,32 @@
 <?php
+/**
+ * Checks if the current user has a role.
+ *
+ * @param string $role The role.
+ * @return bool
+ */
+function opalestate_current_user_has_role( $role ) {
+	return opalestate_user_has_role( wp_get_current_user(), $role );
+}
+
+/**
+ * Checks if a user has a role.
+ *
+ * @param int|\WP_User $user The user.
+ * @param string       $role The role.
+ * @return bool
+ */
+function opalestate_user_has_role( $user, $role ) {
+	if ( ! is_object( $user ) ) {
+		$user = get_userdata( $user );
+	}
+
+	if ( ! $user || ! $user->exists() ) {
+		return false;
+	}
+
+	return in_array( $role, $user->roles, true );
+}
 
 function opalestate_submssion_list_page( $args = [] ) {
 	return opalestate_get_user_management_page_uri( [ 'tab' => 'submission_list' ] );
@@ -256,4 +284,14 @@ if ( ! function_exists( 'opalestate_create_user' ) ) {
 
 		return $user_id;
 	}
+}
+
+/**
+ * Get user meta.
+ *
+ * @param $user_id
+ * @param $key
+ */
+function opalestate_get_user_meta( $user_id, $key, $single = true ) {
+	return get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . $key, $single );
 }

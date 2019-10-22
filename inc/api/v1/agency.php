@@ -130,6 +130,8 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 				$agencies['agencies'][ $i ] = $this->get_agency_data( $agency_info );
 				$i++;
 			}
+		} else {
+			return $this->get_response( 404, [ 'collection' => [], 'message' => esc_html__( 'Not found!', 'opalestate-pro' ) ] );
 		}
 
 		$response['collection'] = $agencies['agencies'];

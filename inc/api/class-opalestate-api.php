@@ -7,32 +7,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Opalestate_API
  *
- * @since      1.0.0
  * @package    Opalestate
  */
 class Opalestate_API {
-
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string $plugin_base_name The string used to uniquely identify this plugin.
+	 * @var string $base The string used to uniquely identify this plugin.
 	 */
 	public $base = 'estate-api';
 
 	public function __construct() {
 		$this->init();
+
+		add_filter( 'jwt_auth_token_before_dispatch', [ $this, 'jwt_auth_token_before_dispatch' ] );
 	}
 
 	/**
 	 * Registers a new rewrite endpoint for accessing the API
 	 *
-	 * @access public
-	 *
 	 * @param array $rewrite_rules WordPress Rewrite Rules
-	 *
-	 * @since  1.1
 	 */
 	public function init() {
 		$this->includes( [
@@ -44,6 +38,7 @@ class Opalestate_API {
 			'v1/agent.php',
 			'v1/agency.php',
 			'v1/search-form.php',
+			'v1/user.php',
 			'functions.php',
 		] );
 
@@ -53,11 +48,7 @@ class Opalestate_API {
 	/**
 	 * Registers a new rewrite endpoint for accessing the API
 	 *
-	 * @access public
-	 *
 	 * @param array $rewrite_rules WordPress Rewrite Rules
-	 *
-	 * @since  1.1
 	 */
 	public function add_endpoint( $rewrite_rules ) {
 		add_rewrite_endpoint( $this->base, EP_ALL );
@@ -78,11 +69,7 @@ class Opalestate_API {
 	/**
 	 * Registers a new rewrite endpoint for accessing the API
 	 *
-	 * @access public
-	 *
 	 * @param array $rewrite_rules WordPress Rewrite Rules
-	 *
-	 * @since  1.1
 	 */
 	public function register_resources() {
 		$api_classes = apply_filters( 'opalestate_api_classes',
@@ -91,6 +78,7 @@ class Opalestate_API {
 				'Opalestate_Agent_Api',
 				'Opalestate_Agency_Api',
 				'Opalestate_Search_Form_Api',
+				'Opalestate_User_Api',
 			]
 		);
 
@@ -100,6 +88,23 @@ class Opalestate_API {
 		}
 	}
 
+	/**
+	 * Add some information to JWT response.
+	 *
+	 * @param $data
+	 * @param $user
+	 * @return array
+	 */
+	public function jwt_auth_token_before_dispatch( $data, $user ) {
+		$data['user_role'] = $user->data->display_name;
+		$data['avatar']    = opalestate_get_user_meta( $user->data->ID, 'avatar' );
+
+		return $data;
+	}
+
+	/**
+	 * Create database.
+	 */
 	public static function install() {
 		try {
 			if ( ! function_exists( 'dbDelta' ) ) {
