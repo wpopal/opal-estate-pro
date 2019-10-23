@@ -252,7 +252,7 @@ class OpalEstate_Agency {
 	 * Get rating count.
 	 *
 	 * @param string $context What the value is for. Valid values are view and edit.
-	 * @return int
+	 * @return array
 	 */
 	public static function metaboxes_fields() {
 		$metabox = new Opalestate_Agency_MetaBox();

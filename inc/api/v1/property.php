@@ -144,7 +144,7 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 				$i++;
 			}
 		} else {
-			return $this->get_response( 404, [ 'collection' => esc_html__( 'Not found', 'opalestate-pro' ) ] );
+			return $this->get_response( 404, [ 'collection' => [], 'message' => esc_html__( 'Not found!', 'opalestate-pro' ) ] );
 		}
 
 		$response['collection'] = $properties;

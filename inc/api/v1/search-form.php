@@ -37,7 +37,7 @@ class Opalestate_Search_Form_Api extends Opalestate_Base_API {
 				[
 					'methods'  => WP_REST_Server::READABLE,
 					'callback' => [ $this, 'get_fields' ],
-					// 'permission_callback' => [ $this, 'get_items_permissions_check' ],
+					'permission_callback' => [ $this, 'get_items_permissions_check' ],
 					// 'args'     => $this->get_search_params(),
 				],
 			]

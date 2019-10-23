@@ -187,12 +187,21 @@ abstract class Opalestate_Base_API {
 	 */
 	public function get_items_permissions_check( $request ) {
 		$is_valid = $this->is_valid_api_key( $request );
+
 		if ( is_wp_error( $is_valid ) ) {
 			return $is_valid;
-		}
+		} else {
+			$route    = $request->get_route();
+			$endpoint = explode( '/', $route );
+			$endpoint = end( $endpoint );
 
-		if ( ! opalestate_rest_check_post_permissions( $this->post_type, 'read' ) ) {
-			return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
+			if ( in_array( $endpoint, [ 'properties', 'agencies', 'agents' ] ) ) {
+				return true;
+			}
+
+			if ( ! opalestate_rest_check_post_permissions( $this->post_type, 'read' ) ) {
+				return new WP_Error( 'opalestate_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
+			}
 		}
 
 		return true;
@@ -205,26 +214,17 @@ abstract class Opalestate_Base_API {
 	 * @return WP_Error|boolean
 	 */
 	public function is_valid_api_key( $request ) {
-		// if ( ! $this->is_request_to_rest_api() ) {
-		// 	return false;
-		// }
-
 		if ( isset( $request['consumer_key'] ) && $request['consumer_secret'] ) {
 			$user = opalestate_get_user_data_by_consumer_key( $request['consumer_key'] );
 
 			if ( $user ) {
 				if ( $request['consumer_secret'] === $user->consumer_secret ) {
-					$route    = $request->get_route();
-					$endpoint = explode( '/', $route );
-					$endpoint = end( $endpoint );
-					if ( in_array( $endpoint, [ 'properties' ] ) ) {
-						return true;
-					}
+					return true;
 				}
 			}
 		}
 
-		return new WP_Error( 'opalestate_rest_cannot_access', __( 'Sorry, you cannot list resources.', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
+		return new WP_Error( 'opalestate_rest_cannot_access', __( 'Sorry, you cannot list resources. Invalid keys!', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
 	}
 
 	/**

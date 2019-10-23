@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 This is an ideal solution and brilliant choice for you to set up a professional estate website, Marketplace, Portal Property Website.
 
 == Description ==
-[Live Demos](http://demo2.themelexus.com/housey/) | [Plugin Guide](https://wpopal-2.gitbook.io/opal-estate/)  | [Theme Guide](https://pavotheme.gitbook.io/housey/) | [Free Theme](http://demo2.themelexus.com/latehome_free/) | [Extensions](https://wordpress.org/plugins/tags/opalestate_addon/)
+[Live Demos](http://demo2.themelexus.com/housey/) | [Plugin Guide](https://wpdocs.gitbook.io/opal-estate/)  | [Theme Guide](https://wpdocs.gitbook.io/housey/) | [Free Theme](http://demo2.themelexus.com/latehome_free/) | [Extensions](https://wordpress.org/plugins/tags/opalestate_addon/)
 
 
 
