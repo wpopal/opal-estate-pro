@@ -40,15 +40,13 @@ function opalestate_output_msg_json( $result = false, $message = '', $args = [],
  * Process upload images for properties
  */
 function opalesate_upload_image( $submitted_file, $parent_id = 0 ) {
-
-	// do_action( 'opalestate_before_process_ajax_upload_file' );
-
-	require_once ABSPATH . 'wp-admin/includes/image.php';
+    require_once ABSPATH . 'wp-admin/includes/image.php';
 	require_once ABSPATH . 'wp-admin/includes/file.php';
 	require_once ABSPATH . 'wp-admin/includes/media.php';
 
-	$uploaded_image = wp_handle_upload( $submitted_file,
-		[ 'test_form' => false ] );   //Handle PHP uploads in WordPress, sanitizing file names, checking extensions for mime type, and moving the file to the appropriate directory within the uploads directory.
+	// Handle PHP uploads in WordPress, sanitizing file names, checking extensions for mime type, and moving the
+	// file to the appropriate directory within the uploads directory.
+	$uploaded_image = wp_handle_upload( $submitted_file, [ 'test_form' => false ] );
 
 	if ( isset( $uploaded_image['file'] ) ) {
 		$file_name = basename( $submitted_file['name'] );
@@ -63,10 +61,15 @@ function opalesate_upload_image( $submitted_file, $parent_id = 0 ) {
 			'post_status'    => 'inherit',
 		];
 
-		$attach_id   = wp_insert_attachment( $attachment_details, $uploaded_image['file'], $parent_id );       // This function inserts an attachment into the media library
-		$attach_data = wp_generate_attachment_metadata( $attach_id,
-			$uploaded_image['file'] );     // This function generates metadata for an image attachment. It also creates a thumbnail and other intermediate sizes of the image attachment based on the sizes defined
-		wp_update_attachment_metadata( $attach_id, $attach_data );                                      // Update metadata for an attachment.
+		// This function inserts an attachment into the media library.
+		$attach_id = wp_insert_attachment( $attachment_details, $uploaded_image['file'], $parent_id );
+
+		// This function generates metadata for an image attachment.
+		// It also creates a thumbnail and other intermediate sizes of the image attachment based on the sizes defined
+		$attach_data = wp_generate_attachment_metadata( $attach_id, $uploaded_image['file'] );
+
+		// Update metadata for an attachment.
+		wp_update_attachment_metadata( $attach_id, $attach_data );
 
 		$thumbnail_url = opalestate_get_upload_image_url( $attach_data );
 
@@ -79,7 +82,6 @@ function opalesate_upload_image( $submitted_file, $parent_id = 0 ) {
 		update_post_meta( $attach_id, '_pending_to_use_', 1 );
 
 		return $ajax_response;
-
 	}
 
 	return [];
