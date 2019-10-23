@@ -22,10 +22,8 @@ class Opalestate_Admin_Agent {
 	 * Auto update meta information to post from user data updated or created
 	 */
 	public function __construct() {
-
 		add_action( 'cmb2_admin_init', [ $this, 'metaboxes' ] );
 		add_action( 'save_post', [ $this, 'save_post' ], 10, 3 );
-
 		add_action( 'user_register', [ $this, 'on_update_user' ], 10, 1 );
 		add_action( 'profile_update', [ $this, 'on_update_user' ], 10, 1 );
 	}
@@ -37,12 +35,46 @@ class Opalestate_Admin_Agent {
 		if ( isset( $_POST['user_id'] ) && (int) $_POST['user_id'] && isset( $_POST['role'] ) ) {
 			if ( $_POST['role'] == 'opalestate_agent' ) {
 				$user_id    = absint( $_POST['user_id'] );
+				static::update_user_metas( $user_id );
+
 				$related_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
 				$post       = get_post( $related_id );
 
 				if ( isset( $post->ID ) && $post->ID ) {
 					OpalEstate_Agent::update_data_from_user( $related_id );
 				}
+			}
+		}
+	}
+
+	public function save_post( $post_id, $post, $update ) {
+		$post_type = get_post_type( $post_id );
+		if ( $post_type == 'opalestate_agent' ) {
+			if ( isset( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] ) && absint( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] ) ) {
+				$user_id = absint( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] );
+				update_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', $post_id );
+
+				OpalEstate_Agent::update_user_data( $user_id );
+			}
+
+		}
+	}
+
+	/**
+	 * Update some user metas.
+	 *
+	 * @param int $related_id Post ID.
+	 */
+	public static function update_user_metas( $user_id ) {
+		$terms = [
+			'location',
+			'state',
+			'city',
+		];
+
+		foreach ( $terms as $term ) {
+			if ( isset( $_POST[ OPALESTATE_USER_PROFILE_PREFIX . $term ] ) ) {
+				update_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . $term, $_POST[ OPALESTATE_USER_PROFILE_PREFIX . $term ] );
 			}
 		}
 	}
@@ -101,19 +133,6 @@ class Opalestate_Admin_Agent {
 				'type' => 'tabs',
 				'tabs' => $tabs_setting,
 			] );
-		}
-	}
-
-	public function save_post( $post_id, $post, $update ) {
-		$post_type = get_post_type( $post_id );
-		if ( $post_type == 'opalestate_agent' ) {
-			if ( isset( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] ) && absint( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] ) ) {
-				$user_id = absint( $_POST[ OPALESTATE_AGENT_PREFIX . 'user_id' ] );
-				update_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', $post_id );
-
-				OpalEstate_Agent::update_user_data( $user_id );
-			}
-
 		}
 	}
 }
