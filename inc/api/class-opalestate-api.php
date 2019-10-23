@@ -20,7 +20,7 @@ class Opalestate_API {
 	public function __construct() {
 		$this->init();
 
-		add_filter( 'jwt_auth_token_before_dispatch', [ $this, 'jwt_auth_token_before_dispatch' ] );
+		add_filter( 'jwt_auth_token_before_dispatch', [ $this, 'jwt_auth_token_before_dispatch' ], 10, 2 );
 	}
 
 	/**
@@ -96,7 +96,7 @@ class Opalestate_API {
 	 * @return array
 	 */
 	public function jwt_auth_token_before_dispatch( $data, $user ) {
-		$data['user_role'] = $user->data->display_name;
+		$data['user_role'] = $user->roles;
 		$data['avatar']    = opalestate_get_user_meta( $user->data->ID, 'avatar' );
 
 		return $data;
