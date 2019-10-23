@@ -154,7 +154,7 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 	}
 
 	/**
-	 * Get all customers.
+	 * Get all users.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|WP_REST_Response
@@ -249,6 +249,12 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 		return $response;
 	}
 
+	/**
+	 * Update user data.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|WP_REST_Response
+	 */
 	public function update_item( $request ) {
 		try {
 			$id = (int) $request['id'];
@@ -305,8 +311,17 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 			if ( isset( $request[ $tmp ] ) && $tmp ) {
 				$data = is_string( $request[ $tmp ] ) ? sanitize_text_field( $request[ $tmp ] ) : $request[ $tmp ];
 				update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
+
+				$related_id = get_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+				$post       = get_post( $related_id );
+
+				if ( isset( $post->ID ) && $post->ID ) {
+					update_post_meta( $related_id, $field['id'], $data );
+				}
 			}
 		}
+
+		$this->update_object_terms( $request['id'], $request );
 
 		// Update for others.
 		foreach ( $others as $key => $value ) {
@@ -318,7 +333,33 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 	}
 
 	/**
-	 * Update user data.
+	 * Update object terms.
+	 *
+	 * @param int $related_id Post ID.
+	 */
+	public function update_object_terms( $user_id, $request ) {
+		$terms = [
+			'location',
+			'state',
+			'city',
+		];
+
+		foreach ( $terms as $term ) {
+			if ( isset( $request[ $term ] ) ) {
+				wp_set_object_terms( $user_id, $request[ $term ], 'opalestate_' . $term );
+
+				$related_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+				$post       = get_post( $related_id );
+
+				if ( isset( $post->ID ) && $post->ID ) {
+					wp_set_object_terms( $related_id, $request[ $term ], 'opalestate_' . $term );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Update agency data.
 	 *
 	 * @param $request User ID.
 	 */
