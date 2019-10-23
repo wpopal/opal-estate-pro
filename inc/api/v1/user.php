@@ -380,6 +380,8 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 			}
 		}
 
+		$this->update_object_terms( $request['id'], $request );
+
 		// Update for others.
 		foreach ( $others as $key => $value ) {
 			$kpos = OPALESTATE_AGENCY_PREFIX . $key;

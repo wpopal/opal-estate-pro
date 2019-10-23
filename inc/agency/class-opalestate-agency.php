@@ -36,7 +36,7 @@ class OpalEstate_Agency {
 	 *
 	 * @access protected
 	 */
-	public $author;	
+	public $author;
 
 	/**
 	 * @var Boolean $is_featured
@@ -61,13 +61,13 @@ class OpalEstate_Agency {
 	 *  Constructor
 	 */
 	public function __construct( $post_id = null ) {
- 		global $post ; 
+		global $post;
 
- 		if( $post == null ) {
+		if ( $post == null ) {
 			$post = WP_Post::get_instance( $post_id );
-	 	}
-	 	
-		$this->post        = $post; 
+		}
+
+		$this->post        = $post;
 		$this->post_id     = $post_id ? $post_id : get_the_ID();
 		$this->author      = get_userdata( $post->post_author );
 		$this->author_name = ! empty( $this->author ) ? sprintf( '%s %s', $this->author->first_name, $this->author->last_name ) : null;
@@ -114,15 +114,15 @@ class OpalEstate_Agency {
 	/**
 	 * Get url of user avatar by agency id
 	 */
-	public static function get_avatar_url( $userID, $size='thumbnail' ) { 
-		
-		$id =  get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . 'avatar_id', true );
-		$url = wp_get_attachment_image_url( $id, $size ); 
+	public static function get_avatar_url( $userID, $size = 'thumbnail' ) {
 
-		if( $url ) {
+		$id  = get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . 'avatar_id', true );
+		$url = wp_get_attachment_image_url( $id, $size );
+
+		if ( $url ) {
 			return $url;
-		} 
-		
+		}
+
 		return get_post_meta( $userID, OPALESTATE_AGENCY_PREFIX . 'avatar', true );
 	}
 
@@ -239,7 +239,7 @@ class OpalEstate_Agency {
 			];
 		}
 
-		$url    = self::get_avatar_url( $agency_id );
+		$url = self::get_avatar_url( $agency_id );
 
 		return [
 			'name'   => $agency->post_title,
@@ -313,7 +313,7 @@ class OpalEstate_Agency {
 	 * @param string $context What the value is for. Valid values are view and edit.
 	 * @return int
 	 */
-	public function get_category_tax (  ) {
+	public function get_category_tax() {
 		return wp_get_post_terms( $this->post_id, 'opalestate_agency_cat' );
 	}
 
@@ -330,7 +330,7 @@ class OpalEstate_Agency {
 	/**
 	 * Update user data.
 	 *
-	 * @param $user_id User ID.
+	 * @param int $user_id User ID.
 	 */
 	public static function update_user_data( $user_id ) {
 		$fields = self::metaboxes_fields();
@@ -349,7 +349,9 @@ class OpalEstate_Agency {
 			}
 		}
 
-		// update for others 
+		static::update_user_object_terms( $user_id );
+
+		// Update for others
 		foreach ( $others as $key => $value ) {
 			$kpos = OPALESTATE_AGENCY_PREFIX . $key;
 			if ( isset( $_POST[ $kpos ] ) ) {
@@ -362,7 +364,7 @@ class OpalEstate_Agency {
 	/**
 	 * Update data from user.
 	 *
-	 * @param $related_id Post ID
+	 * @param int $related_id Post ID
 	 */
 	public static function update_data_from_user( $related_id ) {
 		$fields = self::metaboxes_fields();
@@ -382,12 +384,52 @@ class OpalEstate_Agency {
 			}
 		}
 
-		// update for others 
+		static::update_post_object_terms( $related_id );
+
+		// Update for others.
 		foreach ( $others as $key => $value ) {
 			$kpos = OPALESTATE_USER_PROFILE_PREFIX . $key;
 			if ( isset( $_POST[ $kpos ] ) ) {
 				$data = is_string( $_POST[ $kpos ] ) ? sanitize_text_field( $_POST[ $kpos ] ) : $_POST[ $kpos ];
 				update_post_meta( $related_id, OPALESTATE_AGENCY_PREFIX . $key, $data );
+			}
+		}
+	}
+
+	/**
+	 * Update object terms.
+	 *
+	 * @param int $related_id Post ID.
+	 */
+	public static function update_user_object_terms( $user_id ) {
+		$terms = [
+			'location',
+			'state',
+			'city',
+		];
+
+		foreach ( $terms as $term ) {
+			if ( isset( $_POST[ OPALESTATE_AGENCY_PREFIX . $term ] ) ) {
+				wp_set_object_terms( $user_id, $_POST[ OPALESTATE_AGENCY_PREFIX . $term ], 'opalestate_' . $term );
+			}
+		}
+	}
+
+	/**
+	 * Update object terms.
+	 *
+	 * @param int $related_id Post ID.
+	 */
+	public static function update_post_object_terms( $related_id ) {
+		$terms = [
+			'location',
+			'state',
+			'city',
+		];
+
+		foreach ( $terms as $term ) {
+			if ( isset( $_POST[ OPALESTATE_USER_PROFILE_PREFIX . $term ] ) ) {
+				wp_set_object_terms( $related_id, $_POST[ OPALESTATE_USER_PROFILE_PREFIX . $term ], 'opalestate_' . $term );
 			}
 		}
 	}
