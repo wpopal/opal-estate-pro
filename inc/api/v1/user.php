@@ -70,6 +70,24 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 				],
 			]
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->base . '/(?P<id>[\d]+)/favorites',
+			[
+				'args' => [
+					'id' => [
+						'description' => __( 'Unique identifier for the resource.', 'opalestate-pro' ),
+						'type'        => 'integer',
+					],
+				],
+				[
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_favorites' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
+				],
+			]
+		);
 	}
 
 	/**
@@ -307,7 +325,7 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 		];
 
 		foreach ( $fields as $key => $field ) {
-			$tmp  = str_replace( OPALESTATE_AGENT_PREFIX, '', $field['id'] );
+			$tmp = str_replace( OPALESTATE_AGENT_PREFIX, '', $field['id'] );
 			if ( isset( $request[ $tmp ] ) && $tmp ) {
 				$data = is_string( $request[ $tmp ] ) ? sanitize_text_field( $request[ $tmp ] ) : $request[ $tmp ];
 				update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
@@ -579,6 +597,46 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 		$response->header( 'Location', rest_url( sprintf( '/%s/%s/%d', $this->namespace, $this->base, $post_id ) ) );
 
 		return $response;
+	}
+
+	/**
+	 * Show all favorited properties with pagination.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|WP_REST_Response
+	 */
+	public function get_favorites( $request ) {
+		$id        = (int) $request['id'];
+		$user_data = get_userdata( $id );
+
+		if ( empty( $id ) || empty( $user_data->ID ) ) {
+			return new WP_Error( 'opalestate_rest_invalid_id', __( 'Invalid resource ID.', 'opalestate-pro' ), [ 'status' => 404 ] );
+		}
+
+		$per_page = isset( $request['per_page'] ) && $request['per_page'] ? $request['per_page'] : 5;
+		$paged    = isset( $request['page'] ) && $request['page'] ? $request['page'] : 1;
+		$items    = (array) get_user_meta( $request['id'], 'opalestate_user_favorite', true );
+
+		$property_list = get_posts( [
+			'post_type'      => 'opalestate_property',
+			'posts_per_page' => $per_page,
+			'paged'          => $paged,
+			'post__in'       => ! empty( $items ) ? $items : [ 9999999 ],
+		] );
+
+		if ( $property_list ) {
+			$i = 0;
+			foreach ( $property_list as $property_info ) {
+				$properties[ $i ] = $this->get_property_data( $property_info );
+				$i++;
+			}
+		} else {
+			return $this->get_response( 404, [ 'collection' => [], 'message' => esc_html__( 'Not found!', 'opalestate-pro' ) ] );
+		}
+
+		$response['collection'] = $properties;
+
+		return $this->get_response( 200, $response );
 	}
 
 	/**
