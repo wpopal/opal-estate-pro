@@ -88,6 +88,52 @@ function opalesate_upload_image( $submitted_file, $parent_id = 0 ) {
 }
 
 /**
+ * Upload an image with data base64 encoded.
+ *
+ * @param array $file File information (data, file_name, type)
+ * @return bool|int|\WP_Error
+ */
+function opalestate_upload_base64_image( $file, $parent_id = 0 ) {
+	// Upload dir.
+	$img       = str_replace( ' ', '+', $file['data'] );
+	$decoded   = base64_decode( $img );
+	$filename  = $file['file_name'];
+	$file_type = $file['type'];
+
+	/*
+	 * A writable uploads dir will pass this test. Again, there's no point
+	 * overriding this one.
+	 */
+	if ( ! ( ( $uploads = wp_upload_dir() ) && false === $uploads['error'] ) ) {
+		return false;
+	}
+
+	$filename = wp_unique_filename( $uploads['path'], $filename );
+
+	// Move the file to the uploads dir.
+	$new_file = $uploads['path'] . "/$filename";
+
+	// Save the image in the uploads directory.
+	$upload_file = file_put_contents( $new_file, $decoded );
+
+	$attachment = [
+		'post_mime_type' => $file_type,
+		'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $file['file_name'] ) ),
+		'post_content'   => '',
+		'post_status'    => 'inherit',
+		'guid'           => $uploads['url'] . '/' . basename( $filename ),
+	];
+
+	$attach_id = wp_insert_attachment( $attachment, $new_file, $parent_id );
+
+	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+	$attach_data = wp_generate_attachment_metadata( $attach_id, $new_file );
+	wp_update_attachment_metadata( $attach_id, $attach_data );
+
+	return $attach_id;
+}
+
+/**
  *
  */
 function opalestate_get_time_lapses( $lapse = 15 ) {

@@ -313,25 +313,41 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 	/**
 	 * Update user data.
 	 *
-	 * @param $request User ID.
+	 * @param WP_REST_Request $request Full details about the request.
 	 */
 	public function update_agent_data( $request ) {
 		$fields = OpalEstate_Agent::metaboxes_fields();
 
 		$others = [
-			'avatar_id'          => '',
 			'opalestate_agt_map' => '',
 			'map'                => '',
 		];
 
 		foreach ( $fields as $key => $field ) {
 			$tmp = str_replace( OPALESTATE_AGENT_PREFIX, '', $field['id'] );
-			if ( isset( $request[ $tmp ] ) && $tmp ) {
-				$data = is_string( $request[ $tmp ] ) ? sanitize_text_field( $request[ $tmp ] ) : $request[ $tmp ];
-				update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
 
+			if ( isset( $request[ $tmp ] ) && $request[ $tmp ] ) {
 				$related_id = get_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
 				$post       = get_post( $related_id );
+
+				if ( 'avatar' === $tmp ) {
+					if ( is_array( $request[ $tmp ] ) ) {
+						if ( isset( $post->ID ) && $post->ID ) {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ], $related_id );
+						} else {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ] );
+						}
+
+						$request[ $tmp ]         = wp_get_attachment_image_url( $attach_id, 'full' );
+						$request[ $tmp . '_id' ] = $attach_id;
+						update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp . '_id', $attach_id );
+						update_post_meta( $related_id, $field['id'] . '_id', $attach_id );
+					}
+				}
+
+				$data = is_string( $request[ $tmp ] ) ? sanitize_text_field( $request[ $tmp ] ) : $request[ $tmp ];
+
+				update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
 
 				if ( isset( $post->ID ) && $post->ID ) {
 					update_post_meta( $related_id, $field['id'], $data );
@@ -379,22 +395,44 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 	/**
 	 * Update agency data.
 	 *
-	 * @param $request User ID.
+	 * @param WP_REST_Request $request Full details about the request.
 	 */
 	public function update_agency_data( $request ) {
 		$fields = OpalEstate_Agency::metaboxes_fields();
 
 		$others = [
-			'avatar_id' => '',
-			'map'       => '',
+			'map' => '',
 		];
 
 		foreach ( $fields as $key => $field ) {
-			$kpos = $field['id'];
-			$tmp  = str_replace( OPALESTATE_AGENCY_PREFIX, '', $field['id'] );
-			if ( isset( $request[ $kpos ] ) && $tmp ) {
-				$data = is_string( $request[ $kpos ] ) ? sanitize_text_field( $request[ $kpos ] ) : $request[ $kpos ];
+			$tmp = str_replace( OPALESTATE_AGENCY_PREFIX, '', $field['id'] );
+
+			if ( isset( $request[ $tmp ] ) && $request[ $tmp ] ) {
+				$related_id = get_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+				$post       = get_post( $related_id );
+
+				if ( 'avatar' === $tmp ) {
+					if ( is_array( $request[ $tmp ] ) ) {
+						if ( isset( $post->ID ) && $post->ID ) {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ], $related_id );
+						} else {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ] );
+						}
+
+						$request[ $tmp ]         = wp_get_attachment_image_url( $attach_id, 'full' );
+						$request[ $tmp . '_id' ] = $attach_id;
+						update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp . '_id', $attach_id );
+						update_post_meta( $related_id, $field['id'] . '_id', $attach_id );
+					}
+				}
+
+				$data = is_string( $request[ $tmp ] ) ? sanitize_text_field( $request[ $tmp ] ) : $request[ $tmp ];
+
 				update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
+
+				if ( isset( $post->ID ) && $post->ID ) {
+					update_post_meta( $related_id, $field['id'], $data );
+				}
 			}
 		}
 
