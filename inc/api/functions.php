@@ -93,8 +93,7 @@ function opalestate_get_user_data_by_consumer_key( $consumer_key ) {
  *
  * @param object $property_info The Download Post Object
  *
- * @return array                Array of post data to return back in the API
- * @since  1.0
+ * @return array  Array of post data to return back in the API
  *
  */
 function opalestate_api_get_property_data( $property_info ) {
@@ -154,7 +153,45 @@ function opalestate_api_get_property_data( $property_info ) {
 		'values' => $array_values,
 	];
 
-	return apply_filters( 'opalestate_api_properties_property', $property );
+	return apply_filters( 'opalestate_api_get_property_data', $property );
+}
+
+/**
+ * The opalestate_property post object, generate the data for the API output
+ *
+ * @param object $property_info The Download Post Object
+ *
+ * @return array                Array of post data to return back in the API
+ * @since  1.0
+ *
+ */
+function opalestate_api_parse_property_meta_key() {
+	$request = [
+		'name'               => '',
+		'status'             => '',
+		'content'            => '',
+		'thumbnail'          => '',
+		'gallery'            => '',
+		'price'              => '',
+		'saleprice'          => '',
+		'before_price_label' => '',
+		'price_label'        => '',
+		'featured'           => '',
+		'map'                => '',
+		'address'            => '',
+		'video'              => '',
+		'virtual_tour'       => '',
+		'attachments'        => '',
+		'floor_plans'        => '',
+		'statuses'           => '',
+		'labels'             => '',
+		'locations'          => '',
+		'facilities'         => '',
+		'amenities'          => '',
+		'types'              => '',
+	];
+
+	return apply_filters( 'opalestate_api_parse_property_meta_key', $request );
 }
 
 /**
