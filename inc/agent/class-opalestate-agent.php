@@ -179,7 +179,7 @@ class OpalEstate_Agent {
 	/**
 	 * Update user data.
 	 *
-	 * @param $user_id User ID.
+	 * @param int $user_id User ID.
 	 */
 	public static function update_user_data( $user_id ) {
 		$fields = self::metaboxes_fields();
@@ -199,6 +199,8 @@ class OpalEstate_Agent {
 			}
 		}
 
+		static::update_user_object_terms( $user_id );
+
 		// update for others 
 		foreach ( $others as $key => $value ) {
 			$kpos = OPALESTATE_AGENT_PREFIX . $key;
@@ -212,7 +214,7 @@ class OpalEstate_Agent {
 	/**
 	 * Update data from user.
 	 *
-	 * @param $related_id Post ID.
+	 * @param int $related_id Post ID.
 	 */
 	public static function update_data_from_user( $related_id ) {
 		$fields = self::metaboxes_fields();
@@ -232,12 +234,54 @@ class OpalEstate_Agent {
 			}
 		}
 
+		static::update_post_object_terms( $related_id );
+
 		// update for others 
 		foreach ( $others as $key => $value ) {
 			$kpos = OPALESTATE_USER_PROFILE_PREFIX . $key;
 			if ( isset( $_POST[ $kpos ] ) ) {
 				$data = is_string( $_POST[ $kpos ] ) ? sanitize_text_field( $_POST[ $kpos ] ) : $_POST[ $kpos ];
 				update_post_meta( $related_id, OPALESTATE_AGENT_PREFIX . $key, $data );
+			}
+		}
+
+		do_action( 'opalestate_update_agent_data_from_user', $related_id );
+	}
+
+	/**
+	 * Update object terms.
+	 *
+	 * @param int $related_id Post ID.
+	 */
+	public static function update_post_object_terms( $related_id ) {
+		$terms = [
+			'location',
+			'state',
+			'city',
+		];
+
+		foreach ( $terms as $term ) {
+			if ( isset( $_POST[ OPALESTATE_USER_PROFILE_PREFIX . $term ] ) ) {
+				wp_set_object_terms( $related_id, $_POST[ OPALESTATE_USER_PROFILE_PREFIX . $term ], 'opalestate_' . $term );
+			}
+		}
+	}
+
+	/**
+	 * Update object terms.
+	 *
+	 * @param int $related_id Post ID.
+	 */
+	public static function update_user_object_terms( $user_id ) {
+		$terms = [
+			'location',
+			'state',
+			'city',
+		];
+
+		foreach ( $terms as $term ) {
+			if ( isset( $_POST[ OPALESTATE_AGENT_PREFIX . $term ] ) ) {
+				wp_set_object_terms( $user_id, $_POST[ OPALESTATE_AGENT_PREFIX . $term ], 'opalestate_' . $term );
 			}
 		}
 	}

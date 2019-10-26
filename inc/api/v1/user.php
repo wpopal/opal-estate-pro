@@ -70,6 +70,24 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 				],
 			]
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'/' . $this->base . '/(?P<id>[\d]+)/favorites',
+			[
+				'args' => [
+					'id' => [
+						'description' => __( 'Unique identifier for the resource.', 'opalestate-pro' ),
+						'type'        => 'integer',
+					],
+				],
+				[
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => [ $this, 'get_favorites' ],
+					'permission_callback' => [ $this, 'get_item_permissions_check' ],
+				],
+			]
+		);
 	}
 
 	/**
@@ -154,7 +172,7 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 	}
 
 	/**
-	 * Get all customers.
+	 * Get all users.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|WP_REST_Response
@@ -249,6 +267,12 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 		return $response;
 	}
 
+	/**
+	 * Update user data.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|WP_REST_Response
+	 */
 	public function update_item( $request ) {
 		try {
 			$id = (int) $request['id'];
@@ -289,24 +313,49 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 	/**
 	 * Update user data.
 	 *
-	 * @param $request User ID.
+	 * @param WP_REST_Request $request Full details about the request.
 	 */
 	public function update_agent_data( $request ) {
 		$fields = OpalEstate_Agent::metaboxes_fields();
 
 		$others = [
-			'avatar_id'          => '',
 			'opalestate_agt_map' => '',
 			'map'                => '',
 		];
 
 		foreach ( $fields as $key => $field ) {
-			$tmp  = str_replace( OPALESTATE_AGENT_PREFIX, '', $field['id'] );
-			if ( isset( $request[ $tmp ] ) && $tmp ) {
+			$tmp = str_replace( OPALESTATE_AGENT_PREFIX, '', $field['id'] );
+
+			if ( isset( $request[ $tmp ] ) && $request[ $tmp ] ) {
+				$related_id = get_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+				$post       = get_post( $related_id );
+
+				if ( 'avatar' === $tmp ) {
+					if ( is_array( $request[ $tmp ] ) ) {
+						if ( isset( $post->ID ) && $post->ID ) {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ], $related_id );
+						} else {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ] );
+						}
+
+						$request[ $tmp ]         = wp_get_attachment_image_url( $attach_id, 'full' );
+						$request[ $tmp . '_id' ] = $attach_id;
+						update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp . '_id', $attach_id );
+						update_post_meta( $related_id, $field['id'] . '_id', $attach_id );
+					}
+				}
+
 				$data = is_string( $request[ $tmp ] ) ? sanitize_text_field( $request[ $tmp ] ) : $request[ $tmp ];
+
 				update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
+
+				if ( isset( $post->ID ) && $post->ID ) {
+					update_post_meta( $related_id, $field['id'], $data );
+				}
 			}
 		}
+
+		$this->update_object_terms( $request['id'], $request );
 
 		// Update for others.
 		foreach ( $others as $key => $value ) {
@@ -318,26 +367,76 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 	}
 
 	/**
-	 * Update user data.
+	 * Update object terms.
 	 *
-	 * @param $request User ID.
+	 * @param int $related_id Post ID.
+	 */
+	public function update_object_terms( $user_id, $request ) {
+		$terms = [
+			'location',
+			'state',
+			'city',
+		];
+
+		foreach ( $terms as $term ) {
+			if ( isset( $request[ $term ] ) ) {
+				wp_set_object_terms( $user_id, $request[ $term ], 'opalestate_' . $term );
+
+				$related_id = get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+				$post       = get_post( $related_id );
+
+				if ( isset( $post->ID ) && $post->ID ) {
+					wp_set_object_terms( $related_id, $request[ $term ], 'opalestate_' . $term );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Update agency data.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
 	 */
 	public function update_agency_data( $request ) {
 		$fields = OpalEstate_Agency::metaboxes_fields();
 
 		$others = [
-			'avatar_id' => '',
-			'map'       => '',
+			'map' => '',
 		];
 
 		foreach ( $fields as $key => $field ) {
-			$kpos = $field['id'];
-			$tmp  = str_replace( OPALESTATE_AGENCY_PREFIX, '', $field['id'] );
-			if ( isset( $request[ $kpos ] ) && $tmp ) {
-				$data = is_string( $request[ $kpos ] ) ? sanitize_text_field( $request[ $kpos ] ) : $request[ $kpos ];
+			$tmp = str_replace( OPALESTATE_AGENCY_PREFIX, '', $field['id'] );
+
+			if ( isset( $request[ $tmp ] ) && $request[ $tmp ] ) {
+				$related_id = get_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . 'related_id', true );
+				$post       = get_post( $related_id );
+
+				if ( 'avatar' === $tmp ) {
+					if ( is_array( $request[ $tmp ] ) ) {
+						if ( isset( $post->ID ) && $post->ID ) {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ], $related_id );
+						} else {
+							$attach_id = opalestate_upload_base64_image( $request[ $tmp ] );
+						}
+
+						$request[ $tmp ]         = wp_get_attachment_image_url( $attach_id, 'full' );
+						$request[ $tmp . '_id' ] = $attach_id;
+						update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp . '_id', $attach_id );
+						update_post_meta( $related_id, $field['id'] . '_id', $attach_id );
+					}
+				}
+
+				$data = is_string( $request[ $tmp ] ) ? sanitize_text_field( $request[ $tmp ] ) : $request[ $tmp ];
+
 				update_user_meta( $request['id'], OPALESTATE_USER_PROFILE_PREFIX . $tmp, $data );
+
+				if ( isset( $post->ID ) && $post->ID ) {
+					update_post_meta( $related_id, $field['id'], $data );
+				}
 			}
 		}
+
+		$this->update_object_terms( $request['id'], $request );
 
 		// Update for others.
 		foreach ( $others as $key => $value ) {
@@ -536,6 +635,46 @@ class Opalestate_User_Api extends Opalestate_Base_API {
 		$response->header( 'Location', rest_url( sprintf( '/%s/%s/%d', $this->namespace, $this->base, $post_id ) ) );
 
 		return $response;
+	}
+
+	/**
+	 * Show all favorited properties with pagination.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|WP_REST_Response
+	 */
+	public function get_favorites( $request ) {
+		$id        = (int) $request['id'];
+		$user_data = get_userdata( $id );
+
+		if ( empty( $id ) || empty( $user_data->ID ) ) {
+			return new WP_Error( 'opalestate_rest_invalid_id', __( 'Invalid resource ID.', 'opalestate-pro' ), [ 'status' => 404 ] );
+		}
+
+		$per_page = isset( $request['per_page'] ) && $request['per_page'] ? $request['per_page'] : 5;
+		$paged    = isset( $request['page'] ) && $request['page'] ? $request['page'] : 1;
+		$items    = (array) get_user_meta( $request['id'], 'opalestate_user_favorite', true );
+
+		$property_list = get_posts( [
+			'post_type'      => 'opalestate_property',
+			'posts_per_page' => $per_page,
+			'paged'          => $paged,
+			'post__in'       => ! empty( $items ) ? $items : [ 9999999 ],
+		] );
+
+		if ( $property_list ) {
+			$i = 0;
+			foreach ( $property_list as $property_info ) {
+				$properties[ $i ] = $this->get_property_data( $property_info );
+				$i++;
+			}
+		} else {
+			return $this->get_response( 404, [ 'collection' => [], 'message' => esc_html__( 'Not found!', 'opalestate-pro' ) ] );
+		}
+
+		$response['collection'] = $properties;
+
+		return $this->get_response( 200, $response );
 	}
 
 	/**

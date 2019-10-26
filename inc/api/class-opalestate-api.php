@@ -39,6 +39,7 @@ class Opalestate_API {
 			'v1/agency.php',
 			'v1/search-form.php',
 			'v1/user.php',
+			'v1/terms.php',
 			'functions.php',
 		] );
 
@@ -79,6 +80,7 @@ class Opalestate_API {
 				'Opalestate_Agency_Api',
 				'Opalestate_Search_Form_Api',
 				'Opalestate_User_Api',
+				'Opalestate_Terms_Api',
 			]
 		);
 
@@ -96,6 +98,7 @@ class Opalestate_API {
 	 * @return array
 	 */
 	public function jwt_auth_token_before_dispatch( $data, $user ) {
+		$data['user_id']   = $user->data->ID;
 		$data['user_role'] = $user->roles;
 		$data['avatar']    = opalestate_get_user_meta( $user->data->ID, 'avatar' );
 

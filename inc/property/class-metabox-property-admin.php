@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Opalestate_Property_MetaBox {
 
 	/**
-	 *
+	 * Register admin fields.
 	 */
 	public function register_admin_fields() {
 		$prefix      = OPALESTATE_PROPERTY_PREFIX;
@@ -39,7 +39,6 @@ class Opalestate_Property_MetaBox {
 			'layout' => 'vertical', // Default : horizontal
 			'tabs'   => [],
 		];
-
 
 		$tabs_setting['tabs'][] = [
 			'id'     => 'p-general',
@@ -168,7 +167,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Management fields.
 	 */
 	public function metaboxes_management_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -196,7 +195,6 @@ class Opalestate_Property_MetaBox {
 				'sanitization_cb' => 'opal_map_sanitise',
 				'split_values'    => true,
 			],
-
 			[
 				'name' => esc_html__( 'Postal Code / Zip', 'opalestate-pro' ),
 				'id'   => $prefix . 'zipcode',
@@ -212,7 +210,6 @@ class Opalestate_Property_MetaBox {
 					0 => esc_html__( 'No', 'opalestate-pro' ),
 				],
 			],
-
 			[
 				'name'       => esc_html__( 'Address', 'opalestate-pro' ),
 				'id'         => $prefix . 'address',
@@ -221,8 +218,6 @@ class Opalestate_Property_MetaBox {
 					'required' => 'required',
 				],
 			],
-
-
 			[
 				'id'          => "{$prefix}video",
 				'name'        => esc_html__( 'Video', 'opalestate-pro' ),
@@ -235,7 +230,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Price fields.
 	 */
 	public function metaboxes_price_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -287,7 +282,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Information fields.
 	 */
 	public static function metaboxes_info_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -300,7 +295,6 @@ class Opalestate_Property_MetaBox {
 				'description' => esc_html__( 'Enter built year', 'opalestate-pro' ),
 
 				'before_row' => '<div class="row-group-features group-has-three group-property-info clearfix"><h3>' . ( is_admin() ? "" : esc_html__( 'Property Information', 'opalestate-pro' ) ) . '</h3>',
-				// callback
 			],
 			[
 				'name'        => esc_html__( 'Parking', 'opalestate-pro' ),
@@ -312,7 +306,6 @@ class Opalestate_Property_MetaBox {
 				],
 				'description' => esc_html__( 'Enter number of Parking', 'opalestate-pro' ),
 			],
-
 			[
 				'name'        => esc_html__( 'Bedrooms', 'opalestate-pro' ),
 				'id'          => $prefix . 'bedrooms',
@@ -351,7 +344,6 @@ class Opalestate_Property_MetaBox {
 				'type'        => 'text',
 				'description' => esc_html__( 'Enter Orientation of property', 'opalestate-pro' ),
 			],
-
 			[
 				'name'        => esc_html__( 'Living Rooms', 'opalestate-pro' ),
 				'id'          => "{$prefix}livingrooms",
@@ -362,7 +354,6 @@ class Opalestate_Property_MetaBox {
 				],
 				'description' => esc_html__( 'Enter Number of Living Rooms', 'opalestate-pro' ),
 			],
-
 			[
 				'name'        => esc_html__( 'Kitchens', 'opalestate-pro' ),
 				'id'          => "{$prefix}kitchens",
@@ -373,7 +364,6 @@ class Opalestate_Property_MetaBox {
 				],
 				'description' => esc_html__( 'Enter Number of Kitchens', 'opalestate-pro' ),
 			],
-
 			[
 				'name'        => esc_html__( 'Rooms', 'opalestate-pro' ),
 				'id'          => "{$prefix}amountrooms",
@@ -385,7 +375,6 @@ class Opalestate_Property_MetaBox {
 				'description' => esc_html__( 'Enter Number of Amount Rooms', 'opalestate-pro' ),
 
 				'after_row' => '</div>',
-
 			],
 		];
 
@@ -393,7 +382,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Facilites fields.
 	 */
 	public function metaboxes_public_facilities_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -427,7 +416,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Member fields.
 	 */
 	public function metaboxes_members_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -487,7 +476,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Assigment fields.
 	 */
 	public function metaboxes_assignment_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -518,7 +507,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Layout fields.
 	 */
 	public function metaboxes_layout_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -533,7 +522,6 @@ class Opalestate_Property_MetaBox {
 				'options'     => apply_filters( 'opalestate_single_layout_templates', [ '' => esc_html__( 'Inherit', 'opalestate-pro' ) ] ),
 				'description' => esc_html__( 'Select a layout to display full information of this property', 'opalestate-pro' ),
 			],
-
 			[
 				'name'        => esc_html__( 'Preview Display', 'opalestate-pro' ),
 				'id'          => "{$prefix}preview",
@@ -547,7 +535,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Floor plans fields.
 	 */
 	public function metaboxes_floor_plans() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -617,7 +605,7 @@ class Opalestate_Property_MetaBox {
 	}
 
 	/**
-	 *
+	 * Apartment fields.
 	 */
 	public function metaboxes_apartments() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;

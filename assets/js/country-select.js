@@ -4,11 +4,11 @@ jQuery( document ).ready( function ( $ ) {
      * Country select.
      */
     var $country_el = $( '.opalestate-submission-form #opalestate_ppt_location, [name="location"],' +
-        ' [name="opalestate_ofe_location"], [name="opalestate_agt_location"]' ),
+        ' [name="opalestate_ofe_location"], [name="opalestate_agt_location"], [name="opalestate_user_location"]' ),
         $state_el = $( '.opalestate-submission-form #opalestate_ppt_state, [name="state"],' +
-            ' [name="opalestate_ofe_state"], [name="opalestate_agt_state"]' ),
+            ' [name="opalestate_ofe_state"], [name="opalestate_agt_state"], [name="opalestate_user_state"]' ),
         $city_el = $( '.opalestate-submission-form #opalestate_ppt_city, [name="city"],' +
-            ' [name="opalestate_ofe_city"], [name="opalestate_agt_city"]' );
+            ' [name="opalestate_ofe_city"], [name="opalestate_agt_city"], [name="opalestate_user_city"]' );
 
     $country_el.each( function () {
         if ( $( this ).val() != '' && $( this ).val() != '-1' ) {

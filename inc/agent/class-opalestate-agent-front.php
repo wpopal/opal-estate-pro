@@ -52,7 +52,6 @@ class Opalestate_Agent_Front {
 	 * Auto update meta information to post from user data updated or created
 	 */
 	public function init() {
-
 		add_action( 'opalestate_on_set_role_agent', [ $this, 'on_set_role' ], 1, 9 );
 		add_filter( 'opalestate_before_render_profile_agent_form', [ $this, 'render_front_form' ], 2, 2 );
 		add_filter( 'pre_get_posts', [ $this, 'archives_query' ], 1 );
@@ -66,7 +65,10 @@ class Opalestate_Agent_Front {
 
 
 	/**
-	 * render_extra_profile_link.
+	 * Render extra profile link.
+	 *
+	 * @param $menu
+	 * @return mixed
 	 */
 	public function render_extra_profile_link( $menu ) {
 		global $current_user;
@@ -133,12 +135,14 @@ class Opalestate_Agent_Front {
 		}
 	}
 
+	/**
+	 * Process upload files.
+	 *
+	 * @param int $post_id Post ID.
+	 */
 	private function process_upload_files( $post_id ) {
-
-		//upload images for featured and gallery images
+		// Upload images for featured and gallery images.
 		if ( isset( $_FILES ) && ! empty( $_FILES ) ) {
-
-			/// 
 			$fields = [
 				$this->get_field_name( 'gallery' ),
 				$this->get_field_name( 'avatar_id' ),
@@ -146,11 +150,11 @@ class Opalestate_Agent_Front {
 			];
 
 			foreach ( $_FILES as $key => $value ) {
-				// allow processing in fixed collection
+				// Allow processing in fixed collection.
 				if ( in_array( $key, $fields ) ) {
 					$ufile = $_FILES[ $key ];
 
-					/// /////
+
 					if ( isset( $ufile['name'] ) && is_array( $ufile['name'] ) ) {
 						$output = [];
 
@@ -180,16 +184,20 @@ class Opalestate_Agent_Front {
 								$_key           = str_replace( "_id", "", $key );
 								$_POST[ $_key ] = $new_atm['url'];
 							}
+
 							$this->new_attachmenet_ids[ $new_atm['attachment_id'] ] = $new_atm['attachment_id'];
 						}
 					}
 				}
 			}
 		}
-
-
 	}
 
+	/**
+	 * On save front data.
+	 *
+	 * @return false|mixed|string|void
+	 */
 	public function on_save_front_data() {
 		if ( isset( $_POST[ 'nonce_CMB2php' . OPALESTATE_AGENT_PREFIX . 'front' ] ) ) {
 			$post_id = $this->update_data_agent_or_agency( OPALESTATE_AGENT_PREFIX );
@@ -217,14 +225,14 @@ class Opalestate_Agent_Front {
 	}
 
 	/**
-	 *
+	 * Get field name.
 	 */
 	private function get_field_name( $field ) {
 		return OPALESTATE_AGENT_PREFIX . $field;
 	}
 
 	/**
-	 *
+	 * Update data for agent or agency.
 	 */
 	private function update_data_agent_or_agency( $prefix ) {
 		global $current_user;
@@ -270,7 +278,7 @@ class Opalestate_Agent_Front {
 			/*
 			 * Processing upload files
 			 */
-			$this->process_upload_files( $post_id, $_POST );
+			$this->process_upload_files( $post_id );
 
 			cmb2_get_metabox_form( $metaboxes[ $prefix . 'front' ], $post_id );
 			$cmb              = cmb2_get_metabox( $prefix . 'front', $post_id );
@@ -333,21 +341,20 @@ class Opalestate_Agent_Front {
 		return opalestate_load_template_path( 'shortcodes/agent-carousel', $atts );
 	}
 
+	/**
+	 * Archive query.
+	 *
+	 * @param $query
+	 * @return mixed
+	 */
 	public function archives_query( $query ) {
 		if ( $query->is_main_query() && is_post_type_archive( 'opalestate_agent' ) ) {
 			$args = [];
 
-			$min = opalestate_options( 'search_agent_min_price', 0 );
-			$max = opalestate_options( 'search_agent_max_price', 10000000 );
-
-
+			$min              = opalestate_options( 'search_agent_min_price', 0 );
+			$max              = opalestate_options( 'search_agent_max_price', 10000000 );
 			$search_min_price = isset( $_GET['min_price'] ) ? sanitize_text_field( $_GET['min_price'] ) : '';
 			$search_max_price = isset( $_GET['max_price'] ) ? sanitize_text_field( $_GET['max_price'] ) : '';
-
-			$search_min_area = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : '';
-			$search_max_area = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : '';
-			$s               = isset( $_GET['search_text'] ) ? sanitize_text_field( $_GET['search_text'] ) : null;
-
 
 			$paged   = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
 			$default = [
@@ -436,9 +443,10 @@ class Opalestate_Agent_Front {
 		return $query;
 	}
 
-
 	/**
+	 * Search agents.
 	 *
+	 * @return string
 	 */
 	public function search_agents() {
 		return opalestate_load_template_path( 'shortcodes/search-agents' );
@@ -470,6 +478,13 @@ class Opalestate_Agent_Front {
 		}
 	}
 
+	/**
+	 * Create agent.
+	 *
+	 * @param array $args
+	 * @param       $user_id
+	 * @return int|\WP_Error
+	 */
 	public function create_agent( $args = [], $user_id ) {
 		$data = get_user_by( 'id', $user_id );
 
@@ -515,7 +530,11 @@ class Opalestate_Agent_Front {
 	}
 
 	/**
+	 * Render front form.
 	 *
+	 * @param     $metaboxes
+	 * @param int $post_id
+	 * @return mixed
 	 */
 	public function render_front_form( $metaboxes, $post_id = 0 ) {
 		$metabox = new Opalestate_Agent_MetaBox();

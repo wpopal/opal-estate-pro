@@ -47,11 +47,11 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 					'permission_callback' => [ $this, 'get_items_permissions_check' ],
 					'args'                => $this->get_collection_params(),
 				],
-				[
-					'methods'  => WP_REST_Server::CREATABLE,
-					'callback' => [ $this, 'create_item' ],
-					'permission_callback' => [ $this, 'create_item_permissions_check' ],
-				],
+				// [
+				// 	'methods'  => WP_REST_Server::CREATABLE,
+				// 	'callback' => [ $this, 'create_item' ],
+				// 	'permission_callback' => [ $this, 'create_item_permissions_check' ],
+				// ],
 			]
 		);
 
@@ -70,11 +70,11 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 					'callback'            => [ $this, 'get_item' ],
 					'permission_callback' => [ $this, 'get_item_permissions_check' ],
 				],
-				// [
-				// 	'methods'  => WP_REST_Server::EDITABLE,
-				// 	'callback' => [ $this, 'update_item' ],
-				// 	// 'permission_callback' => [ $this, 'update_item_permissions_check' ],
-				// ],
+				[
+					'methods'             => WP_REST_Server::EDITABLE,
+					'callback'            => [ $this, 'update_item' ],
+					'permission_callback' => [ $this, 'update_item_permissions_check' ],
+				],
 				// [
 				// 	'methods'  => WP_REST_Server::DELETABLE,
 				// 	'callback' => [ $this, 'delete_item' ],
@@ -153,11 +153,10 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 	}
 
 	/**
-	 * Get Property
+	 * Get a property
 	 *
-	 * Based on request to get a property.
-	 *
-	 * @return WP_REST_Response is json data
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|WP_REST_Response
 	 */
 	public function get_item( $request ) {
 		$response = [];
@@ -179,6 +178,32 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 		return $this->get_response( $code, $response );
 	}
 
+	/**
+	 * Update a property.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|WP_REST_Response
+	 */
+	public function update_item( $request ) {
+		$id = absint( $request['id'] );
+
+		$property = get_post( $id );
+		if ( ! $property || $this->post_type != $property->post_type ) {
+			$code              = 404;
+			$response['error'] = sprintf( esc_html__( 'Property ID: %s does not exist!', 'opalestate-pro' ), $id );
+		} else {
+
+		}
+
+		return $this->get_response( $code, $response );
+	}
+
+	/**
+	 * Delete a property.
+	 *
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return WP_Error|WP_REST_Response
+	 */
 	public function delete_item( $request ) {
 		$id    = (int) $request['id'];
 		$force = (bool) $request['force'];
