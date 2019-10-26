@@ -19,7 +19,7 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 			'opalestate_settings_property_subtabs_nav',
 			[
 				'property_general' => esc_html__( 'General', 'opalestate-pro' ),
-				'property_search'  => esc_html__( 'Search Page', 'opalestate-pro' ),
+				'property_search'  => esc_html__( 'Search', 'opalestate-pro' ),
 				'property_detail'  => esc_html__( 'Single Page', 'opalestate-pro' ),
 			]
 		);
@@ -115,11 +115,11 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 
 		if ( $metas ) {
 			$fields[] = [
-				'name'       => esc_html__( 'User Share Search', 'opalestate-pro' ),
-				'desc'       => esc_html__( 'Display Share Search Link Management', 'opalestate-pro' ),
-				'id'         => 'enable_share_earch',
-				'type'       => 'switch',
-				'options'    => [
+				'name'    => esc_html__( 'User Share Search', 'opalestate-pro' ),
+				'desc'    => esc_html__( 'Display Share Search Link Management', 'opalestate-pro' ),
+				'id'      => 'enable_share_earch',
+				'type'    => 'switch',
+				'options' => [
 					'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 					'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 				],
@@ -261,43 +261,75 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				];
 			}
 
-			// $fields[] = [
-			// 	'name'       => esc_html__( 'Vertical Search Fields', 'opalestate-pro' ),
-			// 	'type'       => 'opalestate_title',
-			// 	'id'         => 'opalestate_title_general_settings_2',
-			// 	'before_row' => '<hr>',
-			// 	'after_row'  => '<hr>',
-			// ];
-			//
-			// $fields[] = [
-			// 	'name'    => esc_html__( 'Show Price', 'opalestate-pro' ),
-			// 	'id'      => OPALESTATE_PROPERTY_PREFIX . 'price_opt_v',
-			// 	'type'    => 'switch',
-			// 	'options' => [
-			// 		0 => esc_html__( 'Disable', 'opalestate-pro' ),
-			// 		1 => esc_html__( 'Enable', 'opalestate-pro' ),
-			// 	],
-			// ];
-			//
-			// foreach ( $metas as $key => $meta ) {
-			// 	$fields[] = [
-			// 		'name'    => $meta['name'],
-			// 		'id'      => $meta['id'] . '_opt_v',
-			// 		'type'    => 'switch',
-			// 		'options' => [
-			// 			0 => esc_html__( 'Disable', 'opalestate-pro' ),
-			// 			1 => esc_html__( 'Enable', 'opalestate-pro' ),
-			// 		],
-			//
-			// 	];
-			// }
+			$fields[] = [
+				'name'       => esc_html__( 'Setting type fields search', 'opalestate-pro' ),
+				'desc'       => esc_html__( 'Setting type fields search', 'opalestate-pro' ) . '<hr>',
+				'type'       => 'opalestate_title',
+				'id'         => 'opalestate_title_general_settings_type_search',
+				'before_row' => '<hr>',
+				'after_row'  => '<hr>',
+			];
+
+			$metas = Opalestate_Property_MetaBox::metaboxes_info_fields();
+
+			wp_enqueue_script( 'opalestate-setting-custom-fields', OPALESTATE_PLUGIN_URL . 'assets/js/custom-fields.js', [ 'jquery' ], OPALESTATE_VERSION, false );
+
+			foreach ( $metas as $meta ) {
+				if ( $meta['id'] == OPALESTATE_PROPERTY_PREFIX . 'areasize' ) {
+					continue;
+				}
+
+				$fields[] = [
+					'name'    => esc_html__( 'Search type ', 'opalestate-pro' ) . $meta['name'],
+					'options' => [
+						'select' => esc_html__( 'Select', 'opalestate-pro' ),
+						'range'  => esc_html__( 'Range', 'opalestate-pro' ),
+						'text'   => esc_html__( 'Text', 'opalestate-pro' ),
+					],
+					'id'      => $meta['id'] . '_search_type',
+					'type'    => 'radio_inline',
+					'default' => 'select',
+				];
+
+				$fields[] = [
+					'name'        => esc_html__( 'Options select ', 'opalestate-pro' ) . $meta['name'],
+					'description' => esc_html__( 'Options value select. Use "," to separate values.', 'opalestate-pro' ),
+					'id'          => $meta['id'] . '_options_value',
+					'type'        => 'text',
+					'default'     => '1,2,3,4,5,6,7,8,9,10',
+				];
+
+				$fields[] = [
+					'name'        => esc_html__( 'Min range ', 'opalestate-pro' ) . $meta['name'],
+					'description' => esc_html__( 'Min range', 'opalestate-pro' ),
+					'id'          => $meta['id'] . '_min_range',
+					'type'        => 'text',
+					'default'     => 1,
+				];
+
+				$fields[] = [
+					'name'        => esc_html__( 'Max range ', 'opalestate-pro' ) . $meta['name'],
+					'description' => esc_html__( 'Max range', 'opalestate-pro' ),
+					'id'          => $meta['id'] . '_max_range',
+					'type'        => 'text',
+					'default'     => 10000000,
+				];
+
+				$fields[] = [
+					'name'        => esc_html__( 'Default text ', 'opalestate-pro' ) . $meta['name'],
+					'description' => esc_html__( 'Default text value', 'opalestate-pro' ),
+					'id'          => $meta['id'] . '_default_text',
+					'type'        => 'text',
+					'default'     => '',
+				];
+			}
 		}
 
 		return $fields;
 	}
 
 	/**
-	 *
+	 * Get subtab detail fields.
 	 */
 	private function get_subtab_detail_fields() {
 		$fields = [];
@@ -470,19 +502,19 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
-			'name'       => esc_html__( 'Related properties layout', 'opalestate-pro' ),
-			'desc'       => esc_html__( 'Select a layout for related properties.', 'opalestate-pro' ),
-			'id'         => 'single_related_properties_layout',
-			'type'       => 'select',
-			'options'    => opalestate_get_loop_property_layouts(),
+			'name'    => esc_html__( 'Related properties layout', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Select a layout for related properties.', 'opalestate-pro' ),
+			'id'      => 'single_related_properties_layout',
+			'type'    => 'select',
+			'options' => opalestate_get_loop_property_layouts(),
 		];
 
 		$fields[] = [
-			'name'       => esc_html__( 'Nearby properties layout', 'opalestate-pro' ),
-			'desc'       => esc_html__( 'Select a layout for nearby properties.', 'opalestate-pro' ),
-			'id'         => 'single_nearby_properties_layout',
-			'type'       => 'select',
-			'options'    => opalestate_get_loop_property_layouts(),
+			'name'    => esc_html__( 'Nearby properties layout', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Select a layout for nearby properties.', 'opalestate-pro' ),
+			'id'      => 'single_nearby_properties_layout',
+			'type'    => 'select',
+			'options' => opalestate_get_loop_property_layouts(),
 		];
 
 		return $fields;

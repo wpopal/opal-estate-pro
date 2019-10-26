@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function opalestate_property_render_field_template( $field, $label, $type = 'select' ) {
 	$qvalue   = isset( $_GET['info'][ $field ] ) ? sanitize_text_field( $_GET['info'][ $field ] ) : '';
-	$template = '';
 	$template = apply_filters( 'opalestate_property_render_search_field_template', $field, $label );
 	$template = apply_filters( 'opalestate_property_' . $field . '_field_template', $template );
 
@@ -39,20 +38,72 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
                         <span class="btn-plus"><i class="fa fa-plus"></i></span>
                     </div>
                 </div>
-
-				<?php break;
+				<?php
+				break;
 
 			default:
-				$template = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
+				$setting_search_type         = 'opalestate_ppt_' . $field . '_search_type';
+				$setting_search_type_options = 'opalestate_ppt_' . $field . '_options_value';
+				$setting_search_min_range    = 'opalestate_ppt_' . $field . '_min_range';
+				$setting_search_max_range    = 'opalestate_ppt_' . $field . '_max_range';
+				$setting_search_default_text = 'opalestate_ppt_' . $field . '_default_text';
 
-				$template .= '<select class="form-control" name="info[%s]"><option value="">%s</option>';
-				for ( $i = 1; $i <= 10; $i++ ) {
-					$selected = $i == $qvalue ? 'selected="selected"' : '';
+				$display_type_search = opalestate_options( $setting_search_type, 'select' );
 
-					$template .= '<option ' . $selected . ' value="' . $i . '">' . $i . '</option>';
+				if ( $display_type_search == 'select' ) {
+
+					$option_values = (array) explode( ',', opalestate_options( $setting_search_type_options, '1,2,3,4,5,6,7,8,9,10' ) );
+					$template = '<select class="form-control" name="info[%s]"><option value="">%s</option>';
+
+					foreach ( $option_values as $value ) {
+						$selected = $value == $qvalue ? 'selected="selected"' : '';
+						$template .= '<option ' . $selected . ' value="' . $value . '">' . $value . '</option>';
+					}
+					$template .= '</select>';
+					$template = sprintf( $template, $field, $label );
+
+				} elseif ( $display_type_search == 'text' ) {
+					$option_values = opalestate_options( $setting_search_default_text, '' );
+					$qvalue        = $qvalue ? $qvalue : $option_values;
+
+					$template = '<input class="form-control" type="text" name="info[%s]" value="%s"/>';
+
+					$template = sprintf( $template, $field, $qvalue );
+				} elseif ( $display_type_search == 'range' ) {
+					$min_name = 'min_' . $field;
+					$max_name = 'max_' . $field;
+
+					$search_min = (int) isset( $_GET[ $min_name ] ) ? $_GET[ $min_name ] : opalestate_options( $setting_search_min_range, 0 );
+					$search_max = (int) isset( $_GET[ $max_name ] ) ? $_GET[ $max_name ] : opalestate_options( $setting_search_max_range, 1000 );
+
+					$data = [
+						'id'         => $field,
+						'unit'       => '',
+						'ranger_min' => opalestate_options( $setting_search_min_range, 0 ),
+						'ranger_max' => opalestate_options( $setting_search_max_range, 1000 ),
+						'input_min'  => $search_min,
+						'input_max'  => $search_max,
+					];
+
+					ob_start();
+
+					opalesate_property_slide_ranger_template( __( $label . ": ", 'opalestate-pro' ), $data );
+					$template = ob_get_contents();
+
+					ob_end_clean();
+				} else {
+					$template = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
+
+					$template .= '<select class="form-control" name="info[%s]"><option value="">%s</option>';
+					for ( $i = 1; $i <= 10; $i++ ) {
+						$selected = $i == $qvalue ? 'selected="selected"' : '';
+
+						$template .= '<option ' . $selected . ' value="' . $i . '">' . $i . '</option>';
+					}
+
+					$template .= '</select>';
+					$template = sprintf( $template, $field, $label );
 				}
-				$template .= '</select>';
-				$template = sprintf( $template, $field, $label );
 
 				break;
 		}

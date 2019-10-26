@@ -11,7 +11,7 @@ $search_max_price = isset( $_GET['max_price'] ) ? sanitize_text_field( $_GET['ma
 
 $showareasize = opalestate_options( OPALESTATE_PROPERTY_PREFIX . 'areasize_opt', 1 );
 $showprice    = opalestate_options( OPALESTATE_PROPERTY_PREFIX . 'price_opt', 1 );
-$fields       = OpalEstate_Search::get_setting_search_fields( '_v' );
+$fields       = OpalEstate_Search::get_setting_search_fields();
 
 ?>
 <div class="ajax-map-search full-width">

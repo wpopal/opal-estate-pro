@@ -400,4 +400,23 @@ function opalestate_update_api_key() {
 	// wp_send_json_success must be outside the try block not to break phpunit tests.
 	wp_send_json_success( $response );
 }
+
 add_action( 'wp_ajax_opalestate_update_api_key', 'opalestate_update_api_key' );
+
+function opalestate_ajax_setting_custom_fields() {
+	$metas = Opalestate_Property_MetaBox::metaboxes_info_fields();
+
+	$metabox_key = [];
+
+	if ( $metas ) {
+		foreach ( $metas as $meta_item ) {
+			$metabox_key[] = $meta_item['id'];
+		}
+	}
+
+	echo json_encode( [ 'data' => $metabox_key ] );
+	exit;
+}
+
+add_action( 'wp_ajax_opalestate_setting_custom_fields', 'opalestate_ajax_setting_custom_fields' );
+add_action( 'wp_ajax_nopriv_opalestate_setting_custom_fields', 'opalestate_ajax_setting_custom_fields' );
