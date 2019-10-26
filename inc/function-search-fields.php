@@ -53,7 +53,8 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 				if ( $display_type_search == 'select' ) {
 
 					$option_values = (array) explode( ',', opalestate_options( $setting_search_type_options, '1,2,3,4,5,6,7,8,9,10' ) );
-					$template = '<select class="form-control" name="info[%s]"><option value="">%s</option>';
+					$template = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
+					$template .= '<select class="form-control" name="info[%s]"><option value="">%s</option>';
 
 					foreach ( $option_values as $value ) {
 						$selected = $value == $qvalue ? 'selected="selected"' : '';
@@ -65,8 +66,8 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 				} elseif ( $display_type_search == 'text' ) {
 					$option_values = opalestate_options( $setting_search_default_text, '' );
 					$qvalue        = $qvalue ? $qvalue : $option_values;
-
-					$template = '<input class="form-control" type="text" name="info[%s]" value="%s"/>';
+					$template = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
+					$template .= '<input class="form-control" type="text" name="info[%s]" value="%s"/>';
 
 					$template = sprintf( $template, $field, $qvalue );
 				} elseif ( $display_type_search == 'range' ) {
