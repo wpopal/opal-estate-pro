@@ -29,6 +29,11 @@ class Opalestate_Taxonomy_City {
 	public static function init() {
 		add_action( 'init', [ __CLASS__, 'definition' ] );
 		add_action( 'cmb2_admin_init', [ __CLASS__, 'taxonomy_metaboxes' ] );
+
+		add_filter( 'get_opalestate_city', function( $term ){
+			$term->meta = get_term_meta( $term->term_id ); // all metadata
+			return $term;
+		} );
 	}
 
 	/**

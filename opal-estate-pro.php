@@ -322,7 +322,6 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 					'taxonomies/class-taxonomy-labels.php',
 					'taxonomies/class-taxonomy-status.php',
 					'taxonomies/class-taxonomy-types.php',
-					'taxonomies/class-taxonomy-neighborhood.php',
 					'taxonomies/class-taxonomy-locations.php',
 					'taxonomies/class-taxonomy-city.php',
 					'taxonomies/class-taxonomy-state.php',
