@@ -28,6 +28,11 @@ class Opalestate_Taxonomy_Amenities {
 	public function __construct() {
 		add_action( 'init', [ $this, 'definition' ] );
 		add_action( 'cmb2_admin_init', [ $this, 'taxonomy_metaboxes' ], 999 );
+
+		add_filter( 'get_opalestate_amenities', function( $term ){
+			$term->meta = get_term_meta( $term->term_id ); // all metadata
+			return $term;
+		} );
 	}
 
 	/**

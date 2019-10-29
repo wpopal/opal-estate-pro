@@ -238,7 +238,7 @@ class Opalestate_Property_MetaBox_Submission {
 			[
 				'name'        => esc_html__( 'Built year', 'opalestate-pro' ),
 				'id'          => $prefix . 'builtyear',
-				'type'        => 'text_date',
+				'type'        => 'text',
 				'description' => esc_html__( 'Enter built year', 'opalestate-pro' ),
 
 				'before_row' => '<div id="opalestate-submission-information" class="opalestate-tab-content"><div class="field-row-2">',

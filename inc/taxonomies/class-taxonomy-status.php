@@ -30,6 +30,11 @@ class Opalestate_Taxonomy_Status {
 		add_action( 'init', [ $this, 'definition' ] );
 		add_filter( 'opalestate_taxomony_status_metaboxes', [ $this, 'metaboxes' ] );
 		add_action( 'cmb2_admin_init', [ $this, 'taxonomy_metaboxes' ] );
+
+		add_filter( 'get_opalestate_status', function( $term ){
+			$term->meta = get_term_meta( $term->term_id ); // all metadata
+			return $term;
+		} );
 	}
 
 	/**

@@ -184,14 +184,18 @@ class Opalestate_Property {
 						}
 						$opt_values = $tmp;
 					}
-					$value = implode( ", ", $opt_values );
+					$value = implode( ', ', $opt_values );
 				} else {
 					$value = get_post_meta( $this->post_id, $field['id'], true );
 				}
 
 				$value = isset( $field['unit'] ) && $field['unit'] ? $value . ' ' . $field['unit'] : $value;
 
-				$this->metabox_info[ $id ] = [ 'label' => $field['name'], 'value' => $value ];
+				$this->metabox_info[ $id ] = [
+					'label' => $field['name'],
+					'value' => $value,
+					'icon'  => opalestate_get_property_meta_icon( $id ),
+				];
 			}
 		}
 

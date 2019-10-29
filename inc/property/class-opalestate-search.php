@@ -145,14 +145,13 @@ class OpalEstate_Search {
 					}
 					$sarg        = apply_filters( 'opalestate_search_field_query_' . $key, $fieldquery );
 					$metaquery[] = $sarg;
-
 				}
 			}
 
 			$args['meta_query'] = array_merge( $args['meta_query'], $metaquery );
 		}
 
-		if ( $search_min_price != '' && $search_min_price != '' && is_numeric( $search_min_price ) && is_numeric( $search_max_price ) ) {
+		if ( $search_min_price != '' && $search_max_price != '' && is_numeric( $search_min_price ) && is_numeric( $search_max_price ) ) {
 			if ( $search_min_price ) {
 
 				array_push( $args['meta_query'], [
@@ -195,7 +194,7 @@ class OpalEstate_Search {
 			] );
 		}
 
-		if ( $search_min_area != '' && $search_min_area != '' && is_numeric( $search_min_area ) && is_numeric( $search_max_area ) ) {
+		if ( $search_min_area != '' && $search_max_area != '' && is_numeric( $search_min_area ) && is_numeric( $search_max_area ) ) {
 			array_push( $args['meta_query'], [
 				'key'     => OPALESTATE_PROPERTY_PREFIX . 'areasize',
 				'value'   => [ $search_min_area, $search_max_area ],
@@ -237,9 +236,9 @@ class OpalEstate_Search {
 		$ksearchs = [];
 
 		if ( isset( $_REQUEST['opalsortable'] ) && ! empty( $_REQUEST['opalsortable'] ) ) {
-			$ksearchs = explode( "_", $_REQUEST['opalsortable'] );
+			$ksearchs = explode( '_', $_REQUEST['opalsortable'] );
 		} elseif ( isset( $_SESSION['opalsortable'] ) && ! empty( $_SESSION['opalsortable'] ) ) {
-			$ksearchs = explode( "_", $_SESSION['opalsortable'] );
+			$ksearchs = explode( '_', $_SESSION['opalsortable'] );
 		}
 
 		if ( ! empty( $ksearchs ) && count( $ksearchs ) == 2 ) {
@@ -248,8 +247,46 @@ class OpalEstate_Search {
 			$args['order']    = $ksearchs[1];
 		}
 
-		$args = apply_filters( 'opalestate_get_search_results_query_args', $args );
+		$metas = Opalestate_Property_MetaBox::metaboxes_info_fields();
 
+		foreach ( $metas as $meta ) {
+			if ( $meta['id'] == OPALESTATE_PROPERTY_PREFIX . 'areasize' ) {
+				continue;
+			}
+
+			$request             = str_replace( OPALESTATE_PROPERTY_PREFIX, '', $meta['id'] );
+			$setting_search_type = opalestate_options( $meta['id'] . '_search_type', 'select' );
+
+			if ( 'range' === $setting_search_type ) {
+				$min_request = isset( $_GET[ 'min_' . $request ] ) ? sanitize_text_field( $_GET[ 'min_' . $request ] ) : '';
+				$max_request = isset( $_GET[ 'max_' . $request ] ) ? sanitize_text_field( $_GET[ 'max_' . $request ] ) : '';
+
+				if ( $min_request != '' && $max_request != '' && is_numeric( $min_request ) && is_numeric( $max_request ) ) {
+					array_push( $args['meta_query'], [
+						'key'     => $meta['id'],
+						'value'   => [ $min_request, $max_request ],
+						'compare' => 'BETWEEN',
+						'type'    => 'NUMERIC',
+					] );
+				} elseif ( $min_request != '' && is_numeric( $min_request ) ) {
+					array_push( $args['meta_query'], [
+						'key'     => $meta['id'],
+						'value'   => $min_request,
+						'compare' => '>=',
+						'type'    => 'NUMERIC',
+					] );
+				} elseif ( $max_request != '' && is_numeric( $max_request ) ) {
+					array_push( $args['meta_query'], [
+						'key'     => $meta['id'],
+						'value'   => $max_request,
+						'compare' => '<=',
+						'type'    => 'NUMERIC',
+					] );
+				}
+			}
+		}
+
+		$args  = apply_filters( 'opalestate_get_search_results_query_args', $args );
 		$query = new WP_Query( $args );
 
 		wp_reset_postdata();
