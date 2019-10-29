@@ -31,8 +31,10 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 
 = Add-ons for Opal Estate Pro =
 * Please visit and download [all add-ons](https://wordpress.org/plugins/tags/opalestate_addon/ "Opal Estate Pro add-ons") for Opal Estate Pro, they are free 100%*
- 1. *[ Opal Membership](https://wordpress.org/plugins/opal-membership/ "Opal Membership")*
- 2. *[ Opal Estate Packages](https://wordpress.org/plugins/opal-estate-packages/ "Opal Estate Packages")*
+ 1. *[ Opal Membership](https://wordpress.org/plugins/opal-membership/ "Opal Membership")*: Manage membership packages, users.
+ 2. *[ Opal Estate Packages](https://wordpress.org/plugins/opal-estate-packages/ "Opal Estate Packages")*: Manage membership packages connects with Woocommerce to benefit from all variety of Woocommerce extensions and payment gateways.
+ 3. *[ Opal Estate Custom Fields](https://wordpress.org/plugins/opal-estate-custom-fields/ "Opal Estate Custom Fields")*: Create custom fields and allow you control and manage fields and used for
+ searchable.
 
 
 = Features =
