@@ -291,7 +291,7 @@ class Opalestate_Property_MetaBox {
 			[
 				'name'        => esc_html__( 'Built year', 'opalestate-pro' ),
 				'id'          => $prefix . 'builtyear',
-				'type'        => 'text_date',
+				'type'        => 'text',
 				'description' => esc_html__( 'Enter built year', 'opalestate-pro' ),
 
 				'before_row' => '<div class="row-group-features group-has-three group-property-info clearfix"><h3>' . ( is_admin() ? "" : esc_html__( 'Property Information', 'opalestate-pro' ) ) . '</h3>',
