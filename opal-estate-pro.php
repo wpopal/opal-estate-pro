@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Opal Estate Pro
- * Plugin URI: http://www.wpopal.com/product/opal-estate-wordpress-plugin/
+ * Plugin URI: https://wpdocs.gitbook.io/opal-estate/
  * Description: Opal Real Estate Plugin is an ideal solution and brilliant choice for you to set up a professional estate website.
- * Version: 1.1.6
+ * Version: 1.1.7
  * Author: WPOPAL
  * Author URI: http://www.wpopal.com
  * Requires at least: 4.6
@@ -151,7 +151,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'opalestate-pro' ), '1.1.6' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'opalestate-pro' ), '1.1.7' );
 		}
 
 		/**
@@ -160,7 +160,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 		public function setup_constants() {
 			// Plugin version
 			if ( ! defined( 'OPALESTATE_VERSION' ) ) {
-				define( 'OPALESTATE_VERSION', '1.1.6' );
+				define( 'OPALESTATE_VERSION', '1.1.7' );
 			}
 
 			// Plugin Folder Path
@@ -303,7 +303,6 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 				]
 			);
 
-
 			/// user ///
 			$this->includes(
 				[
@@ -383,7 +382,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 		 * @var array $files
 		 */
 		public function load_vendors() {
-			if ( defined( "ELEMENTOR_VERSION" ) ) {
+			if ( defined( 'ELEMENTOR_VERSION' ) ) {
 				require_once OPALESTATE_PLUGIN_DIR . 'inc/vendors/elementor/class-opalestate-elementor-extended.php';
 			}
 
