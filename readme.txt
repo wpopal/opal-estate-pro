@@ -1,5 +1,5 @@
 === Opal Estate Pro - Property Management and Submission ===
-Contributors: wpopal
+Contributors: wpopal, ndoublehwp
 Donate link: https://wpdocs.gitbook.io/opal-estate/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.6
