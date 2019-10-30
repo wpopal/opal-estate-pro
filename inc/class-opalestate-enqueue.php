@@ -27,7 +27,6 @@ class OpalEstate_Enqueue {
 	 * Constructor
 	 */
 	public function __construct() {
-
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_scripts' ] );
 		add_action( 'wp_head', [ $this, 'add_custom_styles' ] );
 	}
@@ -52,6 +51,15 @@ class OpalEstate_Enqueue {
 		 * Google map.
 		 */
 		wp_enqueue_script( 'opalestate-gmap', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/googlemaps.js', [ 'jquery' ], OPALESTATE_VERSION, false );
+		$custom_map_styles = json_decode( ( opalestate_options( 'google_map_custom_style', '' ) ) );
+		wp_localize_script( 'opalestate-gmap', 'opalestateGmap', [
+			'style'        => opalestate_options( 'google_map_style', 'standard' ),
+			'custom_style' => json_encode( $custom_map_styles ),
+		] );
+
+		/**
+		 * Frontend property.
+		 */
 		wp_enqueue_script( 'opalestate-messages', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/property.js', [ 'jquery' ], OPALESTATE_VERSION, false );
 
 		/**
@@ -80,22 +88,20 @@ class OpalEstate_Enqueue {
 			wp_enqueue_script( 'tooltipster' );
 		}
 
-		// load global variables
-		wp_localize_script( 'opalestate-scripts', 'opalesateJS',
-			[
-				'ajaxurl'           => admin_url( 'admin-ajax.php' ),
-				'siteurl'           => get_template_directory_uri(),
-				'mapiconurl'        => OPALESTATE_PLUGIN_URL . 'assets/map/',
-				'rtl'               => is_rtl() ? 'true' : 'false',
-				'confirmed'         => esc_html__( 'Are you sure to remove?', 'opalestate-pro' ),
-				'error_upload_size' => esc_html__( 'This file is has large volume size, please try to upload other.', 'opalestate-pro' ),
-				'size_image'        => opalestate_options( 'upload_image_max_size', 0.5 ) * 1000000,
-				'mfile_image'       => opalestate_options( 'upload_image_max_files', 10 ),
-				'size_other'        => opalestate_options( 'upload_other_max_size', 0.8 ) * 1000000,
-				'mfile_other'       => opalestate_options( 'upload_other_max_files', 10 ),
-			] );
+		// Load global variables
+		wp_localize_script( 'opalestate-scripts', 'opalesateJS', [
+			'ajaxurl'           => admin_url( 'admin-ajax.php' ),
+			'siteurl'           => get_template_directory_uri(),
+			'mapiconurl'        => OPALESTATE_PLUGIN_URL . 'assets/map/',
+			'rtl'               => is_rtl() ? 'true' : 'false',
+			'confirmed'         => esc_html__( 'Are you sure to remove?', 'opalestate-pro' ),
+			'error_upload_size' => esc_html__( 'This file is has large volume size, please try to upload other.', 'opalestate-pro' ),
+			'size_image'        => opalestate_options( 'upload_image_max_size', 0.5 ) * 1000000,
+			'mfile_image'       => opalestate_options( 'upload_image_max_files', 10 ),
+			'size_other'        => opalestate_options( 'upload_other_max_size', 0.8 ) * 1000000,
+			'mfile_other'       => opalestate_options( 'upload_other_max_files', 10 ),
+		] );
 
-		/// 
 		$this->register_enqueue();
 	}
 
@@ -113,7 +119,7 @@ class OpalEstate_Enqueue {
 			'4.4.3',
 			true
 		);
-		
+
 		wp_enqueue_script( 'jquery-magnific-popup' );
 		wp_register_script( 'jquery-sticky-kit', trailingslashit( OPALESTATE_PLUGIN_URL ) . 'assets/3rd/sticky/jquery.sticky-kit.min.js', [], null, true );
 		wp_enqueue_script( 'jquery-sticky-kit' );
@@ -135,12 +141,12 @@ class OpalEstate_Enqueue {
 			],
 			'4.4.3',
 			true
-		);  
-	 	
-	 	if( !defined("ELEMENTOR_VERSION") ) { 
+		);
+
+		if ( ! defined( "ELEMENTOR_VERSION" ) ) {
 			wp_enqueue_style( 'jquery-swiper', OPALESTATE_PLUGIN_URL . '/assets/3rd/swiper/css/swiper.min.css' );
- 		}
-		
+		}
+
 		wp_enqueue_script( 'jquery-swiper' );
 	}
 

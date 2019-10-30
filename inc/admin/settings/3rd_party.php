@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * $Desc$
  *
@@ -19,41 +19,76 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Opalestate_Settings_3rd_party_Tab extends Opalestate_Settings_Base_Tab {
 
-	
-	public function get_subtabs () {
- 		
- 		$tabs =  (array)apply_filters (
- 			'opalestate_settings_3rd_party_subtabs_nav', array() 
- 		);
 
- 		$tabs = array_merge_recursive( $tabs, array(
-			'yelp' 		 => "Yelp",
-			'walkcore'   => "Walkcore"
-		) );
+	public function get_subtabs() {
+
+		$tabs = [
+			'google_map' => esc_html__( 'Google Map', 'opalestate-pro' ),
+			'yelp'       => esc_html__( 'Yelp', 'opalestate-pro' ),
+			'walkcore'   => esc_html__( 'Walkcore', 'opalestate-pro' ),
+		];
+
+		$tabs = (array) apply_filters( 'opalestate_settings_3rd_party_subtabs_nav', $tabs );
 
 		return $tabs;
- 	}
+	}
 
- 	public function get_subtabs_content( $key ="" ) {  
- 		// echo $key;die;
- 		$fields = apply_filters ( 'opalestate_settings_3rd_party_subtabs_'.$key.'_fields', array()  ); 
- 	 	
- 	 	if( $key == 'yelp' ){
- 	 		$fields = $this->get_yelp_fields();
- 	 	}else if( $key == 'walkcore' ){
- 	 		$fields = $this->get_walkscore_fields();
- 	 	}
+	public function get_subtabs_content( $key = '' ) {
+		$fields = apply_filters( 'opalestate_settings_3rd_party_subtabs_' . $key . '_fields', [] );
+		if ( 'google_map' == $key ) {
+			$fields = $this->get_google_map_fields();
+		} elseif ( 'yelp' == $key ) {
+			$fields = $this->get_yelp_fields();
+		} elseif ( 'walkcore' == $key ) {
+			$fields = $this->get_walkscore_fields();
+		}
 
- 		return [
+		return [
 			'id'               => 'options_page',
 			'opalestate_title' => esc_html__( '3rd Party Settings', 'opalestate-pro' ),
 			'show_on'          => [ 'key' => 'options-page', 'value' => [ $key ], ],
-			'fields'			=> (array)$fields
+			'fields'           => (array) $fields,
 		];
 	}
 
-	public function get_walkscore_fields(){
-		return array(
+	public function get_google_map_fields() {
+		return [
+			[
+				'name'    => esc_html__( 'API key', 'opalestate-pro' ),
+				'desc'    => __( 'You need to register <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Google API Key</a>, then put the key in this setting.',
+					'opalestate-pro' ),
+				'id'      => 'google_map_api_keys',
+				'type'    => 'text',
+				'default' => 'AIzaSyCfMVNIa7khIqYHCw6VBn8ShUWWm4tjbG8',
+			],
+			[
+				'name'    => esc_html__( 'Style', 'opalestate-pro' ),
+				'desc'    => __( 'Select a style', 'opalestate-pro' ),
+				'id'      => 'google_map_style',
+				'type'    => 'select',
+				'options' => [
+					'standard'  => esc_html__( 'Standard', 'opalestate-pro' ),
+					'silver'    => esc_html__( 'Silver', 'opalestate-pro' ),
+					'retro'     => esc_html__( 'Retro', 'opalestate-pro' ),
+					'dark'      => esc_html__( 'Dark', 'opalestate-pro' ),
+					'night'     => esc_html__( 'Night', 'opalestate-pro' ),
+					'aubergine' => esc_html__( 'Aubergine', 'opalestate-pro' ),
+					'custom'    => esc_html__( 'Custom', 'opalestate-pro' ),
+				],
+				'default' => 'standard',
+			],
+			[
+				'name' => esc_html__( 'Custom Style', 'opalestate-pro' ),
+				'desc' => __( 'You can visit <a href="https://mapstyle.withgoogle.com/" target="_blank">Google Maps Platform Styling Wizard</a>, then paste JSON into this setting.',
+					'opalestate-pro' ),
+				'id'   => 'google_map_custom_style',
+				'type' => 'textarea_code',
+			],
+		];
+	}
+
+	public function get_walkscore_fields() {
+		return [
 			[
 				'name'       => esc_html__( 'Walk Score', 'opalestate-pro' ),
 				'desc'       => '',
@@ -67,12 +102,12 @@ class Opalestate_Settings_3rd_party_Tab extends Opalestate_Settings_Base_Tab {
 				'desc' => esc_html__( 'Add Walk Score API key. To get your Walk Score API key, go to your Walk Score Account.', 'opalestate-pro' ),
 				'id'   => 'walkscore_api_key',
 				'type' => 'text',
-			]
-		);
+			],
+		];
 	}
 
-	public function get_yelp_fields(){
-		return array(
+	public function get_yelp_fields() {
+		return [
 			[
 				'name'       => esc_html__( 'Yelp', 'opalestate-pro' ),
 				'desc'       => '',
@@ -130,8 +165,7 @@ class Opalestate_Settings_3rd_party_Tab extends Opalestate_Settings_Base_Tab {
 					'kilometers' => esc_html__( 'kilometers', 'opalestate-pro' ),
 				],
 				'default' => 'miles',
-			]
-		);
+			],
+		];
 	}
-
 }
