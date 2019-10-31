@@ -108,6 +108,7 @@ class Opalestate_Install {
 			$options[ OPALESTATE_PROPERTY_PREFIX . 'areasize_opt_v' ]  = 'on';
 			$options[ OPALESTATE_PROPERTY_PREFIX . 'price_opt_v' ]     = 'on';
 
+			$options['enable_single_request_viewing']  = 'on';
 			$options['enable_single_amenities']        = 'on';
 			$options['enable_single_facilities']       = 'on';
 			$options['enable_single_attachments']      = 'on';
