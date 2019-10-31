@@ -119,7 +119,7 @@ class OpalEstate_Nocaptcha_Recaptcha {
 
 			[
 				'name' => esc_html__( 'Site Key', 'opalestate-pro' ),
-				'desc' => esc_html__( 'Used for displaying the CAPTCHA. Grab it %s', 'opalestate-pro' ),
+				'desc' => esc_html__( 'Used for displaying the CAPTCHA.', 'opalestate-pro' ),
 				'id'   => 'site_key',
 				'type' => 'text',
 			],
