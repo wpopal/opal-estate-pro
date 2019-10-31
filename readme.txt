@@ -158,6 +158,8 @@ This section describes how to install the plugin and get it working.
 == Changelog ==
 = 1.1.8 - 2019-10-31 =
 * Fixes - Submission settings.
+* Fixes - Order settings in the search page.
+* Fixes - Single property image size.
 * Added - Automatic generate property SKU.
 * Added - Enable/Disable Request Viewing.
 
