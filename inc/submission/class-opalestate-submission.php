@@ -36,7 +36,7 @@ class OpalEstate_Submission {
 	 *
 	 *
 	 */
-	public $new_attachmenet_ids = array();
+	public $new_attachmenet_ids = [];
 
 	/**
 	 * Constructor
@@ -48,7 +48,7 @@ class OpalEstate_Submission {
 		 * because inside this hook global $post == null
 		 */
 		add_action( 'wp_head', [ $this, 'head_check_page' ] );
-		
+
 		add_action( 'cmb2_after_init', [ $this, 'process_submission' ], 10000 );
 
 		add_action( 'opalestate_single_property_before', [ $this, 'render_button_edit' ] );
@@ -88,14 +88,14 @@ class OpalEstate_Submission {
 	 */
 	public function register_shortcodes() {
 		$shortcodes = [
-			'submission'               => [
+			'submission'      => [
 				'code'  => 'submission',
 				'label' => esc_html__( 'Submission Form', 'opalestate-pro' ),
 			],
-			'submission_list'          => [
+			'submission_list' => [
 				'code'  => 'submission_list',
 				'label' => esc_html__( 'My Properties', 'opalestate-pro' ),
-			]
+			],
 		];
 
 		foreach ( $shortcodes as $shortcode ) {
@@ -107,7 +107,7 @@ class OpalEstate_Submission {
 	 * Is submission page. 'submission_page' option in General Setting 
 	 */
 	public function setting_content_tab( $tabs ) {
-		$tabs['submission_page'] = esc_html__( 'Submission Page', 'opalestate-pro' );
+		$tabs['submission_page'] = esc_html__( 'Submission', 'opalestate-pro' );
 
 		return $tabs;
 	}
@@ -145,23 +145,20 @@ class OpalEstate_Submission {
 						'type'    => 'select',
 						'default' => '',
 						'options' => [
-							''  			   => esc_html__( 'Show Login Form', 'opalestate-pro' ),
+							''                 => esc_html__( 'Show Login Form', 'opalestate-pro' ),
 							'login_submission' => esc_html__( 'Show Login Form and Submission Form', 'opalestate-pro' ),
 						],
 					],
 
 					[
 						'name' => esc_html__( 'Enable Admin Approve', 'opalestate-pro' ),
-						'desc' => esc_html__( 'the Property will be auto approve when user submit, if you do not enable it.', 'opalestate-pro' ),
+						'desc' => esc_html__( 'Admin must review and approve before properties are published.', 'opalestate-pro' ),
 						'id'   => 'admin_approve',
-						'type' => 'checkbox',
-					],
-					[
-						'name' => esc_html__( 'Enable Require Price', 'opalestate-pro' ),
-						'desc' => esc_html__( 'Enable or Disable require user enter price and price label.', 'opalestate-pro' ),
-						'id'   => 'require_input_price',
-						'type' => 'checkbox',
-
+						'type' => 'switch',
+						'options' => [
+							'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+							'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+						],
 					],
 					[
 						'name'       => esc_html__( 'Submission Tab Settings', 'opalestate-pro' ),
@@ -240,6 +237,30 @@ class OpalEstate_Submission {
 							'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 						],
 					],
+					[
+						'name'       => esc_html__( 'Submission Settings', 'opalestate-pro' ),
+						'id'         => 'opalestate_title_submission_settings',
+						'type'       => 'title',
+						'before_row' => '<hr>',
+						'after_row'  => '<hr>',
+					],
+					[
+						'name'    => esc_html__( 'Generate property SKU', 'opalestate-pro' ),
+						'desc'    => esc_html__( 'Enable automatic generate property SKU.', 'opalestate-pro' ),
+						'id'      => 'enable_submission_generate_sku',
+						'type'    => 'switch',
+						'options' => [
+							'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+							'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+						],
+					],
+					[
+						'name'    => esc_html__( 'Property SKU prefix', 'opalestate-pro' ),
+						'desc'    => esc_html__( 'Prefix for property SKU.', 'opalestate-pro' ),
+						'id'      => 'submission_sku_prefix',
+						'type'    => 'text',
+						'default' => 'SKU',
+					],
 				]
 			),
 		];
@@ -258,8 +279,8 @@ class OpalEstate_Submission {
 	 * Is submission page. 'submission_page' option in General Setting 
 	 */
 	public function render_button_edit() {
-
 		global $post, $current_user;
+
 		wp_get_current_user();
 
 		if ( $current_user->ID == $post->post_author ) {
@@ -281,13 +302,12 @@ class OpalEstate_Submission {
 		return opalestate_get_option( 'submission_page' ) == $post->ID;
 	}
 
-	
 	/**
+	 * Register metabox.
 	 *
-	 *
+	 * @return \Opalestate_Property_MetaBox_Submission
 	 */
 	public function register_metabox() {
-
 		$metabox = new Opalestate_Property_MetaBox_Submission();
 
 		add_filter( 'cmb2_meta_boxes', [ $metabox, 'register_form' ], 9999 );
@@ -299,31 +319,29 @@ class OpalEstate_Submission {
 	 * FrontEnd Submission
 	 */
 	public function submission() {
-
 		global $current_user;
 
 		if ( ! is_user_logged_in() ) {
 			echo opalestate_load_template_path( 'submission/require-login' );
-			if( empty(opalestate_get_option("submission_show_content")) ){
-				return ""; 
+			if ( empty( opalestate_get_option( "submission_show_content" ) ) ) {
+				return "";
 			}
 		}
 
-		if(  isset($_GET['do']) && $_GET['do'] == 'completed' ){
-
+		if ( isset( $_GET['do'] ) && $_GET['do'] == 'completed' ) {
 			OpalEstate()->session->set( 'submission', 'addnew' );
 
 			echo opalestate_load_template_path( 'submission/completed' );
-			return ;
+
+			return;
 		}
 
 		// remove all dirty images before edit/create new a property	
-		$this->cleanup(); 
+		$this->cleanup();
 
 		wp_enqueue_script( 'opalestate-submission' );
 		wp_enqueue_style( 'opalesate-submission' );
 		wp_enqueue_style( 'opalesate-cmb2-front' );
-
 
 		$metabox   = $this->register_metabox();
 		$metaboxes = apply_filters( 'cmb2_meta_boxes', [] );
@@ -333,8 +351,8 @@ class OpalEstate_Submission {
 			return esc_html__( 'A metabox with the specified \'metabox_id\' doesn\'t exist.', 'opalestate-pro' );
 		}
 		$post_id = 0;
-		
-		if( is_user_logged_in() ) {
+
+		if ( is_user_logged_in() ) {
 			// CMB2 is getting fields values from current post what means it will fetch data from submission page
 			// We need to remove all data before.
 			$post_id = ! empty( $_GET['id'] ) ? absint( $_GET['id'] ) : false;
@@ -352,9 +370,10 @@ class OpalEstate_Submission {
 
 			if ( $post_id && ! opalestate_is_own_property( $post_id, $current_user->ID ) ) {
 				echo opalestate_load_template_path( 'parts/has-warning' );
-				return ;
+				return;
 			}
 		}
+
 		return opalestate_load_template_path( 'submission/submission-form',
 			[
 				'post_id'    => $post_id,
@@ -369,6 +388,7 @@ class OpalEstate_Submission {
 	 */
 	public function cmb2_get_metabox() {
 		$object_id = 'fake-oject-id';
+
 		return cmb2_get_metabox( OPALESTATE_PROPERTY_PREFIX . 'front', $object_id );
 	}
 
@@ -380,35 +400,28 @@ class OpalEstate_Submission {
 		if ( isset( $_POST['submission_action'] ) && ! empty( $_POST['submission_action'] ) ) {
 
 			if ( wp_verify_nonce( $_POST['submission_action'], 'submitted-property' ) ) {
- 	 
+
 				$user_id = get_current_user_id();
 				$edit    = false;
-				$prefix = OPALESTATE_PROPERTY_PREFIX;
+				$prefix  = OPALESTATE_PROPERTY_PREFIX;
 				$blocked = OpalEstate_User::is_blocked();
-				
+
 				// Setup and sanitize data
 				if ( isset( $_POST[ $prefix . 'title' ] ) && ! $blocked && $user_id ) {
-
 					$metabox   = $this->register_metabox();
 					$metaboxes = apply_filters( 'cmb2_meta_boxes', [] );
 
-					
-
-
 					$post_id = ! empty( $_POST['post_id'] ) ? absint( $_POST['post_id'] ) : false;
 
-					if( $post_id ){
+					if ( $post_id ) {
 						do_action( 'opalestate_process_edit_submission_before' );
 					} else {
 						do_action( 'opalestate_process_submission_before' );
 					}
-					
-
-					$review_before = opalestate_get_option( 'admin_approve' );
 
 					$post_status = 'pending';
 
-					if ( ! $review_before ) {
+					if ( 'on' != opalestate_get_option( 'admin_approve', 'on' ) ) {
 						$post_status = 'publish';
 					}
 
@@ -424,8 +437,7 @@ class OpalEstate_Submission {
 					$post_content = isset( $_POST[ $prefix . 'text' ] ) ? wp_kses( $_POST[ $prefix . 'text' ],
 						'<b><strong><i><em><h1><h2><h3><h4><h5><h6><pre><code><span><p>' ) : '';
 
-				
-					$data    = [
+					$data = [
 						'post_title'   => sanitize_text_field( $_POST[ $prefix . 'title' ] ),
 						'post_author'  => $user_id,
 						'post_status'  => $post_status,
@@ -457,14 +469,14 @@ class OpalEstate_Submission {
 
 					if ( empty( $data['post_title'] ) || empty( $data['post_author'] ) ) {
 						return opalestate_output_msg_json( false,
-						__( 'Please enter data for all require fields before submitting', 'opalestate-pro' ),
-						array( 
-							'heading'  => esc_html__('Submission Information' ,'opalestate-pro')
-						)) ;
+							__( 'Please enter data for all require fields before submitting', 'opalestate-pro' ),
+							[
+								'heading' => esc_html__( 'Submission Information', 'opalestate-pro' ),
+							] );
 					}
-					 
+
 					$post_id = wp_insert_post( $data, true );
-					
+
 					if ( ! empty( $post_id ) && ! empty( $_POST['object_id'] ) ) {
 						$_POST['object_id'] = (int) $post_id;
 
@@ -478,68 +490,73 @@ class OpalEstate_Submission {
 						/**
 						 * Fetch sanitized values
 						 */
-						cmb2_get_metabox_form( $metaboxes[  $prefix. 'front' ], $post_id );
+						cmb2_get_metabox_form( $metaboxes[ $prefix . 'front' ], $post_id );
 						$cmb              = $this->cmb2_get_metabox();
 						$sanitized_values = $cmb->get_sanitized_values( $_POST );
 						$cmb->save_fields( $post_id, 'post', $sanitized_values );
 
 						// Create featured image
 						$featured_image = get_post_meta( $post_id, $prefix . 'featured_image', true );
-						 
+
 						if ( ! empty( $_POST[ $prefix . 'featured_image' ] ) && isset( $_POST[ $prefix . 'featured_image' ] ) ) {
-					 		foreach( $_POST[ $prefix . 'featured_image' ] as $key  => $value ) {
-					 			set_post_thumbnail( $post_id, $key );
-					 		}
-					 		unset( $_POST[ $prefix . 'featured_image' ] );
+							foreach ( $_POST[ $prefix . 'featured_image' ] as $key => $value ) {
+								set_post_thumbnail( $post_id, $key );
+							}
+							unset( $_POST[ $prefix . 'featured_image' ] );
 						} else {
 							delete_post_thumbnail( $post_id );
 						}
 
-						// remove meta field;
+						// Remove meta field.
 						update_post_meta( $post_id, $prefix . 'featured_image', null );
+
+						// Update SKU.
+						if ( 'on' == opalestate_get_option( 'enable_submission_generate_sku', 'off' ) ) {
+							$sku_generated = apply_filters( 'opalestate_submission_sku_generated', sanitize_text_field( opalestate_options( 'submission_sku_prefix', 'SKU' ) . $post_id ) );
+							update_post_meta( $post_id, $prefix . 'sku', $sku_generated );
+						}
+
 						//redirect
 						$_SESSION['messages'][] = [ 'success', esc_html__( 'Property has been successfully updated.', 'opalestate-pro' ) ];
 
 						do_action( "opalestate_process_submission_after", $user_id, $post_id, $edit );
 
 						if ( $edit ) {
-							$type = OpalEstate()->session->set( 'submission' , 'edit' );
-							$message = esc_html__('The property has updated completed with new information', 'opalestate-pro' ); 
+							$type    = OpalEstate()->session->set( 'submission', 'edit' );
+							$message = esc_html__( 'The property has updated completed with new information', 'opalestate-pro' );
 							do_action( "opalestate_processed_edit_submission", $user_id, $post_id );
 						} else {
-							$type = OpalEstate()->session->get( 'submission' , 'addnew' );
-							$message = esc_html__('You have submitted the property successful', 'opalestate-pro' ); 
+							$type    = OpalEstate()->session->get( 'submission', 'addnew' );
+							$message = esc_html__( 'You have submitted the property successful', 'opalestate-pro' );
 							do_action( "opalestate_processed_new_submission", $user_id, $post_id );
 						}
 
 						// set ready of attachment for use.
-						if( $this->new_attachmenet_ids ){
+						if ( $this->new_attachmenet_ids ) {
 							foreach ( $this->new_attachmenet_ids as $_id ) {
 								delete_post_meta( $_id, '_pending_to_use_', 1 );
 							}
 						}
 
-						//
-				 
 						return opalestate_output_msg_json( true,
 							$message,
-							array( 
-								'heading'  => esc_html__('Submission Information' ,'opalestate-pro'),
-								'redirect' => opalestate_submssion_page( $post_id, array('do' => 'completed') )
-							)) ;
+							[
+								'heading'  => esc_html__( 'Submission Information', 'opalestate-pro' ),
+								'redirect' => opalestate_submssion_page( $post_id, [ 'do' => 'completed' ] ),
+							] );
 					}
 				} else {
 					return opalestate_output_msg_json( fales,
-						__('Currently, your account was blocked, please keep contact admin to resolve this!.', 'opalestate-pro' ),
-						array('heading' => esc_html__('Submission Information' ,'opalestate-pro') )
-					) ;
+						__( 'Currently, your account was blocked, please keep contact admin to resolve this!.', 'opalestate-pro' ),
+						[ 'heading' => esc_html__( 'Submission Information', 'opalestate-pro' ) ]
+					);
 				}
 			}
 
 			return opalestate_output_msg_json( fales,
-				__('Sorry! Your submitted datcould not save a at this time', 'opalestate-pro' ),
-				array('heading' => esc_html__('Submission Information', 'opalestate-pro') )
-			) ;
+				__( 'Sorry! Your submitted datcould not save a at this time', 'opalestate-pro' ),
+				[ 'heading' => esc_html__( 'Submission Information', 'opalestate-pro' ) ]
+			);
 		}
 	}
 
@@ -547,57 +564,57 @@ class OpalEstate_Submission {
 	 *
 	 *
 	 */
-	private function get_field_name( $field ){
-		return OPALESTATE_PROPERTY_PREFIX.$field;
+	private function get_field_name( $field ) {
+		return OPALESTATE_PROPERTY_PREFIX . $field;
 	}
 
 	/**
+	 * Process upload files.
 	 *
-	 *
+	 * @param int $post_id Post ID.
 	 */
-	private function process_upload_files ( $post_id ) { 
+	private function process_upload_files( $post_id ) {
 
 		//upload images for featured and gallery images
-		if( isset($_FILES) && !empty($_FILES) ){
+		if ( isset( $_FILES ) && ! empty( $_FILES ) ) {
 
 			/// 
-			$fields = array(
-				$this->get_field_name('gallery'),
-				$this->get_field_name('featured_image'),
-			);
+			$fields = [
+				$this->get_field_name( 'gallery' ),
+				$this->get_field_name( 'featured_image' ),
+			];
 
-			foreach( $_FILES as $key => $value ) { 
+			foreach ( $_FILES as $key => $value ) {
 				// allow processing in fixed collection
-				if( in_array($key, $fields) ){
-					$ufile = $_FILES[$key];
+				if ( in_array( $key, $fields ) ) {
+					$ufile = $_FILES[ $key ];
 
 					/// /////
-					if( isset( $ufile['name'] ) && is_array( $ufile['name'] ) ){
-						$output = array();
+					if ( isset( $ufile['name'] ) && is_array( $ufile['name'] ) ) {
+						$output = [];
 
-						foreach (  $ufile['name'] as $f_key => $f_value ) {
-							$loop_file = array(
-								'name' 	   => $ufile['name'][$f_key],
-                                'type' 	   => $ufile['type'][$f_key],
-                                'tmp_name' => $ufile['tmp_name'][$f_key],
-                                'error'    => $ufile['error'][$f_key],
-                                'size' 	   => $ufile['size'][$f_key]
-							);
-							$new_atm = $this->upload_image( $loop_file, $post_id );	
-							if( $new_atm ){
-								$_POST[$key] = isset($_POST[$key]) ? $_POST[$key] : array();
-								$_POST[$key][$new_atm['attachment_id']] = $new_atm['url'];
-								$this->new_attachmenet_ids[$new_atm['attachment_id']] = $new_atm['attachment_id'];
+						foreach ( $ufile['name'] as $f_key => $f_value ) {
+							$loop_file = [
+								'name'     => $ufile['name'][ $f_key ],
+								'type'     => $ufile['type'][ $f_key ],
+								'tmp_name' => $ufile['tmp_name'][ $f_key ],
+								'error'    => $ufile['error'][ $f_key ],
+								'size'     => $ufile['size'][ $f_key ],
+							];
+							$new_atm   = $this->upload_image( $loop_file, $post_id );
+							if ( $new_atm ) {
+								$_POST[ $key ]                                          = isset( $_POST[ $key ] ) ? $_POST[ $key ] : [];
+								$_POST[ $key ][ $new_atm['attachment_id'] ]             = $new_atm['url'];
+								$this->new_attachmenet_ids[ $new_atm['attachment_id'] ] = $new_atm['attachment_id'];
 							}
 						}
 
-					}
-					/// 
-					elseif( isset($ufile['name']) ) {
-						$new_atm = $this->upload_image( $ufile, $post_id );	
-						if( $new_atm ){
-							$_POST[$key][$new_atm['attachment_id']] = $new_atm['url'];
-							$this->new_attachmenet_ids[$new_atm['attachment_id']] = $new_atm['attachment_id'];
+					} ///
+					elseif ( isset( $ufile['name'] ) ) {
+						$new_atm = $this->upload_image( $ufile, $post_id );
+						if ( $new_atm ) {
+							$_POST[ $key ][ $new_atm['attachment_id'] ]             = $new_atm['url'];
+							$this->new_attachmenet_ids[ $new_atm['attachment_id'] ] = $new_atm['attachment_id'];
 						}
 					}
 					//// / // 
@@ -605,56 +622,53 @@ class OpalEstate_Submission {
 			}
 
 			// for group files 
-			$fields = array(
-				$this->get_field_name('public_floor_group')
-			);
+			$fields = [
+				$this->get_field_name( 'public_floor_group' ),
+			];
 
+			foreach ( $_FILES as $key => $value ) {
+				if ( in_array( $key, $fields ) ) {
+					$ufile = $_FILES[ $key ];
 
-			foreach( $_FILES as $key => $value ) {
+					if ( isset( $ufile['name'] ) && is_array( $ufile['name'] ) ) {
+						$output = [];
+						foreach ( $ufile['name'] as $f_key => $f_value ) {
 
-				if( in_array($key, $fields) ){
-					$ufile = $_FILES[$key];
+							foreach ( $f_value as $u_key => $u_v ) {
+								$loop_file = [
+									'name'     => $ufile['name'][ $f_key ][ $u_key ],
+									'type'     => $ufile['type'][ $f_key ][ $u_key ],
+									'tmp_name' => $ufile['tmp_name'][ $f_key ][ $u_key ],
+									'error'    => $ufile['error'][ $f_key ][ $u_key ],
+									'size'     => $ufile['size'][ $f_key ][ $u_key ],
+								];
 
-					if( isset( $ufile['name'] ) && is_array( $ufile['name'] ) ){
-						$output = array();
-						foreach (  $ufile['name'] as $f_key => $f_value ) {
+								$new_atm = $this->upload_image( $loop_file, $post_id );
+								if ( $new_atm ) {
 
-							foreach( $f_value as $u_key => $u_v ) {
-								$loop_file = array(
-									'name' 	   => $ufile['name'][$f_key][$u_key],
-	                                'type' 	   => $ufile['type'][$f_key][$u_key],
-	                                'tmp_name' => $ufile['tmp_name'][$f_key][$u_key],
-	                                'error'    => $ufile['error'][$f_key][$u_key],
-	                                'size' 	   => $ufile['size'][$f_key][$u_key]
-								);
-			
-								$new_atm = $this->upload_image( $loop_file, $post_id );	
-								if( $new_atm ){
-								 
-									$_POST[$key][$f_key][$u_key] = $new_atm['attachment_id']; 
-									$this->new_attachmenet_ids[$new_atm['attachment_id']] = $new_atm['attachment_id'];
+									$_POST[ $key ][ $f_key ][ $u_key ]                      = $new_atm['attachment_id'];
+									$this->new_attachmenet_ids[ $new_atm['attachment_id'] ] = $new_atm['attachment_id'];
 								}
 							}
 						}
-					}	
+					}
 				}
 			}
 		}
 	}
 
-
 	/**
 	 * Process upload images for properties
 	 */
-	public function upload_image( $submitted_file, $parent_id=0 ){ 
+	public function upload_image( $submitted_file, $parent_id = 0 ) {
 		return opalesate_upload_image( $submitted_file, $parent_id );
 	}
 
 	/**
 	 * FrontEnd Submission
 	 */
-	private function cleanup() {   
-		$user_id = get_current_user_id(); 
+	private function cleanup() {
+		$user_id = get_current_user_id();
 		opalestate_clean_attachments( $user_id );
 	}
 

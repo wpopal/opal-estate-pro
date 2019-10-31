@@ -93,8 +93,6 @@ class Opalestate_Install {
 			$options['currency_position']   = 'before';
 			$options['measurement_unit']    = 'sqft';
 			$options['google_map_api_keys'] = 'AIzaSyCfMVNIa7khIqYHCw6VBn8ShUWWm4tjbG8';
-			$options['admin_approve']       = 'on';
-			$options['require_input_price'] = 'on';
 			$options['from_name']           = get_bloginfo( 'name' );
 			$options['from_email']          = get_bloginfo( 'admin_email' );
 			$options['message_log']         = 1;
@@ -129,6 +127,7 @@ class Opalestate_Install {
 			$options['enable_agency_reviews']   = 'on';
 			$options['enable_agent_reviews']    = 'on';
 
+			$options['admin_approve']                     = 'on';
 			$options['enable_submission_tab_media']       = 'on';
 			$options['enable_submission_tab_location']    = 'on';
 			$options['enable_submission_tab_amenities']   = 'on';
