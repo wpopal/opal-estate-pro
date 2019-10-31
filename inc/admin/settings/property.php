@@ -168,10 +168,10 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				'desc'    => esc_html__( 'Show featured first in page result, as default Newest is showed', 'opalestate-pro' ),
 				'type'    => 'switch',
 				'options' => [
-					0 => esc_html__( 'Disable', 'opalestate-pro' ),
-					1 => esc_html__( 'Enable', 'opalestate-pro' ),
+					'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+					'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 				],
-				'default' => 0,
+				'default' => 'off',
 			];
 			$fields[] = [
 				'name'       => esc_html__( 'Minimum of Search Price', 'opalestate-pro' ),
