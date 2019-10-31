@@ -129,7 +129,7 @@ class OpalEstate_Submission {
 					],
 					[
 						'name'    => esc_html__( 'Property Submission Page', 'opalestate-pro' ),
-						'desc'    => esc_html__( 'This is the submission page. The <code>[opalestate_submission]</code> shortcode should be on this page.', 'opalestate-pro' ),
+						'desc'    => __( 'This is the submission page. The <code>[opalestate_submission]</code> shortcode should be on this page.', 'opalestate-pro' ),
 						'id'      => 'submission_page',
 						'type'    => 'select',
 						'options' => opalestate_cmb2_get_post_options( [
@@ -137,10 +137,9 @@ class OpalEstate_Submission {
 							'numberposts' => -1,
 						] ),
 					],
-
 					[
 						'name'    => esc_html__( 'Show Content Use Not Login', 'opalestate-pro' ),
-						'desc'    => esc_html__( 'Show Login/Register form and submission form if user not logined', 'opalestate-pro' ),
+						'desc'    => esc_html__( 'Show Login/Register form and submission form if the user is not logged in.', 'opalestate-pro' ),
 						'id'      => 'submission_show_content',
 						'type'    => 'select',
 						'default' => '',
@@ -149,16 +148,16 @@ class OpalEstate_Submission {
 							'login_submission' => esc_html__( 'Show Login Form and Submission Form', 'opalestate-pro' ),
 						],
 					],
-
 					[
-						'name' => esc_html__( 'Enable Admin Approve', 'opalestate-pro' ),
-						'desc' => esc_html__( 'Admin must review and approve before properties are published.', 'opalestate-pro' ),
-						'id'   => 'admin_approve',
-						'type' => 'switch',
+						'name'    => esc_html__( 'Enable Admin Approve', 'opalestate-pro' ),
+						'desc'    => esc_html__( 'Admin must review and approve before properties are published.', 'opalestate-pro' ),
+						'id'      => 'admin_approve',
+						'type'    => 'switch',
 						'options' => [
 							'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 							'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 						],
+						'default' => 'on',
 					],
 					[
 						'name'       => esc_html__( 'Submission Tab Settings', 'opalestate-pro' ),
@@ -255,11 +254,11 @@ class OpalEstate_Submission {
 						],
 					],
 					[
-						'name'    => esc_html__( 'Property SKU prefix', 'opalestate-pro' ),
-						'desc'    => esc_html__( 'Prefix for property SKU.', 'opalestate-pro' ),
-						'id'      => 'submission_sku_prefix',
+						'name'    => esc_html__( 'Property SKU format', 'opalestate-pro' ),
+						'desc'    => __( 'Use <code>{property_id}</code> to generate the property ID.', 'opalestate-pro' ),
+						'id'      => 'submission_sku_format',
 						'type'    => 'text',
-						'default' => 'SKU',
+						'default' => 'SKU-{property_id}',
 					],
 				]
 			),
@@ -370,6 +369,7 @@ class OpalEstate_Submission {
 
 			if ( $post_id && ! opalestate_is_own_property( $post_id, $current_user->ID ) ) {
 				echo opalestate_load_template_path( 'parts/has-warning' );
+
 				return;
 			}
 		}
@@ -512,7 +512,8 @@ class OpalEstate_Submission {
 
 						// Update SKU.
 						if ( 'on' == opalestate_get_option( 'enable_submission_generate_sku', 'off' ) ) {
-							$sku_generated = apply_filters( 'opalestate_submission_sku_generated', sanitize_text_field( opalestate_options( 'submission_sku_prefix', 'SKU' ) . $post_id ) );
+							$_sku          = str_replace( '{property_id}', $post_id, opalestate_options( 'submission_sku_format', 'SKU-{property_id}' ) );
+							$sku_generated = apply_filters( 'opalestate_submission_sku_generated', sanitize_text_field( $_sku ) );
 							update_post_meta( $post_id, $prefix . 'sku', $sku_generated );
 						}
 
