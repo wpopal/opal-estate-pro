@@ -177,10 +177,10 @@ class Opalestate_Property_MetaBox {
 				'id'      => $prefix . 'featured',
 				'type'    => 'switch',
 				'options' => [
-					0 => esc_html__( 'No', 'opalestate-pro' ),
-					1 => esc_html__( 'Yes', 'opalestate-pro' ),
+					'on'  => esc_html__( 'Yes', 'opalestate-pro' ),
+					'off' => esc_html__( 'No', 'opalestate-pro' ),
 				],
-				'default' => 0,
+				'default' => 'off',
 			],
 			[
 				'name'        => esc_html__( 'Property SKU', 'opalestate-pro' ),
@@ -206,17 +206,14 @@ class Opalestate_Property_MetaBox {
 				'id'      => $prefix . 'enablemapview',
 				'type'    => 'switch',
 				'options' => [
-					1 => esc_html__( 'Yes', 'opalestate-pro' ),
-					0 => esc_html__( 'No', 'opalestate-pro' ),
+					'on'  => esc_html__( 'Yes', 'opalestate-pro' ),
+					'off' => esc_html__( 'No', 'opalestate-pro' ),
 				],
 			],
 			[
 				'name'       => esc_html__( 'Address', 'opalestate-pro' ),
 				'id'         => $prefix . 'address',
 				'type'       => 'textarea_small',
-				'attributes' => [
-					'required' => 'required',
-				],
 			],
 			[
 				'id'          => "{$prefix}video",
@@ -243,7 +240,7 @@ class Opalestate_Property_MetaBox {
 				'name'        => esc_html__( 'Regular Price', 'opalestate-pro' ) . $currency,
 				'type'        => 'text',
 				'description' => esc_html__( 'Enter amount without currency', 'opalestate-pro' ),
-				'attributes'  => opalestate_get_option( 'require_input_price' ) ? [ 'required' => 'required' ] : '',
+				'attributes'  => [ 'required' => 'required' ],
 				'before_row'  => '<div class="row-group-features group-has-three group-price   clearfix"><h3>' . ( is_admin() ? "" : esc_html__( 'Price', 'opalestate-pro' ) ) . '</h3>', // callback
 			],
 			[
@@ -270,10 +267,10 @@ class Opalestate_Property_MetaBox {
 				'id'      => $prefix . 'price_oncall',
 				'type'    => 'switch',
 				'options' => [
-					0 => esc_html__( 'No', 'opalestate-pro' ),
-					1 => esc_html__( 'Yes', 'opalestate-pro' ),
+					'on'  => esc_html__( 'Yes', 'opalestate-pro' ),
+					'off' => esc_html__( 'No', 'opalestate-pro' ),
 				],
-				'default' => 0,
+				'default' => 'off',
 			],
 
 		];

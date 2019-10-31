@@ -4,8 +4,8 @@
 		global $property;
 		$galleries = $property->get_gallery();
 
+		$single_image_size = opalestate_get_option( 'featured_image_size', 'full' );
 
-		$image_size = opalestate_get_option( 'opalestate_thumbnail_size' );
 		if ( ! empty( $galleries ) && isset( $galleries ) ):
 			?>
 			<?php
@@ -32,12 +32,12 @@
                     <div class="swiper-wrapper">
 
 						<?php if ( has_post_thumbnail() ): ?>
-                            <div class="swiper-slide"><?php the_post_thumbnail( opalestate_get_option( 'featured_image_size', 'full' ) ); ?></div>
+                            <div class="swiper-slide"><?php the_post_thumbnail( $single_image_size ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( isset( $galleries ) && is_array( $galleries ) ): ?>
-							<?php foreach ( $galleries as $src ): ?>
-                                <div class="swiper-slide"><img src="<?php echo esc_url( $src ); ?>" alt="gallery"></div>
+							<?php foreach ( $galleries as $key => $src ): ?>
+                                <div class="swiper-slide"><img src="<?php echo esc_url( wp_get_attachment_image_url( $key, $single_image_size ) ); ?>" alt="gallery"></div>
 							<?php endforeach; ?>
 						<?php endif; ?>
 
@@ -48,7 +48,7 @@
 
 			<?php if ( has_post_thumbnail() ): ?>
                 <div class="property-thumbnail">
-					<?php the_post_thumbnail( 'full' ); ?>
+					<?php the_post_thumbnail( $single_image_size ); ?>
                 </div>
 			<?php endif; ?>
 		<?php endif; ?>

@@ -1,10 +1,10 @@
 === Opal Estate Pro - Property Management and Submission ===
-Contributors: wpopal, ndoublehwp
+Contributors: wpopal
 Donate link: https://wpdocs.gitbook.io/opal-estate/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.6
 Tested up to: 5.2.3
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -120,6 +120,7 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 = WHAT IS NEW IN PRO VERSION =
 * Suport API use to develop great web app and mobile app .  
 * Agency Agency and allow edit profile with user having Opal Estate Agency Role. Display Properties and members of agency
+* Implement Google Map with custom styles.
 * Implement Google Capcha for all Email Form
 * Implement Saved Search Form allowing user save theirs result as loved collection. They are managed with Saved Search Menu of user dashboard
 * Supported Widgets working with Elementor page builder
@@ -155,6 +156,14 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.1.8 - 2019-10-31 =
+* Fixes - Submission settings.
+* Fixes - Order settings in the search page.
+* Fixes - Single property image size.
+* Added - Automatic generate property SKU.
+* Added - Enable/Disable Request Viewing.
+
+
 = 1.1.7 - 2019-10-30 =
 * Added - Google Map styles.
 

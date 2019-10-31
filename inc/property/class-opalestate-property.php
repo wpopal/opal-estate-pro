@@ -207,10 +207,10 @@ class Opalestate_Property {
 	}
 
 	/**
-	 *
+	 * Is featured?
 	 */
 	public function is_featured() {
-		return 'on' === $this->featured;
+		return ( 'on' === $this->featured ) || ( 1 == $this->featured );
 	}
 
 	/**
@@ -315,7 +315,7 @@ class Opalestate_Property {
 	}
 
 	/**
-	 *
+	 * Get location.
 	 */
 	public function get_locations() {
 		$terms = wp_get_post_terms( $this->post_id, 'opalestate_location' );
@@ -515,7 +515,7 @@ class Opalestate_Property {
 	 * @access public
 	 * @param $key
 	 * @param $single
-	 * @return string
+	 * @return string|array
 	 */
 	public function get_metabox_value( $key, $single = true ) {
 		return get_post_meta( $this->post_id, OPALESTATE_PROPERTY_PREFIX . $key, $single );
@@ -579,7 +579,7 @@ class Opalestate_Property {
 	 * @return array
 	 */
 	public function get_gallery() {
-		return $this->get_metabox_value( 'gallery', true );
+		return $this->get_metabox_value( 'gallery' );
 	}
 
 	/**
@@ -676,7 +676,6 @@ class Opalestate_Property {
 	public function get_attachments() {
 		return $this->get_metabox_value( 'attachments' );
 	}
-
 
 	public function get_content_single_layout() {
 		return $this->get_metabox_value( 'layout' );

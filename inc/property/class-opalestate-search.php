@@ -243,8 +243,12 @@ class OpalEstate_Search {
 
 		if ( ! empty( $ksearchs ) && count( $ksearchs ) == 2 ) {
 			$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . $ksearchs[0];
-			$args['orderby']  = 'meta_value_num';
+			$args['orderby']  = 'meta_value';
 			$args['order']    = $ksearchs[1];
+		} elseif ( 'on' == opalestate_options( 'show_featured_first', 'off' ) ) {
+			$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . 'featured';
+			$args['orderby']  = 'meta_value';
+			$args['order']    = 'DESC';
 		}
 
 		$metas = Opalestate_Property_MetaBox::metaboxes_info_fields();

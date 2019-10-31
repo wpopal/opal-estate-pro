@@ -218,6 +218,10 @@ add_action( 'opalestate_single_property_preview', 'opalestate_property_preview',
 
 
 function opalestate_property_request_viewing_button( $islink = false ) {
+	if ( 'on' != opalestate_get_option( 'enable_single_request_viewing', 'on' ) ) {
+		return;
+	}
+
 	$class = $islink ? 'btn-link' : 'btn btn-primary';
 	if ( ! is_user_logged_in() ) {
 		$class .= ' opalestate-need-login';
@@ -260,6 +264,10 @@ add_action( 'opalestate_single_property_layout', 'opalestate_single_property_lay
  * Forms
  */
 function opalestate_property_request_view_form() {
+	if ( 'on' != opalestate_get_option( 'enable_single_request_viewing', 'on' ) ) {
+		return;
+	}
+
 	if ( ! is_user_logged_in() ) {
 		return;
 	}

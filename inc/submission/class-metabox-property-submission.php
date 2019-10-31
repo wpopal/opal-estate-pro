@@ -25,12 +25,12 @@ class Opalestate_Property_MetaBox_Submission {
 	 * @return array
 	 */
 	public function register_form( array $metaboxes ) {
-		
+
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
 
 		$fields = array_merge(
 			$this->metaboxes_general_fields_front(),
-			
+
 			$this->is_enabled_tab( 'media' ) ? $this->metaboxes_media_fields() : [],
 			$this->is_enabled_tab( 'location' ) ? $this->metaboxes_location_fields() : [],
 			$this->is_enabled_tab( 'information' ) ? $this->metaboxes_info_fields() : [],
@@ -59,14 +59,13 @@ class Opalestate_Property_MetaBox_Submission {
 	public function get_fields_groups() {
 		return [
 			'general'     => [ 'status' => true, 'title' => esc_html__( 'General', 'opalestate-pro' ) ],
-			
 			'media'       => [ 'status' => $this->is_enabled_tab( 'media' ), 'title' => esc_html__( 'Media', 'opalestate-pro' ) ],
 			'location'    => [ 'status' => $this->is_enabled_tab( 'location' ), 'title' => esc_html__( 'Location', 'opalestate-pro' ) ],
 			'information' => [ 'status' => $this->is_enabled_tab( 'information' ), 'title' => esc_html__( 'Information', 'opalestate-pro' ) ],
 			'amenities'   => [ 'status' => $this->is_enabled_tab( 'amenities' ), 'title' => esc_html__( 'Amenities', 'opalestate-pro' ) ],
 			'facilities'  => [ 'status' => $this->is_enabled_tab( 'facilities' ), 'title' => esc_html__( 'Facilities', 'opalestate-pro' ) ],
 			'apartments'  => [ 'status' => $this->is_enabled_tab( 'apartments' ), 'title' => esc_html__( 'Apartments', 'opalestate-pro' ) ],
-			'floor_plans' => [ 'status' => $this->is_enabled_tab( 'floor_plans' ), 'title' => esc_html__( 'Floor plans', 'opalestate-pro' ) ]
+			'floor_plans' => [ 'status' => $this->is_enabled_tab( 'floor_plans' ), 'title' => esc_html__( 'Floor plans', 'opalestate-pro' ) ],
 		];
 	}
 
@@ -77,7 +76,7 @@ class Opalestate_Property_MetaBox_Submission {
 		if ( ! empty( $_GET['id'] ) ) {
 			$post           = get_post( intval( $_GET['id'] ) );
 			$featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( absint( $_GET['id'] ) ) );
-			$post_id  = $post->ID;
+			$post_id        = $post->ID;
 		}
 
 		$currency = opalestate_currency_symbol() ? ' (' . opalestate_currency_symbol() . ')' : ' ($)';
@@ -95,7 +94,6 @@ class Opalestate_Property_MetaBox_Submission {
 				'default' => $post_id,
 
 			],
-
 			[
 				'name'       => esc_html__( 'Title', 'opalestate-pro' ) . '<span class="required"> *</span>',
 				'id'         => $prefix . 'title',
@@ -107,20 +105,19 @@ class Opalestate_Property_MetaBox_Submission {
 				],
 			],
 			[
-				'name'    => esc_html__( 'Description', 'opalestate-pro' ),
-				'id'      => $prefix . 'text',
-				'type'    => 'wysiwyg',
-				'default' => ! empty( $post ) ? $post->post_content : '',
+				'name'       => esc_html__( 'Description', 'opalestate-pro' ),
+				'id'         => $prefix . 'text',
+				'type'       => 'wysiwyg',
+				'default'    => ! empty( $post ) ? $post->post_content : '',
 				'before_row' => '<hr>',
 			],
-
 			[
 				'id'          => $prefix . 'price',
 				'name'        => esc_html__( 'Regular Price', 'opalestate-pro' ) . $currency . '<span class="required"> *</span>',
 				'type'        => 'text',
 				'description' => esc_html__( 'Enter amount without currency', 'opalestate-pro' ),
-				'attributes'  => opalestate_get_option( 'require_input_price' ) ? [ 'required' => 'required' ] : '',
-				'before_row'  => '<hr><div class="field-row-2">', // callback
+				'attributes'  => [ 'required' => 'required' ],
+				'before_row'  => '<hr><div class="field-row-2">',
 			],
 			[
 				'id'          => $prefix . 'saleprice',
@@ -141,26 +138,26 @@ class Opalestate_Property_MetaBox_Submission {
 				'description' => esc_html__( 'After Price Label (e.g. "per month")', 'opalestate-pro' ),
 			],
 			[
-				'name'     => esc_html__( 'Statuses', 'opalestate-pro' ),
-				'id'       => $prefix . 'status',
-				'type'     => 'taxonomy_select',
-				'taxonomy' => 'opalestate_status',
-				'class'    => 'form-control',
+				'name'       => esc_html__( 'Statuses', 'opalestate-pro' ),
+				'id'         => $prefix . 'status',
+				'type'       => 'taxonomy_select',
+				'taxonomy'   => 'opalestate_status',
+				'class'      => 'form-control',
 				'attributes' => [
 					'required' => 'required',
 				],
-				'before_row'  => '</div><hr><div class="field-row-2">', // callback
+				'before_row' => '</div><hr><div class="field-row-2">', // callback
 			],
 			[
-				'name'      => esc_html__( 'Types', 'opalestate-pro' ),
-				'id'        => $prefix . 'type',
-				'type'      => 'taxonomy_select',
-				'taxonomy'  => 'opalestate_types',
-				'class'     => 'form-control',
+				'name'       => esc_html__( 'Types', 'opalestate-pro' ),
+				'id'         => $prefix . 'type',
+				'type'       => 'taxonomy_select',
+				'taxonomy'   => 'opalestate_types',
+				'class'      => 'form-control',
 				'attributes' => [
 					'required' => 'required',
 				],
-				'after_row' => '</div><hr><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>', // callback
+				'after_row'  => '</div><hr><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>', // callback
 			],
 		];
 
@@ -168,12 +165,11 @@ class Opalestate_Property_MetaBox_Submission {
 	}
 
 	public function metaboxes_media_fields() {
+		$id = 0;
 
-		$id = 0; 
-		
-		if( isset($_GET['id']) ){
-			$post_id = intval( $_GET['id'] );  
-			$id = get_post_thumbnail_id( $post_id );
+		if ( isset( $_GET['id'] ) ) {
+			$post_id = intval( $_GET['id'] );
+			$id      = get_post_thumbnail_id( $post_id );
 		}
 
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
@@ -183,11 +179,11 @@ class Opalestate_Property_MetaBox_Submission {
 				'id'          => "{$prefix}featured_image",
 				'name'        => esc_html__( 'Featured Image', 'opalestate-pro' ),
 				'type'        => 'uploader',
-				'single'	  => true,
-				'value'		  => $id,
+				'single'      => true,
+				'value'       => $id,
 				'description' => esc_html__( 'Select one or more images to show as gallery', 'opalestate-pro' ),
 				'before_row'  => '<div id="opalestate-submission-media" class="opalestate-tab-content">',
-				 
+
 			],
 
 			[
@@ -195,14 +191,14 @@ class Opalestate_Property_MetaBox_Submission {
 				'name'        => esc_html__( 'Images Gallery', 'opalestate-pro' ),
 				'type'        => 'uploader',
 				'description' => esc_html__( 'Select one or more images to show as gallery', 'opalestate-pro' ),
-			
+
 			],
 
 			[
 				'id'          => "{$prefix}video",
 				'name'        => esc_html__( 'Video', 'opalestate-pro' ),
 				'type'        => 'text_url',
-				'before_row'	=> '<hr>',
+				'before_row'  => '<hr>',
 				'description' => esc_html__( 'Input for videos, audios from Youtube, Vimeo and all supported sites by WordPress. It has preview feature.', 'opalestate-pro' ),
 			],
 			[
@@ -210,15 +206,15 @@ class Opalestate_Property_MetaBox_Submission {
 				'name'        => esc_html__( '360° Virtual Tour', 'opalestate-pro' ),
 				'type'        => 'textarea_small',
 				'description' => esc_html__( 'Input iframe to show 360° Virtual Tour.', 'opalestate-pro' ),
-				'before_row'	=> '<hr>'
+				'before_row'  => '<hr>',
 			],
 			[
 				'id'          => "{$prefix}attachments",
 				'name'        => esc_html__( 'Attachments', 'opalestate-pro' ),
 				'type'        => 'uploader',
-				'before_row'	=> '<hr>',
-				'show_icon'		=> true,
-				'accept'		=> 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+				'before_row'  => '<hr>',
+				'show_icon'   => true,
+				'accept'      => 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 				'options'     => [
 					'url' => true, // Hide the text input for the url
 				],
@@ -244,40 +240,40 @@ class Opalestate_Property_MetaBox_Submission {
 				'before_row' => '<div id="opalestate-submission-information" class="opalestate-tab-content"><div class="field-row-2">',
 			],
 			[
-				'name'        => esc_html__( 'Parking', 'opalestate-pro' ),
-				'id'          => $prefix . 'parking',
-				'type'        => 'text',
-				'attributes' => array(
-					'type' => 'number',
+				'name'            => esc_html__( 'Parking', 'opalestate-pro' ),
+				'id'              => $prefix . 'parking',
+				'type'            => 'text',
+				'attributes'      => [
+					'type'    => 'number',
 					'pattern' => '\d*',
-				),
+				],
 				'sanitization_cb' => 'absint',
-       	 		'escape_cb'       => 'absint',
-				'description' => esc_html__( 'Enter number of Parking', 'opalestate-pro' ),
+				'escape_cb'       => 'absint',
+				'description'     => esc_html__( 'Enter number of Parking', 'opalestate-pro' ),
 			],
 			[
-				'name'        => esc_html__( 'Bedrooms', 'opalestate-pro' ),
-				'id'          => $prefix . 'bedrooms',
-				'type'        => 'text',
-				'attributes' => array(
-					'type' => 'number',
+				'name'            => esc_html__( 'Bedrooms', 'opalestate-pro' ),
+				'id'              => $prefix . 'bedrooms',
+				'type'            => 'text',
+				'attributes'      => [
+					'type'    => 'number',
 					'pattern' => '\d*',
-				),
+				],
 				'sanitization_cb' => 'absint',
-       	 		'escape_cb'       => 'absint',
-				'description' => esc_html__( 'Enter number of bedrooms', 'opalestate-pro' ),
+				'escape_cb'       => 'absint',
+				'description'     => esc_html__( 'Enter number of bedrooms', 'opalestate-pro' ),
 			],
 			[
-				'name'        => esc_html__( 'Bathrooms', 'opalestate-pro' ),
-				'id'          => $prefix . 'bathrooms',
-				'type'        => 'text',
-				'attributes' => array(
-					'type' => 'number',
+				'name'            => esc_html__( 'Bathrooms', 'opalestate-pro' ),
+				'id'              => $prefix . 'bathrooms',
+				'type'            => 'text',
+				'attributes'      => [
+					'type'    => 'number',
 					'pattern' => '\d*',
-				),
+				],
 				'sanitization_cb' => 'absint',
-       	 		'escape_cb'       => 'absint',
-				'description' => esc_html__( 'Enter number of bathrooms', 'opalestate-pro' ),
+				'escape_cb'       => 'absint',
+				'description'     => esc_html__( 'Enter number of bathrooms', 'opalestate-pro' ),
 			],
 			[
 				'name'        => esc_html__( 'Plot Size', 'opalestate-pro' ),
@@ -286,16 +282,16 @@ class Opalestate_Property_MetaBox_Submission {
 				'description' => esc_html__( 'Enter size of Plot as 20x30, 20x30x40, 20x30x40x50', 'opalestate-pro' ),
 			],
 			[
-				'name'        => esc_html__( 'Area Size', 'opalestate-pro' ),
-				'id'          => $prefix . 'areasize',
-				'type'        => 'text',
-				'attributes' => array(
-					'type' => 'number',
+				'name'            => esc_html__( 'Area Size', 'opalestate-pro' ),
+				'id'              => $prefix . 'areasize',
+				'type'            => 'text',
+				'attributes'      => [
+					'type'    => 'number',
 					'pattern' => '\d*',
-				),
+				],
 				'sanitization_cb' => 'absint',
-       	 		'escape_cb'       => 'absint',
-				'description' => esc_html__( 'Enter size of area in sqft', 'opalestate-pro' ),
+				'escape_cb'       => 'absint',
+				'description'     => esc_html__( 'Enter size of area in sqft', 'opalestate-pro' ),
 			],
 			[
 				'name'        => esc_html__( 'Orientation', 'opalestate-pro' ),
@@ -304,43 +300,43 @@ class Opalestate_Property_MetaBox_Submission {
 				'description' => esc_html__( 'Enter Orientation of property', 'opalestate-pro' ),
 			],
 			[
-				'name'        => esc_html__( 'Living Rooms', 'opalestate-pro' ),
-				'id'          => "{$prefix}livingrooms",
-				'type'        => 'text',
-				'attributes' => array(
-					'type' => 'number',
+				'name'            => esc_html__( 'Living Rooms', 'opalestate-pro' ),
+				'id'              => "{$prefix}livingrooms",
+				'type'            => 'text',
+				'attributes'      => [
+					'type'    => 'number',
 					'pattern' => '\d*',
-				),
+				],
 				'sanitization_cb' => 'absint',
-       	 		'escape_cb'       => 'absint',
-				'description' => esc_html__( 'Enter Number of Living Rooms', 'opalestate-pro' ),
+				'escape_cb'       => 'absint',
+				'description'     => esc_html__( 'Enter Number of Living Rooms', 'opalestate-pro' ),
 			],
 
 			[
-				'name'        => esc_html__( 'Kitchens', 'opalestate-pro' ),
-				'id'          => "{$prefix}kitchens",
-				'type'        => 'text',
-				'attributes' => array(
-					'type' => 'number',
+				'name'            => esc_html__( 'Kitchens', 'opalestate-pro' ),
+				'id'              => "{$prefix}kitchens",
+				'type'            => 'text',
+				'attributes'      => [
+					'type'    => 'number',
 					'pattern' => '\d*',
-				),
+				],
 				'sanitization_cb' => 'absint',
-       	 		'escape_cb'       => 'absint',
-				'description' => esc_html__( 'Enter Number of Kitchens', 'opalestate-pro' ),
+				'escape_cb'       => 'absint',
+				'description'     => esc_html__( 'Enter Number of Kitchens', 'opalestate-pro' ),
 			],
 
 			[
-				'name'        => esc_html__( 'Rooms', 'opalestate-pro' ),
-				'id'          => "{$prefix}amountrooms",
-				'type'        => 'text',
-				'attributes' => array(
-					'type' => 'number',
+				'name'            => esc_html__( 'Rooms', 'opalestate-pro' ),
+				'id'              => "{$prefix}amountrooms",
+				'type'            => 'text',
+				'attributes'      => [
+					'type'    => 'number',
 					'pattern' => '\d*',
-				),
+				],
 				'sanitization_cb' => 'absint',
-       	 		'escape_cb'       => 'absint',
-				'description' => esc_html__( 'Enter Number of Amount Rooms', 'opalestate-pro' ),
-				'after_row'   => '</div><hr><button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
+				'escape_cb'       => 'absint',
+				'description'     => esc_html__( 'Enter Number of Amount Rooms', 'opalestate-pro' ),
+				'after_row'       => '</div><hr><button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
 						'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
 
 			],
@@ -372,10 +368,10 @@ class Opalestate_Property_MetaBox_Submission {
 				'taxonomy' => 'opalestate_city',
 			],
 			[
-				'name' => esc_html__( 'Postal Code / Zip', 'opalestate-pro' ),
-				'id'   => $prefix . 'zipcode',
-				'type' => 'text',
-				'after_row'=> '</div><hr>'
+				'name'      => esc_html__( 'Postal Code / Zip', 'opalestate-pro' ),
+				'id'        => $prefix . 'zipcode',
+				'type'      => 'text',
+				'after_row' => '</div><hr>',
 
 			],
 			[
@@ -387,10 +383,10 @@ class Opalestate_Property_MetaBox_Submission {
 				],
 			],
 			[
-				'name'    => esc_html__( 'Google Map View', 'opalestate-pro' ),
-				'id'      => $prefix . 'enablemapview',
-				'type'    => 'switch',
-				'options' => [
+				'name'        => esc_html__( 'Google Map View', 'opalestate-pro' ),
+				'id'          => $prefix . 'enablemapview',
+				'type'        => 'switch',
+				'options'     => [
 					0 => esc_html__( 'No', 'opalestate-pro' ),
 					1 => esc_html__( 'Yes', 'opalestate-pro' ),
 				],
@@ -414,13 +410,13 @@ class Opalestate_Property_MetaBox_Submission {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
 		$fields = [
 			[
-				'name'       => esc_html__( 'Amenities', 'opalestate-pro' ),
-				'id'         => $prefix . 'amenity',
-				'type'       => 'taxonomy_multicheck',
-				'before_row' => '<div id="opalestate-submission-amenities" class="opalestate-tab-content">',
-				'after_row'  => '<button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
-				'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
-				'taxonomy'   => 'opalestate_amenities',
+				'name'          => esc_html__( 'Amenities', 'opalestate-pro' ),
+				'id'            => $prefix . 'amenity',
+				'type'          => 'taxonomy_multicheck',
+				'before_row'    => '<div id="opalestate-submission-amenities" class="opalestate-tab-content">',
+				'after_row'     => '<button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
+						'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
+				'taxonomy'      => 'opalestate_amenities',
 				'render_row_cb' => [ $this, 'amenities_html_callback' ],
 			],
 		];
@@ -437,7 +433,7 @@ class Opalestate_Property_MetaBox_Submission {
 				'type'         => 'group',
 				'before_group' => '<div id="opalestate-submission-facilities" class="opalestate-tab-content">',
 				'after_group'  => '<button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
-				'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
+						'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
 				'fields'       => [
 					[
 						'id'   => $prefix . 'public_facilities_key',
@@ -480,7 +476,7 @@ class Opalestate_Property_MetaBox_Submission {
 				'id'          => $prefix . 'apartments',
 				'type'        => 'group',
 				'after_group' => '<button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
-				'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
+						'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
 				'fields'      => [
 					[
 						'id'         => $prefix . 'apartment_plot',
@@ -489,7 +485,7 @@ class Opalestate_Property_MetaBox_Submission {
 						'type'       => 'text',
 
 					],
-					
+
 					[
 						'id'   => $prefix . 'apartment_beds',
 						'name' => esc_html__( 'Beds', 'opalestate-pro' ),
@@ -590,11 +586,11 @@ class Opalestate_Property_MetaBox_Submission {
 						'type' => 'textarea_small',
 					],
 					[
-						'id'          => "{$prefix}floor_image_id",
-						'name'        => esc_html__( 'Image Preview', 'opalestate-pro' ),
-						'type'        => 'uploader',
-						'single'	 => 1,
-		 
+						'id'     => "{$prefix}floor_image_id",
+						'name'   => esc_html__( 'Image Preview', 'opalestate-pro' ),
+						'type'   => 'uploader',
+						'single' => 1,
+
 						'query_args'  => [
 							'type' => [
 								'image/gif',
@@ -625,8 +621,8 @@ class Opalestate_Property_MetaBox_Submission {
 	/**
 	 * Manually render a field column display.
 	 *
-	 * @param  array      $field_args Array of field arguments.
-	 * @param  CMB2_Field $field      The field object
+	 * @param array      $field_args Array of field arguments.
+	 * @param CMB2_Field $field      The field object
 	 */
 	public function amenities_html_callback( $field_args, $field ) {
 		$id          = $field->args( 'id' );
@@ -646,34 +642,34 @@ class Opalestate_Property_MetaBox_Submission {
 			return;
 		}
 		?>
-		<div id="opalestate-submission-amenities" class="opalestate-tab-content">
-			<div class="cmb-row cmb-type-taxonomy-multicheck cmb2-id-opalestate-ppt-amenity" data-fieldtype="taxonomy_multicheck">
-				<div class="cmb-th">
-					<label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $label ); ?></label>
-				</div>
+        <div id="opalestate-submission-amenities" class="opalestate-tab-content">
+            <div class="cmb-row cmb-type-taxonomy-multicheck cmb2-id-opalestate-ppt-amenity" data-fieldtype="taxonomy_multicheck">
+                <div class="cmb-th">
+                    <label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $label ); ?></label>
+                </div>
 
-				<div class="cmb-td">
-					<ul class="cmb2-checkbox-list list-inline cmb2-list">
+                <div class="cmb-td">
+                    <ul class="cmb2-checkbox-list list-inline cmb2-list">
 						<?php foreach ( $amenites as $key => $amenity ) : ?>
-							<li>
-								<input type="checkbox" class="cmb2-option" name="<?php echo esc_attr( $name ); ?>[]" id="opalestate_ppt_amenity<?php echo esc_attr( $key + 1 ); ?>"
-								       value="<?php echo esc_attr( $amenity->slug ); ?>">
-								<label for="opalestate_ppt_amenity<?php echo esc_attr( $key + 1 ); ?>">
+                            <li>
+                                <input type="checkbox" class="cmb2-option" name="<?php echo esc_attr( $name ); ?>[]" id="opalestate_ppt_amenity<?php echo esc_attr( $key + 1 ); ?>"
+                                       value="<?php echo esc_attr( $amenity->slug ); ?>">
+                                <label for="opalestate_ppt_amenity<?php echo esc_attr( $key + 1 ); ?>">
 									<?php
-									if ( $image_id = get_term_meta( $amenity->term_id, 'opalestate_amt_image_id', true )) {
+									if ( $image_id = get_term_meta( $amenity->term_id, 'opalestate_amt_image_id', true ) ) {
 										echo opalestate_get_image_by_id( $image_id );
 									}
 									?>
 									<?php echo esc_html( $amenity->name ); ?>
-								</label>
-							</li>
+                                </label>
+                            </li>
 						<?php endforeach; ?>
-					</ul>
-				</div>
-			</div>
-			<button type="button" class="submission-back-btn btn btn-primary"><?php esc_html_e( 'Previous Step', 'opalestate-pro' ); ?></button>
-			<button type="button" class="submission-next-btn btn btn-primary"><?php esc_html_e( 'Next Step', 'opalestate-pro' ); ?></button>
-		</div>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" class="submission-back-btn btn btn-primary"><?php esc_html_e( 'Previous Step', 'opalestate-pro' ); ?></button>
+            <button type="button" class="submission-next-btn btn btn-primary"><?php esc_html_e( 'Next Step', 'opalestate-pro' ); ?></button>
+        </div>
 		<?php
 	}
 }
