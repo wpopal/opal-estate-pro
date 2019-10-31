@@ -36,8 +36,8 @@
 						<?php endif; ?>
 
 						<?php if ( isset( $galleries ) && is_array( $galleries ) ): ?>
-							<?php foreach ( $galleries as $src ): ?>
-                                <div class="swiper-slide"><img src="<?php echo esc_url( $src ); ?>" alt="gallery"></div>
+							<?php foreach ( $galleries as $key => $src ): ?>
+                                <div class="swiper-slide"><img src="<?php echo esc_url( wp_get_attachment_image_url( $key, 'full' ) ); ?>" alt="gallery"></div>
 							<?php endforeach; ?>
 						<?php endif; ?>
 

@@ -3,6 +3,7 @@
 	global $property;
 	$galleries  = $property->get_gallery();
 	$image_size = opalestate_get_option( 'opalestate_thumbnail_size', 'medium' );
+
 	if ( isset( $galleries ) && $galleries ):
 		?>
 		<?php
@@ -49,9 +50,9 @@
                         </div>
 					<?php endif; ?>
 					<?php if ( isset( $galleries ) && is_array( $galleries ) && $galleries ): ?>
-						<?php foreach ( $galleries as $src ): ?>
+						<?php foreach ( $galleries as $key => $src ): ?>
                             <div class="swiper-slide">
-                                <img src="<?php echo esc_url( $src ); ?>" alt="gallery">
+                                <img src="<?php echo esc_url( wp_get_attachment_image_url( $key, 'full' ) ); ?>" alt="gallery">
                             </div>
 						<?php endforeach; ?>
 					<?php endif; ?>
