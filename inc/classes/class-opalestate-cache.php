@@ -72,7 +72,7 @@ class Opalestate_Cache {
 		self::$instance->is_cache = ( defined( 'GIVE_CACHE' ) ? GIVE_CACHE : opalestate_is_setting_enabled( opalestate_get_option( 'cache', 'enabled' ) ) ) && is_admin();
 
 		// weekly delete all expired cache.
-		Give_Cron::add_weekly_event( array( $this, 'delete_all_expired' ) );
+		// Give_Cron::add_weekly_event( array( $this, 'delete_all_expired' ) );
 
 		add_action( 'save_post_opalestate_forms', array( $this, 'delete_form_related_cache' ) );
 		add_action( 'save_post_opalestate_payment', array( $this, 'delete_payment_related_cache' ) );

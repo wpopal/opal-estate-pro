@@ -27,6 +27,7 @@ class Opalestate_PostType_Property {
 	 */
 	public function __construct() {
 		add_action( 'init', [ __CLASS__, 'definition' ] );
+		add_action( 'init', [ __CLASS__, 'register_post_status' ] );
 	}
 
 	/**
@@ -73,6 +74,21 @@ class Opalestate_PostType_Property {
 				'rewrite'             => [ 'slug' => esc_html_x( 'property', 'property slug', 'opalestate-pro' ) ],
 			] )
 		);
+	}
+
+	/**
+	 * Register post status.
+	 */
+	public static function register_post_status() {
+		register_post_status( 'expired', [
+			'label'                     => _x( 'Expired', 'Expired status', 'opalestate-pro' ),
+			'public'                    => false,
+			'exclude_from_search'       => false,
+			'show_in_admin_all_list'    => true,
+			'show_in_admin_status_list' => true,
+			/* translators: %s: number of orders */
+			'label_count'               => _n_noop( 'Expired <span class="count">(%s)</span>', 'Expired <span class="count">(%s)</span>', 'opalestate-pro' ),
+		] );
 	}
 }
 

@@ -98,6 +98,8 @@ class OpalEstate_Membership {
 
 
 			add_action( 'profile_update', [ __CLASS__, 'on_update_user' ], 10, 1 );
+
+			add_action( 'save_post', [ __CLASS__, 'update_property_expired_time' ], 10, 2 );
 		}
 
 		/**
@@ -244,6 +246,34 @@ class OpalEstate_Membership {
 			'description' => esc_html__( 'Number of properties can make featured with this package.', 'opalestate-pro' ),
 		];
 
+		$fields[] = [
+			'name'        => esc_html__( 'Enable Expired for properties ', 'opalestate-pro' ),
+			'id'          => $prefix . 'enable_property_expired',
+			'type'        => 'checkbox',
+			'description' => esc_html__( 'Do you want enable expired date for properties?', 'opalestate-pro' ),
+		];
+
+		$fields[] = [
+			'name'        => esc_html__( 'Expired Property In', 'opalestate-pro' ),
+			'id'          => $prefix . 'property_duration',
+			'type'        => 'text',
+			'attributes'  => [
+				'type'    => 'number',
+				'pattern' => '\d*',
+				'min'     => 0,
+			],
+			'std'         => '1',
+			'description' => esc_html__( 'Expired a property in. Enter expired number. Example 1, 2, 3', 'opalestate-pro' ),
+		];
+
+		$fields[] = [
+			'name'        => esc_html__( 'Expired property Date Type', 'opalestate-pro' ),
+			'id'          => $prefix . 'property_duration_unit',
+			'type'        => 'select',
+			'options'     => opalmembership_package_expiry_labels(),
+			'description' => esc_html__( 'Enter expired date type. Example Day(s), Week(s), Month(s), Year(s)', 'opalestate-pro' ),
+		];
+
 		return $fields;
 	}
 
@@ -358,6 +388,7 @@ class OpalEstate_Membership {
 		$is_unlimited_listings  = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'unlimited_listings', true );
 
 		$pack_unlimited_listings = $is_unlimited_listings == 'on' ? 0 : 1;
+
 		/**
 		 * Get package information with user logined
 		 */
@@ -394,6 +425,14 @@ class OpalEstate_Membership {
 		 */
 		update_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'package_listings', $new_listings );
 		update_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'package_featured_listings', $new_featured_listings );
+
+		$enable_property_expired = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'enable_property_expired', true );
+		$property_duration       = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'property_duration', true );
+		$property_duration_unit  = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'property_duration_unit', true );
+
+		update_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'enable_property_expired', $enable_property_expired );
+		update_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'property_duration', $property_duration );
+		update_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'property_duration_unit', $property_duration_unit );
 	}
 
 	/**
@@ -644,6 +683,70 @@ class OpalEstate_Membership {
 				update_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'package_expired', $expired_time );
 			}
 		}
+	}
+
+	/**
+	 * @param $user_id
+	 * @param $post_id
+	 */
+	public static function update_property_expired_time( $post_id ) {
+		$post    = get_post( $post_id );
+		$user_id = $post->post_author;
+
+		$activated = get_post_meta( $post_id, OPALESTATE_PROPERTY_PREFIX . 'expired_activated', true );
+
+		if ( ! $activated ) {
+			static::handle_property_expired_time( $user_id, $post_id );
+		}
+	}
+
+	public static function handle_property_expired_time( $user_id, $post_id ) {
+		$is_valid = Opalmembership_User::is_membership_valid( $user_id );
+
+		if ( ! $is_valid ) {
+			return;
+		}
+
+		$enable_property_expired = get_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'enable_property_expired', true );
+		$post_status             = get_post_status( $post_id );
+
+		if ( $enable_property_expired && 'publish' == $post_status ) {
+			$property_duration      = get_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'property_duration', true );
+			$property_duration_unit = get_user_meta( $user_id, OPALMEMBERSHIP_USER_PREFIX_ . 'property_duration_unit', true );
+
+			$expired_time = time() + static::get_expiration_unit_time( $property_duration, $property_duration_unit );
+
+			update_post_meta( $post_id, OPALESTATE_PROPERTY_PREFIX . 'expired_time', $expired_time );
+			update_post_meta( $post_id, OPALESTATE_PROPERTY_PREFIX . 'expired_activated', 1 );
+		}
+	}
+
+	/**
+	 * @param $duration
+	 * @param $unit
+	 * @return float|int
+	 */
+	public static function get_expiration_unit_time( $duration, $unit ) {
+		if ( ! ( $duration = absint( $duration ) ) ) {
+			$duration = 1;
+		}
+
+		switch ( $unit ) {
+			case 'day':
+				$seconds = 60 * 60 * 24;
+				break;
+			case 'week':
+				$seconds = 60 * 60 * 24 * 7;
+				break;
+			case 'month':
+				$seconds = 60 * 60 * 24 * 30;
+				break;
+			case 'year':
+				$seconds = 60 * 60 * 24 * 365;
+				break;
+		}
+
+		return $seconds * $duration;
 	}
 }
 
