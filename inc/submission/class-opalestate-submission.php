@@ -138,7 +138,7 @@ class OpalEstate_Submission {
 						] ),
 					],
 					[
-						'name'    => esc_html__( 'Show Content Use Not Login', 'opalestate-pro' ),
+						'name'    => esc_html__( 'Show Content when User Not Login', 'opalestate-pro' ),
 						'desc'    => esc_html__( 'Show Login/Register form and submission form if the user is not logged in.', 'opalestate-pro' ),
 						'id'      => 'submission_show_content',
 						'type'    => 'select',

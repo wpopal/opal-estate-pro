@@ -19,6 +19,8 @@ if ( ! class_exists( 'OpalEstate_User' ) ) {
 
 $user_id      = get_current_user_id();
 $current_user = wp_get_current_user();
+$roles = $current_user->roles;
+$roles_classes = implode( ' ', array_map( 'sanitize_html_class', $roles ) )
 
 ?>
 <?php if ( $user_id ): ?>
@@ -60,7 +62,7 @@ $current_user = wp_get_current_user();
         </div>
     </div>
 
-    <div class="wrapper opalestate-user-management" id="opalestate-user-management">
+    <div class="wrapper opalestate-user-management <?php echo esc_attr( $roles_classes ); ?>" id="opalestate-user-management">
         <div class="container" id="content">
             <div class="opal-row-inner">
                 <div class=" user-dasboard-sidebar">
@@ -132,7 +134,7 @@ $current_user = wp_get_current_user();
 	<?php get_footer( 'header/no-sidebar' ); ?>
 <?php else : ?>
 	<?php get_header(); ?>
-    <div class="wrapper opalestate-user-management" id="opalestate-user-management">
+    <div class="wrapper opalestate-user-management <?php echo esc_attr( $roles_classes ); ?>" id="opalestate-user-management">
         <div class="container">
             <div class="opalestate-panel-myaccount">
                 <div class="management-header text-center">

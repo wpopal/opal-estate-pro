@@ -98,7 +98,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 				],
 
 				[
-					'name' => esc_html__( 'Maximun Upload Image Size', 'opalestate-pro' ),
+					'name' => esc_html__( 'Maximum Upload Image Size', 'opalestate-pro' ),
 					'desc' => esc_html__( 'Set maximun volumn size having < x MB', 'opalestate-pro' ),
 
 					'id'      => 'upload_image_max_size',
@@ -106,7 +106,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'default' => '0.5',
 				],
 				[
-					'name' => esc_html__( 'Maximun Upload Image Files', 'opalestate-pro' ),
+					'name' => esc_html__( 'Maximum Upload Image Files', 'opalestate-pro' ),
 					'desc' => esc_html__( 'Set maximun volumn size having < x MB', 'opalestate-pro' ),
 
 					'id'      => 'upload_image_max_files',
@@ -114,7 +114,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'default' => '10',
 				],
 				[
-					'name' => esc_html__( 'Maximun Upload Other Size', 'opalestate-pro' ),
+					'name' => esc_html__( 'Maximum Upload Other Size', 'opalestate-pro' ),
 					'desc' => esc_html__( 'Set maximun volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
 
 					'id'      => 'upload_other_max_size',
@@ -122,7 +122,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'default' => '0.8',
 				],
 				[
-					'name' => esc_html__( 'Maximun Upload Other Files', 'opalestate-pro' ),
+					'name' => esc_html__( 'Maximum Upload Other Files', 'opalestate-pro' ),
 					'desc' => esc_html__( 'Set maximun volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
 
 					'id'        => 'upload_other_max_files',

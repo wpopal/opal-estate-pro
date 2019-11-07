@@ -393,6 +393,33 @@ function opalestate_cleanup() {
 		}
 	}
 	wp_reset_postdata();
+
+	// Change status expired properties.
+	$expired_query = new WP_Query( [
+		'post_type'   => 'opalestate_property',
+		'post_status' => [ 'pending', 'publish' ],
+		'meta_query'  => [
+			[
+				'key'     => OPALESTATE_PROPERTY_PREFIX . 'expired_time',
+				'value'   => time(),
+				'compare' => '>=',
+				'type'    => 'NUMERIC',
+			],
+		],
+	] );
+
+	if ( $expired_query->have_posts() ) {
+		while ( $expired_query->have_posts() ) {
+			$expired_query->the_post();
+
+			wp_update_post( [
+				'ID'          => get_the_ID(),
+				'post_status' => 'expired',
+			] );
+		}
+	}
+
+	wp_reset_postdata();
 }
 
 /**
