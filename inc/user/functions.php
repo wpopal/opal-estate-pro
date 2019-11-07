@@ -218,7 +218,7 @@ function opalestate_management_user_menu_tabs() {
 			$link = $uri . '?tab=' . $item['link'];
 		}
 
-		$output .= '<li class="account-links-item' . ( $current_tab == $item['link'] ? ' active' : '' ) . '"><a href="' . $link . '"><i class="' . $item['icon'] . '"></i> ' . $item['title'] . '</a></li>';
+		$output .= '<li class="account-links-item ' . $key . ( $current_tab == $item['link'] ? ' active' : '' ) . '"><a href="' . $link . '"><i class="' . $item['icon'] . '"></i> ' . $item['title'] . '</a></li>';
 	}
 
 	$output .= '<li><a href="' . wp_logout_url( home_url( '/' ) ) . '"> <i class="fa fa-unlock"></i> ' . esc_html__( 'Log out', 'opalestate-pro' ) . '</a></li>';

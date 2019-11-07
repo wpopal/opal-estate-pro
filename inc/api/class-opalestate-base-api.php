@@ -195,7 +195,7 @@ abstract class Opalestate_Base_API {
 			$endpoint = explode( '/', $route );
 			$endpoint = end( $endpoint );
 
-			if ( in_array( $endpoint, [ 'properties', 'agencies', 'agents', 'search-form' ] ) ) {
+			if ( in_array( $endpoint, [ 'properties', 'agencies', 'agents', 'search-form', 'search' ] ) ) {
 				return true;
 			}
 
