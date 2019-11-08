@@ -14,7 +14,6 @@ function opalestate_single_property_layout_default() {
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_facilities', 17 );
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_attachments', 18 );
 
-
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_video', 20 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_virtual_tour', 25 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_map', 30 );
@@ -25,7 +24,6 @@ function opalestate_single_property_layout_default() {
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_apartments', 45 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_floor_plans', 45 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
-	//  add_action( 'opalestate_after_single_property_summary', '', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
 	if ( opalestate_property_reviews_enabled() ) {
@@ -34,12 +32,9 @@ function opalestate_single_property_layout_default() {
 
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
 
-	////// sidebar ////////
-
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v2', 5 );
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form', 6 );
 
-	//  add_action( 'opalestate_single_property_sidebar', 'opalestate_property_request_viewing_button', 7 );
 	if ( opalestate_get_option( 'enable_single_mortgage', 'on' ) == 'on' ) {
 		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
 	}
@@ -57,11 +52,6 @@ function opalestate_single_property_layout_default() {
 function opalestate_single_property_layout_v2() {
 	add_action( 'opalestate_single_property_summary', 'opalestate_get_single_short_meta', 10 );
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_content', 12 );
-	//add_action( 'opalestate_single_property_summary', 'opalestate_property_information', 15 );
-	//add_action( 'opalestate_single_property_summary', 'opalestate_property_amenities', 16 );
-	//add_action( 'opalestate_single_property_summary', 'opalestate_property_facilities', 17 );
-	//add_action( 'opalestate_single_property_summary', 'opalestate_property_attachments', 18 );
-
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_video', 20 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_virtual_tour', 25 );
@@ -71,8 +61,6 @@ function opalestate_single_property_layout_v2() {
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_apartments', 45 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
 
-	//  add_action( 'opalestate_after_single_property_summary', 'opalestate_property_author', 55 );
-
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
 	if ( opalestate_property_reviews_enabled() ) {
@@ -81,14 +69,11 @@ function opalestate_single_property_layout_v2() {
 
 	add_action( 'opalestate_after_single_property_summary_v2', 'opalestate_property_map_v2', 5 );
 
-
-	/// /// sidebar ////////
 	if ( opalestate_get_option( 'enable_single_mortgage', 'on' ) == 'on' ) {
 		add_action( 'opalestate_single_property_sidebar', 'opalestate_property_mortgage', 9 );
 	}
 
 	add_action( 'opalestate_single_property_sidebar', 'opalestate_property_author_v3', 10 );
-	// add_action( 'opalestate_single_property_sidebar', 'opalestate_property_equiry_form' , 12 );
 }
 
 
@@ -103,17 +88,14 @@ function opalestate_single_property_layout_v3() {
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_facilities', 17 );
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_attachments', 18 );
 
-
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_video', 20 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_virtual_tour', 25 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_map', 30 );
-	// add_action( 'opalestate_after_single_property_summary', 'opalestate_property_nearby', 35 );
 
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_walkscore', 40 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_apartments', 45 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_views_statistics', 50 );
 
-	//    add_action( 'opalestate_after_single_property_summary', 'opalestate_property_author', 55 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_tags', 60 );
 
 	if ( opalestate_property_reviews_enabled() ) {
@@ -177,7 +159,6 @@ function opalestate_single_property_layout_v5() {
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_facilities', 17 );
 	add_action( 'opalestate_single_property_summary', 'opalestate_property_attachments', 18 );
 
-
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_video', 20 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_virtual_tour', 25 );
 	add_action( 'opalestate_after_single_property_summary', 'opalestate_property_map', 30 );
@@ -209,13 +190,9 @@ function opalestate_single_property_layout_v5() {
 	}
 }
 
-
-///
 add_action( 'opalestate_single_property_after_render', 'opalestate_properties_related', 5 );
 add_action( 'opalestate_single_property_after_render', 'opalestate_properties_nearby', 6 );
-
 add_action( 'opalestate_single_property_preview', 'opalestate_property_preview', 15 );
-
 
 function opalestate_property_request_viewing_button( $islink = false ) {
 	if ( 'on' != opalestate_get_option( 'enable_single_request_viewing', 'on' ) ) {
@@ -236,7 +213,9 @@ function opalestate_property_request_viewing_button( $islink = false ) {
 }
 
 /**
- * @param $layout
+ * Get single layout.
+ *
+ * @param string $layout Layout.
  */
 function opalestate_single_property_layout( $layout ) {
 	switch ( $layout ) {
@@ -334,7 +313,6 @@ function opalestate_load_plugin_template( $template ) {
 		} else {
 			$template = OPALESTATE_PLUGIN_DIR . '/templates/fullwidth-page.php';
 		}
-
 	}
 
 	if ( $template == '' ) {
