@@ -10,6 +10,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * Add body classes for Opalestate pages.
+ *
+ * @param  array $classes Body Classes.
+ * @return array
+ */
+function opalestate_body_class( $classes ) {
+	$classes = (array) $classes;
+
+	$classes[] = 'opalestate-active';
+
+	if ( is_user_logged_in() ) {
+		$current_user = wp_get_current_user();
+
+		if ( $current_user ) {
+		    $roles = $current_user->roles;
+		    if ( $roles && is_array( $roles ) ) {
+			    foreach ( $roles as $role ) {
+				    $classes[] = 'opalestate-role-' . esc_attr( $role );
+			    }
+            }
+        }
+	}
+
+	return array_unique( $classes );
+}
+
 function opalestate_archive_search_block() {
 	echo opalestate_load_template_path( 'parts/archive-search-block' );
 }

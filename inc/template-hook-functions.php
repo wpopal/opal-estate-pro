@@ -1,5 +1,10 @@
 <?php
 /**
+ * Body classes.
+ */
+add_filter( 'body_class', 'opalestate_body_class' );
+
+/**
  * Archive Page
  */
 add_action( "opalestate_archive_property_page_before", "opalestate_archive_search_block", 4 );
