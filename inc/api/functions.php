@@ -139,10 +139,21 @@ function opalestate_api_get_property_data( $property_info ) {
 	$property['labels']             = $data->get_labels();
 	$property['locations']          = $data->get_locations();
 	$property['facilities']         = $data->get_facilities();
-	$property['amenities']          = $data->get_amenities();
-	$property['types']              = $data->get_types_tax();
-	$property['author_type']        = $data->get_author_type();
-	$property['author_data']        = $data->get_author_link_data();
+
+	$amenities        = $data->get_amenities();
+	$amenities_result = [];
+	if ( $amenities ) {
+		foreach ( $amenities as $amenity ) {
+			$value              = has_term( $amenity->term_id, 'opalestate_amenities', $property_info->ID );
+			$amenity->value     = $value;
+			$amenities_result[] = $amenity;
+		}
+	}
+
+	$property['amenities']   = $amenities_result;
+	$property['types']       = $data->get_types_tax();
+	$property['author_type'] = $data->get_author_type();
+	$property['author_data'] = $data->get_author_link_data();
 
 	$limit                  = opalestate_get_option( 'single_views_statistics_limit', 8 );
 	$stats                  = new Opalestate_View_Stats( $data->get_id(), $limit );

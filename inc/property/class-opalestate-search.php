@@ -114,7 +114,7 @@ class OpalEstate_Search {
 				[
 					'taxonomy' => 'opalestate_amenities',
 					'field'    => 'slug',
-					'terms'    => sanitize_text_field( $_GET['amenities'] ),
+					'terms'    => ( $_GET['amenities'] ),
 				];
 		}
 
@@ -153,7 +153,6 @@ class OpalEstate_Search {
 
 		if ( $search_min_price != '' && $search_max_price != '' && is_numeric( $search_min_price ) && is_numeric( $search_max_price ) ) {
 			if ( $search_min_price ) {
-
 				array_push( $args['meta_query'], [
 					'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
 					'value'   => [ $search_min_price, $search_max_price ],
