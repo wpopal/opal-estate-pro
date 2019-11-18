@@ -13,6 +13,8 @@ $header   = apply_filters( 'opalestate_single_show_heading', true );
     <div class="property-single-stick-bars keep-top-bars ">
         <div class="container">
             <ul class="list-inline">
+	            <?php do_action( 'opalestate_before_property_meta_top_list' ); ?>
+
                 <li class="list-inline__favorite">
 					<?php echo do_shortcode( '[opalestate_favorite_button property_id=' . get_the_ID() . ']' ); ?>
                 </li>
@@ -24,6 +26,8 @@ $header   = apply_filters( 'opalestate_single_show_heading', true );
                 <li class="list-inline__request-viewing single-property-buttons">
 					<?php opalestate_property_request_viewing_button(); ?>
                 </li>
+
+	            <?php do_action( 'opalestate_after_property_meta_top_list' ); ?>
             </ul>
         </div>
     </div>
@@ -38,9 +42,13 @@ $header   = apply_filters( 'opalestate_single_show_heading', true );
                         <div class="property-single-info">
                             <div class="single-price-content"><?php opalestate_property_loop_price(); ?></div>
                             <div class="group-items">
+	                            <?php do_action( 'opalestate_before_single_property_title' ); ?>
+
 								<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 	                            <?php opalestate_property_label(); ?>
 	                            <?php opalestate_property_status(); ?>
+
+	                            <?php do_action( 'opalestate_after_single_property_title' ); ?>
 
                                 <div class="property-meta">
                                     <div class="property-meta__list">

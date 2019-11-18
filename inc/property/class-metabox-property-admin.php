@@ -240,7 +240,6 @@ class Opalestate_Property_MetaBox {
 				'name'        => esc_html__( 'Regular Price', 'opalestate-pro' ) . $currency,
 				'type'        => 'text',
 				'description' => esc_html__( 'Enter amount without currency', 'opalestate-pro' ),
-				'attributes'  => [ 'required' => 'required' ],
 				'before_row'  => '<div class="row-group-features group-has-three group-price   clearfix"><h3>' . ( is_admin() ? "" : esc_html__( 'Price', 'opalestate-pro' ) ) . '</h3>', // callback
 			],
 			[

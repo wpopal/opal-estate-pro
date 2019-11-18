@@ -11,9 +11,13 @@ $header   = apply_filters( 'opalestate_single_show_heading', true );
                     <header class="property-single-header">
                         <div class="property-single-info">
                             <div class="group-items">
+	                            <?php do_action( 'opalestate_before_single_property_title' ); ?>
+
 								<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 	                            <?php opalestate_property_label(); ?>
 	                            <?php opalestate_property_status(); ?>
+
+	                            <?php do_action( 'opalestate_after_single_property_title' ); ?>
 
                                 <div class="property-meta">
                                     <div class="property-meta__list">
@@ -58,6 +62,8 @@ $header   = apply_filters( 'opalestate_single_show_heading', true );
                     <div class="summary entry-summary opalestate-rows">
                         <div class="property-meta-top">
                             <ul class="list-inline property-meta-top__list">
+	                            <?php do_action( 'opalestate_before_property_meta_top_list' ); ?>
+
 								<?php if ( $property->get_sku() ) : ?>
                                     <li class="list-inline__sku">
                                         <span><?php esc_html_e( 'Property ID: ', 'opalestate-pro' ) ?></span>
@@ -73,6 +79,8 @@ $header   = apply_filters( 'opalestate_single_show_heading', true );
                                 <li class="list-inline__favorite property-meta-top__button">
 									<?php echo do_shortcode( '[opalestate_favorite_button property_id=' . get_the_ID() . ']' ); ?>
                                 </li>
+
+	                            <?php do_action( 'opalestate_after_property_meta_top_list' ); ?>
                             </ul>
                         </div>
 
