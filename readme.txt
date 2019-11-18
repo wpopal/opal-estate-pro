@@ -156,7 +156,12 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
-= 1.1.9 - 2019-11-08 =
+= 1.1.9.2 - 2019-11-18 =
+* Added - Fix API.
+* Fixes - Search query.
+* Fixes - Remove price required.
+
+= 1.1.9.1 - 2019-11-08 =
 * Added - Template hooks.
 
 = 1.1.9 - 2019-11-07 =
