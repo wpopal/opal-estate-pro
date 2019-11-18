@@ -366,7 +366,7 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 				[
 					'taxonomy' => 'opalestate_amenities',
 					'field'    => 'slug',
-					'terms'    => sanitize_text_field( $request['amenities'] ),
+					'terms'    => ( $request['amenities'] ),
 				];
 		}
 
@@ -376,29 +376,46 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 		}
 
 		$args['meta_query'] = [ 'relation' => 'AND' ];
-		if ( isset( $request['info'] ) && is_array( $request['info'] ) ) {
-			$metaquery = [];
-			foreach ( $request['info'] as $key => $value ) {
-				if ( trim( $value ) ) {
-					if ( is_numeric( trim( $value ) ) ) {
-						$fieldquery = [
-							'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
-							'value'   => sanitize_text_field( trim( $value ) ),
-							'compare' => apply_filters( 'opalestate_info_numeric_compare', '>=' ),
-							'type'    => 'NUMERIC',
-						];
-					} else {
-						$fieldquery = [
-							'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
-							'value'   => sanitize_text_field( trim( $value ) ),
-							'compare' => 'LIKE',
-						];
-					}
-					$sarg        = apply_filters( 'opalestate_search_field_query_' . $key, $fieldquery );
-					$metaquery[] = $sarg;
+
+		if ( isset( $request['info'] ) ) {
+			$info_array = [];
+			if ( is_array( $request['info'] ) ) {
+				$info_array = $request['info'];
+			} elseif ( is_string( $request['info'] ) ) {
+				$info = $request['info'];
+				$array = json_decode($info);
+				$array = json_decode(json_encode($array), true);
+
+				if ( is_array( $array ) ) {
+					$info_array = $array;
 				}
 			}
-			$args['meta_query'] = array_merge( $args['meta_query'], $metaquery );
+
+			if ( $info_array && ! empty($info_array) ) {
+				$metaquery = [];
+				foreach ( $info_array as $key => $value ) {
+					if ( trim( $value ) ) {
+						if ( is_numeric( trim( $value ) ) ) {
+							$fieldquery = [
+								'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
+								'value'   => sanitize_text_field( trim( $value ) ),
+								'compare' => apply_filters( 'opalestate_info_numeric_compare', '>=' ),
+								'type'    => 'NUMERIC',
+							];
+						} else {
+							$fieldquery = [
+								'key'     => OPALESTATE_PROPERTY_PREFIX . $key,
+								'value'   => sanitize_text_field( trim( $value ) ),
+								'compare' => 'LIKE',
+							];
+						}
+						$sarg        = apply_filters( 'opalestate_search_field_query_' . $key, $fieldquery );
+						$metaquery[] = $sarg;
+					}
+				}
+
+				$args['meta_query'] = array_merge( $args['meta_query'], $metaquery );
+			}
 		}
 
 		if ( $search_min_price != '' && $search_min_price != '' && is_numeric( $search_min_price ) && is_numeric( $search_max_price ) ) {
@@ -637,13 +654,13 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			'validate_callback' => 'rest_validate_request_arg',
 		];
 
-		$params['info'] = [
-			'description'       => __( 'Info', 'opalestate-pro' ),
-			'type'              => 'array',
-			// 'default'           => '',
-			// 'sanitize_callback' => 'sanitize_text_field',
-			'validate_callback' => 'rest_validate_request_arg',
-		];
+		// $params['info'] = [
+		// 	'description'       => __( 'Info', 'opalestate-pro' ),
+		// 	'type'              => 'array',
+		// 	// 'default'           => '',
+		// 	// 'sanitize_callback' => 'sanitize_text_field',
+		// 	'validate_callback' => 'rest_validate_request_arg',
+		// ];
 
 		return $params;
 	}
