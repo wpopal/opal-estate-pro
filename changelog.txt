@@ -1,5 +1,43 @@
-= 1.0.6 - 2019-09-28 =
-* Fixes - Show on|off block content of job and implement API
+= 1.1.9.2 - 2019-11-18 =
+* Added - Fix API.
+* Fixes - Search query.
+* Fixes - Remove price required.
+
+= 1.1.9.1 - 2019-11-08 =
+* Added - Template hooks.
+
+= 1.1.9 - 2019-11-07 =
+* Fixes - Dashboard page.
+* Added - Expired properties.
+
+= 1.1.8 - 2019-10-31 =
+* Fixes - Submission settings.
+* Fixes - Order settings in the search page.
+* Fixes - Single property image size.
+* Added - Automatic generate property SKU.
+* Added - Enable/Disable Request Viewing.
+
+
+= 1.1.7 - 2019-10-30 =
+* Added - Google Map styles.
+
+= 1.1.6 - 2019-10-26 =
+* Added - Setting information fields.
+
+= 1.1.5 - 2019-10-21 =
+* Fixes - Email templates.
+
+= 1.1.4 - 2019-10-17 =
+* Fixes - Properties collection pagination.
+* Fixes - Agents collection pagination.
+* Fixes - Agencies collection pagination.
+
+= 1.1.3 - 2019-10-15 =
+* Fixes - Submission.
+
+= 1.1.2 - 2019-10-10 =
+* Fixes - Settings.
+* Fixes - Templates.
 
 = 1.0.5 - 2019-09-25 =
 * Fixes - Dashboard CSS.
