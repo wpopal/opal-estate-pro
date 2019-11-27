@@ -119,10 +119,15 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 function opalestate_property_areasize_field_template( $template = '' ) {
 	$search_min = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : opalestate_options( 'search_min_area', 0 );
 	$search_max = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : opalestate_options( 'search_max_area', 1000 );
+	$measurement_units = opalestate_get_measurement_units();
+	$unit              = opalestate_options( 'measurement_unit', 'sqft' );
+	if ( isset( $measurement_units[ $unit ] ) ) {
+		$unit = $measurement_units[ $unit ];
+	}
 
 	$data = [
 		'id'            => 'area',
-		'unit'          => opalestate_options( 'measurement_unit', 'sq ft' ) . ' ',
+		'unit'          => $unit . ' ',
 		'ranger_min'    => opalestate_options( 'search_min_area', 0 ),
 		'ranger_max'    => opalestate_options( 'search_max_area', 1000 ),
 		'input_min'     => $search_min,

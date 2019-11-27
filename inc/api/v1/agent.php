@@ -246,13 +246,22 @@ class Opalestate_Agent_Api extends Opalestate_Base_API {
 		$ouput['featured']      = $agent->is_featured();
 		$ouput['trusted']       = $agent->get_trusted();
 		$ouput['email']         = $agent->get_meta( 'email' );
+		$ouput['website']       = $agent->get_meta( 'website' );
+		$ouput['phone']         = $agent->get_meta( 'phone' );
+		$ouput['mobile']        = $agent->get_meta( 'mobile' );
+		$ouput['fax']           = $agent->get_meta( 'fax' );
+		$ouput['job']           = $agent->get_meta( 'job' );
+		$ouput['company']       = $agent->get_meta( 'company' );
 		$ouput['address']       = $agent->get_meta( 'address' );
 		$ouput['map']           = $agent->get_meta( 'map' );
 
-		$terms             = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_location' );
-		$ouput['location'] = $terms && ! is_wp_error( $terms ) ? $terms : [];
-		$ouput['socials']  = $agent->get_socials();
-		$ouput['levels']   = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_level' );
+		$terms                  = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_location' );
+		$ouput['location']      = $terms && ! is_wp_error( $terms ) ? $terms : [];
+		$ouput['socials']       = $agent->get_socials();
+		$ouput['levels']        = wp_get_post_terms( $agent_info->ID, 'opalestate_agent_level' );
+		$properties             = $this->get_properties( $agent_info->ID );
+		$ouput['listing_count'] = count( $properties );
+		$ouput['listing']       = $properties;
 
 		return apply_filters( 'opalestate_api_agents', $ouput );
 	}
@@ -266,5 +275,53 @@ class Opalestate_Agent_Api extends Opalestate_Base_API {
 		$params = parent::get_collection_params();
 
 		return $params;
+	}
+
+	/**
+	 * Get agent listings.
+	 *
+	 * @param int $id Agent ID
+	 * @return array
+	 */
+	public function get_properties( $id ) {
+		$properties = [];
+		if ( $id > 0 ) {
+			$post = get_post( $id );
+			if ( $post && $this->post_type == get_post_type( $id ) ) {
+
+				$user_id = get_post_meta( $id, OPALESTATE_AGENT_PREFIX . 'user_id', true );
+
+				$args = [
+					'post_type'      => 'opalestate_property',
+					'posts_per_page' => -1,
+					'post__not_in'   => [ $id ],
+					'post_status'    => 'publish',
+				];
+
+				$args['meta_query'] = [ 'relation' => 'AND' ];
+
+				if ( $user_id ) {
+					$args['author'] = $user_id;
+				} else {
+					array_push( $args['meta_query'], [
+						'key'     => OPALESTATE_PROPERTY_PREFIX . 'agent',
+						'value'   => $id,
+						'compare' => '=',
+					] );
+				}
+
+				$property_list = get_posts( $args );
+
+				if ( $property_list ) {
+					$i = 0;
+					foreach ( $property_list as $property_info ) {
+						$properties[ $i ] = opalestate_api_get_property_data( $property_info );
+						$i++;
+					}
+				}
+			}
+		}
+
+		return $properties;
 	}
 }

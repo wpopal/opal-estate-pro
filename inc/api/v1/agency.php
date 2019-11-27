@@ -188,11 +188,18 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 		$ouput['featured']      = $agency->is_featured();
 		$ouput['trusted']       = $agency->get_trusted();
 		$ouput['email']         = $agency->get_meta( 'email' );
+		$ouput['website']       = $agency->get_meta( 'website' );
+		$ouput['phone']         = $agency->get_meta( 'phone' );
+		$ouput['mobile']        = $agency->get_meta( 'mobile' );
+		$ouput['fax']           = $agency->get_meta( 'fax' );
 		$ouput['address']       = $agency->get_meta( 'address' );
 		$ouput['map']           = $agency->get_meta( 'map' );
 		$terms                  = wp_get_post_terms( $agency_info->ID, 'opalestate_agency_location' );
 		$ouput['location']      = $terms && ! is_wp_error( $terms ) ? $terms : [];
 		$ouput['socials']       = $agency->get_socials();
+		$properties             = $this->get_properties( $agency_info->ID );
+		$ouput['listing_count'] = count( $properties );
+		$ouput['listings']      = $properties;
 
 		return apply_filters( 'opalestate_api_agencies', $ouput );
 	}
@@ -282,5 +289,68 @@ class Opalestate_Agency_Api extends Opalestate_Base_API {
 		$params = parent::get_collection_params();
 
 		return $params;
+	}
+
+	/**
+	 * Get agent listings.
+	 *
+	 * @param int $id Agency ID.
+	 * @return array
+	 */
+	public function get_properties( $id ) {
+		$properties = [];
+		if ( $id > 0 ) {
+			$post = get_post( $id );
+			if ( $post && $this->post_type == get_post_type( $id ) ) {
+				$user_id = get_post_meta( $id, OPALESTATE_AGENCY_PREFIX . 'user_id', true );
+				$agents  = get_post_meta( $id, OPALESTATE_AGENCY_PREFIX . 'team', true );
+
+				if ( $user_id ) {
+					$author = [ $user_id ];
+					$agents = get_post_meta( $id, OPALESTATE_AGENCY_PREFIX . 'team', true );
+
+					if ( is_array( $agents ) ) {
+						$author = array_merge( $author, $agents );
+					}
+
+					$args = [
+						'post_type'      => 'opalestate_property',
+						'author__in'     => $author,
+						'posts_per_page' => -1,
+					];
+				} else {
+					$args               = [
+						'post_type'      => 'opalestate_property',
+						'posts_per_page' => -1,
+					];
+					$args['meta_query'] = [ 'relation' => 'OR' ];
+					array_push( $args['meta_query'], [
+						'key'     => OPALESTATE_PROPERTY_PREFIX . 'agency',
+						'value'   => $id,
+						'compare' => '=',
+					] );
+
+					if ( $agents ) {
+						array_push( $args['meta_query'], [
+							'key'   => OPALESTATE_PROPERTY_PREFIX . 'agent',
+							'value' => $agents,
+						] );
+					}
+				}
+
+				$property_list = get_posts( $args );
+
+				if ( $property_list ) {
+					$i = 0;
+					foreach ( $property_list as $property_info ) {
+						$properties[ $i ] = opalestate_api_get_property_data( $property_info );
+						$i++;
+					}
+				}
+
+			}
+		}
+
+		return $properties;
 	}
 }
