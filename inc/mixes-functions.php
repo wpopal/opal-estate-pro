@@ -40,7 +40,7 @@ function opalestate_output_msg_json( $result = false, $message = '', $args = [],
  * Process upload images for properties
  */
 function opalesate_upload_image( $submitted_file, $parent_id = 0 ) {
-    require_once ABSPATH . 'wp-admin/includes/image.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
 	require_once ABSPATH . 'wp-admin/includes/file.php';
 	require_once ABSPATH . 'wp-admin/includes/media.php';
 
@@ -1062,7 +1062,13 @@ function opalestate_price( $price, $args = [] ) {
  */
 
 function opalestate_areasize_unit_format( $value = '' ) {
-	return $value . ' ' . '<span>' . opalestate_options( 'measurement_unit', 'sq ft' ) . '</span>';
+	$measurement_units = opalestate_get_measurement_units();
+	$unit              = opalestate_options( 'measurement_unit', 'sqft' );
+	if ( isset( $measurement_units[ $unit ] ) ) {
+		$unit = $measurement_units[ $unit ];
+	}
+
+	return sprintf( _x( '%1$s <span>%2$s</span>', 'areasize info','opalestate-pro' ), $value, $unit );
 }
 
 add_filter( 'opalestate_areasize_unit_format', 'opalestate_areasize_unit_format' );
