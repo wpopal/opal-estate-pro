@@ -3997,3 +3997,7 @@ header#masthead {
     background: #2f73e9;
     position: absolute;
     top: 0; }
+
+  .opalestate-notice {
+    padding: 10px;
+  }

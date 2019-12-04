@@ -1,8 +1,4 @@
 jQuery( document ).ready( function ( $ ) {
-
-    /**
-     *
-     */
     $( '#show-user-sidebar-btn' ).click( function () {
         $( 'body' ).toggleClass( 'active' );
     } );
@@ -313,8 +309,7 @@ jQuery( document ).ready( function ( $ ) {
     /**
      * Login form
      **/
-    $( 'body' ).delegate( '.opalestate-mfp-popup form.opalestate-login-form', 'submit', function () {
-
+    $( 'form.opalestate-login-form' ).on( 'submit', function () {
         var $form = $( this );
         $.ajax( {
             type: 'POST',
@@ -331,17 +326,15 @@ jQuery( document ).ready( function ( $ ) {
                     $form.find( '.opalestate-notice' ).remove();
                     $form.prepend( data.message );
                 }
-
             }
         } );
         return false;
     } );
 
     /**
-     * Login form
+     * Register form
      **/
-    $( 'body' ).delegate( '.opalestate-mfp-popup form.opalestate-register-form', 'submit', function () {
-
+    $( 'form.opalestate-register-form' ).on( 'submit', function () {
         var $form = $( this );
         $.ajax( {
             type: 'POST',
@@ -358,11 +351,11 @@ jQuery( document ).ready( function ( $ ) {
                     $form.find( '.opalestate-notice' ).remove();
                     $form.prepend( data.message );
                 }
-
             }
         } );
         return false;
     } );
+
     /**
      * AJAX ACTION
      */
