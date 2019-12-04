@@ -741,6 +741,10 @@ function opalestate_get_property_walkscore_results( $property ) {
 
 	$map = $property->get_map();
 
+	if ( ! $map || ! is_array( $map ) || ! isset( $map['latitude'] ) || ! isset( $map['longitude'] ) ) {
+	    return false;
+    }
+
 	$latitude  = $map['latitude'];
 	$longitude = $map['longitude'];
 

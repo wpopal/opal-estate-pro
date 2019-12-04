@@ -128,6 +128,10 @@ class Opalestate_Install {
 			$options['enable_agency_reviews']   = 'on';
 			$options['enable_agent_reviews']    = 'on';
 
+			$options['enable_customer_new_submission'] = 'on';
+			$options['enable_admin_new_submission']    = 'on';
+			$options['enable_approve_property_email']  = 'on';
+
 			$options['admin_approve']                     = 'on';
 			$options['enable_submission_tab_media']       = 'on';
 			$options['enable_submission_tab_location']    = 'on';

@@ -16,6 +16,10 @@ if ( ! $categories ) {
 
 $map = $property->get_map();
 
+if ( ! $map || ! is_array( $map ) || ! isset( $map['latitude'] ) || ! isset( $map['longitude'] ) ) {
+	return;
+}
+
 $latitude  = $map['latitude'];
 $longitude = $map['longitude'];
 if ( ! $latitude || ! $longitude ) {
