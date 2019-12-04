@@ -29,17 +29,20 @@ class Opalestate_Emails {
 	public static function init() {
 		self::load();
 
-		add_action( 'opalestate_processed_new_submission', [ __CLASS__, 'new_submission_email' ], 10, 2 );
-		add_action( 'opalestate_processed_new_submission', [ __CLASS__, 'admin_new_submission_email' ], 15, 2 );
-		//add_action(  'opalestate_processed_edit_submission' , array( __CLASS__ , 'new_submission_email'), 10, 2 );
 		if ( is_admin() ) {
 			add_filter( 'opalestate_settings_tabs', [ __CLASS__, 'setting_email_tab' ], 1 );
 			add_filter( 'opalestate_registered_emails_settings', [ __CLASS__, 'setting_email_fields' ], 10, 1 );
 		}
 
-		$enable_approve_property_email = opalestate_get_option( 'enable_approve_property_email' );
+		if ( 'on' === opalestate_get_option( 'enable_customer_new_submission', 'on' ) ) {
+			add_action( 'opalestate_processed_new_submission', [ __CLASS__, 'new_submission_email' ], 10, 2 );
+		}
 
-		if ( $enable_approve_property_email == 'on' ) {
+		if ( 'on' === opalestate_get_option( 'enable_admin_new_submission', 'on' ) ) {
+			add_action( 'opalestate_processed_new_submission', [ __CLASS__, 'admin_new_submission_email' ], 15, 2 );
+		}
+
+		if ( 'on' === opalestate_get_option( 'enable_approve_property_email', 'on' ) ) {
 			add_action( 'transition_post_status', [ __CLASS__, 'send_email_when_publish_property' ], 10, 3 );
 			add_action( 'opalestate_processed_approve_publish_property', [ __CLASS__, 'approve_publish_property_email' ], 10, 1 );
 		}
@@ -342,10 +345,21 @@ class Opalestate_Emails {
 
 					//------------------------------------------
 					[
-						'name' => esc_html__( 'Notification For New Property Submission (Customer)', 'opalestate-pro' ),
+						'name' => esc_html__( 'New Property Submission (Customer)', 'opalestate-pro' ),
 						'desc' => '<hr>',
 						'id'   => 'opalestate_title_email_settings_3',
 						'type' => 'title',
+					],
+					[
+						'name'    => esc_html__( 'Enable', 'opalestate-pro' ),
+						'desc'    => esc_html__( 'Enable email for customers when they have a submission.', 'opalestate-pro' ),
+						'id'      => 'enable_customer_new_submission',
+						'type'    => 'switch',
+						'options' => [
+							'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+							'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+						],
+						'default' => 'on',
 					],
 					[
 						'id'         => 'newproperty_email_subject',
@@ -368,10 +382,22 @@ class Opalestate_Emails {
 					//------------------------------------------
 
 					[
-						'name' => esc_html__( 'Notification For New Property Submission (Admin)', 'opalestate-pro' ),
-						'desc' => '<hr>',
-						'id'   => 'opalestate_title_email_settings_admin',
-						'type' => 'title',
+						'name'       => esc_html__( 'New Property Submission (Admin)', 'opalestate-pro' ),
+						'desc'       => '<hr>',
+						'id'         => 'opalestate_title_email_settings_admin',
+						'type'       => 'title',
+						'before_row' => '<hr>',
+					],
+					[
+						'name'    => esc_html__( 'Enable', 'opalestate-pro' ),
+						'desc'    => esc_html__( 'Enable email for admin when a property is submitted.', 'opalestate-pro' ),
+						'id'      => 'enable_admin_new_submission',
+						'type'    => 'switch',
+						'options' => [
+							'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+							'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+						],
+						'default' => 'on',
 					],
 					[
 						'id'         => 'admin_newproperty_email_subject',
@@ -394,12 +420,12 @@ class Opalestate_Emails {
 					//------------------------------------------
 
 					[
-						'name' => esc_html__( 'Approve property for publish', 'opalestate-pro' ),
-						'desc' => '<hr>',
-						'id'   => 'opalestate_title_email_settings_4',
-						'type' => 'title',
+						'name'       => esc_html__( 'Approved property for publish (Customer)', 'opalestate-pro' ),
+						'desc'       => '<hr>',
+						'id'         => 'opalestate_title_email_settings_4',
+						'type'       => 'title',
+						'before_row' => '<hr>',
 					],
-
 					[
 						'name'    => esc_html__( 'Enable approve property email', 'opalestate-pro' ),
 						'desc'    => esc_html__( 'Enable approve property email.', 'opalestate-pro' ),
@@ -409,9 +435,8 @@ class Opalestate_Emails {
 							'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 							'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 						],
-						'default' => 'off',
+						'default' => 'on',
 					],
-
 					[
 						'id'         => 'approve_email_subject',
 						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
@@ -434,10 +459,11 @@ class Opalestate_Emails {
 					],
 					/// enquire contact template ////
 					[
-						'name' => esc_html__( 'Email Enquiry Contact Templates (Template Tags)', 'opalestate-pro' ),
-						'desc' => $contact_list_tags . '<br><hr>',
-						'id'   => 'opalestate_title_email_settings_6_1',
-						'type' => 'title',
+						'name'       => esc_html__( 'Email Enquiry Contact Templates (Template Tags)', 'opalestate-pro' ),
+						'desc'       => $contact_list_tags . '<br><hr>',
+						'id'         => 'opalestate_title_email_settings_6_1',
+						'type'       => 'title',
+						'before_row' => '<hr>',
 					],
 					[
 						'id'         => 'enquiry_email_subject',
@@ -460,10 +486,11 @@ class Opalestate_Emails {
 					],
 					/// email contact template ////
 					[
-						'name' => esc_html__( 'Email Contact Templates (Template Tags)', 'opalestate-pro' ),
-						'desc' => $contact_list_tags . '<br><hr>',
-						'id'   => 'opalestate_title_email_settings_6',
-						'type' => 'title',
+						'name'       => esc_html__( 'Email Contact Templates (Template Tags)', 'opalestate-pro' ),
+						'desc'       => $contact_list_tags . '<br><hr>',
+						'id'         => 'opalestate_title_email_settings_6',
+						'type'       => 'title',
+						'before_row' => '<hr>',
 					],
 					[
 						'id'         => 'contact_email_subject',
@@ -486,10 +513,11 @@ class Opalestate_Emails {
 					],
 					/// Email Request Review /// 
 					[
-						'name' => esc_html__( 'Email Request Review Templates (Template Tags)', 'opalestate-pro' ),
-						'desc' => $review_list_tags . '<br><hr>',
-						'id'   => 'opalestate_title_email_settings_7',
-						'type' => 'title',
+						'name'       => esc_html__( 'Email Request Review Templates (Template Tags)', 'opalestate-pro' ),
+						'desc'       => $review_list_tags . '<br><hr>',
+						'id'         => 'opalestate_title_email_settings_7',
+						'type'       => 'title',
+						'before_row' => '<hr>',
 					],
 					[
 						'id'         => 'request_review_email_subject',
