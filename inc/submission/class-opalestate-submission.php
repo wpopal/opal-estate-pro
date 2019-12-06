@@ -499,8 +499,10 @@ class OpalEstate_Submission {
 						$featured_image = get_post_meta( $post_id, $prefix . 'featured_image', true );
 
 						if ( ! empty( $_POST[ $prefix . 'featured_image' ] ) && isset( $_POST[ $prefix . 'featured_image' ] ) ) {
-							foreach ( $_POST[ $prefix . 'featured_image' ] as $key => $value ) {
-								set_post_thumbnail( $post_id, $key );
+							if ( $_POST[ $prefix . 'featured_image' ] && is_array( $_POST[ $prefix . 'featured_image' ] ) ) {
+								foreach ( $_POST[ $prefix . 'featured_image' ] as $key => $value ) {
+									set_post_thumbnail( $post_id, $key );
+								}
 							}
 							unset( $_POST[ $prefix . 'featured_image' ] );
 						} else {
