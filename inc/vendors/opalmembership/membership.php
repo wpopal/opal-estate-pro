@@ -247,6 +247,13 @@ class OpalEstate_Membership {
 		];
 
 		$fields[] = [
+			'name'        => esc_html__( 'Accumulated listings?', 'opalestate-pro' ),
+			'id'          => $prefix . 'accumulated_listings',
+			'type'        => 'checkbox',
+			'description' => esc_html__( 'Increase Number Of Properties and Number Of Featured Properties from current remaining values when upgrading this package.', 'opalestate-pro' ),
+		];
+
+		$fields[] = [
 			'name'        => esc_html__( 'Enable Expired for properties ', 'opalestate-pro' ),
 			'id'          => $prefix . 'enable_property_expired',
 			'type'        => 'checkbox',
@@ -386,6 +393,7 @@ class OpalEstate_Membership {
 		$pack_listings          = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'package_listings', true );
 		$pack_featured_listings = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'package_featured_listings', true );
 		$is_unlimited_listings  = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'unlimited_listings', true );
+		$accumulated_listings  = get_post_meta( $package_id, OPALMEMBERSHIP_PACKAGES_PREFIX . 'accumulated_listings', true );
 
 		$pack_unlimited_listings = $is_unlimited_listings == 'on' ? 0 : 1;
 
@@ -399,12 +407,17 @@ class OpalEstate_Membership {
 		$user_current_listings          = opalesate_get_user_current_listings( $user_id ); // get user current listings ( no expired )
 		$user_current_featured_listings = opalesate_get_user_current_featured_listings( $user_id ); // get user current featured listings ( no expired )
 
-		if ( opalesate_check_package_downgrade_status( $user_id, $package_id ) ) {
-			$new_listings          = $pack_listings;
-			$new_featured_listings = $pack_featured_listings;
+		if ( $accumulated_listings == 'on') {
+			$new_listings = ( $current_listings != -1 ) ? ( $pack_listings + $current_listings ) : $pack_listings;
+			$new_featured_listings = ( $curent_featured_listings != -1 ) ? ( $pack_featured_listings + $curent_featured_listings ) : $pack_featured_listings;
 		} else {
-			$new_listings          = $pack_listings - $user_current_listings;
-			$new_featured_listings = $pack_featured_listings - $user_current_featured_listings;
+			if ( ! opalesate_check_package_downgrade_status( $user_id, $package_id ) ) {
+				$new_listings          = $pack_listings;
+				$new_featured_listings = $pack_featured_listings;
+			} else {
+				$new_listings          = $pack_listings - $user_current_listings;
+				$new_featured_listings = $pack_featured_listings - $user_current_featured_listings;
+			}
 		}
 
 		// in case of downgrade

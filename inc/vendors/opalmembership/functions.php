@@ -80,7 +80,11 @@ function opalesate_check_package_downgrade_status( $user_id, $package_id ) {
 		return true;
 	}
 
-	return ( $user_current_listings > $pack_listings ) || ( $user_current_featured_listings > $pack_featured_listings );
+	if ( $user_current_listings > $pack_listings ) {
+		return true;
+	}
+
+	return false;
 }
 
 /**
