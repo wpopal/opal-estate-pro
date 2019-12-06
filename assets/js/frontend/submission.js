@@ -111,7 +111,7 @@ jQuery( document ).ready( function ( $ ) {
 
         $submit_btn.parents( 'form' ).on( 'submit', function () {
             submitFormFiles();
-            return false;
+            // return false;
         } );
 
         // Clicking Next button
