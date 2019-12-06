@@ -42,9 +42,12 @@ jQuery( document ).ready( function ( $ ) {
          });
          */
         var submitFormFiles = function ( name, files ) {
+            if( typeof(tinyMCE) != "undefined" ) {
+                tinyMCE.triggerSave();
+            }
+
             var formData = new FormData();
             formData.append( 'section', 'general' );
-            //            formData.append('action', 'opalestate_submitted_property');
 
             $( '.cmb2-uploader-files' ).each( function () {
                 var file_btn = $( 'input.select-file', this );
@@ -72,6 +75,7 @@ jQuery( document ).ready( function ( $ ) {
             } );
 
             formData.append( 'action', 'opalestate_save_agency_data' );
+
             toggleSubmit( $submit_btn );
             $.ajax( {
                 url: opalesateJS.ajaxurl,
@@ -109,7 +113,7 @@ jQuery( document ).ready( function ( $ ) {
             } );
         };
 
-        $submit_btn.parents( 'form' ).on( 'submit', function () {
+        $submit_btn.parents( 'form' ).on( 'submit', function (e) {
             submitFormFiles();
             return false;
         } );

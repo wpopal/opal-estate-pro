@@ -499,8 +499,10 @@ class OpalEstate_Submission {
 						$featured_image = get_post_meta( $post_id, $prefix . 'featured_image', true );
 
 						if ( ! empty( $_POST[ $prefix . 'featured_image' ] ) && isset( $_POST[ $prefix . 'featured_image' ] ) ) {
-							foreach ( $_POST[ $prefix . 'featured_image' ] as $key => $value ) {
-								set_post_thumbnail( $post_id, $key );
+							if ( $_POST[ $prefix . 'featured_image' ] && is_array( $_POST[ $prefix . 'featured_image' ] ) ) {
+								foreach ( $_POST[ $prefix . 'featured_image' ] as $key => $value ) {
+									set_post_thumbnail( $post_id, $key );
+								}
 							}
 							unset( $_POST[ $prefix . 'featured_image' ] );
 						} else {
@@ -547,14 +549,14 @@ class OpalEstate_Submission {
 							] );
 					}
 				} else {
-					return opalestate_output_msg_json( fales,
+					return opalestate_output_msg_json( false,
 						__( 'Currently, your account was blocked, please keep contact admin to resolve this!.', 'opalestate-pro' ),
 						[ 'heading' => esc_html__( 'Submission Information', 'opalestate-pro' ) ]
 					);
 				}
 			}
 
-			return opalestate_output_msg_json( fales,
+			return opalestate_output_msg_json( false,
 				__( 'Sorry! Your submitted datcould not save a at this time', 'opalestate-pro' ),
 				[ 'heading' => esc_html__( 'Submission Information', 'opalestate-pro' ) ]
 			);

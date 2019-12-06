@@ -110,6 +110,12 @@ class Opalestate_Property_MetaBox_Submission {
 				'type'       => 'wysiwyg',
 				'default'    => ! empty( $post ) ? $post->post_content : '',
 				'before_row' => '<hr>',
+				'options'    => [
+					'media_buttons' => false,
+					'dfw'           => true,
+					'tinymce'       => true,
+					'quicktags'     => true,
+				],
 			],
 			[
 				'id'          => $prefix . 'price',
