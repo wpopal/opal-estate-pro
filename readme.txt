@@ -156,6 +156,10 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.2.3 - 2019-12-09 =
+* Fixes - Order properties
+* Fixes - Package template.
+
 = 1.2.2 - 2019-12-06 =
 * Added - Add Accumulated listings setting for packages.
 

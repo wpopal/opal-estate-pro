@@ -8,7 +8,7 @@
 <div class="pricing-more-info">
 	<div class="item-info">
 		<span>
-			<?php if( !empty($pack_listings) && $unlimited_listings  == 0 ): ?>
+			<?php if ( ( ( $pack_listings && ( -1 != $pack_listings ) ) || ( 0 == $pack_listings ) ) && ( $unlimited_listings  == 0 ) ) : ?>
 				<?php echo trim( $pack_listings); ?><?php esc_html_e( ' Listings' , 'opalestate-pro' );?>
 			<?php else: ?>
 				<?php esc_html_e('Unlimited', 'opalestate-pro');?><?php esc_html_e( ' Listings' , 'opalestate-pro' );?>
@@ -17,10 +17,10 @@
 	</div>
 	<div class="item-info">
 		<span>
-			<?php if( !empty($pack_featured_listings) && $unlimited_listings  == 0 ): ?>
-				<?php echo trim( $pack_featured_listings); ?><?php esc_html_e( ' Featured' , 'opalestate-pro' );?>
+			<?php if ( ( ( $pack_featured_listings && ( -1 != $pack_featured_listings ) ) || ( 0 == $pack_featured_listings ) ) && ( $unlimited_listings  == 0 ) ) : ?>
+				<?php echo trim( $pack_featured_listings ); ?><?php esc_html_e( ' Featured', 'opalestate-pro' ); ?>
 			<?php else: ?>
-				<?php esc_html_e('Unlimited', 'opalestate-pro');?><?php esc_html_e( ' Featured' , 'opalestate-pro' );?>
+				<?php esc_html_e( 'Unlimited', 'opalestate-pro' ); ?><?php esc_html_e( ' Featured', 'opalestate-pro' ); ?>
 			<?php endif; ?>
 		</span>
 	</div>
