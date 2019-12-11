@@ -150,28 +150,30 @@ class Opalestate_Emails {
 	 *
 	 */
 	public static function send_email_when_publish_property( $new_status, $old_status, $post ) {
-
 		if ( is_object( $post ) ) {
 			if ( $post->post_type == 'opalestate_property' ) {
 				if ( $new_status != $old_status ) {
 					if ( $new_status == 'publish' ) {
 						if ( $old_status == 'draft' || $old_status == 'pending' ) {
 							// Send email
-							$post_id = $post->ID;
-							do_action( "opalestate_processed_approve_publish_property", $post_id );
+							$post_id   = $post->ID;
+							$author_id = $post->post_author;
+							$author    = get_userdata( $author_id );
+
+							if ( ! in_array( 'administrator', $author->roles ) && ! in_array( 'opalestate_manager', $author->roles ) && ! in_array( 'opalmembership_manager', $author->roles ) ) {
+								do_action( 'opalestate_processed_approve_publish_property', $post_id );
+							}
 						}
 					}
 				}
 			}
 		}
-
 	}
 
 	/**
 	 * add new tab Email in opalestate -> setting
 	 */
 	public static function setting_email_tab( $tabs ) {
-
 		$tabs['emails'] = esc_html__( 'Email', 'opalestate-pro' );
 
 		return $tabs;
@@ -594,16 +596,11 @@ class Opalestate_Emails {
 	}
 
 	public static function approve_publish_property_email( $post_id ) {
-
 		$mail = new OpalEstate_Send_Email_Approve();
 		$mail->set_pros( $post_id );
 
-		$return = self::send_mail_now( $mail );
-
-		echo json_encode( $return );
-		die();
+		self::send_mail_now( $mail );
 	}
-
 }
 
 Opalestate_Emails::init();
