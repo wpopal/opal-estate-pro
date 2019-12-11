@@ -1,23 +1,10 @@
 <?php
-/**
- * $Desc$
- *
- * @version    $Id$
- * @package    opalestate
- * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
- */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
 /**
- * @class   OpalEstate_Send_Email_Notification
+ * @class   OpalEstate_Send_Email_Approve
  *
  * @version 1.0
  */
@@ -28,7 +15,7 @@ class OpalEstate_Send_Email_Approve extends OpalEstate_Abstract_Email_Template {
 	 */
 	public function get_subject() {
 		$subject = esc_html__( 'The Property Listing Approved: {property_name}', 'opalestate-pro' );
-		$subject = opalestate_options( 'approve_email_body', $subject );
+		$subject = opalestate_options( 'approve_email_subject', $subject );
 
 		return $this->replace_tags( $subject );
 	}
@@ -59,7 +46,6 @@ class OpalEstate_Send_Email_Approve extends OpalEstate_Abstract_Email_Template {
 	 *
 	 */
 	public function get_content_template() {
-
 		$content = opalestate_options( 'approve_email_body', self::get_default_template() );
 
 		return $content;
@@ -69,7 +55,6 @@ class OpalEstate_Send_Email_Approve extends OpalEstate_Abstract_Email_Template {
 	 *
 	 */
 	public static function get_default_template() {
-
 		return trim( preg_replace( '/\t+/', '', "Hi {user_name},<br>
 				<br>
 				Thank you so much for submitting to {site_name}.
@@ -102,14 +87,8 @@ class OpalEstate_Send_Email_Approve extends OpalEstate_Abstract_Email_Template {
 	 *
 	 */
 	public function get_body() {
-
-		$post = get_post( $this->args['post_id'] );
-
 		$this->args['email']         = $this->args['receiver_email'];
-		$this->args['property_link'] = $post->post_title;
 
 		return parent::get_body();
 	}
 }
-
-?>

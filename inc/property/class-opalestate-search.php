@@ -241,13 +241,17 @@ class OpalEstate_Search {
 		}
 
 		if ( ! empty( $ksearchs ) && count( $ksearchs ) == 2 ) {
-			$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . $ksearchs[0];
-			$args['orderby']  = ( 'featured' !== $ksearchs[0] ) ? 'meta_value_num' : 'meta_value';
-			$args['order']    = $ksearchs[1];
+			if ( 'featured' === $ksearchs[0] ) {
+				$args['orderby']  = [ 'meta_value' => 'DESC', 'date' => 'DESC' ];
+				$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . 'featured';
+			} else {
+				$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . $ksearchs[0];
+				$args['orderby']  = 'meta_value_num';
+				$args['order']    = $ksearchs[1];
+			}
 		} elseif ( 'on' == opalestate_options( 'show_featured_first', 'off' ) ) {
+			$args['orderby']  = [ 'meta_value' => 'DESC', 'date' => 'DESC' ];
 			$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . 'featured';
-			$args['orderby']  = 'meta_value';
-			$args['order']    = 'DESC';
 		}
 
 		$metas = Opalestate_Property_MetaBox::metaboxes_info_fields();
