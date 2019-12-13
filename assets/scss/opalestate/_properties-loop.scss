@@ -651,3 +651,22 @@ header{
     }
   }
 }
+
+.opalesate-property-collection {
+    .elementor-slick-slider-row {
+        &.slick-arrows-default {}
+        &.slick-arrows-outside {
+            .slick-arrow {
+
+            }
+        }
+        &.slick-arrows-inside {
+            .slick-arrow {
+                top: 50% !important;
+                &.slick-prev {
+                    left:0;
+                }
+            }
+        }
+    }
+}

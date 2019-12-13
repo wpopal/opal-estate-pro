@@ -2665,6 +2665,11 @@ header:hover .property-bg-thumbnail a {
           background: #02ce76;
           color: #FFF; }
 
+.opalesate-property-collection .elementor-slick-slider-row.slick-arrows-inside .slick-arrow {
+  top: 50% !important; }
+  .opalesate-property-collection .elementor-slick-slider-row.slick-arrows-inside .slick-arrow.slick-prev {
+    left: 0; }
+
 .opalestate_agency {
   margin-bottom: 30px; }
 
@@ -3997,7 +4002,3 @@ header#masthead {
     background: #2f73e9;
     position: absolute;
     top: 0; }
-
-  .opalestate-notice {
-    padding: 10px;
-  }

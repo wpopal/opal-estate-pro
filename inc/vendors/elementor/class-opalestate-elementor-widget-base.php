@@ -356,6 +356,7 @@ abstract class Opalestate_Elementor_Widget_Base extends Widget_Base {
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'inside',
 				'options'   => [
+					'default' => esc_html__( 'Default', 'opalestate-pro' ),
 					'inside'  => esc_html__( 'Inside', 'opalestate-pro' ),
 					'outside' => esc_html__( 'Outside', 'opalestate-pro' ),
 				],
