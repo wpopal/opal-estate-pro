@@ -119,7 +119,8 @@ abstract class Opalestate_Elementor_Widget_Base extends Widget_Base {
 		}
 
 		if ( $settings['enable_carousel'] === 'yes' ) {
-			$this->add_render_attribute( 'wrapper-style', 'class', 'elementor-slick-slider-row row-items' );
+			$arrows_position_class = isset( $settings['arrows_position'] ) && $settings['arrows_position'] ? 'slick-arrows-' . $settings['arrows_position'] : '';
+			$this->add_render_attribute( 'wrapper-style', 'class', 'elementor-slick-slider-row row-items ' . $arrows_position_class );
 
 			$data = $this->get_settings_json( $settings );
 			$this->add_render_attribute( 'wrapper', 'data-settings', $data );
