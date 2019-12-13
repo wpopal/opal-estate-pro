@@ -34,7 +34,7 @@ class Opalestate_Agency_Query extends OpalEstate_Abstract_Query {
 
 		$defaults = array(
 			'output'    => 'collection',
-			'post_type' => array( 'opaljob_job' ),
+			'post_type' => array( 'opalestate_agency' ),
 			'number'          => 20,
 			'offset'          => 0,
 			'paged'           => 1,

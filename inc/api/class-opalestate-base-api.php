@@ -154,7 +154,7 @@ abstract class Opalestate_Base_API {
 	 * @return WP_Error with message key rest_forbidden
 	 */
 	private function missing_auth() {
-		return new WP_Error( 'rest_forbidden', esc_html__( 'You must specify both a token and API key!' ), [ 'status' => rest_authorization_required_code() ] );
+		return new WP_Error( 'rest_forbidden', esc_html__( 'You must specify both a token and API key!', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
 	}
 
 	/**
@@ -165,7 +165,7 @@ abstract class Opalestate_Base_API {
 	 * @return WP_Error with message key rest_forbidden
 	 */
 	private function invalid_auth() {
-		return new WP_Error( 'rest_forbidden', esc_html__( 'Your request could not be authenticated!', 'opaljob' ), [ 'status' => 403 ] );
+		return new WP_Error( 'rest_forbidden', esc_html__( 'Your request could not be authenticated!', 'opalestate-pro' ), [ 'status' => 403 ] );
 	}
 
 	/**
@@ -176,7 +176,7 @@ abstract class Opalestate_Base_API {
 	 * @return WP_Error with message key rest_forbidden
 	 */
 	private function invalid_key() {
-		return new WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key!' ), [ 'status' => rest_authorization_required_code() ] );
+		return new WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key!', 'opalestate-pro' ), [ 'status' => rest_authorization_required_code() ] );
 	}
 
 	/**

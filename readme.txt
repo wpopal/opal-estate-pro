@@ -4,7 +4,7 @@ Donate link: https://wpdocs.gitbook.io/opal-estate/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.6
 Tested up to: 5.3
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,9 +23,9 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 
 = Which themes use this plugin? =
 
- 1. *[ Housey - Real Estate WordPress Theme](https://bit.ly/2kHewkG "Housey - Real Estate WordPress Theme")*
- 2. *[ Latehome - Real Estate WordPress Theme](https://bit.ly/2M0rmp0 "Latehome - Real Estate WordPress Theme")*
- 3. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bit.ly/2nLTfHT "Latehome Free download").*
+ 1. *[ Housey - Real Estate WordPress Theme](http://bit.ly/2kw4MK8 "Housey - Real Estate WordPress Theme")*
+ 2. *[ Latehome - Real Estate WordPress Theme](http://bit.ly/2p5HUn2 "Latehome - Real Estate WordPress Theme")*
+ 3. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](http://bit.ly/latehomefree "Latehome Free download").*
 
  * Please keep contact us at help@wpopal.com to send us your website, we will publish it our showcase
 
@@ -156,6 +156,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.2.5 - 2019-12-13 =
+* Fixes - Slider properties.
+
 = 1.2.4 - 2019-12-11 =
 * Fixes - Order properties with featured properties.
 * Fixes - Email approved.
