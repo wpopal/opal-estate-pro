@@ -90,15 +90,15 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 
 -=-=-=-=-=-=-=-=-=- Shortcodes -=-=-=-=-=-=-=-=-=-
 
-	- [opalestate_search_properties]        => Show Search Properties horizontal form
-	- [opalestate_search_properties_result] => Show Collection Results Working with 
+	- [opalestate_search_properties_form]   => Show Search Properties horizontal form (attributes: layout/hidden_labels/display_more_options/nobutton)
+	- [opalestate_search_properties_result] => Show Collection Results Working with
 	- [opalestate_search_map_properties]    => Show Map + Search Box and Properties
 	- [opalestate_search_split_maps]        => Ajax Search Split Map With Collection
 	- [opalestate_ajax_map_search]          => Ajax Search Map Properties And Horizontal Search
 	- [opalestate_register_form]            => Register User Form
 	- [opalestate_login_form]               => Login Form
 	- [opalestate_properties]				=> Display list of property estate in grid with pagination
-
+    - [opalestate_search_properties]        => Show Map + Search Box and Properties
 	- [opalestate_search_agents]			=> Dislay Search box and agents collection
 
 	- [opalestate_agent_carousel]			=> Display List of Agent in carousel style
