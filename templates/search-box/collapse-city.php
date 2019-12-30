@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$unique_id                    = esc_attr( wp_unique_id() );
+$unique_id                    = esc_attr( opalestate_unique_id() );
 $GLOBALS['group-info-column'] = 4;
 
 if ( isset( $nobutton ) && $nobutton ) {

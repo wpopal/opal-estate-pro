@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$unique_id = esc_attr( wp_unique_id() );
+$unique_id = esc_attr( opalestate_unique_id() );
 $amenities = Opalestate_Taxonomy_Amenities::get_list();
 
 if ( ! $amenities ) {

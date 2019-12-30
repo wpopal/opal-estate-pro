@@ -364,12 +364,7 @@ class Opalestate_HTML_Elements {
 	}
 
 	public function render_form( $fields ) {
-		static $id_counter = 0;
-		if ( function_exists( 'wp_unique_id' ) ) {
-			$form_id = wp_unique_id( 'opalestate-form-' );
-		} else {
-			$form_id = 'opalestate-form-' . (string) ++$id_counter;
-		}
+		$form_id = opalestate_unique_id( 'opalestate-form-' );
 
 		$output        = '';
 		$this->form_id = $form_id;
