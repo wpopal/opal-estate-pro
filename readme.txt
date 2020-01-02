@@ -2,9 +2,9 @@
 Contributors: wpopal
 Donate link: https://wpdocs.gitbook.io/opal-estate/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
-Requires at least: 4.6
-Tested up to: 5.3
-Stable tag: 1.2.6
+Requires at least: 4.9
+Tested up to: 5.3.2
+Stable tag: 1.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -156,6 +156,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.2.7 - 2020-01-02 =
+* Added - Redirect to User Dashboard page after login/register setting.
+
 = 1.2.6 - 2019-12-30 =
 * Fixes - Compatible WordPress version.
 

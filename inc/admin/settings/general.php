@@ -85,6 +85,26 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'options' => $pages,
 				],
 				[
+					'name'    => esc_html__( 'Login and Redirect to Dashboard page', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Redirect to User Management Dashboard page after login.', 'opalestate-pro' ),
+					'id'      => 'enable_login_redirect_to_dashboard',
+					'type'    => 'switch',
+					'options' => [
+						'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+						'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+					],
+				],
+				[
+					'name'    => esc_html__( 'Register and Redirect to Dashboard page', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Redirect to User Management Dashboard page after register.', 'opalestate-pro' ),
+					'id'      => 'enable_register_redirect_to_dashboard',
+					'type'    => 'switch',
+					'options' => [
+						'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+						'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+					],
+				],
+				[
 					'name'    => esc_html__( 'Enable Message Database', 'opalestate-pro' ),
 					'desc'    => esc_html__( 'Allow User send message Contact/Equire via email and saved into database to exchange theirs message direct in User Message Management',
 						'opalestate-pro' ),
@@ -99,7 +119,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 
 				[
 					'name' => esc_html__( 'Maximum Upload Image Size', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximun volumn size having < x MB', 'opalestate-pro' ),
+					'desc' => esc_html__( 'Set maximum volumn size having < x MB', 'opalestate-pro' ),
 
 					'id'      => 'upload_image_max_size',
 					'type'    => 'text',
@@ -107,7 +127,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 				],
 				[
 					'name' => esc_html__( 'Maximum Upload Image Files', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximun volumn size having < x MB', 'opalestate-pro' ),
+					'desc' => esc_html__( 'Set maximum volumn size having < x MB', 'opalestate-pro' ),
 
 					'id'      => 'upload_image_max_files',
 					'type'    => 'text',
@@ -115,7 +135,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 				],
 				[
 					'name' => esc_html__( 'Maximum Upload Other Size', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximun volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
+					'desc' => esc_html__( 'Set maximum volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
 
 					'id'      => 'upload_other_max_size',
 					'type'    => 'text',
@@ -123,7 +143,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 				],
 				[
 					'name' => esc_html__( 'Maximum Upload Other Files', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximun volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
+					'desc' => esc_html__( 'Set maximum volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
 
 					'id'        => 'upload_other_max_files',
 					'type'      => 'text',

@@ -18,6 +18,8 @@ class Opalestate_User_Form_Handler {
 
 		add_action( 'wp_ajax_opalestate_login_form', [ $this, 'process_login' ] );
 		add_action( 'wp_ajax_opalestate_register_form', [ $this, 'process_register' ] );
+		add_filter( 'opalestate_signon_redirect_url', [ $this, 'login_redirect_url' ] );
+		add_filter( 'opalestate_register_redirect_url', [ $this, 'register_redirect_url' ] );
 	}
 
 	/**
@@ -321,6 +323,22 @@ class Opalestate_User_Form_Handler {
 			echo wp_send_json( [ 'status' => false, 'message' => $success ] );
 		}
 		die();
+	}
+
+	public function login_redirect_url( $redirect ) {
+		if ( 'on' === opalestate_get_option( 'enable_login_redirect_to_dashboard', 'off' ) ) {
+			$redirect = opalestate_get_user_management_page_uri();
+		}
+
+		return $redirect;
+	}
+
+	public function register_redirect_url( $redirect ) {
+		if ( 'on' === opalestate_get_option( 'enable_register_redirect_to_dashboard', 'off' ) ) {
+			$redirect = opalestate_get_user_management_page_uri();
+		}
+
+		return $redirect;
 	}
 }
 

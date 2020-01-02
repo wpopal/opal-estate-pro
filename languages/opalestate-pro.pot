@@ -5943,7 +5943,7 @@ msgid "Maximum Upload Image Size"
 msgstr ""
 
 #: inc/admin/settings/general.php:102 inc/admin/settings/general.php:110
-msgid "Set maximun volumn size having < x MB"
+msgid "Set maximum volumn size having < x MB"
 msgstr ""
 
 #: inc/admin/settings/general.php:109
@@ -5955,7 +5955,7 @@ msgid "Maximum Upload Other Size"
 msgstr ""
 
 #: inc/admin/settings/general.php:118 inc/admin/settings/general.php:126
-msgid "Set maximun volumn size having < x MB for upload docx, pdf..."
+msgid "Set maximum volumn size having < x MB for upload docx, pdf..."
 msgstr ""
 
 #: inc/admin/settings/general.php:125
