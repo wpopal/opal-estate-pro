@@ -188,12 +188,14 @@ class OpalEstate_User_Search {
 	 *
 	 */
 	public function dashboard_menu( $menu ) {
-		$menu['savedsearch'] = [
-			'icon'  => 'fa fa-search',
-			'link'  => 'saved_search',
-			'title' => esc_html__( 'Saved Search', 'opalestate-pro' ),
-			'id'    => 0,
-		];
+		if ( 'on' === opalestate_get_option( 'enable_dashboard_savedsearch', 'on' ) ) {
+			$menu['savedsearch'] = [
+				'icon'  => 'fa fa-search',
+				'link'  => 'saved_search',
+				'title' => esc_html__( 'Saved Search', 'opalestate-pro' ),
+				'id'    => 0,
+			];
+		}
 
 		return $menu;
 	}

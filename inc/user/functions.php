@@ -69,10 +69,10 @@ function opalestate_get_user_tab_uri( $tab ) {
 
 
 function opalestate_management_show_content_page_tab() {
-
-	$tab = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
-
-	$fnc = 'opalestate_user_content_' . $tab . '_page';
+	$tab      = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
+	$tab_hook = $tab;
+	$tab_hook = apply_filters( 'opalestate_user_content_tab_hook', $tab_hook, $tab );
+	$fnc      = 'opalestate_user_content_' . $tab_hook . '_page';
 
 	$content = apply_filters( $fnc, '' );
 
@@ -144,64 +144,7 @@ function opalestate_management_user_menu() {
 
 
 function opalestate_management_user_menu_tabs() {
-
-	global $opalestate_options;
-	$menu = [];
-
-	$menu['dashboard'] = [
-		'icon'  => 'fas fa-chart-line',
-		'link'  => 'dashboard',
-		'title' => esc_html__( 'Dashboard', 'opalestate-pro' ),
-		'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
-	];
-
-	$menu['profile'] = [
-		'icon'  => 'far fa-user',
-		'link'  => 'profile',
-		'title' => esc_html__( 'Personal Information', 'opalestate-pro' ),
-		'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
-	];
-
-	$menu['favorite'] = [
-		'icon'  => 'far fa-heart',
-		'link'  => 'favorite',
-		'title' => esc_html__( 'Favorite', 'opalestate-pro' ),
-		'id'    => isset( $opalestate_options['favorite_page'] ) ? $opalestate_options['favorite_page'] : 0,
-	];
-
-	$menu['reviews'] = [
-		'icon'  => 'far fa-star',
-		'link'  => 'reviews',
-		'title' => esc_html__( 'Reviews', 'opalestate-pro' ),
-		'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
-	];
-
-	if ( opalestate_get_option( 'message_log' ) ) {
-		$menu['messages'] = [
-			'icon'  => 'fa fa-envelope',
-			'link'  => 'messages',
-			'title' => esc_html__( 'Messages', 'opalestate-pro' ),
-			'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
-		];
-	}
-
-	$menu['submission'] = [
-		'icon'  => 'fa fa-upload',
-		'link'  => 'submission',
-		'title' => esc_html__( 'Submit Property', 'opalestate-pro' ),
-		'id'    => isset( $opalestate_options['submission_page'] ) ? $opalestate_options['submission_page'] : 0,
-	];
-
-	$statistics = new OpalEstate_User_Statistics();
-
-	$menu['myproperties'] = [
-		'icon'  => 'fas fa-building',
-		'link'  => 'submission_list',
-		'title' => esc_html__( 'My Properties', 'opalestate-pro' ) . '<span class="count">' . $statistics->get_count_properties() . '</span>',
-		'id'    => isset( $opalestate_options['submission_list_page'] ) ? $opalestate_options['submission_list_page'] : 0,
-	];
-
-	$menu = apply_filters( 'opalestate_management_user_menu', $menu );
+	$menu = opalestate_get_user_dashboard_menus();
 
 	$output = '<ul class="account-links nav-pills nav-stacked">';
 
@@ -226,6 +169,76 @@ function opalestate_management_user_menu_tabs() {
 	$output .= '</ul>';
 
 	echo $output;
+}
+
+function opalestate_get_user_dashboard_menus() {
+	global $opalestate_options;
+	$menu = [];
+
+	$menu['dashboard'] = [
+		'icon'  => 'fas fa-chart-line',
+		'link'  => 'dashboard',
+		'title' => esc_html__( 'Dashboard', 'opalestate-pro' ),
+		'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
+	];
+
+	if ( 'on' === opalestate_get_option( 'enable_dashboard_profile', 'on' ) ) {
+		$menu['profile'] = [
+			'icon'  => 'far fa-user',
+			'link'  => 'profile',
+			'title' => esc_html__( 'Personal Information', 'opalestate-pro' ),
+			'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
+		];
+	}
+
+	if ( 'on' === opalestate_get_option( 'enable_dashboard_favorite', 'on' ) ) {
+		$menu['favorite'] = [
+			'icon'  => 'far fa-heart',
+			'link'  => 'favorite',
+			'title' => esc_html__( 'Favorite', 'opalestate-pro' ),
+			'id'    => isset( $opalestate_options['favorite_page'] ) ? $opalestate_options['favorite_page'] : 0,
+		];
+	}
+
+	if ( 'on' === opalestate_get_option( 'enable_dashboard_reviews', 'on' ) ) {
+		$menu['reviews'] = [
+			'icon'  => 'far fa-star',
+			'link'  => 'reviews',
+			'title' => esc_html__( 'Reviews', 'opalestate-pro' ),
+			'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
+		];
+	}
+
+	if ( 'on' === opalestate_get_option( 'message_log', 'on' ) ) {
+		$menu['messages'] = [
+			'icon'  => 'fa fa-envelope',
+			'link'  => 'messages',
+			'title' => esc_html__( 'Messages', 'opalestate-pro' ),
+			'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
+		];
+	}
+
+	if ( 'on' === opalestate_get_option( 'enable_dashboard_submission', 'on' ) ) {
+		$menu['submission'] = [
+			'icon'  => 'fa fa-upload',
+			'link'  => 'submission',
+			'title' => esc_html__( 'Submit Property', 'opalestate-pro' ),
+			'id'    => isset( $opalestate_options['submission_page'] ) ? $opalestate_options['submission_page'] : 0,
+		];
+	}
+
+	if ( 'on' === opalestate_get_option( 'enable_dashboard_properties', 'on' ) ) {
+		$statistics = new OpalEstate_User_Statistics();
+
+		$menu['myproperties'] = [
+			'icon'  => 'fas fa-building',
+			'link'  => 'submission_list',
+			'title' => esc_html__( 'My Properties', 'opalestate-pro' ) . '<span class="count">' . $statistics->get_count_properties() . '</span>',
+			'id'    => isset( $opalestate_options['submission_list_page'] ) ? $opalestate_options['submission_list_page'] : 0,
+		];
+	}
+
+	return apply_filters( 'opalestate_management_user_menu', $menu );
 }
 
 function opalestate_user_content_dashboard_page() {

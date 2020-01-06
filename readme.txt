@@ -156,6 +156,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.2.8 - 2020-01-06 =
+* Added - Pages settings.
+
 = 1.2.7 - 2020-01-02 =
 * Added - Redirect to User Dashboard page after login/register setting.
 
