@@ -32,11 +32,6 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 	}
 
 	public function get_tab_fields( $key = '' ) {
-		$pages = opalestate_cmb2_get_post_options( [
-			'post_type'   => 'page',
-			'numberposts' => -1,
-		] );
-
 		return apply_filters( 'opalestate_settings_general', [
 				[
 					'name' => esc_html__( 'General Settings', 'opalestate-pro' ),
@@ -45,44 +40,6 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'id'         => 'opalestate_title_general_settings_1',
 					'before_row' => '<hr>',
 					'after_row'  => '<hr>',
-				],
-				[
-					'name'    => esc_html__( 'User Management Page', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'This is page use User Management Page using for show content of management page such as profile, my properties', 'opalestate-pro' ),
-					'id'      => 'user_management_page',
-					'type'    => 'select',
-					'options' => $pages,
-				],
-				[
-					'name'         => esc_html__( 'Dashboard Logo', 'opalestate-pro' ),
-					'desc'         => esc_html__( 'Upload a logo for user dashboard page.', 'opalestate-pro' ),
-					'id'           => 'dashboard_logo',
-					'type'         => 'file',
-					'preview_size' => [ 100, 100 ],
-					'options'      => [
-						'url' => false,
-					],
-					'query_args'   => [
-						'type' => [
-							'image/gif',
-							'image/jpeg',
-							'image/png',
-						],
-					],
-				],
-				[
-					'name'    => esc_html__( 'My Account Page', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'This is page used for login and register an account, or reset password.', 'opalestate-pro' ),
-					'id'      => 'user_myaccount_page',
-					'type'    => 'select',
-					'options' => $pages,
-				],
-				[
-					'name'    => esc_html__( 'Terms and Conditions Page', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'This is page used for terms and conditions.', 'opalestate-pro' ),
-					'id'      => 'user_terms_page',
-					'type'    => 'select',
-					'options' => $pages,
 				],
 				[
 					'name'    => esc_html__( 'Login and Redirect to Dashboard page', 'opalestate-pro' ),
@@ -104,19 +61,6 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 						'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 					],
 				],
-				[
-					'name'    => esc_html__( 'Enable Message Database', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'Allow User send message Contact/Equire via email and saved into database to exchange theirs message direct in User Message Management',
-						'opalestate-pro' ),
-					'id'      => 'message_log',
-					'type'    => 'switch',
-					'options' => [
-						'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
-						'off' => esc_html__( 'Disable', 'opalestate-pro' ),
-					],
-
-				],
-
 				[
 					'name' => esc_html__( 'Maximum Upload Image Size', 'opalestate-pro' ),
 					'desc' => esc_html__( 'Set maximum volumn size having < x MB', 'opalestate-pro' ),

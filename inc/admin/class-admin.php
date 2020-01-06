@@ -86,6 +86,7 @@ class Opalestate_Admin {
 			'settings/searcharea.php',
 			'settings/general.php',
 			'settings/property.php',
+			'settings/pages.php',
 		] );
 
 		// Get it started
