@@ -220,7 +220,31 @@ jQuery( document ).ready( function ( $ ) {
         } );
 
     // sticky //// 
-    $( '.opalestate-sticky-column' ).stick_in_parent();
+    // $( '.opalestate-sticky-column' ).stick_in_parent();
+
+    var window_width = $( window ).width();
+
+    if (window_width < 768) {
+        $(".opalestate-sticky-column").trigger("sticky_kit:detach");
+    } else {
+        make_sticky();
+    }
+
+    $( window ).resize(function() {
+
+        window_width = $( window ).width();
+
+        if (window_width < 768) {
+            $(".opalestate-sticky-column").trigger("sticky_kit:detach");
+        } else {
+            make_sticky();
+        }
+
+    });
+
+    function make_sticky() {
+        $(".opalestate-sticky-column").stick_in_parent();
+    }
 
     ////
     $( '.input-group-number' ).each( function () {
