@@ -105,6 +105,28 @@ class Opalestate_Settings_Pages_Tab extends Opalestate_Settings_Base_Tab {
 					'default' => 'on',
 				],
 				[
+					'name'    => esc_html__( 'Show Agent Profile', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Show Agent Profile menu page.', 'opalestate-pro' ),
+					'id'      => 'enable_dashboard_agent_profile',
+					'type'    => 'switch',
+					'options' => [
+						'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+						'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+					],
+					'default' => 'on',
+				],
+				[
+					'name'    => esc_html__( 'Show Agency Profile', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Show Agency Profile menu page.', 'opalestate-pro' ),
+					'id'      => 'enable_dashboard_agency_profile',
+					'type'    => 'switch',
+					'options' => [
+						'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+						'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+					],
+					'default' => 'on',
+				],
+				[
 					'name'    => esc_html__( 'Show Favorite', 'opalestate-pro' ),
 					'desc'    => esc_html__( 'Show Favorite menu page.', 'opalestate-pro' ),
 					'id'      => 'enable_dashboard_favorite',
