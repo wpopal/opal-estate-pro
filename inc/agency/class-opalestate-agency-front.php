@@ -77,7 +77,7 @@ class Opalestate_Agency_Front {
 		$user_roles = $current_user->roles;
 		$user_role  = array_shift( $user_roles );
 
-		if ( $user_role == 'opalestate_agency' ) {
+		if ( 'on' === opalestate_get_option( 'enable_dashboard_agency_profile', 'on' ) && $user_role == 'opalestate_agency' ) {
 			$menu['agency_profile'] = [
 				'icon'  => 'fa fa-user',
 				'link'  => "agency_profile",

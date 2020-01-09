@@ -81,7 +81,7 @@ class Opalestate_User_MetaBox {
 	}
 
 	public function get_address_fields( $prefix ) {
-		return [
+		return apply_filters( 'opalestate_get_user_matabox_address_fields', [
 			[
 				'name'       => esc_html__( 'Location', 'opalestate-pro' ),
 				'desc'       => esc_html__( 'Select one, to add new you create in location of estate panel', 'opalestate-pro' ),
@@ -110,9 +110,6 @@ class Opalestate_User_MetaBox {
 				'name'       => esc_html__( 'Address', 'opalestate-pro' ),
 				'id'         => "{$prefix}address",
 				'type'       => 'text',
-				'attributes' => [
-					'required' => 'required',
-				],
 			],
 			[
 				'id'              => "{$prefix}map",
@@ -120,11 +117,8 @@ class Opalestate_User_MetaBox {
 				'type'            => 'opal_map',
 				'sanitization_cb' => 'opal_map_sanitise',
 				'split_values'    => true,
-				'attributes'      => [
-					'required' => 'required',
-				],
 			],
-		];
+		] );
 	}
 
 	public function get_job_fields( $prefix ) {
@@ -166,13 +160,11 @@ class Opalestate_User_MetaBox {
 				'id'   => "{$prefix}phone",
 				'type' => 'text',
 			],
-
 			[
 				'name' => esc_html__( 'Mobile', 'opalestate-pro' ),
 				'id'   => "{$prefix}mobile",
 				'type' => 'text',
 			],
-
 			[
 				'name'      => esc_html__( 'Fax', 'opalestate-pro' ),
 				'id'        => "{$prefix}fax",
@@ -194,7 +186,6 @@ class Opalestate_User_MetaBox {
 					1 => esc_html__( 'Yes', 'opalestate-pro' ),
 				],
 			],
-
 			[
 				'id'          => "{$prefix}trusted",
 				'name'        => esc_html__( 'Trusted', 'opalestate-pro' ),
@@ -205,7 +196,6 @@ class Opalestate_User_MetaBox {
 					1 => esc_html__( 'Yes', 'opalestate-pro' ),
 				],
 			],
-
 			[
 				'name'   => esc_html__( 'Avatar Picture', 'opalestate-pro' ),
 				'desc'   => esc_html__( 'This image will display in user detail and profile box information', 'opalestate-pro' ),
@@ -214,7 +204,6 @@ class Opalestate_User_MetaBox {
 				'single' => true,
 				'avatar' => true,
 			],
-
 			[
 				'name'       => esc_html__( 'Email', 'opalestate-pro' ),
 				'id'         => "{$prefix}email",
@@ -237,7 +226,6 @@ class Opalestate_User_MetaBox {
 				'id'   => "{$prefix}mobile",
 				'type' => 'text',
 			],
-
 			[
 				'name'      => esc_html__( 'Fax', 'opalestate-pro' ),
 				'id'        => "{$prefix}fax",
