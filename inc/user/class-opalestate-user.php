@@ -297,11 +297,10 @@ class OpalEstate_User {
 		global $current_user;
 		// Verify Nonce
 		$user_id = get_current_user_id();
-		$check   = $this->is_blocked();
 
 		$key = 'nonce_CMB2phpopalestate_user_front';
 
-		if ( ! isset( $_POST[ $key ] ) || empty( $_POST[ $key ] ) || ! is_user_logged_in() || $check ) {
+		if ( ! isset( $_POST[ $key ] ) || empty( $_POST[ $key ] ) || ! is_user_logged_in() ) {
 			return;
 		}
 

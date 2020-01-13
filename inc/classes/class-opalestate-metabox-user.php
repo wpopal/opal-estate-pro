@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Opalestate_User_MetaBox {
 
 	public function get_front_base_field( $prefix ) {
-		$management = [
+		$fields = [
 			[
 				'name'   => esc_html__( 'Avatar Picture', 'opalestate-pro' ),
 				'desc'   => esc_html__( 'This image will display in user detail and profile box information', 'opalestate-pro' ),
@@ -27,7 +27,6 @@ class Opalestate_User_MetaBox {
 				'single' => 1,
 				'limit'  => 1,
 			],
-
 			[
 				'name'   => esc_html__( 'Avatar Picture', 'opalestate-pro' ),
 				'desc'   => esc_html__( 'This image will display in user detail and profile box information', 'opalestate-pro' ),
@@ -37,7 +36,6 @@ class Opalestate_User_MetaBox {
 				'limit'  => 1,
 
 			],
-
 			[
 				'id'         => 'first_name',
 				'name'       => esc_html__( 'First Name', 'opalestate-pro' ),
@@ -63,8 +61,7 @@ class Opalestate_User_MetaBox {
 			],
 		];
 
-
-		return $management;
+		return apply_filters( 'opalestate_get_user_meta_front_base_field', $fields, $prefix );
 	}
 
 	public function get_avatar_fields( $prefix ) {
@@ -107,9 +104,9 @@ class Opalestate_User_MetaBox {
 				'after_row' => '</div>',
 			],
 			[
-				'name'       => esc_html__( 'Address', 'opalestate-pro' ),
-				'id'         => "{$prefix}address",
-				'type'       => 'text',
+				'name' => esc_html__( 'Address', 'opalestate-pro' ),
+				'id'   => "{$prefix}address",
+				'type' => 'text',
 			],
 			[
 				'id'              => "{$prefix}map",
@@ -118,7 +115,7 @@ class Opalestate_User_MetaBox {
 				'sanitization_cb' => 'opal_map_sanitise',
 				'split_values'    => true,
 			],
-		] );
+		], $prefix );
 	}
 
 	public function get_job_fields( $prefix ) {
@@ -175,7 +172,7 @@ class Opalestate_User_MetaBox {
 	}
 
 	public function get_base_fields( $prefix ) {
-		return [
+		return apply_filters( 'opalestate_get_user_meta_base_fields', [
 			[
 				'id'          => "{$prefix}featured",
 				'name'        => esc_html__( 'Is Featured', 'opalestate-pro' ),
@@ -232,11 +229,11 @@ class Opalestate_User_MetaBox {
 				'type'      => 'text',
 				'after_row' => '</div>',
 			],
-		];
+		], $prefix );
 	}
 
 	public function get_social_fields( $prefix ) {
-		return [
+		return apply_filters( 'opalestate_get_user_meta_social_fields', [
 			[
 				'name'       => esc_html__( 'Twitter', 'opalestate-pro' ),
 				'id'         => "{$prefix}twitter",
@@ -273,6 +270,6 @@ class Opalestate_User_MetaBox {
 				'type'      => 'text_url',
 				'after_row' => '</div>',
 			],
-		];
+		], $prefix );
 	}
 }
