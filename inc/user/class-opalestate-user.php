@@ -94,7 +94,27 @@ class OpalEstate_User {
 		add_action( 'wp_enqueue_scripts', [ $this, 'scripts_styles' ], 99 );
 
 		add_filter( 'pre_get_posts', [ $this, 'show_current_user_attachments' ] );
+		add_action( 'init', [ $this, 'block_users_backend' ] );
 	}
+
+	/**
+	 * Redirect contribute roles to front-end dashboard.
+	 */
+	public function block_users_backend() {
+		global $current_user;
+
+		if ( ! is_a( $current_user, 'WP_User' ) ) {
+			return;
+		}
+
+		if ( is_admin() && ! wp_doing_ajax() && ( in_array( 'opalestate_agent', $current_user->roles ) || in_array( 'opalestate_agency', $current_user->roles ) ) ) {
+			$redirect = opalestate_get_user_management_page_uri();
+			$redirect = $redirect ? $redirect : home_url();
+			wp_redirect( $redirect );
+			exit;
+		}
+	}
+
 
 	/**
 	 * FrontEnd Submission
