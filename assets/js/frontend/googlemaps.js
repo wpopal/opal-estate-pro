@@ -1544,15 +1544,19 @@
 
         // // Sortable Change // // 
         $( 'body' ).delegate( '#opalestate-sortable-form select', 'change', function () {
-
             var ps = '';
             if ( $( 'form.opalestate-search-form' ).length > 0 ) {
                 var $form = $( 'form.opalestate-search-form' );
-                var ps = $form.serialize() + '&opalsortable=' + $( this ).val() + '&display=' +
-                    $( '.display-mode a.active' ).data( 'mode' );
+                if ( $('body').hasClass( 'archive' ) ) {
+                    ps = 'opalsortable=' + $( this ).val() + '&display=' +
+                        $( '.display-mode a.active' ).data( 'mode' );
+                } else {
+                    ps = $form.serialize() + '&opalsortable=' + $( this ).val() + '&display=' +
+                        $( '.display-mode a.active' ).data( 'mode' );
+                }
             }
 
-            if ( $( '.opalesate-properties-results' ) && ps ) {
+            if ( $( '.opalesate-properties-results' ).length > 0 && ps ) {
                 if ( history.pushState ) {
                     var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname +
                         '?' + ps;
@@ -1560,9 +1564,16 @@
                     updatePropertiesByParseringHtml( newurl );
                 }
             } else {
+                if ( history.pushState && $('body').hasClass( 'archive' ) ) {
+                    var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname +
+                        '?' + ps;
+                    window.history.pushState( { path: newurl }, '', newurl );
+                }
+
                 $( '#opalestate-sortable-form' ).submit();
             }
         } );
+
         // display mode 
         $( 'body' ).delegate( '.display-mode a', 'click', function () {
             if ( $( '.opalesate-properties-results' ).length > 0 ) {
