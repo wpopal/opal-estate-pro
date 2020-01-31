@@ -211,9 +211,9 @@ class Opalestate_Property_MetaBox {
 				],
 			],
 			[
-				'name'       => esc_html__( 'Address', 'opalestate-pro' ),
-				'id'         => $prefix . 'address',
-				'type'       => 'textarea_small',
+				'name' => esc_html__( 'Address', 'opalestate-pro' ),
+				'id'   => $prefix . 'address',
+				'type' => 'textarea_small',
 			],
 			[
 				'id'          => "{$prefix}video",
@@ -289,37 +289,25 @@ class Opalestate_Property_MetaBox {
 				'id'          => $prefix . 'builtyear',
 				'type'        => 'text',
 				'description' => esc_html__( 'Enter built year', 'opalestate-pro' ),
-
-				'before_row' => '<div class="row-group-features group-has-three group-property-info clearfix"><h3>' . ( is_admin() ? "" : esc_html__( 'Property Information', 'opalestate-pro' ) ) . '</h3>',
+				'before_row'  => '<div class="row-group-features group-has-three group-property-info clearfix"><h3>' . ( is_admin() ? "" : esc_html__( 'Property Information',
+						'opalestate-pro' ) ) . '</h3>',
 			],
 			[
 				'name'        => esc_html__( 'Parking', 'opalestate-pro' ),
 				'id'          => $prefix . 'parking',
 				'type'        => 'text',
-				'attributes'  => [
-					'type' => 'number',
-					'min'  => 0,
-				],
 				'description' => esc_html__( 'Enter number of Parking', 'opalestate-pro' ),
 			],
 			[
 				'name'        => esc_html__( 'Bedrooms', 'opalestate-pro' ),
 				'id'          => $prefix . 'bedrooms',
 				'type'        => 'text',
-				'attributes'  => [
-					'type' => 'number',
-					'min'  => 0,
-				],
 				'description' => esc_html__( 'Enter number of bedrooms', 'opalestate-pro' ),
 			],
 			[
 				'name'        => esc_html__( 'Bathrooms', 'opalestate-pro' ),
 				'id'          => $prefix . 'bathrooms',
 				'type'        => 'text',
-				'attributes'  => [
-					'type' => 'number',
-					'min'  => 0,
-				],
 				'description' => esc_html__( 'Enter number of bathrooms', 'opalestate-pro' ),
 			],
 			[
@@ -344,33 +332,20 @@ class Opalestate_Property_MetaBox {
 				'name'        => esc_html__( 'Living Rooms', 'opalestate-pro' ),
 				'id'          => "{$prefix}livingrooms",
 				'type'        => 'text',
-				'attributes'  => [
-					'type' => 'number',
-					'min'  => 0,
-				],
 				'description' => esc_html__( 'Enter Number of Living Rooms', 'opalestate-pro' ),
 			],
 			[
 				'name'        => esc_html__( 'Kitchens', 'opalestate-pro' ),
 				'id'          => "{$prefix}kitchens",
 				'type'        => 'text',
-				'attributes'  => [
-					'type' => 'number',
-					'min'  => 0,
-				],
 				'description' => esc_html__( 'Enter Number of Kitchens', 'opalestate-pro' ),
 			],
 			[
 				'name'        => esc_html__( 'Rooms', 'opalestate-pro' ),
 				'id'          => "{$prefix}amountrooms",
 				'type'        => 'text',
-				'attributes'  => [
-					'type' => 'number',
-					'min'  => 0,
-				],
 				'description' => esc_html__( 'Enter Number of Amount Rooms', 'opalestate-pro' ),
-
-				'after_row' => '</div>',
+				'after_row'   => '</div>',
 			],
 		];
 

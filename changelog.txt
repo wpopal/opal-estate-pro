@@ -1,3 +1,48 @@
+= 1.2.9.3 - 2020-01-31 =
+* Fixes - Admin infomation fields.
+
+= 1.2.9.2 - 2020-01-30 =
+* Fixes - Archive filter.
+
+= 1.2.9.1 - 2020-01-13 =
+* Added - Pages settings.
+
+= 1.2.9 - 2020-01-09 =
+* Added - Pages settings.
+
+= 1.2.8 - 2020-01-06 =
+* Added - Pages settings.
+
+= 1.2.7 - 2020-01-02 =
+* Added - Redirect to User Dashboard page after login/register setting.
+
+= 1.2.6 - 2019-12-30 =
+* Fixes - Compatible WordPress version.
+
+= 1.2.5 - 2019-12-13 =
+* Fixes - Slider properties.
+
+= 1.2.4 - 2019-12-11 =
+* Fixes - Order properties with featured properties.
+* Fixes - Email approved.
+
+= 1.2.3 - 2019-12-09 =
+* Fixes - Order properties
+* Fixes - Package template.
+
+= 1.2.2 - 2019-12-06 =
+* Added - Add Accumulated listings setting for packages.
+
+= 1.2.1 - 2019-12-06 =
+* Fixes - Submission property not saved.
+
+= 1.2 - 2019-12-04 =
+* Fixes - Login ajax.
+* Added - Enable email settings.
+
+= 1.1.9.3 - 2019-11-27 =
+* Fixes - Measurement Unit translation.
+
 = 1.1.9.2 - 2019-11-18 =
 * Added - Fix API.
 * Fixes - Search query.
