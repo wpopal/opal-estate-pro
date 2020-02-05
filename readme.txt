@@ -1,10 +1,10 @@
 === Opal Estate Pro - Property Management and Submission ===
-Contributors: wpopal
+Contributors: wpopal, ndoublehwp
 Donate link: https://wpdocs.gitbook.io/opal-estate/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.9
 Tested up to: 5.3.2
-Stable tag: 1.2.9.3
+Stable tag: 1.2.9.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -156,8 +156,11 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.2.9.4 - 2020-02-05 =
+* Fixes - Login with Edior role.
+
 = 1.2.9.3 - 2020-01-31 =
-* Fixes - Admin infomation fields.
+* Fixes - Admin information fields.
 
 = 1.2.9.2 - 2020-01-30 =
 * Fixes - Archive filter.

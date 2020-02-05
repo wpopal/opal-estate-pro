@@ -82,7 +82,9 @@ class Opalestate_Plugin_Settings {
 			'opalestate-settings',
 			[ $this, 'admin_page_display' ] );
 
-		do_action( 'load-' . $opalestate_settings_page, $this );
+        if ( $opalestate_settings_page ) {
+	        do_action( 'load-' . $opalestate_settings_page, $this );
+        }
 
 		// Addons
 		$opalestate_addons_page = add_submenu_page(
@@ -93,7 +95,9 @@ class Opalestate_Plugin_Settings {
 			'opalestate-addons',
 			[ $this, 'admin_addons_page_display' ] );
 
-		do_action( 'load-' . $opalestate_addons_page, $this );
+        if ( $opalestate_addons_page ) {
+	        do_action( 'load-' . $opalestate_addons_page, $this );
+        }
 	}
 
 	/**
