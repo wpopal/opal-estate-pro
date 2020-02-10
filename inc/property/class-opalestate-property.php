@@ -740,4 +740,11 @@ class Opalestate_Property {
 	public function get_posted() {
 		return human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . ' ' . esc_html__( 'ago' );
 	}
+
+	public function get_expiry_date() {
+		$expired_activated = get_post_meta( $this->get_id(), OPALESTATE_PROPERTY_PREFIX . 'expired_activated', true );
+		$expired_time = get_post_meta( $this->get_id(), OPALESTATE_PROPERTY_PREFIX . 'expired_time', true );
+
+		return ( $expired_activated && $expired_time ) ? $expired_time : '';
+	}
 }

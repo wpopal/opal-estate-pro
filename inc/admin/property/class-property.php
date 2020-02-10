@@ -38,12 +38,12 @@ class Opalestate_Admin_Property {
 
 		// add_action( 'transition_post_status', array( __CLASS__, 'save_post' ), 10, 3  );
 	}
-	
+
 	/**
 	 *
 	 */
-	public static function save_post( $new_status, $old_status, $post  ){
-		if (  $new_status == 'publish' &&  $post->post_type == "opalestate_property" ) {
+	public static function save_post( $new_status, $old_status, $post ) {
+		if ( $new_status == 'publish' && $post->post_type == "opalestate_property" ) {
 			$user_id = $post->post_author;
 			$user    = get_user_by( 'id', $user_id );
 			if ( ! is_object( $user ) ) {
@@ -103,6 +103,7 @@ class Opalestate_Admin_Property {
 		$columns['comments'] = $comments;
 		$columns['author']   = esc_html__( 'Author', 'opalestate-pro' );
 		$columns['date']     = esc_html__( 'Date', 'opalestate-pro' );
+		$columns['expiry_date']  = esc_html__( 'Expiry Date', 'opalestate-pro' );
 
 		return $columns;
 	}
@@ -145,6 +146,15 @@ class Opalestate_Admin_Property {
 			case 'address':
 				if ( $property->address ) {
 					echo sprintf( '%s', $property->address );
+				}
+				break;
+
+			case 'expiry_date':
+				if ( $property->get_expiry_date() ) {
+					$expired_time = $property->get_expiry_date();
+					echo date_i18n( __( 'Y/m/d g:i:s a', 'opalestate-pro' ), $expired_time );
+				} else {
+					echo esc_html_x( '---', 'expired property', 'opalestate-pro' );
 				}
 				break;
 
