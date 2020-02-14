@@ -1,3 +1,6 @@
+= 1.3.1 - 2020-02-14 =
+* Added - Single Property Custom Sidebar.
+
 = 1.3 - 2020-02-10 =
 * Added - Expiry date column.
 

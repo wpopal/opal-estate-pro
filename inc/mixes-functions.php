@@ -1068,7 +1068,7 @@ function opalestate_areasize_unit_format( $value = '' ) {
 		$unit = $measurement_units[ $unit ];
 	}
 
-	return sprintf( _x( '%1$s <span>%2$s</span>', 'areasize info','opalestate-pro' ), $value, $unit );
+	return sprintf( _x( '%1$s <span>%2$s</span>', 'areasize info', 'opalestate-pro' ), $value, $unit );
 }
 
 add_filter( 'opalestate_areasize_unit_format', 'opalestate_areasize_unit_format' );
@@ -1315,17 +1315,37 @@ function opalestate_clean( $var ) {
  * with the optional prefix. As such the returned value is not universally unique,
  * but it is unique across the life of the PHP process.
  *
- * @see wp_unique_id() Themes requiring WordPress 5.0.3 and greater should use this instead.
+ * @param string $prefix Prefix for the returned ID.
+ * @return string Unique ID.
+ * @see       wp_unique_id() Themes requiring WordPress 5.0.3 and greater should use this instead.
  *
  * @staticvar int $id_counter
  *
- * @param string $prefix Prefix for the returned ID.
- * @return string Unique ID.
  */
 function opalestate_unique_id( $prefix = '' ) {
 	static $id_counter = 0;
 	if ( function_exists( 'wp_unique_id' ) ) {
 		return wp_unique_id( $prefix );
 	}
+
 	return $prefix . (string) ++$id_counter;
 }
+
+/**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function opalestate_widgets_init() {
+	register_sidebar( [
+		'name'          => esc_html__( 'Single Property Sidebar', 'opalestate-pro' ),
+		'id'            => 'opalestate-single-property',
+		'description'   => esc_html__( 'Add widgets here to appear in your single property sidebar area.', 'opalestate-pro' ),
+		'before_widget' => '<div id="%1$s" class="widget opalestate-single-property-widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	] );
+}
+
+add_action( 'widgets_init', 'opalestate_widgets_init' );

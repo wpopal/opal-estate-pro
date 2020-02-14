@@ -13,7 +13,7 @@ $type    = OpalEstate()->session->get( 'submission' );
                     <h5><?php esc_html_e( 'Thanks for your submission, it takes some time to review the property.', 'opalestate-pro' ); ?></h5>
 				<?php endif; ?>
 
-				<?php echo sprintf( esc_html__( 'Click to %s here %s to back to your listing or %s edit %s this.', 'opalestate-pro' ),
+				<?php echo sprintf( esc_html__( 'Click %s here %s to view your listing or %s edit %s this.', 'opalestate-pro' ),
 					'<a href="' . opalestate_submssion_list_page() . '">', '</a>',
 					'<a href="' . opalestate_submssion_page( $post_id ) . '">', '</a>'
 				); ?>
@@ -21,7 +21,7 @@ $type    = OpalEstate()->session->get( 'submission' );
 		<?php else : ?>
             <div class="edit-msg">
 				<?php esc_html_e( 'Your property is completed success.', 'opalestate-pro' ); ?>
-				<?php echo sprintf( esc_html__( 'Click to %s here %s to back to your listing or %s edit %s this.', 'opalestate-pro' ),
+				<?php echo sprintf( esc_html__( 'Click %s here %s to view your listing or %s edit %s this.', 'opalestate-pro' ),
 					'<a href="' . opalestate_submssion_list_page() . '">', '</a>',
 					'<a href="' . opalestate_submssion_page( $post_id ) . '">', '</a>'
 				); ?>

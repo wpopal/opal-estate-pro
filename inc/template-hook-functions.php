@@ -330,3 +330,16 @@ function opalestate_load_plugin_template( $template ) {
 add_filter( 'template_include', 'opalestate_load_plugin_template' );
 add_action( 'opalestate_before_property_loop_item', 'opalestate_property_featured_label' );
 add_action( 'opalestate_before_property_loop_item', 'opalestate_property_label' );
+
+/**
+ * Add custom sidebar widgets to single property sidebar.
+ */
+function opalestate_single_property_sidebar_widgets() {
+	if ( is_active_sidebar( 'opalestate-single-property' ) ) : ?>
+		<div class="opalestate-single-property-widgets">
+			<?php dynamic_sidebar( 'opalestate-single-property' ); ?>
+		</div>
+	<?php endif;
+}
+
+add_action( 'opalestate_single_property_sidebar', 'opalestate_single_property_sidebar_widgets', 99 );
