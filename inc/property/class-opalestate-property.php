@@ -134,7 +134,7 @@ class Opalestate_Property {
 
 	public function get_block_setting( $key ) {
 		if ( ! $this->property_settings ) {
-			$keys = [
+			$key_settings = [
 				'amenities',
 				'attachments',
 				'facilities',
@@ -151,12 +151,12 @@ class Opalestate_Property {
 				'mortgage',
 			];
 
-			foreach ( $keys as $key ) {
-				$this->property_settings[ $key ] = opalestate_get_option( 'enable_single_' . $key, 'on' );
+			foreach ( $key_settings as $key_setting ) {
+				$this->property_settings[ $key_setting ] = opalestate_get_option( 'enable_single_' . $key_setting, 'on' );
 			}
 		}
 
-		return $this->property_settings[ $key ];
+		return isset( $this->property_settings[ $key ] ) ? $this->property_settings[ $key ] : null;
 	}
 
 	/**
