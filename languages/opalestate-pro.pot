@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Opal Estate Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 02:38+0000\n"
+"POT-Creation-Date: 2020-02-20 03:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -19,11 +19,11 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: inc/function-search-fields.php:91
+#: inc/function-search-fields.php:93
 msgid ": "
 msgstr ""
 
-#: inc/function-search-fields.php:138
+#: inc/function-search-fields.php:140
 #: templates/search-box/search-form-v3.php:64
 #: templates/search-box/search-form-v2.php:47
 msgid "Area"
@@ -113,21 +113,21 @@ msgstr ""
 #: inc/admin/settings/property.php:65 inc/admin/settings/property.php:123
 #: inc/admin/settings/property.php:134 inc/admin/settings/property.php:171
 #: inc/admin/settings/property.php:248 inc/admin/settings/property.php:259
-#: inc/admin/settings/property.php:343 inc/admin/settings/property.php:355
-#: inc/admin/settings/property.php:366 inc/admin/settings/property.php:377
-#: inc/admin/settings/property.php:388 inc/admin/settings/property.php:399
-#: inc/admin/settings/property.php:410 inc/admin/settings/property.php:421
-#: inc/admin/settings/property.php:432 inc/admin/settings/property.php:443
-#: inc/admin/settings/property.php:454 inc/admin/settings/property.php:465
-#: inc/admin/settings/property.php:489 inc/admin/settings/property.php:500
-#: inc/admin/settings/property.php:511 inc/admin/settings/general.php:50
-#: inc/admin/settings/general.php:60 inc/admin/settings/pages.php:102
-#: inc/admin/settings/pages.php:113 inc/admin/settings/pages.php:124
-#: inc/admin/settings/pages.php:135 inc/admin/settings/pages.php:146
-#: inc/admin/settings/pages.php:158 inc/admin/settings/pages.php:168
-#: inc/admin/settings/pages.php:179 inc/admin/settings/pages.php:190
-#: inc/admin/rating/class-rating.php:69 inc/admin/rating/class-rating.php:79
-#: inc/admin/rating/class-rating.php:89
+#: inc/admin/settings/property.php:358 inc/admin/settings/property.php:370
+#: inc/admin/settings/property.php:381 inc/admin/settings/property.php:392
+#: inc/admin/settings/property.php:403 inc/admin/settings/property.php:414
+#: inc/admin/settings/property.php:425 inc/admin/settings/property.php:436
+#: inc/admin/settings/property.php:447 inc/admin/settings/property.php:458
+#: inc/admin/settings/property.php:469 inc/admin/settings/property.php:480
+#: inc/admin/settings/property.php:504 inc/admin/settings/property.php:515
+#: inc/admin/settings/property.php:526 inc/admin/settings/property.php:537
+#: inc/admin/settings/general.php:50 inc/admin/settings/general.php:60
+#: inc/admin/settings/pages.php:102 inc/admin/settings/pages.php:113
+#: inc/admin/settings/pages.php:124 inc/admin/settings/pages.php:135
+#: inc/admin/settings/pages.php:146 inc/admin/settings/pages.php:158
+#: inc/admin/settings/pages.php:168 inc/admin/settings/pages.php:179
+#: inc/admin/settings/pages.php:190 inc/admin/rating/class-rating.php:69
+#: inc/admin/rating/class-rating.php:79 inc/admin/rating/class-rating.php:89
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:171
 #: inc/vendors/elementor/widgets/opalestate-agency-collection.php:171
 msgid "Enable"
@@ -153,21 +153,21 @@ msgstr ""
 #: inc/admin/settings/property.php:66 inc/admin/settings/property.php:124
 #: inc/admin/settings/property.php:135 inc/admin/settings/property.php:172
 #: inc/admin/settings/property.php:247 inc/admin/settings/property.php:258
-#: inc/admin/settings/property.php:344 inc/admin/settings/property.php:356
-#: inc/admin/settings/property.php:367 inc/admin/settings/property.php:378
-#: inc/admin/settings/property.php:389 inc/admin/settings/property.php:400
-#: inc/admin/settings/property.php:411 inc/admin/settings/property.php:422
-#: inc/admin/settings/property.php:433 inc/admin/settings/property.php:444
-#: inc/admin/settings/property.php:455 inc/admin/settings/property.php:466
-#: inc/admin/settings/property.php:490 inc/admin/settings/property.php:501
-#: inc/admin/settings/property.php:512 inc/admin/settings/general.php:51
-#: inc/admin/settings/general.php:61 inc/admin/settings/pages.php:103
-#: inc/admin/settings/pages.php:114 inc/admin/settings/pages.php:125
-#: inc/admin/settings/pages.php:136 inc/admin/settings/pages.php:147
-#: inc/admin/settings/pages.php:159 inc/admin/settings/pages.php:169
-#: inc/admin/settings/pages.php:180 inc/admin/settings/pages.php:191
-#: inc/admin/rating/class-rating.php:70 inc/admin/rating/class-rating.php:80
-#: inc/admin/rating/class-rating.php:90
+#: inc/admin/settings/property.php:359 inc/admin/settings/property.php:371
+#: inc/admin/settings/property.php:382 inc/admin/settings/property.php:393
+#: inc/admin/settings/property.php:404 inc/admin/settings/property.php:415
+#: inc/admin/settings/property.php:426 inc/admin/settings/property.php:437
+#: inc/admin/settings/property.php:448 inc/admin/settings/property.php:459
+#: inc/admin/settings/property.php:470 inc/admin/settings/property.php:481
+#: inc/admin/settings/property.php:505 inc/admin/settings/property.php:516
+#: inc/admin/settings/property.php:527 inc/admin/settings/property.php:538
+#: inc/admin/settings/general.php:51 inc/admin/settings/general.php:61
+#: inc/admin/settings/pages.php:103 inc/admin/settings/pages.php:114
+#: inc/admin/settings/pages.php:125 inc/admin/settings/pages.php:136
+#: inc/admin/settings/pages.php:147 inc/admin/settings/pages.php:159
+#: inc/admin/settings/pages.php:169 inc/admin/settings/pages.php:180
+#: inc/admin/settings/pages.php:191 inc/admin/rating/class-rating.php:70
+#: inc/admin/rating/class-rating.php:80 inc/admin/rating/class-rating.php:90
 msgid "Disable"
 msgstr ""
 
@@ -1257,11 +1257,11 @@ msgstr ""
 msgid "Expired"
 msgstr ""
 
-#: inc/mixes-functions.php:1341
+#: inc/mixes-functions.php:1346
 msgid "Single Property Sidebar"
 msgstr ""
 
-#: inc/mixes-functions.php:1343
+#: inc/mixes-functions.php:1348
 msgid "Add widgets here to appear in your single property sidebar area."
 msgstr ""
 
@@ -4778,6 +4778,9 @@ msgstr ""
 
 #: templates/user/my-account-popup.php:4 templates/user/my-account.php:4
 #: templates/user/login-form.php:16 templates/user/login-form.php:51
+#: templates/single-property/author-v3.php:60
+#: templates/single-property/author-v2.php:69
+#: templates/single-property/author.php:62
 #: inc/vendors/elementor/widgets/opalestate-account-button.php:533
 #: inc/vendors/elementor/widgets/opalestate-account-button.php:534
 msgid "Login"
@@ -4992,6 +4995,12 @@ msgstr ""
 
 #: templates/single-property/attachments.php:21
 msgid "Download"
+msgstr ""
+
+#: templates/single-property/author-v3.php:58
+#: templates/single-property/author-v2.php:67
+#: templates/single-property/author.php:60
+msgid "You need to login to see host information."
 msgstr ""
 
 #. %s: Name of current post
@@ -5724,195 +5733,199 @@ msgstr ""
 msgid "Setting type fields search"
 msgstr ""
 
-#: inc/admin/settings/property.php:283
-msgid "Search type "
+#: inc/admin/settings/property.php:291
+msgid "Field type"
 msgstr ""
 
-#: inc/admin/settings/property.php:285
+#: inc/admin/settings/property.php:293
 msgid "Select"
 msgstr ""
 
-#: inc/admin/settings/property.php:286
+#: inc/admin/settings/property.php:294
 msgid "Range"
 msgstr ""
 
-#: inc/admin/settings/property.php:287
+#: inc/admin/settings/property.php:295
 msgid "Text"
 msgstr ""
 
-#: inc/admin/settings/property.php:295
-msgid "Options select "
-msgstr ""
-
-#: inc/admin/settings/property.php:296
-msgid "Options value select. Use \",\" to separate values."
-msgstr ""
-
 #: inc/admin/settings/property.php:303
-msgid "Min range "
+msgid "Options"
 msgstr ""
 
 #: inc/admin/settings/property.php:304
+msgid "Options value select. Use \",\" to separate values."
+msgstr ""
+
+#: inc/admin/settings/property.php:311 inc/admin/settings/property.php:312
 msgid "Min range"
 msgstr ""
 
-#: inc/admin/settings/property.php:311
-msgid "Max range "
-msgstr ""
-
-#: inc/admin/settings/property.php:312
+#: inc/admin/settings/property.php:319 inc/admin/settings/property.php:320
 msgid "Max range"
 msgstr ""
 
-#: inc/admin/settings/property.php:319
-msgid "Default text "
+#: inc/admin/settings/property.php:327 inc/admin/settings/property.php:328
+msgid "Unit thousand"
 msgstr ""
 
-#: inc/admin/settings/property.php:320
+#: inc/admin/settings/property.php:334
+msgid "Default text"
+msgstr ""
+
+#: inc/admin/settings/property.php:335
 msgid "Default text value"
 msgstr ""
 
-#: inc/admin/settings/property.php:338
+#: inc/admin/settings/property.php:353
 msgid "Enable Request Viewing"
 msgstr ""
 
-#: inc/admin/settings/property.php:339
+#: inc/admin/settings/property.php:354
 msgid "Enable Request Viewing feature in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:350
+#: inc/admin/settings/property.php:365
 msgid "Show Amenities tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:351
+#: inc/admin/settings/property.php:366
 msgid "Show Amenities tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:361
+#: inc/admin/settings/property.php:376
 msgid "Show Facilities tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:362
+#: inc/admin/settings/property.php:377
 msgid "Show Facilities tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:372
+#: inc/admin/settings/property.php:387
 msgid "Show Attachments tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:373
+#: inc/admin/settings/property.php:388
 msgid "Show Attachments tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:383
+#: inc/admin/settings/property.php:398
 msgid "Show Video tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:384
+#: inc/admin/settings/property.php:399
 msgid "Show Video tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:394
+#: inc/admin/settings/property.php:409
 msgid "Show Virtual Tour tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:395
+#: inc/admin/settings/property.php:410
 msgid "Show Virtual Tour tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:405
+#: inc/admin/settings/property.php:420
 msgid "Show Map tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:406
+#: inc/admin/settings/property.php:421
 msgid "Show Map tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:416
+#: inc/admin/settings/property.php:431
 msgid "Show Nearby tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:417
+#: inc/admin/settings/property.php:432
 msgid "Show Nearby tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:427
+#: inc/admin/settings/property.php:442
 msgid "Show Walk Scores tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:428
+#: inc/admin/settings/property.php:443
 msgid "Show Walk Scores tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:438
+#: inc/admin/settings/property.php:453
 msgid "Show Apartments tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:439
+#: inc/admin/settings/property.php:454
 msgid "Show Apartments tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:449
+#: inc/admin/settings/property.php:464
 msgid "Show Floor Plans tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:450
+#: inc/admin/settings/property.php:465
 msgid "Show Floor Plans tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:460
+#: inc/admin/settings/property.php:475
 msgid "Show Views Statistics tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:461
+#: inc/admin/settings/property.php:476
 msgid "Show Views Statistics tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:471
+#: inc/admin/settings/property.php:486
 msgid "Views Statistics time limit (days)"
 msgstr ""
 
-#: inc/admin/settings/property.php:472
+#: inc/admin/settings/property.php:487
 msgid "The number of days will be saved to the database."
 msgstr ""
 
-#: inc/admin/settings/property.php:484
+#: inc/admin/settings/property.php:499
 msgid "Show Author box"
 msgstr ""
 
-#: inc/admin/settings/property.php:485
+#: inc/admin/settings/property.php:500
 msgid "Show Author box in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:495
+#: inc/admin/settings/property.php:510
+msgid "Login to show Author box"
+msgstr ""
+
+#: inc/admin/settings/property.php:511
+msgid "Require users login to show Author box"
+msgstr ""
+
+#: inc/admin/settings/property.php:521
 msgid "Show Enquire form"
 msgstr ""
 
-#: inc/admin/settings/property.php:496
+#: inc/admin/settings/property.php:522
 msgid "Show Enquire form in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:506
+#: inc/admin/settings/property.php:532
 msgid "Show Mortgage Calculator"
 msgstr ""
 
-#: inc/admin/settings/property.php:507
+#: inc/admin/settings/property.php:533
 msgid "Show Mortgage Calculator in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:517
+#: inc/admin/settings/property.php:543
 msgid "Related properties layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:518
+#: inc/admin/settings/property.php:544
 msgid "Select a layout for related properties."
 msgstr ""
 
-#: inc/admin/settings/property.php:525
+#: inc/admin/settings/property.php:551
 msgid "Nearby properties layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:526
+#: inc/admin/settings/property.php:552
 msgid "Select a layout for nearby properties."
 msgstr ""
 

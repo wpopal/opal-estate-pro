@@ -280,19 +280,27 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				}
 
 				$fields[] = [
-					'name'    => esc_html__( 'Search type ', 'opalestate-pro' ) . $meta['name'],
-					'options' => [
+					'name'       => $meta['name'],
+					'desc'       => '',
+					'type'       => 'opalestate_title',
+					'id'         => 'opalestate_title_search_field_' . $meta['id'],
+					'before_row' => '<hr>',
+				];
+
+				$fields[] = [
+					'name'       => esc_html__( 'Field type', 'opalestate-pro' ),
+					'options'    => [
 						'select' => esc_html__( 'Select', 'opalestate-pro' ),
 						'range'  => esc_html__( 'Range', 'opalestate-pro' ),
 						'text'   => esc_html__( 'Text', 'opalestate-pro' ),
 					],
-					'id'      => $meta['id'] . '_search_type',
-					'type'    => 'radio_inline',
-					'default' => 'select',
+					'id'         => $meta['id'] . '_search_type',
+					'type'       => 'radio_inline',
+					'default'    => 'select',
 				];
 
 				$fields[] = [
-					'name'        => esc_html__( 'Options select ', 'opalestate-pro' ) . $meta['name'],
+					'name'        => esc_html__( 'Options', 'opalestate-pro' ),
 					'description' => esc_html__( 'Options value select. Use "," to separate values.', 'opalestate-pro' ),
 					'id'          => $meta['id'] . '_options_value',
 					'type'        => 'text',
@@ -300,7 +308,7 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				];
 
 				$fields[] = [
-					'name'        => esc_html__( 'Min range ', 'opalestate-pro' ) . $meta['name'],
+					'name'        => esc_html__( 'Min range', 'opalestate-pro' ),
 					'description' => esc_html__( 'Min range', 'opalestate-pro' ),
 					'id'          => $meta['id'] . '_min_range',
 					'type'        => 'text',
@@ -308,7 +316,7 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				];
 
 				$fields[] = [
-					'name'        => esc_html__( 'Max range ', 'opalestate-pro' ) . $meta['name'],
+					'name'        => esc_html__( 'Max range', 'opalestate-pro' ),
 					'description' => esc_html__( 'Max range', 'opalestate-pro' ),
 					'id'          => $meta['id'] . '_max_range',
 					'type'        => 'text',
@@ -316,7 +324,14 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				];
 
 				$fields[] = [
-					'name'        => esc_html__( 'Default text ', 'opalestate-pro' ) . $meta['name'],
+					'name'        => esc_html__( 'Unit thousand', 'opalestate-pro' ),
+					'description' => esc_html__( 'Unit thousand', 'opalestate-pro' ),
+					'id'          => $meta['id'] . '_unit_thousand',
+					'type'        => 'text',
+				];
+
+				$fields[] = [
+					'name'        => esc_html__( 'Default text', 'opalestate-pro' ),
 					'description' => esc_html__( 'Default text value', 'opalestate-pro' ),
 					'id'          => $meta['id'] . '_default_text',
 					'type'        => 'text',
@@ -484,6 +499,17 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 			'name'    => esc_html__( 'Show Author box', 'opalestate-pro' ),
 			'desc'    => esc_html__( 'Show Author box in the single property page.', 'opalestate-pro' ),
 			'id'      => 'enable_single_author_box',
+			'type'    => 'switch',
+			'options' => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+		];
+
+		$fields[] = [
+			'name'    => esc_html__( 'Login to show Author box', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Require users login to show Author box', 'opalestate-pro' ),
+			'id'      => 'enable_single_login_to_show_author_box',
 			'type'    => 'switch',
 			'options' => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),

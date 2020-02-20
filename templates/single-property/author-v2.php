@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post, $property;
 
 
-if (  opalestate_get_option( 'enable_single_author_box' , 'on') != 'on' ) {
+if ( opalestate_get_option( 'enable_single_author_box', 'on' ) != 'on' ) {
 	return;
 }
 
@@ -52,12 +52,21 @@ switch ( $type ) {
 }
 ?>
 
-<div class="opalestate-box-content property-agent-section property-author-v2">
-    <div class="opalestate-box">
-        <div class="author-content-box">
-            <div class="property-agent-info">
-				<?php echo wp_kses_post( $author_info ); ?>
+<?php if ( opalestate_is_require_login_to_show_author_box() ) : ?>
+    <div class="opalestate-box-content property-agent-section property-author-v2">
+        <div class="opalestate-box">
+            <div class="author-content-box">
+                <div class="property-agent-info">
+					<?php echo wp_kses_post( $author_info ); ?>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<?php else : ?>
+    <div class="opalestate-require-login-box">
+        <p class="opalestate-require-login-notice"><?php esc_html_e( 'You need to login to see host information.', 'opalestate-pro' ); ?></p>
+        <a href="#opalestate-user-form-popup" class="opalestate-need-login button btn btn-primary btn-3d">
+			<?php esc_html_e( 'Login', 'opalestate-pro' ) ?>
+        </a>
+    </div>
+<?php endif; ?>

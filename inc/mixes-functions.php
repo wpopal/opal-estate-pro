@@ -1292,6 +1292,11 @@ function opalestate_is_enable_areasize_field() {
 	return 'on' == opalestate_get_option( 'opalestate_ppt_areasize_opt', 'on' );
 }
 
+function opalestate_is_require_login_to_show_author_box() {
+    $require = opalestate_get_option( 'enable_single_login_to_show_author_box', 'off' );
+    return ! ( $require == 'on' ) || ( $require == 'on' && is_user_logged_in() );
+}
+
 /**
  * Clean variables using sanitize_text_field. Arrays are cleaned recursively.
  * Non-scalar values are ignored.

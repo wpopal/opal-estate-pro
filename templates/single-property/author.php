@@ -49,14 +49,23 @@ switch ( $type ) {
         <div class="author-content-box">
             <div class="opal-row">
 				<?php if ( opalestate_get_option( 'enable_single_author_box', 'on' ) == 'on' ) : ?>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="property-agent-info">
-							<?php echo wp_kses_post( $author_info ); ?>
+					<?php if ( opalestate_is_require_login_to_show_author_box() ) : ?>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="property-agent-info">
+								<?php echo wp_kses_post( $author_info ); ?>
+                            </div>
                         </div>
-                    </div>
+					<?php else : ?>
+                        <div class="opalestate-require-login-box">
+                            <p class="opalestate-require-login-notice"><?php esc_html_e( 'You need to login to see host information.', 'opalestate-pro' ); ?></p>
+                            <a href="#opalestate-user-form-popup" class="opalestate-need-login button btn btn-primary btn-3d">
+								<?php esc_html_e( 'Login', 'opalestate-pro' ) ?>
+                            </a>
+                        </div>
+					<?php endif; ?>
 				<?php endif; ?>
 
-				<?php if ( opalestate_get_option( 'enable_single_enquire_form' , 'on' ) == 'on' ) : ?>
+				<?php if ( opalestate_get_option( 'enable_single_enquire_form', 'on' ) == 'on' ) : ?>
                     <div class="col-lg-6 col-md-6">
 						<?php echo opalestate_load_template_path( 'messages/enquiry-form', [ 'nowrap' => true ] ); ?>
                     </div>

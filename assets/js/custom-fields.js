@@ -23,6 +23,7 @@ jQuery( document ).ready( function ( $ ) {
                         $( '.cmb2-id-' + res + '-options-value' ).show();
                         $( '.cmb2-id-' + res + '-min-range' ).hide();
                         $( '.cmb2-id-' + res + '-max-range' ).hide();
+                        $( '.cmb2-id-' + res + '-unit-thousand' ).hide();
                         $( '.cmb2-id-' + res + '-default-text' ).hide();
                     }
 
@@ -33,6 +34,7 @@ jQuery( document ).ready( function ( $ ) {
                         $( '.cmb2-id-' + res + '-default-text' ).show();
                         $( '.cmb2-id-' + res + '-min-range' ).hide();
                         $( '.cmb2-id-' + res + '-max-range' ).hide();
+                        $( '.cmb2-id-' + res + '-unit-thousand' ).hide();
                         $( '.cmb2-id-' + res + '-options-value' ).hide();
                     }
 
@@ -43,6 +45,7 @@ jQuery( document ).ready( function ( $ ) {
                         $( '.cmb2-id-' + res + '-options-value' ).hide();
                         $( '.cmb2-id-' + res + '-min-range' ).show();
                         $( '.cmb2-id-' + res + '-max-range' ).show();
+                        $( '.cmb2-id-' + res + '-unit-thousand' ).show();
                         $( '.cmb2-id-' + res + '-default-text' ).hide();
                     }
                 }
@@ -58,16 +61,19 @@ jQuery( document ).ready( function ( $ ) {
                     $( '.cmb2-id-' + res + '-options-value' ).hide();
                     $( '.cmb2-id-' + res + '-min-range' ).show();
                     $( '.cmb2-id-' + res + '-max-range' ).show();
+                    $( '.cmb2-id-' + res + '-unit-thousand' ).show();
                     $( '.cmb2-id-' + res + '-default-text' ).hide();
                 } else if ( val == 'text' ) {
                     $( '.cmb2-id-' + res + '-default-text' ).show();
                     $( '.cmb2-id-' + res + '-options-value' ).hide();
                     $( '.cmb2-id-' + res + '-min-range' ).hide();
                     $( '.cmb2-id-' + res + '-max-range' ).hide();
+                    $( '.cmb2-id-' + res + '-unit-thousand' ).hide();
                 } else {
                     $( '.cmb2-id-' + res + '-options-value' ).show();
                     $( '.cmb2-id-' + res + '-min-range' ).hide();
                     $( '.cmb2-id-' + res + '-max-range' ).hide();
+                    $( '.cmb2-id-' + res + '-unit-thousand' ).hide();
                     $( '.cmb2-id-' + res + '-default-text' ).hide();
                 }
             } );

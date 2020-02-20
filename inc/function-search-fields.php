@@ -42,19 +42,20 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 				break;
 
 			default:
-				$setting_search_type         = 'opalestate_ppt_' . $field . '_search_type';
-				$setting_search_type_options = 'opalestate_ppt_' . $field . '_options_value';
-				$setting_search_min_range    = 'opalestate_ppt_' . $field . '_min_range';
-				$setting_search_max_range    = 'opalestate_ppt_' . $field . '_max_range';
-				$setting_search_default_text = 'opalestate_ppt_' . $field . '_default_text';
+				$setting_search_type          = 'opalestate_ppt_' . $field . '_search_type';
+				$setting_search_type_options  = 'opalestate_ppt_' . $field . '_options_value';
+				$setting_search_min_range     = 'opalestate_ppt_' . $field . '_min_range';
+				$setting_search_max_range     = 'opalestate_ppt_' . $field . '_max_range';
+				$setting_search_unit_thousand = 'opalestate_ppt_' . $field . '_unit_thousand';
+				$setting_search_default_text  = 'opalestate_ppt_' . $field . '_default_text';
 
 				$display_type_search = opalestate_options( $setting_search_type, 'select' );
 
 				if ( $display_type_search == 'select' ) {
 
 					$option_values = (array) explode( ',', opalestate_options( $setting_search_type_options, '1,2,3,4,5,6,7,8,9,10' ) );
-					$template = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
-					$template .= '<select class="form-control" name="info[%s]"><option value="">%s</option>';
+					$template      = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
+					$template      .= '<select class="form-control" name="info[%s]"><option value="">%s</option>';
 
 					foreach ( $option_values as $value ) {
 						$selected = $value == $qvalue ? 'selected="selected"' : '';
@@ -66,8 +67,8 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 				} elseif ( $display_type_search == 'text' ) {
 					$option_values = opalestate_options( $setting_search_default_text, '' );
 					$qvalue        = $qvalue ? $qvalue : $option_values;
-					$template = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
-					$template .= '<input class="form-control" type="text" name="info[%s]" value="%s"/>';
+					$template      = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
+					$template      .= '<input class="form-control" type="text" name="info[%s]" value="%s"/>';
 
 					$template = sprintf( $template, $field, $qvalue );
 				} elseif ( $display_type_search == 'range' ) {
@@ -78,12 +79,13 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 					$search_max = (int) isset( $_GET[ $max_name ] ) ? $_GET[ $max_name ] : opalestate_options( $setting_search_max_range, 1000 );
 
 					$data = [
-						'id'         => $field,
-						'unit'       => '',
-						'ranger_min' => opalestate_options( $setting_search_min_range, 0 ),
-						'ranger_max' => opalestate_options( $setting_search_max_range, 1000 ),
-						'input_min'  => $search_min,
-						'input_max'  => $search_max,
+						'id'            => $field,
+						'unit'          => '',
+						'ranger_min'    => opalestate_options( $setting_search_min_range, 0 ),
+						'ranger_max'    => opalestate_options( $setting_search_max_range, 1000 ),
+						'input_min'     => $search_min,
+						'input_max'     => $search_max,
+						'unit_thousand' => apply_filters( 'opalestate_search_range_unit_thousand', opalestate_options( $setting_search_unit_thousand ), $field ),
 					];
 
 					ob_start();
@@ -117,8 +119,8 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
  * Render area size field.
  */
 function opalestate_property_areasize_field_template( $template = '' ) {
-	$search_min = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : opalestate_options( 'search_min_area', 0 );
-	$search_max = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : opalestate_options( 'search_max_area', 1000 );
+	$search_min        = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : opalestate_options( 'search_min_area', 0 );
+	$search_max        = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : opalestate_options( 'search_max_area', 1000 );
 	$measurement_units = opalestate_get_measurement_units();
 	$unit              = opalestate_options( 'measurement_unit', 'sqft' );
 	if ( isset( $measurement_units[ $unit ] ) ) {
