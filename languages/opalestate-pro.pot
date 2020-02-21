@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Opal Estate Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-20 03:33+0000\n"
+"POT-Creation-Date: 2020-02-21 04:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -37,68 +37,68 @@ msgstr ""
 msgid "This file is has large volume size, please try to upload other."
 msgstr ""
 
-#: inc/class-opalestate-email.php:140
+#: inc/class-opalestate-email.php:141
 msgid "Message has been successfully sent."
 msgstr ""
 
-#: inc/class-opalestate-email.php:142
+#: inc/class-opalestate-email.php:143
 #: inc/message/class-opalestate-request-reviewing.php:99
-#: inc/message/class-opalestate-message.php:246
-#: inc/message/class-opalestate-message.php:289
+#: inc/message/class-opalestate-message.php:251
+#: inc/message/class-opalestate-message.php:293
 msgid "Unable to send a message."
 msgstr ""
 
-#: inc/class-opalestate-email.php:146
+#: inc/class-opalestate-email.php:147
 msgid "Missing some information!"
 msgstr ""
 
-#: inc/class-opalestate-email.php:177
+#: inc/class-opalestate-email.php:178
 #: inc/classes/class-opalestate-metabox-user.php:145
 #: inc/classes/class-opalestate-metabox-user.php:205
 #: inc/agency/class-opalestate-agency-metabox.php:337
-#: inc/message/class-opalestate-message.php:533
-#: inc/message/class-opalestate-message.php:635
+#: inc/message/class-opalestate-message.php:537
+#: inc/message/class-opalestate-message.php:639
 #: inc/agent/class-opalestate-agent-metabox.php:177
 #: templates/rating/opalestate-ratings.php:242
 msgid "Email"
 msgstr ""
 
-#: inc/class-opalestate-email.php:315 inc/class-opalestate-email.php:319
+#: inc/class-opalestate-email.php:371 inc/class-opalestate-email.php:375
 #: inc/submission/class-opalestate-submission.php:121
 msgid "Email Settings"
 msgstr ""
 
-#: inc/class-opalestate-email.php:326
+#: inc/class-opalestate-email.php:382
 msgid "From Name"
 msgstr ""
 
-#: inc/class-opalestate-email.php:327
+#: inc/class-opalestate-email.php:383
 msgid ""
 "The name donation receipts are said to come from. This should probably be "
 "your site or shop name."
 msgstr ""
 
-#: inc/class-opalestate-email.php:333
+#: inc/class-opalestate-email.php:389
 msgid "From Email"
 msgstr ""
 
-#: inc/class-opalestate-email.php:334
+#: inc/class-opalestate-email.php:390
 msgid ""
 "Email to send donation receipts from. This will act as the \"from\" and "
 "\"reply-to\" address."
 msgstr ""
 
-#: inc/class-opalestate-email.php:341
+#: inc/class-opalestate-email.php:397
 msgid "Email Submission Templates (Template Tags)"
 msgstr ""
 
-#: inc/class-opalestate-email.php:350
+#: inc/class-opalestate-email.php:406
 msgid "New Property Submission (Customer)"
 msgstr ""
 
-#: inc/class-opalestate-email.php:356 inc/class-opalestate-email.php:361
-#: inc/class-opalestate-email.php:394 inc/class-opalestate-email.php:399
-#: inc/class-opalestate-email.php:437
+#: inc/class-opalestate-email.php:412 inc/class-opalestate-email.php:417
+#: inc/class-opalestate-email.php:450 inc/class-opalestate-email.php:455
+#: inc/class-opalestate-email.php:490
 #: inc/submission/class-opalestate-submission.php:157
 #: inc/submission/class-opalestate-submission.php:175
 #: inc/submission/class-opalestate-submission.php:185
@@ -133,12 +133,12 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: inc/class-opalestate-email.php:357
+#: inc/class-opalestate-email.php:413
 msgid "Enable email for customers when they have a submission."
 msgstr ""
 
-#: inc/class-opalestate-email.php:362 inc/class-opalestate-email.php:400
-#: inc/class-opalestate-email.php:438
+#: inc/class-opalestate-email.php:418 inc/class-opalestate-email.php:456
+#: inc/class-opalestate-email.php:491
 #: inc/submission/class-opalestate-submission.php:158
 #: inc/submission/class-opalestate-submission.php:176
 #: inc/submission/class-opalestate-submission.php:186
@@ -171,91 +171,95 @@ msgstr ""
 msgid "Disable"
 msgstr ""
 
-#: inc/class-opalestate-email.php:368 inc/class-opalestate-email.php:406
-#: inc/class-opalestate-email.php:444 inc/class-opalestate-email.php:472
-#: inc/class-opalestate-email.php:499 inc/class-opalestate-email.php:526
+#: inc/class-opalestate-email.php:424 inc/class-opalestate-email.php:462
+#: inc/class-opalestate-email.php:497 inc/class-opalestate-email.php:520
+#: inc/class-opalestate-email.php:542 inc/class-opalestate-email.php:564
 msgid "Email Subject"
 msgstr ""
 
-#: inc/class-opalestate-email.php:370 inc/class-opalestate-email.php:408
+#: inc/class-opalestate-email.php:426 inc/class-opalestate-email.php:464
 msgid "The email subject for admin notifications."
 msgstr ""
 
-#: inc/class-opalestate-email.php:374 inc/class-opalestate-email.php:452
+#: inc/class-opalestate-email.php:430
 #: inc/email/class-opalestate-new-submitted.php:29
 msgid "New Property Listing Submitted: {property_name}"
 msgstr ""
 
-#: inc/class-opalestate-email.php:379 inc/class-opalestate-email.php:417
-#: inc/class-opalestate-email.php:457 inc/class-opalestate-email.php:485
-#: inc/class-opalestate-email.php:512 inc/class-opalestate-email.php:539
+#: inc/class-opalestate-email.php:435 inc/class-opalestate-email.php:470
+#: inc/class-opalestate-email.php:505 inc/class-opalestate-email.php:528
+#: inc/class-opalestate-email.php:550 inc/class-opalestate-email.php:572
 msgid "Email Body"
 msgstr ""
 
-#: inc/class-opalestate-email.php:381 inc/class-opalestate-email.php:419
+#: inc/class-opalestate-email.php:437 inc/class-opalestate-email.php:472
 msgid ""
 "Enter the email an admin should receive when an initial payment request is "
 "made."
 msgstr ""
 
-#: inc/class-opalestate-email.php:387
+#: inc/class-opalestate-email.php:443
 msgid "New Property Submission (Admin)"
 msgstr ""
 
-#: inc/class-opalestate-email.php:395
+#: inc/class-opalestate-email.php:451
 msgid "Enable email for admin when a property is submitted."
 msgstr ""
 
-#: inc/class-opalestate-email.php:412
+#: inc/class-opalestate-email.php:465
 #: inc/email/class-opalestate-admin-new-submitted.php:24
 msgid "You received a new submission: {property_name} from {user_mail}"
 msgstr ""
 
-#: inc/class-opalestate-email.php:425
+#: inc/class-opalestate-email.php:478
 msgid "Approved property for publish (Customer)"
 msgstr ""
 
-#: inc/class-opalestate-email.php:432
+#: inc/class-opalestate-email.php:485
 msgid "Enable approve property email"
 msgstr ""
 
-#: inc/class-opalestate-email.php:433
+#: inc/class-opalestate-email.php:486
 msgid "Enable approve property email."
 msgstr ""
 
-#: inc/class-opalestate-email.php:446 inc/class-opalestate-email.php:474
-#: inc/class-opalestate-email.php:501 inc/class-opalestate-email.php:528
+#: inc/class-opalestate-email.php:499 inc/class-opalestate-email.php:522
+#: inc/class-opalestate-email.php:544 inc/class-opalestate-email.php:566
 msgid ""
 "The email subject a user should receive when they make an initial property "
 "request."
 msgstr ""
 
-#: inc/class-opalestate-email.php:459
+#: inc/class-opalestate-email.php:500
+msgid "New Property Listing Approved: {property_name}"
+msgstr ""
+
+#: inc/class-opalestate-email.php:507
 msgid ""
 "Enter the email a user should receive when they make an initial payment "
 "request."
 msgstr ""
 
-#: inc/class-opalestate-email.php:464
-msgid "Email Enquiry Contact Templates (Template Tags)"
+#: inc/class-opalestate-email.php:512
+msgid "Email Enquire Contact Form (in the single property page)"
 msgstr ""
 
-#: inc/class-opalestate-email.php:480 inc/class-opalestate-email.php:507
+#: inc/class-opalestate-email.php:523 inc/class-opalestate-email.php:567
 #: inc/message/class-opalestate-message.php:115
 msgid "You got a message"
 msgstr ""
 
-#: inc/class-opalestate-email.php:491
-msgid "Email Contact Templates (Template Tags)"
-msgstr ""
-
-#: inc/class-opalestate-email.php:518
-msgid "Email Request Review Templates (Template Tags)"
-msgstr ""
-
 #: inc/class-opalestate-email.php:534
-#: inc/email/class-opalestate-request-viewing.php:30
+msgid "Email Request Review Form (in the single property page)"
+msgstr ""
+
+#: inc/class-opalestate-email.php:545
+#: inc/email/class-opalestate-request-viewing.php:17
 msgid "You have a message request reviewing"
+msgstr ""
+
+#: inc/class-opalestate-email.php:556
+msgid "Email Contact Host Form (in the Agent/Agency page)"
 msgstr ""
 
 #: inc/class-opalestate-roles.php:49
@@ -1257,11 +1261,11 @@ msgstr ""
 msgid "Expired"
 msgstr ""
 
-#: inc/mixes-functions.php:1346
+#: inc/mixes-functions.php:1347
 msgid "Single Property Sidebar"
 msgstr ""
 
-#: inc/mixes-functions.php:1348
+#: inc/mixes-functions.php:1349
 msgid "Add widgets here to appear in your single property sidebar area."
 msgstr ""
 
@@ -2019,9 +2023,9 @@ msgstr ""
 #: inc/classes/class-opalestate-metabox-user.php:216
 #: inc/agency/class-opalestate-agency-metabox.php:158
 #: inc/agency/class-opalestate-agency-metabox.php:348
-#: inc/message/class-opalestate-message.php:542
-#: inc/message/class-opalestate-message.php:644
-#: inc/message/class-opalestate-message.php:715
+#: inc/message/class-opalestate-message.php:546
+#: inc/message/class-opalestate-message.php:648
+#: inc/message/class-opalestate-message.php:719
 #: inc/agent/class-opalestate-agent-metabox.php:188
 msgid "Phone"
 msgstr ""
@@ -2500,8 +2504,8 @@ msgid "Preview Display"
 msgstr ""
 
 #: inc/property/class-metabox-property-admin.php:520
-#: inc/message/class-opalestate-message.php:524
-#: inc/message/class-opalestate-message.php:627
+#: inc/message/class-opalestate-message.php:528
+#: inc/message/class-opalestate-message.php:631
 #: inc/submission/class-metabox-property-submission.php:520
 #: templates/rating/opalestate-ratings.php:240
 #: templates/user/share-search-form.php:35
@@ -3059,55 +3063,55 @@ msgstr ""
 msgid "Show message for disabled user"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:175
-#: inc/email/class-opalestate-email-notifycation.php:40
+#: inc/message/class-opalestate-message.php:182
+#: inc/email/class-opalestate-email-notifycation.php:36
 msgid "You got a message contact"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:241
+#: inc/message/class-opalestate-message.php:246
 msgid "Email Sent successful"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:242
-#: inc/message/class-opalestate-message.php:246
+#: inc/message/class-opalestate-message.php:247
+#: inc/message/class-opalestate-message.php:251
 msgid "Sending Message"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:501
-#: inc/message/class-opalestate-message.php:567
-#: inc/message/class-opalestate-message.php:606
-#: inc/message/class-opalestate-message.php:684
+#: inc/message/class-opalestate-message.php:505
+#: inc/message/class-opalestate-message.php:571
+#: inc/message/class-opalestate-message.php:610
+#: inc/message/class-opalestate-message.php:688
 #: inc/taxonomies/class-taxonomy-types.php:144
 #: templates/user/register-form.php:69
 msgid "Type"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:508
-#: inc/message/class-opalestate-message.php:613
-#: inc/message/class-opalestate-message.php:690
+#: inc/message/class-opalestate-message.php:512
+#: inc/message/class-opalestate-message.php:617
+#: inc/message/class-opalestate-message.php:694
 msgid "Property ID"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:516
-#: inc/message/class-opalestate-message.php:620
-#: inc/message/class-opalestate-message.php:696
+#: inc/message/class-opalestate-message.php:520
+#: inc/message/class-opalestate-message.php:624
+#: inc/message/class-opalestate-message.php:700
 #: templates/user/agency/agency-team.php:12
 msgid "Sender ID"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:550
-#: inc/message/class-opalestate-message.php:574
-#: inc/message/class-opalestate-message.php:652
-#: inc/message/class-opalestate-message.php:721
+#: inc/message/class-opalestate-message.php:554
+#: inc/message/class-opalestate-message.php:578
+#: inc/message/class-opalestate-message.php:656
+#: inc/message/class-opalestate-message.php:725
 #: templates/user/share-search-form.php:45
 msgid "Message"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:702
+#: inc/message/class-opalestate-message.php:706
 msgid "Schedule"
 msgstr ""
 
-#: inc/message/class-opalestate-message.php:709
+#: inc/message/class-opalestate-message.php:713
 msgid "Time"
 msgstr ""
 
@@ -4197,15 +4201,15 @@ msgstr ""
 msgid "The Property Listing Approved: {property_name}"
 msgstr ""
 
-#: inc/email/class-opalestate-email-notifycation.php:33
+#: inc/email/class-opalestate-email-notifycation.php:29
 msgid "You got a message enquiry"
 msgstr ""
 
-#: inc/email/class-opalestate-abs-email-template.php:43
+#: inc/email/class-opalestate-abs-email-template.php:30
 msgid "Admin Notice of Expiring Job Listings"
 msgstr ""
 
-#: inc/email/class-opalestate-abs-email-template.php:53
+#: inc/email/class-opalestate-abs-email-template.php:39
 msgid "Send notices to the site administrator before a job listing expires."
 msgstr ""
 
