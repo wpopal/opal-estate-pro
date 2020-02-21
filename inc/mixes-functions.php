@@ -1293,8 +1293,9 @@ function opalestate_is_enable_areasize_field() {
 }
 
 function opalestate_is_require_login_to_show_author_box() {
-    $require = opalestate_get_option( 'enable_single_login_to_show_author_box', 'off' );
-    return ! ( $require == 'on' ) || ( $require == 'on' && is_user_logged_in() );
+	$require = opalestate_get_option( 'enable_single_login_to_show_author_box', 'off' );
+
+	return ! ( $require == 'on' ) || ( $require == 'on' && is_user_logged_in() );
 }
 
 /**
@@ -1354,3 +1355,12 @@ function opalestate_widgets_init() {
 }
 
 add_action( 'widgets_init', 'opalestate_widgets_init' );
+
+/**
+ * Get email date format.
+ *
+ * @return mixed|void
+ */
+function opalestate_email_date_format() {
+	return apply_filters( 'opalestate_email_date_format', 'F j, Y, g:i a' );
+}

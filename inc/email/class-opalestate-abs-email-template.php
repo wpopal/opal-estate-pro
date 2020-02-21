@@ -1,23 +1,10 @@
 <?php
-/**
- * $Desc$
- *
- * @version    $Id$
- * @package    opalestate
- * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
- */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
 /**
- * @class   OpalEstate_Send_Email_Notification
+ * @class   OpalEstate_Abstract_Email_Template
  *
  * @version 1.0
  */
@@ -46,7 +33,6 @@ class OpalEstate_Abstract_Email_Template {
 	/**
 	 * Get the description for this email notification.
 	 *
-	 * @type abstract
 	 * @return string
 	 */
 	public function get_description() {
@@ -57,6 +43,11 @@ class OpalEstate_Abstract_Email_Template {
 
 	}
 
+	/**
+	 * Get the content for this email notification.
+	 *
+	 * @return string
+	 */
 	public function get_content_template() {
 
 	}
@@ -72,12 +63,13 @@ class OpalEstate_Abstract_Email_Template {
 			'receiver_name'      => '',
 			'name'               => '',
 			'receiver_email'     => '',
+			'property_name'      => '',
 			'property_link'      => '',
 			'property_edit_link' => '',
 			'message'            => '',
 			'site_name'          => get_bloginfo(),
 			'site_link'          => get_home_url(),
-			'current_time'       => date( "F j, Y, g:i a" ),
+			'current_time'       => date_i18n( opalestate_email_date_format() ),
 			'phone'              => '',
 		];
 
@@ -111,7 +103,6 @@ class OpalEstate_Abstract_Email_Template {
 	public function get_cc() {
 
 	}
-
 
 	public function get_body() {
 		$template = $this->get_content_template();

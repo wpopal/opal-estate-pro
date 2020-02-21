@@ -73,6 +73,7 @@ class Opalestate_Emails {
 	 */
 	public static function send_notifycation( $content ) {
 		$mail = new OpalEstate_Send_Email_Notification();
+		$mail->set_type( $content );
 		$mail->set_args( $content );
 
 		$return = self::send_mail_now( $mail );
@@ -191,6 +192,51 @@ class Opalestate_Emails {
 	 * render setting email fields with default values
 	 */
 	public static function setting_email_fields( $fields ) {
+		$enquire_list_tags = '<div>
+				<p class="tags-description">Use the following tags to automatically add property information to the emails. Tags labeled with an asterisk (*) can be used in the email subject as well.</p>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{receive_name}</strong> Name of the agent who made the property
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{property_name}</strong> Name of the property
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{property_link}</strong> Link of the property
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{property_edit_link}</strong> Link for editing of the property (admin)
+				</div>
+	
+				<div class="opalestate-template-tags-box">
+					<strong>{name}</strong> Name of the user who contact via email form
+				</div>
+
+				<div class="opalestate-template-tags-box">
+					<strong>{email}</strong> Email of the user who contact via email form
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{phone}</strong> Phone number of who sent via form
+				</div>
+			
+				<div class="opalestate-template-tags-box">
+					<strong>{message}</strong> Message content of who sent via form
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{site_link}</strong> A link to this website
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{current_time}</strong> Current date and time
+				</div>
+
+				</div> ';
+		$enquire_list_tags = apply_filters( 'opalestate_email_enquire_tags', $enquire_list_tags );
 
 		$contact_list_tags = '<div>
 				<p class="tags-description">Use the following tags to automatically add property information to the emails. Tags labeled with an asterisk (*) can be used in the email subject as well.</p>
@@ -198,10 +244,6 @@ class Opalestate_Emails {
 				<div class="opalestate-template-tags-box">
 					<strong>{receive_name}</strong> Name of the agent who made the property
 				</div>
-
-				<div class="opalestate-template-tags-box">
-					<strong>{property_link}</strong> Link of the property
-				</div>
 	
 				<div class="opalestate-template-tags-box">
 					<strong>{name}</strong> Name of the user who contact via email form
@@ -209,6 +251,10 @@ class Opalestate_Emails {
 
 				<div class="opalestate-template-tags-box">
 					<strong>{email}</strong> Email of the user who contact via email form
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{phone}</strong> Phone number of who sent via form
 				</div>
 			
 				<div class="opalestate-template-tags-box">
@@ -224,6 +270,7 @@ class Opalestate_Emails {
 				</div>
 
 				</div> ';
+		$contact_list_tags = apply_filters( 'opalestate_email_contact_tags', $contact_list_tags );
 
 		$review_list_tags = '<div>
 				<p class="tags-description">Use the following tags to automatically add property information to the emails. Tags labeled with an asterisk (*) can be used in the email subject as well.</p>
@@ -231,9 +278,17 @@ class Opalestate_Emails {
 				<div class="opalestate-template-tags-box">
 					<strong>{receive_name}</strong> Name of the agent who made the property
 				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{property_name}</strong> Name of the property
+				</div>
 
 				<div class="opalestate-template-tags-box">
 					<strong>{property_link}</strong> Link of the property
+				</div>
+				
+				<div class="opalestate-template-tags-box">
+					<strong>{property_edit_link}</strong> Link for editing of the property (admin)
 				</div>
 	
 				<div class="opalestate-template-tags-box">
@@ -245,11 +300,15 @@ class Opalestate_Emails {
 				</div>
 				
 				<div class="opalestate-template-tags-box">
+					<strong>{schedule_date}</strong> Schedule date
+				</div>
+				
+				<div class="opalestate-template-tags-box">
 					<strong>{schedule_time}</strong> Schedule time
 				</div>
 				
 				<div class="opalestate-template-tags-box">
-					<strong>{schedule_date}</strong> Schedule date
+					<strong>{phone}</strong> Phone number of who sent via form
 				</div>
 			
 				<div class="opalestate-template-tags-box">
@@ -265,12 +324,13 @@ class Opalestate_Emails {
 				</div>
 
 				</div> ';
+		$review_list_tags = apply_filters( 'opalestate_email_review_tags', $review_list_tags );
 
 		$list_tags = '<div>
 				<p class="tags-description">Use the following tags to automatically add property information to the emails. Tags labeled with an asterisk (*) can be used in the email subject as well.</p>
 				
 				<div class="opalestate-template-tags-box">
-					<strong>{property_name}</strong> Email of the user who made the property
+					<strong>{property_name}</strong> Name of the property
 				</div>
 
 				<div class="opalestate-template-tags-box">
@@ -286,17 +346,13 @@ class Opalestate_Emails {
 				</div>
 
 				<div class="opalestate-template-tags-box">
-					<strong>{submitted_date}</strong> Email of the user who made the property
+					<strong>{submitted_date}</strong> Submitted date 
 				</div>
 
 				<div class="opalestate-template-tags-box">
-					<strong>{user_name}</strong> * Name of the user who made the property
+					<strong>{user_name}</strong> Name of the user who made the property
 				</div>
 			
-				<div class="opalestate-template-tags-box">
-					<strong>{date}</strong> * Date and time of the property
-				</div>
-
 				<div class="opalestate-template-tags-box">
 					<strong>{site_name}</strong> The name of this website
 				</div>
@@ -304,7 +360,7 @@ class Opalestate_Emails {
 					<strong>{site_link}</strong> A link to this website
 				</div>
 				<div class="opalestate-template-tags-box">
-					<strong>{current_time}</strong> Current date and time
+					<strong>{current_time}</strong> Current date and time when email sent
 				</div></div>';
 
 		$list_tags = apply_filters( 'opalestate_email_tags', $list_tags );
@@ -318,7 +374,7 @@ class Opalestate_Emails {
 					[
 						'name' => esc_html__( 'Email Settings', 'opalestate-pro' ),
 						'desc' => '<hr>',
-						'id'   => 'opalestate_title_email_settings_1',
+						'id'   => 'opalestate_title_email_settings',
 						'type' => 'title',
 					],
 					[
@@ -340,7 +396,7 @@ class Opalestate_Emails {
 					[
 						'name' => esc_html__( 'Email Submission Templates (Template Tags)', 'opalestate-pro' ),
 						'desc' => $list_tags . '<br><hr>',
-						'id'   => 'opalestate_title_email_settings_2',
+						'id'   => 'opalestate_title_email_submission_template',
 						'type' => 'title',
 					],
 
@@ -349,7 +405,7 @@ class Opalestate_Emails {
 					[
 						'name' => esc_html__( 'New Property Submission (Customer)', 'opalestate-pro' ),
 						'desc' => '<hr>',
-						'id'   => 'opalestate_title_email_settings_3',
+						'id'   => 'opalestate_title_email_new_property_customer',
 						'type' => 'title',
 					],
 					[
@@ -386,7 +442,7 @@ class Opalestate_Emails {
 					[
 						'name'       => esc_html__( 'New Property Submission (Admin)', 'opalestate-pro' ),
 						'desc'       => '<hr>',
-						'id'         => 'opalestate_title_email_settings_admin',
+						'id'         => 'opalestate_title_email_new_property_admin',
 						'type'       => 'title',
 						'before_row' => '<hr>',
 					],
@@ -406,9 +462,6 @@ class Opalestate_Emails {
 						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
 						'type'       => 'text',
 						'desc'       => esc_html__( 'The email subject for admin notifications.', 'opalestate-pro' ),
-						'attributes' => [
-							'rows' => 3,
-						],
 						'default'    => esc_html__( 'You received a new submission: {property_name} from {user_mail}', 'opalestate-pro' ),
 
 					],
@@ -424,7 +477,7 @@ class Opalestate_Emails {
 					[
 						'name'       => esc_html__( 'Approved property for publish (Customer)', 'opalestate-pro' ),
 						'desc'       => '<hr>',
-						'id'         => 'opalestate_title_email_settings_4',
+						'id'         => 'opalestate_title_email_approved_property',
 						'type'       => 'title',
 						'before_row' => '<hr>',
 					],
@@ -444,12 +497,7 @@ class Opalestate_Emails {
 						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
 						'type'       => 'text',
 						'desc'       => esc_html__( 'The email subject a user should receive when they make an initial property request.', 'opalestate-pro' ),
-						'attributes' => [
-							'placeholder' => 'Your property at I Love WordPress is pending',
-							get_bloginfo( 'name' ),
-							'rows'        => 3,
-						],
-						'default'    => esc_html__( 'New Property Listing Submitted: {property_name}', 'opalestate-pro' ),
+						'default'    => esc_html__( 'New Property Listing Approved: {property_name}', 'opalestate-pro' ),
 					],
 
 					[
@@ -461,9 +509,9 @@ class Opalestate_Emails {
 					],
 					/// enquire contact template ////
 					[
-						'name'       => esc_html__( 'Email Enquiry Contact Templates (Template Tags)', 'opalestate-pro' ),
-						'desc'       => $contact_list_tags . '<br><hr>',
-						'id'         => 'opalestate_title_email_settings_6_1',
+						'name'       => esc_html__( 'Email Enquire Contact Form (in the single property page)', 'opalestate-pro' ),
+						'desc'       => $enquire_list_tags . '<br><hr>',
+						'id'         => 'opalestate_title_email_enquire_contact',
 						'type'       => 'title',
 						'before_row' => '<hr>',
 					],
@@ -472,11 +520,6 @@ class Opalestate_Emails {
 						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
 						'type'       => 'text',
 						'desc'       => esc_html__( 'The email subject a user should receive when they make an initial property request.', 'opalestate-pro' ),
-						'attributes' => [
-							'placeholder' => 'Your property at I Love WordPress is pending',
-							get_bloginfo( 'name' ),
-							'rows'        => 3,
-						],
 						'default'    => esc_html__( 'You got a message', 'opalestate-pro' ),
 					],
 
@@ -486,38 +529,11 @@ class Opalestate_Emails {
 						'type'    => 'wysiwyg',
 						'default' => OpalEstate_Send_Email_Notification::get_default_template( 'enquiry' ),
 					],
-					/// email contact template ////
+					/// Email Request Review ///
 					[
-						'name'       => esc_html__( 'Email Contact Templates (Template Tags)', 'opalestate-pro' ),
-						'desc'       => $contact_list_tags . '<br><hr>',
-						'id'         => 'opalestate_title_email_settings_6',
-						'type'       => 'title',
-						'before_row' => '<hr>',
-					],
-					[
-						'id'         => 'contact_email_subject',
-						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
-						'type'       => 'text',
-						'desc'       => esc_html__( 'The email subject a user should receive when they make an initial property request.', 'opalestate-pro' ),
-						'attributes' => [
-							'placeholder' => 'Your property at I Love WordPress is pending',
-							get_bloginfo( 'name' ),
-							'rows'        => 3,
-						],
-						'default'    => esc_html__( 'You got a message', 'opalestate-pro' ),
-					],
-
-					[
-						'id'      => 'contact_email_body',
-						'name'    => esc_html__( 'Email Body', 'opalestate-pro' ),
-						'type'    => 'wysiwyg',
-						'default' => OpalEstate_Send_Email_Notification::get_default_template(),
-					],
-					/// Email Request Review /// 
-					[
-						'name'       => esc_html__( 'Email Request Review Templates (Template Tags)', 'opalestate-pro' ),
+						'name'       => esc_html__( 'Email Request Review Form (in the single property page)', 'opalestate-pro' ),
 						'desc'       => $review_list_tags . '<br><hr>',
-						'id'         => 'opalestate_title_email_settings_7',
+						'id'         => 'opalestate_title_email_request_review',
 						'type'       => 'title',
 						'before_row' => '<hr>',
 					],
@@ -526,11 +542,6 @@ class Opalestate_Emails {
 						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
 						'type'       => 'text',
 						'desc'       => esc_html__( 'The email subject a user should receive when they make an initial property request.', 'opalestate-pro' ),
-						'attributes' => [
-							'placeholder' => 'Your property at I Love WordPress is pending',
-							get_bloginfo( 'name' ),
-							'rows'        => 3,
-						],
 						'default'    => esc_html__( 'You have a message request reviewing', 'opalestate-pro' ),
 					],
 
@@ -539,6 +550,28 @@ class Opalestate_Emails {
 						'name'    => esc_html__( 'Email Body', 'opalestate-pro' ),
 						'type'    => 'wysiwyg',
 						'default' => OpalEstate_Send_Email_Request_Reviewing::get_default_template(),
+					],
+					/// email contact template ////
+					[
+						'name'       => esc_html__( 'Email Contact Host Form (in the Agent/Agency page)', 'opalestate-pro' ),
+						'desc'       => $contact_list_tags . '<br><hr>',
+						'id'         => 'opalestate_title_email_contact_author_form',
+						'type'       => 'title',
+						'before_row' => '<hr>',
+					],
+					[
+						'id'         => 'contact_email_subject',
+						'name'       => esc_html__( 'Email Subject', 'opalestate-pro' ),
+						'type'       => 'text',
+						'desc'       => esc_html__( 'The email subject a user should receive when they make an initial property request.', 'opalestate-pro' ),
+						'default'    => esc_html__( 'You got a message', 'opalestate-pro' ),
+					],
+
+					[
+						'id'      => 'contact_email_body',
+						'name'    => esc_html__( 'Email Body', 'opalestate-pro' ),
+						'type'    => 'wysiwyg',
+						'default' => OpalEstate_Send_Email_Notification::get_default_template(),
 					],
 				]
 			),
@@ -550,7 +583,6 @@ class Opalestate_Emails {
 	/**
 	 * get data of newrequest email
 	 *
-	 * @return text: message
 	 * @var $args  array: property_id , $body
 	 */
 	public static function replace_shortcode( $args, $body ) {
@@ -585,7 +617,7 @@ class Opalestate_Emails {
 			$submitted_date,
 			get_bloginfo( 'name' ),
 			get_home_url(),
-			date( "F j, Y, g:i a" ),
+			date_i18n( opalestate_email_date_format() ),
 			$property_name,
 			$property_link,
 		];

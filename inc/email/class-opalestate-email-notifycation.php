@@ -1,17 +1,4 @@
 <?php
-/**
- * $Desc$
- *
- * @version    $Id$
- * @package    opalestate
- * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
- */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -22,6 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 class OpalEstate_Send_Email_Notification extends OpalEstate_Abstract_Email_Template {
 
 	public $type = '';
+
+	public function set_type( $content ) {
+		$type = '';
+		if ( isset( $content['type'] ) && 'send_enquiry' === $content['type'] ) {
+			$type = 'enquiry';
+		}
+
+		$this->type = $type;
+	}
 
 	/**
 	 * Send Email
@@ -43,7 +39,7 @@ class OpalEstate_Send_Email_Notification extends OpalEstate_Abstract_Email_Templ
 				break;
 		}
 
-		return $subject;
+		return $this->replace_tags( $subject );
 	}
 
 	/**

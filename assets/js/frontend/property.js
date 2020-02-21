@@ -120,7 +120,6 @@ window.opalestate_messages = function() {
   		function make_ajax ( data, _this ) { 
   			$( '.opalestate-message-notify', _this ).remove();
   			var action = $( _this ).data('action')? $( _this ).data('action') : 'send_email_contact';
-  			console.log(action)
   			toggle_submit_button( _this );
   			$.ajax({
                 type     : 'POST',

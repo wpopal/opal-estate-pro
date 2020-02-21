@@ -36,7 +36,7 @@ class OpalEstate_Send_Email_Approve extends OpalEstate_Abstract_Email_Template {
 			'submitted_date' => $property->post_date,
 			'property_name'  => $property->post_title,
 			'property_link'  => get_permalink( $property_id ),
-			'current_time'   => date( "F j, Y, g:i a" ),
+			'current_time'   => date_i18n( opalestate_email_date_format() ),
 		];
 
 		return $this->args;

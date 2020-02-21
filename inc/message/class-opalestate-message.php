@@ -115,18 +115,24 @@ class OpalEstate_User_Message {
 		$subject               = html_entity_decode( esc_html__( 'You got a message', 'opalestate-pro' ) );
 		$post['receiver_name'] = $member['receiver_name'];
 
-		$output = [
-			'subject'        => $subject,
-			'name'           => isset( $post['name'] ) ? $post['name'] : '',
-			'receiver_email' => $member['receiver_email'],
-			'receiver_id'    => $member['receiver_id'],
-			'sender_id'      => get_current_user_id(),
-			'sender_email'   => $post['email'],
-			'email'          => $post['email'],
-			'phone'          => $post['phone'],
-			'message'        => $post['message'],
-			'post_id'        => $post['post_id'],
-			'type'           => 'send_enquiry',
+		$property_id           = absint( $post['post_id'] );
+		$property              = get_post( $property_id );
+
+		$output                = [
+			'subject'            => $subject,
+			'name'               => isset( $post['name'] ) ? $post['name'] : '',
+			'receiver_email'     => $member['receiver_email'],
+			'receiver_id'        => $member['receiver_id'],
+			'sender_id'          => get_current_user_id(),
+			'sender_email'       => $post['email'],
+			'property_name'      => $property->post_title,
+			'property_link'      => $property_id ? get_permalink( $property_id ) : get_home_url(),
+			'property_edit_link' => get_edit_post_link( $property_id ),
+			'email'              => $post['email'],
+			'phone'              => $post['phone'],
+			'message'            => $post['message'],
+			'post_id'            => $post['post_id'],
+			'type'               => 'send_enquiry',
 		];
 
 		if ( $output['sender_id'] == $output['receiver_id'] ) {
@@ -163,6 +169,7 @@ class OpalEstate_User_Message {
 			'post_id'          => '',
 			'sender_id'        => '',
 			'email'            => '',
+			'name'             => '',
 			'phone'            => '',
 			'message'          => '',
 			'message_action'   => '',
@@ -176,14 +183,13 @@ class OpalEstate_User_Message {
 
 		$post['receiver_name'] = $member['receiver_name'];
 
-
 		$output = [
 			'subject'        => $subject,
-			'name'           => $member['name'],
 			'receiver_email' => $member['receiver_email'],
 			'receiver_id'    => $member['receiver_id'],
 			'sender_id'      => get_current_user_id(),
 			'sender_email'   => $post['email'],
+			'name'           => $post['name'],
 			'phone'          => $post['phone'],
 			'message'        => $post['message'],
 			'post_id'        => $post['post_id'],
@@ -195,7 +201,6 @@ class OpalEstate_User_Message {
 		}
 
 		return $output;
-
 	}
 
 	/**
@@ -258,7 +263,6 @@ class OpalEstate_User_Message {
 		do_action( 'opalestate_process_send_email_before' );
 		if ( isset( $_POST['type'] ) && $_POST['type'] ) {
 			$content = [];
-
 			switch ( trim( $_POST['type'] ) ) {
 				case 'send_equiry':
 					if ( wp_verify_nonce( $_POST['message_action'], 'send-enquiry-form' ) ) {
@@ -680,48 +684,48 @@ class OpalEstate_User_Message {
 
 		$fields = [
 			[
-				'id'          => 'type',
-				'name'        => esc_html__( 'Type', 'opalestate-pro' ),
-				'type'        => 'hidden',
-				'default'     => 'send_request_review',
+				'id'      => 'type',
+				'name'    => esc_html__( 'Type', 'opalestate-pro' ),
+				'type'    => 'hidden',
+				'default' => 'send_request_review',
 			],
 			[
-				'id'          => 'post_id',
-				'name'        => esc_html__( 'Property ID', 'opalestate-pro' ),
-				'type'        => 'hidden',
-				'default'     => $post_id,
+				'id'      => 'post_id',
+				'name'    => esc_html__( 'Property ID', 'opalestate-pro' ),
+				'type'    => 'hidden',
+				'default' => $post_id,
 			],
 			[
-				'id'          => 'sender_id',
-				'name'        => esc_html__( 'Sender ID', 'opalestate-pro' ),
-				'type'        => 'hidden',
-				'default'     => $sender_id,
+				'id'      => 'sender_id',
+				'name'    => esc_html__( 'Sender ID', 'opalestate-pro' ),
+				'type'    => 'hidden',
+				'default' => $sender_id,
 			],
 			[
-				'id'          => "{$prefix}date",
-				'name'        => esc_html__( 'Schedule', 'opalestate-pro' ),
-				'type'        => 'date',
-				'before_row'  => '',
-				'required'    => 'required',
+				'id'         => "{$prefix}date",
+				'name'       => esc_html__( 'Schedule', 'opalestate-pro' ),
+				'type'       => 'date',
+				'before_row' => '',
+				'required'   => 'required',
 			],
 			[
-				'id'          => "{$prefix}time",
-				'name'        => esc_html__( 'Time', 'opalestate-pro' ),
-				'type'        => 'select',
-				'options'     => opalestate_get_time_lapses(),
+				'id'      => "{$prefix}time",
+				'name'    => esc_html__( 'Time', 'opalestate-pro' ),
+				'type'    => 'select',
+				'options' => opalestate_get_time_lapses(),
 			],
 			[
-				'id'          => "{$prefix}phone",
-				'name'        => esc_html__( 'Phone', 'opalestate-pro' ),
-				'type'        => 'text',
-				'required'    => 'required',
+				'id'       => "{$prefix}phone",
+				'name'     => esc_html__( 'Phone', 'opalestate-pro' ),
+				'type'     => 'text',
+				'required' => 'required',
 			],
 			[
-				'id'          => "{$prefix}message",
-				'name'        => esc_html__( 'Message', 'opalestate-pro' ),
-				'type'        => 'textarea',
-				'default'     => $msg,
-				'required'    => 'required',
+				'id'       => "{$prefix}message",
+				'name'     => esc_html__( 'Message', 'opalestate-pro' ),
+				'type'     => 'textarea',
+				'default'  => $msg,
+				'required' => 'required',
 			],
 		];
 

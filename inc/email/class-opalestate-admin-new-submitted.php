@@ -44,7 +44,7 @@ class OpalEstate_Send_Email_Admin_New_Submitted extends OpalEstate_Abstract_Emai
 			'property_name'      => $property->post_title,
 			'property_link'      => get_permalink( $property_id ),
 			'property_edit_link' => get_edit_post_link( $property_id ),
-			'current_time'       => date( "F j, Y, g:i a" ),
+			'current_time'       => date_i18n( opalestate_email_date_format() ),
 		];
 
 		return $this->args;
