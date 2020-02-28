@@ -712,7 +712,7 @@ class OpalEstate_User_Message {
 				'id'      => "{$prefix}time",
 				'name'    => esc_html__( 'Time', 'opalestate-pro' ),
 				'type'    => 'select',
-				'options' => opalestate_get_time_lapses(),
+				'options' => opalestate_get_request_viewing_time_list(),
 			],
 			[
 				'id'       => "{$prefix}phone",

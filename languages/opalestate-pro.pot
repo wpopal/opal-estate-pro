@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Opal Estate Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-21 04:14+0000\n"
+"POT-Creation-Date: 2020-02-28 08:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -113,21 +113,22 @@ msgstr ""
 #: inc/admin/settings/property.php:65 inc/admin/settings/property.php:123
 #: inc/admin/settings/property.php:134 inc/admin/settings/property.php:171
 #: inc/admin/settings/property.php:248 inc/admin/settings/property.php:259
-#: inc/admin/settings/property.php:358 inc/admin/settings/property.php:370
-#: inc/admin/settings/property.php:381 inc/admin/settings/property.php:392
-#: inc/admin/settings/property.php:403 inc/admin/settings/property.php:414
-#: inc/admin/settings/property.php:425 inc/admin/settings/property.php:436
-#: inc/admin/settings/property.php:447 inc/admin/settings/property.php:458
-#: inc/admin/settings/property.php:469 inc/admin/settings/property.php:480
-#: inc/admin/settings/property.php:504 inc/admin/settings/property.php:515
-#: inc/admin/settings/property.php:526 inc/admin/settings/property.php:537
-#: inc/admin/settings/general.php:50 inc/admin/settings/general.php:60
-#: inc/admin/settings/pages.php:102 inc/admin/settings/pages.php:113
-#: inc/admin/settings/pages.php:124 inc/admin/settings/pages.php:135
-#: inc/admin/settings/pages.php:146 inc/admin/settings/pages.php:158
-#: inc/admin/settings/pages.php:168 inc/admin/settings/pages.php:179
-#: inc/admin/settings/pages.php:190 inc/admin/rating/class-rating.php:69
-#: inc/admin/rating/class-rating.php:79 inc/admin/rating/class-rating.php:89
+#: inc/admin/settings/property.php:358 inc/admin/settings/property.php:384
+#: inc/admin/settings/property.php:395 inc/admin/settings/property.php:407
+#: inc/admin/settings/property.php:419 inc/admin/settings/property.php:431
+#: inc/admin/settings/property.php:443 inc/admin/settings/property.php:455
+#: inc/admin/settings/property.php:467 inc/admin/settings/property.php:479
+#: inc/admin/settings/property.php:491 inc/admin/settings/property.php:503
+#: inc/admin/settings/property.php:515 inc/admin/settings/property.php:540
+#: inc/admin/settings/property.php:551 inc/admin/settings/property.php:563
+#: inc/admin/settings/property.php:575 inc/admin/settings/general.php:50
+#: inc/admin/settings/general.php:60 inc/admin/settings/pages.php:102
+#: inc/admin/settings/pages.php:113 inc/admin/settings/pages.php:124
+#: inc/admin/settings/pages.php:135 inc/admin/settings/pages.php:146
+#: inc/admin/settings/pages.php:158 inc/admin/settings/pages.php:168
+#: inc/admin/settings/pages.php:179 inc/admin/settings/pages.php:190
+#: inc/admin/rating/class-rating.php:69 inc/admin/rating/class-rating.php:79
+#: inc/admin/rating/class-rating.php:89
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:171
 #: inc/vendors/elementor/widgets/opalestate-agency-collection.php:171
 msgid "Enable"
@@ -153,21 +154,22 @@ msgstr ""
 #: inc/admin/settings/property.php:66 inc/admin/settings/property.php:124
 #: inc/admin/settings/property.php:135 inc/admin/settings/property.php:172
 #: inc/admin/settings/property.php:247 inc/admin/settings/property.php:258
-#: inc/admin/settings/property.php:359 inc/admin/settings/property.php:371
-#: inc/admin/settings/property.php:382 inc/admin/settings/property.php:393
-#: inc/admin/settings/property.php:404 inc/admin/settings/property.php:415
-#: inc/admin/settings/property.php:426 inc/admin/settings/property.php:437
-#: inc/admin/settings/property.php:448 inc/admin/settings/property.php:459
-#: inc/admin/settings/property.php:470 inc/admin/settings/property.php:481
-#: inc/admin/settings/property.php:505 inc/admin/settings/property.php:516
-#: inc/admin/settings/property.php:527 inc/admin/settings/property.php:538
-#: inc/admin/settings/general.php:51 inc/admin/settings/general.php:61
-#: inc/admin/settings/pages.php:103 inc/admin/settings/pages.php:114
-#: inc/admin/settings/pages.php:125 inc/admin/settings/pages.php:136
-#: inc/admin/settings/pages.php:147 inc/admin/settings/pages.php:159
-#: inc/admin/settings/pages.php:169 inc/admin/settings/pages.php:180
-#: inc/admin/settings/pages.php:191 inc/admin/rating/class-rating.php:70
-#: inc/admin/rating/class-rating.php:80 inc/admin/rating/class-rating.php:90
+#: inc/admin/settings/property.php:359 inc/admin/settings/property.php:385
+#: inc/admin/settings/property.php:396 inc/admin/settings/property.php:408
+#: inc/admin/settings/property.php:420 inc/admin/settings/property.php:432
+#: inc/admin/settings/property.php:444 inc/admin/settings/property.php:456
+#: inc/admin/settings/property.php:468 inc/admin/settings/property.php:480
+#: inc/admin/settings/property.php:492 inc/admin/settings/property.php:504
+#: inc/admin/settings/property.php:516 inc/admin/settings/property.php:541
+#: inc/admin/settings/property.php:552 inc/admin/settings/property.php:564
+#: inc/admin/settings/property.php:576 inc/admin/settings/general.php:51
+#: inc/admin/settings/general.php:61 inc/admin/settings/pages.php:103
+#: inc/admin/settings/pages.php:114 inc/admin/settings/pages.php:125
+#: inc/admin/settings/pages.php:136 inc/admin/settings/pages.php:147
+#: inc/admin/settings/pages.php:159 inc/admin/settings/pages.php:169
+#: inc/admin/settings/pages.php:180 inc/admin/settings/pages.php:191
+#: inc/admin/rating/class-rating.php:70 inc/admin/rating/class-rating.php:80
+#: inc/admin/rating/class-rating.php:90
 msgid "Disable"
 msgstr ""
 
@@ -464,7 +466,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: inc/class-opalestate-html.php:221 inc/mixes-functions.php:1217
+#: inc/class-opalestate-html.php:221 inc/mixes-functions.php:1246
 #: inc/template-functions.php:353 templates/user/my-properties.php:3
 #: templates/search-box/fields/status-bar.php:9
 #: inc/vendors/elementor/widgets/opalestate-property-collection.php:152
@@ -481,63 +483,63 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: inc/mixes-functions.php:190
+#: inc/mixes-functions.php:207
 msgid "Advanced V1"
 msgstr ""
 
-#: inc/mixes-functions.php:191
+#: inc/mixes-functions.php:208
 msgid "Advanced V2"
 msgstr ""
 
-#: inc/mixes-functions.php:192
+#: inc/mixes-functions.php:209
 msgid "Advanced V3"
 msgstr ""
 
-#: inc/mixes-functions.php:193
+#: inc/mixes-functions.php:210
 msgid "Advanced V4"
 msgstr ""
 
-#: inc/mixes-functions.php:194
+#: inc/mixes-functions.php:211
 msgid "Advanced V5"
 msgstr ""
 
-#: inc/mixes-functions.php:195
+#: inc/mixes-functions.php:212
 msgid "Advanced V6"
 msgstr ""
 
-#: inc/mixes-functions.php:196
+#: inc/mixes-functions.php:213
 msgid "Vertical Advanced"
 msgstr ""
 
-#: inc/mixes-functions.php:197
+#: inc/mixes-functions.php:214
 msgid "Vertical Advanced V2"
 msgstr ""
 
-#: inc/mixes-functions.php:198
+#: inc/mixes-functions.php:215
 msgid "Vertical Advanced V3"
 msgstr ""
 
-#: inc/mixes-functions.php:199
+#: inc/mixes-functions.php:216
 msgid "Simple City"
 msgstr ""
 
-#: inc/mixes-functions.php:200
+#: inc/mixes-functions.php:217
 msgid "Simple Keyword"
 msgstr ""
 
-#: inc/mixes-functions.php:201
+#: inc/mixes-functions.php:218
 msgid "Collapse City"
 msgstr ""
 
-#: inc/mixes-functions.php:202
+#: inc/mixes-functions.php:219
 msgid "Collapse Keyword"
 msgstr ""
 
-#: inc/mixes-functions.php:203
+#: inc/mixes-functions.php:220
 msgid "Collapse Advanced"
 msgstr ""
 
-#: inc/mixes-functions.php:214 inc/mixes-functions.php:230
+#: inc/mixes-functions.php:231 inc/mixes-functions.php:247
 #: inc/template-functions.php:256
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:126
 #: inc/vendors/elementor/widgets/opalestate-search-agency.php:117
@@ -546,15 +548,15 @@ msgstr ""
 msgid "Grid"
 msgstr ""
 
-#: inc/mixes-functions.php:215 inc/mixes-functions.php:231
+#: inc/mixes-functions.php:232 inc/mixes-functions.php:248
 msgid "Grid v2"
 msgstr ""
 
-#: inc/mixes-functions.php:216 inc/mixes-functions.php:232
+#: inc/mixes-functions.php:233 inc/mixes-functions.php:249
 msgid "Grid v3"
 msgstr ""
 
-#: inc/mixes-functions.php:217 inc/mixes-functions.php:244
+#: inc/mixes-functions.php:234 inc/mixes-functions.php:261
 #: inc/template-functions.php:260
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:127
 #: inc/vendors/elementor/widgets/opalestate-search-agency.php:118
@@ -563,709 +565,717 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: inc/mixes-functions.php:218 inc/mixes-functions.php:245
+#: inc/mixes-functions.php:235 inc/mixes-functions.php:262
 msgid "List v2"
 msgstr ""
 
-#: inc/mixes-functions.php:219 inc/mixes-functions.php:233
+#: inc/mixes-functions.php:236 inc/mixes-functions.php:250
 msgid "Mark hover"
 msgstr ""
 
-#: inc/mixes-functions.php:344
+#: inc/mixes-functions.php:361
 msgid "Orginal Size"
 msgstr ""
 
-#: inc/mixes-functions.php:435 inc/mixes-functions.php:439
+#: inc/mixes-functions.php:452 inc/mixes-functions.php:456
 msgid "Your Location"
 msgstr ""
 
-#: inc/mixes-functions.php:561
+#: inc/mixes-functions.php:578
 #, php-format
 msgid "Placeholder %s"
 msgstr ""
 
-#: inc/mixes-functions.php:603
+#: inc/mixes-functions.php:620
 msgid "United Arab Emirates dirham"
 msgstr ""
 
-#: inc/mixes-functions.php:604
+#: inc/mixes-functions.php:621
 msgid "Afghan afghani"
 msgstr ""
 
-#: inc/mixes-functions.php:605
+#: inc/mixes-functions.php:622
 msgid "Albanian lek"
 msgstr ""
 
-#: inc/mixes-functions.php:606
+#: inc/mixes-functions.php:623
 msgid "Armenian dram"
 msgstr ""
 
-#: inc/mixes-functions.php:607
+#: inc/mixes-functions.php:624
 msgid "Netherlands Antillean guilder"
 msgstr ""
 
-#: inc/mixes-functions.php:608
+#: inc/mixes-functions.php:625
 msgid "Angolan kwanza"
 msgstr ""
 
-#: inc/mixes-functions.php:609
+#: inc/mixes-functions.php:626
 msgid "Argentine peso"
 msgstr ""
 
-#: inc/mixes-functions.php:610
+#: inc/mixes-functions.php:627
 msgid "Australian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:611
+#: inc/mixes-functions.php:628
 msgid "Aruban florin"
 msgstr ""
 
-#: inc/mixes-functions.php:612
+#: inc/mixes-functions.php:629
 msgid "Azerbaijani manat"
 msgstr ""
 
-#: inc/mixes-functions.php:613
+#: inc/mixes-functions.php:630
 msgid "Bosnia and Herzegovina convertible mark"
 msgstr ""
 
-#: inc/mixes-functions.php:614
+#: inc/mixes-functions.php:631
 msgid "Barbadian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:615
+#: inc/mixes-functions.php:632
 msgid "Bangladeshi taka"
 msgstr ""
 
-#: inc/mixes-functions.php:616
+#: inc/mixes-functions.php:633
 msgid "Bulgarian lev"
 msgstr ""
 
-#: inc/mixes-functions.php:617
+#: inc/mixes-functions.php:634
 msgid "Bahraini dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:618
+#: inc/mixes-functions.php:635
 msgid "Burundian franc"
 msgstr ""
 
-#: inc/mixes-functions.php:619
+#: inc/mixes-functions.php:636
 msgid "Bermudian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:620
+#: inc/mixes-functions.php:637
 msgid "Brunei dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:621
+#: inc/mixes-functions.php:638
 msgid "Bolivian boliviano"
 msgstr ""
 
-#: inc/mixes-functions.php:622
+#: inc/mixes-functions.php:639
 msgid "Brazilian real"
 msgstr ""
 
-#: inc/mixes-functions.php:623
+#: inc/mixes-functions.php:640
 msgid "Bahamian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:624
+#: inc/mixes-functions.php:641
 msgid "Bitcoin"
 msgstr ""
 
-#: inc/mixes-functions.php:625
+#: inc/mixes-functions.php:642
 msgid "Bhutanese ngultrum"
 msgstr ""
 
-#: inc/mixes-functions.php:626
+#: inc/mixes-functions.php:643
 msgid "Botswana pula"
 msgstr ""
 
-#: inc/mixes-functions.php:627
+#: inc/mixes-functions.php:644
 msgid "Belarusian ruble"
 msgstr ""
 
-#: inc/mixes-functions.php:628
+#: inc/mixes-functions.php:645
 msgid "Belize dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:629
+#: inc/mixes-functions.php:646
 msgid "Canadian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:630
+#: inc/mixes-functions.php:647
 msgid "Congolese franc"
 msgstr ""
 
-#: inc/mixes-functions.php:631
+#: inc/mixes-functions.php:648
 msgid "Swiss franc"
 msgstr ""
 
-#: inc/mixes-functions.php:632
+#: inc/mixes-functions.php:649
 msgid "Chilean peso"
 msgstr ""
 
-#: inc/mixes-functions.php:633
+#: inc/mixes-functions.php:650
 msgid "Chinese yuan"
 msgstr ""
 
-#: inc/mixes-functions.php:634
+#: inc/mixes-functions.php:651
 msgid "Colombian peso"
 msgstr ""
 
-#: inc/mixes-functions.php:635
+#: inc/mixes-functions.php:652
 msgid "Costa Rican col&oacute;n"
 msgstr ""
 
-#: inc/mixes-functions.php:636
+#: inc/mixes-functions.php:653
 msgid "Cuban convertible peso"
 msgstr ""
 
-#: inc/mixes-functions.php:637
+#: inc/mixes-functions.php:654
 msgid "Cuban peso"
 msgstr ""
 
-#: inc/mixes-functions.php:638
+#: inc/mixes-functions.php:655
 msgid "Cape Verdean escudo"
 msgstr ""
 
-#: inc/mixes-functions.php:639
+#: inc/mixes-functions.php:656
 msgid "Czech koruna"
 msgstr ""
 
-#: inc/mixes-functions.php:640
+#: inc/mixes-functions.php:657
 msgid "Djiboutian franc"
 msgstr ""
 
-#: inc/mixes-functions.php:641
+#: inc/mixes-functions.php:658
 msgid "Danish krone"
 msgstr ""
 
-#: inc/mixes-functions.php:642
+#: inc/mixes-functions.php:659
 msgid "Dominican peso"
 msgstr ""
 
-#: inc/mixes-functions.php:643
+#: inc/mixes-functions.php:660
 msgid "Algerian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:644
+#: inc/mixes-functions.php:661
 msgid "Egyptian pound"
 msgstr ""
 
-#: inc/mixes-functions.php:645
+#: inc/mixes-functions.php:662
 msgid "Eritrean nakfa"
 msgstr ""
 
-#: inc/mixes-functions.php:646
+#: inc/mixes-functions.php:663
 msgid "Ethiopian birr"
 msgstr ""
 
-#: inc/mixes-functions.php:647
+#: inc/mixes-functions.php:664
 msgid "Euro"
 msgstr ""
 
-#: inc/mixes-functions.php:648
+#: inc/mixes-functions.php:665
 msgid "Fijian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:649
+#: inc/mixes-functions.php:666
 msgid "Falkland Islands pound"
 msgstr ""
 
-#: inc/mixes-functions.php:650
+#: inc/mixes-functions.php:667
 msgid "Pound sterling"
 msgstr ""
 
-#: inc/mixes-functions.php:651
+#: inc/mixes-functions.php:668
 msgid "Georgian lari"
 msgstr ""
 
-#: inc/mixes-functions.php:652
+#: inc/mixes-functions.php:669
 msgid "Guernsey pound"
 msgstr ""
 
-#: inc/mixes-functions.php:653
+#: inc/mixes-functions.php:670
 msgid "Ghana cedi"
 msgstr ""
 
-#: inc/mixes-functions.php:654
+#: inc/mixes-functions.php:671
 msgid "Gibraltar pound"
 msgstr ""
 
-#: inc/mixes-functions.php:655
+#: inc/mixes-functions.php:672
 msgid "Gambian dalasi"
 msgstr ""
 
-#: inc/mixes-functions.php:656
+#: inc/mixes-functions.php:673
 msgid "Guinean franc"
 msgstr ""
 
-#: inc/mixes-functions.php:657
+#: inc/mixes-functions.php:674
 msgid "Guatemalan quetzal"
 msgstr ""
 
-#: inc/mixes-functions.php:658
+#: inc/mixes-functions.php:675
 msgid "Guyanese dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:659
+#: inc/mixes-functions.php:676
 msgid "Hong Kong dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:660
+#: inc/mixes-functions.php:677
 msgid "Honduran lempira"
 msgstr ""
 
-#: inc/mixes-functions.php:661
+#: inc/mixes-functions.php:678
 msgid "Croatian kuna"
 msgstr ""
 
-#: inc/mixes-functions.php:662
+#: inc/mixes-functions.php:679
 msgid "Haitian gourde"
 msgstr ""
 
-#: inc/mixes-functions.php:663
+#: inc/mixes-functions.php:680
 msgid "Hungarian forint"
 msgstr ""
 
-#: inc/mixes-functions.php:664
+#: inc/mixes-functions.php:681
 msgid "Indonesian rupiah"
 msgstr ""
 
-#: inc/mixes-functions.php:665
+#: inc/mixes-functions.php:682
 msgid "Israeli new shekel"
 msgstr ""
 
-#: inc/mixes-functions.php:666
+#: inc/mixes-functions.php:683
 msgid "Manx pound"
 msgstr ""
 
-#: inc/mixes-functions.php:667
+#: inc/mixes-functions.php:684
 msgid "Indian rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:668
+#: inc/mixes-functions.php:685
 msgid "Iraqi dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:669
+#: inc/mixes-functions.php:686
 msgid "Iranian rial"
 msgstr ""
 
-#: inc/mixes-functions.php:670
+#: inc/mixes-functions.php:687
 msgid "Icelandic kr&oacute;na"
 msgstr ""
 
-#: inc/mixes-functions.php:671
+#: inc/mixes-functions.php:688
 msgid "Jersey pound"
 msgstr ""
 
-#: inc/mixes-functions.php:672
+#: inc/mixes-functions.php:689
 msgid "Jamaican dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:673
+#: inc/mixes-functions.php:690
 msgid "Jordanian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:674
+#: inc/mixes-functions.php:691
 msgid "Japanese yen"
 msgstr ""
 
-#: inc/mixes-functions.php:675
+#: inc/mixes-functions.php:692
 msgid "Kenyan shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:676
+#: inc/mixes-functions.php:693
 msgid "Kyrgyzstani som"
 msgstr ""
 
-#: inc/mixes-functions.php:677
+#: inc/mixes-functions.php:694
 msgid "Cambodian riel"
 msgstr ""
 
-#: inc/mixes-functions.php:678
+#: inc/mixes-functions.php:695
 msgid "Comorian franc"
 msgstr ""
 
-#: inc/mixes-functions.php:679
+#: inc/mixes-functions.php:696
 msgid "North Korean won"
 msgstr ""
 
-#: inc/mixes-functions.php:680
+#: inc/mixes-functions.php:697
 msgid "South Korean won"
 msgstr ""
 
-#: inc/mixes-functions.php:681
+#: inc/mixes-functions.php:698
 msgid "Kuwaiti dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:682
+#: inc/mixes-functions.php:699
 msgid "Cayman Islands dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:683
+#: inc/mixes-functions.php:700
 msgid "Kazakhstani tenge"
 msgstr ""
 
-#: inc/mixes-functions.php:684
+#: inc/mixes-functions.php:701
 msgid "Lao kip"
 msgstr ""
 
-#: inc/mixes-functions.php:685
+#: inc/mixes-functions.php:702
 msgid "Lebanese pound"
 msgstr ""
 
-#: inc/mixes-functions.php:686
+#: inc/mixes-functions.php:703
 msgid "Sri Lankan rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:687
+#: inc/mixes-functions.php:704
 msgid "Liberian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:688
+#: inc/mixes-functions.php:705
 msgid "Lesotho loti"
 msgstr ""
 
-#: inc/mixes-functions.php:689
+#: inc/mixes-functions.php:706
 msgid "Libyan dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:690
+#: inc/mixes-functions.php:707
 msgid "Moroccan dirham"
 msgstr ""
 
-#: inc/mixes-functions.php:691
+#: inc/mixes-functions.php:708
 msgid "Moldovan leu"
 msgstr ""
 
-#: inc/mixes-functions.php:692
+#: inc/mixes-functions.php:709
 msgid "Malagasy ariary"
 msgstr ""
 
-#: inc/mixes-functions.php:693
+#: inc/mixes-functions.php:710
 msgid "Macedonian denar"
 msgstr ""
 
-#: inc/mixes-functions.php:694
+#: inc/mixes-functions.php:711
 msgid "Burmese kyat"
 msgstr ""
 
-#: inc/mixes-functions.php:695
+#: inc/mixes-functions.php:712
 msgid "Mongolian t&ouml;gr&ouml;g"
 msgstr ""
 
-#: inc/mixes-functions.php:696
+#: inc/mixes-functions.php:713
 msgid "Macanese pataca"
 msgstr ""
 
-#: inc/mixes-functions.php:697
+#: inc/mixes-functions.php:714
 msgid "Mauritanian ouguiya"
 msgstr ""
 
-#: inc/mixes-functions.php:698
+#: inc/mixes-functions.php:715
 msgid "Mauritian rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:699
+#: inc/mixes-functions.php:716
 msgid "Maldivian rufiyaa"
 msgstr ""
 
-#: inc/mixes-functions.php:700
+#: inc/mixes-functions.php:717
 msgid "Malawian kwacha"
 msgstr ""
 
-#: inc/mixes-functions.php:701
+#: inc/mixes-functions.php:718
 msgid "Mexican peso"
 msgstr ""
 
-#: inc/mixes-functions.php:702
+#: inc/mixes-functions.php:719
 msgid "Malaysian ringgit"
 msgstr ""
 
-#: inc/mixes-functions.php:703
+#: inc/mixes-functions.php:720
 msgid "Mozambican metical"
 msgstr ""
 
-#: inc/mixes-functions.php:704
+#: inc/mixes-functions.php:721
 msgid "Namibian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:705
+#: inc/mixes-functions.php:722
 msgid "Nigerian naira"
 msgstr ""
 
-#: inc/mixes-functions.php:706
+#: inc/mixes-functions.php:723
 msgid "Nicaraguan c&oacute;rdoba"
 msgstr ""
 
-#: inc/mixes-functions.php:707
+#: inc/mixes-functions.php:724
 msgid "Norwegian krone"
 msgstr ""
 
-#: inc/mixes-functions.php:708
+#: inc/mixes-functions.php:725
 msgid "Nepalese rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:709
+#: inc/mixes-functions.php:726
 msgid "New Zealand dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:710
+#: inc/mixes-functions.php:727
 msgid "Omani rial"
 msgstr ""
 
-#: inc/mixes-functions.php:711
+#: inc/mixes-functions.php:728
 msgid "Panamanian balboa"
 msgstr ""
 
-#: inc/mixes-functions.php:712
+#: inc/mixes-functions.php:729
 msgid "Peruvian nuevo sol"
 msgstr ""
 
-#: inc/mixes-functions.php:713
+#: inc/mixes-functions.php:730
 msgid "Papua New Guinean kina"
 msgstr ""
 
-#: inc/mixes-functions.php:714
+#: inc/mixes-functions.php:731
 msgid "Philippine peso"
 msgstr ""
 
-#: inc/mixes-functions.php:715
+#: inc/mixes-functions.php:732
 msgid "Pakistani rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:716
+#: inc/mixes-functions.php:733
 msgid "Polish z&#x142;oty"
 msgstr ""
 
-#: inc/mixes-functions.php:717
+#: inc/mixes-functions.php:734
 msgid "Transnistrian ruble"
 msgstr ""
 
-#: inc/mixes-functions.php:718
+#: inc/mixes-functions.php:735
 msgid "Paraguayan guaran&iacute;"
 msgstr ""
 
-#: inc/mixes-functions.php:719
+#: inc/mixes-functions.php:736
 msgid "Qatari riyal"
 msgstr ""
 
-#: inc/mixes-functions.php:720
+#: inc/mixes-functions.php:737
 msgid "Romanian leu"
 msgstr ""
 
-#: inc/mixes-functions.php:721
+#: inc/mixes-functions.php:738
 msgid "Serbian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:722
+#: inc/mixes-functions.php:739
 msgid "Russian ruble"
 msgstr ""
 
-#: inc/mixes-functions.php:723
+#: inc/mixes-functions.php:740
 msgid "Rwandan franc"
 msgstr ""
 
-#: inc/mixes-functions.php:724
+#: inc/mixes-functions.php:741
 msgid "Saudi riyal"
 msgstr ""
 
-#: inc/mixes-functions.php:725
+#: inc/mixes-functions.php:742
 msgid "Solomon Islands dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:726
+#: inc/mixes-functions.php:743
 msgid "Seychellois rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:727
+#: inc/mixes-functions.php:744
 msgid "Sudanese pound"
 msgstr ""
 
-#: inc/mixes-functions.php:728
+#: inc/mixes-functions.php:745
 msgid "Swedish krona"
 msgstr ""
 
-#: inc/mixes-functions.php:729
+#: inc/mixes-functions.php:746
 msgid "Singapore dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:730
+#: inc/mixes-functions.php:747
 msgid "Saint Helena pound"
 msgstr ""
 
-#: inc/mixes-functions.php:731
+#: inc/mixes-functions.php:748
 msgid "Sierra Leonean leone"
 msgstr ""
 
-#: inc/mixes-functions.php:732
+#: inc/mixes-functions.php:749
 msgid "Somali shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:733
+#: inc/mixes-functions.php:750
 msgid "Surinamese dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:734
+#: inc/mixes-functions.php:751
 msgid "South Sudanese pound"
 msgstr ""
 
-#: inc/mixes-functions.php:735
+#: inc/mixes-functions.php:752
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe dobra"
 msgstr ""
 
-#: inc/mixes-functions.php:736
+#: inc/mixes-functions.php:753
 msgid "Syrian pound"
 msgstr ""
 
-#: inc/mixes-functions.php:737
+#: inc/mixes-functions.php:754
 msgid "Swazi lilangeni"
 msgstr ""
 
-#: inc/mixes-functions.php:738
+#: inc/mixes-functions.php:755
 msgid "Thai baht"
 msgstr ""
 
-#: inc/mixes-functions.php:739
+#: inc/mixes-functions.php:756
 msgid "Tajikistani somoni"
 msgstr ""
 
-#: inc/mixes-functions.php:740
+#: inc/mixes-functions.php:757
 msgid "Turkmenistan manat"
 msgstr ""
 
-#: inc/mixes-functions.php:741
+#: inc/mixes-functions.php:758
 msgid "Tunisian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:742
+#: inc/mixes-functions.php:759
 msgid "Tongan pa&#x2bb;anga"
 msgstr ""
 
-#: inc/mixes-functions.php:743
+#: inc/mixes-functions.php:760
 msgid "Turkish lira"
 msgstr ""
 
-#: inc/mixes-functions.php:744
+#: inc/mixes-functions.php:761
 msgid "Trinidad and Tobago dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:745
+#: inc/mixes-functions.php:762
 msgid "New Taiwan dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:746
+#: inc/mixes-functions.php:763
 msgid "Tanzanian shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:747
+#: inc/mixes-functions.php:764
 msgid "Ukrainian hryvnia"
 msgstr ""
 
-#: inc/mixes-functions.php:748
+#: inc/mixes-functions.php:765
 msgid "Ugandan shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:749
+#: inc/mixes-functions.php:766
 msgid "United States dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:750
+#: inc/mixes-functions.php:767
 msgid "Uruguayan peso"
 msgstr ""
 
-#: inc/mixes-functions.php:751
+#: inc/mixes-functions.php:768
 msgid "Uzbekistani som"
 msgstr ""
 
-#: inc/mixes-functions.php:752
+#: inc/mixes-functions.php:769
 msgid "Venezuelan bol&iacute;var"
 msgstr ""
 
-#: inc/mixes-functions.php:753
+#: inc/mixes-functions.php:770
 msgid "Vietnamese &#x111;&#x1ed3;ng"
 msgstr ""
 
-#: inc/mixes-functions.php:754
+#: inc/mixes-functions.php:771
 msgid "Vanuatu vatu"
 msgstr ""
 
-#: inc/mixes-functions.php:755
+#: inc/mixes-functions.php:772
 msgid "Samoan t&#x101;l&#x101;"
 msgstr ""
 
-#: inc/mixes-functions.php:756
+#: inc/mixes-functions.php:773
 msgid "Central African CFA franc"
 msgstr ""
 
-#: inc/mixes-functions.php:757
+#: inc/mixes-functions.php:774
 msgid "East Caribbean dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:758
+#: inc/mixes-functions.php:775
 msgid "West African CFA franc"
 msgstr ""
 
-#: inc/mixes-functions.php:759
+#: inc/mixes-functions.php:776
 msgid "CFP franc"
 msgstr ""
 
-#: inc/mixes-functions.php:760
+#: inc/mixes-functions.php:777
 msgid "Yemeni rial"
 msgstr ""
 
-#: inc/mixes-functions.php:761
+#: inc/mixes-functions.php:778
 msgid "South African rand"
 msgstr ""
 
-#: inc/mixes-functions.php:762
+#: inc/mixes-functions.php:779
 msgid "Zambian kwacha"
 msgstr ""
 
-#: inc/mixes-functions.php:1071
+#: inc/mixes-functions.php:1088
 #, php-format
 msgctxt "areasize info"
 msgid "%1$s <span>%2$s</span>"
 msgstr ""
 
-#: inc/mixes-functions.php:1203
+#: inc/mixes-functions.php:1220
 msgid "sq ft"
 msgstr ""
 
-#: inc/mixes-functions.php:1204
+#: inc/mixes-functions.php:1221
 msgid "sq m"
 msgstr ""
 
-#: inc/mixes-functions.php:1205
+#: inc/mixes-functions.php:1222
 msgid "mq"
 msgstr ""
 
-#: inc/mixes-functions.php:1206
+#: inc/mixes-functions.php:1223
 msgid "m2"
 msgstr ""
 
-#: inc/mixes-functions.php:1218 inc/mixes-functions.php:1219
+#: inc/mixes-functions.php:1234
+msgid "12-hour"
+msgstr ""
+
+#: inc/mixes-functions.php:1235
+msgid "24-hour"
+msgstr ""
+
+#: inc/mixes-functions.php:1247 inc/mixes-functions.php:1248
 #: templates/user/my-properties.php:4
 msgid "Published"
 msgstr ""
 
-#: inc/mixes-functions.php:1220 templates/user/my-properties.php:5
+#: inc/mixes-functions.php:1249 templates/user/my-properties.php:5
 msgid "Pending"
 msgstr ""
 
-#: inc/mixes-functions.php:1221 templates/user/my-properties.php:6
+#: inc/mixes-functions.php:1250 templates/user/my-properties.php:6
 #: inc/vendors/opalmembership/membership.php:666
 #: inc/vendors/opalmembership/membership.php:675
 msgid "Expired"
 msgstr ""
 
-#: inc/mixes-functions.php:1347
+#: inc/mixes-functions.php:1376
 msgid "Single Property Sidebar"
 msgstr ""
 
-#: inc/mixes-functions.php:1349
+#: inc/mixes-functions.php:1378
 msgid "Add widgets here to appear in your single property sidebar area."
 msgstr ""
 
@@ -5790,146 +5800,162 @@ msgid "Enable Request Viewing feature in the single property page."
 msgstr ""
 
 #: inc/admin/settings/property.php:365
-msgid "Show Amenities tab"
+msgid "Request Viewing Time Range (minute)"
 msgstr ""
 
 #: inc/admin/settings/property.php:366
+msgid "Time range from 1-60 minutes."
+msgstr ""
+
+#: inc/admin/settings/property.php:379
+msgid "Show Amenities tab"
+msgstr ""
+
+#: inc/admin/settings/property.php:380
 msgid "Show Amenities tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:376
+#: inc/admin/settings/property.php:390
+msgid "Hide Unset amenities"
+msgstr ""
+
+#: inc/admin/settings/property.php:391
+msgid "Hide unset amenities. Default: Show unset amenities with disable icons."
+msgstr ""
+
+#: inc/admin/settings/property.php:402
 msgid "Show Facilities tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:377
+#: inc/admin/settings/property.php:403
 msgid "Show Facilities tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:387
+#: inc/admin/settings/property.php:414
 msgid "Show Attachments tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:388
+#: inc/admin/settings/property.php:415
 msgid "Show Attachments tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:398
+#: inc/admin/settings/property.php:426
 msgid "Show Video tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:399
+#: inc/admin/settings/property.php:427
 msgid "Show Video tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:409
+#: inc/admin/settings/property.php:438
 msgid "Show Virtual Tour tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:410
+#: inc/admin/settings/property.php:439
 msgid "Show Virtual Tour tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:420
+#: inc/admin/settings/property.php:450
 msgid "Show Map tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:421
+#: inc/admin/settings/property.php:451
 msgid "Show Map tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:431
+#: inc/admin/settings/property.php:462
 msgid "Show Nearby tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:432
+#: inc/admin/settings/property.php:463
 msgid "Show Nearby tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:442
+#: inc/admin/settings/property.php:474
 msgid "Show Walk Scores tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:443
+#: inc/admin/settings/property.php:475
 msgid "Show Walk Scores tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:453
+#: inc/admin/settings/property.php:486
 msgid "Show Apartments tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:454
+#: inc/admin/settings/property.php:487
 msgid "Show Apartments tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:464
+#: inc/admin/settings/property.php:498
 msgid "Show Floor Plans tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:465
+#: inc/admin/settings/property.php:499
 msgid "Show Floor Plans tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:475
+#: inc/admin/settings/property.php:510
 msgid "Show Views Statistics tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:476
+#: inc/admin/settings/property.php:511
 msgid "Show Views Statistics tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:486
+#: inc/admin/settings/property.php:521
 msgid "Views Statistics time limit (days)"
 msgstr ""
 
-#: inc/admin/settings/property.php:487
+#: inc/admin/settings/property.php:522
 msgid "The number of days will be saved to the database."
 msgstr ""
 
-#: inc/admin/settings/property.php:499
+#: inc/admin/settings/property.php:535
 msgid "Show Author box"
 msgstr ""
 
-#: inc/admin/settings/property.php:500
+#: inc/admin/settings/property.php:536
 msgid "Show Author box in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:510
+#: inc/admin/settings/property.php:546
 msgid "Login to show Author box"
 msgstr ""
 
-#: inc/admin/settings/property.php:511
+#: inc/admin/settings/property.php:547
 msgid "Require users login to show Author box"
 msgstr ""
 
-#: inc/admin/settings/property.php:521
+#: inc/admin/settings/property.php:558
 msgid "Show Enquire form"
 msgstr ""
 
-#: inc/admin/settings/property.php:522
+#: inc/admin/settings/property.php:559
 msgid "Show Enquire form in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:532
+#: inc/admin/settings/property.php:570
 msgid "Show Mortgage Calculator"
 msgstr ""
 
-#: inc/admin/settings/property.php:533
+#: inc/admin/settings/property.php:571
 msgid "Show Mortgage Calculator in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:543
+#: inc/admin/settings/property.php:582
 msgid "Related properties layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:544
+#: inc/admin/settings/property.php:583
 msgid "Select a layout for related properties."
 msgstr ""
 
-#: inc/admin/settings/property.php:551
+#: inc/admin/settings/property.php:591
 msgid "Nearby properties layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:552
+#: inc/admin/settings/property.php:592
 msgid "Select a layout for nearby properties."
 msgstr ""
 
@@ -6083,6 +6109,14 @@ msgstr ""
 
 #: inc/admin/settings/general.php:223
 msgid "Select a measurement unit."
+msgstr ""
+
+#: inc/admin/settings/general.php:230
+msgid "Time Format"
+msgstr ""
+
+#: inc/admin/settings/general.php:231
+msgid "Select a time format."
 msgstr ""
 
 #: inc/admin/settings/3rd_party.php:27 inc/admin/settings/3rd_party.php:112

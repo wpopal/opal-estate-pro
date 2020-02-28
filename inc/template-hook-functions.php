@@ -343,3 +343,12 @@ function opalestate_single_property_sidebar_widgets() {
 }
 
 add_action( 'opalestate_single_property_sidebar', 'opalestate_single_property_sidebar_widgets', 99 );
+
+function opalestate_hide_unset_amenities( $show ) {
+    if ( 'off' === opalestate_get_option( 'hide_unset_amenities', 'off' ) ) {
+    	return false;
+    }
+
+    return true;
+}
+add_filter( 'opalestate_hide_unset_amenity', 'opalestate_hide_unset_amenities' );

@@ -226,6 +226,14 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'options' => opalestate_get_measurement_units(),
 					'default' => 'sqft',
 				],
+				[
+					'name'    => esc_html__( 'Time Format', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Select a time format.', 'opalestate-pro' ),
+					'id'      => 'time_format',
+					'type'    => 'select',
+					'options' => opalestate_get_time_formats(),
+					'default' => '12_hour',
+				],
 			]
 		);
 	}

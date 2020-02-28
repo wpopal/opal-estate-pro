@@ -133,8 +133,14 @@ function opalestate_upload_base64_image( $file, $parent_id = 0 ) {
 	return $attach_id;
 }
 
+function opalestate_get_request_viewing_time_list() {
+	$range_time = opalestate_get_option( 'request_viewing_time_range', 15 );
+
+	return apply_filters( 'opalestate_request_viewing_time_list', opalestate_get_time_lapses( $range_time ) );
+}
+
 /**
- *
+ * Gets time lapses.
  */
 function opalestate_get_time_lapses( $lapse = 15 ) {
 
@@ -147,9 +153,20 @@ function opalestate_get_time_lapses( $lapse = 15 ) {
 	$end_str   = strtotime( $end );
 	$now_str   = $start_str;
 
+	$time_format_value = 'h:i a';
+	$time_format_show  = 'h:i A';
+
+	if ( '24_hour' === opalestate_get_option( 'time_format' ) ) {
+		$time_format_value = 'H:i';
+		$time_format_show  = 'H:i';
+	}
+
+	$time_format_value = apply_filters( 'opalestate_time_lapse_value', $time_format_value );
+	$time_format_show  = apply_filters( 'opalestate_time_lapse_show', $time_format_show );
+
 	while ( $now_str <= $end_str ) {
-		$output[ date( 'h:i a', $now_str ) ] = date( 'h:i A', $now_str );
-		$now_str                             = strtotime( $interval, $now_str );
+		$output[ date( $time_format_value, $now_str ) ] = date( $time_format_show, $now_str );
+		$now_str                                        = strtotime( $interval, $now_str );
 	}
 
 	return $output;
@@ -1199,11 +1216,23 @@ add_action( 'opalestate_after_search_properties_form', 'opalestate_add_hidden_mu
  * @return array
  */
 function opalestate_get_measurement_units() {
-	return apply_filters( 'opalestate_measurement_unit', [
+	return apply_filters( 'opalestate_measurement_units', [
 		'sqft' => esc_html__( 'sq ft', 'opalestate-pro' ),
 		'sqm'  => esc_html__( 'sq m', 'opalestate-pro' ),
 		'mq'   => esc_html__( 'mq', 'opalestate-pro' ),
 		'm2'   => esc_html__( 'm2', 'opalestate-pro' ),
+	] );
+}
+
+/**
+ * Gets time formats.
+ *
+ * @return array
+ */
+function opalestate_get_time_formats() {
+	return apply_filters( 'opalestate_time_formats', [
+		'12_hour' => esc_html__( '12-hour', 'opalestate-pro' ),
+		'24_hour' => esc_html__( '24-hour', 'opalestate-pro' ),
 	] );
 }
 

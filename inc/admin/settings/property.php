@@ -288,15 +288,15 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				];
 
 				$fields[] = [
-					'name'       => esc_html__( 'Field type', 'opalestate-pro' ),
-					'options'    => [
+					'name'    => esc_html__( 'Field type', 'opalestate-pro' ),
+					'options' => [
 						'select' => esc_html__( 'Select', 'opalestate-pro' ),
 						'range'  => esc_html__( 'Range', 'opalestate-pro' ),
 						'text'   => esc_html__( 'Text', 'opalestate-pro' ),
 					],
-					'id'         => $meta['id'] . '_search_type',
-					'type'       => 'radio_inline',
-					'default'    => 'select',
+					'id'      => $meta['id'] . '_search_type',
+					'type'    => 'radio_inline',
+					'default' => 'select',
 				];
 
 				$fields[] = [
@@ -362,6 +362,20 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
+			'name'       => esc_html__( 'Request Viewing Time Range (minute)', 'opalestate-pro' ),
+			'desc'       => esc_html__( 'Time range from 1-60 minutes.', 'opalestate-pro' ),
+			'id'         => 'request_viewing_time_range',
+			'type'       => 'text_small',
+			'attributes' => [
+				'type' => 'number',
+				'min'  => 1,
+				'max'  => 60,
+			],
+			'default'    => 15,
+			'after_row'  => '<hr>',
+		];
+
+		$fields[] = [
 			'name'    => esc_html__( 'Show Amenities tab', 'opalestate-pro' ),
 			'desc'    => esc_html__( 'Show Amenities tab in the single property page.', 'opalestate-pro' ),
 			'id'      => 'enable_single_amenities',
@@ -373,102 +387,123 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Facilities tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Facilities tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_facilities',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Hide Unset amenities', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Hide unset amenities. Default: Show unset amenities with disable icons.', 'opalestate-pro' ),
+			'id'        => 'hide_unset_amenities',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Attachments tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Attachments tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_attachments',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Facilities tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Facilities tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_facilities',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Video tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Video tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_video',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Attachments tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Attachments tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_attachments',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Virtual Tour tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Virtual Tour tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_virtual_tour',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Video tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Video tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_video',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Map tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Map tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_map',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Virtual Tour tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Virtual Tour tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_virtual_tour',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Nearby tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Nearby tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_nearby',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Map tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Map tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_map',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Walk Scores tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Walk Scores tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_walkscores',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Nearby tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Nearby tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_nearby',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Apartments tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Apartments tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_apartments',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Walk Scores tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Walk Scores tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_walkscores',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Floor Plans tab', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Floor Plans tab in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_floor_plans',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Apartments tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Apartments tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_apartments',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
+		];
+
+		$fields[] = [
+			'name'      => esc_html__( 'Show Floor Plans tab', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Floor Plans tab in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_floor_plans',
+			'type'      => 'switch',
+			'options'   => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
@@ -493,6 +528,7 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				'max'  => 365,
 			],
 			'default'    => 8,
+			'after_row'  => '<hr>',
 		];
 
 		$fields[] = [
@@ -507,52 +543,57 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Login to show Author box', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Require users login to show Author box', 'opalestate-pro' ),
-			'id'      => 'enable_single_login_to_show_author_box',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Login to show Author box', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Require users login to show Author box', 'opalestate-pro' ),
+			'id'        => 'enable_single_login_to_show_author_box',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Enquire form', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Enquire form in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_enquire_form',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Enquire form', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Enquire form in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_enquire_form',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Show Mortgage Calculator', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Show Mortgage Calculator in the single property page.', 'opalestate-pro' ),
-			'id'      => 'enable_single_mortgage',
-			'type'    => 'switch',
-			'options' => [
+			'name'      => esc_html__( 'Show Mortgage Calculator', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Show Mortgage Calculator in the single property page.', 'opalestate-pro' ),
+			'id'        => 'enable_single_mortgage',
+			'type'      => 'switch',
+			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 			],
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Related properties layout', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Select a layout for related properties.', 'opalestate-pro' ),
-			'id'      => 'single_related_properties_layout',
-			'type'    => 'select',
-			'options' => opalestate_get_loop_property_layouts(),
+			'name'      => esc_html__( 'Related properties layout', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Select a layout for related properties.', 'opalestate-pro' ),
+			'id'        => 'single_related_properties_layout',
+			'type'      => 'select',
+			'options'   => opalestate_get_loop_property_layouts(),
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Nearby properties layout', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Select a layout for nearby properties.', 'opalestate-pro' ),
-			'id'      => 'single_nearby_properties_layout',
-			'type'    => 'select',
-			'options' => opalestate_get_loop_property_layouts(),
+			'name'      => esc_html__( 'Nearby properties layout', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Select a layout for nearby properties.', 'opalestate-pro' ),
+			'id'        => 'single_nearby_properties_layout',
+			'type'      => 'select',
+			'options'   => opalestate_get_loop_property_layouts(),
+			'after_row' => '<hr>',
 		];
 
 		return $fields;
