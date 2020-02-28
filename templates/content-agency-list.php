@@ -9,7 +9,7 @@ $address   = get_post_meta( get_the_ID(), OPALESTATE_AGENCY_PREFIX . 'address', 
         <header class="team-header agency-header">
 			<?php opalestate_get_loop_agent_thumbnail(); ?>
 
-			<?php if ( $agency->is_featured() ): ?>
+			<?php if ( 'on' === $agency->is_featured() ): ?>
                 <div class="agency-label">
 					<span class="label label-featured" data-toggle="tooltip" data-placement="top" title="<?php esc_attr_e( 'Featured Agency', 'opalestate-pro' ); ?>">
 						<?php esc_html_e( 'Featured', 'opalestate-pro' ); ?>
@@ -24,7 +24,7 @@ $address   = get_post_meta( get_the_ID(), OPALESTATE_AGENCY_PREFIX . 'address', 
                     <h4 class="agency-box-title text-uppercase">
                         <a href="<?php the_permalink(); ?>"><?php the_title() ?></a>
                     </h4><!-- /.agency-box-title -->
-					<?php if ( $agency->get_trusted() ): ?>
+					<?php if ( 'on' === $agency->get_trusted() ): ?>
                         <span class="trusted-label hint--top" aria-label="<?php esc_attr_e( 'Trusted Member', 'opalestate-pro' ); ?>"
                               title="<?php esc_attr_e( 'Trusted Member', 'opalestate-pro' ); ?>">
 							<i class="fa fa-star"></i>

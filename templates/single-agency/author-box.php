@@ -17,7 +17,7 @@ $address = $agency->get_meta( 'address' ); ?>
 							<?php endif; ?>
                             </a>
                         </div>
-						<?php if ( $agency->is_featured() ): ?>
+						<?php if ( 'on' === $agency->is_featured() ): ?>
                             <div class="agency-label">
                                 <span class="label label-featured" aria-label="<?php esc_html_e( 'Featured Agency', 'opalestate-pro' ); ?>"
                                       title="<?php esc_html_e( 'Featured Agency', 'opalestate-pro' ); ?>">
@@ -26,7 +26,7 @@ $address = $agency->get_meta( 'address' ); ?>
                             </div>
 						<?php endif; ?>
 
-						<?php if ( $agency->get_trusted() ): ?>
+						<?php if ( 'on' === $agency->get_trusted() ): ?>
                             <span class="trusted-label hint--top" aria-label="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>" title="<?php esc_html_e( 'Trusted Member', 'opalestate-pro' ); ?>">
                                 <i class="fas fa-star"></i>
                             </span>
