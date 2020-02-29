@@ -25,6 +25,7 @@ if ( is_user_logged_in() ) {
 }
 
 $types = OpalEstate_User::get_user_types();
+$type_default = apply_filters( 'opalestate_register_form_default_type', 'subscriber' );
 ?>
 <div class="opalesate-form">
 	<?php if ( $hide_title === false ) : ?>
@@ -69,7 +70,7 @@ $types = OpalEstate_User::get_user_types();
                 <label for="userrole"><?php esc_html_e( 'Type', 'opalestate-pro' ); ?> <span class="required">*</span></label>
                 <select name="role" id="userrole" class="form-control">
 					<?php foreach ( $types as $type => $label ): ?>
-                        <option value="<?php echo $type; ?>"><?php echo $label; ?></option>
+                        <option value="<?php echo $type; ?>" <?php selected( $type, $type_default, true ); ?>><?php echo $label; ?></option>
 					<?php endforeach; ?>
                 </select>
             </p>

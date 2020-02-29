@@ -1,3 +1,6 @@
+= 1.3.6 - 2020-02-29 =
+* Fixes - User register form & User roles
+
 = 1.3.5 - 2020-02-28 =
 * Added - Time format setting
 * Added - Hide unset amenities settings

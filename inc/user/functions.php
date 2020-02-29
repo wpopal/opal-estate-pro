@@ -69,7 +69,14 @@ function opalestate_get_user_tab_uri( $tab ) {
 
 
 function opalestate_management_show_content_page_tab() {
-	$tab      = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
+	$tab = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard';
+
+	if ( ! opalestate_current_user_can_access_dashboard_page( $tab ) ) {
+		echo opalestate_load_template_path( 'user/error' );
+
+		return;
+	}
+
 	$tab_hook = $tab;
 	$tab_hook = apply_filters( 'opalestate_user_content_tab_hook', $tab_hook, $tab );
 	$fnc      = 'opalestate_user_content_' . $tab_hook . '_page';
@@ -122,9 +129,8 @@ function opalestate_my_account_page( $id = false, $args = [] ) {
 }
 
 function opalestate_submssion_page( $id = false, $args = [] ) {
-
-
 	$page = get_permalink( opalestate_get_option( 'submission_page', '/' ) );
+
 	if ( $id ) {
 		$edit_page_id = opalestate_get_option( 'submission_edit_page' );
 		$page         = $edit_page_id ? get_permalink( $edit_page_id ) : $page;
@@ -177,12 +183,12 @@ function opalestate_get_user_dashboard_menus() {
 
 	$menu['dashboard'] = [
 		'icon'  => 'fas fa-chart-line',
-		'link'  => 'dashboard',
+		'link'  => opalestate_current_user_can_access_dashboard_page( 'dashboard' ) ? 'dashboard' : get_dashboard_url(),
 		'title' => esc_html__( 'Dashboard', 'opalestate-pro' ),
 		'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
 	];
 
-	if ( 'on' === opalestate_get_option( 'enable_dashboard_profile', 'on' ) ) {
+	if ( opalestate_current_user_can_access_dashboard_page( 'profile' ) && 'on' === opalestate_get_option( 'enable_dashboard_profile', 'on' ) ) {
 		$menu['profile'] = [
 			'icon'  => 'far fa-user',
 			'link'  => 'profile',
@@ -191,7 +197,7 @@ function opalestate_get_user_dashboard_menus() {
 		];
 	}
 
-	if ( 'on' === opalestate_get_option( 'enable_dashboard_favorite', 'on' ) ) {
+	if ( opalestate_current_user_can_access_dashboard_page( 'favorite' ) && 'on' === opalestate_get_option( 'enable_dashboard_favorite', 'on' ) ) {
 		$menu['favorite'] = [
 			'icon'  => 'far fa-heart',
 			'link'  => 'favorite',
@@ -200,7 +206,7 @@ function opalestate_get_user_dashboard_menus() {
 		];
 	}
 
-	if ( 'on' === opalestate_get_option( 'enable_dashboard_reviews', 'on' ) ) {
+	if ( opalestate_current_user_can_access_dashboard_page( 'reviews' ) && 'on' === opalestate_get_option( 'enable_dashboard_reviews', 'on' ) ) {
 		$menu['reviews'] = [
 			'icon'  => 'far fa-star',
 			'link'  => 'reviews',
@@ -209,7 +215,7 @@ function opalestate_get_user_dashboard_menus() {
 		];
 	}
 
-	if ( 'on' === opalestate_get_option( 'message_log', 'on' ) ) {
+	if ( opalestate_current_user_can_access_dashboard_page( 'messages' ) && 'on' === opalestate_get_option( 'message_log', 'on' ) ) {
 		$menu['messages'] = [
 			'icon'  => 'fa fa-envelope',
 			'link'  => 'messages',
@@ -218,7 +224,7 @@ function opalestate_get_user_dashboard_menus() {
 		];
 	}
 
-	if ( 'on' === opalestate_get_option( 'enable_dashboard_submission', 'on' ) ) {
+	if ( opalestate_current_user_can_access_dashboard_page( 'submission' ) && 'on' === opalestate_get_option( 'enable_dashboard_submission', 'on' ) ) {
 		$menu['submission'] = [
 			'icon'  => 'fa fa-upload',
 			'link'  => 'submission',
@@ -227,7 +233,7 @@ function opalestate_get_user_dashboard_menus() {
 		];
 	}
 
-	if ( 'on' === opalestate_get_option( 'enable_dashboard_properties', 'on' ) ) {
+	if ( opalestate_current_user_can_access_dashboard_page( 'myproperties' ) && 'on' === opalestate_get_option( 'enable_dashboard_properties', 'on' ) ) {
 		$statistics = new OpalEstate_User_Statistics();
 
 		$menu['myproperties'] = [
@@ -307,4 +313,60 @@ if ( ! function_exists( 'opalestate_create_user' ) ) {
  */
 function opalestate_get_user_meta( $user_id, $key, $single = true ) {
 	return get_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . $key, $single );
+}
+
+/**
+ * Current user can access dashboard page?
+ *
+ * @param $page
+ * @return bool
+ */
+function opalestate_current_user_can_access_dashboard_page( $page = '' ) {
+	if ( ! is_user_logged_in() ) {
+		return false;
+	}
+
+	$current_user = wp_get_current_user();
+	$roles        = $current_user->roles;
+	$allowd_roles = opalestate_get_allowed_roles();
+
+	foreach ( $roles as $role ) {
+		if ( in_array( $role, $allowd_roles ) ) {
+			return apply_filters( 'opalestate_opalestate_user_can_access', true, $role, $page );
+		}
+	}
+
+	return false;
+}
+
+/**
+ * User has estate roles?
+ *
+ * @param $user_id
+ * @return bool
+ */
+function opalestate_user_has_estate_roles( $user_id ) {
+	$user_meta = get_userdata( $user_id );
+	$roles = $user_meta->roles;
+	$allowd_roles = opalestate_get_allowed_roles();
+
+	foreach ( $roles as $role ) {
+		if ( in_array( $role, $allowd_roles ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Get allowed roles for dashboard page.
+ */
+function opalestate_get_allowed_roles() {
+	return apply_filters( 'opalestate_get_allowed_roles', [
+		'opalestate_agent',
+		'opalestate_agency',
+		'opalestate_manager',
+		'administrator',
+	] );
 }

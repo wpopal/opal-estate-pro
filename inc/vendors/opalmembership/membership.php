@@ -290,26 +290,33 @@ class OpalEstate_Membership {
 	public static function membership_menu( $menu ) {
 		if ( function_exists( "opalmembership_get_dashdoard_page_uri" ) ) {
 			global $opalmembership_options;
-			$menu['membership'] = [
-				'icon'  => 'fa fa-user',
-				'link'  => opalmembership_get_dashdoard_page_uri(),
-				'title' => esc_html__( 'My Membership', 'opalestate-pro' ),
-				'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
-			];
 
-			$menu['membership_history'] = [
-				'icon'  => 'fa fa-user',
-				'link'  => opalmembership_get_payment_history_page_uri(),
-				'title' => esc_html__( 'My Invoices', 'opalestate-pro' ),
-				'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
-			];
+			if ( opalestate_current_user_can_access_dashboard_page( 'membership' ) ) {
+				$menu['membership'] = [
+					'icon'  => 'fa fa-user',
+					'link'  => opalmembership_get_dashdoard_page_uri(),
+					'title' => esc_html__( 'My Membership', 'opalestate-pro' ),
+					'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
+				];
+			}
 
-			$menu['packages'] = [
-				'icon'  => 'fa fa-certificate',
-				'link'  => opalmembership_get_membership_page_uri(),
-				'title' => esc_html__( 'Renew membership', 'opalestate-pro' ),
-				'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
-			];
+			if ( opalestate_current_user_can_access_dashboard_page( 'membership_history' ) ) {
+				$menu['membership_history'] = [
+					'icon'  => 'fa fa-user',
+					'link'  => opalmembership_get_payment_history_page_uri(),
+					'title' => esc_html__( 'My Invoices', 'opalestate-pro' ),
+					'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
+				];
+			}
+
+			if ( opalestate_current_user_can_access_dashboard_page( 'packages' ) ) {
+				$menu['packages'] = [
+					'icon'  => 'fa fa-certificate',
+					'link'  => opalmembership_get_membership_page_uri(),
+					'title' => esc_html__( 'Renew membership', 'opalestate-pro' ),
+					'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
+				];
+			}
 		}
 
 		return $menu;

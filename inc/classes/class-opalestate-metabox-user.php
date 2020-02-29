@@ -34,7 +34,6 @@ class Opalestate_User_MetaBox {
 				'type'   => 'uploader',
 				'single' => 1,
 				'limit'  => 1,
-
 			],
 			[
 				'id'         => 'first_name',
@@ -65,7 +64,7 @@ class Opalestate_User_MetaBox {
 	}
 
 	public function get_avatar_fields( $prefix ) {
-		return [
+		return apply_filters( 'opalestate_get_user_matabox_avatar_fields', [
 			[
 				'name'   => esc_html__( 'Avatar Picture', 'opalestate-pro' ),
 				'desc'   => esc_html__( 'This image will display in user detail and profile box information', 'opalestate-pro' ),
@@ -74,7 +73,7 @@ class Opalestate_User_MetaBox {
 				'avatar' => true,
 
 			],
-		];
+		] );
 	}
 
 	public function get_address_fields( $prefix ) {

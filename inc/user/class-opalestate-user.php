@@ -63,7 +63,6 @@ class OpalEstate_User {
 		}
 		$this->enable_extra_profile = opalestate_options( 'enable_extra_profile', 'on' );
 
-
 		add_action( 'init', [ $this, 'process_frontend_submit' ], 99999 );
 		add_action( 'cmb2_render_text_password', [ $this, 'cmb2_render_text_password' ], 10, 5 );
 
@@ -160,14 +159,27 @@ class OpalEstate_User {
 
 	public function disable() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			add_action( 'wp_before_admin_bar_render', [ $this, 'disable_profile_page' ] );
-			add_action( 'admin_init', [ $this, 'disable_profile_page' ] );
-			add_filter( 'show_admin_bar', '__return_false' );
+			// add_action( 'wp_before_admin_bar_render', [ $this, 'disable_profile_page' ] );
+			// add_action( 'admin_init', [ $this, 'disable_profile_page' ] );
+			add_filter( 'show_admin_bar', [ $this, 'disable_admin_bar' ] );
 		}
 	}
 
 	public function init_user_management() {
 		add_action( 'opalestate_user_content_profile_page', [ $this, 'user_profile' ] );
+	}
+
+	public function disable_admin_bar( $show_admin_bar ) {
+		if ( is_user_logged_in() ) {
+			$current_user = wp_get_current_user();
+			$roles        = $current_user->roles;
+
+			if ( in_array( 'opalestate_agent', $roles ) || in_array( 'opalestate_agency', $roles ) ) {
+				return false;
+			}
+		}
+
+		return $show_admin_bar;
 	}
 
 	/**
@@ -303,7 +315,7 @@ class OpalEstate_User {
 	public static function get_user_types() {
 
 		return apply_filters( 'opalestate_usertypes', [
-			'none'              => esc_html__( 'Subscriber', 'opalestate-pro' ),
+			'subscriber'        => esc_html__( 'Subscriber', 'opalestate-pro' ),
 			'opalestate_agent'  => esc_html__( 'Agent', 'opalestate-pro' ),
 			'opalestate_agency' => esc_html__( 'Agency', 'opalestate-pro' ),
 		] );

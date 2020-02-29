@@ -188,7 +188,7 @@ class OpalEstate_User_Search {
 	 *
 	 */
 	public function dashboard_menu( $menu ) {
-		if ( 'on' === opalestate_get_option( 'enable_dashboard_savedsearch', 'on' ) ) {
+		if ( opalestate_current_user_can_access_dashboard_page( 'savedsearch' ) && 'on' === opalestate_get_option( 'enable_dashboard_savedsearch', 'on' ) ) {
 			$menu['savedsearch'] = [
 				'icon'  => 'fa fa-search',
 				'link'  => 'saved_search',
