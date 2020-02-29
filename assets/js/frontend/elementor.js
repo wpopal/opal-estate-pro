@@ -60,7 +60,6 @@
        //  $carousel.addClass('products');
     }
 
-    /// // / / / /
     $(window).on('elementor/frontend/init', function(){
 	
 	  	elementorFrontend.hooks.addAction( 'frontend/element_ready/opalestate-agent-collection.default', function( $scope ) {
@@ -68,6 +67,12 @@
 				carouselSlick( $scope, '.elementor-slick-slider-row.row-items', elementorFrontend );
 			}
 		} );
+
+        elementorFrontend.hooks.addAction( 'frontend/element_ready/opalestate-agency-collection.default', function( $scope ) {
+            if( $scope.find(".elementor-opal-slick-slider") ) {
+                carouselSlick( $scope, '.elementor-slick-slider-row.row-items', elementorFrontend );
+            }
+        } );
 
         elementorFrontend.hooks.addAction( 'frontend/element_ready/opalestate-property-collection.default', function( $scope ) {
             if( $scope.find(".elementor-opal-slick-slider") ) {  
@@ -80,7 +85,5 @@
                 carouselSlick( $scope, '.elementor-slick-slider-row.row-items' , elementorFrontend );
             }
         } );
-
 	});
-			
 })( jQuery ); 

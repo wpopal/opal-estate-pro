@@ -168,7 +168,7 @@ class Opalestate_Agency_Collection_Elementor_Widget extends Opalestate_Elementor
 		$this->add_control(
 			'enable_carousel',
 			[
-				'label' => esc_html__( 'Enable', 'opalestate-pro' ),
+				'label' => esc_html__( 'Enable Carousel', 'opalestate-pro' ),
 				'type'  => Controls_Manager::SWITCHER,
 			]
 		);
