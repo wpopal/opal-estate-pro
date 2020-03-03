@@ -7,8 +7,11 @@ if ( ! class_exists( 'OpalEstate_Search' ) ) {
 }
 
 $query = OpalEstate_Search::get_search_results_query();
+$show  = opalestate_options( 'displaymode', 'grid' );
 
-$show = ( isset( $_GET['display'] ) && $_GET['display'] == 'list' ) || ( opalestate_options( 'displaymode', 'grid' ) == 'list' ) || ( isset( $style ) && $style == 'list' ) ? 'list' : 'grid';
+if ( isset( $_GET['display'] ) && $_GET['display'] && in_array( sanitize_text_field( $_GET['display'] ), [ 'grid', 'list' ] ) ) {
+	$show = sanitize_text_field( $_GET['display'] );
+}
 ?>
     <div class="opaleslate-ajax-search-results-container">
         <div class="opalesate-archive-top">
@@ -26,7 +29,7 @@ $show = ( isset( $_GET['display'] ) && $_GET['display'] == 'list' ) || ( opalest
                     <div class="opalestate-sortable">
 						<?php echo opalestate_render_sortable_dropdown(); ?>
                     </div>
-					<?php opalestate_show_display_modes( 'grid' ); ?>
+					<?php opalestate_show_display_modes(); ?>
                 </div>
             </div>
         </div>

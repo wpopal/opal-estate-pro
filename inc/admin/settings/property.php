@@ -86,6 +86,13 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
+			'name'    => esc_html__( 'Default Display mode', 'opalestate-pro' ),
+			'id'      => 'displaymode',
+			'type'    => 'select',
+			'options' => opalestate_display_modes(),
+		];
+
+		$fields[] = [
 			'name'    => esc_html__( 'Archive Grid layout', 'opalestate-pro' ),
 			'id'      => 'property_archive_grid_layout',
 			'type'    => 'select',

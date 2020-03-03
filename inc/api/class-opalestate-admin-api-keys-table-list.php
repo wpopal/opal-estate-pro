@@ -179,7 +179,7 @@ class Opalestate_Admin_API_Keys_Table_List extends WP_List_Table {
 	public function column_last_access( $key ) {
 		if ( ! empty( $key['last_access'] ) ) {
 			/* translators: 1: last access date 2: last access time */
-			$date = sprintf( __( '%1$s at %2$s', 'opalestate-pro' ), date_i18n( wc_date_format(), strtotime( $key['last_access'] ) ),
+			$date = sprintf( __( '%1$s at %2$s', 'opalestate-pro' ), date_i18n( get_option( 'date_format' ), strtotime( $key['last_access'] ) ),
 				date_i18n( get_option( 'time_format' ), strtotime( $key['last_access'] ) ) );
 
 			return apply_filters( 'opalestate_api_key_last_access_datetime', $date, $key['last_access'] );

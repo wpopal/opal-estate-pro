@@ -238,6 +238,18 @@ function opalestate_get_loop_property_layouts() {
 }
 
 /**
+ * Gets display modes.
+ *
+ * @return array
+ */
+function opalestate_display_modes() {
+	return apply_filters( 'opalestate_display_modes', [
+		'grid' => esc_html__( 'Grid', 'opalestate-pro' ),
+		'list' => esc_html__( 'List', 'opalestate-pro' ),
+	] );
+}
+
+/**
  * Gets loop property grid layouts.
  *
  * @return array

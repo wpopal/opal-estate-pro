@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Add body classes for Opalestate pages.
  *
- * @param  array $classes Body Classes.
+ * @param array $classes Body Classes.
  * @return array
  */
 function opalestate_body_class( $classes ) {
@@ -25,13 +25,13 @@ function opalestate_body_class( $classes ) {
 		$current_user = wp_get_current_user();
 
 		if ( $current_user ) {
-		    $roles = $current_user->roles;
-		    if ( $roles && is_array( $roles ) ) {
-			    foreach ( $roles as $role ) {
-				    $classes[] = 'opalestate-role-' . esc_attr( $role );
-			    }
-            }
-        }
+			$roles = $current_user->roles;
+			if ( $roles && is_array( $roles ) ) {
+				foreach ( $roles as $role ) {
+					$classes[] = 'opalestate-role-' . esc_attr( $role );
+				}
+			}
+		}
 	}
 
 	return array_unique( $classes );
@@ -245,12 +245,12 @@ function opalestate_render_sortable_dropdown( $selected = '' ) {
 
 
 /**
- *
+ * Display modes
  */
-function opalestate_show_display_modes( $default = 'list' ) {
+function opalestate_show_display_modes( $default = '' ) {
 	$op_display = opalestate_get_display_mode( $default );
 
-	$modes = apply_filters( 'opalestate_listing_display_mode', [
+	$modes = apply_filters( 'opalestate_listing_display_modes', [
 		'grid' => [
 			'icon'  => 'fa fa-th',
 			'title' => esc_html__( 'Grid', 'opalestate-pro' ),
@@ -259,12 +259,7 @@ function opalestate_show_display_modes( $default = 'list' ) {
 			'icon'  => 'fa fa-th-list',
 			'title' => esc_html__( 'List', 'opalestate-pro' ),
 		],
-		/*	'map' => array(
-				'icon' => 'fa fa-map-marker',
-				'title' => esc_html__('Map','opalestate-pro')
-			), */
 	] );
-
 
 	echo '<div class="display-mode">';
 	foreach ( $modes as $key => $mode ) {
@@ -272,7 +267,6 @@ function opalestate_show_display_modes( $default = 'list' ) {
 	}
 
 	echo '</div>';
-
 }
 
 if ( ! function_exists( 'opalestate_pagination' ) ) {
@@ -364,8 +358,15 @@ function opalestate_show_display_status() {
 	<?php
 }
 
+/**
+ * Get display mode.
+ *
+ * @param string $default
+ * @return string
+ */
 function opalestate_get_display_mode( $default = '' ) {
 	$op_display = $default ? $default : opalestate_options( 'displaymode', 'grid' );
+
 	if ( isset( $_GET['display'] ) ) {
 		$op_display = sanitize_text_field( $_GET['display'] );
 	}
@@ -428,8 +429,13 @@ function opalestate_get_favorite_page_uri() {
 	return apply_filters( 'opalestate_get_favorite_page_uri', $favorite_page );
 }
 
+/**
+ * Single layout templates
+ *
+ * @param $layout
+ * @return array
+ */
 function opalestate_single_layout_templates( $layout ) {
-
 	$layout['v2'] = esc_html__( 'Vesion 2', 'opalestate-pro' );
 	$layout['v3'] = esc_html__( 'Vesion 3', 'opalestate-pro' );
 	$layout['v4'] = esc_html__( 'Vesion 4', 'opalestate-pro' );
@@ -742,8 +748,8 @@ function opalestate_get_property_walkscore_results( $property ) {
 	$map = $property->get_map();
 
 	if ( ! $map || ! is_array( $map ) || ! isset( $map['latitude'] ) || ! isset( $map['longitude'] ) ) {
-	    return false;
-    }
+		return false;
+	}
 
 	$latitude  = $map['latitude'];
 	$longitude = $map['longitude'];

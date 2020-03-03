@@ -26,7 +26,7 @@ $grid_layout = 'content-property-' . opalestate_get_option( 'property_archive_gr
 
                 <div class="opalesate-archive-bottom opalestate-rows opalestate-collection">
                     <div class="opal-row">
-						<?php if ( ( isset( $_GET['display'] ) && $_GET['display'] == 'list' ) || opalestate_get_display_mode( 'list' ) == 'list' ) : ?>
+						<?php if ( ( isset( $_GET['display'] ) && $_GET['display'] == 'list' ) || opalestate_get_display_mode( opalestate_options( 'displaymode', 'grid' ) ) == 'list' ) : ?>
 							<?php while ( have_posts() ) : the_post(); ?>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
 									<?php echo opalestate_load_template_path( $list_layout ); ?>
