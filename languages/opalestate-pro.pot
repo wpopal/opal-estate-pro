@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Opal Estate Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-28 08:11+0000\n"
+"POT-Creation-Date: 2020-03-05 02:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -53,8 +53,8 @@ msgid "Missing some information!"
 msgstr ""
 
 #: inc/class-opalestate-email.php:178
-#: inc/classes/class-opalestate-metabox-user.php:145
-#: inc/classes/class-opalestate-metabox-user.php:205
+#: inc/classes/class-opalestate-metabox-user.php:144
+#: inc/classes/class-opalestate-metabox-user.php:204
 #: inc/agency/class-opalestate-agency-metabox.php:337
 #: inc/message/class-opalestate-message.php:537
 #: inc/message/class-opalestate-message.php:639
@@ -110,18 +110,18 @@ msgstr ""
 #: inc/submission/class-opalestate-submission.php:252
 #: inc/vendors/social-login/class-opalestate-social-login.php:69
 #: inc/vendors/social-login/class-opalestate-social-login.php:106
-#: inc/admin/settings/property.php:65 inc/admin/settings/property.php:123
-#: inc/admin/settings/property.php:134 inc/admin/settings/property.php:171
-#: inc/admin/settings/property.php:248 inc/admin/settings/property.php:259
-#: inc/admin/settings/property.php:358 inc/admin/settings/property.php:384
-#: inc/admin/settings/property.php:395 inc/admin/settings/property.php:407
-#: inc/admin/settings/property.php:419 inc/admin/settings/property.php:431
-#: inc/admin/settings/property.php:443 inc/admin/settings/property.php:455
-#: inc/admin/settings/property.php:467 inc/admin/settings/property.php:479
-#: inc/admin/settings/property.php:491 inc/admin/settings/property.php:503
-#: inc/admin/settings/property.php:515 inc/admin/settings/property.php:540
-#: inc/admin/settings/property.php:551 inc/admin/settings/property.php:563
-#: inc/admin/settings/property.php:575 inc/admin/settings/general.php:50
+#: inc/admin/settings/property.php:65 inc/admin/settings/property.php:130
+#: inc/admin/settings/property.php:141 inc/admin/settings/property.php:178
+#: inc/admin/settings/property.php:255 inc/admin/settings/property.php:266
+#: inc/admin/settings/property.php:365 inc/admin/settings/property.php:391
+#: inc/admin/settings/property.php:402 inc/admin/settings/property.php:414
+#: inc/admin/settings/property.php:426 inc/admin/settings/property.php:438
+#: inc/admin/settings/property.php:450 inc/admin/settings/property.php:462
+#: inc/admin/settings/property.php:474 inc/admin/settings/property.php:486
+#: inc/admin/settings/property.php:498 inc/admin/settings/property.php:510
+#: inc/admin/settings/property.php:522 inc/admin/settings/property.php:547
+#: inc/admin/settings/property.php:558 inc/admin/settings/property.php:570
+#: inc/admin/settings/property.php:582 inc/admin/settings/general.php:50
 #: inc/admin/settings/general.php:60 inc/admin/settings/pages.php:102
 #: inc/admin/settings/pages.php:113 inc/admin/settings/pages.php:124
 #: inc/admin/settings/pages.php:135 inc/admin/settings/pages.php:146
@@ -129,8 +129,6 @@ msgstr ""
 #: inc/admin/settings/pages.php:179 inc/admin/settings/pages.php:190
 #: inc/admin/rating/class-rating.php:69 inc/admin/rating/class-rating.php:79
 #: inc/admin/rating/class-rating.php:89
-#: inc/vendors/elementor/widgets/opalestate-agent-collection.php:171
-#: inc/vendors/elementor/widgets/opalestate-agency-collection.php:171
 msgid "Enable"
 msgstr ""
 
@@ -151,18 +149,18 @@ msgstr ""
 #: inc/submission/class-opalestate-submission.php:253
 #: inc/vendors/social-login/class-opalestate-social-login.php:70
 #: inc/vendors/social-login/class-opalestate-social-login.php:107
-#: inc/admin/settings/property.php:66 inc/admin/settings/property.php:124
-#: inc/admin/settings/property.php:135 inc/admin/settings/property.php:172
-#: inc/admin/settings/property.php:247 inc/admin/settings/property.php:258
-#: inc/admin/settings/property.php:359 inc/admin/settings/property.php:385
-#: inc/admin/settings/property.php:396 inc/admin/settings/property.php:408
-#: inc/admin/settings/property.php:420 inc/admin/settings/property.php:432
-#: inc/admin/settings/property.php:444 inc/admin/settings/property.php:456
-#: inc/admin/settings/property.php:468 inc/admin/settings/property.php:480
-#: inc/admin/settings/property.php:492 inc/admin/settings/property.php:504
-#: inc/admin/settings/property.php:516 inc/admin/settings/property.php:541
-#: inc/admin/settings/property.php:552 inc/admin/settings/property.php:564
-#: inc/admin/settings/property.php:576 inc/admin/settings/general.php:51
+#: inc/admin/settings/property.php:66 inc/admin/settings/property.php:131
+#: inc/admin/settings/property.php:142 inc/admin/settings/property.php:179
+#: inc/admin/settings/property.php:254 inc/admin/settings/property.php:265
+#: inc/admin/settings/property.php:366 inc/admin/settings/property.php:392
+#: inc/admin/settings/property.php:403 inc/admin/settings/property.php:415
+#: inc/admin/settings/property.php:427 inc/admin/settings/property.php:439
+#: inc/admin/settings/property.php:451 inc/admin/settings/property.php:463
+#: inc/admin/settings/property.php:475 inc/admin/settings/property.php:487
+#: inc/admin/settings/property.php:499 inc/admin/settings/property.php:511
+#: inc/admin/settings/property.php:523 inc/admin/settings/property.php:548
+#: inc/admin/settings/property.php:559 inc/admin/settings/property.php:571
+#: inc/admin/settings/property.php:583 inc/admin/settings/general.php:51
 #: inc/admin/settings/general.php:61 inc/admin/settings/pages.php:103
 #: inc/admin/settings/pages.php:114 inc/admin/settings/pages.php:125
 #: inc/admin/settings/pages.php:136 inc/admin/settings/pages.php:147
@@ -322,8 +320,8 @@ msgid ""
 msgstr ""
 
 #: inc/class-no-captcha-recaptcha.php:107
-#: inc/classes/class-opalestate-metabox-user.php:182
-#: inc/classes/class-opalestate-metabox-user.php:192
+#: inc/classes/class-opalestate-metabox-user.php:181
+#: inc/classes/class-opalestate-metabox-user.php:191
 #: inc/property/class-metabox-property-admin.php:181
 #: inc/property/class-metabox-property-admin.php:210
 #: inc/property/class-metabox-property-admin.php:270
@@ -341,8 +339,8 @@ msgid "No"
 msgstr ""
 
 #: inc/class-no-captcha-recaptcha.php:108
-#: inc/classes/class-opalestate-metabox-user.php:183
-#: inc/classes/class-opalestate-metabox-user.php:193
+#: inc/classes/class-opalestate-metabox-user.php:182
+#: inc/classes/class-opalestate-metabox-user.php:192
 #: inc/property/class-metabox-property-admin.php:180
 #: inc/property/class-metabox-property-admin.php:209
 #: inc/property/class-metabox-property-admin.php:269
@@ -466,8 +464,8 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: inc/class-opalestate-html.php:221 inc/mixes-functions.php:1246
-#: inc/template-functions.php:353 templates/user/my-properties.php:3
+#: inc/class-opalestate-html.php:221 inc/mixes-functions.php:1258
+#: inc/template-functions.php:347 templates/user/my-properties.php:3
 #: templates/search-box/fields/status-bar.php:9
 #: inc/vendors/elementor/widgets/opalestate-property-collection.php:152
 msgid "All"
@@ -540,7 +538,7 @@ msgid "Collapse Advanced"
 msgstr ""
 
 #: inc/mixes-functions.php:231 inc/mixes-functions.php:247
-#: inc/template-functions.php:256
+#: inc/mixes-functions.php:259 inc/template-functions.php:256
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:126
 #: inc/vendors/elementor/widgets/opalestate-search-agency.php:117
 #: inc/vendors/elementor/widgets/opalestate-search-agents.php:117
@@ -548,16 +546,16 @@ msgstr ""
 msgid "Grid"
 msgstr ""
 
-#: inc/mixes-functions.php:232 inc/mixes-functions.php:248
+#: inc/mixes-functions.php:232 inc/mixes-functions.php:260
 msgid "Grid v2"
 msgstr ""
 
-#: inc/mixes-functions.php:233 inc/mixes-functions.php:249
+#: inc/mixes-functions.php:233 inc/mixes-functions.php:261
 msgid "Grid v3"
 msgstr ""
 
-#: inc/mixes-functions.php:234 inc/mixes-functions.php:261
-#: inc/template-functions.php:260
+#: inc/mixes-functions.php:234 inc/mixes-functions.php:248
+#: inc/mixes-functions.php:273 inc/template-functions.php:260
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:127
 #: inc/vendors/elementor/widgets/opalestate-search-agency.php:118
 #: inc/vendors/elementor/widgets/opalestate-search-agents.php:118
@@ -565,717 +563,717 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: inc/mixes-functions.php:235 inc/mixes-functions.php:262
+#: inc/mixes-functions.php:235 inc/mixes-functions.php:274
 msgid "List v2"
 msgstr ""
 
-#: inc/mixes-functions.php:236 inc/mixes-functions.php:250
+#: inc/mixes-functions.php:236 inc/mixes-functions.php:262
 msgid "Mark hover"
 msgstr ""
 
-#: inc/mixes-functions.php:361
+#: inc/mixes-functions.php:373
 msgid "Orginal Size"
 msgstr ""
 
-#: inc/mixes-functions.php:452 inc/mixes-functions.php:456
+#: inc/mixes-functions.php:464 inc/mixes-functions.php:468
 msgid "Your Location"
 msgstr ""
 
-#: inc/mixes-functions.php:578
+#: inc/mixes-functions.php:590
 #, php-format
 msgid "Placeholder %s"
 msgstr ""
 
-#: inc/mixes-functions.php:620
+#: inc/mixes-functions.php:632
 msgid "United Arab Emirates dirham"
 msgstr ""
 
-#: inc/mixes-functions.php:621
+#: inc/mixes-functions.php:633
 msgid "Afghan afghani"
 msgstr ""
 
-#: inc/mixes-functions.php:622
+#: inc/mixes-functions.php:634
 msgid "Albanian lek"
 msgstr ""
 
-#: inc/mixes-functions.php:623
+#: inc/mixes-functions.php:635
 msgid "Armenian dram"
 msgstr ""
 
-#: inc/mixes-functions.php:624
+#: inc/mixes-functions.php:636
 msgid "Netherlands Antillean guilder"
 msgstr ""
 
-#: inc/mixes-functions.php:625
+#: inc/mixes-functions.php:637
 msgid "Angolan kwanza"
 msgstr ""
 
-#: inc/mixes-functions.php:626
+#: inc/mixes-functions.php:638
 msgid "Argentine peso"
 msgstr ""
 
-#: inc/mixes-functions.php:627
+#: inc/mixes-functions.php:639
 msgid "Australian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:628
+#: inc/mixes-functions.php:640
 msgid "Aruban florin"
 msgstr ""
 
-#: inc/mixes-functions.php:629
+#: inc/mixes-functions.php:641
 msgid "Azerbaijani manat"
 msgstr ""
 
-#: inc/mixes-functions.php:630
+#: inc/mixes-functions.php:642
 msgid "Bosnia and Herzegovina convertible mark"
 msgstr ""
 
-#: inc/mixes-functions.php:631
+#: inc/mixes-functions.php:643
 msgid "Barbadian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:632
+#: inc/mixes-functions.php:644
 msgid "Bangladeshi taka"
 msgstr ""
 
-#: inc/mixes-functions.php:633
+#: inc/mixes-functions.php:645
 msgid "Bulgarian lev"
 msgstr ""
 
-#: inc/mixes-functions.php:634
+#: inc/mixes-functions.php:646
 msgid "Bahraini dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:635
+#: inc/mixes-functions.php:647
 msgid "Burundian franc"
 msgstr ""
 
-#: inc/mixes-functions.php:636
+#: inc/mixes-functions.php:648
 msgid "Bermudian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:637
+#: inc/mixes-functions.php:649
 msgid "Brunei dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:638
+#: inc/mixes-functions.php:650
 msgid "Bolivian boliviano"
 msgstr ""
 
-#: inc/mixes-functions.php:639
+#: inc/mixes-functions.php:651
 msgid "Brazilian real"
 msgstr ""
 
-#: inc/mixes-functions.php:640
+#: inc/mixes-functions.php:652
 msgid "Bahamian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:641
+#: inc/mixes-functions.php:653
 msgid "Bitcoin"
 msgstr ""
 
-#: inc/mixes-functions.php:642
+#: inc/mixes-functions.php:654
 msgid "Bhutanese ngultrum"
 msgstr ""
 
-#: inc/mixes-functions.php:643
+#: inc/mixes-functions.php:655
 msgid "Botswana pula"
 msgstr ""
 
-#: inc/mixes-functions.php:644
+#: inc/mixes-functions.php:656
 msgid "Belarusian ruble"
 msgstr ""
 
-#: inc/mixes-functions.php:645
+#: inc/mixes-functions.php:657
 msgid "Belize dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:646
+#: inc/mixes-functions.php:658
 msgid "Canadian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:647
+#: inc/mixes-functions.php:659
 msgid "Congolese franc"
 msgstr ""
 
-#: inc/mixes-functions.php:648
+#: inc/mixes-functions.php:660
 msgid "Swiss franc"
 msgstr ""
 
-#: inc/mixes-functions.php:649
+#: inc/mixes-functions.php:661
 msgid "Chilean peso"
 msgstr ""
 
-#: inc/mixes-functions.php:650
+#: inc/mixes-functions.php:662
 msgid "Chinese yuan"
 msgstr ""
 
-#: inc/mixes-functions.php:651
+#: inc/mixes-functions.php:663
 msgid "Colombian peso"
 msgstr ""
 
-#: inc/mixes-functions.php:652
+#: inc/mixes-functions.php:664
 msgid "Costa Rican col&oacute;n"
 msgstr ""
 
-#: inc/mixes-functions.php:653
+#: inc/mixes-functions.php:665
 msgid "Cuban convertible peso"
 msgstr ""
 
-#: inc/mixes-functions.php:654
+#: inc/mixes-functions.php:666
 msgid "Cuban peso"
 msgstr ""
 
-#: inc/mixes-functions.php:655
+#: inc/mixes-functions.php:667
 msgid "Cape Verdean escudo"
 msgstr ""
 
-#: inc/mixes-functions.php:656
+#: inc/mixes-functions.php:668
 msgid "Czech koruna"
 msgstr ""
 
-#: inc/mixes-functions.php:657
+#: inc/mixes-functions.php:669
 msgid "Djiboutian franc"
 msgstr ""
 
-#: inc/mixes-functions.php:658
+#: inc/mixes-functions.php:670
 msgid "Danish krone"
 msgstr ""
 
-#: inc/mixes-functions.php:659
+#: inc/mixes-functions.php:671
 msgid "Dominican peso"
 msgstr ""
 
-#: inc/mixes-functions.php:660
+#: inc/mixes-functions.php:672
 msgid "Algerian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:661
+#: inc/mixes-functions.php:673
 msgid "Egyptian pound"
 msgstr ""
 
-#: inc/mixes-functions.php:662
+#: inc/mixes-functions.php:674
 msgid "Eritrean nakfa"
 msgstr ""
 
-#: inc/mixes-functions.php:663
+#: inc/mixes-functions.php:675
 msgid "Ethiopian birr"
 msgstr ""
 
-#: inc/mixes-functions.php:664
+#: inc/mixes-functions.php:676
 msgid "Euro"
 msgstr ""
 
-#: inc/mixes-functions.php:665
+#: inc/mixes-functions.php:677
 msgid "Fijian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:666
+#: inc/mixes-functions.php:678
 msgid "Falkland Islands pound"
 msgstr ""
 
-#: inc/mixes-functions.php:667
+#: inc/mixes-functions.php:679
 msgid "Pound sterling"
 msgstr ""
 
-#: inc/mixes-functions.php:668
+#: inc/mixes-functions.php:680
 msgid "Georgian lari"
 msgstr ""
 
-#: inc/mixes-functions.php:669
+#: inc/mixes-functions.php:681
 msgid "Guernsey pound"
 msgstr ""
 
-#: inc/mixes-functions.php:670
+#: inc/mixes-functions.php:682
 msgid "Ghana cedi"
 msgstr ""
 
-#: inc/mixes-functions.php:671
+#: inc/mixes-functions.php:683
 msgid "Gibraltar pound"
 msgstr ""
 
-#: inc/mixes-functions.php:672
+#: inc/mixes-functions.php:684
 msgid "Gambian dalasi"
 msgstr ""
 
-#: inc/mixes-functions.php:673
+#: inc/mixes-functions.php:685
 msgid "Guinean franc"
 msgstr ""
 
-#: inc/mixes-functions.php:674
+#: inc/mixes-functions.php:686
 msgid "Guatemalan quetzal"
 msgstr ""
 
-#: inc/mixes-functions.php:675
+#: inc/mixes-functions.php:687
 msgid "Guyanese dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:676
+#: inc/mixes-functions.php:688
 msgid "Hong Kong dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:677
+#: inc/mixes-functions.php:689
 msgid "Honduran lempira"
 msgstr ""
 
-#: inc/mixes-functions.php:678
+#: inc/mixes-functions.php:690
 msgid "Croatian kuna"
 msgstr ""
 
-#: inc/mixes-functions.php:679
+#: inc/mixes-functions.php:691
 msgid "Haitian gourde"
 msgstr ""
 
-#: inc/mixes-functions.php:680
+#: inc/mixes-functions.php:692
 msgid "Hungarian forint"
 msgstr ""
 
-#: inc/mixes-functions.php:681
+#: inc/mixes-functions.php:693
 msgid "Indonesian rupiah"
 msgstr ""
 
-#: inc/mixes-functions.php:682
+#: inc/mixes-functions.php:694
 msgid "Israeli new shekel"
 msgstr ""
 
-#: inc/mixes-functions.php:683
+#: inc/mixes-functions.php:695
 msgid "Manx pound"
 msgstr ""
 
-#: inc/mixes-functions.php:684
+#: inc/mixes-functions.php:696
 msgid "Indian rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:685
+#: inc/mixes-functions.php:697
 msgid "Iraqi dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:686
+#: inc/mixes-functions.php:698
 msgid "Iranian rial"
 msgstr ""
 
-#: inc/mixes-functions.php:687
+#: inc/mixes-functions.php:699
 msgid "Icelandic kr&oacute;na"
 msgstr ""
 
-#: inc/mixes-functions.php:688
+#: inc/mixes-functions.php:700
 msgid "Jersey pound"
 msgstr ""
 
-#: inc/mixes-functions.php:689
+#: inc/mixes-functions.php:701
 msgid "Jamaican dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:690
+#: inc/mixes-functions.php:702
 msgid "Jordanian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:691
+#: inc/mixes-functions.php:703
 msgid "Japanese yen"
 msgstr ""
 
-#: inc/mixes-functions.php:692
+#: inc/mixes-functions.php:704
 msgid "Kenyan shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:693
+#: inc/mixes-functions.php:705
 msgid "Kyrgyzstani som"
 msgstr ""
 
-#: inc/mixes-functions.php:694
+#: inc/mixes-functions.php:706
 msgid "Cambodian riel"
 msgstr ""
 
-#: inc/mixes-functions.php:695
+#: inc/mixes-functions.php:707
 msgid "Comorian franc"
 msgstr ""
 
-#: inc/mixes-functions.php:696
+#: inc/mixes-functions.php:708
 msgid "North Korean won"
 msgstr ""
 
-#: inc/mixes-functions.php:697
+#: inc/mixes-functions.php:709
 msgid "South Korean won"
 msgstr ""
 
-#: inc/mixes-functions.php:698
+#: inc/mixes-functions.php:710
 msgid "Kuwaiti dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:699
+#: inc/mixes-functions.php:711
 msgid "Cayman Islands dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:700
+#: inc/mixes-functions.php:712
 msgid "Kazakhstani tenge"
 msgstr ""
 
-#: inc/mixes-functions.php:701
+#: inc/mixes-functions.php:713
 msgid "Lao kip"
 msgstr ""
 
-#: inc/mixes-functions.php:702
+#: inc/mixes-functions.php:714
 msgid "Lebanese pound"
 msgstr ""
 
-#: inc/mixes-functions.php:703
+#: inc/mixes-functions.php:715
 msgid "Sri Lankan rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:704
+#: inc/mixes-functions.php:716
 msgid "Liberian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:705
+#: inc/mixes-functions.php:717
 msgid "Lesotho loti"
 msgstr ""
 
-#: inc/mixes-functions.php:706
+#: inc/mixes-functions.php:718
 msgid "Libyan dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:707
+#: inc/mixes-functions.php:719
 msgid "Moroccan dirham"
 msgstr ""
 
-#: inc/mixes-functions.php:708
+#: inc/mixes-functions.php:720
 msgid "Moldovan leu"
 msgstr ""
 
-#: inc/mixes-functions.php:709
+#: inc/mixes-functions.php:721
 msgid "Malagasy ariary"
 msgstr ""
 
-#: inc/mixes-functions.php:710
+#: inc/mixes-functions.php:722
 msgid "Macedonian denar"
 msgstr ""
 
-#: inc/mixes-functions.php:711
+#: inc/mixes-functions.php:723
 msgid "Burmese kyat"
 msgstr ""
 
-#: inc/mixes-functions.php:712
+#: inc/mixes-functions.php:724
 msgid "Mongolian t&ouml;gr&ouml;g"
 msgstr ""
 
-#: inc/mixes-functions.php:713
+#: inc/mixes-functions.php:725
 msgid "Macanese pataca"
 msgstr ""
 
-#: inc/mixes-functions.php:714
+#: inc/mixes-functions.php:726
 msgid "Mauritanian ouguiya"
 msgstr ""
 
-#: inc/mixes-functions.php:715
+#: inc/mixes-functions.php:727
 msgid "Mauritian rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:716
+#: inc/mixes-functions.php:728
 msgid "Maldivian rufiyaa"
 msgstr ""
 
-#: inc/mixes-functions.php:717
+#: inc/mixes-functions.php:729
 msgid "Malawian kwacha"
 msgstr ""
 
-#: inc/mixes-functions.php:718
+#: inc/mixes-functions.php:730
 msgid "Mexican peso"
 msgstr ""
 
-#: inc/mixes-functions.php:719
+#: inc/mixes-functions.php:731
 msgid "Malaysian ringgit"
 msgstr ""
 
-#: inc/mixes-functions.php:720
+#: inc/mixes-functions.php:732
 msgid "Mozambican metical"
 msgstr ""
 
-#: inc/mixes-functions.php:721
+#: inc/mixes-functions.php:733
 msgid "Namibian dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:722
+#: inc/mixes-functions.php:734
 msgid "Nigerian naira"
 msgstr ""
 
-#: inc/mixes-functions.php:723
+#: inc/mixes-functions.php:735
 msgid "Nicaraguan c&oacute;rdoba"
 msgstr ""
 
-#: inc/mixes-functions.php:724
+#: inc/mixes-functions.php:736
 msgid "Norwegian krone"
 msgstr ""
 
-#: inc/mixes-functions.php:725
+#: inc/mixes-functions.php:737
 msgid "Nepalese rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:726
+#: inc/mixes-functions.php:738
 msgid "New Zealand dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:727
+#: inc/mixes-functions.php:739
 msgid "Omani rial"
 msgstr ""
 
-#: inc/mixes-functions.php:728
+#: inc/mixes-functions.php:740
 msgid "Panamanian balboa"
 msgstr ""
 
-#: inc/mixes-functions.php:729
+#: inc/mixes-functions.php:741
 msgid "Peruvian nuevo sol"
 msgstr ""
 
-#: inc/mixes-functions.php:730
+#: inc/mixes-functions.php:742
 msgid "Papua New Guinean kina"
 msgstr ""
 
-#: inc/mixes-functions.php:731
+#: inc/mixes-functions.php:743
 msgid "Philippine peso"
 msgstr ""
 
-#: inc/mixes-functions.php:732
+#: inc/mixes-functions.php:744
 msgid "Pakistani rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:733
+#: inc/mixes-functions.php:745
 msgid "Polish z&#x142;oty"
 msgstr ""
 
-#: inc/mixes-functions.php:734
+#: inc/mixes-functions.php:746
 msgid "Transnistrian ruble"
 msgstr ""
 
-#: inc/mixes-functions.php:735
+#: inc/mixes-functions.php:747
 msgid "Paraguayan guaran&iacute;"
 msgstr ""
 
-#: inc/mixes-functions.php:736
+#: inc/mixes-functions.php:748
 msgid "Qatari riyal"
 msgstr ""
 
-#: inc/mixes-functions.php:737
+#: inc/mixes-functions.php:749
 msgid "Romanian leu"
 msgstr ""
 
-#: inc/mixes-functions.php:738
+#: inc/mixes-functions.php:750
 msgid "Serbian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:739
+#: inc/mixes-functions.php:751
 msgid "Russian ruble"
 msgstr ""
 
-#: inc/mixes-functions.php:740
+#: inc/mixes-functions.php:752
 msgid "Rwandan franc"
 msgstr ""
 
-#: inc/mixes-functions.php:741
+#: inc/mixes-functions.php:753
 msgid "Saudi riyal"
 msgstr ""
 
-#: inc/mixes-functions.php:742
+#: inc/mixes-functions.php:754
 msgid "Solomon Islands dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:743
+#: inc/mixes-functions.php:755
 msgid "Seychellois rupee"
 msgstr ""
 
-#: inc/mixes-functions.php:744
+#: inc/mixes-functions.php:756
 msgid "Sudanese pound"
 msgstr ""
 
-#: inc/mixes-functions.php:745
+#: inc/mixes-functions.php:757
 msgid "Swedish krona"
 msgstr ""
 
-#: inc/mixes-functions.php:746
+#: inc/mixes-functions.php:758
 msgid "Singapore dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:747
+#: inc/mixes-functions.php:759
 msgid "Saint Helena pound"
 msgstr ""
 
-#: inc/mixes-functions.php:748
+#: inc/mixes-functions.php:760
 msgid "Sierra Leonean leone"
 msgstr ""
 
-#: inc/mixes-functions.php:749
+#: inc/mixes-functions.php:761
 msgid "Somali shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:750
+#: inc/mixes-functions.php:762
 msgid "Surinamese dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:751
+#: inc/mixes-functions.php:763
 msgid "South Sudanese pound"
 msgstr ""
 
-#: inc/mixes-functions.php:752
+#: inc/mixes-functions.php:764
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe dobra"
 msgstr ""
 
-#: inc/mixes-functions.php:753
+#: inc/mixes-functions.php:765
 msgid "Syrian pound"
 msgstr ""
 
-#: inc/mixes-functions.php:754
+#: inc/mixes-functions.php:766
 msgid "Swazi lilangeni"
 msgstr ""
 
-#: inc/mixes-functions.php:755
+#: inc/mixes-functions.php:767
 msgid "Thai baht"
 msgstr ""
 
-#: inc/mixes-functions.php:756
+#: inc/mixes-functions.php:768
 msgid "Tajikistani somoni"
 msgstr ""
 
-#: inc/mixes-functions.php:757
+#: inc/mixes-functions.php:769
 msgid "Turkmenistan manat"
 msgstr ""
 
-#: inc/mixes-functions.php:758
+#: inc/mixes-functions.php:770
 msgid "Tunisian dinar"
 msgstr ""
 
-#: inc/mixes-functions.php:759
+#: inc/mixes-functions.php:771
 msgid "Tongan pa&#x2bb;anga"
 msgstr ""
 
-#: inc/mixes-functions.php:760
+#: inc/mixes-functions.php:772
 msgid "Turkish lira"
 msgstr ""
 
-#: inc/mixes-functions.php:761
+#: inc/mixes-functions.php:773
 msgid "Trinidad and Tobago dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:762
+#: inc/mixes-functions.php:774
 msgid "New Taiwan dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:763
+#: inc/mixes-functions.php:775
 msgid "Tanzanian shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:764
+#: inc/mixes-functions.php:776
 msgid "Ukrainian hryvnia"
 msgstr ""
 
-#: inc/mixes-functions.php:765
+#: inc/mixes-functions.php:777
 msgid "Ugandan shilling"
 msgstr ""
 
-#: inc/mixes-functions.php:766
+#: inc/mixes-functions.php:778
 msgid "United States dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:767
+#: inc/mixes-functions.php:779
 msgid "Uruguayan peso"
 msgstr ""
 
-#: inc/mixes-functions.php:768
+#: inc/mixes-functions.php:780
 msgid "Uzbekistani som"
 msgstr ""
 
-#: inc/mixes-functions.php:769
+#: inc/mixes-functions.php:781
 msgid "Venezuelan bol&iacute;var"
 msgstr ""
 
-#: inc/mixes-functions.php:770
+#: inc/mixes-functions.php:782
 msgid "Vietnamese &#x111;&#x1ed3;ng"
 msgstr ""
 
-#: inc/mixes-functions.php:771
+#: inc/mixes-functions.php:783
 msgid "Vanuatu vatu"
 msgstr ""
 
-#: inc/mixes-functions.php:772
+#: inc/mixes-functions.php:784
 msgid "Samoan t&#x101;l&#x101;"
 msgstr ""
 
-#: inc/mixes-functions.php:773
+#: inc/mixes-functions.php:785
 msgid "Central African CFA franc"
 msgstr ""
 
-#: inc/mixes-functions.php:774
+#: inc/mixes-functions.php:786
 msgid "East Caribbean dollar"
 msgstr ""
 
-#: inc/mixes-functions.php:775
+#: inc/mixes-functions.php:787
 msgid "West African CFA franc"
 msgstr ""
 
-#: inc/mixes-functions.php:776
+#: inc/mixes-functions.php:788
 msgid "CFP franc"
 msgstr ""
 
-#: inc/mixes-functions.php:777
+#: inc/mixes-functions.php:789
 msgid "Yemeni rial"
 msgstr ""
 
-#: inc/mixes-functions.php:778
+#: inc/mixes-functions.php:790
 msgid "South African rand"
 msgstr ""
 
-#: inc/mixes-functions.php:779
+#: inc/mixes-functions.php:791
 msgid "Zambian kwacha"
 msgstr ""
 
-#: inc/mixes-functions.php:1088
+#: inc/mixes-functions.php:1100
 #, php-format
 msgctxt "areasize info"
 msgid "%1$s <span>%2$s</span>"
 msgstr ""
 
-#: inc/mixes-functions.php:1220
+#: inc/mixes-functions.php:1232
 msgid "sq ft"
 msgstr ""
 
-#: inc/mixes-functions.php:1221
+#: inc/mixes-functions.php:1233
 msgid "sq m"
 msgstr ""
 
-#: inc/mixes-functions.php:1222
+#: inc/mixes-functions.php:1234
 msgid "mq"
 msgstr ""
 
-#: inc/mixes-functions.php:1223
+#: inc/mixes-functions.php:1235
 msgid "m2"
 msgstr ""
 
-#: inc/mixes-functions.php:1234
+#: inc/mixes-functions.php:1246
 msgid "12-hour"
 msgstr ""
 
-#: inc/mixes-functions.php:1235
+#: inc/mixes-functions.php:1247
 msgid "24-hour"
 msgstr ""
 
-#: inc/mixes-functions.php:1247 inc/mixes-functions.php:1248
+#: inc/mixes-functions.php:1259 inc/mixes-functions.php:1260
 #: templates/user/my-properties.php:4
 msgid "Published"
 msgstr ""
 
-#: inc/mixes-functions.php:1249 templates/user/my-properties.php:5
+#: inc/mixes-functions.php:1261 templates/user/my-properties.php:5
 msgid "Pending"
 msgstr ""
 
-#: inc/mixes-functions.php:1250 templates/user/my-properties.php:6
-#: inc/vendors/opalmembership/membership.php:666
-#: inc/vendors/opalmembership/membership.php:675
+#: inc/mixes-functions.php:1262 templates/user/my-properties.php:6
+#: inc/vendors/opalmembership/membership.php:673
+#: inc/vendors/opalmembership/membership.php:682
 msgid "Expired"
 msgstr ""
 
-#: inc/mixes-functions.php:1376
+#: inc/mixes-functions.php:1388
 msgid "Single Property Sidebar"
 msgstr ""
 
-#: inc/mixes-functions.php:1378
+#: inc/mixes-functions.php:1390
 msgid "Add widgets here to appear in your single property sidebar area."
 msgstr ""
 
@@ -1303,96 +1301,96 @@ msgstr ""
 msgid "Sort By"
 msgstr ""
 
-#: inc/template-functions.php:313
+#: inc/template-functions.php:307
 msgid "Previous"
 msgstr ""
 
-#: inc/template-functions.php:324
+#: inc/template-functions.php:318
 msgid "Next"
 msgstr ""
 
-#: inc/template-functions.php:433
+#: inc/template-functions.php:439
 msgid "Vesion 2"
 msgstr ""
 
-#: inc/template-functions.php:434
+#: inc/template-functions.php:440
 msgid "Vesion 3"
 msgstr ""
 
-#: inc/template-functions.php:435
+#: inc/template-functions.php:441
 msgid "Vesion 4"
 msgstr ""
 
-#: inc/template-functions.php:436
+#: inc/template-functions.php:442
 msgid "Vesion 5"
 msgstr ""
 
-#: inc/template-functions.php:458
+#: inc/template-functions.php:464
 #: inc/property/class-metabox-property-admin.php:493
 #: inc/admin/settings/general.php:166
 msgid "Inherit"
 msgstr ""
 
-#: inc/template-functions.php:459
+#: inc/template-functions.php:465
 msgid "Gallery Thumb Nav"
 msgstr ""
 
-#: inc/template-functions.php:460
+#: inc/template-functions.php:466
 msgid "Gallery Slider"
 msgstr ""
 
-#: inc/template-functions.php:461
+#: inc/template-functions.php:467
 msgid "Maps"
 msgstr ""
 
-#: inc/template-functions.php:462
+#: inc/template-functions.php:468
 msgid "Tabs - Gallery Active"
 msgstr ""
 
-#: inc/template-functions.php:463
+#: inc/template-functions.php:469
 msgid "Tabs - Map Active"
 msgstr ""
 
-#: inc/template-functions.php:464
+#: inc/template-functions.php:470
 msgid "Tabs - Street Map Active"
 msgstr ""
 
-#: inc/template-functions.php:465
+#: inc/template-functions.php:471
 msgid "Tour 360"
 msgstr ""
 
-#: inc/template-functions.php:466
+#: inc/template-functions.php:472
 msgid "Gallery Metro"
 msgstr ""
 
-#: inc/template-functions.php:467
+#: inc/template-functions.php:473
 msgid "Mark Picture"
 msgstr ""
 
-#: inc/template-functions.php:701 inc/admin/settings/3rd_party.php:164
+#: inc/template-functions.php:707 inc/admin/settings/3rd_party.php:164
 msgid "miles"
 msgstr ""
 
-#: inc/template-functions.php:705
+#: inc/template-functions.php:711
 msgid "km"
 msgstr ""
 
-#: inc/template-functions.php:820
+#: inc/template-functions.php:826
 msgid "Similar Properties You May Like"
 msgstr ""
 
-#: inc/template-functions.php:863
+#: inc/template-functions.php:869
 msgid "New Listings Nearby"
 msgstr ""
 
 #. %s: rating
-#: inc/template-functions.php:899 inc/template-functions.php:925
+#: inc/template-functions.php:905 inc/template-functions.php:931
 #, php-format
 msgid "Rated %s out of 5"
 msgstr ""
 
 #. 1: rating 2: rating count
-#: inc/template-functions.php:919
+#: inc/template-functions.php:925
 #, php-format
 msgid "Rated %1$s out of 5 based on %2$s customer rating"
 msgid_plural "Rated %1$s out of 5 based on %2$s customer ratings"
@@ -1400,7 +1398,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. %s number of reviews
-#: inc/template-functions.php:1031 templates/rating/opalestate-ratings.php:176
+#: inc/template-functions.php:1037 templates/rating/opalestate-ratings.php:176
 #, php-format
 msgctxt "review numbers"
 msgid "%s review"
@@ -1408,7 +1406,7 @@ msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-functions.php:1081 inc/template-functions.php:1083
+#: inc/template-functions.php:1087 inc/template-functions.php:1089
 msgid "Print"
 msgstr ""
 
@@ -1559,7 +1557,7 @@ msgstr ""
 msgid "Apartments"
 msgstr ""
 
-#: templates/content-single-property-v5.php:35 inc/user/functions.php:207
+#: templates/content-single-property-v5.php:35 inc/user/functions.php:213
 msgid "Reviews"
 msgstr ""
 
@@ -1634,7 +1632,7 @@ msgstr ""
 
 #: templates/content-single-agency.php:24
 #: templates/content-single-agency.php:66
-#: inc/classes/class-opalestate-metabox-user.php:107
+#: inc/classes/class-opalestate-metabox-user.php:106
 #: inc/property/class-metabox-property-admin.php:214
 #: inc/submission/class-metabox-property-submission.php:341
 #: inc/admin/property/class-property.php:102
@@ -1733,7 +1731,7 @@ msgstr ""
 
 #: inc/rating/class-opalestate-rating-features-posttype.php:57
 #: templates/user/content-property.php:80
-#: inc/vendors/opalmembership/membership.php:579
+#: inc/vendors/opalmembership/membership.php:586
 msgid "Edit"
 msgstr ""
 
@@ -1928,8 +1926,8 @@ msgstr ""
 
 #: inc/classes/class-opalestate-metabox-user.php:23
 #: inc/classes/class-opalestate-metabox-user.php:31
-#: inc/classes/class-opalestate-metabox-user.php:70
-#: inc/classes/class-opalestate-metabox-user.php:197
+#: inc/classes/class-opalestate-metabox-user.php:69
+#: inc/classes/class-opalestate-metabox-user.php:196
 #: inc/agency/class-opalestate-agency-metabox.php:100
 #: inc/agency/class-opalestate-agency-metabox.php:310
 #: inc/agency/class-opalestate-agency-metabox.php:320
@@ -1940,8 +1938,8 @@ msgstr ""
 
 #: inc/classes/class-opalestate-metabox-user.php:24
 #: inc/classes/class-opalestate-metabox-user.php:32
-#: inc/classes/class-opalestate-metabox-user.php:71
-#: inc/classes/class-opalestate-metabox-user.php:198
+#: inc/classes/class-opalestate-metabox-user.php:70
+#: inc/classes/class-opalestate-metabox-user.php:197
 #: inc/agency/class-opalestate-agency-metabox.php:101
 #: inc/agency/class-opalestate-agency-metabox.php:311
 #: inc/agency/class-opalestate-agency-metabox.php:321
@@ -1950,29 +1948,29 @@ msgstr ""
 msgid "This image will display in user detail and profile box information"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:41
+#: inc/classes/class-opalestate-metabox-user.php:40
 #: inc/agency/class-opalestate-agency-metabox.php:111
 msgid "First Name"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:49
+#: inc/classes/class-opalestate-metabox-user.php:48
 #: inc/agency/class-opalestate-agency-metabox.php:121
 msgid "Last Name"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:57
+#: inc/classes/class-opalestate-metabox-user.php:56
 #: inc/agency/class-opalestate-agency-metabox.php:130
 msgid "Biographical Info"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:59
+#: inc/classes/class-opalestate-metabox-user.php:58
 #: inc/agency/class-opalestate-agency-metabox.php:132
 msgid ""
 "Share a little biographical information to fill out your profile. This may "
 "be shown publicly."
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:83
+#: inc/classes/class-opalestate-metabox-user.php:82
 #: inc/property/class-metabox-property-admin.php:193
 #: inc/submission/class-metabox-property-submission.php:63
 #: templates/search-box/search-form-v3.php:28 inc/api/v1/property.php:602
@@ -1982,7 +1980,7 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:84
+#: inc/classes/class-opalestate-metabox-user.php:83
 #: inc/agency/class-opalestate-agency-metabox.php:37
 #: inc/agency/class-opalestate-agency-metabox.php:279
 #: inc/agency/class-opalestate-agency-metabox.php:331
@@ -1992,45 +1990,45 @@ msgstr ""
 msgid "Select one, to add new you create in location of estate panel"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:92
+#: inc/classes/class-opalestate-metabox-user.php:91
 #: inc/taxonomies/class-taxonomy-city.php:104
 msgid "State / Province"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:93
+#: inc/classes/class-opalestate-metabox-user.php:92
 msgid "Select one, to add new you create in state of estate panel"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:99
+#: inc/classes/class-opalestate-metabox-user.php:98
 #: inc/submission/class-metabox-property-submission.php:328
 msgid "City / Town"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:100
+#: inc/classes/class-opalestate-metabox-user.php:99
 msgid "Select one, to add new you create in city of estate panel"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:113
+#: inc/classes/class-opalestate-metabox-user.php:112
 msgid "Map Location"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:124
+#: inc/classes/class-opalestate-metabox-user.php:123
 msgid "Job"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:130
+#: inc/classes/class-opalestate-metabox-user.php:129
 msgid "Company"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:151
-#: inc/classes/class-opalestate-metabox-user.php:211
+#: inc/classes/class-opalestate-metabox-user.php:150
+#: inc/classes/class-opalestate-metabox-user.php:210
 #: inc/agency/class-opalestate-agency-metabox.php:343
 #: inc/agent/class-opalestate-agent-metabox.php:183
 msgid "Website"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:156
-#: inc/classes/class-opalestate-metabox-user.php:216
+#: inc/classes/class-opalestate-metabox-user.php:155
+#: inc/classes/class-opalestate-metabox-user.php:215
 #: inc/agency/class-opalestate-agency-metabox.php:158
 #: inc/agency/class-opalestate-agency-metabox.php:348
 #: inc/message/class-opalestate-message.php:546
@@ -2040,63 +2038,63 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:161
-#: inc/classes/class-opalestate-metabox-user.php:222
+#: inc/classes/class-opalestate-metabox-user.php:160
+#: inc/classes/class-opalestate-metabox-user.php:221
 #: inc/agency/class-opalestate-agency-metabox.php:354
 #: inc/agent/class-opalestate-agent-metabox.php:194
 msgid "Mobile"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:166
-#: inc/classes/class-opalestate-metabox-user.php:227
+#: inc/classes/class-opalestate-metabox-user.php:165
+#: inc/classes/class-opalestate-metabox-user.php:226
 #: inc/agency/class-opalestate-agency-metabox.php:360
 #: inc/agent/class-opalestate-agent-metabox.php:200
 msgid "Fax"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:178
+#: inc/classes/class-opalestate-metabox-user.php:177
 #: inc/agency/class-opalestate-agency-metabox.php:58
 msgid "Is Featured"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:180
+#: inc/classes/class-opalestate-metabox-user.php:179
 msgid "Set member as featured"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:188
+#: inc/classes/class-opalestate-metabox-user.php:187
 msgid "Trusted"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:190
+#: inc/classes/class-opalestate-metabox-user.php:189
 msgid "Set this member as Trusted Member"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:238
+#: inc/classes/class-opalestate-metabox-user.php:237
 msgid "Twitter"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:245
+#: inc/classes/class-opalestate-metabox-user.php:244
 #: inc/agency/class-opalestate-agency-metabox.php:180
 #: inc/vendors/social-login/class-opalestate-social-login.php:93
 #: templates/user/social-login/facebook-button.php:19
 msgid "Facebook"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:251
+#: inc/classes/class-opalestate-metabox-user.php:250
 #: inc/vendors/social-login/class-opalestate-social-login.php:57
 #: templates/user/social-login/google-button.php:19
 msgid "Google"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:257
+#: inc/classes/class-opalestate-metabox-user.php:256
 msgid "LinkedIn"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:263
+#: inc/classes/class-opalestate-metabox-user.php:262
 msgid "Pinterest"
 msgstr ""
 
-#: inc/classes/class-opalestate-metabox-user.php:268
+#: inc/classes/class-opalestate-metabox-user.php:267
 msgid "Instagram"
 msgstr ""
 
@@ -2133,6 +2131,10 @@ msgstr ""
 msgid "Login Form"
 msgstr ""
 
+#: inc/property/class-opalestate-property.php:741
+msgid "ago"
+msgstr ""
+
 #: inc/property/class-opalestate-search.php:431
 msgid "Bed Rooms"
 msgstr ""
@@ -2152,7 +2154,7 @@ msgid "Property Metabox"
 msgstr ""
 
 #: inc/property/class-metabox-property-admin.php:46
-#: inc/admin/register-settings.php:123 inc/admin/class-user.php:105
+#: inc/admin/register-settings.php:123 inc/admin/class-user.php:116
 #: inc/submission/class-metabox-property-submission.php:61
 #: inc/admin/settings/property.php:21 inc/admin/agency/class-agency.php:141
 #: inc/admin/agent/class-agent.php:113
@@ -2475,12 +2477,12 @@ msgid "Author Information"
 msgstr ""
 
 #: inc/property/class-metabox-property-admin.php:433
-#: inc/user/class-opalestate-user.php:307
+#: inc/user/class-opalestate-user.php:319
 msgid "Agent"
 msgstr ""
 
 #: inc/property/class-metabox-property-admin.php:439
-#: inc/user/class-opalestate-user.php:308
+#: inc/user/class-opalestate-user.php:320
 #: templates/parts/search-agency-form.php:20
 msgid "Agency"
 msgstr ""
@@ -2773,14 +2775,14 @@ msgid "Agency Team"
 msgstr ""
 
 #: inc/agency/class-opalestate-agency-front.php:289
-#: inc/user/class-opalestate-user.php:360
+#: inc/user/class-opalestate-user.php:372
 #: inc/agent/class-opalestate-agent-front.php:209
 msgid "The data updated successful, please wait for redirecting"
 msgstr ""
 
 #: inc/agency/class-opalestate-agency-front.php:291
 #: inc/agency/class-opalestate-agency-front.php:298
-#: inc/user/class-opalestate-user.php:362
+#: inc/user/class-opalestate-user.php:374
 #: inc/agent/class-opalestate-agent-front.php:211
 #: inc/agent/class-opalestate-agent-front.php:219
 msgid "Update Information"
@@ -2829,8 +2831,8 @@ msgid "Set this agent as featured"
 msgstr ""
 
 #: inc/agency/class-opalestate-agency-metabox.php:83
-#: inc/user/class-opalestate-user.php:584
-#: inc/user/class-opalestate-user.php:597
+#: inc/user/class-opalestate-user.php:596
+#: inc/user/class-opalestate-user.php:609
 #: inc/submission/class-metabox-property-submission.php:45
 msgid "Name and Description"
 msgstr ""
@@ -3033,43 +3035,43 @@ msgstr ""
 msgid "Copying to clipboard failed. Please press Ctrl/Cmd+C to copy."
 msgstr ""
 
-#: inc/admin/class-user.php:49
+#: inc/admin/class-user.php:47
 #, php-format
 msgid ""
 "This user has role <strong>Opal Estate Agency</strong> and click here to <a "
 "href=\"%s\">update Agency profile</a>"
 msgstr ""
 
-#: inc/admin/class-user.php:59
+#: inc/admin/class-user.php:57
 #, php-format
 msgid ""
 "This user has role <strong>Opal Estate Agent</strong> and click here to <a "
 "href=\"%s\">update Agent profile</a>"
 msgstr ""
 
-#: inc/admin/class-user.php:87 inc/admin/agency/class-agency.php:122
+#: inc/admin/class-user.php:99 inc/admin/agency/class-agency.php:122
 #: inc/admin/agent/class-agent.php:95
 msgid "Metabox"
 msgstr ""
 
-#: inc/admin/class-user.php:112 inc/admin/agency/class-agency.php:148
+#: inc/admin/class-user.php:123 inc/admin/agency/class-agency.php:148
 #: inc/admin/agent/class-agent.php:120
 msgid "Socials"
 msgstr ""
 
-#: inc/admin/class-user.php:168
+#: inc/admin/class-user.php:180
 msgid "Block Submssion"
 msgstr ""
 
-#: inc/admin/class-user.php:170
+#: inc/admin/class-user.php:182
 msgid "Disable Submssion Functions to not allow submit property"
 msgstr ""
 
-#: inc/admin/class-user.php:176
+#: inc/admin/class-user.php:188
 msgid "Block Submssion Message"
 msgstr ""
 
-#: inc/admin/class-user.php:178
+#: inc/admin/class-user.php:190
 msgid "Show message for disabled user"
 msgstr ""
 
@@ -3092,7 +3094,7 @@ msgstr ""
 #: inc/message/class-opalestate-message.php:610
 #: inc/message/class-opalestate-message.php:688
 #: inc/taxonomies/class-taxonomy-types.php:144
-#: templates/user/register-form.php:69
+#: templates/user/register-form.php:70
 msgid "Type"
 msgstr ""
 
@@ -3125,50 +3127,50 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: inc/user/functions.php:167
+#: inc/user/functions.php:173
 msgid "Log out"
 msgstr ""
 
-#: inc/user/functions.php:181
+#: inc/user/functions.php:187
 #: inc/vendors/elementor/widgets/opalestate-account-button.php:551
 msgid "Dashboard"
 msgstr ""
 
-#: inc/user/functions.php:189
+#: inc/user/functions.php:195
 msgid "Personal Information"
 msgstr ""
 
-#: inc/user/functions.php:198
+#: inc/user/functions.php:204
 msgid "Favorite"
 msgstr ""
 
-#: inc/user/functions.php:216 templates/user/read-messages.php:7
+#: inc/user/functions.php:222 templates/user/read-messages.php:7
 msgid "Messages"
 msgstr ""
 
-#: inc/user/functions.php:225
+#: inc/user/functions.php:231
 msgid "Submit Property"
 msgstr ""
 
-#: inc/user/functions.php:236 inc/submission/class-opalestate-submission.php:97
+#: inc/user/functions.php:242 inc/submission/class-opalestate-submission.php:97
 #: templates/single-agent/properties.php:10
 #: templates/single-agency/properties.php:15
 msgid "My Properties"
 msgstr ""
 
-#: inc/user/functions.php:264
+#: inc/user/functions.php:270
 msgid "An account is already registered with your email address. Please login."
 msgstr ""
 
-#: inc/user/functions.php:269
+#: inc/user/functions.php:275
 msgid "Please enter a valid account username."
 msgstr ""
 
-#: inc/user/functions.php:273
+#: inc/user/functions.php:279
 msgid "Username is already exists."
 msgstr ""
 
-#: inc/user/functions.php:278
+#: inc/user/functions.php:284
 msgid "Password is requried."
 msgstr ""
 
@@ -3176,75 +3178,75 @@ msgstr ""
 msgid "User Profile"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:188
+#: inc/user/class-opalestate-user.php:200
 #, php-format
 msgid ""
 "This user has role <strong>Opal Estate Agency</strong> and click here to <a "
 "target=\"_blank\" href=\"%s\">update Agency profile</a>"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:199
+#: inc/user/class-opalestate-user.php:211
 #, php-format
 msgid ""
 "This user has role <strong>Opal Estate Agent</strong> and click here to <a "
 "target=\"_blank\" href=\"%s\">update Agent profile</a>"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:281
+#: inc/user/class-opalestate-user.php:293
 msgid ""
 "Your account was blocked to use the submission form, so you could not submit "
 "any property."
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:293
+#: inc/user/class-opalestate-user.php:305
 msgid "Your account is blocked, you could not complete this action"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:306
+#: inc/user/class-opalestate-user.php:318
 msgid "Subscriber"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:512
+#: inc/user/class-opalestate-user.php:524
 msgid "Found a problem while updating"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:523
+#: inc/user/class-opalestate-user.php:535
 msgid "Passwords fields are not empty"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:529
+#: inc/user/class-opalestate-user.php:541
 msgid "New password is not same confirm password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:539
+#: inc/user/class-opalestate-user.php:551
 msgid "Password Updated"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:541
+#: inc/user/class-opalestate-user.php:553
 msgid "Old password is not correct"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:606
+#: inc/user/class-opalestate-user.php:618
 msgid "Old Password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:611
+#: inc/user/class-opalestate-user.php:623
 msgid "Please enter your old password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:615
+#: inc/user/class-opalestate-user.php:627
 msgid "New Password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:620
+#: inc/user/class-opalestate-user.php:632
 msgid "Please enter your new password."
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:624
+#: inc/user/class-opalestate-user.php:636
 msgid "Confirm Password"
 msgstr ""
 
-#: inc/user/class-opalestate-user.php:629
+#: inc/user/class-opalestate-user.php:641
 msgid "Please enter your confirm password."
 msgstr ""
 
@@ -4458,7 +4460,7 @@ msgstr ""
 #: inc/submission/class-opalestate-submission.php:547
 #: inc/submission/class-opalestate-submission.php:554
 #: inc/submission/class-opalestate-submission.php:561
-#: inc/vendors/opalmembership/membership.php:495
+#: inc/vendors/opalmembership/membership.php:502
 msgid "Submission Information"
 msgstr ""
 
@@ -4800,8 +4802,8 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: templates/user/my-account-popup.php:5 templates/user/register-form.php:31
-#: templates/user/register-form.php:93 templates/user/my-account.php:5
+#: templates/user/my-account-popup.php:5 templates/user/register-form.php:32
+#: templates/user/register-form.php:94 templates/user/my-account.php:5
 #: inc/vendors/elementor/widgets/opalestate-account-button.php:506
 msgid "Register"
 msgstr ""
@@ -4827,31 +4829,41 @@ msgstr ""
 msgid "You are currently logged in."
 msgstr ""
 
-#: templates/user/register-form.php:43
+#: templates/user/register-form.php:44
 #: inc/vendors/elementor/widgets/opalestate-account-button.php:514
 msgid "Username"
 msgstr ""
 
-#: templates/user/register-form.php:50
+#: templates/user/register-form.php:51
 msgid "Email address"
 msgstr ""
 
-#: templates/user/register-form.php:57 templates/user/login-form.php:34
+#: templates/user/register-form.php:58 templates/user/login-form.php:34
 #: inc/vendors/elementor/widgets/opalestate-account-button.php:518
 #: inc/vendors/elementor/widgets/opalestate-account-button.php:519
 msgid "Password"
 msgstr ""
 
-#: templates/user/register-form.php:62
+#: templates/user/register-form.php:63
 msgid "Repeat-Password"
 msgstr ""
 
-#: templates/user/register-form.php:80
+#: templates/user/register-form.php:81
 msgid "I agree with"
 msgstr ""
 
-#: templates/user/register-form.php:81
+#: templates/user/register-form.php:82
 msgid "terms & conditions"
+msgstr ""
+
+#: templates/user/error.php:2
+msgid ""
+"You need a higher level of permission or this page is denied with your user "
+"role."
+msgstr ""
+
+#: templates/user/error.php:3
+msgid "Sorry, you are not allowed to this page."
 msgstr ""
 
 #: templates/user/profile.php:36
@@ -4905,7 +4917,7 @@ msgid "Search"
 msgstr ""
 
 #: templates/shortcodes/search-properties-result.php:28
-#: templates/shortcodes/ajax-map-search-result.php:19
+#: templates/shortcodes/ajax-map-search-result.php:22
 #: templates/parts/archive-simple-bars.php:6
 #, php-format
 msgid "Found %s Properties"
@@ -5157,8 +5169,8 @@ msgstr ""
 
 #: templates/parts/membership-pricing-info.php:14
 #: templates/parts/membership-pricing-info.php:23
-#: inc/vendors/opalmembership/membership.php:564
-#: inc/vendors/opalmembership/membership.php:565
+#: inc/vendors/opalmembership/membership.php:571
+#: inc/vendors/opalmembership/membership.php:572
 msgid "Unlimited"
 msgstr ""
 
@@ -5474,23 +5486,23 @@ msgid ""
 msgstr ""
 
 #: inc/vendors/opalmembership/membership.php:224
-#: inc/vendors/opalmembership/membership.php:640
+#: inc/vendors/opalmembership/membership.php:647
 msgid "Number Of Properties"
 msgstr ""
 
 #: inc/vendors/opalmembership/membership.php:233
-#: inc/vendors/opalmembership/membership.php:649
+#: inc/vendors/opalmembership/membership.php:656
 msgid ""
 "Number of properties with this package. If not set it will be unlimited."
 msgstr ""
 
 #: inc/vendors/opalmembership/membership.php:237
-#: inc/vendors/opalmembership/membership.php:653
+#: inc/vendors/opalmembership/membership.php:660
 msgid "Number Of Featured Properties"
 msgstr ""
 
 #: inc/vendors/opalmembership/membership.php:246
-#: inc/vendors/opalmembership/membership.php:662
+#: inc/vendors/opalmembership/membership.php:669
 msgid "Number of properties can make featured with this package."
 msgstr ""
 
@@ -5528,60 +5540,60 @@ msgstr ""
 msgid "Enter expired date type. Example Day(s), Week(s), Month(s), Year(s)"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:296
+#: inc/vendors/opalmembership/membership.php:298
 msgid "My Membership"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:303
+#: inc/vendors/opalmembership/membership.php:307
 msgid "My Invoices"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:310
+#: inc/vendors/opalmembership/membership.php:316
 msgid "Renew membership"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:493
+#: inc/vendors/opalmembership/membership.php:500
 msgid ""
 "Your membership package is expired or Your package has 0 left listing, "
 "please upgrade now."
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:564
-#: inc/vendors/opalmembership/membership.php:568
+#: inc/vendors/opalmembership/membership.php:571
+#: inc/vendors/opalmembership/membership.php:575
 msgid "(Package) Listings Included:"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:565
-#: inc/vendors/opalmembership/membership.php:569
+#: inc/vendors/opalmembership/membership.php:572
+#: inc/vendors/opalmembership/membership.php:576
 msgid "(Package) Featured Included:"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:571
+#: inc/vendors/opalmembership/membership.php:578
 msgid "Listings Remaining:"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:572
+#: inc/vendors/opalmembership/membership.php:579
 msgid "Featured Remaining:"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:618
+#: inc/vendors/opalmembership/membership.php:625
 msgid "Membership Package"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:625
+#: inc/vendors/opalmembership/membership.php:632
 msgid "Package"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:634
+#: inc/vendors/opalmembership/membership.php:641
 msgid "Set package ID with -1 as free package."
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:635
+#: inc/vendors/opalmembership/membership.php:642
 msgid "Membership Information"
 msgstr ""
 
-#: inc/vendors/opalmembership/membership.php:671
-#: inc/vendors/opalmembership/membership.php:679
+#: inc/vendors/opalmembership/membership.php:678
+#: inc/vendors/opalmembership/membership.php:686
 msgid "Show expired time in double format."
 msgstr ""
 
@@ -5643,319 +5655,323 @@ msgid "Show Meta Information in property collection."
 msgstr ""
 
 #: inc/admin/settings/property.php:89
-msgid "Archive Grid layout"
+msgid "Default Display mode"
 msgstr ""
 
 #: inc/admin/settings/property.php:96
+msgid "Archive Grid layout"
+msgstr ""
+
+#: inc/admin/settings/property.php:103
 msgid "Archive List layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:118
+#: inc/admin/settings/property.php:125
 msgid "User Share Search"
 msgstr ""
 
-#: inc/admin/settings/property.php:119
+#: inc/admin/settings/property.php:126
 msgid "Display Share Search Link Management"
 msgstr ""
 
-#: inc/admin/settings/property.php:129
+#: inc/admin/settings/property.php:136
 msgid "User Saved Search"
 msgstr ""
 
-#: inc/admin/settings/property.php:130
+#: inc/admin/settings/property.php:137
 msgid "Display Save Search Link Management"
 msgstr ""
 
-#: inc/admin/settings/property.php:141
+#: inc/admin/settings/property.php:148
 msgid "Search Properties Page"
 msgstr ""
 
-#: inc/admin/settings/property.php:142
+#: inc/admin/settings/property.php:149
 msgid ""
 "This is page to display result of properties after user searching via form."
 msgstr ""
 
-#: inc/admin/settings/property.php:154
+#: inc/admin/settings/property.php:161
 msgid "Properties Per Page"
 msgstr ""
 
-#: inc/admin/settings/property.php:155
+#: inc/admin/settings/property.php:162
 msgid "Enter min of properties display in search page"
 msgstr ""
 
-#: inc/admin/settings/property.php:166
+#: inc/admin/settings/property.php:173
 msgid "Show Featured First"
 msgstr ""
 
-#: inc/admin/settings/property.php:168
+#: inc/admin/settings/property.php:175
 msgid "Show featured first in page result, as default Newest is showed"
 msgstr ""
 
-#: inc/admin/settings/property.php:177
+#: inc/admin/settings/property.php:184
 msgid "Minimum of Search Price"
 msgstr ""
 
-#: inc/admin/settings/property.php:178
+#: inc/admin/settings/property.php:185
 msgid "Enter minimum of price for starting search"
 msgstr ""
 
-#: inc/admin/settings/property.php:187
+#: inc/admin/settings/property.php:194
 msgid "Maximum of Search Price"
 msgstr ""
 
-#: inc/admin/settings/property.php:188
+#: inc/admin/settings/property.php:195
 msgid "Enter maximum of price for starting search"
 msgstr ""
 
-#: inc/admin/settings/property.php:199
+#: inc/admin/settings/property.php:206
 msgid "Minimum of Search Aea"
 msgstr ""
 
-#: inc/admin/settings/property.php:200
+#: inc/admin/settings/property.php:207
 msgid "Enter minimum of area for starting search"
 msgstr ""
 
-#: inc/admin/settings/property.php:209
+#: inc/admin/settings/property.php:216
 msgid "Maximum of Search Aea"
 msgstr ""
 
-#: inc/admin/settings/property.php:210
+#: inc/admin/settings/property.php:217
 msgid "Enter maximum of area for starting search"
 msgstr ""
 
-#: inc/admin/settings/property.php:220
+#: inc/admin/settings/property.php:227
 msgid "Search Grid layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:227
+#: inc/admin/settings/property.php:234
 msgid "Search List layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:234
+#: inc/admin/settings/property.php:241
 msgid "Horizontal Search Fields"
 msgstr ""
 
-#: inc/admin/settings/property.php:235
+#: inc/admin/settings/property.php:242
 msgid "Disable or enable fields appearing in search form"
 msgstr ""
 
-#: inc/admin/settings/property.php:243
+#: inc/admin/settings/property.php:250
 msgid "Show Price"
 msgstr ""
 
-#: inc/admin/settings/property.php:265 inc/admin/settings/property.php:266
+#: inc/admin/settings/property.php:272 inc/admin/settings/property.php:273
 msgid "Setting type fields search"
 msgstr ""
 
-#: inc/admin/settings/property.php:291
+#: inc/admin/settings/property.php:298
 msgid "Field type"
 msgstr ""
 
-#: inc/admin/settings/property.php:293
+#: inc/admin/settings/property.php:300
 msgid "Select"
 msgstr ""
 
-#: inc/admin/settings/property.php:294
+#: inc/admin/settings/property.php:301
 msgid "Range"
 msgstr ""
 
-#: inc/admin/settings/property.php:295
+#: inc/admin/settings/property.php:302
 msgid "Text"
 msgstr ""
 
-#: inc/admin/settings/property.php:303
+#: inc/admin/settings/property.php:310
 msgid "Options"
 msgstr ""
 
-#: inc/admin/settings/property.php:304
+#: inc/admin/settings/property.php:311
 msgid "Options value select. Use \",\" to separate values."
 msgstr ""
 
-#: inc/admin/settings/property.php:311 inc/admin/settings/property.php:312
+#: inc/admin/settings/property.php:318 inc/admin/settings/property.php:319
 msgid "Min range"
 msgstr ""
 
-#: inc/admin/settings/property.php:319 inc/admin/settings/property.php:320
+#: inc/admin/settings/property.php:326 inc/admin/settings/property.php:327
 msgid "Max range"
 msgstr ""
 
-#: inc/admin/settings/property.php:327 inc/admin/settings/property.php:328
+#: inc/admin/settings/property.php:334 inc/admin/settings/property.php:335
 msgid "Unit thousand"
 msgstr ""
 
-#: inc/admin/settings/property.php:334
+#: inc/admin/settings/property.php:341
 msgid "Default text"
 msgstr ""
 
-#: inc/admin/settings/property.php:335
+#: inc/admin/settings/property.php:342
 msgid "Default text value"
 msgstr ""
 
-#: inc/admin/settings/property.php:353
+#: inc/admin/settings/property.php:360
 msgid "Enable Request Viewing"
 msgstr ""
 
-#: inc/admin/settings/property.php:354
+#: inc/admin/settings/property.php:361
 msgid "Enable Request Viewing feature in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:365
+#: inc/admin/settings/property.php:372
 msgid "Request Viewing Time Range (minute)"
 msgstr ""
 
-#: inc/admin/settings/property.php:366
+#: inc/admin/settings/property.php:373
 msgid "Time range from 1-60 minutes."
 msgstr ""
 
-#: inc/admin/settings/property.php:379
+#: inc/admin/settings/property.php:386
 msgid "Show Amenities tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:380
+#: inc/admin/settings/property.php:387
 msgid "Show Amenities tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:390
+#: inc/admin/settings/property.php:397
 msgid "Hide Unset amenities"
 msgstr ""
 
-#: inc/admin/settings/property.php:391
+#: inc/admin/settings/property.php:398
 msgid "Hide unset amenities. Default: Show unset amenities with disable icons."
 msgstr ""
 
-#: inc/admin/settings/property.php:402
+#: inc/admin/settings/property.php:409
 msgid "Show Facilities tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:403
+#: inc/admin/settings/property.php:410
 msgid "Show Facilities tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:414
+#: inc/admin/settings/property.php:421
 msgid "Show Attachments tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:415
+#: inc/admin/settings/property.php:422
 msgid "Show Attachments tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:426
+#: inc/admin/settings/property.php:433
 msgid "Show Video tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:427
+#: inc/admin/settings/property.php:434
 msgid "Show Video tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:438
+#: inc/admin/settings/property.php:445
 msgid "Show Virtual Tour tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:439
+#: inc/admin/settings/property.php:446
 msgid "Show Virtual Tour tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:450
+#: inc/admin/settings/property.php:457
 msgid "Show Map tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:451
+#: inc/admin/settings/property.php:458
 msgid "Show Map tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:462
+#: inc/admin/settings/property.php:469
 msgid "Show Nearby tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:463
+#: inc/admin/settings/property.php:470
 msgid "Show Nearby tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:474
+#: inc/admin/settings/property.php:481
 msgid "Show Walk Scores tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:475
+#: inc/admin/settings/property.php:482
 msgid "Show Walk Scores tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:486
+#: inc/admin/settings/property.php:493
 msgid "Show Apartments tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:487
+#: inc/admin/settings/property.php:494
 msgid "Show Apartments tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:498
+#: inc/admin/settings/property.php:505
 msgid "Show Floor Plans tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:499
+#: inc/admin/settings/property.php:506
 msgid "Show Floor Plans tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:510
+#: inc/admin/settings/property.php:517
 msgid "Show Views Statistics tab"
 msgstr ""
 
-#: inc/admin/settings/property.php:511
+#: inc/admin/settings/property.php:518
 msgid "Show Views Statistics tab in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:521
+#: inc/admin/settings/property.php:528
 msgid "Views Statistics time limit (days)"
 msgstr ""
 
-#: inc/admin/settings/property.php:522
+#: inc/admin/settings/property.php:529
 msgid "The number of days will be saved to the database."
 msgstr ""
 
-#: inc/admin/settings/property.php:535
+#: inc/admin/settings/property.php:542
 msgid "Show Author box"
 msgstr ""
 
-#: inc/admin/settings/property.php:536
+#: inc/admin/settings/property.php:543
 msgid "Show Author box in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:546
+#: inc/admin/settings/property.php:553
 msgid "Login to show Author box"
 msgstr ""
 
-#: inc/admin/settings/property.php:547
+#: inc/admin/settings/property.php:554
 msgid "Require users login to show Author box"
 msgstr ""
 
-#: inc/admin/settings/property.php:558
+#: inc/admin/settings/property.php:565
 msgid "Show Enquire form"
 msgstr ""
 
-#: inc/admin/settings/property.php:559
+#: inc/admin/settings/property.php:566
 msgid "Show Enquire form in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:570
+#: inc/admin/settings/property.php:577
 msgid "Show Mortgage Calculator"
 msgstr ""
 
-#: inc/admin/settings/property.php:571
+#: inc/admin/settings/property.php:578
 msgid "Show Mortgage Calculator in the single property page."
 msgstr ""
 
-#: inc/admin/settings/property.php:582
+#: inc/admin/settings/property.php:589
 msgid "Related properties layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:583
+#: inc/admin/settings/property.php:590
 msgid "Select a layout for related properties."
 msgstr ""
 
-#: inc/admin/settings/property.php:591
+#: inc/admin/settings/property.php:598
 msgid "Nearby properties layout"
 msgstr ""
 
-#: inc/admin/settings/property.php:592
+#: inc/admin/settings/property.php:599
 msgid "Select a layout for nearby properties."
 msgstr ""
 
@@ -6666,6 +6682,15 @@ msgstr ""
 msgid "Columns Gap"
 msgstr ""
 
+#: inc/vendors/elementor/widgets/opalestate-agent-collection.php:171
+#: inc/vendors/elementor/widgets/opalestate-search-property-results.php:148
+#: inc/vendors/elementor/widgets/opalestate-property-collection.php:159
+#: inc/vendors/elementor/widgets/opalestate-category-list.php:152
+#: inc/vendors/elementor/widgets/opalestate-city-list.php:152
+#: inc/vendors/elementor/widgets/opalestate-agency-collection.php:171
+msgid "Enable Carousel"
+msgstr ""
+
 #: inc/vendors/elementor/widgets/opalestate-agent-collection.php:182
 #: inc/vendors/elementor/widgets/opalestate-search-property-results.php:161
 #: inc/vendors/elementor/widgets/opalestate-property-collection.php:172
@@ -6805,13 +6830,6 @@ msgstr ""
 
 #: inc/vendors/elementor/widgets/opalestate-search-property-results.php:106
 msgid "Style List Layout"
-msgstr ""
-
-#: inc/vendors/elementor/widgets/opalestate-search-property-results.php:148
-#: inc/vendors/elementor/widgets/opalestate-property-collection.php:159
-#: inc/vendors/elementor/widgets/opalestate-category-list.php:152
-#: inc/vendors/elementor/widgets/opalestate-city-list.php:152
-msgid "Enable Carousel"
 msgstr ""
 
 #: inc/vendors/elementor/widgets/opalestate-search-property-results.php:253

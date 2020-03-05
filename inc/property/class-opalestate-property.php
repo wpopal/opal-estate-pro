@@ -738,7 +738,7 @@ class Opalestate_Property {
 	}
 
 	public function get_posted() {
-		return human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . ' ' . esc_html__( 'ago' );
+		return human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . ' ' . esc_html__( 'ago', 'opalestate-pro' );
 	}
 
 	public function get_expiry_date() {
