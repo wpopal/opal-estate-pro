@@ -37,28 +37,28 @@ if ( ! $floor_plans ) {
                             </h2>
                             
                             <ul class="list-inline">
-                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_price' ] ) ) : ?>
+                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_price' ] ) && $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_price' ] ) : ?>
                                     <li class="plan-price">
                                         <label class="plan-label"><?php esc_html_e( 'Price:', 'opalestate-pro' ); ?></label>
                                         <?php echo esc_html( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_price' ] ); ?>
                                     </li>
                                 <?php endif; ?>
 
-                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_size' ] ) ) : ?>
+                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_size' ] ) && $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_size' ] ) : ?>
                                     <li class="plan-size">
                                         <label class="plan-label"><?php esc_html_e( 'Size:', 'opalestate-pro' ); ?></label>
                                         <?php echo esc_html( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_size' ] ); ?>
                                     </li>
                                 <?php endif; ?>
 
-                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_room' ] ) ) : ?>
+                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_room' ] ) && $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_room' ] ) : ?>
                                     <li class="plan-room">
                                         <label class="plan-label"><?php esc_html_e( 'Rooms:', 'opalestate-pro' ); ?></label>
                                         <?php echo esc_html( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_room' ] ); ?>
                                     </li>
                                 <?php endif; ?>
 
-                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_bath' ] ) ) : ?>
+                                <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_bath' ] ) && $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_bath' ] ) : ?>
                                     <li class="plan-bath">
                                         <label class="plan-label"><?php esc_html_e( 'Baths:', 'opalestate-pro' ); ?></label>
                                         <?php echo esc_html( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_bath' ] ); ?>
@@ -66,7 +66,7 @@ if ( ! $floor_plans ) {
                                 <?php endif; ?>
                             </ul>
                             
-                            <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_content' ] ) ) : ?>
+                            <?php if ( isset( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_content' ] ) && $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_content' ] ) : ?>
                                 <div class="plan-content">
                                     <?php echo esc_html( $plan[ OPALESTATE_PROPERTY_PREFIX . 'floor_content' ] ); ?>
                                 </div>
