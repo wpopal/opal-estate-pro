@@ -9,6 +9,9 @@ global $property, $post;
 $status   = get_post_status( get_the_ID() );
 $statuses = opalestate_get_property_statuses();
 $meta     = $property->get_meta_shortinfo();
+
+$current_user = wp_get_current_user();
+$roles = $current_user->roles;
 ?>
 <article itemscope itemtype="http://schema.org/Property" <?php post_class( 'my-property-list' ); ?>>
     <div class="property-list container-cols-2">
@@ -25,12 +28,34 @@ $meta     = $property->get_meta_shortinfo();
                 <?php echo do_shortcode( '[opalestate_favorite_button property_id=' . get_the_ID() . ']' ); ?>
             </div>
 
-			<?php opalestate_get_loop_thumbnail( opalestate_get_option( 'loop_image_size', 'large' ) ); ?>
+			<?php
+			if ( in_array( 'administrator', $roles ) ) {
+				opalestate_get_loop_thumbnail( opalestate_get_option( 'loop_image_size', 'large' ) );
+			} else {
+				?>
+                <div class="property-box-image">
+                    <span class="property-box-image-inner">
+						<?php if ( has_post_thumbnail() ) : ?>
+							<?php the_post_thumbnail( apply_filters( 'opalestate_loop_property_thumbnail', opalestate_get_option( 'loop_image_size', 'large' ) ) ); ?>
+						<?php else: ?>
+							<?php echo opalestate_get_image_placeholder( opalestate_get_option( 'loop_image_size', 'large' ) ); ?>
+						<?php endif; ?>
+                    </span>
+                </div>
+                <?php
+			}
+			?>
 
         </header>
         <div class="abs-col-item">
             <div class="entry-content">
-				<?php the_title( '<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' ); ?>
+				<?php
+                if ( in_array( 'administrator', $roles ) ) {
+	                the_title( '<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' );
+                } else {
+	                the_title( '<h4 class="entry-title">', '</h4>' );
+                }
+                ?>
 
                 <div class="property-address">
 					<?php echo $property->get_address(); ?>

@@ -515,12 +515,13 @@ jQuery( document ).ready( function ( $ ) {
                 'min': [ min ],
                 'max': [ max ]
             },
+            step: 0.1,
             connect: true,
             start: istart,
             format: nummm,
             direction: opalesateJS.rtl == 'true' ? 'rtl' : 'ltr',
-
         } );
+
         slider.noUiSlider.on( 'update', function ( values, handle ) {
             var val = values[ handle ];
             if ( handle == 0 ) {
