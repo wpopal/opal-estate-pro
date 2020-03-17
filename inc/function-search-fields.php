@@ -26,13 +26,16 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 		$template = '';
 	}
 
+	$input_default_value = apply_filters( 'opalestate_search_form_input_type_default_value', 0 );
+
 	if ( empty( $template ) ) {
 		switch ( $type ) {
 			case 'input': ?>
                 <label class="opalestate-label opalestate-label--<?php echo sanitize_html_class( $field ); ?>"><?php echo esc_html( $label ); ?></label>
                 <div class="input-group-number">
                     <i class="<?php echo opalestate_get_property_meta_icon( $field ); ?>"></i>
-                    <input class="form-control" value="1" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr( $label ); ?>"/>
+                    <input class="form-control" value="<?php echo $qvalue ? $qvalue : $input_default_value; ?>" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr(
+                            $label ); ?>"/>
                     <div class="btn-actions">
                         <span class="btn-minus"><i class="fa fa-minus"></i></span>
                         <span class="btn-plus"><i class="fa fa-plus"></i></span>

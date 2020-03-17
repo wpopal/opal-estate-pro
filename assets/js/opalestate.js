@@ -249,19 +249,23 @@ jQuery( document ).ready( function ( $ ) {
     ////
     $( '.input-group-number' ).each( function () {
         var _input = $( 'input', this );
-        if ( parseInt( _input.val() ) <= 0 ) {
-            _input.val( 1 );
+        if ( parseInt( _input.val() ) < 0 ) {
+            _input.val( 0 );
         }
         $( '.btn-actions > span', this ).click( function () {
 
             var _check = function () {
-                return parseInt( _input.val() ) <= 0 ? 1 : parseInt( _input.val() );
+                return parseInt( _input.val() ) < 0 ? 0 : parseInt( _input.val() );
             };
 
             if ( $( this ).hasClass( 'btn-plus' ) ) {
                 _val = _check() + 1;
             } else {
-                _val = _check() - 1;
+                if ( _check() === 0 ) {
+                    _val = _check();
+                } else {
+                    _val = _check() - 1;
+                }
             }
 
             _input.val( _val );
