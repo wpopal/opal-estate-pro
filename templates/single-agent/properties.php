@@ -1,7 +1,7 @@
 <?php
 global $post;
 
-$limit = apply_filters( 'opalesate_agent_properties_limit', 10 );
+$limit = apply_filters( 'opalesate_agent_properties_limit', 5 );
 $query = Opalestate_Query::get_agent_property( null, get_the_ID(), $limit );
 
 if ( $query->have_posts() ) : ?>

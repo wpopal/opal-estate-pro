@@ -195,7 +195,7 @@ jQuery( document ).ready( function ( $ ) {
     } );
 
     $( 'body' )
-    // Star ratings for comments
+        // Star ratings for comments
         .on( 'click', '.comment-form-rating p.opalestate-stars a', function () {
             var $star = $( this ),
                 $rating = $( this ).closest( '.comment-form-rating' ).find( '.opalestate_rating' ),
@@ -224,26 +224,26 @@ jQuery( document ).ready( function ( $ ) {
 
     var window_width = $( window ).width();
 
-    if (window_width < 768) {
-        $(".opalestate-sticky-column").trigger("sticky_kit:detach");
+    if ( window_width < 768 ) {
+        $( '.opalestate-sticky-column' ).trigger( 'sticky_kit:detach' );
     } else {
         make_sticky();
     }
 
-    $( window ).resize(function() {
+    $( window ).resize( function () {
 
         window_width = $( window ).width();
 
-        if (window_width < 768) {
-            $(".opalestate-sticky-column").trigger("sticky_kit:detach");
+        if ( window_width < 768 ) {
+            $( '.opalestate-sticky-column' ).trigger( 'sticky_kit:detach' );
         } else {
             make_sticky();
         }
 
-    });
+    } );
 
     function make_sticky() {
-        $(".opalestate-sticky-column").stick_in_parent();
+        $( '.opalestate-sticky-column' ).stick_in_parent();
     }
 
     ////
@@ -577,17 +577,33 @@ jQuery( document ).ready( function ( $ ) {
 
     $( '.ajax-load-properties' ).delegate( '.pagination li', 'click', function () {
         var $content = $( this ).parents( '.ajax-load-properties' );
-        $.ajax( {
-            type: 'POST',
-            url: opalesateJS.ajaxurl,
-            data: location.search.substr( 1 ) + '&action=get_agent_property&paged=' + $( this ).data( 'paged' ) +
-                '&id=' + $content.data( 'id' ),
-            success: function ( data ) {
-                if ( data ) {
-                    $content.html( data );
+        var type = $( this ).parents( '.ajax-load-properties' ).data( 'type' );
+        if ( type === 'agent' ) {
+            $.ajax( {
+                type: 'POST',
+                url: opalesateJS.ajaxurl,
+                data: location.search.substr( 1 ) + '&action=get_agent_property&paged=' + $( this ).data( 'paged' ) +
+                    '&id=' + $content.data( 'id' ),
+                success: function ( data ) {
+                    if ( data ) {
+                        $content.html( data );
+                    }
                 }
-            }
-        } );
+            } );
+        } else if ( type === 'agency' ) {
+            $.ajax( {
+                type: 'POST',
+                url: opalesateJS.ajaxurl,
+                data: location.search.substr( 1 ) + '&action=get_agency_property&paged=' + $( this ).data( 'paged' ) +
+                    '&id=' + $content.data( 'id' ),
+                success: function ( data ) {
+                    if ( data ) {
+                        $content.html( data );
+                    }
+                }
+            } );
+        }
+
         return false;
     } );
 
