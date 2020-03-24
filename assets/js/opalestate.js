@@ -587,6 +587,9 @@ jQuery( document ).ready( function ( $ ) {
                 success: function ( data ) {
                     if ( data ) {
                         $content.html( data );
+                        $( 'html, body' ).animate( {
+                            scrollTop: $( '.ajax-load-properties' ).offset().top - 100
+                        }, 500 );
                     }
                 }
             } );
@@ -599,6 +602,9 @@ jQuery( document ).ready( function ( $ ) {
                 success: function ( data ) {
                     if ( data ) {
                         $content.html( data );
+                        $( 'html, body' ).animate( {
+                            scrollTop: $( '.ajax-load-properties' ).offset().top - 100
+                        }, 500 );
                     }
                 }
             } );

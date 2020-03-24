@@ -4002,3 +4002,10 @@ header#masthead {
     background: #2f73e9;
     position: absolute;
     top: 0; }
+
+.type-opalestate_property {
+  margin-bottom: 30px;
+  background-color: #FFF;
+  border: solid 1px #ebebeb;
+  position: relative;
+}
