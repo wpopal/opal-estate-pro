@@ -21,5 +21,8 @@ if ( opalestate_options( 'currency_position', 'before' ) == 'before' ) {
 	$data['unit_position'] = 'prefix';
 }
 
-?>
-<?php opalesate_property_slide_ranger_template( esc_html__( 'Price', 'opalestate-pro' ), $data ); ?>
+if ( 'input' === opalestate_get_option( 'price_input_type', 'slider' ) ) {
+	echo opalestate_load_template_path( 'search-box/fields/price-input', [ 'data' => $data ] );
+} else {
+	opalesate_property_slide_ranger_template( esc_html__( 'Price', 'opalestate-pro' ), $data );
+}

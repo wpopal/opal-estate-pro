@@ -256,6 +256,17 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 				],
 			];
 
+			$fields[] = [
+				'name'    => esc_html__( 'Price input type', 'opalestate-pro' ),
+				'options' => [
+					'slider' => esc_html__( 'Range slider', 'opalestate-pro' ),
+					'input'  => esc_html__( 'Input', 'opalestate-pro' ),
+				],
+				'id'      => 'price_input_type',
+				'type'    => 'select',
+				'default' => 'slider',
+			];
+
 			foreach ( $metas as $key => $meta ) {
 				$fields[] = [
 					'name'    => $meta['name'],

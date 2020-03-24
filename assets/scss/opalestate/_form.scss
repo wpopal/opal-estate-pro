@@ -566,5 +566,25 @@ button.opal-collapse-button{
 	}
 }
 
+.opalestate-price-input-wrap {
+	display: flex;
+	align-items: center;
+}
 
+.opalestate-price-input {
+	width: 45%;
+	display: inline-block;
+	position: relative;
+}
 
+.opalestate-price-input-separator {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.opalestate-price-currency {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
