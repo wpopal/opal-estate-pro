@@ -20,9 +20,9 @@ $deposit_color = apply_filters( 'opalestate_deposit_color', '#2f73e9' );
 
 wp_localize_script( 'opalestate-scripts', 'opalestate_mortgage',
 	[
-		'ajax_url'          => admin_url( 'admin-ajax.php' ),
-		'currency'          => esc_attr__( $currency ),
-		'deposit_color'     => $deposit_color,
+		'ajax_url'      => admin_url( 'admin-ajax.php' ),
+		'currency'      => esc_attr__( $currency ),
+		'deposit_color' => $deposit_color,
 	]
 );
 
@@ -74,6 +74,7 @@ $data_deposit = [
 
 $data_interest_rate = [
 	'id'         => 'interest_rate',
+	'decimals'   => 2,
 	'unit'       => '%',
 	'ranger_min' => 0,
 	'ranger_max' => 100,
@@ -81,16 +82,19 @@ $data_interest_rate = [
 	'input_max'  => 100,
 	'mode'       => 1,
 	'start'      => $rate_start,
+	'step'       => 0.05,
 ];
 
 $data_years = [
 	'id'         => 'years',
+	'decimals'   => 1,
 	'ranger_min' => 0,
 	'ranger_max' => 30,
 	'input_min'  => 0,
 	'input_max'  => 30,
 	'mode'       => 1,
 	'start'      => $years_start,
+	'step'       => 0.5,
 ];
 
 if ( opalestate_options( 'currency_position', 'before' ) == 'before' ) {

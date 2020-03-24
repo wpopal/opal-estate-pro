@@ -4010,6 +4010,10 @@ header#masthead {
   position: relative;
 }
 
+.opalestate-box .type-opalestate_property:last-of-type {
+  margin-bottom: 0;
+}
+
 .opalestate-price-input-wrap {
   display: flex;
   align-items: center;

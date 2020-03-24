@@ -465,11 +465,7 @@ jQuery( document ).ready( function ( $ ) {
     if ( $( '.opalestate-datepicker' ).length > 0 ) {
         $( '.opalestate-datepicker' ).datepicker( { minDate: 0 } );
     }
-    //
 
-    /**
-     *
-     */
     $( '.list-property-status li' ).click( function () {
         $( '.opalestate-search-form [name=status]' ).val( $( this ).data( 'id' ) );
         $( '.list-property-status li' ).removeClass( 'active' );
@@ -496,10 +492,15 @@ jQuery( document ).ready( function ( $ ) {
         var slider = $( '.slide-ranger-bar', this ).get( 0 );
         var unit_pos = $( this ).data( 'unitpos' );
         var unit_thousand = $( this ).data( 'thousand' );
+        var step = $( this ).data( 'step' );
+        var format = $( this ).data( 'format' );
+        step = step ? step : 1;
+        format = format ? format: 1;
 
         var config_format = {
             decimals: decimals,
             thousand: unit_thousand,
+            step: step,
         };
 
         if ( unit_pos == 'prefix' ) {
@@ -509,22 +510,28 @@ jQuery( document ).ready( function ( $ ) {
         }
 
         var nummm = wNumb( config_format );
+
         var istart = [ imin, imax ];
         if ( mode && mode == 1 && start ) {
             istart = [ start ];
         }
 
-        noUiSlider.create( slider, {
+        var options = {
             range: {
                 'min': [ min ],
                 'max': [ max ]
             },
-            step: 0.1,
+            step: step,
             connect: true,
             start: istart,
-            format: nummm,
             direction: opalesateJS.rtl == 'true' ? 'rtl' : 'ltr',
-        } );
+        };
+
+        if ( format ) {
+            options.format = nummm;
+        }
+
+        noUiSlider.create( slider, options );
 
         slider.noUiSlider.on( 'update', function ( values, handle ) {
             var val = values[ handle ];

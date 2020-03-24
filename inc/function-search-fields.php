@@ -35,7 +35,7 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
                 <div class="input-group-number">
                     <i class="<?php echo opalestate_get_property_meta_icon( $field ); ?>"></i>
                     <input class="form-control" value="<?php echo $qvalue ? $qvalue : $input_default_value; ?>" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr(
-                            $label ); ?>"/>
+						$label ); ?>"/>
                     <div class="btn-actions">
                         <span class="btn-minus"><i class="fa fa-minus"></i></span>
                         <span class="btn-plus"><i class="fa fa-plus"></i></span>
@@ -166,6 +166,7 @@ function opalesate_property_slide_ranger_template( $label, $data ) {
 		'unit_thousand' => ',',
 		'mode'          => 2,
 		'start'         => '',
+		'step'          => 1,
 	];
 
 	$data = array_merge( $default, $data );
@@ -173,8 +174,8 @@ function opalesate_property_slide_ranger_template( $label, $data ) {
 	extract( $data );
 	?>
     <label class="opalestate-label opalestate-label--<?php echo sanitize_title( $label ); ?>"><?php echo esc_html( $label ); ?></label>
-    <div class="opal-slide-ranger" data-unit="<?php echo $unit; ?>" data-unitpos="<?php echo $unit_position ?>" data-decimals="<?php echo $decimals; ?>" data-thousand="<?php echo esc_attr(
-		$unit_thousand ); ?>">
+    <div class="opal-slide-ranger" data-unit="<?php echo esc_attr( $unit ); ?>" data-unitpos="<?php echo esc_attr( $unit_position ); ?>" data-decimals="<?php echo esc_attr( $decimals ); ?>"
+         data-thousand="<?php echo esc_attr( $unit_thousand ); ?>" data-step="<?php echo esc_attr( $step ); ?>">
         <label class="slide-ranger-label">
             <span class="slide-ranger-min-label"></span>
 			<?php echo ( $mode == 2 ) ? '<i>-</i>' : ''; ?>
