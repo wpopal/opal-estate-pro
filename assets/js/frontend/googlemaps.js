@@ -139,7 +139,6 @@
                                 $( 'span', $this )
                                     .append( $( '<em class="nearby-counter">' + markers.length + '</em>' ) );
                                 allMarkers[ type ] = markers;
-                                //console.log( place );
                             }
                         }
 
@@ -235,7 +234,6 @@
 
             for ( var i = 0; i < properties.length; i++ ) {
 
-                // console.log( properties[i] );
                 var url = properties[ i ].icon;
                 var size = new google.maps.Size( 42, 57 );
                 if ( window.devicePixelRatio > 1.5 ) {
@@ -1440,8 +1438,7 @@
     } );
 
     $( document ).ready( function () {
-
-        // search 
+        // search
         // show google maps
         // update google maps
         var updatePreviewGoogleMap = function ( url ) {
