@@ -83,8 +83,8 @@ class OpalEstate_Submission {
 		);
 	}
 
-	/* 
-	 * Is submission page. 'submission_page' option in General Setting 
+	/*
+	 * Is submission page. 'submission_page' option in General Setting
 	 */
 	public function register_shortcodes() {
 		$shortcodes = [
@@ -103,8 +103,8 @@ class OpalEstate_Submission {
 		}
 	}
 
-	/* 
-	 * Is submission page. 'submission_page' option in General Setting 
+	/*
+	 * Is submission page. 'submission_page' option in General Setting
 	 */
 	public function setting_content_tab( $tabs ) {
 		$tabs['submission_page'] = esc_html__( 'Submission', 'opalestate-pro' );
@@ -112,8 +112,8 @@ class OpalEstate_Submission {
 		return $tabs;
 	}
 
-	/* 
-	 * Is submission page. 'submission_page' option in General Setting 
+	/*
+	 * Is submission page. 'submission_page' option in General Setting
 	 */
 	public function setting_content_fields( $fields = [] ) {
 		$fields = [
@@ -267,15 +267,15 @@ class OpalEstate_Submission {
 		return $fields;
 	}
 
-	/* 
-	 * Is submission page. 'submission_page' option in General Setting 
+	/*
+	 * Is submission page. 'submission_page' option in General Setting
 	 */
 	public function head_check_page() {
 
 	}
 
-	/* 
-	 * Is submission page. 'submission_page' option in General Setting 
+	/*
+	 * Is submission page. 'submission_page' option in General Setting
 	 */
 	public function render_button_edit() {
 		global $post, $current_user;
@@ -289,8 +289,8 @@ class OpalEstate_Submission {
 		}
 	}
 
-	/* 
-	 * Is submission page. 'submission_page' option in General Setting 
+	/*
+	 * Is submission page. 'submission_page' option in General Setting
 	 */
 	public function is_submission_page() {
 		global $post;
@@ -335,7 +335,7 @@ class OpalEstate_Submission {
 			return;
 		}
 
-		// remove all dirty images before edit/create new a property	
+		// remove all dirty images before edit/create new a property
 		$this->cleanup();
 
 		wp_enqueue_script( 'opalestate-submission' );
@@ -396,11 +396,8 @@ class OpalEstate_Submission {
 	 * FrontEnd Submission
 	 */
 	public function process_submission() {
-
 		if ( isset( $_POST['submission_action'] ) && ! empty( $_POST['submission_action'] ) ) {
-
 			if ( wp_verify_nonce( $_POST['submission_action'], 'submitted-property' ) ) {
-
 				$user_id = get_current_user_id();
 				$edit    = false;
 				$prefix  = OPALESTATE_PROPERTY_PREFIX;
@@ -421,7 +418,7 @@ class OpalEstate_Submission {
 
 					$post_status = 'pending';
 
-					if ( 'on' != opalestate_get_option( 'admin_approve', 'on' ) ) {
+					if ( 'on' !== opalestate_get_option( 'admin_approve', 'on' ) ) {
 						$post_status = 'publish';
 					}
 
@@ -485,7 +482,7 @@ class OpalEstate_Submission {
 						/*
 						 * Processing upload files
 						 */
-						$this->process_upload_files( $post_id, $_POST );
+						$this->process_upload_files( $post_id );
 
 						/**
 						 * Fetch sanitized values
@@ -513,11 +510,13 @@ class OpalEstate_Submission {
 						update_post_meta( $post_id, $prefix . 'featured_image', null );
 
 						// Update SKU.
-						if ( 'on' == opalestate_get_option( 'enable_submission_generate_sku', 'off' ) ) {
+						if ( 'on' === opalestate_get_option( 'enable_submission_generate_sku', 'off' ) ) {
 							$_sku          = str_replace( '{property_id}', $post_id, opalestate_options( 'submission_sku_format', 'SKU-{property_id}' ) );
 							$sku_generated = apply_filters( 'opalestate_submission_sku_generated', sanitize_text_field( $_sku ) );
 							update_post_meta( $post_id, $prefix . 'sku', $sku_generated );
 						}
+
+						update_post_meta( $post_id, $prefix . 'featured', '' );
 
 						//redirect
 						$_SESSION['messages'][] = [ 'success', esc_html__( 'Property has been successfully updated.', 'opalestate-pro' ) ];
@@ -577,11 +576,8 @@ class OpalEstate_Submission {
 	 * @param int $post_id Post ID.
 	 */
 	private function process_upload_files( $post_id ) {
-
 		//upload images for featured and gallery images
 		if ( isset( $_FILES ) && ! empty( $_FILES ) ) {
-
-			/// 
 			$fields = [
 				$this->get_field_name( 'gallery' ),
 				$this->get_field_name( 'featured_image' ),
@@ -592,7 +588,6 @@ class OpalEstate_Submission {
 				if ( in_array( $key, $fields ) ) {
 					$ufile = $_FILES[ $key ];
 
-					/// /////
 					if ( isset( $ufile['name'] ) && is_array( $ufile['name'] ) ) {
 						$output = [];
 
@@ -620,11 +615,11 @@ class OpalEstate_Submission {
 							$this->new_attachmenet_ids[ $new_atm['attachment_id'] ] = $new_atm['attachment_id'];
 						}
 					}
-					//// / // 
+					//// / //
 				}
 			}
 
-			// for group files 
+			// for group files
 			$fields = [
 				$this->get_field_name( 'public_floor_group' ),
 			];

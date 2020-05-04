@@ -13,7 +13,7 @@ window.opalestate_uploader = function() {
  * @param {window} The window object.
  *
  */
- 
+
 ( function( $, window ) {
 
     /**
@@ -26,9 +26,9 @@ window.opalestate_uploader = function() {
 
     function opalestate_uploader() {
 
-        $document = $( document );   
-        
-        function is_image_file( file ) { 
+        $document = $( document );
+
+        function is_image_file( file ) {
             const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
             return file && acceptedImageTypes.includes(file['type'])
         }
@@ -36,14 +36,14 @@ window.opalestate_uploader = function() {
         function check_number_files( file , i   ) {
             if( is_image_file(file) ) {
                 if( i+1 > opalesateJS.mfile_image ){
-                    return false; 
+                    return false;
                 }
             } else {
                 if( i+1 > opalesateJS.mfile_other ){
-                    return false; 
+                    return false;
                 }
             }
-            return true; 
+            return true;
         }
 
         function check_filesize (  file , i  ) {
@@ -54,8 +54,8 @@ window.opalestate_uploader = function() {
                         heading: file.name,
                         text: opalesateJS.error_upload_size,
                         icon: 'error',
-                        position:  'bottom-right', 
-                         hideAfter: 3500, 
+                        position:  'bottom-right',
+                         hideAfter: 3500,
                          showHideTransition: 'fade'
                     });
                     return false;
@@ -63,7 +63,7 @@ window.opalestate_uploader = function() {
                     return true;
                 }
             } else {
-                return true; 
+                return true;
             }
 
         }
@@ -71,56 +71,57 @@ window.opalestate_uploader = function() {
          *
          */
         function trigger_button_upload(){
-        
+
             var handleUpload = function ( _container ){
 
-                var file_btn      = $( 'input.select-file', _container  ); 
+                var file_btn      = $( 'input.select-file', _container  );
                 var allow_files   = [];
               //  var all_selected = [];
                 var name      = $(this).data( 'name' );
-                var issingle  = $(_container).data('single'); 
+                var issingle  = $(_container).data('single');
                 var show_icon = $(_container).data( 'show-icon' );
 
                 var on_select_files = function ( files, _container ) {
- 
+
                     if ( window.File && window.FileList && window.FileReader ) {
                         $(files).each( function( i, file ){
 
                             if( check_number_files( file, i+$(".uploader-item-preview",_container).length ) == false ){
                                 return ;
-                            }    
+                            }
                             if( check_filesize( file, i )  ) {
                                 var picReader = new FileReader();
-                                picReader.addEventListener("load", function ( event ) { 
+                                picReader.addEventListener("load", function ( event ) {
                                     var input = '<div class="uploader-item-preview">';
                                     var picFile = event.target;
                                     if ( picFile.result ) {
                                         if( show_icon == 1 ) {
-                                            input += '<div class="inner preview-icon"><span class="btn-close"></span><i class="fas fa-paperclip"></i> '+ file.name +' </div>';
+                                            input += '<div class="inner preview-icon"><span class="btn-close fa fa-close"></span><i class="fas fa-paperclip"></i> '+ file.name +' </div>';
                                         } else {
-                                            input += '<div class="inner preview-image"><span class="btn-close"></span><img src="'+picFile.result+'"></div>';
+                                            input += '<div class="inner preview-image"><span class="btn-close' +
+                                                ' fa fa-close"></span><img src="'+picFile.result+'"></div>';
                                         }
-                                       
+
                                     }
-                                    input += '</div>'; 
-                                    var a = $(input) ; 
+                                    input += '</div>';
+                                    var a = $(input) ;
                                     if( issingle ){
                                         $( ".uploader-item-preview", _container ).remove();
                                         all_selected = [];
                                     }
                                     $(  _container ).prepend( a );
-                                    a.prop( 'file', file  ); 
+                                    a.prop( 'file', file  );
                                 } );
                                 picReader.readAsDataURL( file );
                             }
                         } );
                     }
                };
-             
+
                file_btn.on("change", function( event ){
                     on_select_files( event.target.files, _container, allow_files );
 
-                } ); 
+                } );
 
                 $( _container ).on( "click", ".btn-close", function(){
                     if( confirm(opalesateJS.confirmed ) ){
@@ -128,14 +129,14 @@ window.opalestate_uploader = function() {
                             var rinput = $("<input type=\"hidden\" name=\"remove_image_id[]\" value=\""+ $("input",  $(this).parent().parent()).val() +"\">");
                             $(_container).append( rinput );
                         }
-    
+
                         $(this).parent().parent().remove();
                     }
                 } );
 
                 $( ".button-placehold", _container ).click( function(){
                     file_btn.trigger("click");
-                } ); 
+                } );
             }
 
             $(".cmb2-uploader-files").each( function(){
@@ -145,9 +146,9 @@ window.opalestate_uploader = function() {
             // fix for submittion form
             window.CMB2 = window.CMB2 || {};
             window.CMB2.metabox().find('.cmb-repeatable-group').on( 'cmb2_add_row', function(i, row ) {
-                var _container = $( row ); 
+                var _container = $( row );
                 if(  $(".cmb2-uploader-files", _container ).length ) {
-                    $( ".uploader-item-preview", _container ).remove(); 
+                    $( ".uploader-item-preview", _container ).remove();
                     $(".cmb2-uploader-files", _container ).each( function(){
                         var name = $( 'input', this ).attr('name');
                         $( this ).attr('data-name', name );
@@ -162,7 +163,7 @@ window.opalestate_uploader = function() {
 
             alert( name );
         }
- 
+
         /**
          * @summary Sets the autosave time out.
          *
@@ -176,13 +177,13 @@ window.opalestate_uploader = function() {
          * @returns {void}
          */
         $document.on( 'body', function( event, editor ) {
- 
+
         }).ready( function() {
-            trigger_button_upload();    
+            trigger_button_upload();
         });
 
         return {
-             
+
         };
     }
 

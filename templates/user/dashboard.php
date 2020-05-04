@@ -3,7 +3,7 @@
 		<?php do_action( 'opalestate_user_dashboard_before' ); ?>
 
 		<?php
-        $statistics = new OpalEstate_User_Statistics(); 
+        $statistics = new OpalEstate_User_Statistics();
 
 		$properties_count   = [];
 		$properties_count[] = [
@@ -52,7 +52,7 @@
 
             <div class="col-lg-12 col-md-12">
                 <div class="card-item inner">
-                    <div class="heading"><i class="fa fa-comment"></i> <span><?php esc_html_e( 'Latest review' ) ?></span>
+                    <div class="heading"><i class="fa fa-comment"></i> <span><?php esc_html_e( 'Latest review', 'opalestate-pro' ); ?></span>
                         <a href="<?php echo esc_url( opalestate_get_user_management_page_uri() . '?tab=reviews' ); ?>" class="dash-view-all"><?php esc_html_e( 'View All', 'opalestate-pro' );
                         ?></a>
                     </div>

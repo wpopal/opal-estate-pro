@@ -37,12 +37,12 @@ class OpalEstate_Search {
 
 		$posts_per_page = apply_filters( 'opalestate_search_property_per_page', opalestate_options( 'search_property_per_page', $limit ) );
 
-		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+		$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 		$paged = isset( $wp_query->query['paged'] ) ? $wp_query->query['paged'] : $paged;
 		$paged = ! empty( $_REQUEST['paged'] ) ? absint( $_REQUEST['paged'] ) : $paged;
 
-		if ( isset( $_GET['paged'] ) && intval( $_GET['paged'] ) > 0 ) {
-			$paged = intval( $_GET['paged'] );
+		if ( isset( $_GET['paged'] ) && absint( $_GET['paged'] ) > 0 ) {
+			$paged = absint( $_GET['paged'] );
 		}
 
 		$args = [
@@ -56,66 +56,92 @@ class OpalEstate_Search {
 		$tax_query = [];
 
 		if ( isset( $_GET['location'] ) && $_GET['location'] != -1 ) {
-			$tax_query[] =
-				[
-					'taxonomy' => 'opalestate_location',
-					'field'    => 'slug',
-					'terms'    => sanitize_text_field( $_GET['location'] ),
-				];
+			$tax_query[] = [
+				'taxonomy' => 'opalestate_location',
+				'field'    => 'slug',
+				'terms'    => sanitize_text_field( $_GET['location'] ),
+			];
 		}
 
 		if ( isset( $_GET['state'] ) && $_GET['state'] != -1 ) {
-			$tax_query[] =
-				[
+			if ( is_array( $_GET['state'] ) ) {
+				$tax_query[] = [
+					'taxonomy' => 'opalestate_state',
+					'field'    => 'slug',
+					'terms'    => opalestate_clean( $_GET['state'] ),
+				];
+			} else {
+				$tax_query[] = [
 					'taxonomy' => 'opalestate_state',
 					'field'    => 'slug',
 					'terms'    => sanitize_text_field( $_GET['state'] ),
 				];
+			}
 		}
 
 		if ( isset( $_GET['city'] ) && $_GET['city'] != -1 ) {
-			$tax_query[] =
-				[
-					'taxonomy' => 'opalestate_city',
-					'field'    => 'slug',
-					'terms'    => sanitize_text_field( $_GET['city'] ),
-				];
+			$tax_query[] = [
+				'taxonomy' => 'opalestate_city',
+				'field'    => 'slug',
+				'terms'    => sanitize_text_field( $_GET['city'] ),
+			];
 		}
 
 		if ( isset( $_GET['types'] ) && $_GET['types'] != -1 ) {
-			$tax_query[] =
-				[
+			if ( is_array( $_GET['types'] ) ) {
+				$tax_query[] = [
+					'taxonomy' => 'opalestate_types',
+					'field'    => 'slug',
+					'terms'    => opalestate_clean( $_GET['types'] ),
+				];
+			} else {
+				$tax_query[] = [
 					'taxonomy' => 'opalestate_types',
 					'field'    => 'slug',
 					'terms'    => sanitize_text_field( $_GET['types'] ),
 				];
+			}
 		}
 
 		if ( isset( $_GET['cat'] ) && $_GET['cat'] != -1 ) {
-			$tax_query[] =
-				[
+			if ( is_array( $_GET['cat'] ) ) {
+				$tax_query[] = [
+					'taxonomy' => 'property_category',
+					'field'    => 'slug',
+					'terms'    => opalestate_clean( $_GET['cat'] ),
+				];
+			} else {
+				$tax_query[] = [
 					'taxonomy' => 'property_category',
 					'field'    => 'slug',
 					'terms'    => sanitize_text_field( $_GET['cat'] ),
 				];
+			}
 		}
 
 		if ( isset( $_GET['status'] ) && $_GET['status'] != -1 ) {
-			$tax_query[] =
-				[
+			if ( is_array( $_GET['status'] ) ) {
+				$tax_query[] = [
+					'taxonomy' => 'opalestate_status',
+					'field'    => 'slug',
+					'terms'    => opalestate_clean( $_GET['status'] ),
+				];
+			} else {
+				$tax_query[] = [
 					'taxonomy' => 'opalestate_status',
 					'field'    => 'slug',
 					'terms'    => sanitize_text_field( $_GET['status'] ),
 				];
+			}
+
 		}
 
 		if ( isset( $_GET['amenities'] ) && is_array( $_GET['amenities'] ) ) {
-			$tax_query[] =
-				[
-					'taxonomy' => 'opalestate_amenities',
-					'field'    => 'slug',
-					'terms'    => ( $_GET['amenities'] ),
-				];
+			$tax_query[] = [
+				'taxonomy' => 'opalestate_amenities',
+				'field'    => 'slug',
+				'terms'    => opalestate_clean( $_GET['amenities'] ),
+			];
 		}
 
 		if ( $tax_query ) {
@@ -153,14 +179,14 @@ class OpalEstate_Search {
 
 		if ( $search_min_price != '' && $search_max_price != '' && is_numeric( $search_min_price ) && is_numeric( $search_max_price ) ) {
 			if ( $search_min_price ) {
-				array_push( $args['meta_query'], [
+				$args['meta_query'][] = [
 					'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
 					'value'   => [ $search_min_price, $search_max_price ],
 					'compare' => 'BETWEEN',
 					'type'    => 'NUMERIC',
-				] );
+				];
 			} else {
-				array_push( $args['meta_query'], [
+				$args['meta_query'][] = [
 					[
 						[
 							'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
@@ -174,56 +200,55 @@ class OpalEstate_Search {
 							'type'    => 'NUMERIC',
 						],
 					],
-				] );
+				];
 			}
-
 		} elseif ( $search_min_price != '' && is_numeric( $search_min_price ) ) {
-			array_push( $args['meta_query'], [
+			$args['meta_query'][] = [
 				'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
 				'value'   => $search_min_price,
 				'compare' => '>=',
 				'type'    => 'NUMERIC',
-			] );
+			];
 		} elseif ( $search_max_price != '' && is_numeric( $search_max_price ) ) {
-			array_push( $args['meta_query'], [
+			$args['meta_query'][] = [
 				'key'     => OPALESTATE_PROPERTY_PREFIX . 'price',
 				'value'   => $search_max_price,
 				'compare' => '<=',
 				'type'    => 'NUMERIC',
-			] );
+			];
 		}
 
 		if ( $search_min_area != '' && $search_max_area != '' && is_numeric( $search_min_area ) && is_numeric( $search_max_area ) ) {
-			array_push( $args['meta_query'], [
+			$args['meta_query'][] = [
 				'key'     => OPALESTATE_PROPERTY_PREFIX . 'areasize',
 				'value'   => [ $search_min_area, $search_max_area ],
 				'compare' => 'BETWEEN',
 				'type'    => 'NUMERIC',
-			] );
+			];
 		} elseif ( $search_min_area != '' && is_numeric( $search_min_area ) ) {
-			array_push( $args['meta_query'], [
+			$args['meta_query'][] = [
 				'key'     => OPALESTATE_PROPERTY_PREFIX . 'areasize',
 				'value'   => $search_min_area,
 				'compare' => '>=',
 				'type'    => 'NUMERIC',
-			] );
+			];
 		} elseif ( $search_max_area != '' && is_numeric( $search_max_area ) ) {
-			array_push( $args['meta_query'], [
+			$args['meta_query'][] = [
 				'key'     => OPALESTATE_PROPERTY_PREFIX . 'areasize',
 				'value'   => $search_max_area,
 				'compare' => '<=',
 				'type'    => 'NUMERIC',
-			] );
+			];
 		}
 
 		if ( isset( $_GET['geo_long'] ) && isset( $_GET['geo_lat'] ) ) {
 			if ( $_GET['location_text'] && ( empty( $_GET['geo_long'] ) || empty( $_GET['geo_lat'] ) ) ) {
-				array_push( $args['meta_query'], [
+				$args['meta_query'][] = [
 					'key'      => OPALESTATE_PROPERTY_PREFIX . 'map_address',
 					'value'    => sanitize_text_field( trim( $_GET['location_text'] ) ),
 					'compare'  => 'LIKE',
 					'operator' => 'OR',
-				] );
+				];
 
 			} elseif ( $_GET['geo_lat'] && $_GET['geo_long'] ) {
 				$radius           = isset( $_GET['geo_radius'] ) ? $_GET['geo_radius'] : 5;
@@ -249,7 +274,7 @@ class OpalEstate_Search {
 				$args['orderby']  = 'meta_value_num';
 				$args['order']    = $ksearchs[1];
 			}
-		} elseif ( 'on' == opalestate_options( 'show_featured_first', 'off' ) ) {
+		} elseif ( 'on' === opalestate_options( 'show_featured_first', 'off' ) ) {
 			$args['orderby']  = [ 'meta_value' => 'DESC', 'date' => 'DESC' ];
 			$args['meta_key'] = OPALESTATE_PROPERTY_PREFIX . 'featured';
 		}
@@ -269,26 +294,26 @@ class OpalEstate_Search {
 				$max_request = isset( $_GET[ 'max_' . $request ] ) ? sanitize_text_field( $_GET[ 'max_' . $request ] ) : '';
 
 				if ( $min_request != '' && $max_request != '' && is_numeric( $min_request ) && is_numeric( $max_request ) ) {
-					array_push( $args['meta_query'], [
+					$args['meta_query'][] = [
 						'key'     => $meta['id'],
 						'value'   => [ $min_request, $max_request ],
 						'compare' => 'BETWEEN',
 						'type'    => 'NUMERIC',
-					] );
+					];
 				} elseif ( $min_request != '' && is_numeric( $min_request ) ) {
-					array_push( $args['meta_query'], [
+					$args['meta_query'][] = [
 						'key'     => $meta['id'],
 						'value'   => $min_request,
 						'compare' => '>=',
 						'type'    => 'NUMERIC',
-					] );
+					];
 				} elseif ( $max_request != '' && is_numeric( $max_request ) ) {
-					array_push( $args['meta_query'], [
+					$args['meta_query'][] = [
 						'key'     => $meta['id'],
 						'value'   => $max_request,
 						'compare' => '<=',
 						'type'    => 'NUMERIC',
-					] );
+					];
 				}
 			}
 		}
@@ -352,20 +377,20 @@ class OpalEstate_Search {
 		$args['meta_query'] = [ 'relation' => 'AND' ];
 
 		if ( $search_min_price != $min && is_numeric( $search_min_price ) ) {
-			array_push( $args['meta_query'], [
+			$args['meta_query'][] = [
 				'key'     => OPALESTATE_AGENT_PREFIX . 'target_min_price',
 				'value'   => $search_min_price,
 				'compare' => '>=',
 				// 'type' => 'NUMERIC'
-			] );
+			];
 		}
 		if ( is_numeric( $search_max_price ) && $search_max_price != $max ) {
-			array_push( $args['meta_query'], [
+			$args['meta_query'][] = [
 				'key'     => OPALESTATE_AGENT_PREFIX . 'target_max_price',
 				'value'   => $search_max_price,
 				'compare' => '<=',
 				// 'type' => 'NUMERIC'
-			] );
+			];
 		}
 
 		return new WP_Query( $args );
@@ -388,23 +413,20 @@ class OpalEstate_Search {
 
 		$tax_query = [];
 
-
 		if ( isset( $_GET['location'] ) && $_GET['location'] != -1 ) {
-			$tax_query[] =
-				[
-					'taxonomy' => 'opalestate_location',
-					'field'    => 'slug',
-					'terms'    => sanitize_text_field( $_GET['location'] ),
-				];
+			$tax_query[] = [
+				'taxonomy' => 'opalestate_location',
+				'field'    => 'slug',
+				'terms'    => sanitize_text_field( $_GET['location'] ),
+			];
 		}
 
 		if ( isset( $_GET['types'] ) && $_GET['types'] != -1 ) {
-			$tax_query[] =
-				[
-					'taxonomy' => 'opalestate_types',
-					'field'    => 'slug',
-					'terms'    => sanitize_text_field( $_GET['types'] ),
-				];
+			$tax_query[] = [
+				'taxonomy' => 'opalestate_types',
+				'field'    => 'slug',
+				'terms'    => sanitize_text_field( $_GET['types'] ),
+			];
 		}
 
 		if ( $tax_query ) {
@@ -417,7 +439,6 @@ class OpalEstate_Search {
 
 		return new WP_Query( $args );
 	}
-
 
 	public function filter_by_geolocations() {
 
@@ -444,7 +465,7 @@ class OpalEstate_Search {
 				continue;
 			}
 
-			if ( 'on' == $value ) {
+			if ( 'on' === $value ) {
 				$id               = str_replace( OPALESTATE_PROPERTY_PREFIX, '', $meta['id'] );
 				$esettings[ $id ] = $meta['name'];
 			}
@@ -467,7 +488,6 @@ class OpalEstate_Search {
 	 * Get Json data by action ajax filter
 	 */
 	public static function get_search_json() {
-
 		$query = self::get_search_results_query();
 
 		$output = [];
@@ -486,7 +506,6 @@ class OpalEstate_Search {
 	}
 
 	public static function render_get_properties() {
-		// $_GET = $_POST;
 		echo opalestate_load_template_path( 'shortcodes/ajax-map-search-result' );
 		die;
 	}

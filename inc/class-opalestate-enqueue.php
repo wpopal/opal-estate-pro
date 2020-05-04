@@ -53,8 +53,9 @@ class OpalEstate_Enqueue {
 		wp_enqueue_script( 'opalestate-gmap', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/googlemaps.js', [ 'jquery' ], OPALESTATE_VERSION, false );
 		$custom_map_styles = json_decode( ( opalestate_options( 'google_map_custom_style', '' ) ) );
 		wp_localize_script( 'opalestate-gmap', 'opalestateGmap', [
-			'style'        => opalestate_options( 'google_map_style', 'standard' ),
-			'custom_style' => json_encode( $custom_map_styles ),
+			'style'                     => opalestate_options( 'google_map_style', 'standard' ),
+			'autocomplete_restrictions' => opalestate_get_autocomplete_restrictions(),
+			'custom_style'              => json_encode( $custom_map_styles ),
 		] );
 
 		/**
@@ -126,7 +127,7 @@ class OpalEstate_Enqueue {
 		wp_enqueue_script( 'opalestate-elementor', OPALESTATE_PLUGIN_URL . 'assets/js/frontend/elementor.js', [], null, true );
 		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_style( 'jquery-ui-datepicker-style', OPALESTATE_PLUGIN_URL . '/assets/3rd/datepicker.css' );
-		/// 
+		///
 		wp_register_script( 'jquery-toast',
 			OPALESTATE_PLUGIN_URL . 'assets/3rd/toast/jquery.toast.js', [], null, true );
 

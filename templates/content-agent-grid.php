@@ -66,7 +66,7 @@ $agent = new OpalEstate_Agent();
 				<?php $fax = $agent->get_meta( 'fax' ); ?>
 				<?php if ( ! empty( $fax ) ) : ?>
                     <div class="agent-box-fax">
-                        <i class="fa fa-fax"></i><span><?php echo esc_attr( $fax ); ?></span>
+                        <i class="fa fa-fax"></i><span><?php echo esc_html( $fax ); ?></span>
                     </div>
 				<?php endif; ?>
 
@@ -117,4 +117,4 @@ $agent = new OpalEstate_Agent();
             </div><!-- /.agent-box-content -->
         </div>
     </div>
-</article>	
+</article>

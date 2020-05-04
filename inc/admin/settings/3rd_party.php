@@ -84,6 +84,14 @@ class Opalestate_Settings_3rd_party_Tab extends Opalestate_Settings_Base_Tab {
 				'id'   => 'google_map_custom_style',
 				'type' => 'textarea_code',
 			],
+			[
+				'name'    => esc_html__( 'Autocomplete Restrictions', 'opalestate-pro' ),
+				'desc'    => __( 'Enter one or more country codes ALPHA-2 separator by ",". Example: "us" for USA. <a href="https://www.iban.com/country-codes" target="_blank">See list country codes.</a>',
+					'opalestate-pro' ),
+				'id'      => 'autocomplete_restrictions',
+				'type'    => 'text',
+				'default' => '',
+			],
 		];
 	}
 

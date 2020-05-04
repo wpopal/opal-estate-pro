@@ -4,7 +4,7 @@ Donate link: https://wpdocs.gitbook.io/opal-estate/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.9
 Tested up to: 5.3.2
-Stable tag: 1.4.1
+Stable tag: 1.4.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,7 +81,7 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 =  More Features =
 
 * Search properties: Properties List, List Sidebar, Grid, Grid Sidebar, Search result, Category, Location, Type, Submit Properties..
-* Support Membership Packages: There are many different packages with specific features suitable for users to choose the best one for their business goal. 
+* Support Membership Packages: There are many different packages with specific features suitable for users to choose the best one for their business goal.
 * Search Agents: This plugin supports filter function for selecting location, type and price of experienced agents conveniently
 * Quick Search: Users can quickly search properties or agents based on filter location, type, packing,bathroom, bedroom..
 * Search Google Map
@@ -118,7 +118,7 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 * Account Button
 
 = WHAT IS NEW IN PRO VERSION =
-* Suport API use to develop great web app and mobile app .  
+* Suport API use to develop great web app and mobile app .
 * Agency Agency and allow edit profile with user having Opal Estate Agency Role. Display Properties and members of agency
 * Implement Google Map with custom styles.
 * Implement Google Capcha for all Email Form
@@ -147,7 +147,7 @@ This section describes how to install the plugin and get it working.
 3. Use the Properties->Settings screen to configure the plugin
 
 
-== Frequently Asked Questions == 
+== Frequently Asked Questions ==
 
 * Detailed guide to install and customize: [documentation](https://wpopal-2.gitbook.io/opal-estate/ "Visit the Plugin docs")
 * Video guide and tutorials how to set up
@@ -156,6 +156,30 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.4.6 - 2020-04-22 =
+* Fixes - Search queries.
+* Removed - Sticky single property sidebar.
+
+= 1.4.5 - 2020-04-20 =
+* Fixes - Templates.
+
+= 1.4.4 - 2020-04-17 =
+* Fixes - Feature properties in submission.
+* Added - Mortgage hooks.
+
+= 1.4.3.1 - 2020-04-10 =
+* Fixes - Translate strings.
+
+= 1.4.3 - 2020-04-08 =
+* Fixes - Google style in Single property page.
+* Added - Autocomplete Restrictions setting.
+
+= 1.4.2.1 - 2020-03-31 =
+* Fixes - Sanitize data
+
+= 1.4.2 - 2020-03-31 =
+* Fixes - Upload images in submission page
+
 = 1.4.1 - 2020-03-25 =
 * Fixes - Split map AJAX
 

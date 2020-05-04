@@ -9,7 +9,6 @@
      * GooglemapSearch
      */
     var GooglemapSingle = Opalestate.GooglemapSingle = function ( data, id ) {
-
         /**
          * Create Google Map In Single Property Only
          */
@@ -42,11 +41,36 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 scrollwheel: false
             };
-            var propertyMap = new google.maps.Map( document.getElementById( id ), propertyMapOptions );
 
-            /**
-             *
-             */
+            if ( ( typeof opalestateGmap !== 'undefined' ) ) {
+                switch ( opalestateGmap.style ) {
+                    case 'standard':
+                        propertyMapOptions.styles = GoogleMapStyles.standard;
+                        break;
+                    case 'silver':
+                        propertyMapOptions.styles = GoogleMapStyles.silver;
+                        break;
+                    case 'retro':
+                        propertyMapOptions.styles = GoogleMapStyles.retro;
+                        break;
+                    case 'dark':
+                        propertyMapOptions.styles = GoogleMapStyles.dark;
+                        break;
+                    case 'night':
+                        propertyMapOptions.styles = GoogleMapStyles.night;
+                        break;
+                    case 'aubergine':
+                        propertyMapOptions.styles = GoogleMapStyles.aubergine;
+                        break;
+                    case 'custom':
+                        if ( opalestateGmap.custom_style != '' ) {
+                            propertyMapOptions.styles = $.parseJSON( opalestateGmap.custom_style );
+                        }
+                        break;
+                }
+            }
+
+            var propertyMap = new google.maps.Map( document.getElementById( id ), propertyMapOptions );
 
             var createMarker = function ( position, icon ) {
 
@@ -1430,7 +1454,7 @@
             } );
             $( '.property-preview-street-map' ).show( 100 );
         } );
-        /// 
+        ///
         // auto set height for split google map
         $( '.split-maps-container' ).each( function () {
             $( '#opalestate-map-preview ' ).height( $( window ).height() );
@@ -1539,12 +1563,12 @@
             } );
         } );
 
-        // // Sortable Change // // 
+        // // Sortable Change // //
         $( 'body' ).delegate( '#opalestate-sortable-form select', 'change', function () {
             var ps = '';
             if ( $( 'form.opalestate-search-form' ).length > 0 ) {
                 var $form = $( 'form.opalestate-search-form' );
-                if ( $('body').hasClass( 'archive' ) ) {
+                if ( $( 'body' ).hasClass( 'archive' ) ) {
                     ps = 'opalsortable=' + $( this ).val() + '&display=' +
                         $( '.display-mode a.active' ).data( 'mode' );
                 } else {
@@ -1561,7 +1585,7 @@
                     updatePropertiesByParseringHtml( newurl );
                 }
             } else {
-                if ( history.pushState && $('body').hasClass( 'archive' ) ) {
+                if ( history.pushState && $( 'body' ).hasClass( 'archive' ) ) {
                     var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname +
                         '?' + ps;
                     window.history.pushState( { path: newurl }, '', newurl );
@@ -1571,7 +1595,7 @@
             }
         } );
 
-        // display mode 
+        // display mode
         $( 'body' ).delegate( '.display-mode a', 'click', function () {
             if ( $( '.opalesate-properties-results' ).length > 0 ) {
                 var newurl = $( this ).attr( 'href' );
@@ -1580,7 +1604,7 @@
                 return false;
             }
         } );
-        // check any estate search form is enabled /////////////////
+
         if ( $( '#opalestate-map-preview' ).length > 0 ) {
             $( 'body' ).delegate( 'form.opalestate-search-form select', 'change', function () {
                 var params = $( 'form.opalestate-search-form' ).serialize();
@@ -1603,12 +1627,9 @@
                 $( 'form.opalestate-search-form' ).submit();
             } );
         }
-        /////////// ///////
-
     } );
 } )( jQuery );
 
-//// //////
 ( function ( $ ) {
     'use strict';
 
@@ -1627,8 +1648,11 @@
         var latitude = mapInstance.find( '.opal-map-latitude' );
         var longitude = mapInstance.find( '.opal-map-longitude' );
 
-        google.maps.event.addListener( autocomplete, 'place_changed', function () {
+        if ( ( typeof opalestateGmap !== 'undefined' ) && opalestateGmap.autocomplete_restrictions ) {
+            autocomplete.setComponentRestrictions( { 'country': JSON.parse(opalestateGmap.autocomplete_restrictions) } );
+        }
 
+        google.maps.event.addListener( autocomplete, 'place_changed', function () {
             var place = autocomplete.getPlace();
 
             if ( !place.geometry ) {
@@ -1657,7 +1681,5 @@
                 event.preventDefault();
             }
         } );
-
     }
-
 } )( jQuery );

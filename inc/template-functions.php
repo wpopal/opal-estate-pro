@@ -126,37 +126,40 @@ function opalestate_get_read_message_uri( $message_id ) {
 	return opalestate_get_current_url( $args );
 }
 
+if ( ! function_exists( 'opalestate_terms_multi_check' ) ) {
+	function opalestate_terms_multi_check( $terms ) {
+		$html = '<div class="opal-form-group">';
 
-function opalestate_terms_multi_check( $terms ) {
-	$html = '<div class="opal-form-group">';
+		foreach ( $terms as $term ) {
+			$id   = time() . '-' . $term->slug;
+			$html .= '<div class="group-item">';
+			$html .= '<input  type="checkbox" class="form-control-checkbox" id="' . $id . '" name="types[]" id="' . $id . '" value="' . $term->slug . '">';
+			$html .= ' <label for="' . $id . '">' . $term->name . '</label>';
+			$html .= '</div>';
+		}
 
-	foreach ( $terms as $term ) {
-		$id   = time() . '-' . $term->slug;
-		$html .= '<div class="group-item">';
-		$html .= '<input  type="checkbox" class="form-control-checkbox" id="' . $id . '" name="types[' . $term->slug . ']" id="' . $id . '" value="' . $term->slug . '">';
-		$html .= ' <label for="' . $id . '">' . $term->name . '</label>';
 		$html .= '</div>';
+
+		return $html;
 	}
-
-	$html .= '</div>';
-
-	return $html;
 }
 
-function opalestate_categories_multi_check( $terms ) {
-	$html = '<div class="opal-form-group">';
+if ( ! function_exists( 'opalestate_categories_multi_check' ) ) {
+	function opalestate_categories_multi_check( $terms ) {
+		$html = '<div class="opal-form-group">';
 
-	foreach ( $terms as $term ) {
-		$id   = time() . '-' . $term->slug;
-		$html .= '<div class="group-item">';
-		$html .= '<input  type="checkbox" class="form-control-checkbox" id="' . $id . '" name="cat[' . $term->slug . ']" id="' . $id . '" value="' . $term->slug . '">';
-		$html .= ' <label for="' . $id . '">' . $term->name . '</label>';
+		foreach ( $terms as $term ) {
+			$id   = time() . '-' . $term->slug;
+			$html .= '<div class="group-item">';
+			$html .= '<input  type="checkbox" class="form-control-checkbox" id="' . $id . '" name="cat[' . $term->slug . ']" id="' . $id . '" value="' . $term->slug . '">';
+			$html .= ' <label for="' . $id . '">' . $term->name . '</label>';
+			$html .= '</div>';
+		}
+
 		$html .= '</div>';
+
+		return $html;
 	}
-
-	$html .= '</div>';
-
-	return $html;
 }
 
 function opalestate_get_image_by_id( $id ) {
@@ -169,39 +172,34 @@ function opalestate_get_image_by_id( $id ) {
 	return '';
 }
 
-
-/**
- *
- */
-function opalestate_get_loop_thumbnail( $size = 'property-thumbnail' ) { ?>
-
-    <div class="property-box-image">
-        <a href="<?php the_permalink(); ?>" class="property-box-image-inner">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php the_post_thumbnail( apply_filters( 'opalestate_loop_property_thumbnail', $size ) ); ?>
-			<?php else: ?>
-				<?php echo opalestate_get_image_placeholder( $size ); ?>
-			<?php endif; ?>
-        </a>
-    </div>
-	<?php
+if ( ! function_exists( 'opalestate_get_loop_thumbnail' ) ) {
+	function opalestate_get_loop_thumbnail( $size = 'property-thumbnail' ) { ?>
+        <div class="property-box-image">
+            <a href="<?php the_permalink(); ?>" class="property-box-image-inner">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<?php the_post_thumbnail( apply_filters( 'opalestate_loop_property_thumbnail', $size ) ); ?>
+				<?php else: ?>
+					<?php echo opalestate_get_image_placeholder( $size ); ?>
+				<?php endif; ?>
+            </a>
+        </div>
+		<?php
+	}
 }
 
-/**
- *
- */
-function opalestate_get_loop_agent_thumbnail( $size = 'agent-thumbnail' ) { ?>
-
-    <div class="agent-box-image">
-        <a href="<?php the_permalink(); ?>">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php the_post_thumbnail( apply_filters( 'opalestate_loop_agent_thumbnail', $size ) ); ?>
-			<?php else: ?>
-				<?php echo opalestate_get_image_placeholder( $size ); ?>
-			<?php endif; ?>
-        </a>
-    </div>
-	<?php
+if ( ! function_exists( 'opalestate_get_loop_agent_thumbnail' ) ) {
+	function opalestate_get_loop_agent_thumbnail( $size = 'agent-thumbnail' ) { ?>
+        <div class="agent-box-image">
+            <a href="<?php the_permalink(); ?>">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<?php the_post_thumbnail( apply_filters( 'opalestate_loop_agent_thumbnail', $size ) ); ?>
+				<?php else: ?>
+					<?php echo opalestate_get_image_placeholder( $size ); ?>
+				<?php endif; ?>
+            </a>
+        </div>
+		<?php
+	}
 }
 
 function opalestate_get_loop_short_meta() {

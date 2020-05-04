@@ -149,7 +149,7 @@ class Opalestate_Taxonomy_Type {
 	public static function get_multi_check_list( $stypes ) {
 		$list = self::get_list();
 
-		echo opalestate_terms_multi_check( $list, $stypes );
+		echo opalestate_terms_multi_check( $list );
 	}
 }
 

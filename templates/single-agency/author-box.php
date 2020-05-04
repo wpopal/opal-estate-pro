@@ -106,7 +106,7 @@ $address = $agency->get_meta( 'address' ); ?>
 					<?php $mobile = get_post_meta( $id, OPALESTATE_AGENCY_PREFIX . 'mobile', true ); ?>
 					<?php if ( ! empty( $mobile ) ) : ?>
                         <div class="agency-box-mobile">
-                            <i class="fa fa-mobile"></i><span><a href="tel:<?php echo esc_attr( $phone ); ?>"><?php echo esc_attr( $mobile ); ?></a></span>
+                            <i class="fa fa-mobile"></i><span><a href="tel:<?php echo esc_attr( $mobile ); ?>"><?php echo esc_html( $mobile ); ?></a></span>
                         </div><!-- /.agency-box-phone -->
 					<?php endif; ?>
 

@@ -62,7 +62,7 @@ $agent = new OpalEstate_Agent();
                 <div class="agent-box-mobile">
                     <i class="fa fa-mobile"></i>
                     <a href="tel:<?php echo sanitize_title( $mobile ); ?>">
-                        <span><?php echo esc_attr( $mobile ); ?></span>
+                        <span><?php echo esc_html( $mobile ); ?></span>
                     </a>
                 </div>
 	        <?php endif; ?>

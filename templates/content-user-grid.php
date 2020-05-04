@@ -74,7 +74,7 @@ if ( $agent_id ) {
                         <div class="agent-box-email">
                             <i class="fa fa-envelope"></i>
                             <a href="mailto:<?php echo esc_attr( $email ); ?>">
-                                <span><?php echo esc_attr( $email ); ?></span>
+                                <span><?php echo esc_html( $email ); ?></span>
                             </a>
                         </div>
 					<?php endif; ?>
@@ -84,7 +84,7 @@ if ( $agent_id ) {
                         <div class="agent-box-phone">
                             <i class="fa fa-phone"></i>
                             <a href="tel:<?php echo sanitize_title( $phone ); ?>">
-                                <span><?php echo esc_attr( $phone ); ?></span>
+                                <span><?php echo esc_html( $phone ); ?></span>
                             </a>
                         </div>
 					<?php endif; ?>
@@ -94,7 +94,7 @@ if ( $agent_id ) {
                         <div class="agent-box-mobile">
                             <i class="fa fa-mobile"></i>
                             <a href="tel:<?php echo sanitize_title( $mobile ); ?>">
-                                <span><?php echo esc_attr( $mobile ); ?></span>
+                                <span><?php echo esc_html( $mobile ); ?></span>
                             </a>
                         </div>
 					<?php endif; ?>
@@ -102,7 +102,7 @@ if ( $agent_id ) {
 					<?php $fax = $agent->get_meta( 'fax' ); ?>
 					<?php if ( ! empty( $fax ) ) : ?>
                         <div class="agent-box-fax">
-                            <i class="fa fa-fax"></i><span><?php echo esc_attr( $fax ); ?></span>
+                            <i class="fa fa-fax"></i><span><?php echo esc_html( $fax ); ?></span>
                         </div>
 					<?php endif; ?>
 
@@ -111,7 +111,7 @@ if ( $agent_id ) {
                         <div class="agent-box-web">
                             <i class="fa fa-globe"></i>
                             <a href="<?php echo esc_attr( $web ); ?>" rel="nofollow" target="_blank">
-                                <span><?php echo esc_attr( $web ); ?></span>
+                                <span><?php echo esc_html( $web ); ?></span>
                             </a>
                         </div>
 					<?php endif; ?>
@@ -145,4 +145,4 @@ if ( $agent_id ) {
             </div><!-- /.agent-box-content -->
         </div>
     </div>
-</article>	
+</article>

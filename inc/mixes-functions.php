@@ -1349,9 +1349,9 @@ function opalestate_is_require_login_to_show_author_box() {
 function opalestate_clean( $var ) {
 	if ( is_array( $var ) ) {
 		return array_map( 'opalestate_clean', $var );
-	} else {
-		return is_scalar( $var ) ? sanitize_text_field( $var ) : $var;
 	}
+
+	return is_scalar( $var ) ? sanitize_text_field( $var ) : $var;
 }
 
 /**
@@ -1400,8 +1400,34 @@ add_action( 'widgets_init', 'opalestate_widgets_init' );
 /**
  * Get email date format.
  *
- * @return mixed|void
+ * @return string
  */
 function opalestate_email_date_format() {
 	return apply_filters( 'opalestate_email_date_format', 'F j, Y, g:i a' );
+}
+
+/**
+ * Get autocomplete restrictions.
+ *
+ * @return string
+ */
+function opalestate_get_autocomplete_restrictions() {
+    $restrictions_option = trim( opalestate_options( 'autocomplete_restrictions', '' ) );
+
+    if ( ! $restrictions_option ) {
+        return '';
+    }
+
+    $array = explode( ',', $restrictions_option );
+    $results = [];
+
+    foreach ( $array as $res ) {
+	    $results[] = strtolower( trim( $res ) );
+    }
+
+    if ( ! $results ) {
+        return '';
+    }
+
+    return json_encode( $results );
 }

@@ -34,7 +34,7 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
                 <label class="opalestate-label opalestate-label--<?php echo sanitize_html_class( $field ); ?>"><?php echo esc_html( $label ); ?></label>
                 <div class="input-group-number">
                     <i class="<?php echo opalestate_get_property_meta_icon( $field ); ?>"></i>
-                    <input class="form-control" value="<?php echo $qvalue ? $qvalue : $input_default_value; ?>" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr(
+                    <input class="form-control" value="<?php echo esc_attr( $qvalue ? $qvalue : $input_default_value ); ?>" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr(
 						$label ); ?>"/>
                     <div class="btn-actions">
                         <span class="btn-minus"><i class="fa fa-minus"></i></span>
@@ -62,7 +62,7 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 
 					foreach ( $option_values as $value ) {
 						$selected = $value == $qvalue ? 'selected="selected"' : '';
-						$template .= '<option ' . $selected . ' value="' . $value . '">' . $value . '</option>';
+						$template .= '<option ' . $selected . ' value="' . esc_attr( $value ) . '">' . esc_html( $value ) . '</option>';
 					}
 					$template .= '</select>';
 					$template = sprintf( $template, $field, $label );

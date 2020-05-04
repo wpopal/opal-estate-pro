@@ -132,7 +132,7 @@ jQuery( document ).ready( function ( $ ) {
         } );
     }
 
-    //////// 
+    ////////
     $( '.opalestate-scroll-elements a' ).on( 'click', function ( e ) {
         e.preventDefault();
         if ( $( $( this ).attr( 'href' ) ).length ) {
@@ -157,9 +157,9 @@ jQuery( document ).ready( function ( $ ) {
         }
     } );
 
-    //// 
+    ////
 
-    //// 
+    ////
     $( '.opalestate-gallery' ).each( function () { // the containers for all your galleries
         $( this ).magnificPopup( {
             delegate: 'a', // the selector for gallery item
@@ -219,32 +219,32 @@ jQuery( document ).ready( function ( $ ) {
             }
         } );
 
-    // sticky //// 
+    // sticky ////
     // $( '.opalestate-sticky-column' ).stick_in_parent();
 
-    var window_width = $( window ).width();
-
-    if ( window_width < 768 ) {
-        $( '.opalestate-sticky-column' ).trigger( 'sticky_kit:detach' );
-    } else {
-        make_sticky();
-    }
-
-    $( window ).resize( function () {
-
-        window_width = $( window ).width();
-
-        if ( window_width < 768 ) {
-            $( '.opalestate-sticky-column' ).trigger( 'sticky_kit:detach' );
-        } else {
-            make_sticky();
-        }
-
-    } );
-
-    function make_sticky() {
-        $( '.opalestate-sticky-column' ).stick_in_parent();
-    }
+    // var window_width = $( window ).width();
+    //
+    // if ( window_width < 768 ) {
+    //     $( '.opalestate-sticky-column' ).trigger( 'sticky_kit:detach' );
+    // } else {
+    //     make_sticky();
+    // }
+    //
+    // $( window ).resize( function () {
+    //
+    //     window_width = $( window ).width();
+    //
+    //     if ( window_width < 768 ) {
+    //         $( '.opalestate-sticky-column' ).trigger( 'sticky_kit:detach' );
+    //     } else {
+    //         make_sticky();
+    //     }
+    //
+    // } );
+    //
+    // function make_sticky() {
+    //     $( '.opalestate-sticky-column' ).stick_in_parent();
+    // }
 
     ////
     $( '.input-group-number' ).each( function () {
@@ -512,7 +512,7 @@ jQuery( document ).ready( function ( $ ) {
         var nummm = wNumb( config_format );
 
         var istart = [ imin, imax ];
-        if ( mode && mode == 1 && start ) {
+        if ( mode && mode == 1 && ( start || start == 0 ) ) {
             istart = [ start ];
         }
 

@@ -1,3 +1,27 @@
+= 1.4.6 - 2020-04-22 =
+* Fixes - Search queries.
+* Removed - Sticky single property sidebar.
+
+= 1.4.5 - 2020-04-20 =
+* Fixes - Templates.
+
+= 1.4.4 - 2020-04-17 =
+* Fixes - Feature properties in submission.
+* Added - Mortgage hooks.
+
+= 1.4.3.1 - 2020-04-10 =
+* Fixes - Translate strings.
+
+= 1.4.3 - 2020-04-08 =
+* Fixes - Google style in Single property page.
+* Added - Autocomplete Restrictions setting.
+
+= 1.4.2.1 - 2020-03-31 =
+* Fixes - Sanitize data
+
+= 1.4.2 - 2020-03-31 =
+* Fixes - Upload images in submission page
+
 = 1.4.1 - 2020-03-25 =
 * Fixes - Split map AJAX
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	if( !isset($id) ){
 		$id = get_the_ID();
 	}
@@ -20,7 +20,7 @@
 			<?php if( $type =='agency'): ?>
 			<div  class="agent-preview has-avatar"><a href="<?php echo esc_url($link); ?>">
 				<?php if ( has_post_thumbnail( $id ) ) : ?>
-	 			  <?php echo get_the_post_thumbnail( $id, 'full' ); ?>	
+	 			  <?php echo get_the_post_thumbnail( $id, 'full' ); ?>
 				<?php endif; ?>
 		  	 	<img src="<?php echo esc_url($avatar);?> " class="agent-avatar"></a>
 
@@ -29,13 +29,13 @@
 					<i class="fas fa-star"></i>
 				</span>
 				<?php endif; ?>
-				
+
 			</div>
 			<?php else : ?>
 			<div  class="agent-preview"><a href="<?php echo esc_url($link); ?>">
 				<img src="<?php echo esc_url($avatar);?> " class="agent-avatar"></a>
-			</div>	
-			<?php endif; ?>	
+			</div>
+			<?php endif; ?>
 		</div>
 	    <div class="agent-box-meta">
 	        <h4 class="agent-box-title">
@@ -50,7 +50,7 @@
 	            <div class="agent-box-email">
 					<i class="fa fa-envelope"></i>
 		            <a href="mailto:<?php echo esc_attr( $email ); ?>">
-	                   <span><?php echo esc_attr( $email ); ?></span>
+	                   <span><?php echo esc_html( $email ); ?></span>
 		            </a>
 	            </div><!-- /.agent-box-email -->
 	        <?php endif; ?>
@@ -59,21 +59,21 @@
 	        <?php $phone = get_post_meta( $id, $prefix . 'phone', true ); ?>
 	        <?php if ( ! empty( $phone ) ) : ?>
 	            <div class="agent-box-phone">
-	               <i class="fa fa-phone"></i><span><a href="tel:<?php echo sanitize_title( $phone ); ?>"><?php echo esc_attr( $phone ); ?></a></span>
+	               <i class="fa fa-phone"></i><span><a href="tel:<?php echo sanitize_title( $phone ); ?>"><?php echo esc_html( $phone ); ?></a></span>
 	            </div><!-- /.agent-box-phone -->
 	        <?php endif; ?>
 
 	        <?php $mobile = get_post_meta( $id, $prefix . 'mobile', true ); ?>
 	        <?php if ( ! empty( $mobile ) ) : ?>
 	            <div class="agent-box-mobile">
-	                <i class="fa fa-mobile"></i><span><a href="tel:<?php echo sanitize_title( $phone ); ?>"><?php echo esc_attr( $mobile ); ?></a></span>
+	                <i class="fa fa-mobile"></i><span><a href="tel:<?php echo sanitize_title( $mobile ); ?>"><?php echo esc_html( $mobile ); ?></a></span>
 	            </div><!-- /.agent-box-phone -->
 	        <?php endif; ?>
 
 	        <?php $fax = get_post_meta( $id, $prefix . 'fax', true ); ?>
 	        <?php if ( ! empty( $fax ) ) : ?>
 	            <div class="agent-box-fax">
-	                <i class="fa fa-fax"></i><span><?php echo esc_attr( $fax ); ?></span>
+	                <i class="fa fa-fax"></i><span><?php echo esc_html( $fax ); ?></span>
 	            </div><!-- /.agent-box-phone -->
 	        <?php endif; ?>
 
@@ -82,7 +82,7 @@
 			    <div class="agent-box-web">
 					<i class="fa fa-globe"></i>
 				    <a href="<?php echo esc_attr( $web ); ?>" rel="nofollow" target="_blank">
-				        <span><?php echo esc_attr( $web ); ?></span>
+				        <span><?php echo esc_html( $web ); ?></span>
 				    </a>
 			    </div><!-- /.agent-box-web -->
 		    <?php endif; ?>
