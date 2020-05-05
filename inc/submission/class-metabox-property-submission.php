@@ -299,13 +299,21 @@ class Opalestate_Property_MetaBox_Submission {
 				'id'          => "{$prefix}amountrooms",
 				'type'        => 'text',
 				'description' => esc_html__( 'Enter Number of Amount Rooms', 'opalestate-pro' ),
-				'after_row'   => '</div><hr><button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
-						'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
+				// 'after_row'   => '</div><hr><button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
+				// 		'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>',
 
 			],
 		];
 
-		return apply_filters( 'opalestate_metaboxes_public_info_fields', $fields );
+		$fields = apply_filters( 'opalestate_metaboxes_public_info_fields', $fields );
+
+		$keys = array_keys( $fields );
+		$last = end( $keys );
+
+		$fields[ $last ]['after_row'] = '</div><hr><button type="button" class="submission-back-btn btn btn-primary">' . esc_html__( 'Previous Step',
+				'opalestate-pro' ) . '</button><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>';
+
+		return $fields;
 	}
 
 	public function metaboxes_location_fields() {
