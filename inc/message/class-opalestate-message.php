@@ -370,29 +370,32 @@ class OpalEstate_User_Message {
 			$charset_collate = $wpdb->get_charset_collate();
 
 			$sql = 'CREATE TABLE IF NOT EXISTS ' . $wpdb->prefix . 'opalestate_message' . ' (
-									  `id` int(11) UNSIGNED NOT NULL,
-									  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+									  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+									  `subject` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 									  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-									  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-									  `sender_email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+									  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+									  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+									  `sender_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 									  `sender_id` int(11) DEFAULT NULL,
 									  `created` datetime NOT NULL,
 									  `receiver_id` int(11) NOT NULL,
 									  `post_id` int(11) NOT NULL,
-									  `type` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-									  `isread` tinyint(1) NOT NULL
+									  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+									  `isread` tinyint(1) NOT NULL,
+									  PRIMARY KEY  (id)
 					) ' . $charset_collate;
 			dbDelta( $sql );
 
 			///
 
 			$sql = 'CREATE TABLE IF NOT EXISTS ' . $wpdb->prefix . 'opalestate_message_reply' . ' (
-									      `id` int(11) NOT NULL,
+									      `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
 										  `message_id` int(11) NOT NULL,
 										  `sender_id` int(11) NOT NULL,
 										  `message` text NOT NULL,
 										  `created` datetime NOT NULL,
-										  `receiver_id` int(11) NOT NULL
+										  `receiver_id` int(11) NOT NULL,
+										  PRIMARY KEY  (id)
 					) ' . $charset_collate;
 			dbDelta( $sql );
 

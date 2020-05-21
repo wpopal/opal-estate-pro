@@ -14,22 +14,30 @@ $id   = 'message-reply';
                 <div class="message-meta">
                     <div class="message-avatar">
                         <img src="<?php echo esc_url( OpalEstate_User::get_author_picture( $message->sender_id ) ); ?>" width="60" alt="<?php esc_attr_e( 'User Avatar', 'opalestate-pro' ); ?>"/>
+						<?php if ( isset( $message->name ) && $message->name ) : ?>
+                            <span class="message-name"><?php echo esc_html( $message->name ); ?></span>
+						<?php endif; ?>
+                        <span class="message-email"><?php echo esc_html( $message->sender_email ); ?></span> /
+                        <span class="message-phone"><?php echo esc_html( $message->phone ); ?></span>
                     </div>
-                    <span class="message-date"><?php echo esc_html( $message->created ); ?></span>
+                    <code class="message-date"><?php echo esc_html( $message->created ); ?></code>
                 </div>
                 <div class="message-content">
-			        <p><?php echo esc_html( $message->message ); ?></p>
+                    <p><?php echo esc_html( $message->message ); ?></p>
                 </div>
             </div>
         </div>
 		<?php if ( $replies ): ?>
-			<?php foreach ( $replies as $reply ): ?>
+			<?php foreach ( $replies as $reply ) : ?>
                 <div class="message-body">
                     <div class="message-avatar">
                         <img src="<?php echo OpalEstate_User::get_author_picture( $reply->sender_id ); ?>" width="60" alt="<?php esc_attr_e( 'User Avatar', 'opalestate-pro' ); ?>"/>
+						<?php if ( $reply->sender_id ) : ?>
+                            <span class="message-name"><?php echo opalestate_user_fullname( $reply->sender_id ); ?></span>
+						<?php endif; ?>
                     </div>
+                    <code class="message-date"><?php echo esc_html( $reply->created ); ?></code>
                     <div class="message-content">
-                        <div><?php echo $reply->created; ?></div>
 						<?php echo $reply->message; ?>
                     </div>
                 </div>

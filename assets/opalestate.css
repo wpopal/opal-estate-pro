@@ -4036,3 +4036,8 @@ header#masthead {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.opalestate-read-message .message-container {
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 15px;
+}

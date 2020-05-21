@@ -158,6 +158,7 @@ class Opalestate_Settings_Pages_Tab extends Opalestate_Settings_Base_Tab {
 						'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
 						'off' => esc_html__( 'Disable', 'opalestate-pro' ),
 					],
+					'default' => 'off',
 				],
 				[
 					'name'    => esc_html__( 'Show Submission', 'opalestate-pro' ),
