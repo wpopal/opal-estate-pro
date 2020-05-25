@@ -2,11 +2,11 @@
 $_id  = 'posts-block-' . rand( 1, 9 );
 $item = apply_filters( 'opalesate_carousel_property_column', 3, isset( $args ) ? $args : [] );
 $data = [
-	'slidesPerView'  => 3,
-	'spaceBetween'   => 30,
+	'slidesPerView'  => 1,
+	'spaceBetween'   => 10,
 	// 'slidesPerGroup' => 1,
 	'loop'           => false,
-	'breakpoints'         => [ 1024 => [ "slidesPerView" => 1 ], 768 => [ "slidesPerView" => 1 ] ],
+	'breakpoints'         => [ 1024 => [ "slidesPerView" => 3, 'spaceBetween'   => 30, ], 768 => [ "slidesPerView" => 2 ], 640 => [ "slidesPerView" => 1 ] ],
 ];
 
 $template_style = isset( $args['style'] ) && $args['style'] ? sanitize_text_field( $args['style'] ) : 'content-property-grid';

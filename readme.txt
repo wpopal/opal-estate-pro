@@ -152,6 +152,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.4.9.3 - 2020-05-25 =
+* Fixes - Swiper responsive.
+
 = 1.4.9.2 - 2020-05-21 =
 * Added - Message additional information.
 * Fixes - Set feature property for customers.
