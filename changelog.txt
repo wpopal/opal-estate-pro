@@ -1,3 +1,6 @@
+= 1.4.9.4 - 2020-05-27 =
+* Fixes - Minor bugs.
+
 = 1.4.9.3 - 2020-05-25 =
 * Fixes - Swiper responsive.
 

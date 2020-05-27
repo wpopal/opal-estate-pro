@@ -144,8 +144,8 @@ class OpalEstate_Enqueue {
 			true
 		);
 
-		if ( ! defined( "ELEMENTOR_VERSION" ) ) {
-			wp_enqueue_style( 'jquery-swiper', OPALESTATE_PLUGIN_URL . '/assets/3rd/swiper/css/swiper.min.css' );
+		if ( ! defined( "ELEMENTOR_VERSION" ) || is_single_property() ) {
+			wp_enqueue_style( 'jquery-swiper', OPALESTATE_PLUGIN_URL . '/assets/3rd/swiper/css/swiper.min.css', [], '4.5.0' );
 		}
 
 		wp_enqueue_script( 'jquery-swiper' );
