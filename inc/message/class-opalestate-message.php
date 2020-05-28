@@ -266,7 +266,7 @@ class OpalEstate_User_Message {
 			switch ( trim( $_POST['type'] ) ) {
 				case 'send_equiry':
 					if ( wp_verify_nonce( $_POST['message_action'], 'send-enquiry-form' ) ) {
-						$member  = $this->get_member_email_data( (int) $_POST['post_id'] );
+						$member  = $this->get_member_email_data( absint( $_POST['post_id'] ) );
 						$content = $this->send_equiry( $_POST, $member );
 					}
 					break;
