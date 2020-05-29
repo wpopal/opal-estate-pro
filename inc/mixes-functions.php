@@ -1431,3 +1431,40 @@ function opalestate_get_autocomplete_restrictions() {
 
     return json_encode( $results );
 }
+
+/**
+ * Query property data for a term and return IDs.
+ *
+ * Use for 'post__in' in WP_Query.
+ *
+ * @param string $term The term to search.
+ * @return array
+ */
+function opalestate_search_property_by_term( $term ) {
+	global $wpdb;
+
+	// Filters the search fields.
+	$search_fields = array_map( 'opalestate_clean', apply_filters( 'opalestate_search_property_fields', [
+		'opalestate_ppt_sku',
+		'opalestate_ppt_address',
+	] ) );
+
+	// Prepare search bookings.
+	$property_ids = [];
+
+	if ( is_numeric( $term ) ) {
+		$property_ids[] = absint( $term );
+	}
+
+	if ( ! empty( $search_fields ) ) {
+		$search = $wpdb->get_col( $wpdb->prepare(
+			"SELECT DISTINCT `p1`.`post_id` FROM {$wpdb->postmeta} AS `p1` WHERE `p1`.`meta_value` LIKE %s AND `p1`.`meta_key` IN ('" . implode( "','",
+				array_map( 'esc_sql', $search_fields ) ) . "')", // @codingStandardsIgnoreLine
+			'%' . $wpdb->esc_like( opalestate_clean( $term ) ) . '%'
+		) );
+
+		$property_ids = array_unique( array_merge( $property_ids, $search ) );
+	}
+
+	return apply_filters( 'opalestate_search_property_results', $property_ids, $term, $search_fields );
+}

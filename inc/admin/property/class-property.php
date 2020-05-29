@@ -1,17 +1,4 @@
 <?php
-/**
- * $Desc$
- *
- * @version    $Id$
- * @package    opalestate
- * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2019 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
- */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -37,6 +24,7 @@ class Opalestate_Admin_Property {
 		add_action( 'admin_menu', [ $this, 'remove_meta_boxes' ] );
 
 		// add_action( 'transition_post_status', array( __CLASS__, 'save_post' ), 10, 3  );
+		add_action( 'parse_query', [ $this, 'search_custom_fields' ] );
 	}
 
 	/**
@@ -97,13 +85,13 @@ class Opalestate_Admin_Property {
 	public function columns( $columns ) {
 		$comments = $columns['comments'];
 		unset( $columns['author'], $columns['date'], $columns['comments'] );
-		$columns['featured'] = esc_html__( 'Featured', 'opalestate-pro' );
-		$columns['sku']      = esc_html__( 'Sku', 'opalestate-pro' );
-		$columns['address']  = esc_html__( 'Address', 'opalestate-pro' );
-		$columns['comments'] = $comments;
-		$columns['author']   = esc_html__( 'Author', 'opalestate-pro' );
-		$columns['date']     = esc_html__( 'Date', 'opalestate-pro' );
-		$columns['expiry_date']  = esc_html__( 'Expiry Date', 'opalestate-pro' );
+		$columns['featured']    = esc_html__( 'Featured', 'opalestate-pro' );
+		$columns['sku']         = esc_html__( 'Sku', 'opalestate-pro' );
+		$columns['address']     = esc_html__( 'Address', 'opalestate-pro' );
+		$columns['comments']    = $comments;
+		$columns['author']      = esc_html__( 'Author', 'opalestate-pro' );
+		$columns['date']        = esc_html__( 'Date', 'opalestate-pro' );
+		$columns['expiry_date'] = esc_html__( 'Expiry Date', 'opalestate-pro' );
 
 		return $columns;
 	}
@@ -168,7 +156,33 @@ class Opalestate_Admin_Property {
 		remove_meta_box( 'authordiv', 'opalestate_property', 'normal' );
 	}
 
+	/**
+	 * Query custom fields as well as content.
+	 *
+	 * @param \WP_Query $wp The WP_Query object.
+	 *
+	 * @access private
+	 */
+	public function search_custom_fields( $wp ) {
+		global $pagenow;
+
+		if ( 'edit.php' !== $pagenow
+		     || empty( $wp->query_vars['s'] )
+		     || 'opalestate_property' !== $wp->query_vars['post_type']
+		     || ! isset( $_GET['s'] ) ) {
+			return;
+		}
+
+		$post_ids = opalestate_search_property_by_term( opalestate_clean( wp_unslash( $_GET['s'] ) ) ); // WPCS: input var ok, sanitization ok.
+
+		if ( ! empty( $post_ids ) ) {
+			// Remove "s" - we don't want to search order name.
+			unset( $wp->query_vars['s'] );
+
+			// Query by found posts.
+			$wp->query_vars['post__in'] = array_merge( $post_ids, [ 0 ] );
+		}
+	}
 }
 
 new Opalestate_Admin_Property();
-?>

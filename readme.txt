@@ -152,6 +152,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.5 - 2020-05-29 =
+* Added - Search properties in admin by SKU & Address.
+
 = 1.4.9.5 - 2020-05-28 =
 * Fixes - Enquire email.
 

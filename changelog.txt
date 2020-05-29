@@ -1,4 +1,7 @@
-= 1.4.9.8 - 2020-05-28 =
+= 1.5 - 2020-05-29 =
+* Added - Search properties in admin by SKU & Address.
+
+= 1.4.9.5 - 2020-05-28 =
 * Fixes - Enquire email.
 
 = 1.4.9.4 - 2020-05-27 =
