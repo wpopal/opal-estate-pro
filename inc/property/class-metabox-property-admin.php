@@ -500,6 +500,17 @@ class Opalestate_Property_MetaBox {
 				'options'     => $templates,
 				'description' => esc_html__( 'Select a layout to display full information of this property', 'opalestate-pro' ),
 			],
+			[
+				'name'        => esc_html__( 'Show Mortgage Calculator', 'opalestate-pro' ),
+				'id'          => "{$prefix}enable_single_mortgage",
+				'type'        => 'select',
+				'options'     => [
+					''    => esc_html__( 'Inherit', 'opalestate-pro' ),
+					'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+					'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+				],
+				'description' => esc_html__( 'Show Mortgage Calculator', 'opalestate-pro' ),
+			],
 		];
 
 		return apply_filters( 'opalestate_postype_property_metaboxes_fields_layout', $fields );

@@ -33,7 +33,6 @@ function opalestate_submssion_list_page( $args = [] ) {
 }
 
 function opalestate_get_user_management_page_uri( $args = [] ) {
-
 	global $opalestate_options;
 
 	$uri = isset( $opalestate_options['user_management_page'] ) ? get_permalink( absint( $opalestate_options['user_management_page'] ) ) : get_bloginfo( 'url' );
@@ -48,6 +47,14 @@ function opalestate_get_user_management_page_uri( $args = [] ) {
 	}
 
 	return apply_filters( 'opalestate_user_management_page_uri', $uri );
+}
+
+function opalestate_is_user_management_page() {
+	global $opalestate_options;
+
+	$page_id = isset( $opalestate_options['user_management_page'] ) ? ( absint( $opalestate_options['user_management_page'] ) ) : 0;
+
+	return $page_id && is_page( $page_id );
 }
 
 function opalestate_get_current_url( $args = [] ) {
@@ -162,12 +169,14 @@ function opalestate_management_user_menu_tabs() {
 
 	foreach ( $menu as $key => $item ) {
 		if ( preg_match( "#http#", $item['link'] ) ) {
-			$link = $item['link'];
+			$link      = $item['link'];
+			$is_active = is_page( $item['id'] ) ? ' active' : '';
 		} else {
-			$link = $uri . '?tab=' . $item['link'];
+			$link      = $uri . '?tab=' . $item['link'];
+			$is_active = isset( $_GET['tab'] ) && $current_tab == $item['link'] ? ' active' : '';
 		}
 
-		$output .= '<li class="account-links-item ' . $key . ( $current_tab == $item['link'] ? ' active' : '' ) . '"><a href="' . $link . '"><i class="' . $item['icon'] . '"></i> ' . $item['title'] . '</a></li>';
+		$output .= '<li class="account-links-item ' . $key . $is_active . '"><a href="' . $link . '"><i class="' . $item['icon'] . '"></i> ' . $item['title'] . '</a></li>';
 	}
 
 	$output .= '<li><a href="' . wp_logout_url( home_url( '/' ) ) . '"> <i class="fa fa-unlock"></i> ' . esc_html__( 'Log out', 'opalestate-pro' ) . '</a></li>';
@@ -211,7 +220,7 @@ function opalestate_get_user_dashboard_menus() {
 			'icon'  => 'far fa-star',
 			'link'  => 'reviews',
 			'title' => esc_html__( 'Reviews', 'opalestate-pro' ),
-			'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
+			'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
 		];
 	}
 
@@ -220,7 +229,7 @@ function opalestate_get_user_dashboard_menus() {
 			'icon'  => 'fa fa-envelope',
 			'link'  => 'messages',
 			'title' => esc_html__( 'Messages', 'opalestate-pro' ),
-			'id'    => isset( $opalestate_options['reviews_page'] ) ? $opalestate_options['reviews_page'] : 0,
+			'id'    => isset( $opalestate_options['profile_page'] ) ? $opalestate_options['profile_page'] : 0,
 		];
 	}
 
@@ -346,8 +355,8 @@ function opalestate_current_user_can_access_dashboard_page( $page = '' ) {
  * @return bool
  */
 function opalestate_user_has_estate_roles( $user_id ) {
-	$user_meta = get_userdata( $user_id );
-	$roles = $user_meta->roles;
+	$user_meta    = get_userdata( $user_id );
+	$roles        = $user_meta->roles;
 	$allowd_roles = opalestate_get_allowed_roles();
 
 	foreach ( $roles as $role ) {

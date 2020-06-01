@@ -305,7 +305,7 @@ class OpalEstate_Membership {
 					'icon'  => 'fa fa-user',
 					'link'  => opalmembership_get_payment_history_page_uri(),
 					'title' => esc_html__( 'My Invoices', 'opalestate-pro' ),
-					'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
+					'id'    => isset( $opalmembership_options['history_page'] ) ? $opalmembership_options['history_page'] : 0,
 				];
 			}
 
@@ -314,7 +314,7 @@ class OpalEstate_Membership {
 					'icon'  => 'fa fa-certificate',
 					'link'  => opalmembership_get_membership_page_uri(),
 					'title' => esc_html__( 'Renew membership', 'opalestate-pro' ),
-					'id'    => isset( $opalmembership_options['dashboard_page'] ) ? $opalmembership_options['dashboard_page'] : 0,
+					'id'    => isset( $opalmembership_options['membership_page'] ) ? $opalmembership_options['membership_page'] : 0,
 				];
 			}
 		}

@@ -113,7 +113,7 @@ $roles_classes = implode( ' ', array_map( 'sanitize_html_class', $roles ) )
                 <div class="content-area" id="primary">
                     <?php $tab = isset( $_GET['tab'] ) && $_GET['tab'] ? sanitize_text_field( $_GET['tab'] ) : 'dashboard'; ?>
                     <div class="site-main" id="main" role="main">
-						<?php if ( $tab ) : ?>
+						<?php if ( $tab && opalestate_is_user_management_page() ) : ?>
 							<?php opalestate_management_show_content_page_tab(); ?>
 						<?php else : ?>
 							<?php while ( have_posts() ) : the_post(); ?>
