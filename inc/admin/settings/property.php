@@ -238,12 +238,11 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 			];
 
 			$fields[] = [
-				'name'       => esc_html__( 'Horizontal Search Fields', 'opalestate-pro' ),
-				'desc'       => esc_html__( 'Disable or enable fields appearing in search form', 'opalestate-pro' ),
+				'name'       => esc_html__( 'Search Fields', 'opalestate-pro' ),
 				'type'       => 'opalestate_title',
-				'id'         => 'opalestate_title_general_settings_1',
+				'id'         => 'opalestate_title_search_fields',
 				'before_row' => '<hr>',
-				'after_row'  => '<hr>',
+				'after_row'  => '<em>' . __( 'Enable/Disable fields appearing in search properties form.', 'opalestate-pro' ) . '</em><hr>',
 			];
 
 			$fields[] = [
@@ -280,12 +279,11 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 			}
 
 			$fields[] = [
-				'name'       => esc_html__( 'Setting type fields search', 'opalestate-pro' ),
-				'desc'       => esc_html__( 'Setting type fields search', 'opalestate-pro' ) . '<hr>',
+				'name'       => esc_html__( 'Search Fields type', 'opalestate-pro' ),
 				'type'       => 'opalestate_title',
 				'id'         => 'opalestate_title_general_settings_type_search',
 				'before_row' => '<hr>',
-				'after_row'  => '<hr>',
+				'after_row'  => '<em>' . __( 'Input type for search fields.', 'opalestate-pro' ) . '</em>',
 			];
 
 			$metas = Opalestate_Property_MetaBox::metaboxes_info_fields();
@@ -366,6 +364,14 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 	 */
 	private function get_subtab_detail_fields() {
 		$fields = [];
+
+		$fields[] = [
+			'name'    => esc_html__( 'Single Layout Page', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Choose layout for single property.', 'opalestate-pro' ),
+			'id'      => 'layout',
+			'type'    => 'select',
+			'options' => apply_filters( 'opalestate_single_layout_templates', [ '' => esc_html__( 'Inherit', 'opalestate-pro' ) ] ),
+		];
 
 		$fields[] = [
 			'name'    => esc_html__( 'Enable Request Viewing', 'opalestate-pro' ),

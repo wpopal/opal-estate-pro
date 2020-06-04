@@ -27,8 +27,6 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
  2. *[ Latehome - Real Estate WordPress Theme](http://bit.ly/2p5HUn2 "Latehome - Real Estate WordPress Theme")*
  3. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](http://bit.ly/latehomefree "Latehome Free download").*
 
- * Please keep contact us at help@wpopal.com to send us your website, we will publish it our showcase
-
 = Add-ons for Opal Estate Pro =
 * Please visit and download [all add-ons](https://wordpress.org/plugins/tags/opalestate_addon/ "Opal Estate Pro add-ons") for Opal Estate Pro, they are free 100%*
  1. *[ Opal Membership](https://wordpress.org/plugins/opal-membership/ "Opal Membership")*: Manage membership packages, users.
@@ -152,6 +150,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.5.2 - 2020-06-04 =
+* Added - Clean Up setting.
+
 = 1.5.1 - 2020-06-01 =
 * Added - Enable/Disable setting for each property.
 

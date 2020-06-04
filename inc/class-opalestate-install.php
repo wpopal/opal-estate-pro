@@ -5,6 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Opalestate_Install {
 	/**
+	 * Init.
+	 */
+	public static function init() {
+		add_filter( 'cron_schedules', [ __CLASS__, 'cron_schedules' ] );
+	}
+
+	/**
 	 * Install Opalestate.
 	 */
 	public static function install() {
@@ -24,6 +31,7 @@ class Opalestate_Install {
 		static::create_tables();
 		static::create_roles();
 		static::setup_environment();
+		static::create_cron_jobs();
 		static::update_opalestate_version();
 
 		if ( function_exists( 'opalmembership_install' ) ) {
@@ -226,6 +234,36 @@ class Opalestate_Install {
 	 */
 	private static function update_opalestate_version() {
 		update_option( 'opalestate_version', OPALESTATE_VERSION );
+	}
+
+	/**
+	 * Add more cron schedules.
+	 *
+	 * @param array $schedules List of WP scheduled cron jobs.
+	 *
+	 * @return array
+	 */
+	public static function cron_schedules( $schedules ) {
+		$interval = opalestate_get_option( 'schedule', 0 );
+
+		$schedules['opalestate_corn'] = [
+			'display'  => __( 'Opal Estate Pro Clean Up Interval', 'opalestate-pro' ),
+			'interval' => $interval,
+		];
+
+		return $schedules;
+	}
+
+	/**
+	 * Create cron jobs (clear them first).
+	 */
+	public static function create_cron_jobs() {
+		wp_clear_scheduled_hook( 'opalestate_corn' );
+		wp_clear_scheduled_hook( 'opalestate_clean_update' );
+
+		if ( ! wp_next_scheduled ( 'opalestate_clean_update' ) ) {
+			wp_schedule_event( time(), 'opalestate_corn', 'opalestate_clean_update' );
+		}
 	}
 }
 

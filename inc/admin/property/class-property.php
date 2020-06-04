@@ -25,6 +25,8 @@ class Opalestate_Admin_Property {
 
 		// add_action( 'transition_post_status', array( __CLASS__, 'save_post' ), 10, 3  );
 		add_action( 'parse_query', [ $this, 'search_custom_fields' ] );
+
+		add_filter( 'display_post_states', [ $this, 'display_post_states' ], 10, 2 );
 	}
 
 	/**
@@ -182,6 +184,20 @@ class Opalestate_Admin_Property {
 			// Query by found posts.
 			$wp->query_vars['post__in'] = array_merge( $post_ids, [ 0 ] );
 		}
+	}
+
+	/**
+	 * Filters the default post display states used in the posts list table.
+	 *
+	 * @param string[] $post_states An array of post display states.
+	 * @param WP_Post  $post        The current post object.
+	 */
+	public function display_post_states( $post_states, $post ) {
+		if ( 'expired' == $post->post_status ) {
+			$post_states['expired'] = _x( 'Expired', 'post status', 'opalestate-pro' );
+		}
+
+		return $post_states;
 	}
 }
 

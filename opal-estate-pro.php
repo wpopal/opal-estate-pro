@@ -3,7 +3,7 @@
  * Plugin Name: Opal Estate Pro
  * Plugin URI: https://wpdocs.gitbook.io/opal-estate/
  * Description: Opal Real Estate Plugin is an ideal solution and brilliant choice for you to set up a professional estate website.
- * Version: 1.5.1
+ * Version: 1.5.2
  * Author: WPOPAL
  * Author URI: http://www.wpopal.com
  * Requires at least: 4.9
@@ -123,12 +123,16 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 				self::$instance->setup_constants();
 
 				register_activation_hook( OPALESTATE_PLUGIN_FILE, [ 'Opalestate_Install', 'install' ] );
+				register_deactivation_hook( OPALESTATE_PLUGIN_FILE, [ 'Opalestate_Deactivator', 'deactivate' ] );
+
 				add_action( 'plugins_loaded', [ self::$instance, 'load_textdomain' ] );
 				self::$instance->setup();
-				self::$instance->roles     = new Opalestate_Roles();
-				self::$instance->html      = new Opalestate_HTML_Elements();
-				self::$instance->api       = new Opalestate_API();
-				self::$instance->session   = new Opalestate_Session();
+				self::$instance->roles   = new Opalestate_Roles();
+				self::$instance->html    = new Opalestate_HTML_Elements();
+				self::$instance->api     = new Opalestate_API();
+				self::$instance->session = new Opalestate_Session();
+
+				Opalestate_Install::init();
 
 				/**
 				 *
@@ -150,7 +154,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'opalestate-pro' ), '1.5.1' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'opalestate-pro' ), '1.5.2' );
 		}
 
 		/**
@@ -159,7 +163,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 		public function setup_constants() {
 			// Plugin version
 			if ( ! defined( 'OPALESTATE_VERSION' ) ) {
-				define( 'OPALESTATE_VERSION', '1.5.1' );
+				define( 'OPALESTATE_VERSION', '1.5.2' );
 			}
 
 			// Plugin Folder Path
@@ -236,6 +240,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 					'class-template-loader.php',
 					'query-functions.php',
 					'mixes-functions.php',
+					'hook-functions.php',
 					'class-opalestate-roles.php',
 					'classes/class-opalestate-session.php',
 					'classes/class-opalestate-abs-query.php',
@@ -360,6 +365,7 @@ if ( ! class_exists( 'OpalEstate' ) ) {
 			);
 
 			require_once OPALESTATE_PLUGIN_DIR . 'inc/class-opalestate-install.php';
+			require_once OPALESTATE_PLUGIN_DIR . 'inc/class-opalestate-deactivator.php';
 
 			require_once OPALESTATE_PLUGIN_DIR . 'inc/class-opalestate-html.php';
 			require_once OPALESTATE_PLUGIN_DIR . 'inc/function-search-fields.php';

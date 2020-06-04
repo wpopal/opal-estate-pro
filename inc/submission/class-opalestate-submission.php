@@ -260,6 +260,46 @@ class OpalEstate_Submission {
 						'type'    => 'text',
 						'default' => 'SKU-{property_id}',
 					],
+					[
+						'name'       => esc_html__( 'Upload Settings', 'opalestate-pro' ),
+						'id'         => 'opalestate_title_upload_settings',
+						'type'       => 'title',
+						'before_row' => '<hr>',
+						'after_row'  => '<hr>',
+					],
+					[
+						'name' => esc_html__( 'Maximum Upload Image Size', 'opalestate-pro' ),
+						'desc' => esc_html__( 'Set maximum volumn size having < x MB', 'opalestate-pro' ),
+
+						'id'      => 'upload_image_max_size',
+						'type'    => 'text',
+						'default' => '0.5',
+					],
+					[
+						'name' => esc_html__( 'Maximum Upload Image Files', 'opalestate-pro' ),
+						'desc' => esc_html__( 'Set maximum volumn size having < x MB', 'opalestate-pro' ),
+
+						'id'      => 'upload_image_max_files',
+						'type'    => 'text',
+						'default' => '10',
+					],
+					[
+						'name' => esc_html__( 'Maximum Upload Other Size', 'opalestate-pro' ),
+						'desc' => esc_html__( 'Set maximum volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
+
+						'id'      => 'upload_other_max_size',
+						'type'    => 'text',
+						'default' => '0.8',
+					],
+					[
+						'name' => esc_html__( 'Maximum Upload Other Files', 'opalestate-pro' ),
+						'desc' => esc_html__( 'Set maximum volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
+
+						'id'        => 'upload_other_max_files',
+						'type'      => 'text',
+						'default'   => '10',
+						'after_row' => '<hr>',
+					],
 				]
 			),
 		];

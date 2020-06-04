@@ -940,7 +940,6 @@ function opalestate_currency_symbol( $currency = '' ) {
 		'LRD' => '&#36;',
 		'LSL' => 'L',
 		'LYD' => '&#x644;.&#x62f;',
-		'MAD' => '&#x62f;. &#x645;.',
 		'MAD' => '&#x62f;.&#x645;.',
 		'MDL' => 'L',
 		'MGA' => 'Ar',
@@ -1209,20 +1208,6 @@ function opalestate_running_on_multilanguage() {
 }
 
 /**
- * Add hidden multilingual.
- */
-function opalestate_add_hidden_multilingual() {
-	if ( ! opalestate_running_on_multilanguage() ) {
-		return;
-	}
-	?>
-    <input type="hidden" name="lang" value="<?php echo opalestate_multilingual()->get_current_language(); ?>">
-	<?php
-}
-
-add_action( 'opalestate_after_search_properties_form', 'opalestate_add_hidden_multilingual' );
-
-/**
  * Gets measurement units.
  *
  * @return array
@@ -1379,25 +1364,6 @@ function opalestate_unique_id( $prefix = '' ) {
 }
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function opalestate_widgets_init() {
-	register_sidebar( [
-		'name'          => esc_html__( 'Single Property Sidebar', 'opalestate-pro' ),
-		'id'            => 'opalestate-single-property',
-		'description'   => esc_html__( 'Add widgets here to appear in your single property sidebar area.', 'opalestate-pro' ),
-		'before_widget' => '<div id="%1$s" class="widget opalestate-single-property-widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h5 class="widget-title">',
-		'after_title'   => '</h5>',
-	] );
-}
-
-add_action( 'widgets_init', 'opalestate_widgets_init' );
-
-/**
  * Get email date format.
  *
  * @return string
@@ -1412,24 +1378,24 @@ function opalestate_email_date_format() {
  * @return string
  */
 function opalestate_get_autocomplete_restrictions() {
-    $restrictions_option = trim( opalestate_options( 'autocomplete_restrictions', '' ) );
+	$restrictions_option = trim( opalestate_options( 'autocomplete_restrictions', '' ) );
 
-    if ( ! $restrictions_option ) {
-        return '';
-    }
+	if ( ! $restrictions_option ) {
+		return '';
+	}
 
-    $array = explode( ',', $restrictions_option );
-    $results = [];
+	$array   = explode( ',', $restrictions_option );
+	$results = [];
 
-    foreach ( $array as $res ) {
-	    $results[] = strtolower( trim( $res ) );
-    }
+	foreach ( $array as $res ) {
+		$results[] = strtolower( trim( $res ) );
+	}
 
-    if ( ! $results ) {
-        return '';
-    }
+	if ( ! $results ) {
+		return '';
+	}
 
-    return json_encode( $results );
+	return json_encode( $results );
 }
 
 /**
@@ -1467,4 +1433,39 @@ function opalestate_search_property_by_term( $term ) {
 	}
 
 	return apply_filters( 'opalestate_search_property_results', $property_ids, $term, $search_fields );
+}
+
+/**
+ * Get Schedule Intervals
+ *
+ * @return array
+ */
+function opalestate_get_schedule_interval_options() {
+	return apply_filters( 'opalestate_schedule_interval_options', [
+			'0'                  => esc_html__( 'Never', 'opalestate-pro' ),
+			WEEK_IN_SECONDS      => esc_html__( '1 Week', 'opalestate-pro' ),
+			DAY_IN_SECONDS       => esc_html__( '24 Hours', 'opalestate-pro' ),
+			12 * HOUR_IN_SECONDS => esc_html__( '12 Hours', 'opalestate-pro' ),
+			6 * HOUR_IN_SECONDS  => esc_html__( '6 Hours', 'opalestate-pro' ),
+			HOUR_IN_SECONDS      => esc_html__( '1 Hours', 'opalestate-pro' ),
+		]
+	);
+}
+
+if ( ! function_exists( 'opalestate_write_log' ) ) {
+
+	/**
+	 * Write log.
+	 *
+	 * @param $log
+	 */
+	function opalestate_write_log( $log ) {
+		if ( true === WP_DEBUG ) {
+			if ( is_array( $log ) || is_object( $log ) ) {
+				error_log( print_r( $log, true ) );
+			} else {
+				error_log( $log );
+			}
+		}
+	}
 }

@@ -37,7 +37,7 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'name' => esc_html__( 'General Settings', 'opalestate-pro' ),
 
 					'type'       => 'opalestate_title',
-					'id'         => 'opalestate_title_general_settings_1',
+					'id'         => 'opalestate_title_general_settings',
 					'before_row' => '<hr>',
 					'after_row'  => '<hr>',
 				],
@@ -62,37 +62,12 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					],
 				],
 				[
-					'name' => esc_html__( 'Maximum Upload Image Size', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximum volumn size having < x MB', 'opalestate-pro' ),
-
-					'id'      => 'upload_image_max_size',
-					'type'    => 'text',
-					'default' => '0.5',
-				],
-				[
-					'name' => esc_html__( 'Maximum Upload Image Files', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximum volumn size having < x MB', 'opalestate-pro' ),
-
-					'id'      => 'upload_image_max_files',
-					'type'    => 'text',
-					'default' => '10',
-				],
-				[
-					'name' => esc_html__( 'Maximum Upload Other Size', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximum volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
-
-					'id'      => 'upload_other_max_size',
-					'type'    => 'text',
-					'default' => '0.8',
-				],
-				[
-					'name' => esc_html__( 'Maximum Upload Other Files', 'opalestate-pro' ),
-					'desc' => esc_html__( 'Set maximum volumn size having < x MB for upload docx, pdf...', 'opalestate-pro' ),
-
-					'id'        => 'upload_other_max_files',
-					'type'      => 'text',
-					'default'   => '10',
-					'after_row' => '<hr>',
+					'name'       => esc_html__( 'Image Settings', 'opalestate-pro' ),
+					'desc'       => '',
+					'type'       => 'opalestate_title',
+					'id'         => 'opalestate_title_image_settings',
+					'before_row' => '<hr>',
+					'after_row'  => '<hr>',
 				],
 				[
 					'name' => esc_html__( 'Agent Image Size', 'opalestate-pro' ),
@@ -115,8 +90,6 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'options' => opalestate_get_featured_image_sizes(),
 
 				],
-
-
 				[
 					'name' => esc_html__( 'Loop Image Size', 'opalestate-pro' ),
 					'desc' => esc_html__( 'The Loop Image is an image that is chosen as the representative image in grid and list.', 'opalestate-pro' ),
@@ -126,8 +99,6 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'default' => 'large',
 					'options' => opalestate_get_featured_image_sizes(),
 				],
-
-
 				[
 					'name'      => esc_html__( 'Featured Image Size', 'opalestate-pro' ),
 					'desc'      => esc_html__( 'The Featured Image is an image that is chosen as the representative image in single page. .', 'opalestate-pro' ),
@@ -138,46 +109,18 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'after_row' => '<em>' . __( 'To generate images with new image sizes, you can use this <a href="https://goo.gl/FuXFex" target="_blank">Force Regenerate Thumbnails</a>',
 							'opalestate-pro' ) . '</em>',
 				],
-				[
-					'name'       => esc_html__( 'Minimum of Target Price For Agent', 'opalestate-pro' ),
-					'desc'       => esc_html__( 'Enter minimum  of price for starting search agent by target', 'opalestate-pro' ),
-					'id'         => 'search_agent_min_price',
-					'type'       => 'text_medium',
-					'attributes' => [
-						'type' => 'number',
-					],
-					'default'    => 0,
-				],
-				[
-					'name'       => esc_html__( 'Maximum of Target Price For Agent', 'opalestate-pro' ),
-					'desc'       => esc_html__( 'Enter maximum of price for starting search agent by target', 'opalestate-pro' ),
-					'id'         => 'search_agent_max_price',
-					'type'       => 'text_medium',
-					'attributes' => [
-						'type' => 'number',
-					],
-					'default'    => 1000000,
-				],
-				[
-					'name'    => esc_html__( 'Single Layout Page', 'opalestate-pro' ),
-					'desc'    => esc_html__( 'Choose layout for single property.', 'opalestate-pro' ),
-					'id'      => 'layout',
-					'type'    => 'select',
-					'options' => apply_filters( 'opalestate_single_layout_templates', [ '' => esc_html__( 'Inherit', 'opalestate-pro' ) ] ),
-				],
-
 
 				[
 					'name'       => esc_html__( 'Currency Settings', 'opalestate-pro' ),
 					'desc'       => '',
 					'type'       => 'opalestate_title',
-					'id'         => 'opalestate_title_general_settings_2',
+					'id'         => 'opalestate_title_currency_settings',
 					'before_row' => '<hr>',
 					'after_row'  => '<hr>',
 				],
 				[
 					'name'    => esc_html__( 'Currency', 'opalestate-pro' ),
-					'desc'    => 'Choose your currency. Note that some payment gateways have currency restrictions.',
+					'desc'    => esc_html__( 'Choose your currency. Note that some payment gateways have currency restrictions.', 'opalestate-pro' ),
 					'id'      => 'currency',
 					'type'    => 'select',
 					'options' => opalestate_get_currencies(),
@@ -233,6 +176,51 @@ class Opalestate_Settings_General_Tab extends Opalestate_Settings_Base_Tab {
 					'type'    => 'select',
 					'options' => opalestate_get_time_formats(),
 					'default' => '12_hour',
+				],
+
+				[
+					'name'       => esc_html__( 'Others', 'opalestate-pro' ),
+					'desc'       => '',
+					'type'       => 'opalestate_title',
+					'id'         => 'opalestate_title_others_settings',
+					'before_row' => '<hr>',
+					'after_row'  => '<hr>',
+				],
+				[
+					'name'       => esc_html__( 'Minimum of Target Price For Agent', 'opalestate-pro' ),
+					'desc'       => esc_html__( 'Enter minimum  of price for starting search agent by target', 'opalestate-pro' ),
+					'id'         => 'search_agent_min_price',
+					'type'       => 'text_medium',
+					'attributes' => [
+						'type' => 'number',
+					],
+					'default'    => 0,
+				],
+				[
+					'name'       => esc_html__( 'Maximum of Target Price For Agent', 'opalestate-pro' ),
+					'desc'       => esc_html__( 'Enter maximum of price for starting search agent by target', 'opalestate-pro' ),
+					'id'         => 'search_agent_max_price',
+					'type'       => 'text_medium',
+					'attributes' => [
+						'type' => 'number',
+					],
+					'default'    => 1000000,
+				],
+				[
+					'name'       => esc_html__( 'Advanced', 'opalestate-pro' ),
+					'desc'       => '',
+					'type'       => 'opalestate_title',
+					'id'         => 'opalestate_title_advanced_settings',
+					'before_row' => '<hr>',
+					'after_row'  => '<hr>',
+				],
+				[
+					'name'    => esc_html__( 'Clean Up Interval', 'opalestate-pro' ),
+					'desc'    => esc_html__( 'Set a schedule to automatically clean up expired properties and attachments.', 'opalestate-pro' ),
+					'id'      => 'schedule',
+					'type'    => 'select',
+					'options' => opalestate_get_schedule_interval_options(),
+					'default' => 0,
 				],
 			]
 		);

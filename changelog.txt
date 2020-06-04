@@ -1,3 +1,6 @@
+= 1.5.2 - 2020-06-04 =
+* Added - Clean Up setting.
+
 = 1.5.1 - 2020-06-01 =
 * Added - Enable/Disable setting for each property.
 

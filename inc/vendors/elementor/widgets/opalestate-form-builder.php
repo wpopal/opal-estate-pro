@@ -77,7 +77,7 @@ class Opalestate_form_builder_Elementor_Widget extends Opalestate_Elementor_Widg
 		$this->start_controls_section(
 			'form_builder_head',
 			[
-				'label' => esc_html__( 'Agency/Agent Tab Form Search', 'opalestate-pro' ),
+				'label' => esc_html__( 'Form Builder', 'opalestate-pro' ),
 			]
 		);
 
