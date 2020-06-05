@@ -173,6 +173,18 @@ class Opalestate_Searchbox_Elementor_Widget extends Opalestate_Elementor_Widget_
 			]
 		);
 
+		$this->add_control(
+			'info_number_input',
+			[
+				'label'     => esc_html__( 'Information number fields', 'opalestate-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'condition' => [
+					'style' => $this->get_vertical_form(),
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -294,7 +306,6 @@ class Opalestate_Searchbox_Elementor_Widget extends Opalestate_Elementor_Widget_
 		$this->end_controls_section();
 
 
-
 		$this->start_controls_section(
 			'section_button_style_content',
 			[
@@ -393,6 +404,14 @@ class Opalestate_Searchbox_Elementor_Widget extends Opalestate_Elementor_Widget_
 			'search-form-v',
 			'search-form-v3',
 			'collapse-keyword',
+		];
+	}
+
+	protected function get_vertical_form() {
+		return [
+			'search-form-v',
+			'search-form-v2',
+			'search-form-v3',
 		];
 	}
 }

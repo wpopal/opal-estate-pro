@@ -1,3 +1,6 @@
+= 1.5.4 - 2020-06-05 =
+* Fixes - Search box field for vertical form.
+
 = 1.5.3 - 2020-06-05 =
 * Added - Search box field for vertical form.
 

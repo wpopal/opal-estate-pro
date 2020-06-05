@@ -13,6 +13,8 @@ $display_country      = isset( $display_country ) ? $display_country : true;
 $display_state        = isset( $display_state ) ? $display_state : true;
 $display_city         = isset( $display_city ) ? $display_city : true;
 $display_more_options = isset( $display_more_options ) ? $display_more_options : true;
+$info_number_input    = isset( $info_number_input ) ? $info_number_input : true;
+$type                 = $info_number_input ? 'input' : 'select';
 
 $form_classes = [
 	'opalestate-search-form',
@@ -49,7 +51,7 @@ $form_classes = [
 
         <div class="form-item form-item--information">
             <h6> <?php esc_html_e( 'Information', 'opalestate-pro' ); ?></h6>
-			<?php echo opalestate_load_template_path( 'search-box/fields/group-info', [ 'type' => 'input' ] ); ?>
+			<?php echo opalestate_load_template_path( 'search-box/fields/group-info', [ 'type' => $type ] ); ?>
         </div>
 
 		<?php if ( opalestate_is_enable_price_field() ) : ?>

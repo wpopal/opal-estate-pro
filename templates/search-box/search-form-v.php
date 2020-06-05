@@ -14,6 +14,8 @@ $display_country      = isset( $display_country ) ? $display_country : true;
 $display_state        = isset( $display_state ) ? $display_state : true;
 $display_city         = isset( $display_city ) ? $display_city : true;
 $display_more_options = isset( $display_more_options ) ? $display_more_options : true;
+$info_number_input    = isset( $info_number_input ) ? $info_number_input : true;
+$type                 = $info_number_input ? 'input' : 'select';
 
 $form_classes = [
 	'opalestate-search-form',
@@ -25,9 +27,9 @@ $form_classes = [
 
 <form class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $form_classes ) ) ); ?>" action="<?php echo esc_url( opalestate_get_search_link() ); ?>" method="GET">
 	<?php
-    if ( $display_category ) {
-	    echo opalestate_load_template_path( 'search-box/fields/categories' );
-    }
+	if ( $display_category ) {
+		echo opalestate_load_template_path( 'search-box/fields/categories' );
+	}
 
 	if ( $display_country ) {
 		echo opalestate_load_template_path( 'search-box/fields/country-select' );
@@ -44,7 +46,7 @@ $form_classes = [
 
 	<?php echo opalestate_load_template_path( 'search-box/fields/types' ); ?>
 
-	<?php echo opalestate_load_template_path( 'search-box/fields/group-info', [ 'type' => 'input' ] ); ?>
+	<?php echo opalestate_load_template_path( 'search-box/fields/group-info', [ 'type' => $type ] ); ?>
 
 	<?php if ( opalestate_is_enable_price_field() ) : ?>
 		<?php echo opalestate_load_template_path( 'search-box/fields/price' ); ?>
