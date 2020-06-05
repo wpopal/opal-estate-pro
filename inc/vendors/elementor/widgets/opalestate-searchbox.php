@@ -119,6 +119,18 @@ class Opalestate_Searchbox_Elementor_Widget extends Opalestate_Elementor_Widget_
 		);
 
 		$this->add_control(
+			'display_category',
+			[
+				'label'     => esc_html__( 'Display Category select', 'opalestate-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'condition' => [
+					'style' => 'search-form-v',
+				],
+			]
+		);
+
+		$this->add_control(
 			'display_country',
 			[
 				'label'     => esc_html__( 'Display Country select', 'opalestate-pro' ),

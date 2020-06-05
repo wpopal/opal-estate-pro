@@ -15,7 +15,7 @@ $id      = time();
                     <ul class="list-inline opalestate-scroll-elements">
                         <li><a href="#block-description" class="active"><?php esc_html_e( 'Description', 'opalestate-pro' ); ?></a></li>
 
-						<?php if ( opalestate_get_option( 'enable_agent_reviews' ) ) : ?>
+						<?php if ( opalestate_agent_reviews_enabled() ) : ?>
                             <li><a href="#reviews"><?php esc_html_e( 'Review', 'opalestate-pro' ); ?></a></li>
 						<?php endif; ?>
 
