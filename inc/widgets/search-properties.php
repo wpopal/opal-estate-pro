@@ -53,15 +53,18 @@ class Opalestate_search_properties_Widget extends WP_Widget {
 
 	public function form( $instance ) {
 		//Set up some default widget settings.
-		$defaults = [
-			'title'           => esc_html__( 'Search Properties', 'opalestate-pro' ),
-			'hidden_labels'   => 'true',
-			'nobutton'        => '',
-			'style'           => 'search-form-v',
-			'display_country' => true,
-			'display_state'   => '',
-			'display_city'    => '',
-		];
+		$defaults = apply_filters( 'opalestate_widget_search_properties_args', [
+			'title'                => esc_html__( 'Search Properties', 'opalestate-pro' ),
+			'hidden_labels'        => 'true',
+			'nobutton'             => '',
+			'style'                => 'search-form-v',
+			'display_country'      => 'true',
+			'display_state'        => 'true',
+			'display_city'         => 'true',
+			'display_more_options' => 'true',
+			'info_number_input'    => 'true',
+		] );
+
 
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
         <p>
@@ -74,7 +77,7 @@ class Opalestate_search_properties_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>"><?php esc_html_e( 'Layout', 'opalestate-pro' ); ?></label>
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'style' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'style' ) ); ?>">
 				<?php foreach ( opalestate_search_properties_form_styles() as $option_key => $option_value ) : ?>
-                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['style'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['style'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
 				<?php endforeach; ?>
             </select>
         </p>
@@ -83,7 +86,7 @@ class Opalestate_search_properties_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'hidden_labels' ) ); ?>"><?php esc_html_e( 'Disable Labels', 'opalestate-pro' ); ?></label>
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'hidden_labels' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hidden_labels' ) ); ?>">
 				<?php foreach ( $this->get_boolean_options() as $option_key => $option_value ) : ?>
-                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['hidden_labels'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['hidden_labels'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
 				<?php endforeach; ?>
             </select>
         </p>
@@ -92,7 +95,7 @@ class Opalestate_search_properties_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'nobutton' ) ); ?>"><?php esc_html_e( 'Disable Search button', 'opalestate-pro' ); ?></label>
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'nobutton' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'nobutton' ) ); ?>">
 				<?php foreach ( $this->get_boolean_options() as $option_key => $option_value ) : ?>
-                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['nobutton'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['nobutton'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
 				<?php endforeach; ?>
             </select>
         </p>
@@ -101,7 +104,7 @@ class Opalestate_search_properties_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'display_country' ) ); ?>"><?php esc_html_e( 'Display Country select', 'opalestate-pro' ); ?></label>
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'display_country' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'display_country' ) ); ?>">
 				<?php foreach ( $this->get_boolean_options() as $option_key => $option_value ) : ?>
-                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['display_country'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['display_country'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
 				<?php endforeach; ?>
             </select>
         </p>
@@ -110,7 +113,7 @@ class Opalestate_search_properties_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'display_state' ) ); ?>"><?php esc_html_e( 'Display State select', 'opalestate-pro' ); ?></label>
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'display_state' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'display_state' ) ); ?>">
 				<?php foreach ( $this->get_boolean_options() as $option_key => $option_value ) : ?>
-                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['display_state'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['display_state'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
 				<?php endforeach; ?>
             </select>
         </p>
@@ -119,7 +122,25 @@ class Opalestate_search_properties_Widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'display_city' ) ); ?>"><?php esc_html_e( 'Display City select', 'opalestate-pro' ); ?></label>
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'display_city' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'display_city' ) ); ?>">
 				<?php foreach ( $this->get_boolean_options() as $option_key => $option_value ) : ?>
-                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['display_city'] ); ?>><?php echo esc_html( $option_value ); ?></option>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['display_city'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
+				<?php endforeach; ?>
+            </select>
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'display_more_options' ) ); ?>"><?php esc_html_e( 'Display More Options', 'opalestate-pro' ); ?></label>
+            <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'display_more_options' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'display_more_options' ) ); ?>">
+				<?php foreach ( $this->get_boolean_options() as $option_key => $option_value ) : ?>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['display_more_options'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
+				<?php endforeach; ?>
+            </select>
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'info_number_input' ) ); ?>"><?php esc_html_e( 'Information number fields', 'opalestate-pro' ); ?></label>
+            <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'info_number_input' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'info_number_input' ) ); ?>">
+				<?php foreach ( $this->get_boolean_options() as $option_key => $option_value ) : ?>
+                    <option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $instance['info_number_input'], true ); ?>><?php echo esc_html( $option_value ); ?></option>
 				<?php endforeach; ?>
             </select>
         </p>
@@ -131,13 +152,15 @@ class Opalestate_search_properties_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		//Strip tags from title and name to remove HTML
-		$instance['title']           = strip_tags( $new_instance['title'] );
-		$instance['hidden_labels']   = strip_tags( $new_instance['hidden_labels'] );
-		$instance['nobutton']        = strip_tags( $new_instance['nobutton'] );
-		$instance['style']           = strip_tags( $new_instance['style'] );
-		$instance['display_country'] = strip_tags( $new_instance['display_country'] );
-		$instance['display_state']   = strip_tags( $new_instance['display_state'] );
-		$instance['display_city']    = strip_tags( $new_instance['display_city'] );
+		$instance['title']                = strip_tags( $new_instance['title'] );
+		$instance['hidden_labels']        = strip_tags( $new_instance['hidden_labels'] );
+		$instance['nobutton']             = strip_tags( $new_instance['nobutton'] );
+		$instance['style']                = strip_tags( $new_instance['style'] );
+		$instance['display_country']      = strip_tags( $new_instance['display_country'] );
+		$instance['display_state']        = strip_tags( $new_instance['display_state'] );
+		$instance['display_city']         = strip_tags( $new_instance['display_city'] );
+		$instance['display_more_options'] = strip_tags( $new_instance['display_more_options'] );
+		$instance['info_number_input']    = strip_tags( $new_instance['info_number_input'] );
 
 		return $instance;
 	}
