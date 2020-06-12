@@ -69,8 +69,8 @@ function opalestate_ajax_search_property_users() {
 
 add_action( 'wp_ajax_opalestate_search_property_users', 'opalestate_ajax_search_property_users' );
 
-
-add_action( 'wp_ajax_opalestate_ajax_get_state_by_country', "opalestate_ajax_get_state_by_country" );
+add_action( 'wp_ajax_opalestate_ajax_get_state_by_country', 'opalestate_ajax_get_state_by_country' );
+add_action( 'wp_ajax_nopriv_opalestate_ajax_get_state_by_country', 'opalestate_ajax_get_state_by_country' );
 function opalestate_ajax_get_state_by_country() {
 	if ( ! isset( $_POST['country'] ) ) {
 		die;

@@ -28,12 +28,33 @@ class OpalEstate_Search {
 	public static function get_search_results_query( $limit = 9 ) {
 		global $wp_query;
 
-		$search_min_price = isset( $_GET['min_price'] ) ? sanitize_text_field( $_GET['min_price'] ) : '';
-		$search_max_price = isset( $_GET['max_price'] ) ? sanitize_text_field( $_GET['max_price'] ) : '';
+		$search_min_price = '';
+		$search_max_price = '';
+		if ( isset( $_GET['min_price'] ) || isset( $_GET['max_price'] ) ) {
+			$search_min_price = isset( $_GET['min_price'] ) ? sanitize_text_field( $_GET['min_price'] ) : '';
+			$search_max_price = isset( $_GET['max_price'] ) ? sanitize_text_field( $_GET['max_price'] ) : '';
+		} elseif ( isset( $_GET['range_price'] ) ) {
+			$range_price = explode( '-', sanitize_text_field( $_GET['range_price'] ) );
+			if ( isset( $range_price[0] ) && isset( $range_price[1] ) ) {
+				$search_min_price = 'min' !== $range_price[0] ? $range_price[0] : '';
+				$search_max_price = 'max' !== $range_price[1] ? $range_price[1] : '';
+			}
+		}
 
-		$search_min_area = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : '';
-		$search_max_area = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : '';
-		$s               = isset( $_GET['search_text'] ) ? sanitize_text_field( $_GET['search_text'] ) : null;
+		$search_min_area = '';
+		$search_max_area = '';
+		if ( isset( $_GET['min_area'] ) || isset( $_GET['max_area'] ) ) {
+			$search_min_area = isset( $_GET['min_area'] ) ? sanitize_text_field( $_GET['min_area'] ) : '';
+			$search_max_area = isset( $_GET['max_area'] ) ? sanitize_text_field( $_GET['max_area'] ) : '';
+		} elseif ( isset( $_GET['range_area'] ) ) {
+			$range_area = explode( '-', sanitize_text_field( $_GET['range_area'] ) );
+			if ( isset( $range_area[0] ) && isset( $range_area[1] ) ) {
+				$search_min_area = 'min' !== $range_area[0] ? $range_area[0] : '';
+				$search_max_area = 'max' !== $range_area[1] ? $range_area[1] : '';
+			}
+		}
+
+		$s = isset( $_GET['search_text'] ) ? sanitize_text_field( $_GET['search_text'] ) : null;
 
 		$posts_per_page = apply_filters( 'opalestate_search_property_per_page', opalestate_options( 'search_property_per_page', $limit ) );
 

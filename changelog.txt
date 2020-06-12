@@ -1,3 +1,6 @@
+= 1.5.6 - 2020-06-12 =
+* Fixes - Country select when not logged in.
+
 = 1.5.5 - 2020-06-09 =
 * Fixes - Search box field for vertical form.
 
