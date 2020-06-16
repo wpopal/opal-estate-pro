@@ -77,11 +77,19 @@ class OpalEstate_Search {
 		$tax_query = [];
 
 		if ( isset( $_GET['location'] ) && $_GET['location'] != -1 ) {
-			$tax_query[] = [
-				'taxonomy' => 'opalestate_location',
-				'field'    => 'slug',
-				'terms'    => sanitize_text_field( $_GET['location'] ),
-			];
+			if ( is_array( $_GET['location'] ) ) {
+				$tax_query[] = [
+					'taxonomy' => 'opalestate_location',
+					'field'    => 'slug',
+					'terms'    => opalestate_clean( $_GET['location'] ),
+				];
+			} else {
+				$tax_query[] = [
+					'taxonomy' => 'opalestate_location',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $_GET['location'] ),
+				];
+			}
 		}
 
 		if ( isset( $_GET['state'] ) && $_GET['state'] != -1 ) {
@@ -101,11 +109,19 @@ class OpalEstate_Search {
 		}
 
 		if ( isset( $_GET['city'] ) && $_GET['city'] != -1 ) {
-			$tax_query[] = [
-				'taxonomy' => 'opalestate_city',
-				'field'    => 'slug',
-				'terms'    => sanitize_text_field( $_GET['city'] ),
-			];
+			if ( is_array( $_GET['city'] ) ) {
+				$tax_query[] = [
+					'taxonomy' => 'opalestate_city',
+					'field'    => 'slug',
+					'terms'    => opalestate_clean( $_GET['city'] ),
+				];
+			} else {
+				$tax_query[] = [
+					'taxonomy' => 'opalestate_city',
+					'field'    => 'slug',
+					'terms'    => sanitize_text_field( $_GET['city'] ),
+				];
+			}
 		}
 
 		if ( isset( $_GET['types'] ) && $_GET['types'] != -1 ) {
@@ -164,6 +180,8 @@ class OpalEstate_Search {
 				'terms'    => opalestate_clean( $_GET['amenities'] ),
 			];
 		}
+
+		$tax_query = apply_filters( 'opalestate_search_results_tax_query', $tax_query );
 
 		if ( $tax_query ) {
 			$args['tax_query'] = [ 'relation' => 'AND' ];

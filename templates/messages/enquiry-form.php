@@ -1,13 +1,13 @@
 <?php
 global $post;
 
-if (  opalestate_get_option( 'enable_single_enquire_form' , 'on' )  != 'on' ) {
-    return;
+if ( opalestate_get_option( 'enable_single_enquire_form', 'on' ) !== 'on' ) {
+	return;
 }
 
-$message = sprintf( __( 'Hi, I am interested in %s (Property ID: %s)', 'opalestate-pro' ), get_the_title(), get_the_ID() );
-
 $property_id = get_the_ID();
+$infor_id    = apply_filters( 'opalestate_contact_form_infor_id', $property_id, $property_id );
+$message     = sprintf( __( 'Hi, I am interested in %s (Property ID: %s)', 'opalestate-pro' ), get_the_title(), $infor_id );
 $heading     = esc_html__( 'Enquire about property', 'opalestate-pro' );
 $object      = OpalEstate_User_Message::get_instance();
 $fields      = $object->get_equiry_form_fields( $message );
