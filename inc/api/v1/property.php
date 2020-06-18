@@ -382,16 +382,16 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			if ( is_array( $request['info'] ) ) {
 				$info_array = $request['info'];
 			} elseif ( is_string( $request['info'] ) ) {
-				$info = $request['info'];
-				$array = json_decode($info);
-				$array = json_decode(json_encode($array), true);
+				$info  = $request['info'];
+				$array = json_decode( $info );
+				$array = json_decode( json_encode( $array ), true );
 
 				if ( is_array( $array ) ) {
 					$info_array = $array;
 				}
 			}
 
-			if ( $info_array && ! empty($info_array) ) {
+			if ( $info_array && ! empty( $info_array ) ) {
 				$metaquery = [];
 				foreach ( $info_array as $key => $value ) {
 					if ( trim( $value ) ) {
@@ -492,8 +492,9 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 					'operator' => 'OR',
 				] );
 			} elseif ( $request['geo_lat'] && $request['geo_long'] ) {
-				$radius           = isset( $request['geo_radius'] ) ? $request['geo_radius'] : 5;
-				$post_ids         = Opalestate_Query::filter_by_location( $request['geo_lat'], $request['geo_long'], $radius );
+				$radius_measure   = isset( $request['radius_measure'] ) ? sanitize_text_field( $request['radius_measure'] ) : 'km';
+				$radius           = isset( $request['geo_radius'] ) ? sanitize_text_field( $request['geo_radius'] ) : 10;
+				$post_ids         = Opalestate_Query::filter_by_location( sanitize_text_field( $request['geo_lat'] ), sanitize_text_field( $request['geo_long'] ), $radius_measure, $radius );
 				$args['post__in'] = $post_ids;
 			}
 		}

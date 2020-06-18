@@ -10,23 +10,9 @@ defined( 'ABSPATH' ) || exit;
 $unique_id                    = esc_attr( opalestate_unique_id() );
 $GLOBALS['group-info-column'] = 3;
 
-if ( isset( $nobutton ) && $nobutton ) {
-	$grid = [
-		0 => 7,
-		1 => 4,
-		2 => 1,
-		3 => 0,
-	];
-} else {
-	$grid = [
-		0 => 6,
-		1 => 3,
-		2 => 1,
-		3 => 2,
-	];
-}
-
 $display_more_options = isset( $display_more_options ) ? $display_more_options : true;
+$max_range            = isset( $max_range ) && $max_range ? $max_range : apply_filters( 'opalestate_search_geo_max_range', 10 );
+$range_unit           = isset( $range_unit ) ? $range_unit : 'km';
 
 $form_classes = [
 	'opalestate-search-form',
@@ -43,7 +29,7 @@ $form_classes = [
 
     <div class="searchbox-main">
         <div class="searchbox-field searchbox-field--city-text">
-			<?php echo opalestate_load_template_path( 'search-box/fields/search-city-text' ); ?>
+			<?php echo opalestate_load_template_path( 'search-box/fields/search-city-text', [ 'max_range' => $max_range, 'range_unit' => $range_unit ] ); ?>
         </div>
 
         <div class="searchbox-field searchbox-field--types">

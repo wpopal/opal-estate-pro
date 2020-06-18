@@ -319,12 +319,11 @@ class Opalestate_Query {
 		}
 
 		if ( isset( $args['featured'] ) && $args['featured'] ) {
-			$args = array_merge( $args,
-				[
-					'meta_key'     => OPALESTATE_PROPERTY_PREFIX . 'featured',
-					'meta_value'   => 'on',
-					'meta_compare' => '=',
-				] );
+			$args = array_merge( $args, [
+				'meta_key'     => OPALESTATE_PROPERTY_PREFIX . 'featured',
+				'meta_value'   => 'on',
+				'meta_compare' => '=',
+			] );
 			unset( $args['featured'] );
 
 		}
@@ -342,17 +341,21 @@ class Opalestate_Query {
 	}
 
 	/**
-	 *
+	 * Filter_by_location
 	 */
-	public static function filter_by_location( $geo_lat, $geo_long, $radius, $prefix = OPALESTATE_PROPERTY_PREFIX ) {
-
+	public static function filter_by_location( $geo_lat, $geo_long, $radius, $radius_measure = '', $prefix = OPALESTATE_PROPERTY_PREFIX ) {
 		global $wpdb;
 
-		$radius_measure = '';
-		$earth          = 3959;
-
-		if ( $radius_measure == 'km' ) {
-			$earth = 6371;
+		switch ( $radius_measure ) {
+			case 'km':
+				$earth = 6371;
+				break;
+			case 'miles':
+				$earth = 3959;
+				break;
+			default :
+				$earth = 6371;
+				break;
 		}
 
 		$latitude  = $prefix . 'map_latitude';
@@ -382,7 +385,6 @@ class Opalestate_Query {
             ORDER BY $wpdb->posts.menu_order ASC, distance ASC";
 
 		$query = $wpdb->prepare( $sql,
-
 			$earth,
 			$geo_lat,
 			$geo_long,

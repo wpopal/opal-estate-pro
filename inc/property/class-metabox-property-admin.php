@@ -483,7 +483,7 @@ class Opalestate_Property_MetaBox {
 	public function metaboxes_layout_fields() {
 		$prefix = OPALESTATE_PROPERTY_PREFIX;
 
-		$templates = opalestate_single_layout_prieview();
+		$templates = opalestate_single_layout_preview();
 
 		$fields = [
 			[

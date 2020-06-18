@@ -288,10 +288,10 @@ class OpalEstate_Search {
 					'compare'  => 'LIKE',
 					'operator' => 'OR',
 				];
-
 			} elseif ( $_GET['geo_lat'] && $_GET['geo_long'] ) {
-				$radius           = isset( $_GET['geo_radius'] ) ? $_GET['geo_radius'] : 5;
-				$post_ids         = Opalestate_Query::filter_by_location( $_GET['geo_lat'], $_GET['geo_long'], $radius );
+				$radius_measure   = isset( $_GET['radius_measure'] ) ? sanitize_text_field( $_GET['radius_measure'] ) : 'km';
+				$radius           = isset( $_GET['geo_radius'] ) ? sanitize_text_field( $_GET['geo_radius'] ) : 10;
+				$post_ids         = Opalestate_Query::filter_by_location( sanitize_text_field( $_GET['geo_lat'] ), sanitize_text_field( $_GET['geo_long'] ), $radius_measure, $radius );
 				$args['post__in'] = $post_ids;
 			}
 		}

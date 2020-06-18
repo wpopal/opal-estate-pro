@@ -27,6 +27,8 @@ if ( isset( $nobutton ) && $nobutton ) {
 }
 
 $display_more_options = isset( $display_more_options ) ? $display_more_options : true;
+$max_range            = isset( $max_range ) && $max_range ? $max_range : apply_filters( 'opalestate_search_geo_max_range', 10 );
+$range_unit           = isset( $range_unit ) ? $range_unit : 'km';
 
 $form_classes = [
 	'opalestate-search-form',
@@ -39,7 +41,7 @@ $form_classes = [
 <form class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $form_classes ) ) ); ?>" action="<?php echo esc_url( opalestate_get_search_link() ); ?>" method="GET">
     <div class="opal-row">
         <div class="col-lg-<?php echo esc_attr( $grid[0] ) ?> col-md-<?php echo esc_attr( $grid[0] ); ?> col-sm-<?php echo esc_attr( $grid[0] ); ?> col-xs-12">
-			<?php echo opalestate_load_template_path( 'search-box/fields/search-city-text' ); ?>
+			<?php echo opalestate_load_template_path( 'search-box/fields/search-city-text', [ 'max_range' => $max_range, 'range_unit' => $range_unit ] ); ?>
         </div>
 
         <div class="col-lg-<?php echo esc_attr( $grid[1] ); ?> col-md-<?php echo esc_attr( $grid[1] ); ?> col-sm-<?php echo esc_attr( $grid[1] ); ?> col-xs-12">

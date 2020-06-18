@@ -185,6 +185,34 @@ class Opalestate_Searchbox_Elementor_Widget extends Opalestate_Elementor_Widget_
 			]
 		);
 
+		$this->add_control(
+			'range_unit',
+			[
+				'label'     => esc_html__( 'Range Unit', 'opalestate-pro' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => [
+					'km'    => esc_html__( 'km', 'opalestate-pro' ),
+					'miles' => esc_html__( 'miles', 'opalestate-pro' ),
+				],
+				'default'   => 'km',
+				'condition' => [
+					'style' => $this->get_radius_form(),
+				],
+			]
+		);
+
+		$this->add_control(
+			'max_range',
+			[
+				'label'     => esc_html__( 'Max Range', 'opalestate-pro' ),
+				'type'      => Controls_Manager::NUMBER,
+				'default'   => '10',
+				'condition' => [
+					'style' => $this->get_radius_form(),
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -412,6 +440,15 @@ class Opalestate_Searchbox_Elementor_Widget extends Opalestate_Elementor_Widget_
 			'search-form-v',
 			'search-form-v2',
 			'search-form-v3',
+		];
+	}
+
+	protected function get_radius_form() {
+		return [
+			'search-form-v2',
+			'collapse-advanced',
+			'collapse-city',
+			'simple-city',
 		];
 	}
 }

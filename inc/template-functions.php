@@ -456,10 +456,14 @@ function opalestate_single_the_property_layout() {
 	return $layout;
 }
 
-
-function opalestate_single_layout_prieview() {
-	$layout = [
-		''                  => esc_html__( 'Inherit', 'opalestate-pro' ),
+/**
+ * Single layout preview.
+ *
+ * @param bool $show_none_option
+ * @return array
+ */
+function opalestate_single_layout_preview( $show_none_option = true ) {
+	$layouts = [
 		'gallery-thumbnail' => esc_html__( 'Gallery Thumb Nav', 'opalestate-pro' ),
 		'gallery-slider'    => esc_html__( 'Gallery Slider', 'opalestate-pro' ),
 		'map'               => esc_html__( 'Maps', 'opalestate-pro' ),
@@ -471,7 +475,11 @@ function opalestate_single_layout_prieview() {
 		'mark-picture'      => esc_html__( 'Mark Picture', 'opalestate-pro' ),
 	];
 
-	return $layout;
+	if ( $show_none_option ) {
+		$layouts = array_merge( [ '' => esc_html__( 'Inherit', 'opalestate-pro' ) ], $layouts );
+	}
+
+	return apply_filters( 'opalestate_single_layout_preview', $layouts );
 }
 
 
@@ -494,10 +502,6 @@ function opalestate_property_status() {
 /**
  * Single property logic functions
  */
-
-/**
- * Single property logic functions
- */
 function opalestate_property_meta() {
 	echo opalestate_load_template_path( 'single-property/meta' );
 }
@@ -512,9 +516,15 @@ function opalestate_single_show_map() {
 function opalestate_property_preview() {
 	global $property;
 	$preview = $property->get_preview_template();
+
+	if ( ! $preview ) {
+		$preview = opalestate_get_option( 'single_preview', '' );
+	}
+
 	if ( isset( $_GET['preview'] ) && $_GET['preview'] ) {
 		$preview = sanitize_text_field( $_GET['preview'] );
 	}
+
 	switch ( $preview ) {
 		case 'tour360':
 			echo opalestate_load_template_path( 'single-property/preview/virtualtour' );
@@ -522,7 +532,6 @@ function opalestate_property_preview() {
 		case 'gallery-slider':
 			echo opalestate_load_template_path( 'single-property/preview/gallery-slider' );
 			break;
-
 		case 'tabs-gallery':
 			echo opalestate_load_template_path( 'single-property/preview/tabs', [ 'tab_active' => 'gallery-slider' ] );
 			remove_action( 'opalestate_after_single_property_summary', 'opalestate_property_map', 30 );
@@ -850,7 +859,7 @@ function opalestate_properties_nearby() {
 	}
 
 	$radius   = 5;
-	$post_ids = Opalestate_Query::filter_by_location( $geo_lat, $geo_long, $radius );
+	$post_ids = Opalestate_Query::filter_by_location( $geo_lat, $geo_long, 'km', $radius );
 
 	if ( empty( $post_ids ) ) {
 		return;

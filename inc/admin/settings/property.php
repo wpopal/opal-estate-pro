@@ -374,6 +374,14 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
+			'name'    => esc_html__( 'Single Preview Display', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Choose preview layout for single property.', 'opalestate-pro' ),
+			'id'      => 'single_preview',
+			'type'    => 'select',
+			'options' => opalestate_single_layout_preview(),
+		];
+
+		$fields[] = [
 			'name'    => esc_html__( 'Enable Request Viewing', 'opalestate-pro' ),
 			'desc'    => esc_html__( 'Enable Request Viewing feature in the single property page.', 'opalestate-pro' ),
 			'id'      => 'enable_single_request_viewing',

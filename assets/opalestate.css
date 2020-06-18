@@ -4041,3 +4041,14 @@ header#masthead {
   border-bottom: 1px solid #ebebeb;
   margin-bottom: 15px;
 }
+
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev,
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+  background-image: none !important;
+}
+
+.swiper-button-prev i,
+.swiper-button-next i {
+  font-size: 20px;
+  padding: 20px 0;
+}

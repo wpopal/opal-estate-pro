@@ -423,7 +423,7 @@ class Opalestate_Agent_Front {
 					$radius   = isset( $_GET['geo_radius'] ) ? sanitize_text_field( $_GET['geo_radius'] ) : 5;
 					$post_ids = Opalestate_Query::filter_by_location(
 						sanitize_text_field( $_GET['geo_lat'] ),
-						sanitize_text_field( $_GET['geo_long'] ), $radius, $prefix );
+						sanitize_text_field( $_GET['geo_long'] ), $radius, 'km', $prefix );
 
 
 					$args['post__in'] = $post_ids;

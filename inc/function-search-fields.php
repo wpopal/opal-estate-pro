@@ -34,8 +34,9 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
                 <label class="opalestate-label opalestate-label--<?php echo sanitize_html_class( $field ); ?>"><?php echo esc_html( $label ); ?></label>
                 <div class="input-group-number">
                     <i class="<?php echo opalestate_get_property_meta_icon( $field ); ?>"></i>
-                    <input class="form-control" value="<?php echo esc_attr( $qvalue ? $qvalue : $input_default_value ); ?>" type="text" name="info[<?php echo $field; ?>]" placeholder="<?php echo esc_attr(
-						$label ); ?>"/>
+                    <input class="form-control" value="<?php echo esc_attr( $qvalue ? $qvalue : $input_default_value ); ?>" type="text" name="info[<?php echo $field; ?>]"
+                           placeholder="<?php echo esc_attr(
+						       $label ); ?>"/>
                     <div class="btn-actions">
                         <span class="btn-minus"><i class="fa fa-minus"></i></span>
                         <span class="btn-plus"><i class="fa fa-plus"></i></span>
@@ -55,14 +56,16 @@ function opalestate_property_render_field_template( $field, $label, $type = 'sel
 				$display_type_search = opalestate_options( $setting_search_type, 'select' );
 
 				if ( $display_type_search == 'select' ) {
-
 					$option_values = (array) explode( ',', opalestate_options( $setting_search_type_options, '1,2,3,4,5,6,7,8,9,10' ) );
+					$option_values = array_map( 'trim', $option_values );
+					$option_values = array_combine( $option_values, $option_values );
+					$option_values = apply_filters( 'opalestate_search_select_type_options', $option_values, $setting_search_type_options, $field );
 					$template      = '<label class="opalestate-label opalestate-label--' . sanitize_html_class( $label ) . '">' . esc_html( $label ) . '</label>';
 					$template      .= '<select class="form-control" name="info[%s]"><option value="">%s</option>';
 
-					foreach ( $option_values as $value ) {
+					foreach ( $option_values as $option_key => $value ) {
 						$selected = $value == $qvalue ? 'selected="selected"' : '';
-						$template .= '<option ' . $selected . ' value="' . esc_attr( $value ) . '">' . esc_html( $value ) . '</option>';
+						$template .= '<option ' . $selected . ' value="' . esc_attr( $option_key ) . '">' . esc_html( $value ) . '</option>';
 					}
 					$template .= '</select>';
 					$template = sprintf( $template, $field, $label );
