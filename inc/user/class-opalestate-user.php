@@ -177,6 +177,10 @@ class OpalEstate_User {
 			if ( in_array( 'opalestate_agent', $roles ) || in_array( 'opalestate_agency', $roles ) ) {
 				return false;
 			}
+
+			if ( in_array( 'subscriber', $roles ) && opalestate_is_user_management_page() ) {
+				return false;
+			}
 		}
 
 		return $show_admin_bar;

@@ -1,3 +1,7 @@
+= 1.5.9 - 2020-06-22 =
+* Added - Currency
+* Fixes - Subscriber admin bar
+
 = 1.5.8 - 2020-06-18 =
 * Added - Single Preview Layout setting
 * Added - Range setting for Radius search
