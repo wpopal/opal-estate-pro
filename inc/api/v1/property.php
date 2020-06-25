@@ -494,7 +494,7 @@ class Opalestate_Property_Api extends Opalestate_Base_API {
 			} elseif ( $request['geo_lat'] && $request['geo_long'] ) {
 				$radius_measure   = isset( $request['radius_measure'] ) ? sanitize_text_field( $request['radius_measure'] ) : 'km';
 				$radius           = isset( $request['geo_radius'] ) ? sanitize_text_field( $request['geo_radius'] ) : 10;
-				$post_ids         = Opalestate_Query::filter_by_location( sanitize_text_field( $request['geo_lat'] ), sanitize_text_field( $request['geo_long'] ), $radius_measure, $radius );
+				$post_ids         = Opalestate_Query::filter_by_location( sanitize_text_field( $request['geo_lat'] ), sanitize_text_field( $request['geo_long'] ), $radius, $radius_measure );
 				$args['post__in'] = $post_ids;
 			}
 		}

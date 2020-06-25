@@ -1,3 +1,7 @@
+= 1.6 - 2020-06-25 =
+* Added - Related properties setting
+* Added - Nearby properties setting
+
 = 1.5.9 - 2020-06-22 =
 * Added - Currency
 * Fixes - Subscriber admin bar

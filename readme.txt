@@ -150,6 +150,10 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.6 - 2020-06-25 =
+* Added - Related properties setting
+* Added - Nearby properties setting
+
 = 1.5.9 - 2020-06-22 =
 * Added - Currency
 * Fixes - Subscriber admin bar

@@ -178,7 +178,7 @@ class OpalEstate_User {
 				return false;
 			}
 
-			if ( in_array( 'subscriber', $roles ) && opalestate_is_user_management_page() ) {
+			if ( in_array( 'subscriber', $roles ) ) {
 				return false;
 			}
 		}

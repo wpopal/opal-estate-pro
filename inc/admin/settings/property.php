@@ -366,19 +366,21 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		$fields = [];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Single Layout Page', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Choose layout for single property.', 'opalestate-pro' ),
-			'id'      => 'layout',
-			'type'    => 'select',
-			'options' => apply_filters( 'opalestate_single_layout_templates', [ '' => esc_html__( 'Inherit', 'opalestate-pro' ) ] ),
+			'name'      => esc_html__( 'Single Layout Page', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Choose layout for single property.', 'opalestate-pro' ),
+			'id'        => 'layout',
+			'type'      => 'select',
+			'options'   => apply_filters( 'opalestate_single_layout_templates', [ '' => esc_html__( 'Inherit', 'opalestate-pro' ) ] ),
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
-			'name'    => esc_html__( 'Single Preview Display', 'opalestate-pro' ),
-			'desc'    => esc_html__( 'Choose preview layout for single property.', 'opalestate-pro' ),
-			'id'      => 'single_preview',
-			'type'    => 'select',
-			'options' => opalestate_single_layout_preview(),
+			'name'      => esc_html__( 'Single Preview Display', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Choose preview layout for single property.', 'opalestate-pro' ),
+			'id'        => 'single_preview',
+			'type'      => 'select',
+			'options'   => opalestate_single_layout_preview(),
+			'after_row' => '<hr>',
 		];
 
 		$fields[] = [
@@ -611,21 +613,88 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
-			'name'      => esc_html__( 'Related properties layout', 'opalestate-pro' ),
-			'desc'      => esc_html__( 'Select a layout for related properties.', 'opalestate-pro' ),
-			'id'        => 'single_related_properties_layout',
-			'type'      => 'select',
-			'options'   => opalestate_get_loop_property_layouts(),
-			'after_row' => '<hr>',
+			'name'    => esc_html__( 'Show Related properties', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Show Related properties the single property page.', 'opalestate-pro' ),
+			'id'      => 'enable_single_related_properties',
+			'type'    => 'switch',
+			'options' => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+			'default' => 'on',
 		];
 
 		$fields[] = [
-			'name'      => esc_html__( 'Nearby properties layout', 'opalestate-pro' ),
-			'desc'      => esc_html__( 'Select a layout for nearby properties.', 'opalestate-pro' ),
-			'id'        => 'single_nearby_properties_layout',
-			'type'      => 'select',
-			'options'   => opalestate_get_loop_property_layouts(),
-			'after_row' => '<hr>',
+			'name'    => esc_html__( 'Related properties layout', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Select a layout for related properties.', 'opalestate-pro' ),
+			'id'      => 'single_related_properties_layout',
+			'type'    => 'select',
+			'options' => opalestate_get_loop_property_layouts(),
+		];
+
+		$fields[] = [
+			'name'       => esc_html__( 'Number of properties', 'opalestate-pro' ),
+			'id'         => 'single_related_number',
+			'type'       => 'text_small',
+			'attributes' => [
+				'type' => 'number',
+				'min'  => 1,
+			],
+			'default'    => 6,
+			'after_row'  => '<hr>',
+		];
+
+		$fields[] = [
+			'name'    => esc_html__( 'Show Nearby properties', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Show Nearby properties in the single property page.', 'opalestate-pro' ),
+			'id'      => 'enable_single_nearby_properties',
+			'type'    => 'switch',
+			'options' => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+			'default' => 'on',
+		];
+
+		$fields[] = [
+			'name'    => esc_html__( 'Nearby properties layout', 'opalestate-pro' ),
+			'desc'    => esc_html__( 'Select a layout for nearby properties.', 'opalestate-pro' ),
+			'id'      => 'single_nearby_properties_layout',
+			'type'    => 'select',
+			'options' => opalestate_get_loop_property_layouts(),
+		];
+
+		$fields[] = [
+			'name'       => esc_html__( 'Nearby Radius', 'opalestate-pro' ),
+			'id'         => 'single_nearby_radius',
+			'type'       => 'text_small',
+			'attributes' => [
+				'type' => 'number',
+				'min'  => 1,
+			],
+			'default'    => 5,
+		];
+
+		$fields[] = [
+			'name'    => esc_html__( 'Nearby Measure Unit', 'opalestate-pro' ),
+			'id'      => 'single_nearby_measure_unit',
+			'type'    => 'select',
+			'options' => [
+				'km'    => esc_html__( 'km', 'opalestate-pro' ),
+				'miles' => esc_html__( 'miles', 'opalestate-pro' ),
+			],
+		];
+
+		$fields[] = [
+			'name'       => esc_html__( 'Number of properties', 'opalestate-pro' ),
+			'id'         => 'single_nearby_number',
+			'type'       => 'text_small',
+			'attributes' => [
+				'type' => 'number',
+				'min'  => 1,
+			],
+			'default'    => 6,
+			'after_row'  => '<hr>',
 		];
 
 		return $fields;

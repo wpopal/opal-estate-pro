@@ -787,8 +787,11 @@ function opalestate_get_property_walkscore_score( $property ) {
  * Gets related properties template.
  */
 function opalestate_properties_related() {
+	if ( 'on' !== opalestate_get_option( 'enable_single_related_properties', 'on' ) ) {
+		return;
+	}
 
-	$num  = apply_filters( 'opalestate_related_properties_number', 6 );
+	$num  = opalestate_get_option( 'single_related_number', 6 );
 	$args = [
 		'post_type'      => 'opalestate_property',
 		'posts_per_page' => $num,
@@ -819,7 +822,6 @@ function opalestate_properties_related() {
 			];
 	}
 
-
 	if ( $tax_query ) {
 		$args['tax_query'] = [ 'relation' => 'AND' ];
 		$args['tax_query'] = array_merge( $args['tax_query'], $tax_query );
@@ -840,10 +842,14 @@ function opalestate_properties_related() {
  * Gets nearby properties template.
  */
 function opalestate_properties_nearby() {
+	if ( 'on' !== opalestate_get_option( 'enable_single_nearby_properties', 'on' ) ) {
+		return;
+	}
+
 	global $property;
 	$maps = $property->get_map();
 
-	$num     = apply_filters( 'opalestate_nearby_properties_number', 6 );
+	$num     = opalestate_get_option( 'single_nearby_number', 6 );
 	$post_id = get_the_ID();
 
 	$args = [
@@ -858,8 +864,9 @@ function opalestate_properties_nearby() {
 		return;
 	}
 
-	$radius   = 5;
-	$post_ids = Opalestate_Query::filter_by_location( $geo_lat, $geo_long, 'km', $radius );
+	$radius       = opalestate_get_option( 'single_nearby_radius', 5 );
+	$measure_unit = opalestate_get_option( 'single_nearby_measure_unit', 'km' );
+	$post_ids     = Opalestate_Query::filter_by_location( $geo_lat, $geo_long, $radius, $measure_unit );
 
 	if ( empty( $post_ids ) ) {
 		return;
