@@ -198,6 +198,9 @@ class Opalestate_Query {
 			'post_type'      => 'opalestate_property',
 			'posts_per_page' => isset( $args['posts_per_page'] ) ? $args['posts_per_page'] : 5,
 			'paged'          => isset( $args['paged'] ) ? $args['paged'] : 1,
+			'post_status'    => 'publish',
+			'order_by'       => isset( $args['orderby'] ) ? $args['orderby'] : 'post_date',
+			'order'          => isset( $args['order'] ) ? $args['order'] : 'DESC',
 		];
 
 		$condition = array_merge( $condition, $args );

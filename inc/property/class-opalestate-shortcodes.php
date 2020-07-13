@@ -43,18 +43,14 @@ class OpalEstate_Shortcodes {
 	 * defined list of shortcode and functions of this for each.
 	 */
 	public function __construct() {
-
 		$this->shortcodes = [
-
 			'search_properties_form'   => [ 'code' => 'search_properties_form', 'label' => esc_html__( 'Search Properties Form', 'opalestate-pro' ) ],
 			'properties'               => [ 'code' => 'properties', 'label' => esc_html__( 'Properties', 'opalestate-pro' ) ],
 			'search_properties_result' => [ 'code' => 'search_properties_result', 'label' => esc_html__( 'Search Properties Result', 'opalestate-pro' ) ],
 			'search_properties'        => [ 'code' => 'search_properties', 'label' => esc_html__( 'Search Properties', 'opalestate-pro' ) ],
 			'search_split_maps'        => [ 'code' => 'search_split_maps', 'label' => esc_html__( 'Search Split Maps', 'opalestate-pro' ) ],
-
 			'search_map_properties' => [ 'code' => 'search_map_properties', 'label' => esc_html__( 'Show Map + Search Box and Properties', 'opalestate-pro' ) ],
 			'ajax_map_search'       => [ 'code' => 'ajax_map_search', 'label' => esc_html__( 'Ajax Search Map Properties And Horizontal Search', 'opalestate-pro' ) ],
-	 
 			'register_form'         => [ 'code' => 'register_form', 'label' => esc_html__( 'Register User Form', 'opalestate-pro' ) ],
 			'login_form'            => [ 'code' => 'login_form', 'label' => esc_html__( 'Login Form', 'opalestate-pro' ) ],
 		];
@@ -66,7 +62,6 @@ class OpalEstate_Shortcodes {
 		if ( is_admin() ) {
 			add_action( 'media_buttons', [ $this, 'shortcode_button' ] );
 		}
-
 	}
 
 	/**

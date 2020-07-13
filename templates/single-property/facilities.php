@@ -7,7 +7,7 @@ $facilities = $property->get_facilities();
 
 <?php if ( 'on' === $property->get_block_setting( 'facilities' ) && $facilities && isset( $facilities[0] ) && ! empty( $facilities[0] ) ): ?>
     <div class="property-facilities box-inner-summary">
-        <h5 class="list-group-item-heading"><?php esc_html_e( "Facilities", "opalestate" ); ?></h5>
+        <h5 class="list-group-item-heading"><?php esc_html_e( 'Facilities', 'opalestate-pro' ); ?></h5>
         <div class="list-group-item-text">
             <div class="<?php echo apply_filters( 'opalestate_row_container_class', 'opal-row' ); ?>">
 				<?php foreach ( $facilities as $facility ): ?>

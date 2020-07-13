@@ -1,6 +1,7 @@
 <?php
-$layout   = apply_filters( 'opalestate_archive_search_block_form_layout', 'collapse-city' );
-$settings = [];
+$default_search_form = opalestate_get_option( 'default_search_form', 'collapse-city' );
+$layout              = apply_filters( 'opalestate_archive_search_block_form_layout', $default_search_form );
+$settings            = [];
 ?>
 <div class="opalestate-archive-search-block">
     <div class="container">

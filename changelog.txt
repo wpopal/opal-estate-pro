@@ -1,3 +1,9 @@
+= 1.6.2 - 2020-07-13 =
+* Added - Search form general setting
+
+= 1.6.1 - 2020-07-07 =
+* Fixes - Property collection sort order
+
 = 1.6 - 2020-06-25 =
 * Added - Related properties setting
 * Added - Nearby properties setting

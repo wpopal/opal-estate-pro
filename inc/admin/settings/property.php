@@ -86,6 +86,14 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
+			'name'    => esc_html__( 'Default Search form', 'opalestate-pro' ),
+			'id'      => 'default_search_form',
+			'type'    => 'select',
+			'options' => opalestate_search_properties_form_styles(),
+			'default' => 'collapse-city',
+		];
+
+		$fields[] = [
 			'name'    => esc_html__( 'Default Display mode', 'opalestate-pro' ),
 			'id'      => 'displaymode',
 			'type'    => 'select',

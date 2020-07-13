@@ -5,6 +5,8 @@ $settings = array_merge( [
 	'paged'      => 1,
 	'showsortby' => false,
 	'style'      => 'grid',
+	'orderby'    => 'post_date',
+	'order'      => 'DESC',
 ], $settings );
 extract( $settings );
 
@@ -24,6 +26,8 @@ $args = [
 	'statuses'       => $statuses,
 	'showmode'       => $showmode,
 	'labels'         => $labels,
+	'orderby'        => $orderby,
+	'order'          => $order,
 ];
 
 $query = Opalestate_Query::get_property_query( $args );
