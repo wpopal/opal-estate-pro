@@ -5,6 +5,18 @@ if ( opalestate_get_option( 'enable_single_enquire_form', 'on' ) !== 'on' ) {
 	return;
 }
 
+if ( ! opalestate_is_require_login_to_show_enquire_form() ) {
+	?>
+    <div class="opalestate-require-login-box">
+        <p class="opalestate-require-login-notice"><?php esc_html_e( 'You need to login to contact.', 'opalestate-pro' ); ?></p>
+        <a href="#opalestate-user-form-popup" class="opalestate-need-login button btn btn-primary btn-3d">
+			<?php esc_html_e( 'Login', 'opalestate-pro' ) ?>
+        </a>
+    </div>
+	<?php
+	return;
+}
+
 $property_id = get_the_ID();
 $infor_id    = apply_filters( 'opalestate_contact_form_infor_id', $property_id, $property_id );
 $message     = sprintf( __( 'Hi, I am interested in %s (Property ID: %s)', 'opalestate-pro' ), get_the_title(), $infor_id );

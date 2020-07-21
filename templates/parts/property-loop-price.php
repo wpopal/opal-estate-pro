@@ -8,6 +8,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $property;
 
+if ( ! opalestate_is_require_login_to_show_price() ) {
+	?>
+    <div class="opalestate-require-login-box">
+        <div class="opalestate-require-login-notice"><?php esc_html_e( 'You need to login to see the price.', 'opalestate-pro' ); ?>
+            <a href="#opalestate-user-form-popup" class="opalestate-need-login"><?php esc_html_e( 'Login', 'opalestate-pro' ) ?></a>
+        </div>
+    </div>
+	<?php
+	return;
+}
 ?>
 
 <div class="property-price">

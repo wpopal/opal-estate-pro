@@ -1326,6 +1326,18 @@ function opalestate_is_require_login_to_show_author_box() {
 	return ! ( $require == 'on' ) || ( $require == 'on' && is_user_logged_in() );
 }
 
+function opalestate_is_require_login_to_show_price() {
+	$require = opalestate_get_option( 'enable_single_login_to_show_price', 'off' );
+
+	return ! ( $require == 'on' ) || ( $require == 'on' && is_user_logged_in() );
+}
+
+function opalestate_is_require_login_to_show_enquire_form() {
+	$require = opalestate_get_option( 'enable_single_login_to_enquire_form', 'off' );
+
+	return ! ( $require == 'on' ) || ( $require == 'on' && is_user_logged_in() );
+}
+
 /**
  * Clean variables using sanitize_text_field. Arrays are cleaned recursively.
  * Non-scalar values are ignored.

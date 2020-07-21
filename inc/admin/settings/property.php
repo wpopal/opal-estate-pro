@@ -574,6 +574,18 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 		];
 
 		$fields[] = [
+			'name'      => esc_html__( 'Login to show Price', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Require users login to show Price', 'opalestate-pro' ),
+			'id'        => 'enable_single_login_to_show_price',
+			'type'      => 'switch',
+			'options'   => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+			'after_row' => '<hr>',
+		];
+
+		$fields[] = [
 			'name'    => esc_html__( 'Show Author box', 'opalestate-pro' ),
 			'desc'    => esc_html__( 'Show Author box in the single property page.', 'opalestate-pro' ),
 			'id'      => 'enable_single_author_box',
@@ -600,6 +612,17 @@ class Opalestate_Settings_Property_Tab extends Opalestate_Settings_Base_Tab {
 			'name'      => esc_html__( 'Show Enquire form', 'opalestate-pro' ),
 			'desc'      => esc_html__( 'Show Enquire form in the single property page.', 'opalestate-pro' ),
 			'id'        => 'enable_single_enquire_form',
+			'type'      => 'switch',
+			'options'   => [
+				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
+				'off' => esc_html__( 'Disable', 'opalestate-pro' ),
+			],
+		];
+
+		$fields[] = [
+			'name'      => esc_html__( 'Login to show Enquire form', 'opalestate-pro' ),
+			'desc'      => esc_html__( 'Require users login to show Enquire form', 'opalestate-pro' ),
+			'id'        => 'enable_single_login_to_enquire_form',
 			'type'      => 'switch',
 			'options'   => [
 				'on'  => esc_html__( 'Enable', 'opalestate-pro' ),
