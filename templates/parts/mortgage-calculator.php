@@ -40,8 +40,7 @@ $deposit_start            = apply_filters( 'opalestate_mortgage_deposit_start', 
 $loan_amount              = $start_price - $deposit_start;
 $interest_rate_month      = $interest_rate_start / 12;
 $number_of_payments_month = $years_start * 12;
-var_dump( $max_price );
-$monthly = round( ( $loan_amount * $interest_rate_month ) / ( 1 - pow( 1 + $interest_rate_month, -$number_of_payments_month ) ), 2 );
+$monthly                  = round( ( $loan_amount * $interest_rate_month ) / ( 1 - pow( 1 + $interest_rate_month, -$number_of_payments_month ) ), 2 );
 
 $total           = $deposit_start + ( $monthly * $number_of_payments_month );
 $price_percent   = $loan_amount / $total * 100;
