@@ -21,7 +21,7 @@ $deposit_color = apply_filters( 'opalestate_deposit_color', '#2f73e9' );
 wp_localize_script( 'opalestate-scripts', 'opalestate_mortgage',
 	[
 		'ajax_url'      => admin_url( 'admin-ajax.php' ),
-		'currency'      => esc_attr__( $currency ),
+		'currency'      => esc_attr( $currency ),
 		'deposit_color' => $deposit_color,
 	]
 );
