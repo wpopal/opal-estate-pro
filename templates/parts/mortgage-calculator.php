@@ -29,7 +29,7 @@ wp_localize_script( 'opalestate-scripts', 'opalestate_mortgage',
 $max_price = (int) ( $property && $property->get_price() ) ? $property->get_price() : opalestate_options( 'search_max_price', 10000000 );
 $max_price = str_replace( [ ",", "." ], "", $max_price );
 
-$start_price = $max_price;
+$start_price = apply_filters( 'opalestate_mortgage_start_price', $max_price );
 
 $max_price = apply_filters( 'opalestate_mortgage_max_price', $max_price + ( $max_price * 20 / 100 ) );
 
@@ -37,10 +37,11 @@ $rate_start               = apply_filters( 'opalestate_mortgage_rate_start', 10 
 $interest_rate_start      = $rate_start / 100;
 $years_start              = apply_filters( 'opalestate_mortgage_years_start', 2 );
 $deposit_start            = apply_filters( 'opalestate_mortgage_deposit_start', $max_price / 2 );
-$loan_amount              = $max_price - $deposit_start;
+$loan_amount              = $start_price - $deposit_start;
 $interest_rate_month      = $interest_rate_start / 12;
 $number_of_payments_month = $years_start * 12;
-$monthly                  = round( ( $loan_amount * $interest_rate_month ) / ( 1 - pow( 1 + $interest_rate_month, -$number_of_payments_month ) ), 2 );
+var_dump( $max_price );
+$monthly = round( ( $loan_amount * $interest_rate_month ) / ( 1 - pow( 1 + $interest_rate_month, -$number_of_payments_month ) ), 2 );
 
 $total           = $deposit_start + ( $monthly * $number_of_payments_month );
 $price_percent   = $loan_amount / $total * 100;
