@@ -90,6 +90,12 @@ class Opalestate_Social_Login {
 				'type' => 'text',
 			],
 			[
+				'name' => sprintf( __( 'Redirect URL: <code>%s</code>', 'opalestate-pro' ), add_query_arg( 'opal_google_login', '1', trailingslashit( get_home_url() ) ) ),
+				'desc' => esc_html__( 'You need to add this URL when you create API keys.', 'opalestate-pro' ),
+				'id'   => 'google_api_redirect_url',
+				'type' => 'title',
+			],
+			[
 				'name'       => esc_html__( 'Facebook', 'opalestate-pro' ),
 				'desc'       => '',
 				'type'       => 'opalestate_title',
@@ -119,6 +125,13 @@ class Opalestate_Social_Login {
 				'desc' => esc_html__( 'Facebook Secret is required for Facebook login.', 'opalestate-pro' ),
 				'id'   => 'facebook_secret',
 				'type' => 'text',
+			],
+			[
+				'name' => sprintf( __( 'Redirect URL: <code>%s</code>', 'opalestate-pro' ), add_query_arg( 'opal_facebook_login', '1', trailingslashit( get_home_url() ) ) ),
+				'desc' => esc_html__( 'You need to add this URL when you create API keys.', 'opalestate-pro' ),
+				'id'   => 'facebook_api_redirect_url',
+				'type' => 'title',
+				'after_row'  => '<hr>',
 			],
 		] );
 

@@ -204,23 +204,23 @@ class Opalestate_Install {
 		}
 
 		// Checks if the Success Page option exists AND that the page exists
-		if ( ! get_post( opalestate_get_option( 'search_map_properties_page' ) ) ) {
-			// Purchase Confirmation (Success) Page
-			$search_map_properties_page = wp_insert_post(
-				[
-					'post_title'     => esc_html__( 'Search Map Properties Page', 'opalestate-pro' ),
-					'post_content'   => esc_html__( '[opalestate_search_map_properties]', 'opalestate-pro' ),
-					'post_status'    => 'publish',
-					'post_author'    => 1,
-					'post_type'      => 'page',
-					'comment_status' => 'closed',
-					'page_template'  => 'fullwidth-page.php',
-				]
-			);
-
-			// Store our page IDs
-			$options['search_map_properties_page'] = $search_map_properties_page;
-		}
+		// if ( ! get_post( opalestate_get_option( 'search_map_properties_page' ) ) ) {
+		// 	// Purchase Confirmation (Success) Page
+		// 	$search_map_properties_page = wp_insert_post(
+		// 		[
+		// 			'post_title'     => esc_html__( 'Search Map Properties Page', 'opalestate-pro' ),
+		// 			'post_content'   => esc_html__( '[opalestate_search_map_properties]', 'opalestate-pro' ),
+		// 			'post_status'    => 'publish',
+		// 			'post_author'    => 1,
+		// 			'post_type'      => 'page',
+		// 			'comment_status' => 'closed',
+		// 			'page_template'  => 'fullwidth-page.php',
+		// 		]
+		// 	);
+		//
+		// 	// Store our page IDs
+		// 	$options['search_map_properties_page'] = $search_map_properties_page;
+		// }
 
 		// Populate some default values
 		update_option( 'opalestate_settings', array_merge( $opalestate_options, $options ) );

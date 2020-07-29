@@ -150,6 +150,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.6.5 - 2020-07-29 =
+* Fixes - Settings
+
 = 1.6.4 - 2020-07-24 =
 * Fixes - Mortage started price
 

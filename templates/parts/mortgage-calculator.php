@@ -104,7 +104,6 @@ if ( opalestate_options( 'currency_position', 'before' ) === 'before' ) {
 <div class="opalestate-box-content box-mortgage">
     <h4 class="outbox-title"><?php esc_html_e( 'Mortgage Payment Calculator', 'opalestate-pro' ); ?></h4>
     <div class="opalestate-box">
-
         <div class="opalestate-mortgage-widget-wrap">
             <form class="opalestate-mortgage-form">
                 <div class="opalestate-mortgage-chart-container">
