@@ -144,26 +144,34 @@ class Opalestate_Property_MetaBox_Submission {
 				'description' => esc_html__( 'After Price Label (e.g. "per month")', 'opalestate-pro' ),
 			],
 			[
-				'name'       => esc_html__( 'Statuses', 'opalestate-pro' ),
+				'name'       => esc_html__( 'Status', 'opalestate-pro' ),
 				'id'         => $prefix . 'status',
 				'type'       => 'taxonomy_select',
 				'taxonomy'   => 'opalestate_status',
 				'class'      => 'form-control',
-				'attributes' => [
-					'required' => 'required',
-				],
 				'before_row' => '</div><hr><div class="field-row-2">', // callback
 			],
 			[
-				'name'       => esc_html__( 'Types', 'opalestate-pro' ),
-				'id'         => $prefix . 'type',
-				'type'       => 'taxonomy_select',
-				'taxonomy'   => 'opalestate_types',
-				'class'      => 'form-control',
-				'attributes' => [
-					'required' => 'required',
-				],
-				'after_row'  => '</div><hr><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>', // callback
+				'name'     => esc_html__( 'Label', 'opalestate-pro' ),
+				'id'       => $prefix . 'label',
+				'type'     => 'taxonomy_select',
+				'taxonomy' => 'opalestate_label',
+				'class'    => 'form-control',
+			],
+			[
+				'name'     => esc_html__( 'Category', 'opalestate-pro' ),
+				'id'       => $prefix . 'category',
+				'type'     => 'taxonomy_select',
+				'taxonomy' => 'property_category',
+				'class'    => 'form-control',
+			],
+			[
+				'name'      => esc_html__( 'Type', 'opalestate-pro' ),
+				'id'        => $prefix . 'type',
+				'type'      => 'taxonomy_select',
+				'taxonomy'  => 'opalestate_types',
+				'class'     => 'form-control',
+				'after_row' => '</div><hr><button type="button" class="submission-next-btn btn btn-primary">' . esc_html__( 'Next Step', 'opalestate-pro' ) . '</button></div>', // callback
 			],
 		];
 
