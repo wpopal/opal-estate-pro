@@ -20,6 +20,10 @@
 			'effect'         => 'slide',
 			'breakpoints'    => [ 1024 => [ "slidesPerView" => 1 ] ],
 			'thumbnails_nav' => "#swiper-pagination-images",
+			'navigation'          => [
+				'nextEl' => '.swiper-button-next',
+				'prevEl' => '.swiper-button-prev',
+			],
 		];
 
 		$columns = apply_filters( 'opalestate_thumbnail_nav_column', 5 );
@@ -58,6 +62,8 @@
 						<?php endforeach; ?>
 					<?php endif; ?>
                 </div>
+                <div class="swiper-button-prev"><i class="fas fa-angle-left"></i></div>
+                <div class="swiper-button-next"><i class="fas fa-angle-right"></i></div>
             </div>
 
             <div class="swiper-pagination-images swiper-container" id="swiper-pagination-images" data-swiper="<?php echo esc_attr( wp_json_encode( $datanav ) ); ?>">

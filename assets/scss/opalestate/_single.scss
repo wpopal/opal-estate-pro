@@ -1070,3 +1070,8 @@
 	padding-bottom: $grid-gutter-width;
 }
 
+.swiper-container .swiper-button-next.swiper-button-disabled, .swiper-container .swiper-button-prev.swiper-button-disabled {
+	opacity: 1;
+	cursor: pointer;
+	pointer-events: all;
+}
