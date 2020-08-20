@@ -1,4 +1,7 @@
 = 1.6.6 - 2020-08-03 =
+* Fixes - test
+
+= 1.6.6 - 2020-08-03 =
 * Fixes - Frontend submission form
 
 = 1.6.5 - 2020-07-29 =
