@@ -1,0 +1,246 @@
+= 1.6.6 - 2020-08-03 =
+* Fixes - Frontend submission form
+
+= 1.6.5 - 2020-07-29 =
+* Fixes - Settings
+
+= 1.6.4 - 2020-07-24 =
+* Fixes - Mortage started price
+
+= 1.6.3 - 2020-07-21 =
+* Added - Login to show settings
+
+= 1.6.2 - 2020-07-13 =
+* Added - Search form general setting
+
+= 1.6.1 - 2020-07-07 =
+* Fixes - Property collection sort order
+
+= 1.6 - 2020-06-25 =
+* Added - Related properties setting
+* Added - Nearby properties setting
+
+= 1.5.9 - 2020-06-22 =
+* Added - Currency
+* Fixes - Subscriber admin bar
+
+= 1.5.8 - 2020-06-18 =
+* Added - Single Preview Layout setting
+* Added - Range setting for Radius search
+* Fixes - Search selection with Custom Fields
+
+= 1.5.6 - 2020-06-12 =
+* Fixes - Country select when not logged in.
+
+= 1.5.5 - 2020-06-09 =
+* Fixes - Search box field for vertical form.
+
+= 1.5.4 - 2020-06-05 =
+* Fixes - Search box field for vertical form.
+
+= 1.5.3 - 2020-06-05 =
+* Added - Search box field for vertical form.
+
+= 1.5.2 - 2020-06-04 =
+* Added - Clean Up setting.
+
+= 1.5.1 - 2020-06-01 =
+* Added - Enable/Disable setting for each property.
+
+= 1.5 - 2020-05-29 =
+* Added - Search properties in admin by SKU & Address.
+
+= 1.4.9.5 - 2020-05-28 =
+* Fixes - Enquire email.
+
+= 1.4.9.4 - 2020-05-27 =
+* Fixes - Minor bugs.
+
+= 1.4.9.3 - 2020-05-25 =
+* Fixes - Swiper responsive.
+
+= 1.4.9.2 - 2020-05-21 =
+* Added - Message additional information.
+* Fixes - Set feature property for customers.
+
+= 1.4.9.1 - 2020-05-14 =
+* Fixes - Responsive slider.
+
+= 1.4.9 - 2020-05-12 =
+* Fixes - User Dashboard.
+
+= 1.4.8 - 2020-05-05 =
+* Fixes - Submission information tab.
+
+= 1.4.6 - 2020-04-22 =
+* Fixes - Search queries.
+* Removed - Sticky single property sidebar.
+
+= 1.4.5 - 2020-04-20 =
+* Fixes - Templates.
+
+= 1.4.4 - 2020-04-17 =
+* Fixes - Feature properties in submission.
+* Added - Mortgage hooks.
+
+= 1.4.3.1 - 2020-04-10 =
+* Fixes - Translate strings.
+
+= 1.4.3 - 2020-04-08 =
+* Fixes - Google style in Single property page.
+* Added - Autocomplete Restrictions setting.
+
+= 1.4.2.1 - 2020-03-31 =
+* Fixes - Sanitize data
+
+= 1.4.2 - 2020-03-31 =
+* Fixes - Upload images in submission page
+
+= 1.4.1 - 2020-03-25 =
+* Fixes - Split map AJAX
+
+= 1.4.0 - 2020-03-24 =
+* Added - Search price double input
+* Fixes - Pagination AJAX for agency/agent listing
+* Fixes - Mortage range slider
+
+= 1.3.9.1 - 2020-03-23 =
+* Fixes - Single agency properties load more
+
+= 1.3.9 - 2020-03-17 =
+* Fixes - Pending properties review
+* Fixes - Search form default value
+
+= 1.3.8 - 2020-03-05 =
+* Fixes - Missing translations
+
+= 1.3.7 - 2020-03-03 =
+* Added - Display mode setting
+
+= 1.3.6 - 2020-02-29 =
+* Fixes - User register form & User roles
+
+= 1.3.5 - 2020-02-28 =
+* Added - Time format setting
+* Added - Hide unset amenities settings
+
+= 1.3.4 - 2020-02-21 =
+* Fixes - Enquire email & Contact email
+
+= 1.3.3 - 2020-02-20 =
+* Added - Required login to show Author box
+* Added - Search field settings.
+
+= 1.3.2 - 2020-02-15 =
+* Fixes - Hotfix single property settings.
+
+= 1.3.1 - 2020-02-14 =
+* Added - Single Property Custom Sidebar.
+
+= 1.3 - 2020-02-10 =
+* Added - Expiry date column.
+
+= 1.2.9.4 - 2020-02-05 =
+* Fixes - Login with Edior role.
+
+= 1.2.9.3 - 2020-01-31 =
+* Fixes - Admin information fields.
+
+= 1.2.9.2 - 2020-01-30 =
+* Fixes - Archive filter.
+
+= 1.2.9.1 - 2020-01-13 =
+* Added - Pages settings.
+
+= 1.2.9 - 2020-01-09 =
+* Added - Pages settings.
+
+= 1.2.8 - 2020-01-06 =
+* Added - Pages settings.
+
+= 1.2.7 - 2020-01-02 =
+* Added - Redirect to User Dashboard page after login/register setting.
+
+= 1.2.6 - 2019-12-30 =
+* Fixes - Compatible WordPress version.
+
+= 1.2.5 - 2019-12-13 =
+* Fixes - Slider properties.
+
+= 1.2.4 - 2019-12-11 =
+* Fixes - Order properties with featured properties.
+* Fixes - Email approved.
+
+= 1.2.3 - 2019-12-09 =
+* Fixes - Order properties
+* Fixes - Package template.
+
+= 1.2.2 - 2019-12-06 =
+* Added - Add Accumulated listings setting for packages.
+
+= 1.2.1 - 2019-12-06 =
+* Fixes - Submission property not saved.
+
+= 1.2 - 2019-12-04 =
+* Fixes - Login ajax.
+* Added - Enable email settings.
+
+= 1.1.9.3 - 2019-11-27 =
+* Fixes - Measurement Unit translation.
+
+= 1.1.9.2 - 2019-11-18 =
+* Added - Fix API.
+* Fixes - Search query.
+* Fixes - Remove price required.
+
+= 1.1.9.1 - 2019-11-08 =
+* Added - Template hooks.
+
+= 1.1.9 - 2019-11-07 =
+* Fixes - Dashboard page.
+* Added - Expired properties.
+
+= 1.1.8 - 2019-10-31 =
+* Fixes - Submission settings.
+* Fixes - Order settings in the search page.
+* Fixes - Single property image size.
+* Added - Automatic generate property SKU.
+* Added - Enable/Disable Request Viewing.
+
+
+= 1.1.7 - 2019-10-30 =
+* Added - Google Map styles.
+
+= 1.1.6 - 2019-10-26 =
+* Added - Setting information fields.
+
+= 1.1.5 - 2019-10-21 =
+* Fixes - Email templates.
+
+= 1.1.4 - 2019-10-17 =
+* Fixes - Properties collection pagination.
+* Fixes - Agents collection pagination.
+* Fixes - Agencies collection pagination.
+
+= 1.1.3 - 2019-10-15 =
+* Fixes - Submission.
+
+= 1.1.2 - 2019-10-10 =
+* Fixes - Settings.
+* Fixes - Templates.
+
+= 1.0.5 - 2019-09-25 =
+* Fixes - Dashboard CSS.
+
+= 1.0.4 - 2019-09-20 =
+* Fixes: Property setings.
+* Added: Search form: Collapse advanced.
+
+= 1.0.2 - 2019-09-11 =
+* Fixes - Remove CLI.
+
+= 1.0.1 - 2019-09-10 =
+* Fixes - Minor bugs.
+
+= 1.0.0 - 2019-09-06 =
+* Release
