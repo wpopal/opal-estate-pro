@@ -137,7 +137,7 @@ class OpalEstate_Admin_User {
 			 */
 			$cmb_user = new_cmb2_box( [
 				'id'               => $prefix . 'edit',
-				'title'            => esc_html__( 'User Profile Metabox', 'cmb2' ), // Doesn't output for user boxes
+				'title'            => esc_html__( 'User Profile Metabox', 'opalestate-pro' ), // Doesn't output for user boxes
 				'object_types'     => [ 'user' ], // Tells CMB2 to use user_meta vs post_meta
 				'show_names'       => true,
 				'new_user_section' => 'add-new-user', // where form will show on new user page. 'add-existing-user' is only other valid option.

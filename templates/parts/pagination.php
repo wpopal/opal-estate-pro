@@ -9,8 +9,8 @@ if ( $wp_query->max_num_pages <= 1 ) {
 }
 
 $args = apply_filters( 'opalestate_pagination_args', [
-	'prev_text' => __( '&laquo;' ),
-	'next_text' => __( '&raquo;' ),
+	'prev_text' => __( '&laquo;', 'opalestate-pro' ),
+	'next_text' => __( '&raquo;', 'opalestate-pro' ),
 	'type'      => 'list',
 ] );
 

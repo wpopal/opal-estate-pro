@@ -4,7 +4,7 @@ Donate link: https://wpdocs.gitbook.io/opal-estate/
 Tags: estate, property, opalestate, house for rent, agency for lease, estate submission, agents estate property, property marketplace
 Requires at least: 4.9
 Tested up to: 5.3.2
-Stable tag: 1.6.7
+Stable tag: 1.6.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -150,6 +150,9 @@ This section describes how to install the plugin and get it working.
 * System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")
 
 == Changelog ==
+= 1.6.8 - 2020-08-20 =
+* Fixes - languages
+
 = 1.6.7 - 2020-08-11 =
 * Fixes - Carousel buttons for gallery in single page
 

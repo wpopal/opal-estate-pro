@@ -105,7 +105,6 @@ gulp.task('babel-admin-opaljob', function () {
  
 });
 
-
 // Deleting any file inside the /dist folder
 gulp.task( 'clean-dist', function() {
     // return del( [paths.dist + '/**'] );

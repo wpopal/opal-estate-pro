@@ -14,10 +14,11 @@ $nonce = wp_nonce_field( 'submitted-property', 'submission_action', true );
 			<div class="submission-heading text-center">
 			<?php if ( ! $post_id ) : ?>
                 <h1><?php esc_html_e( 'Add New Property', 'opalestate-pro' ); ?></h1>
-                <p><?php esc_html_e( 'Adding a property is straight forward, we are broken it down into a few steps.' ); ?></p>
+                <p><?php esc_html_e( 'Adding a property is straight forward, we are broken it down into a few steps.', 'opalestate-pro' ); ?></p>
 			<?php else : ?>
                 <h1><?php esc_html_e( 'Edit Property', 'opalestate-pro' ); ?></h1>
-                 <p><?php esc_html_e( 'Edit a property is straigh forward, we are broken it down into a few steps' ); ?></p>
+                 <p><?php esc_html_e( 'Edit a property is straight forward, we are broken it down into a few steps.', 'opalestate-pro' ); ?></p>
+
 			<?php endif; ?>
 			</div>
 

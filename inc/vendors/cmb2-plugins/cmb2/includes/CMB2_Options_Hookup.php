@@ -136,11 +136,11 @@ class CMB2_Options_Hookup extends CMB2_hookup {
 		$is_updated      = $should_notify && 'true' === $_GET['settings-updated'];
 		$setting         = "{$this->option_key}-notices";
 		$code            = '';
-		$message         = esc_html__( 'Nothing to update.', 'cmb2' );
+		$message         = esc_html__( 'Nothing to update.', 'opalestate-pro' );
 		$type            = 'notice-warning';
 
 		if ( $is_updated ) {
-			$message = esc_html__( 'Settings updated.', 'cmb2' );
+			$message = esc_html__( 'Settings updated.', 'opalestate-pro' );
 			$type    = 'updated';
 		}
 
@@ -354,7 +354,7 @@ class CMB2_Options_Hookup extends CMB2_hookup {
 			case 'cmb':
 				return $this->{$field};
 			default:
-				throw new Exception( sprintf( esc_html__( 'Invalid %1$s property: %2$s', 'cmb2' ), __CLASS__, $field ) );
+				throw new Exception( sprintf( esc_html__( 'Invalid %1$s property: %2$s', 'opalestate-pro' ), __CLASS__, $field ) );
 		}
 	}
 }

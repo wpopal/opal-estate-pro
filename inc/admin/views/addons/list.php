@@ -36,9 +36,9 @@
 		];
 
 		$plugins_group_titles = [
-			'Performance' => _x( 'Performance', 'Plugin installer group title' ),
-			'Social'      => _x( 'Social', 'Plugin installer group title' ),
-			'Tools'       => _x( 'Tools', 'Plugin installer group title' ),
+			'Performance' => _x( 'Performance', 'Plugin installer group title', 'opalestate-pro' ),
+			'Social'      => _x( 'Social', 'Plugin installer group title', 'opalestate-pro' ),
+			'Tools'       => _x( 'Tools', 'Plugin installer group title', 'opalestate-pro' ),
 		];
 		$group                = null;
 		?>
@@ -82,7 +82,7 @@
 
 					$author = wp_kses( $plugin['author'], $plugins_allowedtags );
 					if ( ! empty( $author ) ) {
-						$author = ' <cite>' . sprintf( __( 'By %s' ), $author ) . '</cite>';
+						$author = ' <cite>' . sprintf( __( 'By %s', 'opalestate-pro' ), $author ) . '</cite>';
 					}
 
 					$requires_php = isset( $plugin['requires_php'] ) ? $plugin['requires_php'] : null;
@@ -106,14 +106,14 @@
 											esc_attr( $plugin['slug'] ),
 											esc_url( $status['url'] ),
 											/* translators: %s: plugin name and version */
-											esc_attr( sprintf( __( 'Install %s now' ), $name ) ),
+											esc_attr( sprintf( __( 'Install %s now', 'opalestate-pro' ), $name ) ),
 											esc_attr( $name ),
-											__( 'Install Now' )
+											__( 'Install Now', 'opalestate-pro' )
 										);
 									} else {
 										$action_links[] = sprintf(
 											'<button type="button" class="button button-disabled" disabled="disabled">%s</button>',
-											_x( 'Cannot Install', 'plugin' )
+											_x( 'Cannot Install', 'plugin', 'opalestate-pro' )
 										);
 									}
 								}
@@ -128,14 +128,14 @@
 											esc_attr( $plugin['slug'] ),
 											esc_url( $status['url'] ),
 											/* translators: %s: plugin name and version */
-											esc_attr( sprintf( __( 'Update %s now' ), $name ) ),
+											esc_attr( sprintf( __( 'Update %s now', 'opalestate-pro' ), $name ) ),
 											esc_attr( $name ),
-											__( 'Update Now' )
+											__( 'Update Now', 'opalestate-pro' )
 										);
 									} else {
 										$action_links[] = sprintf(
 											'<button type="button" class="button button-disabled" disabled="disabled">%s</button>',
-											_x( 'Cannot Update', 'plugin' )
+											_x( 'Cannot Update', 'plugin', 'opalestate-pro' )
 										);
 									}
 								}
@@ -146,12 +146,12 @@
 								if ( is_plugin_active( $status['file'] ) ) {
 									$action_links[] = sprintf(
 										'<button type="button" class="button button-disabled" disabled="disabled">%s</button>',
-										_x( 'Active', 'plugin' )
+										_x( 'Active', 'plugin', 'opalestate-pro' )
 									);
 								} elseif ( current_user_can( 'activate_plugin', $status['file'] ) ) {
-									$button_text = __( 'Activate' );
+									$button_text = __( 'Activate', 'opalestate-pro' );
 									/* translators: %s: plugin name */
-									$button_label = _x( 'Activate %s', 'plugin' );
+									$button_label = _x( 'Activate %s', 'plugin', 'opalestate-pro' );
 									$activate_url = add_query_arg(
 										[
 											'_wpnonce' => wp_create_nonce( 'activate-plugin_' . $status['file'] ),
@@ -162,9 +162,9 @@
 									);
 
 									if ( is_network_admin() ) {
-										$button_text = __( 'Network Activate' );
+										$button_text = __( 'Network Activate', 'opalestate-pro' );
 										/* translators: %s: plugin name */
-										$button_label = _x( 'Network Activate %s', 'plugin' );
+										$button_label = _x( 'Network Activate %s', 'plugin', 'opalestate-pro' );
 										$activate_url = add_query_arg( [ 'networkwide' => 1 ], $activate_url );
 									}
 
@@ -177,7 +177,7 @@
 								} else {
 									$action_links[] = sprintf(
 										'<button type="button" class="button button-disabled" disabled="disabled">%s</button>',
-										_x( 'Installed', 'plugin' )
+										_x( 'Installed', 'plugin', 'opalestate-pro' )
 									);
 								}
 								break;
@@ -193,9 +193,9 @@
 						'<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s" data-title="%s">%s</a>',
 						esc_url( $details_link ),
 						/* translators: %s: plugin name and version */
-						esc_attr( sprintf( __( 'More information about %s' ), $name ) ),
+						esc_attr( sprintf( __( 'More information about %s', 'opalestate-pro' ), $name ) ),
 						esc_attr( $name ),
-						__( 'More Details' )
+						__( 'More Details', 'opalestate-pro' )
 					);
 
 					if ( ! empty( $plugin['icons']['svg'] ) ) {
@@ -225,11 +225,11 @@
 						if ( ! $compatible_php || ! $compatible_wp ) {
 							echo '<div class="notice inline notice-error notice-alt"><p>';
 							if ( ! $compatible_php && ! $compatible_wp ) {
-								_e( 'This plugin doesn&#8217;t work with your versions of WordPress and PHP.' );
+								_e( 'This plugin doesn&#8217;t work with your versions of WordPress and PHP.', 'opalestate-pro' );
 								if ( current_user_can( 'update_core' ) && current_user_can( 'update_php' ) ) {
 									printf(
 									/* translators: 1: "Update WordPress" screen URL, 2: "Update PHP" page URL */
-										' ' . __( '<a href="%1$s">Please update WordPress</a>, and then <a href="%2$s">learn more about updating PHP</a>.' ),
+										' ' . __( '<a href="%1$s">Please update WordPress</a>, and then <a href="%2$s">learn more about updating PHP</a>.', 'opalestate-pro' ),
 										self_admin_url( 'update-core.php' ),
 										esc_url( wp_get_update_php_url() )
 									);
@@ -237,32 +237,32 @@
 								} elseif ( current_user_can( 'update_core' ) ) {
 									printf(
 									/* translators: %s: "Update WordPress" screen URL */
-										' ' . __( '<a href="%s">Please update WordPress</a>.' ),
+										' ' . __( '<a href="%s">Please update WordPress</a>.', 'opalestate-pro' ),
 										self_admin_url( 'update-core.php' )
 									);
 								} elseif ( current_user_can( 'update_php' ) ) {
 									printf(
 									/* translators: %s: "Update PHP" page URL */
-										' ' . __( '<a href="%s">Learn more about updating PHP</a>.' ),
+										' ' . __( '<a href="%s">Learn more about updating PHP</a>.', 'opalestate-pro' ),
 										esc_url( wp_get_update_php_url() )
 									);
 									wp_update_php_annotation( '</p><p><em>', '</em>' );
 								}
 							} elseif ( ! $compatible_wp ) {
-								_e( 'This plugin doesn&#8217;t work with your version of WordPress.' );
+								_e( 'This plugin doesn&#8217;t work with your version of WordPress.', 'opalestate-pro' );
 								if ( current_user_can( 'update_core' ) ) {
 									printf(
 									/* translators: %s: "Update WordPress" screen URL */
-										' ' . __( '<a href="%s">Please update WordPress</a>.' ),
+										' ' . __( '<a href="%s">Please update WordPress</a>.', 'opalestate-pro' ),
 										self_admin_url( 'update-core.php' )
 									);
 								}
 							} elseif ( ! $compatible_php ) {
-								_e( 'This plugin doesn&#8217;t work with your version of PHP.' );
+								_e( 'This plugin doesn&#8217;t work with your version of PHP.', 'opalestate-pro' );
 								if ( current_user_can( 'update_php' ) ) {
 									printf(
 									/* translators: %s: "Update PHP" page URL */
-										' ' . __( '<a href="%s">Learn more about updating PHP</a>.' ),
+										' ' . __( '<a href="%s">Learn more about updating PHP</a>.', 'opalestate-pro' ),
 										esc_url( wp_get_update_php_url() )
 									);
 									wp_update_php_annotation( '</p><p><em>', '</em>' );
@@ -306,32 +306,32 @@
                                 <span class="num-ratings" aria-hidden="true">(<?php echo number_format_i18n( $plugin['num_ratings'] ); ?>)</span>
                             </div>
                             <div class="column-updated">
-                                <strong><?php _e( 'Last Updated:' ); ?></strong> <?php printf( __( '%s ago' ), human_time_diff( $last_updated_timestamp ) ); ?>
+                                <strong><?php _e( 'Last Updated:', 'opalestate-pro' ); ?></strong> <?php printf( __( '%s ago', 'opalestate-pro' ), human_time_diff( $last_updated_timestamp ) ); ?>
                             </div>
                             <div class="column-downloaded">
 								<?php
 								if ( $plugin['active_installs'] >= 1000000 ) {
 									$active_installs_millions = floor( $plugin['active_installs'] / 1000000 );
 									$active_installs_text     = sprintf(
-										_nx( '%s+ Million', '%s+ Million', $active_installs_millions, 'Active plugin installations' ),
+										_nx( '%s+ Million', '%s+ Million', $active_installs_millions, 'Active plugin installations', 'opalestate-pro' ),
 										number_format_i18n( $active_installs_millions )
 									);
 								} elseif ( 0 == $plugin['active_installs'] ) {
-									$active_installs_text = _x( 'Less Than 10', 'Active plugin installations' );
+									$active_installs_text = _x( 'Less Than 10', 'Active plugin installations', 'opalestate-pro' );
 								} else {
 									$active_installs_text = number_format_i18n( $plugin['active_installs'] ) . '+';
 								}
-								printf( __( '%s Active Installations' ), $active_installs_text );
+								printf( __( '%s Active Installations', 'opalestate-pro' ), $active_installs_text );
 								?>
                             </div>
                             <div class="column-compatibility">
 								<?php
 								if ( ! $tested_wp ) {
-									echo '<span class="compatibility-untested">' . __( 'Untested with your version of WordPress' ) . '</span>';
+									echo '<span class="compatibility-untested">' . __( 'Untested with your version of WordPress', 'opalestate-pro' ) . '</span>';
 								} elseif ( ! $compatible_wp ) {
-									echo '<span class="compatibility-incompatible">' . __( '<strong>Incompatible</strong> with your version of WordPress' ) . '</span>';
+									echo '<span class="compatibility-incompatible">' . __( '<strong>Incompatible</strong> with your version of WordPress', 'opalestate-pro' ) . '</span>';
 								} else {
-									echo '<span class="compatibility-compatible">' . __( '<strong>Compatible</strong> with your version of WordPress' ) . '</span>';
+									echo '<span class="compatibility-compatible">' . __( '<strong>Compatible</strong> with your version of WordPress', 'opalestate-pro' ) . '</span>';
 								}
 								?>
                             </div>

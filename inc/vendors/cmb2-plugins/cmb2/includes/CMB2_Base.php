@@ -419,11 +419,11 @@ abstract class CMB2_Base {
 			switch ( $message ) {
 
 				case self::DEPRECATED_PARAM:
-					$message = sprintf( esc_html__( 'The "%1$s" field parameter has been deprecated in favor of the "%2$s" parameter.', 'cmb2' ), $args[3], $args[4] );
+					$message = sprintf( esc_html__( 'The "%1$s" field parameter has been deprecated in favor of the "%2$s" parameter.', 'opalestate-pro' ), $args[3], $args[4] );
 					break;
 
 				case self::DEPRECATED_CB_PARAM:
-					$message = sprintf( esc_html__( 'Using the "%1$s" field parameter as a callback has been deprecated in favor of the "%2$s" parameter.', 'cmb2' ), $args[3], $args[4] );
+					$message = sprintf( esc_html__( 'Using the "%1$s" field parameter as a callback has been deprecated in favor of the "%2$s" parameter.', 'opalestate-pro' ), $args[3], $args[4] );
 					break;
 
 				default:
@@ -453,9 +453,9 @@ abstract class CMB2_Base {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG && apply_filters( 'deprecated_argument_trigger_error', true ) ) {
 			if ( function_exists( '__' ) ) {
 				if ( ! is_null( $message ) ) {
-					trigger_error( sprintf( esc_html__( '%1$s was called with a parameter that is <strong>deprecated</strong> since version %2$s! %3$s', 'cmb2' ), $function, $version, $message ) );
+					trigger_error( sprintf( esc_html__( '%1$s was called with a parameter that is <strong>deprecated</strong> since version %2$s! %3$s', 'opalestate-pro' ), $function, $version, $message ) );
 				} else {
-					trigger_error( sprintf( esc_html__( '%1$s was called with a parameter that is <strong>deprecated</strong> since version %2$s with no alternative available.', 'cmb2' ), $function, $version ) );
+					trigger_error( sprintf( esc_html__( '%1$s was called with a parameter that is <strong>deprecated</strong> since version %2$s with no alternative available.', 'opalestate-pro' ), $function, $version ) );
 				}
 			} else {
 				if ( ! is_null( $message ) ) {
@@ -488,7 +488,7 @@ abstract class CMB2_Base {
 			case 'object_type':
 				return $this->{$field};
 			default:
-				throw new Exception( sprintf( esc_html__( 'Invalid %1$s property: %2$s', 'cmb2' ), __CLASS__, $field ) );
+				throw new Exception( sprintf( esc_html__( 'Invalid %1$s property: %2$s', 'opalestate-pro' ), __CLASS__, $field ) );
 		}
 	}
 
@@ -506,7 +506,7 @@ abstract class CMB2_Base {
 		$object_class = strtolower( get_class( $this ) );
 
 		if ( ! has_filter( "{$object_class}_inherit_{$method}" ) ) {
-			throw new Exception( sprintf( esc_html__( 'Invalid %1$s method: %2$s', 'cmb2' ), get_class( $this ), $method ) );
+			throw new Exception( sprintf( esc_html__( 'Invalid %1$s method: %2$s', 'opalestate-pro' ), get_class( $this ), $method ) );
 		}
 
 		array_unshift( $args, $this );

@@ -42,8 +42,8 @@ $messages = opalestate_get_message_by_user( $args );
 			echo paginate_links( [
 				'base'      => add_query_arg( 'cpage', '%#%' ),
 				'format'    => '',
-				'prev_text' => esc_html__( '&laquo;' ),
-				'next_text' => esc_html__( '&raquo;' ),
+				'prev_text' => esc_html__( '&laquo;', 'opalestate-pro' ),
+				'next_text' => esc_html__( '&raquo;', 'opalestate-pro' ),
 				'total'     => ceil( $messages['total'] / $args['items_per_page'] ),
 				'current'   => $args['cpage'],
 			] );

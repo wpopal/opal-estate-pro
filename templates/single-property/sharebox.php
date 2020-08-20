@@ -20,7 +20,7 @@ $args = array( 'position' => 'top', 'animation' => 'true' );
 ?>
 <div class="<?php echo apply_filters('opalestate_row_container_class', 'row opal-row');?>">
 	<div class="col-lg-12 col-md-12">
-		<h6 class="pull-left"><?php esc_html_e("Share this:", "fullhouse"); ?></h6>
+		<h6 class="pull-left"><?php esc_html_e("Share this:", "opalestate-pro"); ?></h6>
  		<div class="pbr-social-share">
 				<div class="bo-social-icons bo-sicolor social-radius-rounded">
 				<?php if((bool)opalestate_options('facebook_share_blog',true)): ?>
