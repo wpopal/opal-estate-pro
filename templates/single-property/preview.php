@@ -36,7 +36,7 @@
 			'slideToClickedSlide' => true,
 			'touchRatio'          => 0.2,
 			'loop'                => false,
-			'breakpoints'         => [ 1024 => [ "slidesPerView" => 5 ], 768 => [ "slidesPerView" => 3 ] ],
+			'breakpoints'         => [ 1024 => [ "slidesPerView" => 5 ], 768 => [ "slidesPerView" => 3 ], 0 => [ "slidesPerView" => 3 ] ],
 			'navigation'          => [
 				'nextEl' => '.swiper-button-next',
 				'prevEl' => '.swiper-button-prev',
