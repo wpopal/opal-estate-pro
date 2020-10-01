@@ -147,7 +147,7 @@ This section describes how to install the plugin and get it working.
 == Frequently Asked Questions ==
 
 * Detailed guide to install and customize: [documentation](https://wpopal-2.gitbook.io/opal-estate/ "Visit the Plugin docs")
-* System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")
+* System tickets support 24/7 available : [support](https://wordpress.org/support/plugin/opal-estate-pro/ "Visit the Plugin support Page")
 
 == Changelog ==
 = 1.6.9 - 2020-08-24 =
