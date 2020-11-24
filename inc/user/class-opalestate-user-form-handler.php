@@ -200,6 +200,7 @@ class Opalestate_User_Form_Handler {
 			} else {
 				/* After register successfully */
 				do_action( 'opalestate_after_register_successfully', $user_id );
+                wp_new_user_notification( $user_id, false, 'user' );
 
 				$redirect = home_url();
 				if ( opalestate_get_option( 'login_user' ) ) {
