@@ -97,9 +97,3 @@
   stroke-width: 32;
   animation: rotate 1.5s ease-in;
 }
-
-@keyframes rotate {
-  to {
-    x
-  }
-}

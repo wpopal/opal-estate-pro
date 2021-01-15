@@ -20,7 +20,7 @@ var paths = {
     "node": "./node_modules/",
     "bower": "./bower_components/",
     "distprod": "./dist-product",
-    "dist":"/Applications/XAMPP/xamppfiles/htdocs/wordpress/svn/opal-widgets-for-opaljob/trunk"
+    "dist":"/Users/chungpham/svn/opal-estate-pro/trunk"
 }
 
 var folderPlugin = './';
