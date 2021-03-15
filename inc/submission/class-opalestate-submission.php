@@ -81,6 +81,16 @@ class OpalEstate_Submission {
 			'1.0',
 			true
 		);
+
+        wp_register_script(
+            'jquery-wpopal-slick',
+            trailingslashit( OPALESTATE_PLUGIN_URL ). 'assets/js/libs/slick.js',
+            [
+                'jquery',
+            ],
+            '1.8.1',
+            true
+        );
 	}
 
 	/*

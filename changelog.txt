@@ -1,3 +1,6 @@
+= 1.7.0 - 2021-03-15 =
+* Fixes - js slick
+
 = 1.6.10 - 2020-08-03 =
 * Fixes - Send mail
 

@@ -36,7 +36,7 @@ class Opalestate_Property_collection_Elementor_Widget extends Opalestate_Element
 	 *
 	 */
 	public function get_script_depends() {
-		return [ 'jquery-slick' ];
+		return [ 'jquery-wpopal-slick' ];
 	}
 
 

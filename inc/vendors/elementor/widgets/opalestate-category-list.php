@@ -38,7 +38,7 @@ class Opalestate_Category_List_Elementor_Widget extends Opalestate_Elementor_Wid
 	 *
 	 */
 	public function get_script_depends() {
-		return [ 'jquery-slick' ];
+		return [ 'jquery-wpopal-slick' ];
 	}
 
 	/**
