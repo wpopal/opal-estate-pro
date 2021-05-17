@@ -1,3 +1,6 @@
+= 1.7.1 - 2021-05-15 =
+* Fixes - elementor
+
 = 1.7.0 - 2021-03-15 =
 * Fixes - js slick
 

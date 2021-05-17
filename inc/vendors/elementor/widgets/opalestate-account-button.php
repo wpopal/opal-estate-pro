@@ -3,8 +3,6 @@
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -260,10 +258,6 @@ class Opalestate_Account_Button_Elementor_Widget extends Opalestate_Elementor_Wi
 				'selectors' => [
 					'{{WRAPPER}} .site-header-account .account-label' => 'color: {{VALUE}};',
 				],
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 			]
 		);
 
@@ -272,7 +266,6 @@ class Opalestate_Account_Button_Elementor_Widget extends Opalestate_Elementor_Wi
 			[
 				'name'     => 'title_typography',
 				'selector' => '{{WRAPPER}} .site-header-account .account-label',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 			]
 		);
 
@@ -302,10 +295,6 @@ class Opalestate_Account_Button_Elementor_Widget extends Opalestate_Elementor_Wi
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .site-header-account i' => 'color: {{VALUE}};',
-				],
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
 				],
 			]
 		);
