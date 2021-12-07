@@ -23,9 +23,8 @@ The plugin will not make you disappointed with ease of use, friendly & flexible 
 
 = Which themes use this plugin? =
 
- 1. *[ Housey - Real Estate WordPress Theme](http://bit.ly/2kw4MK8 "Housey - Real Estate WordPress Theme")*
- 2. *[ Latehome - Real Estate WordPress Theme](http://bit.ly/2p5HUn2 "Latehome - Real Estate WordPress Theme")*
- 3. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](http://bit.ly/latehomefree "Latehome Free download").*
+ 1. *[ Latehome - Real Estate WordPress Theme](http://bit.ly/2p5HUn2 "Latehome - Real Estate WordPress Theme")*
+ 2. *[ Latehome Free - Real Estate Free WordPress Theme](http://demo2.themelexus.com/latehome_free/ "Latehome Free - Real Estate Free WordPress Theme"). You can download free [here](https://bit.ly/3xYUweu "Latehome Free download").*
 
 = Add-ons for Opal Estate Pro =
 * Please visit and download [all add-ons](https://wordpress.org/plugins/tags/opalestate_addon/ "Opal Estate Pro add-ons") for Opal Estate Pro, they are free 100%*
