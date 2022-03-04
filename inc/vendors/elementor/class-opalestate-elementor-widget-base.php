@@ -21,6 +21,14 @@ abstract class Opalestate_Elementor_Widget_Base extends Widget_Base {
 		return [ 'opalestate-pro' ];
 	}
 
+    public function get_script_depends() {
+        return ['jquery-wpopal-slick'];
+    }
+
+    public function get_style_depends() {
+        return ['wpopal-slick'];
+    }
+
 	/**
 	 * Render widget output on the frontend.
 	 *

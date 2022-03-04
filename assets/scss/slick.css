@@ -1,0 +1,305 @@
+
+.slick-slider {
+    position: relative;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.slick-list:focus {
+    outline: none;
+}
+
+.slick-list.dragging {
+    cursor: pointer;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+}
+
+.slick-track:before, .slick-track:after {
+    content: "";
+    display: table;
+}
+
+.slick-track:after {
+    clear: both;
+}
+
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+.slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    display: none;
+}
+
+.elementor-slick-slider[dir="rtl"] .slick-slide {
+    float: right;
+}
+
+.slick-slide img {
+    display: block;
+}
+
+.slick-slide.slick-loading img {
+    display: none;
+}
+
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+.elementor-slick-slider .slick-loading .slick-list {
+    background: #fff;
+}
+
+.elementor-slick-slider .slick-loading .slick-list:after {
+    content: '\e8fb';
+    font-family: eicons;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    font-size: 25px;
+    color: #a4afb7;
+}
+
+.elementor-slick-slider .slick-prev,
+.elementor-slick-slider .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.elementor-slick-slider .slick-prev:hover, .elementor-slick-slider .slick-prev:focus,
+.elementor-slick-slider .slick-next:hover,
+.elementor-slick-slider .slick-next:focus {
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+
+.elementor-slick-slider .slick-prev:hover:before, .elementor-slick-slider .slick-prev:focus:before,
+.elementor-slick-slider .slick-next:hover:before,
+.elementor-slick-slider .slick-next:focus:before {
+    opacity: 1;
+}
+
+.elementor-slick-slider .slick-prev.slick-disabled:before,
+.elementor-slick-slider .slick-next.slick-disabled:before {
+    opacity: .25;
+}
+
+.elementor-slick-slider .slick-prev:before,
+.elementor-slick-slider .slick-next:before {
+    font-family: eicons;
+    font-size: 35px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.elementor-slick-slider .slick-prev {
+    left: -25px;
+}
+
+[dir="rtl"] .elementor-slick-slider .slick-prev {
+    left: auto;
+    right: -25px;
+}
+
+.elementor-slick-slider .slick-prev:before {
+    content: '\e89f';
+}
+
+[dir="rtl"] .elementor-slick-slider .slick-prev:before {
+    content: '\e89e';
+}
+
+.elementor-slick-slider .slick-next {
+    right: -25px;
+}
+
+[dir="rtl"] .elementor-slick-slider .slick-next {
+    left: -25px;
+    right: auto;
+}
+
+.elementor-slick-slider .slick-next:before {
+    content: '\e89e';
+}
+
+[dir="rtl"] .elementor-slick-slider .slick-next:before {
+    content: '\e89f';
+}
+
+.elementor-slick-slider .slick-dotted.slick-slider {
+    margin-bottom: 30px;
+}
+
+.elementor-slick-slider ul.slick-dots {
+    position: absolute;
+    bottom: -25px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    line-height: 1;
+}
+
+.elementor-slick-slider ul.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.elementor-slick-slider ul.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.elementor-slick-slider ul.slick-dots li button:hover, .elementor-slick-slider ul.slick-dots li button:focus {
+    outline: none;
+}
+
+.elementor-slick-slider ul.slick-dots li button:hover:before, .elementor-slick-slider ul.slick-dots li button:focus:before {
+    opacity: 1;
+}
+
+.elementor-slick-slider ul.slick-dots li button:before {
+    font-family: eicons;
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '\e914';
+    text-align: center;
+    opacity: .25;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.elementor-slick-slider ul.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: black;
+}
+
+.elementor-slick-slider .slick-arrows-inside .slick-prev {
+    left: 20px;
+}
+
+[dir="rtl"] .elementor-slick-slider .slick-arrows-inside .slick-prev {
+    left: auto;
+    right: 20px;
+}
+
+.elementor-slick-slider .slick-arrows-inside .slick-next {
+    right: 20px;
+}
+
+[dir="rtl"] .elementor-slick-slider .slick-arrows-inside .slick-next {
+    left: 20px;
+    right: auto;
+}
+
+.elementor-slick-slider .slick-dots-inside .slick-dots {
+    bottom: 5px;
+}
+
+.elementor-slick-slider .slick-dots-inside.slick-dotted.slick-slider {
+    margin-bottom: 0;
+}
+
+.elementor-slick-slider .slick-slider .slick-prev,
+.elementor-slick-slider .slick-slider .slick-next {
+    z-index: 1;
+}
+
+.elementor-slick-slider .slick-slide img {
+    margin: auto;
+}
