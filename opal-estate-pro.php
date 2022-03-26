@@ -6,8 +6,8 @@
  * Version: 1.7.4
  * Author: WPOPAL
  * Author URI: http://www.wpopal.com
- * Requires at least: 4.9
- * Tested up to: 5.3.2
+ * Requires at least: 5.0
+ * Tested up to: 5.9.2
  * Text Domain: opalestate-pro
  * Domain Path: languages/
  *
