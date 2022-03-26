@@ -86,7 +86,7 @@ class Opalestate_Property_collection_Elementor_Widget extends Opalestate_Element
 	 *
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'head',
 			[
@@ -375,15 +375,15 @@ class Opalestate_Property_collection_Elementor_Widget extends Opalestate_Element
 		// 		'options'   => [
 		// 			'flex-start' => [
 		// 				'title' => esc_html__( 'Left', 'opalestate-pro' ),
-		// 				'icon'  => 'fa fa-align-left',
+		// 				'icon'  => 'eicon-h-align-left',
 		// 			],
 		// 			'center'     => [
 		// 				'title' => esc_html__( 'Center', 'opalestate-pro' ),
-		// 				'icon'  => 'fa fa-align-center',
+		// 				'icon'  => 'eicon-h-align-center',
 		// 			],
 		// 			'flex-end'   => [
 		// 				'title' => esc_html__( 'Right', 'opalestate-pro' ),
-		// 				'icon'  => 'fa fa-align-right',
+		// 				'icon'  => 'eicon-h-align-righ',
 		// 			],
 		// 		],
 		// 		'default'   => 'flex-start',

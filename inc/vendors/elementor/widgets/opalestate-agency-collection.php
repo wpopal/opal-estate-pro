@@ -87,7 +87,7 @@ class Opalestate_Agency_Collection_Elementor_Widget extends Opalestate_Elementor
 	 *
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'agencys_search_form',
 			[

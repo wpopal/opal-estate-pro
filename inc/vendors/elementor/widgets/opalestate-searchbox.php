@@ -74,7 +74,7 @@ class Opalestate_Searchbox_Elementor_Widget extends Opalestate_Elementor_Widget_
 	 *
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'property_search_form',
 			[
