@@ -1,3 +1,6 @@
+= 1.7.5 - 2022-05-07 =
+* Fixes - Opalestate Property MetaBox Submission
+
 = 1.7.4 - 2022-3-26 =
 * Fixes - Elementor 3.6
 
