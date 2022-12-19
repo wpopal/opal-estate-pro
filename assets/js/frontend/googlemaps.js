@@ -1499,7 +1499,7 @@
                     $( '.opalesate-properties-results .opalestate-loading' ).remove();
                     $( '.opalestate-sortable select' ).select2( {
                         width: '100%',
-                        minimumResultsForSearch: -1
+                        // minimumResultsForSearch: 20
                     } );
                 }
             } );
@@ -1519,7 +1519,7 @@
                             .html( $( data ).find( '.opalesate-properties-results' ).html() );
                         $( '.opalestate-sortable select' ).select2( {
                             width: '100%',
-                            minimumResultsForSearch: -1
+                            // minimumResultsForSearch: 20
                         } );
                     }
                     //  $( '.opalesate-properties-results .opalestate-loading').remove();

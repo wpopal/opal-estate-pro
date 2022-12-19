@@ -223,7 +223,7 @@ class CMB2_Types {
 			$this->type = new $render_class_name( $this, $args );
 
 			if ( ! ( $this->type instanceof CMB2_Type_Base ) ) {
-				throw new Exception( esc_html__( 'Custom CMB2 field type classes must extend CMB2_Type_Base.', 'opalestate-pro' ) );
+				throw new Exception( __( 'Custom CMB2 field type classes must extend CMB2_Type_Base.', 'cmb2' ) );
 			}
 
 			return $this->type;
@@ -341,7 +341,7 @@ class CMB2_Types {
 			</div>
 		</div>
 		<p class="cmb-add-row">
-			<button type="button" data-selector="<?php echo $table_id; ?>" class="cmb-add-row-button button-secondary"><?php echo esc_html( $this->_text( 'add_row_text', esc_html__( 'Add Row', 'opalestate-pro' ) ) ); ?></button>
+			<button type="button" data-selector="<?php echo $table_id; ?>" class="cmb-add-row-button button-secondary"><?php echo esc_html( $this->_text( 'add_row_text', esc_html__( 'Add Row', 'cmb2' ) ) ); ?></button>
 		</p>
 
 		<?php
@@ -393,17 +393,19 @@ class CMB2_Types {
 	 * Generates a repeatable row's markup
 	 *
 	 * @since 1.1.0
-	 * @param string $class Repeatable table row's class
+	 * @param string $classes Repeatable table row's class
 	 */
-	protected function repeat_row( $class = 'cmb-repeat-row' ) {
+	protected function repeat_row( $classes = 'cmb-repeat-row' ) {
+		$classes = explode( ' ', $classes );
+		$classes = array_map( 'sanitize_html_class', $classes );
 		?>
 
-		<div class="cmb-row <?php echo $class; ?>">
+		<div class="cmb-row <?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 			<div class="cmb-td">
 				<?php $this->_render(); ?>
 			</div>
 			<div class="cmb-td cmb-remove-row">
-				<button type="button" class="button-secondary cmb-remove-row-button" title="<?php echo esc_attr( $this->_text( 'remove_row_button_title', esc_html__( 'Remove Row', 'opalestate-pro' ) ) ); ?>"><?php echo esc_html( $this->_text( 'remove_row_text', esc_html__( 'Remove', 'opalestate-pro' ) ) ); ?></button>
+				<button type="button" class="button-secondary cmb-remove-row-button" title="<?php echo esc_attr( $this->_text( 'remove_row_button_title', esc_html__( 'Remove Row', 'cmb2' ) ) ); ?>"><?php echo esc_html( $this->_text( 'remove_row_text', esc_html__( 'Remove', 'cmb2' ) ) ); ?></button>
 			</div>
 		</div>
 
@@ -456,11 +458,18 @@ class CMB2_Types {
 	 * Generate field id attribute
 	 *
 	 * @since  1.1.0
-	 * @param  string $suffix For multi-part fields
-	 * @return string          Id attribute
+	 * @param  string $suffix                     For multi-part fields
+	 * @param  bool   $append_repeatable_iterator Whether to append the iterator attribue if the field is repeatable.
+	 * @return string                             Id attribute
 	 */
-	public function _id( $suffix = '' ) {
-		return $this->field->id() . $suffix . ( $this->field->args( 'repeatable' ) ? '_' . $this->iterator . '" data-iterator="' . $this->iterator : '' );
+	public function _id( $suffix = '', $append_repeatable_iterator = true ) {
+		$id = $this->field->id() . $suffix . ( $this->field->args( 'repeatable' ) ? '_' . $this->iterator : '' );
+
+		if ( $append_repeatable_iterator && $this->field->args( 'repeatable' ) ) {
+			$id .= '" data-iterator="' . $this->iterator;
+		}
+
+		return $id;
 	}
 
 	/**
@@ -598,6 +607,10 @@ class CMB2_Types {
 
 	public function taxonomy_select( $args = array() ) {
 		return $this->get_new_render_type( __FUNCTION__, 'CMB2_Type_Taxonomy_Select', $args )->render();
+	}
+
+	public function taxonomy_select_hierarchical( $args = array() ) {
+		return $this->get_new_render_type( __FUNCTION__, 'CMB2_Type_Taxonomy_Select_Hierarchical', $args )->render();
 	}
 
 	public function radio( $args = array(), $type = __FUNCTION__ ) {

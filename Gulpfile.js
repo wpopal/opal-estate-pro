@@ -113,3 +113,7 @@ gulp.task( 'clean-dist', function() {
      return gulp.src( ['**/*', '!*.js', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dev, '!' + paths.dev + '/**', '!' + paths.dist, '!' + paths.dist + '/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '!' + paths.sass, '!' + paths.sass + '/**', '!readme.md', '!package.json', '!package-lock.json', '!gulpfile.js', '!project.json', '!CHANGELOG.md', '!.travis.yml', '!jshintignore',  '!codesniffer.ruleset.xml',"!**/*.map",  '*'], { 'buffer': false } )
        .pipe( gulp.dest( paths.dist ) );
  });
+
+gulp.task('test1', function () {
+
+})

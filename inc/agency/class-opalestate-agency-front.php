@@ -475,7 +475,7 @@ class Opalestate_Agency_Front {
 	/**
 	 *
 	 */
-	public static function create_agency( $args = [], $user_id ) {
+	public static function create_agency( $args, $user_id ) {
 		$data = get_user_by( 'id', $user_id );
 
 		$post_title = sprintf( esc_html__( 'User ID: %s', 'opalestate-pro' ), $user_id );

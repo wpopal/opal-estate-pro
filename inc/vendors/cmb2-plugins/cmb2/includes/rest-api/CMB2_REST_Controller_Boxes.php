@@ -48,7 +48,7 @@ class CMB2_REST_Controller_Boxes extends CMB2_REST_Controller {
 	public function register_routes() {
 		$args = array(
 			'_embed' => array(
-				'description' => esc_html__( 'Includes the registered fields for the box in the response.', 'opalestate-pro' ),
+				'description' => __( 'Includes the registered fields for the box in the response.', 'cmb2' ),
 			),
 		);
 
@@ -69,7 +69,7 @@ class CMB2_REST_Controller_Boxes extends CMB2_REST_Controller {
 		) );
 
 		$args['_rendered'] = array(
-			'description' => esc_html__( 'Includes the fully rendered attributes, \'form_open\', \'form_close\', as well as the enqueued \'js_dependencies\' script handles, and \'css_dependencies\' stylesheet handles.', 'opalestate-pro' ),
+			'description' => __( 'Includes the fully rendered attributes, \'form_open\', \'form_close\', as well as the enqueued \'js_dependencies\' script handles, and \'css_dependencies\' stylesheet handles.', 'cmb2' ),
 		);
 
 		// Returns specific box's data.
@@ -119,7 +119,7 @@ class CMB2_REST_Controller_Boxes extends CMB2_REST_Controller {
 
 		$boxes = CMB2_REST::get_all();
 		if ( empty( $boxes ) ) {
-			return new WP_Error( 'cmb2_rest_no_boxes', esc_html__( 'No boxes found.', 'opalestate-pro' ), array(
+			return new WP_Error( 'cmb2_rest_no_boxes', __( 'No boxes found.', 'cmb2' ), array(
 				'status' => 403,
 			) );
 		}

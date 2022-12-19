@@ -276,7 +276,7 @@ jQuery( document ).ready( function ( $ ) {
 
     $( 'select.form-control , .cmb2-wrap select, .form-row select' ).select2( {
         width: '100%',
-        minimumResultsForSearch: -1
+        // minimumResultsForSearch: 20
     } );
 
     function opalCollapse() {
