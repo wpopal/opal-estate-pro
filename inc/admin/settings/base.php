@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * $Desc$
  *
@@ -12,36 +12,36 @@
  * @support  http://www.wpopal.com/support/forum.html
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
 }
 
 class Opalestate_Settings_Base_Tab {
-	public $key;
+    public $key;
 
- 	public function __construct ( $key ='' ){
+    public function __construct($key = '') {
 
- 		$this->key = $key;
- 	}
+        $this->key = $key;
+    }
 
-	public function get_tabnav () { 
+    public function get_tabnav() {
 
-	}
+    }
 
-	public function get_tab_content( $key= '' ) {
-	 
-	}
-		
-	public function get_subtabs(){ 
-	
-	}
+    public function get_tab_content($key = '') {
 
-	public function get_tab_fields () { 
+    }
 
-	} 
+    public function get_subtabs() {
 
-	public function get_subtabs_content( $subtab ) {
+    }
 
-	}
+    public function get_tab_fields() {
+
+    }
+
+    public function get_subtabs_content($subtab) {
+
+    }
 
 }

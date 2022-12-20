@@ -107,8 +107,9 @@ gulp.task('babel-admin-opaljob', function () {
 
 // Deleting any file inside the /dist folder
 gulp.task( 'clean-dist', function() {
-    // return del( [paths.dist + '/**'] );
+    return del( [paths.dist + '/**'] );
    });
+
  gulp.task( 'dist', ['clean-dist'], function() {
      return gulp.src( ['**/*', '!*.js', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dev, '!' + paths.dev + '/**', '!' + paths.dist, '!' + paths.dist + '/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '!' + paths.sass, '!' + paths.sass + '/**', '!readme.md', '!package.json', '!package-lock.json', '!gulpfile.js', '!project.json', '!CHANGELOG.md', '!.travis.yml', '!jshintignore',  '!codesniffer.ruleset.xml',"!**/*.map",  '*'], { 'buffer': false } )
        .pipe( gulp.dest( paths.dist ) );

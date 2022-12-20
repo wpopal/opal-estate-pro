@@ -11,8 +11,8 @@
  * @support  http://www.wpopal.com/support/forum.html
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
 }
 
 /**
@@ -24,12 +24,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  0.1.0
  *
  */
-function opalestate_get_option( $key = '', $default = false ) {
-	global $opalestate_options;
-	$value = ! empty( $opalestate_options[ $key ] ) ? $opalestate_options[ $key ] : $default;
-	$value = apply_filters( 'opalestate_get_option', $value, $key, $default );
+function opalestate_get_option($key = '', $default = false) {
+    global $opalestate_options;
+    $value = !empty($opalestate_options[$key]) ? $opalestate_options[$key] : $default;
+    $value = apply_filters('opalestate_get_option', $value, $key, $default);
 
-	return apply_filters( 'opalestate_get_option_' . $key, $value, $key, $default );
+    return apply_filters('opalestate_get_option_' . $key, $value, $key, $default);
 }
 
 /**
@@ -39,43 +39,43 @@ function opalestate_get_option( $key = '', $default = false ) {
  * Warning: Passing in an empty, false or null string value will remove
  *          the key from the opalestate_options array.
  *
- * @param string          $key   The Key to update
+ * @param string $key The Key to update
  * @param string|bool|int $value The value to set the key to
  *
  * @return boolean True if updated, false if not.
  * @since 1.0
  *
  */
-function opalestate_update_option( $key = '', $value = false ) {
+function opalestate_update_option($key = '', $value = false) {
 
-	// If no key, exit
-	if ( empty( $key ) ) {
-		return false;
-	}
+    // If no key, exit
+    if (empty($key)) {
+        return false;
+    }
 
-	if ( empty( $value ) ) {
-		$remove_option = opalestate_delete_option( $key );
+    if (empty($value)) {
+        $remove_option = opalestate_delete_option($key);
 
-		return $remove_option;
-	}
+        return $remove_option;
+    }
 
-	// First let's grab the current settings
-	$options = get_option( 'opalestate_settings' );
+    // First let's grab the current settings
+    $options = get_option('opalestate_settings');
 
-	// Let's let devs alter that value coming in
-	$value = apply_filters( 'opalestate_update_option', $value, $key );
+    // Let's let devs alter that value coming in
+    $value = apply_filters('opalestate_update_option', $value, $key);
 
-	// Next let's try to update the value
-	$options[ $key ] = $value;
-	$did_update      = update_option( 'opalestate_settings', $options );
+    // Next let's try to update the value
+    $options[$key] = $value;
+    $did_update    = update_option('opalestate_settings', $options);
 
-	// If it updated, let's update the global variable
-	if ( $did_update ) {
-		global $opalestate_options;
-		$opalestate_options[ $key ] = $value;
-	}
+    // If it updated, let's update the global variable
+    if ($did_update) {
+        global $opalestate_options;
+        $opalestate_options[$key] = $value;
+    }
 
-	return $did_update;
+    return $did_update;
 }
 
 /**
@@ -89,32 +89,32 @@ function opalestate_update_option( $key = '', $value = false ) {
  * @since 1.0
  *
  */
-function opalestate_delete_option( $key = '' ) {
+function opalestate_delete_option($key = '') {
 
-	// If no key, exit
-	if ( empty( $key ) ) {
-		return false;
-	}
+    // If no key, exit
+    if (empty($key)) {
+        return false;
+    }
 
-	// First let's grab the current settings
-	$options = get_option( 'opalestate_settings' );
+    // First let's grab the current settings
+    $options = get_option('opalestate_settings');
 
-	// Next let's try to update the value
-	if ( isset( $options[ $key ] ) ) {
+    // Next let's try to update the value
+    if (isset($options[$key])) {
 
-		unset( $options[ $key ] );
+        unset($options[$key]);
 
-	}
+    }
 
-	$did_update = update_option( 'opalestate_settings', $options );
+    $did_update = update_option('opalestate_settings', $options);
 
-	// If it updated, let's update the global variable
-	if ( $did_update ) {
-		global $opalestate_options;
-		$opalestate_options = $options;
-	}
+    // If it updated, let's update the global variable
+    if ($did_update) {
+        global $opalestate_options;
+        $opalestate_options = $options;
+    }
 
-	return $did_update;
+    return $did_update;
 }
 
 
@@ -128,9 +128,9 @@ function opalestate_delete_option( $key = '' ) {
  */
 function opalestate_get_settings() {
 
-	$settings = get_option( 'opalestate_settings' );
+    $settings = get_option('opalestate_settings');
 
-	return (array) apply_filters( 'opalestate_get_settings', $settings );
+    return (array)apply_filters('opalestate_get_settings', $settings);
 
 }
 
@@ -144,32 +144,32 @@ function opalestate_get_settings() {
  * @since 1.0
  *
  */
-function opalestate_enabled_gateways_callback( $field_object, $escaped_value, $object_id, $object_type, $field_type_object ) {
+function opalestate_enabled_gateways_callback($field_object, $escaped_value, $object_id, $object_type, $field_type_object) {
 
-	$id                = $field_type_object->field->args['id'];
-	$field_description = $field_type_object->field->args['desc'];
-	$gateways          = opalestate_get_payment_gateways();
+    $id                = $field_type_object->field->args['id'];
+    $field_description = $field_type_object->field->args['desc'];
+    $gateways          = opalestate_get_payment_gateways();
 
-	echo '<ul class="cmb2-checkbox-list cmb2-list">';
+    echo '<ul class="cmb2-checkbox-list cmb2-list">';
 
-	foreach ( $gateways as $key => $option ) :
+    foreach ($gateways as $key => $option) :
 
-		if ( is_array( $escaped_value ) && array_key_exists( $key, $escaped_value ) ) {
-			$enabled = '1';
-		} else {
-			$enabled = null;
-		}
+        if (is_array($escaped_value) && array_key_exists($key, $escaped_value)) {
+            $enabled = '1';
+        } else {
+            $enabled = null;
+        }
 
-		echo '<li><input name="' . $id . '[' . $key . ']" id="' . $id . '[' . $key . ']" type="checkbox" value="1" ' . checked( '1', $enabled, false ) . '/>&nbsp;';
-		echo '<label for="' . $id . '[' . $key . ']">' . $option['admin_label'] . '</label></li>';
+        echo '<li><input name="' . $id . '[' . $key . ']" id="' . $id . '[' . $key . ']" type="checkbox" value="1" ' . checked('1', $enabled, false) . '/>&nbsp;';
+        echo '<label for="' . $id . '[' . $key . ']">' . $option['admin_label'] . '</label></li>';
 
-	endforeach;
+    endforeach;
 
-	if ( $field_description ) {
-		echo '<p class="cmb2-metabox-description">' . $field_description . '</p>';
-	}
+    if ($field_description) {
+        echo '<p class="cmb2-metabox-description">' . $field_description . '</p>';
+    }
 
-	echo '</ul>';
+    echo '</ul>';
 
 
 }
@@ -185,31 +185,31 @@ function opalestate_enabled_gateways_callback( $field_object, $escaped_value, $o
  * @since 1.0
  *
  */
-function opalestate_default_gateway_callback( $field_object, $escaped_value, $object_id, $object_type, $field_type_object ) {
+function opalestate_default_gateway_callback($field_object, $escaped_value, $object_id, $object_type, $field_type_object) {
 
-	$id                = $field_type_object->field->args['id'];
-	$field_description = $field_type_object->field->args['desc'];
-	$gateways          = opalestate_get_enabled_payment_gateways();
+    $id                = $field_type_object->field->args['id'];
+    $field_description = $field_type_object->field->args['desc'];
+    $gateways          = opalestate_get_enabled_payment_gateways();
 
-	echo '<select class="cmb2_select" name="' . $id . '" id="' . $id . '">';
+    echo '<select class="cmb2_select" name="' . $id . '" id="' . $id . '">';
 
-	//Add a field to the Opalestate Form admin single post view of this field
-	if ( $field_type_object->field->object_type === 'post' ) {
-		echo '<option value="global">' . esc_html__( 'Global Default', 'opalestate-pro' ) . '</option>';
-	}
+    //Add a field to the Opalestate Form admin single post view of this field
+    if ($field_type_object->field->object_type === 'post') {
+        echo '<option value="global">' . esc_html__('Global Default', 'opalestate-pro') . '</option>';
+    }
 
-	foreach ( $gateways as $key => $option ) :
+    foreach ($gateways as $key => $option) :
 
-		$selected = isset( $escaped_value ) ? selected( $key, $escaped_value, false ) : '';
+        $selected = isset($escaped_value) ? selected($key, $escaped_value, false) : '';
 
 
-		echo '<option value="' . esc_attr( $key ) . '"' . $selected . '>' . esc_html( $option['admin_label'] ) . '</option>';
+        echo '<option value="' . esc_attr($key) . '"' . $selected . '>' . esc_html($option['admin_label']) . '</option>';
 
-	endforeach;
+    endforeach;
 
-	echo '</select>';
+    echo '</select>';
 
-	echo '<p class="cmb2-metabox-description">' . $field_description . '</p>';
+    echo '<p class="cmb2-metabox-description">' . $field_description . '</p>';
 
 }
 
@@ -224,13 +224,13 @@ function opalestate_default_gateway_callback( $field_object, $escaped_value, $ob
  * @since 1.0
  *
  */
-function opalestate_title_callback( $field_object, $escaped_value, $object_id, $object_type, $field_type_object ) {
+function opalestate_title_callback($field_object, $escaped_value, $object_id, $object_type, $field_type_object) {
 
-	$id                = $field_type_object->field->args['id'];
-	$title             = $field_type_object->field->args['name'];
-	$field_description = $field_type_object->field->args['desc'];
+    $id                = $field_type_object->field->args['id'];
+    $title             = $field_type_object->field->args['name'];
+    $field_description = $field_type_object->field->args['desc'];
 
-	echo '<hr>';
+    echo '<hr>';
 
 }
 
@@ -238,35 +238,35 @@ function opalestate_title_callback( $field_object, $escaped_value, $object_id, $
  * Gets a number of posts and displays them as options
  *
  * @param array $query_args Optional. Overrides defaults.
- * @param bool  $force      Force the pages to be loaded even if not on settings
+ * @param bool $force Force the pages to be loaded even if not on settings
  *
  * @return array An array of options that matches the CMB2 options array
  * @see: https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-field-types
  */
-function opalestate_cmb2_get_post_options( $query_args, $force = false ) {
+function opalestate_cmb2_get_post_options($query_args, $force = false) {
 
-	$post_options = [ '' => '' ]; // Blank option
+    $post_options = ['' => '']; // Blank option
 
-	if ( ( ! isset( $_GET['page'] ) || 'opalestate-settings' != $_GET['page'] ) && ! $force ) {
-		return $post_options;
-	}
+    if ((!isset($_GET['page']) || 'opalestate-settings' != $_GET['page']) && !$force) {
+        return $post_options;
+    }
 
-	$args = wp_parse_args( $query_args, [
-		'post_type'   => 'page',
-		'numberposts' => 10,
-	] );
+    $args = wp_parse_args($query_args, [
+        'post_type'   => 'page',
+        'numberposts' => 10,
+    ]);
 
-	$posts = get_posts( $args );
+    $posts = get_posts($args);
 
-	if ( $posts ) {
-		foreach ( $posts as $post ) {
+    if ($posts) {
+        foreach ($posts as $post) {
 
-			$post_options[ $post->ID ] = $post->post_title;
+            $post_options[$post->ID] = $post->post_title;
 
-		}
-	}
+        }
+    }
 
-	return $post_options;
+    return $post_options;
 }
 
 
@@ -278,18 +278,18 @@ function opalestate_cmb2_get_post_options( $query_args, $force = false ) {
  * @since 1.0
  */
 
-add_filter( 'cmb2_get_metabox_form_format', 'opalestate_modify_cmb2_form_output', 10, 3 );
+add_filter('cmb2_get_metabox_form_format', 'opalestate_modify_cmb2_form_output', 10, 3);
 
-function opalestate_modify_cmb2_form_output( $form_format, $object_id, $cmb ) {
+function opalestate_modify_cmb2_form_output($form_format, $object_id, $cmb) {
 
-	//only modify the opalestate settings form
-	if ( 'opalestate_settings' == $object_id && 'options_page' == $cmb->cmb_id ) {
+    //only modify the opalestate settings form
+    if ('opalestate_settings' == $object_id && 'options_page' == $cmb->cmb_id) {
 
-		return '<form class="cmb-form" method="post" id="%1$s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%2$s">%3$s<div class="opalestate-submit-wrap"><input type="submit" name="submit-cmb" value="' . esc_html__( 'Save Settings',
-				'opalestate-pro' ) . '" class="button-primary"></div></form>';
-	}
+        return '<form class="cmb-form" method="post" id="%1$s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%2$s">%3$s<div class="opalestate-submit-wrap"><input type="submit" name="submit-cmb" value="' . esc_html__('Save Settings',
+                'opalestate-pro') . '" class="button-primary"></div></form>';
+    }
 
-	return $form_format;
+    return $form_format;
 
 }
 
@@ -304,38 +304,38 @@ function opalestate_modify_cmb2_form_output( $form_format, $object_id, $cmb ) {
  * @since       1.0
  *
  */
-if ( ! function_exists( 'opalestate_license_key_callback' ) ) {
-	function opalestate_license_key_callback( $field_object, $escaped_value, $object_id, $object_type, $field_type_object ) {
+if (!function_exists('opalestate_license_key_callback')) {
+    function opalestate_license_key_callback($field_object, $escaped_value, $object_id, $object_type, $field_type_object) {
 
-		$id                = $field_type_object->field->args['id'];
-		$field_description = $field_type_object->field->args['desc'];
-		$license_status    = get_option( $field_type_object->field->args['options']['is_valid_license_option'] );
-		$field_classes     = 'regular-text opalestate-license-field';
-		$type              = empty( $escaped_value ) ? 'text' : 'password';
+        $id                = $field_type_object->field->args['id'];
+        $field_description = $field_type_object->field->args['desc'];
+        $license_status    = get_option($field_type_object->field->args['options']['is_valid_license_option']);
+        $field_classes     = 'regular-text opalestate-license-field';
+        $type              = empty($escaped_value) ? 'text' : 'password';
 
-		if ( $license_status === 'valid' ) {
-			$field_classes .= ' opalestate-license-active';
-		}
+        if ($license_status === 'valid') {
+            $field_classes .= ' opalestate-license-active';
+        }
 
-		$html = $field_type_object->input( [
-			'class' => $field_classes,
-			'type'  => $type,
-		] );
+        $html = $field_type_object->input([
+            'class' => $field_classes,
+            'type'  => $type,
+        ]);
 
-		//License is active so show deactivate button
-		if ( $license_status === 'valid' ) {
-			$html .= '<input type="submit" class="button-secondary opalestate-license-deactivate" name="' . $id . '_deactivate" value="' . esc_html__( 'Deactivate License', 'opalestate-pro' ) . '"/>';
-		} else {
-			//This license is not valid so delete it
-			opalestate_delete_option( $id );
-		}
+        //License is active so show deactivate button
+        if ($license_status === 'valid') {
+            $html .= '<input type="submit" class="button-secondary opalestate-license-deactivate" name="' . $id . '_deactivate" value="' . esc_html__('Deactivate License', 'opalestate-pro') . '"/>';
+        } else {
+            //This license is not valid so delete it
+            opalestate_delete_option($id);
+        }
 
-		$html .= '<label for="opalestate_settings[' . $id . ']"> ' . $field_description . '</label>';
+        $html .= '<label for="opalestate_settings[' . $id . ']"> ' . $field_description . '</label>';
 
-		wp_nonce_field( $id . '-nonce', $id . '-nonce' );
+        wp_nonce_field($id . '-nonce', $id . '-nonce');
 
-		echo $html;
-	}
+        echo $html;
+    }
 }
 
 /**
@@ -349,8 +349,8 @@ if ( ! function_exists( 'opalestate_license_key_callback' ) ) {
  * @since 1.0
  *
  */
-function opalestate_hook_callback( $args ) {
-	do_action( 'opalestate_' . $args['id'] );
+function opalestate_hook_callback($args) {
+    do_action('opalestate_' . $args['id']);
 }
 
 /**
@@ -361,37 +361,37 @@ function opalestate_hook_callback( $args ) {
  *
  */
 function opalestate_ajax_search_agencies() {
-	if ( current_user_can( 'manage_opalestate_settings' ) ) {
-		$search_query = trim( $_GET['q'] );
+    if (current_user_can('manage_opalestate_settings')) {
+        $search_query = trim($_GET['q']);
 
-		$agents_objects = Opalestate_Query::get_agencies( [
-			'posts_per_page' => -1,
-			's'              => $search_query,
-		] );
+        $agents_objects = Opalestate_Query::get_agencies([
+            'posts_per_page' => -1,
+            's'              => $search_query,
+        ]);
 
-		$agents = [];
-		if ( ! empty( $agents_objects->posts ) && is_array( $agents_objects->posts ) ) {
-			foreach ( $agents_objects->posts as $object ) {
-				$agents[] = [
-					'id'          => $object->ID,
-					'name'        => $object->post_title,
-					'avatar_url'  => 'https://avatars1.githubusercontent.com/u/9919?v=4',
-					'full_name'   => $object->post_title,
-					'description' => 'okokok',
-				];
-			}
-		}
-		$output = [
-			'total_count'        => count( $agents ),
-			'items'              => $agents,
-			'incomplete_results' => false,
-		];
-		echo json_encode( $output );
-	}
-	die();
+        $agents = [];
+        if (!empty($agents_objects->posts) && is_array($agents_objects->posts)) {
+            foreach ($agents_objects->posts as $object) {
+                $agents[] = [
+                    'id'          => $object->ID,
+                    'name'        => $object->post_title,
+                    'avatar_url'  => 'https://avatars1.githubusercontent.com/u/9919?v=4',
+                    'full_name'   => $object->post_title,
+                    'description' => 'okokok',
+                ];
+            }
+        }
+        $output = [
+            'total_count'        => count($agents),
+            'items'              => $agents,
+            'incomplete_results' => false,
+        ];
+        echo json_encode($output);
+    }
+    die();
 }
 
-add_action( 'wp_ajax_opalestate_search_agencies', 'opalestate_ajax_search_agencies' );
+add_action('wp_ajax_opalestate_search_agencies', 'opalestate_ajax_search_agencies');
 
 
 /**
@@ -402,37 +402,37 @@ add_action( 'wp_ajax_opalestate_search_agencies', 'opalestate_ajax_search_agenci
  *
  */
 function opalestate_ajax_search_agents() {
-	if ( current_user_can( 'manage_opalestate_settings' ) ) {
-		$search_query = trim( $_GET['q'] );
+    if (current_user_can('manage_opalestate_settings')) {
+        $search_query = trim($_GET['q']);
 
-		$agents_objects = Opalestate_Query::get_agents( [
-			'posts_per_page' => -1,
-			's'              => $search_query,
-		] );
+        $agents_objects = Opalestate_Query::get_agents([
+            'posts_per_page' => -1,
+            's'              => $search_query,
+        ]);
 
-		$agents = [];
-		if ( ! empty( $agents_objects->posts ) && is_array( $agents_objects->posts ) ) {
-			foreach ( $agents_objects->posts as $object ) {
-				$agents[] = [
-					'id'          => $object->ID,
-					'name'        => $object->post_title,
-					'avatar_url'  => 'https://avatars1.githubusercontent.com/u/9919?v=4',
-					'full_name'   => $object->post_title,
-					'description' => 'okokok',
-				];
-			}
-		}
-		$output = [
-			'total_count'        => count( $agents ),
-			'items'              => $agents,
-			'incomplete_results' => false,
-		];
-		echo json_encode( $output );
-	}
-	die();
+        $agents = [];
+        if (!empty($agents_objects->posts) && is_array($agents_objects->posts)) {
+            foreach ($agents_objects->posts as $object) {
+                $agents[] = [
+                    'id'          => $object->ID,
+                    'name'        => $object->post_title,
+                    'avatar_url'  => 'https://avatars1.githubusercontent.com/u/9919?v=4',
+                    'full_name'   => $object->post_title,
+                    'description' => 'okokok',
+                ];
+            }
+        }
+        $output = [
+            'total_count'        => count($agents),
+            'items'              => $agents,
+            'incomplete_results' => false,
+        ];
+        echo json_encode($output);
+    }
+    die();
 }
 
-add_action( 'wp_ajax_opalestate_search_agents', 'opalestate_ajax_search_agents' );
+add_action('wp_ajax_opalestate_search_agents', 'opalestate_ajax_search_agents');
 
 
 /**
@@ -444,64 +444,64 @@ add_action( 'wp_ajax_opalestate_search_agents', 'opalestate_ajax_search_agents' 
  */
 function opalestate_ajax_search_users() {
 
-	if ( current_user_can( 'manage_opalestate_settings' ) ) {
+    if (current_user_can('manage_opalestate_settings')) {
 
-		$search_query = trim( $_GET['q'] );
+        $search_query = trim($_GET['q']);
 
-		$get_users_args = [
-			'number' => 9999,
-			'search' => $search_query . '*',
-		];
+        $get_users_args = [
+            'number' => 9999,
+            'search' => $search_query . '*',
+        ];
 
-		if ( ! empty( $exclude ) ) {
-			$exclude_array             = explode( ',', $exclude );
-			$get_users_args['exclude'] = $exclude_array;
-		}
+        if (!empty($exclude)) {
+            $exclude_array             = explode(',', $exclude);
+            $get_users_args['exclude'] = $exclude_array;
+        }
 
-		$get_users_args = apply_filters( 'opalestate_search_users_args', $get_users_args );
+        $get_users_args = apply_filters('opalestate_search_users_args', $get_users_args);
 
-		$found_users = apply_filters( 'opalestate_ajax_found_users', get_users( $get_users_args ), $search_query );
+        $found_users = apply_filters('opalestate_ajax_found_users', get_users($get_users_args), $search_query);
 
-		$user_list = '<ul>';
-		if ( $found_users ) {
-			foreach ( $found_users as $user ) {
-				$user_list .= '<li><a href="#" data-userid="' . esc_attr( $user->ID ) . '" data-login="' . esc_attr( $user->user_login ) . '">' . esc_html( $user->user_login ) . '</a></li>';
-			}
-		} else {
-			$user_list .= '<li>' . esc_html__( 'No users found', 'opalestate-pro' ) . '</li>';
-		}
-		$user_list .= '</ul>';
+        $user_list = '<ul>';
+        if ($found_users) {
+            foreach ($found_users as $user) {
+                $user_list .= '<li><a href="#" data-userid="' . esc_attr($user->ID) . '" data-login="' . esc_attr($user->user_login) . '">' . esc_html($user->user_login) . '</a></li>';
+            }
+        } else {
+            $user_list .= '<li>' . esc_html__('No users found', 'opalestate-pro') . '</li>';
+        }
+        $user_list .= '</ul>';
 
-		echo json_encode( [ 'results' => $user_list ] );
+        echo json_encode(['results' => $user_list]);
 
-	}
-	die();
+    }
+    die();
 }
 
-add_action( 'wp_ajax_opalestate_search_users', 'opalestate_ajax_search_users' );
+add_action('wp_ajax_opalestate_search_users', 'opalestate_ajax_search_users');
 
 function opalestate_ajax_search_username() {
 
-	$search_query = trim( $_POST['user_name'] );
-	$user         = get_userdatabylogin( $search_query );
+    $search_query = trim($_POST['user_name']);
+    $user         = get_userdatabylogin($search_query);
 
-	$output = [];
+    $output = [];
 
-	if ( $user ) {
-		$data              = $user->data;
-		$data->author_link = get_author_posts_url( $user->data->ID );
-		$data->avatar      = get_avatar_url( $user->data->ID );
-		$output['message'] = esc_html__( 'We could find this user', 'opalestate-pro' );
-		$output['status']  = true;
-		$output['user']    = $data;
-	} else {
-		$output['message'] = esc_html__( 'We could not find this user', 'opalestate-pro' );
-		$output['status']  = false;
-	}
+    if ($user) {
+        $data              = $user->data;
+        $data->author_link = get_author_posts_url($user->data->ID);
+        $data->avatar      = get_avatar_url($user->data->ID);
+        $output['message'] = esc_html__('We could find this user', 'opalestate-pro');
+        $output['status']  = true;
+        $output['user']    = $data;
+    } else {
+        $output['message'] = esc_html__('We could not find this user', 'opalestate-pro');
+        $output['status']  = false;
+    }
 
-	echo json_encode( $output );
-	exit;
+    echo json_encode($output);
+    exit;
 
 }
 
-add_action( 'wp_ajax_opalestate_ajax_search_username', 'opalestate_ajax_search_username' );
+add_action('wp_ajax_opalestate_ajax_search_username', 'opalestate_ajax_search_username');

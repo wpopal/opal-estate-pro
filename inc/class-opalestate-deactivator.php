@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+    exit;
 }
 
 
@@ -12,11 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  **/
 class Opalestate_Deactivator {
 
-	/**
-	 * Deactivate
-	 */
-	public static function deactivate() {
-		$timestamp = wp_next_scheduled( 'opalestate_clean_update' );
-		wp_unschedule_event( $timestamp, 'opalestate_clean_update' );
-	}
+    /**
+     * Deactivate
+     */
+    public static function deactivate() {
+        $timestamp = wp_next_scheduled('opalestate_clean_update');
+        wp_unschedule_event($timestamp, 'opalestate_clean_update');
+    }
 }

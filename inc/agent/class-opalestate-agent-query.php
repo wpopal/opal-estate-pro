@@ -13,8 +13,8 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
-class Opalestate_Agent_Query extends OpalEstate_Abstract_Query { 
+class Opalestate_Agent_Query extends OpalEstate_Abstract_Query {
 
 }

@@ -16,16 +16,16 @@
  * @return int
  */
 function wp_session_cache_expire() {
-	$wp_session = WP_Session::get_instance();
+    $wp_session = WP_Session::get_instance();
 
-	return $wp_session->cache_expiration();
+    return $wp_session->cache_expiration();
 }
 
 /**
  * Alias of wp_session_write_close()
  */
 function wp_session_commit() {
-	wp_session_write_close();
+    wp_session_write_close();
 }
 
 /**
@@ -33,10 +33,10 @@ function wp_session_commit() {
  *
  * @param string $data
  */
-function wp_session_decode( $data ) {
-	$wp_session = WP_Session::get_instance();
+function wp_session_decode($data) {
+    $wp_session = WP_Session::get_instance();
 
-	return $wp_session->json_in( $data );
+    return $wp_session->json_in($data);
 }
 
 /**
@@ -45,9 +45,9 @@ function wp_session_decode( $data ) {
  * @return string
  */
 function wp_session_encode() {
-	$wp_session = WP_Session::get_instance();
+    $wp_session = WP_Session::get_instance();
 
-	return $wp_session->json_out();
+    return $wp_session->json_out();
 }
 
 /**
@@ -57,12 +57,12 @@ function wp_session_encode() {
  *
  * @return bool
  */
-function wp_session_regenerate_id( $delete_old_session = false ) {
-	$wp_session = WP_Session::get_instance();
+function wp_session_regenerate_id($delete_old_session = false) {
+    $wp_session = WP_Session::get_instance();
 
-	$wp_session->regenerate_id( $delete_old_session );
+    $wp_session->regenerate_id($delete_old_session);
 
-	return true;
+    return true;
 }
 
 /**
@@ -73,14 +73,15 @@ function wp_session_regenerate_id( $delete_old_session = false ) {
  * @return bool
  */
 function wp_session_start() {
-	$wp_session = WP_Session::get_instance();
+    $wp_session = WP_Session::get_instance();
 
-	$wp_session = WP_Session::get_instance();
-	do_action( 'wp_session_start' );
+    $wp_session = WP_Session::get_instance();
+    do_action('wp_session_start');
 
-	return $wp_session->session_started();
+    return $wp_session->session_started();
 }
-add_action( 'plugins_loaded', 'wp_session_start' );
+
+add_action('plugins_loaded', 'wp_session_start');
 
 /**
  * Return the current session status.
@@ -88,31 +89,32 @@ add_action( 'plugins_loaded', 'wp_session_start' );
  * @return int
  */
 function wp_session_status() {
-	$wp_session = WP_Session::get_instance();
+    $wp_session = WP_Session::get_instance();
 
-	if ( $wp_session->session_started() ) {
-		return PHP_SESSION_ACTIVE;
-	}
+    if ($wp_session->session_started()) {
+        return PHP_SESSION_ACTIVE;
+    }
 
-	return PHP_SESSION_NONE;
+    return PHP_SESSION_NONE;
 }
 
 /**
  * Unset all session variables.
  */
 function wp_session_unset() {
-	$wp_session = WP_Session::get_instance();
+    $wp_session = WP_Session::get_instance();
 
-	$wp_session->reset();
+    $wp_session->reset();
 }
 
 /**
  * Write session data and end session
  */
 function wp_session_write_close() {
-	$wp_session = WP_Session::get_instance();
+    $wp_session = WP_Session::get_instance();
 
-	$wp_session->write_data();
-	do_action( 'wp_session_commit' );
+    $wp_session->write_data();
+    do_action('wp_session_commit');
 }
-add_action( 'shutdown', 'wp_session_write_close' );
+
+add_action('shutdown', 'wp_session_write_close');
