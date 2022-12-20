@@ -109,7 +109,8 @@
   display: inline; }
 
 .opalestate-submission-form label .required {
-  color: red; }
+  color: red;
+  background-color: #ccc; }
 
 .opalestate-submission-form input.required {
   border: 1px solid red; }

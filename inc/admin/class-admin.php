@@ -36,7 +36,7 @@ class Opalestate_Admin {
         $screen    = get_current_screen();
         $screen_id = $screen ? $screen->id : '';
 
-        wp_enqueue_style('opalestate-admin', OPALESTATE_PLUGIN_URL . 'assets/admin.css', [], '3.0.3');
+        wp_enqueue_style('opalestate-admin', OPALESTATE_PLUGIN_URL . 'assets/css/admin.css', [], '3.0.3');
 
         $suffix = '';
         wp_enqueue_style('select2', OPALESTATE_PLUGIN_URL . 'assets/3rd/select2/css/select2.min.css', null, '1.3');

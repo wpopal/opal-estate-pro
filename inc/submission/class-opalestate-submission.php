@@ -70,8 +70,8 @@ class OpalEstate_Submission {
      */
     public function scripts_styles() {
 
-        wp_register_style('opalesate-submission', OPALESTATE_PLUGIN_URL . 'assets/submission.css');
-        wp_register_style('opalesate-cmb2-front', OPALESTATE_PLUGIN_URL . 'assets/cmb2-front.css');
+        wp_register_style('opalesate-submission', OPALESTATE_PLUGIN_URL . 'assets/css/submission.css');
+        wp_register_style('opalesate-cmb2-front', OPALESTATE_PLUGIN_URL . 'assets/css/cmb2-front.css');
         wp_register_script(
             'opalestate-submission',
             OPALESTATE_PLUGIN_URL . 'assets/js/frontend/submission.js',

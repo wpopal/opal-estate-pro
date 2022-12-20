@@ -459,8 +459,14 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .swiper-container:hover .swiper-button-prev {
   left: 20px; }
 
-.swiper-pagination {
-  display: none !important; }
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev,
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+  background-image: none !important; }
+
+.swiper-button-prev i,
+.swiper-button-next i {
+  font-size: 20px;
+  padding: 20px 0; }
 
 .opalestate-single-property.opalestate_property {
   border: none; }
@@ -970,6 +976,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 .opalestate_single_agency {
   padding-bottom: 30px; }
+
+.swiper-container .swiper-button-next.swiper-button-disabled, .swiper-container .swiper-button-prev.swiper-button-disabled {
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: all; }
 
 .archive .opalestate-head {
   margin-bottom: 80px; }
@@ -2170,6 +2181,25 @@ button.opal-collapse-button {
       .opalestate-search-form--collapse-advanced > .opal-collapse-container::before {
         display: none; } }
 
+.opalestate-price-input-wrap {
+  display: flex;
+  align-items: center; }
+
+.opalestate-price-input {
+  width: 45%;
+  display: inline-block;
+  position: relative; }
+
+.opalestate-price-input-separator {
+  flex-grow: 1;
+  text-align: center; }
+
+.opalestate-price-currency {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); }
+
 .property-options {
   position: absolute;
   bottom: 10px;
@@ -2669,6 +2699,15 @@ header:hover .property-bg-thumbnail a {
   top: 50% !important; }
   .opalesate-property-collection .elementor-slick-slider-row.slick-arrows-inside .slick-arrow.slick-prev {
     left: 0; }
+
+.type-opalestate_property {
+  margin-bottom: 30px;
+  background-color: #FFF;
+  border: solid 1px #ebebeb;
+  position: relative; }
+
+.opalestate-box .type-opalestate_property:last-of-type {
+  margin-bottom: 0; }
 
 .opalestate_agency {
   margin-bottom: 30px; }
@@ -4003,58 +4042,6 @@ header#masthead {
     position: absolute;
     top: 0; }
 
-.type-opalestate_property {
-  margin-bottom: 30px;
-  background-color: #FFF;
-  border: solid 1px #ebebeb;
-  position: relative;
-}
-
-.opalestate-box .type-opalestate_property:last-of-type {
-  margin-bottom: 0;
-}
-
-.opalestate-price-input-wrap {
-  display: flex;
-  align-items: center;
-}
-
-.opalestate-price-input {
-  width: 45%;
-  display: inline-block;
-  position: relative;
-}
-
-.opalestate-price-input-separator {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.opalestate-price-currency {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .opalestate-read-message .message-container {
   border-bottom: 1px solid #ebebeb;
-  margin-bottom: 15px;
-}
-
-.swiper-button-next, .swiper-container-rtl .swiper-button-prev,
-.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-  background-image: none !important;
-}
-
-.swiper-button-prev i,
-.swiper-button-next i {
-  font-size: 20px;
-  padding: 20px 0;
-}
-
-.swiper-container .swiper-button-next.swiper-button-disabled, .swiper-container .swiper-button-prev.swiper-button-disabled {
-  opacity: 1;
-  cursor: pointer;
-  pointer-events: all;
-}
+  margin-bottom: 15px; }
