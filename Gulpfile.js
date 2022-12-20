@@ -20,7 +20,7 @@ var paths = {
     "node": "./node_modules/",
     "bower": "./bower_components/",
     "distprod": "./dist-product",
-    "dist":"/Users/chungpham/svn/opal-estate-pro/trunk"
+    "dist":"/Users/chungpham/svn/opal-estate-pro/fullhouse2"
 }
 
 var folderPlugin = './';
@@ -114,6 +114,3 @@ gulp.task( 'clean-dist', function() {
        .pipe( gulp.dest( paths.dist ) );
  });
 
-gulp.task('test1', function () {
-
-})
