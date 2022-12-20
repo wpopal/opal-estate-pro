@@ -64,7 +64,7 @@
 		margin-bottom: 0;
 		li {
 			list-style: none;
-			
+
 			h6 {
 				margin-bottom: 0;
 				flex: 1;
@@ -101,7 +101,7 @@
 	.list-group-item-text {
 		line-height: 23px;
 		margin-top: 21px;
-		
+
 			i {
 				margin-right: 2px;
 			}
@@ -253,8 +253,8 @@
 .agency-preview{
 	display: none;
 }
- 
- 
+
+
 .property-agency-contact{
 	@media screen and (max-width:1024px){
 		margin-top: $grid-gutter-width;
@@ -277,7 +277,7 @@
 		padding-bottom: 12px;
 		margin-bottom: 20px;
 		position: relative;
-		
+
 	}
 	.agency-top-meta,.agency-excerpt{
 		&::before{
@@ -405,27 +405,24 @@
 	padding: 20px 0;
 }
 
-.swiper-pagination{
-	display: none !important;
-}
 .opalestate-single-property {
 	&.opalestate_property{
-		
+
 		border: none;
-	} 
+	}
 	.owl-thumb-wrapper{
 		padding-top: 10px;
 		.owl-item:not(:last-of-type){
 			padding-right: 10px;
 		}
 	}
-	 
+
 	.entry-summary{
 		@media screen and (min-width:768px){
 			border: 1px solid $border-color;
 			padding-bottom: 40px;
 		}
-		
+
 	}
 	.property-meta-list{
 		border-bottom: 1px solid $border-color;
@@ -450,7 +447,7 @@
 		line-height: 1;
 		margin-bottom: 16px;
 	}
-	
+
 }
 
 //Print single property
@@ -515,7 +512,7 @@
 			}
 		}
 	}
-	
+
 }
 
 
@@ -534,7 +531,7 @@
 			}
 		}
 	}
-	
+
 }
 
 //yelp nearby
@@ -702,7 +699,7 @@
 		.property-meta-top__button{
 			border-left: 1px solid $border-color;
 		}
-		
+
 	}
 }
 .property-sku{
@@ -760,13 +757,13 @@
 	flex-wrap: wrap;
 	font-size: 13px;
 	font-weight: 500;
-	
+
 	margin-bottom: 58px;
 	@media screen and (min-width:768px){
 		border-bottom: 1px solid $border-color;
 	}
 	& > div{
-		
+
 		padding-bottom: 26px;
 		@media screen and (max-width:767px){
 			flex-basis: 100%;
@@ -932,7 +929,7 @@
 	left:9%;
 	background:$white;
 	z-index:99
-} 
+}
 .gallery-metro-preview {
 	display:flex;
 	height: 100%;
@@ -945,7 +942,7 @@
 		background-position: center center;
 	}
 	.no-image {
-		background-color:$primary;	
+		background-color:$primary;
 
 	}
 	span {
@@ -955,10 +952,10 @@
 		height:100%;
 		@include opacity(0.7);
 		color:#FFF;
- 
+
 		position:relative;
 		em {
-			
+
 		}
 	}
 	.metro-big {
@@ -975,7 +972,7 @@
 		height:auto;
 		text-align: center;
 	}
-} 
+}
 //Mark Picture
 .opalestate-swiper-wrap {
 	position:relative;
@@ -989,7 +986,7 @@
 		background-repeat:no-repeat;
 		background-position:center center
 	}
-}	
+}
 
 .property-mark-pics-preview{
 	.property-heading-top{
