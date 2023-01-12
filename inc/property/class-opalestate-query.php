@@ -114,11 +114,10 @@ class Opalestate_Query {
      * Get Query Object By post and agent with setting items per page.
      */
     public static function get_agent_property($post_id = null, $agent_id = null, $per_page = 10, $isfeatured = false) {
-        if (null == $post_id) {
-            $post_id = get_the_ID();
+        $user_id = null;
+        if ($post_id) {
+            $user_id = get_post_meta($post_id, OPALESTATE_AGENT_PREFIX . 'user_id', true);
         }
-
-        $user_id = get_post_meta($post_id, OPALESTATE_AGENT_PREFIX . 'user_id', true);
 
         $paged = (get_query_var('paged') == 0) ? 1 : get_query_var('paged');
 
@@ -133,7 +132,7 @@ class Opalestate_Query {
 
         if ($user_id) {
             $args['author'] = $user_id;
-        } else {
+        } elseif ($agent_id) {
             array_push($args['meta_query'], [
                 'key'     => OPALESTATE_PROPERTY_PREFIX . 'agent',
                 'value'   => $agent_id,

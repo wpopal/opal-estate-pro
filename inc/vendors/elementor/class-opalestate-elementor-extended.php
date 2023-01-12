@@ -63,7 +63,7 @@ final class Opalestate_Elementor_Extended {
         add_action('elementor/elements/categories_registered', [$this, 'add_widget_categories']);
 
         // Add Plugin actions.
-        add_action('elementor/widgets/widgets_registered', [$this, 'register_widgets']);
+        add_action('elementor/widgets/register', [$this, 'register_widgets']);
     }
 
     /**
@@ -106,7 +106,7 @@ final class Opalestate_Elementor_Extended {
                 $class_name = ucfirst(str_replace("-", "_", basename($path, '.php'))) . '_Elementor_Widget';
 
                 if (class_exists($class_name)) {
-                    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new $class_name());
+                    \Elementor\Plugin::instance()->widgets_manager->register(new $class_name());
                 }
             }
         }
