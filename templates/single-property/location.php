@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $property, $post;
 
-$locations = $property->getLocations();
+$locations = $property->get_locations();
 
 if ( !empty($locations) ) :
 ?>

@@ -57,7 +57,7 @@ abstract class Opalestate_Elementor_Widget_Base extends Widget_Base {
      *
      * @access protected
      */
-    protected function _content_template() {
+    protected function content_template() {
         $located = $this->locate_template($this->get_name() . '-preview.php');
 
         if (!file_exists($located)) {

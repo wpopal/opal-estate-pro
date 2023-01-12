@@ -21,15 +21,11 @@ jQuery(document).ready(function ($) {
     $('.js-opal-google-login').on('click', function (e) {
         e.preventDefault();
         $.ajax({
-            type: 'POST',
-            url: opalesateJS.ajaxurl,
-            data: {
+            type: 'POST', url: opalesateJS.ajaxurl, data: {
                 'action': 'opalestate_ajax_redirect_google_login_link'
-            },
-            success: function (results) {
+            }, success: function (results) {
                 window.location.href = results.data;
-            },
-            error: function (errorThrown) {
+            }, error: function (errorThrown) {
                 // TODO:
             }
         });
@@ -38,15 +34,11 @@ jQuery(document).ready(function ($) {
     $('.js-opal-facebook-login').on('click', function (e) {
         e.preventDefault();
         $.ajax({
-            type: 'POST',
-            url: opalesateJS.ajaxurl,
-            data: {
+            type: 'POST', url: opalesateJS.ajaxurl, data: {
                 'action': 'opalestate_ajax_redirect_facebook_login_link'
-            },
-            success: function (results) {
+            }, success: function (results) {
                 window.location.href = results.data;
-            },
-            error: function (errorThrown) {
+            }, error: function (errorThrown) {
                 // TODO:
             }
         });
@@ -61,32 +53,18 @@ jQuery(document).ready(function ($) {
                     if (option) {
                         option = $.extend({
                             navigation: {
-                                nextEl: '.swiper-button-next',
-                                prevEl: '.swiper-button-prev'
-                            },
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                            loop: true,
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                            breakpoints: {
+                                nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'
+                            }, slidesPerView: 3, spaceBetween: 30, loop: true, pagination: {
+                                el: '.swiper-pagination', clickable: true,
+                            }, breakpoints: {
                                 1024: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 30
-                                },
-                                768: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10
-                                },
-                                640: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10
-                                },
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10
+                                    slidesPerView: 2, spaceBetween: 30
+                                }, 768: {
+                                    slidesPerView: 1, spaceBetween: 10
+                                }, 640: {
+                                    slidesPerView: 1, spaceBetween: 10
+                                }, 320: {
+                                    slidesPerView: 1, spaceBetween: 10
                                 }
                             }
                         }, option);
@@ -96,20 +74,13 @@ jQuery(document).ready(function ($) {
 
                             ioption.breakpoint = {
                                 1024: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 30
-                                },
-                                768: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10
-                                },
-                                640: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10
-                                },
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10
+                                    slidesPerView: 2, spaceBetween: 30
+                                }, 768: {
+                                    slidesPerView: 1, spaceBetween: 10
+                                }, 640: {
+                                    slidesPerView: 1, spaceBetween: 10
+                                }, 320: {
+                                    slidesPerView: 1, spaceBetween: 10
                                 }
                             };
 
@@ -140,31 +111,28 @@ jQuery(document).ready(function ($) {
             $(this).addClass('active');
 
             $('html, body').animate({
-                    scrollTop: $($(this).attr('href')).offset().top - 80,
-                },
-                500,
-                'linear'
-            );
+                scrollTop: $($(this).attr('href')).offset().top - 80,
+            }, 500, 'linear');
         }
     });
     var header = $('.keep-top-bars');
-    $(window).scroll(function () {
-        var scroll = $(window).scrollTop();
-        if (scroll >= window.innerHeight) {
-            header.addClass('floating-keep-top');
-        } else {
-            header.removeClass('floating-keep-top');
-        }
-    });
-
-    ////
+    if (header.length > 0) {
+        var sticky = header.offset().top;
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll >= sticky) {
+                header.addClass('floating-keep-top');
+            } else {
+                header.removeClass('floating-keep-top');
+            }
+        });
+    }
 
     ////
     $('.opalestate-gallery').each(function () { // the containers for all your galleries
         $(this).magnificPopup({
             delegate: 'a', // the selector for gallery item
-            type: 'image',
-            gallery: {
+            type: 'image', gallery: {
                 enabled: true
             }
         });
@@ -181,8 +149,7 @@ jQuery(document).ready(function ($) {
     $('.opalestate_rating').each(function () {
         $(this)
             .hide()
-            .before(
-                '<p class="opalestate-stars stars">\
+            .before('<p class="opalestate-stars stars">\
                   <span>\
                     <a class="star-1" href="#">1</a>\
                     <a class="star-2" href="#">2</a>\
@@ -190,15 +157,13 @@ jQuery(document).ready(function ($) {
                     <a class="star-4" href="#">4</a>\
                     <a class="star-5" href="#">5</a>\
                   </span>\
-                </p>'
-            );
+                </p>');
     });
 
     $('body')
         // Star ratings for comments
         .on('click', '.comment-form-rating p.opalestate-stars a', function () {
-            var $star = $(this),
-                $rating = $(this).closest('.comment-form-rating').find('.opalestate_rating'),
+            var $star = $(this), $rating = $(this).closest('.comment-form-rating').find('.opalestate_rating'),
                 $container = $(this).closest('.stars');
 
             $rating.val($star.text());
@@ -275,16 +240,12 @@ jQuery(document).ready(function ($) {
     });
 
     $('select.form-control , .cmb2-wrap select, .form-row select').select2({
-        width: '100%',
-        // minimumResultsForSearch: 20
+        width: '100%', // minimumResultsForSearch: 20
     });
 
     function opalCollapse() {
         $('.opal-collapse-button').on('click', function () {
-            var $el = $(this),
-                data = $el.data('collapse'),
-                $el_data = $(data),
-                speed = 250;
+            var $el = $(this), data = $el.data('collapse'), $el_data = $(data), speed = 250;
 
             if ($el.data('speed') && $el.data('speed') > 0) {
                 speed = $el.data('speed');
@@ -429,8 +390,7 @@ jQuery(document).ready(function ($) {
             $.magnificPopup.open({
                 items: {
                     src: '#opalestate-user-form-popup'
-                },
-                mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+                }, mainClass: 'mfp-with-zoom', // this class is for CSS animation below
                 zoom: {
                     enabled: true
                 }
@@ -498,9 +458,7 @@ jQuery(document).ready(function ($) {
         format = format ? format : 1;
 
         var config_format = {
-            decimals: decimals,
-            thousand: unit_thousand,
-            step: step,
+            decimals: decimals, thousand: unit_thousand, step: step,
         };
 
         if (unit_pos == 'prefix') {
@@ -518,13 +476,8 @@ jQuery(document).ready(function ($) {
 
         var options = {
             range: {
-                'min': [min],
-                'max': [max]
-            },
-            step: step,
-            connect: true,
-            start: istart,
-            direction: opalesateJS.rtl == 'true' ? 'rtl' : 'ltr',
+                'min': [min], 'max': [max]
+            }, step: step, connect: true, start: istart, direction: opalesateJS.rtl == 'true' ? 'rtl' : 'ltr',
         };
 
         if (format) {
@@ -566,14 +519,12 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             dataType: 'json',
             url: opalesateJS.ajaxurl,
-            data: 'params=' + encodeURIComponent(params) + '&' + $(this).serialize() +
-                '&action=opalestate_ajx_save_search',
+            data: 'params=' + encodeURIComponent(params) + '&' + $(this).serialize() + '&action=opalestate_ajx_save_search',
             success: function (data) {
                 $('#opalestate-save-search-form .alert').remove();
                 $('#opalestate-save-search-form input').val('');
                 $('#opalestate-save-search-form')
-                    .append('<div class="opalestate-message-notify msg-status-success" style="margin-top:20px">' +
-                        data.message + '</div>');
+                    .append('<div class="opalestate-message-notify msg-status-success" style="margin-top:20px">' + data.message + '</div>');
                 $('#opalestate-save-search-form .alert').delay(5000).queue(function () {
                     $('#opalestate-save-search-form .alert').remove();
                 });
@@ -589,8 +540,7 @@ jQuery(document).ready(function ($) {
             $.ajax({
                 type: 'POST',
                 url: opalesateJS.ajaxurl,
-                data: location.search.substr(1) + '&action=get_agent_property&paged=' + $(this).data('paged') +
-                    '&id=' + $content.data('id'),
+                data: location.search.substr(1) + '&action=get_agent_property&paged=' + $(this).data('paged') + '&id=' + $content.data('id'),
                 success: function (data) {
                     if (data) {
                         $content.html(data);
@@ -604,8 +554,7 @@ jQuery(document).ready(function ($) {
             $.ajax({
                 type: 'POST',
                 url: opalesateJS.ajaxurl,
-                data: location.search.substr(1) + '&action=get_agency_property&paged=' + $(this).data('paged') +
-                    '&id=' + $content.data('id'),
+                data: location.search.substr(1) + '&action=get_agency_property&paged=' + $(this).data('paged') + '&id=' + $content.data('id'),
                 success: function (data) {
                     if (data) {
                         $content.html(data);
