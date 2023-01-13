@@ -2907,7 +2907,7 @@ ul.property-status {
   overflow: hidden;
   height: 15px;
   font-size: 15px;
-  width: calc(15px*5 - 5px);
+  width: calc(15px * 5 - 5px);
   line-height: 1; }
   .opalestate-rating__stars::before {
     font-family: "Font Awesome 5 Free";
@@ -2937,7 +2937,7 @@ ul.property-status {
       position: absolute;
       top: 0;
       left: 0;
-      width: calc(15px*5); }
+      width: calc(15px * 5); }
 
 p.stars a {
   position: relative;

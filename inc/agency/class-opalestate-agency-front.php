@@ -100,17 +100,35 @@ class Opalestate_Agency_Front {
      */
     public function archives_query($query) {
         if ($query->is_main_query() && is_post_type_archive('opalestate_agency')) {
+            $tax_query = [];
             if (isset($_GET['location']) && $_GET['location'] != -1) {
-                $tax_query = [];
-
-                $tax_query[]       = [
+                $tax_query[] = [
                     'taxonomy' => 'opalestate_location',
                     'field'    => 'slug',
                     'terms'    => sanitize_text_field($_GET['location']),
                 ];
+            }
+            if (isset($_GET['country']) && $_GET['country'] != -1) {
+                $tax_query[] = [
+                    'taxonomy' => 'opalestate_location',
+                    'field'    => 'slug',
+                    'terms'    => sanitize_text_field($_GET['country']),
+                ];
+            }
+            if (isset($_GET['cities']) && $_GET['cities'] != -1) {
+                $tax_query[] = [
+                    'taxonomy' => 'opalestate_city',
+                    'field'    => 'slug',
+                    'terms'    => sanitize_text_field($_GET['cities']),
+                ];
+            }
+
+            if ($tax_query) {
                 $args['tax_query'] = ['relation' => 'AND'];
                 $args['tax_query'] = array_merge($args['tax_query'], $tax_query);
-                $query->set('tax_query', $tax_query);
+            }
+            if (isset($args['tax_query']) && $args['tax_query']) {
+                $query->set('tax_query', $args['tax_query']);
             }
             if (isset($_GET['search_text'])) {
                 $query->set('s', sanitize_text_field($_GET['search_text']));

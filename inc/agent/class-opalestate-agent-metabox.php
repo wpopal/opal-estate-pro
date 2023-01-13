@@ -67,9 +67,16 @@ class Opalestate_Agent_MetaBox extends Opalestate_User_MetaBox {
                 'taxonomy' => 'opalestate_types', //Enter Taxonomy Slug
                 'type'     => 'taxonomy_select',
             ],
+            [
+                'name'     => esc_html__('Category', 'opalestate-pro'),
+                'desc'     => esc_html__('Select one, to add new you create in location of estate panel', 'opalestate-pro'),
+                'id'       => $prefix . "category",
+                'taxonomy' => 'property_category', //Enter Taxonomy Slug
+                'type'     => 'taxonomy_select',
+            ],
         ];
 
-        return $fields;
+        return apply_filters('opalestate_postype_agent_metaboxes_target', $fields);
     }
 
     /**
@@ -140,7 +147,6 @@ class Opalestate_Agent_MetaBox extends Opalestate_User_MetaBox {
         return apply_filters('opalestate_postype_agent_metaboxes_fields', $fields);
     }
 
-
     public function get_base_front_fields($prefix) {
         return [
             [
@@ -160,9 +166,7 @@ class Opalestate_Agent_MetaBox extends Opalestate_User_MetaBox {
                 'type'   => 'hidden',
                 'single' => 1,
                 'limit'  => 1,
-
             ],
-
             [
                 'name'   => esc_html__('Avatar Picture', 'opalestate-pro'),
                 'desc'   => esc_html__('This image will display in user detail and profile box information', 'opalestate-pro'),
@@ -170,9 +174,7 @@ class Opalestate_Agent_MetaBox extends Opalestate_User_MetaBox {
                 'type'   => 'uploader',
                 'single' => 1,
                 'limit'  => 1,
-
             ],
-
             [
                 'name'       => esc_html__('Email', 'opalestate-pro'),
                 'id'         => "{$prefix}email",

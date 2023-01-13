@@ -122,9 +122,16 @@
   background-image: url(images/19.png); }
 
 /** CMD BOX 2 */
+.cmb2-wrap select {
+  min-width: 150px; }
+
 .cmb2-wrap .field-row-2 .cmb-row {
   display: inline-block;
   width: 50%; }
+
+.cmb2-wrap .field-row-3 .cmb-row {
+  display: inline-block;
+  width: 33.3333%; }
 
 .cmb2-wrap .field-row-2 .cmb-row:nth-child(even) > div {
   padding-left: 12px; }

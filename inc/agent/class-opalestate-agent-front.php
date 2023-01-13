@@ -383,6 +383,22 @@ class Opalestate_Agent_Front {
                 ];
             }
 
+            if (isset($_GET['cat']) && $_GET['cat'] != -1) {
+                $tax_query[]
+                    = [
+                    'taxonomy' => 'property_category',
+                    'field'    => 'slug',
+                    'terms'    => sanitize_text_field($_GET['cat']),
+                ];
+            }
+            if (isset($_GET['cities']) && $_GET['cities'] != -1) {
+                $tax_query[] = [
+                    'taxonomy' => 'opalestate_city',
+                    'field'    => 'slug',
+                    'terms'    => sanitize_text_field($_GET['cities']),
+                ];
+            }
+
             if ($tax_query) {
                 $args['tax_query'] = ['relation' => 'AND'];
                 $args['tax_query'] = array_merge($args['tax_query'], $tax_query);
