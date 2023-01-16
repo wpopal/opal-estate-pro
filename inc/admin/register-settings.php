@@ -122,6 +122,8 @@ class Opalestate_Plugin_Settings {
         $tabs              = [];
         $tabs['general']   = esc_html__('General', 'opalestate-pro');
         $tabs['property']  = esc_html__('Property', 'opalestate-pro');
+        $tabs['agents']    = esc_html__('Agents', 'opalestate-pro');
+        $tabs['agencies']  = esc_html__('Agencies', 'opalestate-pro');
         $tabs['pages']     = esc_html__('Pages', 'opalestate-pro');
         $tabs['3rd_party'] = esc_html__('3rd Party', 'opalestate-pro');
         $tabs['api_keys']  = esc_html__('API', 'opalestate-pro');

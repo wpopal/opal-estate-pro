@@ -12,6 +12,7 @@ const uglify = require('gulp-uglify');
 const inject = require('gulp-inject');
 const addsrc = require('gulp-add-src');
 const clean = require('gulp-dest-clean');
+// const del = require('gulp-dest-clean');
 
 var paths = {
     sass: "./assets/scss",
@@ -109,7 +110,7 @@ gulp.task('babel-admin-opaljob', function () {
 
 // Deleting any file inside the /dist folder
 gulp.task('clean-dist', function () {
-    fs.remove(paths.dist);
+      fs.remove(paths.dist);
     // return del(paths.dist + '/**');
 });
 

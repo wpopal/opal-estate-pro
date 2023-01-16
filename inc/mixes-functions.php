@@ -275,6 +275,50 @@ function opalestate_get_loop_property_list_layouts() {
     ]);
 }
 
+/**
+ * Gets loop agents grid layouts.
+ *
+ * @return array
+ */
+function opalestate_get_loop_agents_grid_layouts() {
+    return apply_filters('opalestate_get_loop_agents_grid_layouts', [
+        'grid' => esc_html__('Grid', 'opalestate-pro'),
+    ]);
+}
+
+/**
+ * Gets loop agents list layouts.
+ *
+ * @return array
+ */
+function opalestate_get_loop_agents_list_layouts() {
+    return apply_filters('opalestate_get_loop_agents_list_layouts', [
+        'list' => esc_html__('List', 'opalestate-pro'),
+    ]);
+}
+
+/**
+ * Gets loop Agencies grid layouts.
+ *
+ * @return array
+ */
+function opalestate_get_loop_agencies_grid_layouts() {
+    return apply_filters('opalestate_get_loop_agencies_grid_layouts', [
+        'grid' => esc_html__('Grid', 'opalestate-pro'),
+    ]);
+}
+
+/**
+ * Gets loop Agencies list layouts.
+ *
+ * @return array
+ */
+function opalestate_get_loop_agencies_list_layouts() {
+    return apply_filters('opalestate_get_loop_agencies_list_layouts', [
+        'list' => esc_html__('List', 'opalestate-pro'),
+    ]);
+}
+
 function opalestate_get_map_api_uri() {
 
     $key = opalestate_options('google_map_api_keys') ?

@@ -86,6 +86,8 @@ class Opalestate_Admin {
             'settings/searcharea.php',
             'settings/general.php',
             'settings/property.php',
+            'settings/agencies.php',
+            'settings/agents.php',
             'settings/pages.php',
         ]);
 
