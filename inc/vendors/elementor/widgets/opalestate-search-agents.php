@@ -113,10 +113,10 @@ class Opalestate_Search_Agents_Elementor_Widget extends Opalestate_Elementor_Wid
                 'label'   => esc_html__('Item Layout', 'opalestate-pro'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'grid',
-                'options' => array(
+                'options' => apply_filters('search-agents-item-layout', [
                     'grid' => esc_html__('Grid', 'opalestate-pro'),
                     'list' => esc_html__('List', 'opalestate-pro'),
-                )
+                ]),
             ]
         );
         $this->add_responsive_control(
@@ -128,8 +128,8 @@ class Opalestate_Search_Agents_Elementor_Widget extends Opalestate_Elementor_Wid
                 'options'      => [1 => 1, 2 => 2, 3 => 3, 4 => 4, 6 => 6],
                 'prefix_class' => 'elementor-grid%s-',
                 'condition'    => [
-                    'item_layout' => 'grid'
-                ]
+                    'item_layout!' => 'list',
+                ],
 
             ]
         );
@@ -147,7 +147,7 @@ class Opalestate_Search_Agents_Elementor_Widget extends Opalestate_Elementor_Wid
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}'
+                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}; grid-row-gap: {{SIZE}}{{UNIT}}'
 
                 ],
                 'condition' => [

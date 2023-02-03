@@ -324,7 +324,7 @@ function opalestate_get_map_api_uri() {
     $key = opalestate_options('google_map_api_keys') ?
         opalestate_options('google_map_api_keys') : 'AIzaSyAvJkbm23fhVAYcbdeVB0nkHjZmDeZ62bc';
 
-    $api = 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&libraries=geometry,places,drawing&ver=5.2.2';
+    $api = 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&libraries=geometry,places,drawing&ver=5.2.2&callback=Function.prototype';
     $api = apply_filters('opalestate_google_map_api_uri', $api);
 
     return $api;

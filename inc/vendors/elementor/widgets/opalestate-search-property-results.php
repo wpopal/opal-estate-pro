@@ -95,7 +95,7 @@ class Opalestate_search_property_results_Elementor_Widget extends Opalestate_Ele
             [
                 'label'   => esc_html__('Style Grid Layout', 'opalestate-pro'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'options' => $this->get_template_post_type(),
+                'options' => apply_filters('opalestate_get_loop_property_layouts', $this->get_template_post_type()),
                 'default' => 'grid',
             ]
         );
@@ -105,7 +105,7 @@ class Opalestate_search_property_results_Elementor_Widget extends Opalestate_Ele
             [
                 'label'   => esc_html__('Style List Layout', 'opalestate-pro'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'options' => $this->get_template_post_type(),
+                'options' => apply_filters('opalestate_get_loop_property_layouts', $this->get_template_post_type()),
                 'default' => 'list',
             ]
         );
@@ -133,22 +133,22 @@ class Opalestate_search_property_results_Elementor_Widget extends Opalestate_Ele
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}; grid-row-gap: {{SIZE}}{{UNIT}}',
 
                 ],
-                'condition' => [
-                    'enable_carousel' => '',
-                ],
+                //                'condition' => [
+                //                    'enable_carousel' => '',
+                //                ],
             ]
         );
 
-        $this->add_control(
-            'enable_carousel',
-            [
-                'label' => esc_html__('Enable Carousel', 'opalestate-pro'),
-                'type'  => Controls_Manager::SWITCHER,
-            ]
-        );
+//        $this->add_control(
+//            'enable_carousel',
+//            [
+//                'label' => esc_html__('Enable Carousel', 'opalestate-pro'),
+//                'type'  => Controls_Manager::SWITCHER,
+//            ]
+//        );
 
         $this->end_controls_section();
 

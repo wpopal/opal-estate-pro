@@ -102,17 +102,30 @@ abstract class Opalestate_Elementor_Widget_Base extends Widget_Base {
      * @access protected
      */
     public function get_settings_json($settings) {
-
-        $data = [
-            "slides_to_show"   => $settings['slides_to_show'],
-            "slides_to_scroll" => $settings['slides_to_scroll'],
-            "navigation"       => $settings['navigation'],
-            "pause_on_hover"   => $settings['pause_on_hover'],
-            "autoplay"         => $settings['autoplay'],
-            "autoplay_speed"   => $settings['autoplay_speed'],
-            "infinite"         => $settings['infinite'],
-            "speed"            => $settings['speed'],
-            "direction"        => $settings['direction'],
+        $column              = !empty($settings['slides_to_show']) ? $settings['slides_to_show'] : 4;
+        $column_widescreen   = !empty($settings['slides_to_show_widescreen']) ? $settings['slides_to_show_widescreen'] : $column;
+        $column_laptop       = !empty($settings['slides_to_show_laptop']) ? $settings['slides_to_show_laptop'] : $column_widescreen;
+        $column_tablet_extra = !empty($settings['slides_to_show_tablet_extra']) ? $settings['slides_to_show_tablet_extra'] : $column_laptop;
+        $column_tablet       = !empty($settings['slides_to_show_tablet']) ? $settings['slides_to_show_tablet'] : 2;
+        $column_mobile_extra = !empty($settings['slides_to_show_mobile_extra']) ? $settings['slides_to_show_mobile_extra'] : $column_tablet;
+        $column_mobile       = !empty($settings['slides_to_show_mobile']) ? $settings['slides_to_show_mobile'] : 1;
+        $data                = [
+            "slides_to_show"              => $column,
+            "slides_to_show_mobile"       => $column_mobile,
+            "slides_to_show_widescreen"   => $column_widescreen,
+            "slides_to_show_laptop"       => $column_laptop,
+            "slides_to_show_tablet"       => $column_tablet,
+            "slides_to_show_tablet_extra" => $column_tablet_extra,
+            "slides_to_show_mobile_extra" => $column_mobile_extra,
+            "slides_to_scroll"            => $settings['slides_to_scroll'],
+            "slides_column_gap"           => $settings['slides_column_gap'],
+            "navigation"                  => $settings['navigation'],
+            "pause_on_hover"              => $settings['pause_on_hover'],
+            "autoplay"                    => $settings['autoplay'],
+            "autoplay_speed"              => $settings['autoplay_speed'],
+            "infinite"                    => $settings['infinite'],
+            "speed"                       => $settings['speed'],
+            "direction"                   => $settings['direction'],
         ];
 
         return wp_json_encode($data);
@@ -197,6 +210,25 @@ abstract class Opalestate_Elementor_Widget_Base extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'slides_column_gap',
+            [
+                'label'              => esc_html__('Slides Columns Gap', 'opalestate-pro'),
+                'type'               => Controls_Manager::SLIDER,
+                'range'              => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors'          => [
+                    '{{WRAPPER}} .elementor-slick-slider-row'              => 'margin-left: calc({{SIZE}}{{UNIT}} / -2); margin-right: calc({{SIZE}}{{UNIT}}/ -2)',
+                    '{{WRAPPER}} .elementor-slick-slider-row .column-item' => 'padding-left: calc({{SIZE}}{{UNIT}} / 2); padding-right: calc({{SIZE}}{{UNIT}} / 2)',
+
+                ],
+                'frontend_available' => true,
+            ]
+        );
 
         $this->add_control(
             'navigation',

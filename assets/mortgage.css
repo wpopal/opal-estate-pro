@@ -1,0 +1,99 @@
+.opalestate-mortgage-label {
+  width: 100%;
+  font-weight: 500;
+}
+
+.opalestate-mortgage-chart-container {
+  overflow: hidden;
+}
+
+.opalestate-mortgage-chart-container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.opalestate-mortgage-chart-label {
+  font-size: 18px;
+}
+
+.opalestate-mortgage-chart-container {
+  margin-bottom: 15px;
+}
+
+.opalestate-mortgage-chart {
+  float: left;
+  width: 50%;
+}
+
+.opalestate-mortgage-chart-svg {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.opalestate-mortgage-chart-desc {
+  float: left;
+  width: 50%;
+}
+
+.opalestate-mortgage-chart-notice ul {
+  padding: 0;
+  margin: 0;
+}
+
+.opalestate-mortgage-chart-notice ul li {
+  font-size: 12px;
+  line-height: normal;
+  position: relative;
+  margin-bottom: 6px;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.opalestate-mortgage-chart-notice ul li span {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  color: #7e7e7e;
+  font-weight: 400;
+}
+
+.opalestate-mortgage-output {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0a1938;
+}
+
+.opalestate-mortgage-output-item {
+  margin-bottom: 6px;
+}
+.opalestate-monthly-value{
+  color: #2f73e9;
+}
+.opalestate-mortgage-output label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.opalestate-mortgage-output small {
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.pie {
+  width: 120px;
+  background: #f06;
+  border-radius: 50%;
+}
+
+.pie circle {
+  fill: none;
+  stroke: #02ce76;
+  stroke-width: 32;
+  animation: rotate 1.5s ease-in;
+}

@@ -136,7 +136,7 @@ class Opalestate_Category_List_Elementor_Widget extends Opalestate_Elementor_Wid
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}; grid-row-gap: {{SIZE}}{{UNIT}}',
 
                 ],
                 'condition' => [

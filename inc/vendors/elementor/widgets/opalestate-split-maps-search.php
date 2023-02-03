@@ -118,7 +118,7 @@ class Opalestate_Split_maps_search_Elementor_Widget extends Opalestate_Elementor
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}; grid-row-gap: {{SIZE}}{{UNIT}}',
 
                 ],
                 'condition' => [

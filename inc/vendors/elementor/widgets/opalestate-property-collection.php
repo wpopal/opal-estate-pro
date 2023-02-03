@@ -100,7 +100,7 @@ class Opalestate_Property_collection_Elementor_Widget extends Opalestate_Element
             [
                 'label'   => esc_html__('Style Item Layout', 'opalestate-pro'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'options' => $this->get_template_post_type(),
+                'options' => apply_filters('opalestate_get_loop_property_layouts', $this->get_template_post_type()),
                 'default' => 'grid',
             ]
         );
@@ -125,13 +125,14 @@ class Opalestate_Property_collection_Elementor_Widget extends Opalestate_Element
                 'label'     => esc_html__('Columns Gap', 'opalestate-pro'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => [
-                    'px' => [
+                    'px'      => [
                         'min' => 0,
                         'max' => 100,
                     ],
+                    'default' => 30
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .elementor-items-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}; grid-row-gap: {{SIZE}}{{UNIT}}',
 
                 ],
                 'condition' => [
