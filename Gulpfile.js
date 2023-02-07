@@ -11,7 +11,8 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const inject = require('gulp-inject');
 const addsrc = require('gulp-add-src');
-const clean = require('gulp-dest-clean');
+// const clean = require('gulp-dest-clean');
+var clean = require('gulp-clean');
 // const del = require('gulp-dest-clean');
 
 var paths = {
@@ -24,6 +25,7 @@ var paths = {
     "bower": "./bower_components/",
     "distprod": "./dist-product",
     "dist": "/Users/chungpham/webroot/wordpress/fullhouse2/wp-content/plugins/opal-estate-pro"
+    // "dist": "/Users/chungpham/svn/opal-estate-pro/trunk"
 }
 
 var folderPlugin = './';
@@ -110,12 +112,12 @@ gulp.task('babel-admin-opaljob', function () {
 
 // Deleting any file inside the /dist folder
 gulp.task('clean-dist', function () {
-      fs.remove(paths.dist);
-    // return del(paths.dist + '/**');
+    return gulp.src(paths.dist, {read: false})
+        .pipe(clean({force: true}));
 });
 
 gulp.task('dist', ['clean-dist'], function () {
     return gulp.src(['**/*', '!*.js', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dev, '!' + paths.dev + '/**', '!' + paths.dist, '!' + paths.dist + '/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '!' + paths.sass, '!' + paths.sass + '/**', '!readme.md', '!package.json', '!package-lock.json', '!gulpfile.js', '!project.json', '!CHANGELOG.md', '!.travis.yml', '!jshintignore', '!codesniffer.ruleset.xml', "!**/*.map", '*'], {'buffer': false})
-        .pipe(gulp.dest(paths.dist));
+        .pipe(gulp.dest(paths.dist+ '/'));
 });
 
