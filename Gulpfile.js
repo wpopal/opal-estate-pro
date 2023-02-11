@@ -19,25 +19,20 @@ var paths = {
     sass: "./assets/scss",
     dev: "./assets/babel",
     js: './assets/js',
-    css: './assets/css',
-    // "sass": "./assets/sass",
+    css: './assets/css', // "sass": "./assets/sass",
     "node": "./node_modules/",
     "bower": "./bower_components/",
     "distprod": "./dist-product",
-    "dist": "/Users/chungpham/webroot/wordpress/fullhouse2/wp-content/plugins/opal-estate-pro"
-    // "dist": "/Users/chungpham/svn/opal-estate-pro/trunk"
+    "disttheme": "/Users/chungpham/webroot/wordpress/fullhouse2/wp-content/plugins/opal-estate-pro",
+    "dist": "/Users/chungpham/svn/opal-estate-pro/trunk"
 }
 
 var folderPlugin = './';
 
 gulp.task('watch', ['admin-opaljob-frontend'], function () {
-    gulp.watch([
-        //   path.join(folderPlugin, 'src/js/frontend/*.js'),
+    gulp.watch([//   path.join(folderPlugin, 'src/js/frontend/*.js'),
         //  path.join(folderPlugin, 'src/js/admin/*.js'),
-        path.join(folderPlugin, 'assets/scss/*.scss'),
-        path.join(folderPlugin, 'assets/scss/**/*.scss'),
-        path.join(folderPlugin, 'assets/scss/**/**/*.scss')
-    ], () => {
+        path.join(folderPlugin, 'assets/scss/*.scss'), path.join(folderPlugin, 'assets/scss/**/*.scss'), path.join(folderPlugin, 'assets/scss/**/**/*.scss')], () => {
         // gulp.start('babel-admin-opaljob-frontend');
         //  gulp.start('babel-admin-opaljob-admin');
         gulp.start('opaljob-frontend');
@@ -62,11 +57,9 @@ gulp.task('scripts', function () {
         // Start - All BS4 stuff
         //    paths.dev + '/js/bootstrap4/bootstrap.bundle.js',
         // End - All BS4 stuff
-        paths.dev + '/js/skip-link-focus-fix.js',
-        // Adding currently empty javascript file to add on for your own themes´ customizations
+        paths.dev + '/js/skip-link-focus-fix.js', // Adding currently empty javascript file to add on for your own themes´ customizations
         // Please add any customizations to this .js file only!
-        paths.dev + '/js/custom-javascript.js'
-    ];
+        paths.dev + '/js/custom-javascript.js'];
 
     gulp.src(scripts)
         .pipe(concat('theme.min.js'))
@@ -93,11 +86,7 @@ gulp.task('admin-opaljob-frontend', function () {
 
 
 gulp.task('babel-admin-opaljob-admin', function () {
-    return gulp.src([
-        path.join(folderPlugin, 'src/js/before.js'),
-        path.join(folderPlugin, 'src/js/admin/*.js'),
-        path.join(folderPlugin, 'src/js/after.js'),
-    ])
+    return gulp.src([path.join(folderPlugin, 'src/js/before.js'), path.join(folderPlugin, 'src/js/admin/*.js'), path.join(folderPlugin, 'src/js/after.js'),])
         //  .pipe(sourcemaps.init())
         .pipe(concat('admin.js'))
         .pipe(uglify())
@@ -118,6 +107,10 @@ gulp.task('clean-dist', function () {
 
 gulp.task('dist', ['clean-dist'], function () {
     return gulp.src(['**/*', '!*.js', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dev, '!' + paths.dev + '/**', '!' + paths.dist, '!' + paths.dist + '/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '!' + paths.sass, '!' + paths.sass + '/**', '!readme.md', '!package.json', '!package-lock.json', '!gulpfile.js', '!project.json', '!CHANGELOG.md', '!.travis.yml', '!jshintignore', '!codesniffer.ruleset.xml', "!**/*.map", '*'], {'buffer': false})
-        .pipe(gulp.dest(paths.dist+ '/'));
+        .pipe(gulp.dest(paths.dist + '/'));
+});
+gulp.task('dist-theme', ['clean-dist'], function () {
+    return gulp.src(['**/*', '!*.js', '!' + paths.bower, '!' + paths.bower + '/**', '!' + paths.node, '!' + paths.node + '/**', '!' + paths.dev, '!' + paths.dev + '/**', '!' + paths.disttheme, '!' + paths.disttheme + '/**', '!' + paths.distprod, '!' + paths.distprod + '/**', '!' + paths.sass, '!' + paths.sass + '/**', '!readme.md', '!package.json', '!package-lock.json', '!gulpfile.js', '!project.json', '!CHANGELOG.md', '!.travis.yml', '!jshintignore', '!codesniffer.ruleset.xml', "!**/*.map", '*'], {'buffer': false})
+        .pipe(gulp.dest(paths.disttheme + '/'));
 });
 
