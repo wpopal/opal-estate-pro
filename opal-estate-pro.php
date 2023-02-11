@@ -3,7 +3,7 @@
  * Plugin Name: Opal Estate Pro
  * Plugin URI: https://wpdocs.gitbook.io/opal-estate/
  * Description: Opal Real Estate Plugin is an ideal solution and brilliant choice for you to set up a professional estate website.
- * Version: 1.7.5
+ * Version: 1.7.6
  * Author: WPOPAL
  * Author URI: http://www.wpopal.com
  * Requires at least: 5.0
